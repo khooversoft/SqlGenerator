@@ -1,11 +1,21 @@
-﻿using Toolbox.Tools;
+﻿using System.Xml.Linq;
+using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Model;
 
-public record SchemaModel
+public sealed record SchemaModel
 {
     public Security Security { get; init; }
     public string SchemaName { get; init; } = null!;
+
+    public bool Equals(SchemaModel? obj)
+    {
+        return obj is SchemaModel model &&
+            Security == model.Security &&
+            SchemaName == model.SchemaName;
+    }
+
+    public override int GetHashCode() => HashCode.Combine(Security, SchemaName);
 }
 
 

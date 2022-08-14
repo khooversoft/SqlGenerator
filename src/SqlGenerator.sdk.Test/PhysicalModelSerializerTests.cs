@@ -1,8 +1,11 @@
+using FluentAssertions;
 using SqlGenerator.sdk.Model;
+using Toolbox.Extensions;
+using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Test;
 
-public class PhysicalModelSerializer
+public class PhysicalModelSerializerTests
 {
     [Fact]
     public void GivenModel_WhenSerialized_WillRoundtrip()
@@ -11,7 +14,7 @@ public class PhysicalModelSerializer
         const int columnCount = 5;
         const int tableCount = 3;
 
-        var physicalModel = new PhysicalModel
+        var m1 = new PhysicalModel
         {
             Name = "test model",
             Schemas = new[]
@@ -61,7 +64,7 @@ public class PhysicalModelSerializer
                     Columns = Enumerable.Range(0, columnCount)
                         .Select(y => new ColumnDefinition
                         {
-                            ColumnName = $"Column_{y}",
+                            ColumnName = $"ColumnDef_{y}",
                             Security = x switch
                             {
                                 int v when v % 3 == 0 => Security.Unrestricted,
@@ -72,6 +75,12 @@ public class PhysicalModelSerializer
                             },
                         }).ToArray(),
                 }).ToArray(),
-        };
+        }.Verify();
+
+        string json = m1.ToJson();
+
+        PhysicalModel m2 = json.ToObject<PhysicalModel>().NotNull();
+
+        (m1 == m2).Should().BeTrue();
     }
 }

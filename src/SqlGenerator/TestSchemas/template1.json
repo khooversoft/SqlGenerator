@@ -1,0 +1,53 @@
+{
+  "name": "model name",
+  "schemas": [
+    {
+      "security": "unrestricted",
+      "schemaName": "general"
+    },
+    {
+      "security": "restricted",
+      "schemaName": "protected"
+    },
+    {
+      "security": "pii",
+      "schemaName": "PII"
+    }
+  ],
+  "views": [
+    {
+      "schemaName": "general",
+      "viewName": "View_0",
+      "columns": [
+        {
+          "columnName": "Column_0",
+          "security": "unrestricted"
+        },
+        {
+          "columnName": "Column_1",
+          "security": "unrestricted"
+        }
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "schemaName": "general",
+      "tableName": "Table_0",
+      "columns": [
+        {
+          "columnName": "ColumnDef_0",
+          "security": "unrestricted",
+          "type": "varChar",
+          "size": 10
+        },
+        {
+          "columnName": "ColumnDef_1",
+          "security": "unrestricted",
+          "type": "varChar",
+          "size": 10
+        }
+      ]
+    }
+  ]
+}

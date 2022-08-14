@@ -2,10 +2,19 @@
 
 namespace SqlGenerator.sdk.Model;
 
-public record ColumnModel
+public sealed record ColumnModel
 {
     public string ColumnName { get; init; } = null!;
     public Security Security { get; init; }
+
+    public bool Equals(ColumnModel? obj)
+    {
+        return obj is ColumnModel model &&
+            ColumnName == model.ColumnName &&
+            Security == model.Security;
+    }
+
+    public override int GetHashCode() => HashCode.Combine(ColumnName, Security);
 }
 
 

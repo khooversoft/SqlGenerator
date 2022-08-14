@@ -3,11 +3,22 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Model;
 
-public record TableModel
+public sealed record TableModel
 {
     public string SchemaName { get; init; } = null!;
     public string TableName { get; init; } = null!;
     public IReadOnlyList<ColumnDefinition> Columns { get; init; } = Array.Empty<ColumnDefinition>();
+
+    public bool Equals(TableModel? obj)
+    {
+        return obj is TableModel model &&
+            SchemaName == model.SchemaName &&
+            TableName == model.TableName &&
+            Columns.Count == model.Columns.Count &&
+            Columns.Zip(model.Columns).All(x => x.First == x.Second);
+    }
+
+    public override int GetHashCode() => HashCode.Combine(SchemaName, TableName, Columns);
 }
 
 
