@@ -13,32 +13,48 @@ public class PhysicalModelSerializerTests
         const int viewCount = 5;
         const int columnCount = 5;
         const int tableCount = 3;
+        Random rnd = new Random();
 
         var m1 = new PhysicalModel
         {
             Name = "test model",
             Schemas = new[]
             {
-                new SchemaModel { SchemaName = "general", Security = Security.Unrestricted },
-                new SchemaModel { SchemaName = "protected", Security = Security.Restricted},
-                new SchemaModel { SchemaName = "PII", Security = Security.PII},
+                new SchemaModel { Name = "general", Security = Security.Unrestricted },
+                new SchemaModel { Name = "protected", Security = Security.Restricted},
+                new SchemaModel { Name = "PII", Security = Security.PII},
             },
             Views = Enumerable.Range(0, viewCount)
                 .Select(x => new ViewModel
                 {
-                    SchemaName = x switch
+                    Name = new ObjectName
                     {
-                        int v when v % 3 == 0 => "general",
-                        int v when v % 3 == 1 => "protected",
-                        int v when v % 3 == 2 => "PII",
+                        Schema = x switch
+                        {
+                            int v when v % 3 == 0 => "general",
+                            int v when v % 3 == 1 => "protected",
+                            int v when v % 3 == 2 => "PII",
 
-                        _ => throw new InvalidOperationException(),
+                            _ => throw new InvalidOperationException(),
+                        },
+                        Name = $"View_{x}",
                     },
-                    ViewName = $"View_{x}",
+                    Table = new ObjectName
+                    {
+                        Schema = x switch
+                        {
+                            int v when v % 3 == 0 => "general",
+                            int v when v % 3 == 1 => "protected",
+                            int v when v % 3 == 2 => "PII",
+
+                            _ => throw new InvalidOperationException(),
+                        },
+                        Name = $"Table_{x}",
+                    },
                     Columns = Enumerable.Range(0, columnCount)
                         .Select(y => new ColumnModel
                         {
-                            ColumnName = $"Column_{y}",
+                            Name = $"Column_{y}",
                             Security = x switch
                             {
                                 int v when v % 3 == 0 => Security.Unrestricted,
@@ -52,19 +68,22 @@ public class PhysicalModelSerializerTests
             Tables = Enumerable.Range(0, tableCount)
                 .Select(x => new TableModel
                 {
-                    SchemaName = x switch
+                    Name = new ObjectName
                     {
-                        int v when v % 3 == 0 => "general",
-                        int v when v % 3 == 1 => "protected",
-                        int v when v % 3 == 2 => "PII",
-
-                        _ => throw new InvalidOperationException(),
-                    },
-                    TableName = $"Table_{x}",
-                    Columns = Enumerable.Range(0, columnCount)
-                        .Select(y => new ColumnDefinition
+                        Schema = x switch
                         {
-                            ColumnName = $"ColumnDef_{y}",
+                            int v when v % 3 == 0 => "general",
+                            int v when v % 3 == 1 => "protected",
+                            int v when v % 3 == 2 => "PII",
+
+                            _ => throw new InvalidOperationException(),
+                        },
+                        Name = $"Table_{x}",
+                    },
+                    Columns = Enumerable.Range(0, columnCount)
+                        .Select(y => new ColumnDefinitionModel
+                        {
+                            Name = $"ColumnDef_{y}",
                             Security = x switch
                             {
                                 int v when v % 3 == 0 => Security.Unrestricted,
@@ -73,6 +92,9 @@ public class PhysicalModelSerializerTests
 
                                 _ => throw new InvalidOperationException(),
                             },
+                            Size = rnd.Next(5, 50),
+                            Type = DataType.VarChar,
+                            NotNull = rnd.Next() % 3 == 0,
                         }).ToArray(),
                 }).ToArray(),
         }.Verify();

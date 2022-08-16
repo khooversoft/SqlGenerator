@@ -1,33 +1,58 @@
-﻿using SqlGenerator.sdk.Model;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using SqlGenerator.sdk.Defaults;
+using SqlGenerator.sdk.Generator;
+using SqlGenerator.sdk.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
-namespace SqlGenerator.Activities;
+namespace SqlGenerator.sdk.Test;
 
-internal class TemplateActivity
+public class GeneratorTests
 {
-    public async Task Generate(string schemaFile)
+    [Fact]
+    public async Task GivenModel_WhenSerialized_WillRoundtrip()
     {
-        schemaFile.NotEmpty();
+        string json = CreatePhysicalModel();
+        PhysicalModel model = json.ToObject<PhysicalModel>().NotNull();
 
-        const int columnCount = 2;
-        const int tableCount = 1;
+        ILoggerFactory loggerFactory = LoggerFactory.Create(factory =>
+        {
+            factory.AddDebug();
+            factory.AddFilter(x => true);
+        });
+
+        Instructions instructions = model.Build();
+
+        string baseFolder = Path.Combine(Path.GetTempPath(), nameof(GeneratorTests));
+        var generator = new SqlScriptBuilder(loggerFactory.CreateLogger<SqlScriptBuilder>());
+
+        await generator.Build(baseFolder, instructions);
+    }
+
+    private string CreatePhysicalModel()
+    {
+        const int viewCount = 5;
+        const int columnCount = 5;
+        const int tableCount = 3;
+        Random rnd = new Random();
 
         var m1 = new PhysicalModel
         {
-            Name = "model name",
+            Name = "test model",
             Schemas = new[]
             {
                 new SchemaModel { Name = "general", Security = Security.Unrestricted },
                 new SchemaModel { Name = "protected", Security = Security.Restricted},
                 new SchemaModel { Name = "PII", Security = Security.PII},
             },
-            Views = Enumerable.Range(0, tableCount)
+            Views = Enumerable.Range(0, viewCount)
                 .Select(x => new ViewModel
                 {
                     Name = new ObjectName
@@ -41,6 +66,7 @@ internal class TemplateActivity
                             _ => throw new InvalidOperationException(),
                         },
                         Name = $"View_{x}",
+                        NamePrefix = "Vw_",
                     },
                     Table = new ObjectName
                     {
@@ -58,14 +84,16 @@ internal class TemplateActivity
                         .Select(y => new ColumnModel
                         {
                             Name = $"Column_{y}",
-                            Security = x switch
+                            Security = y switch
                             {
-                                int v when v % 3 == 0 => Security.Unrestricted,
-                                int v when v % 3 == 1 => Security.Restricted,
-                                int v when v % 3 == 2 => Security.PII,
+                                int v when v % 4 == 0 => Security.Unrestricted,
+                                int v when v % 4 == 1 => Security.Unrestricted,
+                                int v when v % 4 == 2 => Security.Restricted,
+                                int v when v % 4 == 3 => Security.PII,
 
                                 _ => throw new InvalidOperationException(),
                             },
+                            HashKey = y == 0 ? true : false,
                         }).ToArray(),
                 }).ToArray(),
             Tables = Enumerable.Range(0, tableCount)
@@ -95,14 +123,18 @@ internal class TemplateActivity
 
                                 _ => throw new InvalidOperationException(),
                             },
+                            Size = 50,
                             Type = DataType.VarChar,
-                            Size = 10,
+                            NotNull = false,
+                            HashKey = y == 0 ? true : false,
                         }).ToArray(),
+                    HashColumn = "hashColumnName",
                 }).ToArray(),
+
+            PrefixColumns = NormalColumnDefaults.Prefix,
+            SufixColumns = NormalColumnDefaults.Sufix,
         }.Verify();
 
-        string json = m1.ToJsonFormat();
-
-        await File.WriteAllTextAsync(schemaFile, json);
+        return m1.ToJson();
     }
 }

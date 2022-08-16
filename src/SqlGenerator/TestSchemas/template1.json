@@ -16,8 +16,14 @@
   ],
   "views": [
     {
-      "schemaName": "general",
-      "viewName": "View_0",
+      "name": {
+        "schema": "general",
+        "name": "View_0"
+      },
+      "table": {
+        "schema": "general",
+        "name": "Table_0"
+      },
       "columns": [
         {
           "columnName": "Column_0",
@@ -32,8 +38,10 @@
   ],
   "tables": [
     {
-      "schemaName": "general",
-      "tableName": "Table_0",
+      "name": {
+        "schema": "general",
+        "name": "Table_0"
+      },
       "columns": [
         {
           "columnName": "ColumnDef_0",

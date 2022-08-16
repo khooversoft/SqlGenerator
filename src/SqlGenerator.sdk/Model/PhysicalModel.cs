@@ -14,6 +14,8 @@ public sealed record PhysicalModel
     public IReadOnlyList<SchemaModel> Schemas { get; init; } = Array.Empty<SchemaModel>();
     public IReadOnlyList<ViewModel> Views { get; init; } = Array.Empty<ViewModel>();
     public IReadOnlyList<TableModel> Tables { get; init; } = Array.Empty<TableModel>();
+    public IReadOnlyList<ColumnDefinitionModel> PrefixColumns { get; init;} = Array.Empty<ColumnDefinitionModel>();
+    public IReadOnlyList<ColumnDefinitionModel> SufixColumns { get; init; } = Array.Empty<ColumnDefinitionModel>();
 
     public bool Equals(PhysicalModel? obj)
     {
@@ -40,11 +42,13 @@ public static class PhysicalModelExtensions
         subject.NotNull().Views.ForEach(x => x.Verify());
         subject.NotNull().Tables.ForEach(x => x.Verify());
 
-        subject.Views.ForEach(x => IsSchemaPresent(x.SchemaName).Assert(x => x == true, $"Schema={x.SchemaName} not found"));
-        subject.Tables.ForEach(x => IsSchemaPresent(x.SchemaName).Assert(x => x == true, $"Schema={x.SchemaName} not found"));
-
-        bool IsSchemaPresent(string schemaName) => subject.Schemas.FirstOrDefault(x => x.SchemaName == schemaName) != null ? true : false;
+        subject.Views.ForEach(x => subject.IsSchemaPresent(x.Name.Schema).Assert(x => x == true, $"Schema={x.Name.Schema} not found"));
+        subject.Tables.ForEach(x => subject.IsSchemaPresent(x.Name.Schema).Assert(x => x == true, $"Schema={x.Name.Schema} not found"));
 
         return subject;
     }
+
+    public static bool IsSchemaPresent(this PhysicalModel subject, string name) => subject.GetSchemaModel(name) != null;
+
+    public static SchemaModel? GetSchemaModel(this PhysicalModel subject, string name) => subject.Schemas.FirstOrDefault(x => x.Name == name);
 }

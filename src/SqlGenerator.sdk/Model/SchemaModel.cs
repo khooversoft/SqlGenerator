@@ -6,16 +6,16 @@ namespace SqlGenerator.sdk.Model;
 public sealed record SchemaModel
 {
     public Security Security { get; init; }
-    public string SchemaName { get; init; } = null!;
+    public string Name { get; init; } = null!;
 
     public bool Equals(SchemaModel? obj)
     {
         return obj is SchemaModel model &&
             Security == model.Security &&
-            SchemaName == model.SchemaName;
+            Name == model.Name;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Security, SchemaName);
+    public override int GetHashCode() => HashCode.Combine(Security, Name);
 }
 
 
@@ -25,7 +25,7 @@ public static class SchemaModelExtensions
     {
         subject.NotNull();
         subject.Security.AssertValid();
-        subject.SchemaName.NotEmpty();
+        subject.Name.NotEmpty();
 
         return subject;
     }
