@@ -6,7 +6,7 @@ namespace SqlGenerator.sdk.Model;
 public sealed record TableModel
 {
     public ObjectName Name { get; init; } = null!;
-    public string HashColumn { get; init; } = null!;
+    public string? HashColumn { get; init; }
     public IReadOnlyList<ColumnDefinitionModel> Columns { get; init; } = Array.Empty<ColumnDefinitionModel>();
 
     public bool Equals(TableModel? obj)
@@ -28,7 +28,6 @@ public static class TableModelExtensions
     {
         subject.NotNull();
         subject.Name.Verify();
-        subject.HashColumn.NotEmpty();
         subject.Columns.NotNull().ForEach(x => x.Verify());
 
         return subject;

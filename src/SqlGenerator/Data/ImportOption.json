@@ -1,0 +1,108 @@
+{
+  "schemas": [
+    {
+      "security": "data",
+      "name": "NetOdata"
+    },
+    {
+      "security": "unrestricted",
+      "name": "NetO"
+    },
+    {
+      "security": "restricted",
+      "name": "NetOR"
+    },
+    {
+      "security": "pii",
+      "name": "NetOPII"
+    }
+  ],
+  "prefixColumns": [
+    {
+      "name": "ASAP_RecordEffectiveDateTime",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": true,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_DeleteDateTime",
+      "security": "unrestricted",
+      "dataType": "nvarchar(10)",
+      "notNull": false,
+      "hashKey": false
+    }
+  ],
+  "sufixColumns": [
+    {
+      "name": "ASAP_ROW_HASH",
+      "security": "unrestricted",
+      "dataType": "nvarchar(64)",
+      "notNull": false,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_DML_FLAG",
+      "security": "unrestricted",
+      "dataType": "nvarchar(2)",
+      "notNull": false,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_CREATED_DATE",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_UPDATED_DATE",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_LINEAGE_ID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_ACTIVITY_ID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_TRIGGER_ID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_SRC_FILEPATH",
+      "security": "unrestricted",
+      "dataType": "nvarchar(1000)",
+      "notNull": false,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_SRC_FILE_DATE",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "hashKey": false
+    },
+    {
+      "name": "ASAP_SRC_NAME",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "hashKey": false
+    }
+  ]
+}

@@ -29,6 +29,15 @@ public class SqlScriptBuilder
         VerifyFolder(baseFolder);
 
         await Build(instructions, baseFolder, 0);
+        CleanUpEmptyFolders(baseFolder);
+    }
+
+    private void CleanUpEmptyFolders(string baseFolder)
+    {
+        Directory.GetDirectories(baseFolder, "*.*", SearchOption.AllDirectories)
+            .Select(x => (Path: x, FileCount: Directory.GetFiles(x).Count(), FolderCount: Directory.GetDirectories(x).Count()))
+            .Where(x => x.FileCount == 0 && x.FolderCount == 0)
+            .ForEach(x => Directory.Delete(x.Path));
     }
 
     private async Task Build(Instructions instructions, string baseFolder, int indentLevel, StreamWriter? fileStream = null)

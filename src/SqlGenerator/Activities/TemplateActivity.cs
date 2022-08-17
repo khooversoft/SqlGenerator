@@ -66,6 +66,7 @@ internal class TemplateActivity
 
                                 _ => throw new InvalidOperationException(),
                             },
+                            HashKey = y == 0 ? true : false,
                         }).ToArray(),
                 }).ToArray(),
             Tables = Enumerable.Range(0, tableCount)
@@ -95,8 +96,16 @@ internal class TemplateActivity
 
                                 _ => throw new InvalidOperationException(),
                             },
-                            Type = DataType.VarChar,
-                            Size = 10,
+                            DataType = y switch
+                            {
+                                int v when v % 3 == 0 => "datetime2(7)",
+                                int v when v % 3 == 1 => "int",
+                                int v when v % 3 == 2 => "char(1)",
+
+                                _ => "varchar(10)",
+                            },
+                            HashKey = true,
+                            NotNull = false,
                         }).ToArray(),
                 }).ToArray(),
         }.Verify();

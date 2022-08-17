@@ -6,8 +6,7 @@ public sealed record ColumnDefinitionModel
 {
     public string Name { get; init; } = null!;
     public Security Security { get; init; }
-    public DataType Type { get; init; }
-    public int? Size { get; init; }
+    public string DataType { get; init; } = null!;
     public bool NotNull { get; init; }
     public bool HashKey { get; init; }
 
@@ -16,13 +15,12 @@ public sealed record ColumnDefinitionModel
         return obj is ColumnDefinitionModel model &&
             Name == model.Name &&
             Security == model.Security &&
-            Type == model.Type &&
-            Size == model.Size &&
+            DataType == model.DataType &&
             NotNull == model.NotNull &&
             HashKey == model.HashKey;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Name, Security, Type, Size, NotNull, HashKey);
+    public override int GetHashCode() => HashCode.Combine(Name, Security, DataType, NotNull, HashKey);
 }
 
 
@@ -33,7 +31,7 @@ public static class ColumnDefinitionExtensions
         subject.NotNull();
         subject.Name.NotEmpty();
         subject.Security.AssertValid();
-        subject.Type.AssertValid();
+        subject.DataType.NotEmpty();
 
         return subject;
     }

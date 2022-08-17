@@ -5,4 +5,5 @@ public enum Security
     Unrestricted,
     Restricted,
     PII,
+    Data,
 }

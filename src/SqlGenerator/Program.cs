@@ -4,6 +4,7 @@ using SqlGenerator.Activities;
 using SqlGenerator.Commands;
 using System.CommandLine;
 using System.Reflection;
+using Toolbox.Tools;
 
 string _programTitle = $"Property Database CLI - Version {Assembly.GetExecutingAssembly().GetName().Version}";
 
@@ -22,18 +23,24 @@ async Task<int> Run(string[] args)
     Console.WriteLine(_programTitle);
     Console.WriteLine();
 
+    using ServiceProvider container = BuildContainer();
+
     try
     {
-        using (ServiceProvider container = BuildContainer())
+        var rc = new RootCommand()
         {
-            var rc = new RootCommand()
-            {
-                container.GetRequiredService<GenerateCommand>(),
-                container.GetRequiredService<TemplateCommand>(),
-            };
+            container.GetRequiredService<BuildCommand>(),
+            container.GetRequiredService<WriteCommand>(),
+        };
 
-            return await rc.InvokeAsync(args);
-        }
+        return await rc.InvokeAsync(args);
+    }
+    catch (Exception ex)
+    {
+        ILoggerFactory factory = container.GetService<ILoggerFactory>().NotNull();
+        ILogger<Program> logger = factory.CreateLogger<Program>();
+        logger.LogError(ex, "Failed");
+        return 1;
     }
     finally
     {
@@ -52,11 +59,12 @@ ServiceProvider BuildContainer()
         x.AddDebug();
     });
 
-    service.AddSingleton<GenerateActivity>();
+    service.AddSingleton<BuildActivity>();
     service.AddSingleton<TemplateActivity>();
+    service.AddSingleton<ImportOptionActivity>();
 
-    service.AddSingleton<GenerateCommand>();
-    service.AddSingleton<TemplateCommand>();
+    service.AddSingleton<BuildCommand>();
+    service.AddSingleton<WriteCommand>();
 
     return service.BuildServiceProvider();
 }

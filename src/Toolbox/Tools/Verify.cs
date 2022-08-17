@@ -203,7 +203,7 @@ namespace Toolbox.Tools
         /// <param name="state">state to test</param>
         /// <param name="message">message</param>
         [DebuggerStepThrough]
-        public static void AssertValid<T>(
+        public static T AssertValid<T>(
                 this T value,
                 ILogger? logger = null,
                 [CallerMemberName] string function = "",
@@ -211,7 +211,7 @@ namespace Toolbox.Tools
                 [CallerLineNumber] int lineNumber = 0
             ) where T : struct, Enum
         {
-            if (value.IsValid()) return;
+            if (value.IsValid()) return value;
 
             string message = FormatCaller(function, path, lineNumber);
             logger?.LogError(message);

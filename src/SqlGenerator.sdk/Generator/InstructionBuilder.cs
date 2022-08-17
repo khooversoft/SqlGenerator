@@ -41,7 +41,7 @@ public class InstructionBuilder
         return list;
     }
 
-    public Instructions Build(SchemaModel schema)
+    private Instructions Build(SchemaModel schema)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, $"{schema.Name}.sql");
@@ -51,7 +51,11 @@ public class InstructionBuilder
         return list;
     }
 
-    public Instructions Build(ViewModel viewModel)
+    // Creating view for all non data security groups (lookup schema to get security level of schema)
+    //   Unrestricted view => both Restricted and PII columns are hashed
+    //   Restricted view => only PII columns are hashed
+    //   PII view => all columns are visible
+    private Instructions Build(ViewModel viewModel)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, viewModel.Name.CalculateFileName());
@@ -68,25 +72,23 @@ public class InstructionBuilder
             .Concat(_physicalModel.SufixColumns.Select(x => x.ToColumnModel()))
             .ToList();
 
-        bool isProtectedView = _physicalModel.GetSchemaModel(viewModel.Name.Schema).NotNull().Security switch
-        {
-            Security.Unrestricted => false,
-            _ => true,
-        };
+        SchemaModel schemaModel = _physicalModel.GetSchemaModel(viewModel.Name.Schema).NotNull();
 
         list += columns
-            .Select((x, i) => Build(x, i == columns.Count - 1, isProtectedView))
+            .Select((x, i) => Build(x, i == columns.Count - 1, schemaModel))
             .Func(x => new Instructions() + x);
 
         list += InstructionType.TabMinus;
-        list += $"FROM {viewModel.Table} x;";
+        list += $"FROM {viewModel.Table} x";
+        list += $"WHERE x.[ASAP_DeleteDateTime] != null";
         list += InstructionType.TabMinus;
+        list += ";";
         list += "GO";
 
         return list;
     }
 
-    public Instructions Build(TableModel tableModel)
+    private Instructions Build(TableModel tableModel)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, tableModel.Name.CalculateFileName());
@@ -95,9 +97,9 @@ public class InstructionBuilder
         list += "(";
         list += InstructionType.TabPlus;
 
-        var hashKeyColumns = tableModel.Columns.Where(x => x.HashKey);
+        IEnumerable<ColumnDefinitionModel> hashKeyColumns = tableModel.Columns.Where(x => x.HashKey);
 
-        var columns = hashKeyColumns
+        IReadOnlyList<ColumnDefinitionModel> columns = hashKeyColumns
             .Concat(_physicalModel.PrefixColumns)
             .Concat(tableModel.Columns.Where(x => !x.HashKey))
             .Concat(_physicalModel.SufixColumns)
@@ -122,33 +124,32 @@ public class InstructionBuilder
         return list;
     }
 
-    public Instruction Build(ColumnModel columnModel, bool last, bool isProtectedView)
+    private Instruction Build(ColumnModel columnModel, bool last, SchemaModel schemaModel)
     {
         return new Instruction
         {
             Type = InstructionType.Code,
             Text = columnModel.Security switch
             {
-                Security.Unrestricted => formatNormal(columnModel.Name),
-                _ => isProtectedView ? formatNormal(columnModel.Name) : formatProtected(columnModel.Name)
+                Security.Unrestricted => protectField(false, columnModel.Name),
+                Security.Restricted => protectField(schemaModel.Security == Security.Unrestricted, columnModel.Name),
+                Security.PII => protectField(schemaModel.Security != Security.PII, columnModel.Name),
+
+                _ => throw new InvalidOperationException(),
             } + (last ? string.Empty : ","),
         };
 
+        static string protectField(bool protect, string name) => protect ? formatProtected(name) : formatNormal(name);
         static string formatNormal(string name) => $"x.[{name}]";
         static string formatProtected(string name) => $"HASHBYTE('SHA2_256', x.[{name}]) AS [{name}]";
     }
 
-    public Instruction Build(ColumnDefinitionModel columnDefModel, bool last, int maxColumnSize)
+    private Instruction Build(ColumnDefinitionModel columnDefModel, bool last, int maxColumnSize)
     {
         const int maxDataTypeColumn = 20;
 
         string column = $"x.[{columnDefModel.Name}]";
-        string dataType = columnDefModel.Type switch
-        {
-            DataType.VarChar => $"VARCHAR({columnDefModel.Size ?? 10})",
-            DataType.DateTime2 => $"[DateTime2](7)",
-            _ => columnDefModel.Type.ToString(),
-        };
+        string dataType = columnDefModel.DataType;
         string nullable = columnDefModel.NotNull ? "NOT NULL" : "NULL";
 
         return new Instruction

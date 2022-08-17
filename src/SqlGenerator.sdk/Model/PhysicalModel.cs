@@ -12,8 +12,8 @@ public sealed record PhysicalModel
 {
     public string Name { get; init; } = null!;
     public IReadOnlyList<SchemaModel> Schemas { get; init; } = Array.Empty<SchemaModel>();
-    public IReadOnlyList<ViewModel> Views { get; init; } = Array.Empty<ViewModel>();
     public IReadOnlyList<TableModel> Tables { get; init; } = Array.Empty<TableModel>();
+    public IReadOnlyList<ViewModel> Views { get; init; } = Array.Empty<ViewModel>();
     public IReadOnlyList<ColumnDefinitionModel> PrefixColumns { get; init;} = Array.Empty<ColumnDefinitionModel>();
     public IReadOnlyList<ColumnDefinitionModel> SufixColumns { get; init; } = Array.Empty<ColumnDefinitionModel>();
 

@@ -1,14 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using SqlGenerator.sdk.Defaults;
 using SqlGenerator.sdk.Generator;
 using SqlGenerator.sdk.Model;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -28,7 +21,7 @@ public class GeneratorTests
             factory.AddFilter(x => true);
         });
 
-        Instructions instructions = model.Build();
+        Instructions instructions = new InstructionBuilder(model).Build();
 
         string baseFolder = Path.Combine(Path.GetTempPath(), nameof(GeneratorTests));
         var generator = new SqlScriptBuilder(loggerFactory.CreateLogger<SqlScriptBuilder>());
@@ -123,8 +116,14 @@ public class GeneratorTests
 
                                 _ => throw new InvalidOperationException(),
                             },
-                            Size = 50,
-                            Type = DataType.VarChar,
+                            DataType = y switch
+                            {
+                                int v when v % 3 == 0 => "datetime2(7)",
+                                int v when v % 3 == 1 => "int",
+                                int v when v % 3 == 2 => "char(1)",
+
+                                _ => "varchar(10)",
+                            },
                             NotNull = false,
                             HashKey = y == 0 ? true : false,
                         }).ToArray(),

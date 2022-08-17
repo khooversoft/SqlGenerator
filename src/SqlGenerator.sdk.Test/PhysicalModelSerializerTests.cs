@@ -92,8 +92,14 @@ public class PhysicalModelSerializerTests
 
                                 _ => throw new InvalidOperationException(),
                             },
-                            Size = rnd.Next(5, 50),
-                            Type = DataType.VarChar,
+                            DataType = y switch
+                            {
+                                int v when v % 3 == 0 => "datetime2(7)",
+                                int v when v % 3 == 1 => "int",
+                                int v when v % 3 == 2 => "char(1)",
+
+                                _ => "varchar(10)",
+                            },
                             NotNull = rnd.Next() % 3 == 0,
                         }).ToArray(),
                 }).ToArray(),
