@@ -1,12 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using SqlGenerator.sdk.Defaults;
-using SqlGenerator.sdk.Import;
+using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -16,43 +10,32 @@ internal class ImportOptionActivity
 {
     private readonly ILogger<ImportOptionActivity> _logger;
 
-    private static IReadOnlyList<ColumnDefinitionModel> Prefix { get; } = new[]
-{
-        new ColumnDefinitionModel { Name = "ASAP_RecordEffectiveDateTime", DataType = "datetime2(7)", NotNull = true },
-        new ColumnDefinitionModel { Name = "ASAP_DeleteDateTime", DataType = "nvarchar(10)" },
-    };
-
-    public static IReadOnlyList<ColumnDefinitionModel> Sufix { get; } = new[]
-    {
-        new ColumnDefinitionModel { Name = "ASAP_ROW_HASH", DataType = "nvarchar(64)" },
-        new ColumnDefinitionModel { Name = "ASAP_DML_FLAG", DataType = "nvarchar(2)" },
-        new ColumnDefinitionModel { Name = "ASAP_CREATED_DATE", DataType = "datetime2(7)" },
-        new ColumnDefinitionModel { Name = "ASAP_UPDATED_DATE", DataType = "datetime2(7)" },
-        new ColumnDefinitionModel { Name = "ASAP_LINEAGE_ID", DataType = "nvarchar(36)" },
-        new ColumnDefinitionModel { Name = "ASAP_ACTIVITY_ID", DataType = "nvarchar(36)" },
-        new ColumnDefinitionModel { Name = "ASAP_TRIGGER_ID", DataType = "nvarchar(36)" },
-        new ColumnDefinitionModel { Name = "ASAP_SRC_FILEPATH", DataType = "nvarchar(1000)" },
-        new ColumnDefinitionModel { Name = "ASAP_SRC_FILE_DATE", DataType = "datetime2(7)" },
-        new ColumnDefinitionModel { Name = "ASAP_SRC_NAME", DataType = "nvarchar(36)" },
-    };
-
     public ImportOptionActivity(ILogger<ImportOptionActivity> logger) => _logger = logger.NotNull();
 
-    public async Task Generate(string configFile)
+    public async Task Generate(string configFile, string modelName)
     {
         configFile.NotEmpty();
+        modelName.NotEmpty();
+
+        _logger.LogInformation("Writing option file {configFile} for model {modelName}", configFile, modelName);
 
         var config = new ImportOption
         {
             Schemas = new[]
             {
-                new SchemaModel { Security = Security.Data, Name = "NetO_data" },
-                new SchemaModel { Security = Security.Unrestricted, Name = "NetO" },
-                new SchemaModel { Security = Security.Restricted, Name = "NetO_restricted" },
-                new SchemaModel { Security = Security.PII, Name = "NetO_pii" },
+                new SchemaModel { Security = Security.Data, Name = $"clt_{modelName}" },
+
+                new SchemaModel { Security = Security.Unrestricted, Name = modelName, Format = "Vw_{tableName}" },
+                new SchemaModel { Security = Security.Restricted, Name = $"{modelName}_restricted", Format = "Vw_{tableName}" },
+                new SchemaModel { Security = Security.PII, Name = $"{modelName}_pii", Format = "Vw_{tableName}" },
+
+                new SchemaModel { Security = Security.Unrestricted, Name = modelName, Format = "Vw_sas_{tableName}", MaxColumnSize=32 },
+                new SchemaModel { Security = Security.Restricted, Name = $"{modelName}_restricted", Format = "Vw_sas_{tableName}", MaxColumnSize=32 },
+                new SchemaModel { Security = Security.PII, Name = $"{modelName}_pii", Format = "Vw_sas_{tableName}", MaxColumnSize=32 },
             },
-            PrefixColumns = Prefix.ToArray(),
-            SufixColumns = Sufix.ToArray(),
+            PrefixColumns = ImportOptionDefaults.Prefix.ToArray(),
+            SufixColumns = ImportOptionDefaults.Sufix.ToArray(),
+            NameMaps = ImportOptionDefaults.NameMaps.ToArray(),
         };
 
         _logger.LogInformation("Writing default option configuration file to {file}", configFile);

@@ -25,19 +25,21 @@ internal class WriteCommand : Command
     private Command Option(IServiceProvider serviceProvider)
     {
         Argument<string> configFile = new Argument<string>("configFile", "File name to write to");
+        Argument<string> modelName = new Argument<string>("modelName", "Name of the model");
 
         var command = new Command("option", "Write default options to file")
         {
             configFile,
+            modelName,
         };
         
-        command.SetHandler(async (string configFile) =>
+        command.SetHandler(async (string configFile, string modelName) =>
         {
             await serviceProvider
                 .GetRequiredService<ImportOptionActivity>()
-                .Generate(configFile);
+                .Generate(configFile, modelName);
 
-        }, configFile);
+        }, configFile, modelName);
 
         return command;
     }
@@ -54,7 +56,7 @@ internal class WriteCommand : Command
         command.SetHandler(async (string configFile) =>
         {
             await serviceProvider
-                .GetRequiredService<ImportOptionActivity>()
+                .GetRequiredService<TemplateActivity>()
                 .Generate(configFile);
 
         }, configFile);

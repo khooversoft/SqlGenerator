@@ -1,9 +1,11 @@
 ﻿using CsvHelper;
+using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Import;
 using SqlGenerator.sdk.Model;
 using System.Globalization;
 using Toolbox.Extensions;
 using Toolbox.Tools;
+using System;
 
 namespace SqlGenerator.sdk.Generator;
 
@@ -15,18 +17,21 @@ public class ModelBuilder
         infos.NotNull();
         importOption.NotNull();
 
-        IReadOnlyList<TableInfo> tableInfos = infos.ToList();
+        // Filter table 
+        IReadOnlyList<TableInfo> tableInfos = infos
+            .Join(importOption.MasterTables, x => x.TableName, x => x, (x, _) => x, StringComparer.OrdinalIgnoreCase)
+            .ToList();
 
-        SchemaModel schemaModel = importOption.Schemas
-            .Where(x => x.Security == Security.Data)
+        SchemaModel dataSchemaModel = importOption.Schemas
+            .Where(x => x.Security.ForTable())
             .FirstOrDefault()
             .NotNull(name: $"Cannot find data schema in option");
 
-        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, importOption, schemaModel);
+        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, dataSchemaModel);
 
         IReadOnlyList<ViewModel> viewModels = importOption.Schemas
-            .Where(x => x.Security != Security.Data)
-            .SelectMany(x => GenerateView(tableInfos, importOption, x, Security.Data.ToString()))
+            .Where(x => x.Security.ForView())
+            .SelectMany(x => GenerateView(tableInfos, importOption, x, dataSchemaModel))
             .ToList();
 
         return new PhysicalModel
@@ -42,16 +47,7 @@ public class ModelBuilder
         }.Verify();
     }
 
-    private IReadOnlyList<TableInfo> Read(string file)
-    {
-        using var reader = new StreamReader(file);
-        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-
-        return csv.GetRecords<TableInfo>()
-            .ToList();
-    }
-
-    private IReadOnlyList<TableModel> GenerateTable(IReadOnlyList<TableInfo> tableInfos, ImportOption importOption, SchemaModel schemaModel)
+    private IReadOnlyList<TableModel> GenerateTable(IReadOnlyList<TableInfo> tableInfos, SchemaModel schemaModel)
     {
         return tableInfos
             .GroupBy(x => x.TableName)
@@ -70,20 +66,45 @@ public class ModelBuilder
             }).ToList();
     }
 
-    private IReadOnlyList<ViewModel> GenerateView(IReadOnlyList<TableInfo> tableInfos, ImportOption importOption, SchemaModel schemaModel, string dataSchema)
+    private IReadOnlyList<ViewModel> GenerateView(IReadOnlyList<TableInfo> tableInfos, ImportOption importOption, SchemaModel schemaModel, SchemaModel dataSchemaModel)
     {
         return tableInfos
             .GroupBy(x => x.TableName)
             .Select(x => new ViewModel
             {
-                Name = new ObjectName { Schema = schemaModel.Name, Name = "Vw_" + x.Key },
-                Table = new ObjectName { Schema = dataSchema, Name = x.Key },
+                Name = new ObjectName { Schema = schemaModel.Name, Name = formatName(x.Key) },
+                Table = new ObjectName { Schema = dataSchemaModel.Name, Name = x.Key },
                 Columns = x.Select(y => new ColumnModel
                 {
                     Name = y.ColumnName,
                     Security = y.GetSecurity(),
-                    HashKey = y.HashKey
+                    HashKey = y.HashKey,
+                    DisplayAs = sizeName(y.ColumnName),
                 }).ToList(),
             }).ToList();
+
+        string formatName(string tableName) => schemaModel.Format switch
+        {
+            null => tableName,
+            string v => v.Replace("{tableName}", tableName),
+        };
+
+        string? sizeName(string columnName) => schemaModel.MaxColumnSize switch
+        {
+            null => null,
+            int v when columnName.Length <= v => null,
+
+            int v => importOption.NameMaps
+                        .Where(x => columnName.IndexOf(x.Long) >= 0)
+                        .FirstOrDefault() switch
+            {
+                null => string.Concat(columnName.AsSpan(0, v - 1), "_"),
+                NameMapRecord r => columnName.Replace(r.Long, r.Short) switch
+                {
+                    string v1 when v1.Length <= schemaModel.MaxColumnSize => v1,
+                    string v1 => string.Concat(v1.AsSpan(0, v - 1), "_"),
+                }
+            },
+        };
     }
 }

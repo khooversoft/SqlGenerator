@@ -2,6 +2,7 @@
 using FluentAssertions.Equivalency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Generator;
 using SqlGenerator.sdk.Import;
 using SqlGenerator.sdk.Model;
@@ -38,7 +39,7 @@ public class CsvImportTests
         physicalModel.Tables.Should().NotBeNull();
         physicalModel.Tables.Count.Should().Be(3);
         physicalModel.Views.Should().NotBeNull();
-        physicalModel.Views.Count.Should().Be(9);
+        physicalModel.Views.Count.Should().Be(18);
     }
 
     [Fact]

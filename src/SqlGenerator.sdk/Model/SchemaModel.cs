@@ -7,15 +7,19 @@ public sealed record SchemaModel
 {
     public Security Security { get; init; }
     public string Name { get; init; } = null!;
+    public string? Format { get; init; }
+    public int? MaxColumnSize { get; init; }
 
     public bool Equals(SchemaModel? obj)
     {
         return obj is SchemaModel model &&
             Security == model.Security &&
-            Name == model.Name;
+            Name == model.Name &&
+            Format == model.Format &&
+            MaxColumnSize == model.MaxColumnSize;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Security, Name);
+    public override int GetHashCode() => HashCode.Combine(Security, Name, Format, MaxColumnSize);
 }
 
 

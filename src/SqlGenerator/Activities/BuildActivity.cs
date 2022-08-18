@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SqlGenerator.Data;
+using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Generator;
-using SqlGenerator.sdk.Import;
 using SqlGenerator.sdk.Model;
 using SqlGenerator.sdk.Store;
 using System;
@@ -28,18 +28,23 @@ internal class BuildActivity
         _logger = _factory.CreateLogger<BuildActivity>();
     }
 
-    public async Task Generate(string sourceFile, string outputFolder, string? optionFile)
+    public async Task Generate(string projectFile, string outputFolder)
     {
-        sourceFile.NotEmpty().Assert(x => File.Exists(x), x => $"File {x} does not exist");
+        projectFile.NotEmpty().Assert(x => File.Exists(x), x => $"File {x} does not exist");
         outputFolder.NotEmpty();
-        _logger.LogInformation("Generating, sourceFile={sourceFile}, outputFolder={outputFolder}, optionFile={optionFile}", sourceFile, outputFolder, optionFile);
+        _logger.LogInformation("Generating, sourceFile={sourceFile}, outputFolder={outputFolder}, optionFile={optionFile}", projectFile, outputFolder, optionFile);
 
-        bool IsCsvFile = Path.GetExtension(sourceFile).Equals(".csv", StringComparison.OrdinalIgnoreCase);
+        bool IsCsvFile = Path.GetExtension(projectFile).Equals(".csv", StringComparison.OrdinalIgnoreCase);
         _logger.LogInformation("Reading as {type}", IsCsvFile ? "CSV" : "MODEL");
 
+        var projectOption = new ConfigurationBuilder()
+            .AddJsonFile(projectFile)
+            .Build()
+            .Bind<ProjectOption>();
+
         await new SqlGeneratorBuilder()
-            .SetName(Path.GetFileNameWithoutExtension(sourceFile))
-            .SetFile(sourceFile)
+            .SetName(Path.GetFileNameWithoutExtension(projectFile))
+            .SetFile(projectFile)
             .SetOption(GetOption(optionFile))
             .SetPublishFolder(outputFolder)
             .Build(_factory);

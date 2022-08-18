@@ -67,9 +67,9 @@ public class InstructionBuilder
         list += InstructionType.TabPlus;
 
         var columns = viewModel.Columns.Where(x => x.HashKey)
-            .Concat(_physicalModel.PrefixColumns.Select(x => x.ToColumnModel()))
+            .Concat(GetColumns(_physicalModel.PrefixColumns))
             .Concat(viewModel.Columns.Where(x => !x.HashKey))
-            .Concat(_physicalModel.SufixColumns.Select(x => x.ToColumnModel()))
+            .Concat(GetColumns(_physicalModel.SufixColumns))
             .ToList();
 
         SchemaModel schemaModel = _physicalModel.GetSchemaModel(viewModel.Name.Schema).NotNull();
@@ -80,12 +80,16 @@ public class InstructionBuilder
 
         list += InstructionType.TabMinus;
         list += $"FROM {viewModel.Table} x";
-        list += $"WHERE x.[ASAP_DeleteDateTime] != null";
+        list += $"WHERE x.[ASAP_DeleteDateTime] IS NOT NULL";
         list += InstructionType.TabMinus;
         list += ";";
         list += "GO";
 
         return list;
+
+        IEnumerable<ColumnModel> GetColumns(IEnumerable<ColumnDefinitionModel> columns) => columns
+            .Where(x => !x.Private)
+            .Select(x => x.ToColumnModel());
     }
 
     private Instructions Build(TableModel tableModel)
@@ -132,23 +136,31 @@ public class InstructionBuilder
             Text = columnModel.Security switch
             {
                 Security.Unrestricted => protectField(false, columnModel.Name),
-                Security.Restricted => protectField(schemaModel.Security == Security.Unrestricted, columnModel.Name),
-                Security.PII => protectField(schemaModel.Security != Security.PII, columnModel.Name),
+                Security.Data => throw new ArgumentException("Data security"),
 
-                _ => throw new InvalidOperationException(),
-            } + (last ? string.Empty : ","),
+                Security v when v == schemaModel.Security => protectField(false, columnModel.Name),
+                _ => protectField(true, columnModel.Name),
+            }
+            + (last ? string.Empty : ","),
         };
 
-        static string protectField(bool protect, string name) => protect ? formatProtected(name) : formatNormal(name);
-        static string formatNormal(string name) => $"x.[{name}]";
-        static string formatProtected(string name) => $"HASHBYTE('SHA2_256', x.[{name}]) AS [{name}]";
+        string protectField(bool protect, string name) => protect ? formatProtected(name) : formatNormal(name);
+
+        string formatNormal(string name) => $"x.[{name}]" + displayAs();
+        string formatProtected(string name) => $"HASHBYTE('SHA2_256', x.[{name}])" + displayAs();
+
+        string displayAs() => (columnModel.DisplayAs ?? columnModel.Name) switch
+        {
+            null => string.Empty,
+            string v => $" AS [{v}]",
+        };
     }
 
     private Instruction Build(ColumnDefinitionModel columnDefModel, bool last, int maxColumnSize)
     {
         const int maxDataTypeColumn = 20;
 
-        string column = $"x.[{columnDefModel.Name}]";
+        string column = $"[{columnDefModel.Name}]";
         string dataType = columnDefModel.DataType;
         string nullable = columnDefModel.NotNull ? "NOT NULL" : "NULL";
 

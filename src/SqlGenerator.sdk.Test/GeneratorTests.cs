@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using SqlGenerator.sdk.Defaults;
+using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Generator;
 using SqlGenerator.sdk.Model;
 using Toolbox.Extensions;
@@ -59,7 +59,6 @@ public class GeneratorTests
                             _ => throw new InvalidOperationException(),
                         },
                         Name = $"View_{x}",
-                        NamePrefix = "Vw_",
                     },
                     Table = new ObjectName
                     {
@@ -130,8 +129,8 @@ public class GeneratorTests
                     HashColumn = "hashColumnName",
                 }).ToArray(),
 
-            PrefixColumns = NormalColumnDefaults.Prefix,
-            SufixColumns = NormalColumnDefaults.Sufix,
+            PrefixColumns = ImportOptionDefaults.Prefix,
+            SufixColumns = ImportOptionDefaults.Sufix,
         }.Verify();
 
         return m1.ToJson();

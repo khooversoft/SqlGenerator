@@ -11,10 +11,9 @@ public sealed record ObjectName
 {
     public string Schema { get; init; } = null!;
     public string Name { get; init; } = null!;
-    public string? NamePrefix { get; init; }
 
-    public override string ToString() => $"[{Schema}].[{GetName()}]";
-    public string CalculateFileName() => $"{Schema}_{GetName()}.sql";
+    public override string ToString() => $"[{Schema}].[{Name}]";
+    public string CalculateFileName() => $"{Name}.sql";
 
     public bool Equals(ObjectName? obj)
     {
@@ -24,8 +23,6 @@ public sealed record ObjectName
     }
 
     public override int GetHashCode() => HashCode.Combine(Schema, Name);
-
-    private string GetName() => (NamePrefix ?? string.Empty) + Name;
 }
 
 

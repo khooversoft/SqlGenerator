@@ -14,21 +14,18 @@ internal class BuildCommand : Command
 {
     public BuildCommand(IServiceProvider serviceProvider) : base("build", "Build SQL DLL schema")
     {
-        Argument<string> sourceFile = new Argument<string>("sourceFile", "Source {model}.json or {data}.csv");
+        Argument<string> projectFile = new Argument<string>("projectFile", "Project file (.json)");
         Argument<string> outputFolder = new Argument<string>("folder", "Folder to write repository (model, *.sql, etc...)");
 
-        Option<string?> optionFile = new Option<string?>("--option", "Use option file, default=internal");
-
-        AddArgument(sourceFile);
+        AddArgument(projectFile);
         AddArgument(outputFolder);
-        AddOption(optionFile);
 
-        this.SetHandler(async (string sourceFile, string outputFolder, string? optionFile) =>
+        this.SetHandler(async (string projectFile, string outputFolder) =>
         {
             await serviceProvider
                 .GetRequiredService<BuildActivity>()
-                .Generate(sourceFile, outputFolder, optionFile);
+                .Generate(projectFile, outputFolder);
 
-        }, sourceFile, outputFolder, optionFile);
+        }, projectFile, outputFolder);
     }
 }

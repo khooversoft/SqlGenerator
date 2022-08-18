@@ -9,6 +9,7 @@ public sealed record ColumnDefinitionModel
     public string DataType { get; init; } = null!;
     public bool NotNull { get; init; }
     public bool HashKey { get; init; }
+    public bool Private { get; init; }
 
     public bool Equals(ColumnDefinitionModel? obj)
     {
@@ -17,10 +18,11 @@ public sealed record ColumnDefinitionModel
             Security == model.Security &&
             DataType == model.DataType &&
             NotNull == model.NotNull &&
-            HashKey == model.HashKey;
+            HashKey == model.HashKey &&
+            Private == model.Private;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Name, Security, DataType, NotNull, HashKey);
+    public override int GetHashCode() => HashCode.Combine(Name, Security, DataType, NotNull, HashKey, Private);
 }
 
 

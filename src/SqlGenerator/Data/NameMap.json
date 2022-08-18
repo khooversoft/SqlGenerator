@@ -1,0 +1,380 @@
+﻿{
+  "NameMaps": [
+    {
+      "Long": "Amount",
+      "Short": "Amt"
+    },
+    {
+      "Long": "Accessibility",
+      "Short": "Access"
+    },
+    {
+      "Long": "Account",
+      "Short": "Acct"
+    },
+    {
+      "Long": "Address",
+      "Short": "Addr"
+    },
+    {
+      "Long": "Agreement",
+      "Short": "Agree"
+    },
+    {
+      "Long": "Application",
+      "Short": "App"
+    },
+    {
+      "Long": "Balance",
+      "Short": "Bal"
+    },
+    {
+      "Long": "Borrower",
+      "Short": "Bor"
+    },
+    {
+      "Long": "Branch",
+      "Short": "Brnch"
+    },
+    {
+      "Long": "BranchNetworkScore",
+      "Short": "BNS"
+    },
+    {
+      "Long": "Business",
+      "Short": "Bus"
+    },
+    {
+      "Long": "Category",
+      "Short": "Cat"
+    },
+    {
+      "Long": "Channel",
+      "Short": "Ch"
+    },
+    {
+      "Long": "Collateral",
+      "Short": "Coll"
+    },
+    {
+      "Long": "Code",
+      "Short": "Cd"
+    },
+    {
+      "Long": "Consumer",
+      "Short": "Cnsmr"
+    },
+    {
+      "Long": "Count",
+      "Short": "Cnt"
+    },
+    {
+      "Long": "Country",
+      "Short": "Cntry"
+    },
+    {
+      "Long": "CurrentRecoveryOption",
+      "Short": "CurrRecOpt"
+    },
+    {
+      "Long": "CurrentRecoveryResponseRef",
+      "Short": "CurrRecRespRef"
+    },
+    {
+      "Long": "Daily",
+      "Short": "Dly"
+    },
+    {
+      "Long": "Datetime/Timestamp",
+      "Short": "Dttm"
+    },
+    {
+      "Long": "Decision",
+      "Short": "Dsn"
+    },
+    {
+      "Long": "Delinquency,Delinquent",
+      "Short": "Delq"
+    },
+    {
+      "Long": "Delivery",
+      "Short": "Dlvry"
+    },
+    {
+      "Long": "Description",
+      "Short": "Desc"
+    },
+    {
+      "Long": "Detail",
+      "Short": "Dtl"
+    },
+    {
+      "Long": "Easy to Understand Score",
+      "Short": "EUS"
+    },
+    {
+      "Long": "Employee",
+      "Short": "EMP"
+    },
+    {
+      "Long": "Exclude, Excluded",
+      "Short": "Excl"
+    },
+    {
+      "Long": "Earthquake",
+      "Short": "EQ"
+    },
+    {
+      "Long": "Factor",
+      "Short": "Fctr"
+    },
+    {
+      "Long": "Field",
+      "Short": "Fld"
+    },
+    {
+      "Long": "Fit Needs Score",
+      "Short": "FNS"
+    },
+    {
+      "Long": "Former Member Score",
+      "Short": "FMS"
+    },
+    {
+      "Long": "Frequency",
+      "Short": "Freq"
+    },
+    {
+      "Long": "From",
+      "Short": "Fm"
+    },
+    {
+      "Long": "Group",
+      "Short": "Grp"
+    },
+    {
+      "Long": "Holder",
+      "Short": "Hlrd"
+    },
+    {
+      "Long": "Include",
+      "Short": "Incl"
+    },
+    {
+      "Long": "Identifier",
+      "Short": "Id"
+    },
+    {
+      "Long": "Income",
+      "Short": "Incm"
+    },
+    {
+      "Long": "Indicator",
+      "Short": "Ind"
+    },
+    {
+      "Long": "Insurance",
+      "Short": "Ins"
+    },
+    {
+      "Long": "International",
+      "Short": "Intl"
+    },
+    {
+      "Long": "Liability",
+      "Short": "Liab"
+    },
+    {
+      "Long": "Limit",
+      "Short": "Lmt"
+    },
+    {
+      "Long": "Marijuana",
+      "Short": "Mrjn"
+    },
+    {
+      "Long": "Member",
+      "Short": "Mbr"
+    },
+    {
+      "Long": "Monthly",
+      "Short": "Mthly"
+    },
+    {
+      "Long": "Mortgage",
+      "Short": "Mtg"
+    },
+    {
+      "Long": "Name",
+      "Short": "Nm"
+    },
+    {
+      "Long": "Net Promoter Score",
+      "Short": "NPS"
+    },
+    {
+      "Long": "Number",
+      "Short": "Nbr"
+    },
+    {
+      "Long": "Office",
+      "Short": "Offc"
+    },
+    {
+      "Long": "Operating, Operate",
+      "Short": "Oper"
+    },
+    {
+      "Long": "Origination",
+      "Short": "Orig"
+    },
+    {
+      "Long": "Percent",
+      "Short": "Pct"
+    },
+    {
+      "Long": "Person",
+      "Short": "Per"
+    },
+    {
+      "Long": "Previously",
+      "Short": "Prev"
+    },
+    {
+      "Long": "Primary",
+      "Short": "Prim"
+    },
+    {
+      "Long": "Quantity",
+      "Short": "Qty"
+    },
+    {
+      "Long": "Rank",
+      "Short": "Rnk"
+    },
+    {
+      "Long": "Rate",
+      "Short": "Rt"
+    },
+    {
+      "Long": "Real Estate",
+      "Short": "RE"
+    },
+    {
+      "Long": "Reason",
+      "Short": "Rsn"
+    },
+    {
+      "Long": "Receive",
+      "Short": "Rcv"
+    },
+    {
+      "Long": "Residential",
+      "Short": "Res"
+    },
+    {
+      "Long": "Responsible",
+      "Short": "Resp"
+    },
+    {
+      "Long": "Retail",
+      "Short": "RTL"
+    },
+    {
+      "Long": "Review",
+      "Short": "Rvw"
+    },
+    {
+      "Long": "Revenue",
+      "Short": "Rev"
+    },
+    {
+      "Long": "Service/Services",
+      "Short": "Svc"
+    },
+    {
+      "Long": "Shared",
+      "Short": "Shrd"
+    },
+    {
+      "Long": "Source",
+      "Short": "Src"
+    },
+    {
+      "Long": "Space",
+      "Short": "Spc"
+    },
+    {
+      "Long": "Status",
+      "Short": "Stat"
+    },
+    {
+      "Long": "Subdivision",
+      "Short": "Subdiv"
+    },
+    {
+      "Long": "Surrogate ID",
+      "Short": "Sid"
+    },
+    {
+      "Long": "Text",
+      "Short": "Txt"
+    },
+    {
+      "Long": "Time",
+      "Short": "Tm"
+    },
+    {
+      "Long": "Transaction",
+      "Short": "Txn"
+    },
+    {
+      "Long": "TransactionData",
+      "Short": "TxnData"
+    },
+    {
+      "Long": "TransactionData_DisputedAmountInfo",
+      "Short": "TxnData_DispAmtInfo"
+    },
+    {
+      "Long": "TransactionData_MasterComAuthData",
+      "Short": "TxnData_MstCmAthDta"
+    },
+    {
+      "Long": "TransactionData_MasterComClearingData",
+      "Short": "TxnData_MstCmClrDta"
+    },
+    {
+      "Long": "TransactionData_OriginalDisputedAmount",
+      "Short": "TxnData_OrigDispAmt"
+    },
+    {
+      "Long": "TransactionData_RemainingRecoveryAmount",
+      "Short": "TxnData_RmngRecAmt"
+    },
+    {
+      "Long": "Transfer",
+      "Short": "Xfer"
+    },
+    {
+      "Long": "Type",
+      "Short": "Typ"
+    },
+    {
+      "Long": "Verify",
+      "Short": "Vrfy"
+    },
+    {
+      "Long": "Weight",
+      "Short": "Wt"
+    },
+    {
+      "Long": "Warehouse",
+      "Short": "WH"
+    },
+    {
+      "Long": "Withdrawal",
+      "Short": "Wthd"
+    }
+  ]
+}
