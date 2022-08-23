@@ -42,6 +42,23 @@ namespace Toolbox.Extensions
         /// <param name="subject"></param>
         /// <param name="function"></param>
         /// <returns></returns>
+        public static async Task<T> ActionAsync<T, TResult>(this T subject, Func<T, Task> function)
+        {
+            subject.NotNull();
+            function.NotNull();
+
+            await function(subject);
+            return subject;
+        }
+
+        /// <summary>
+        /// Function async
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="subject"></param>
+        /// <param name="function"></param>
+        /// <returns></returns>
         public static async Task<TResult> FuncAsync<T, TResult>(this T subject, Func<T, Task<TResult>> function)
         {
             subject.NotNull();

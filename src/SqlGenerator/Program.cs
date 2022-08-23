@@ -2,11 +2,12 @@
 using Microsoft.Extensions.Logging;
 using SqlGenerator.Activities;
 using SqlGenerator.Commands;
+using SqlGenerator.sdk.Project;
 using System.CommandLine;
 using System.Reflection;
 using Toolbox.Tools;
 
-string _programTitle = $"Property Database CLI - Version {Assembly.GetExecutingAssembly().GetName().Version}";
+string _programTitle = $"SQL Code Generator - Version {Assembly.GetExecutingAssembly().GetName().Version}";
 
 try
 {
@@ -27,9 +28,10 @@ async Task<int> Run(string[] args)
 
     try
     {
-        var rc = new RootCommand()
+        var rc = new RootCommand("Generator SQL code from table and column dataset.")
         {
             container.GetRequiredService<BuildCommand>(),
+            container.GetRequiredService<ProjectCommand>(),
             container.GetRequiredService<WriteCommand>(),
         };
 
@@ -59,11 +61,13 @@ ServiceProvider BuildContainer()
         x.AddDebug();
     });
 
+    service.AddSingleton<ProjectOptionActivity>();
     service.AddSingleton<BuildActivity>();
-    service.AddSingleton<TemplateActivity>();
     service.AddSingleton<ImportOptionActivity>();
+    service.AddProjectBuild();
 
     service.AddSingleton<BuildCommand>();
+    service.AddSingleton<ProjectCommand>();
     service.AddSingleton<WriteCommand>();
 
     return service.BuildServiceProvider();

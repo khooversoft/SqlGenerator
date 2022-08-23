@@ -2,9 +2,9 @@
 using SqlGenerator.sdk.Model;
 using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.Import;
+namespace SqlGenerator.sdk.CsvStore;
 
-public record TableInfoRecord
+public record TableInfoModel
 {
     [Name("Table Name")]
     public string TableName { get; init; } = null!;
@@ -29,6 +29,10 @@ public record TableInfoRecord
 
     [Name("HashKey")]
     public string? HashKey { get; init; }
+
+    [Name("ShortName")]
+    [Optional]
+    public string? ShortName { get; init; }
 }
 
 public record TableInfo
@@ -41,12 +45,13 @@ public record TableInfo
     public bool Restricted { get; init; }
     public bool PII { get; init; }
     public bool HashKey { get; init; }
+    public string? ShortName { get; init; }
 }
 
 
 public static class TableInfoExtensions
 {
-    public static TableInfo ConvertTo(this TableInfoRecord subject)
+    public static TableInfo ConvertTo(this TableInfoModel subject)
     {
         return new TableInfo
         {
@@ -58,10 +63,27 @@ public static class TableInfoExtensions
             Restricted = IsYes(subject.Restricted),
             PII = IsYes(subject.PII),
             HashKey = IsYes(subject.HashKey),
+            ShortName = subject.ShortName,
         };
 
         static bool IsNotNull(string? value) => value?.Equals("not null", StringComparison.OrdinalIgnoreCase) ?? false;
         static bool IsYes(string? value) => value?.Equals("yes", StringComparison.OrdinalIgnoreCase) ?? false;
+    }
+
+    public static TableInfoModel ConvertTo(this TableInfo subject)
+    {
+        return new TableInfoModel
+        {
+            TableName = subject.TableName,
+            ColumnName = subject.ColumnName,
+            DataType = subject.DataType,
+            NotNull = subject.NotNull ? "NOT NULL" : "NULL",
+            PrimaryKey = subject.PrimaryKey ? "Yes" : null,
+            Restricted = subject.Restricted ? "Yes" : null,
+            PII = subject.PII ? "Yes" : null,
+            HashKey = subject.HashKey ? "Yes" : null,
+            ShortName = subject.ShortName,
+        };
     }
 
     public static Security GetSecurity(this TableInfo subject) => subject.NotNull() switch

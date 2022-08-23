@@ -9,11 +9,11 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Generator;
 
-public class InstructionBuilder
+public class SqlInstructionBuilder
 {
     private readonly PhysicalModel _physicalModel;
 
-    public InstructionBuilder(PhysicalModel model) => _physicalModel = model.Verify();
+    public SqlInstructionBuilder(PhysicalModel model) => _physicalModel = model.Verify();
 
     public Instructions Build()
     {

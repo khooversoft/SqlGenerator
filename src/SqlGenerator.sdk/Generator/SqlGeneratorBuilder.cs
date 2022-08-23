@@ -1,72 +1,67 @@
-﻿using Microsoft.Extensions.Logging;
-using SqlGenerator.sdk.Application;
-using SqlGenerator.sdk.Import;
-using SqlGenerator.sdk.Model;
-using SqlGenerator.sdk.Store;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Toolbox.Extensions;
-using Toolbox.Tools;
+﻿//using Microsoft.Extensions.Logging;
+//using SqlGenerator.sdk.Application;
+//using SqlGenerator.sdk.CsvStore;
+//using SqlGenerator.sdk.Model;
+//using Toolbox.Extensions;
+//using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.Generator;
+//namespace SqlGenerator.sdk.Generator;
 
-public class SqlGeneratorBuilder
-{
-    public ProjectOption ProjectOption { get; set; } = null!;
-    public string PublishFolder { get; set; } = null!;
+//public class SqlGeneratorBuilder
+//{
+//    public string ProjectOptionFile { get; set; } = null!;
+//    public string PublishFolder { get; set; } = null!;
 
-    public SqlGeneratorBuilder SetProjectOption(ProjectOption projectOption) => this.Action(x => x.ProjectOption = projectOption);
-    public SqlGeneratorBuilder SetPublishFolder(string publishFolder) => this.Action(x => x.PublishFolder = publishFolder);
+//    public SqlGeneratorBuilder SetProjectFile(string projectOptionFile) => this.Action(x => x.ProjectOptionFile = projectOptionFile);
+//    public SqlGeneratorBuilder SetPublishFolder(string publishFolder) => this.Action(x => x.PublishFolder = publishFolder);
 
-    public async Task Build(ILoggerFactory loggerFactory)
-    {
-        ProjectOption.Verify();
-        PublishFolder.NotEmpty();
-        loggerFactory.NotNull();
-        ILogger<SqlGeneratorBuilder> logger = loggerFactory.CreateLogger<SqlGeneratorBuilder>();
+//    public async Task Build(ILoggerFactory loggerFactory)
+//    {
+//        ProjectOptionFile.NotEmpty();
+//        PublishFolder.NotEmpty();
+//        loggerFactory.NotNull();
+//        ILogger<SqlGeneratorBuilder> logger = loggerFactory.CreateLogger<SqlGeneratorBuilder>();
 
-        ImportOption importOption = ProjectOption.LoadOption();
-        PhysicalModel physicalModel = ReadModel(importOption, logger);
+//        ProjectOption projectOption = ProjectOptionBuilder.Read(ProjectOptionFile);
+//        ImportOption importOption = projectOption.GetImportOption(logger);
+//        PhysicalModel physicalModel = await ReadModel(projectOption, importOption, logger);
 
-        Instructions instructions = new InstructionBuilder(physicalModel).Build();
+//        Instructions instructions = new SqlInstructionBuilder(physicalModel).Build();
+//        InstructionObjects instructionObjects = new InstructionObjectBuilder().Build(instructions);
 
-        await new SqlScriptBuilder(loggerFactory.CreateLogger<SqlScriptBuilder>()).Build(PublishFolder, instructions);
-    }
+//        await new FileStoreBuilder(loggerFactory.CreateLogger<FileStoreBuilder>()).Build(instructionObjects, PublishFolder);
+//    }
 
-    private PhysicalModel ReadModel(ImportOption option, ILogger logger)
-    {
-        bool isCsv = Path.GetExtension(ProjectOption.SourceFile).Equals(".csv", StringComparison.OrdinalIgnoreCase);
+//    private async Task<PhysicalModel> ReadModel(ProjectOption projectOption, ImportOption option, ILogger logger)
+//    {
+//        bool isCsv = Path.GetExtension(projectOption.SourceFile).Equals(".csv", StringComparison.OrdinalIgnoreCase);
 
-        return isCsv switch
-        {
-            false => File.ReadAllText(ProjectOption.SourceFile)
-                .ToObject<PhysicalModel>()
-                .NotNull()
-                .Action(_ => logger.LogInformation("Physical model {file} read", ProjectOption.SourceFile)),
+//        return isCsv switch
+//        {
+//            false => (await File.ReadAllTextAsync(projectOption.SourceFile))
+//                .ToObject<PhysicalModel>()
+//                .NotNull()
+//                .Action(_ => logger.LogInformation("Physical model {file} read", projectOption.SourceFile)),
 
-            true => createModel(),
-        };
+//            true => await createModel(),
+//        };
 
-        PhysicalModel createModel()
-        {
-            var infos = new ImportCsv().Read(ProjectOption.SourceFile);
-            var model = new ModelBuilder().Build(ProjectOption.Name, infos, option);
-            writeModel(model);
+//        async Task<PhysicalModel> createModel()
+//        {
+//            var infos = CsvFile.Read(projectOption.SourceFile);
+//            var model = new PhysicalModelBuilder().Build(projectOption.Name, infos, option);
+//            await writeModel(model);
 
-            logger.LogInformation("Source {file} read", ProjectOption.SourceFile);
-            return model;
-        }
+//            logger.LogInformation("Source {file} read", projectOption.SourceFile);
+//            return model;
+//        }
 
-        void writeModel(PhysicalModel physicalModel)
-        {
-            string file = Path.Combine(PublishFolder, Path.ChangeExtension(option.Name, ".json"));
-            File.WriteAllText(file, physicalModel.ToJsonFormat());
-            logger.LogInformation("Created model file={file}", file);
-        }
-    }
-}
+//        async Task writeModel(PhysicalModel physicalModel)
+//        {
+//            string fileName = option.Name.Replace(' ', '_') + "_PhysicalModel.json";
+//            string file = Path.Combine(PublishFolder, fileName);
+//            await File.WriteAllTextAsync(file, physicalModel.ToJsonFormat());
+//            logger.LogInformation("Created model file={file}", file);
+//        }
+//    }
+//}

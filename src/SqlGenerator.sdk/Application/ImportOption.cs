@@ -1,25 +1,24 @@
-﻿using SqlGenerator.sdk.Model;
+﻿using Microsoft.Extensions.Logging;
+using SqlGenerator.sdk.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolbox.Extensions;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Application;
 
 public record ImportOption
 {
-    public string Name { get; init; } = null!;
     public IReadOnlyList<SchemaModel> Schemas { get; init; } = Array.Empty<SchemaModel>();
     public IReadOnlyList<ColumnDefinitionModel> PrefixColumns { get; init; } = Array.Empty<ColumnDefinitionModel>();
     public IReadOnlyList<ColumnDefinitionModel> SufixColumns { get; init; } = Array.Empty<ColumnDefinitionModel>();
-    public IReadOnlyList<NameMapRecord> NameMaps { get; init; } = Array.Empty<NameMapRecord>();
-    public IReadOnlyList<string> MasterTables { get; init; } = Array.Empty<string>();
 }
 
 
-public static class ImportOptionExtensions
+public static class ImportOptionBuilder
 {
     public static ImportOption Verify(this ImportOption? subject)
     {
@@ -27,27 +26,31 @@ public static class ImportOptionExtensions
         subject.Schemas.NotNull();
         subject.PrefixColumns.NotNull();
         subject.SufixColumns.NotNull();
-        subject.NameMaps.NotNull();
-        subject.MasterTables.NotNull();
 
         return subject;
     }
 
-    public static ImportOption ConvertTo(this ImportOptionModel model, string name, IEnumerable<NameMapRecord> nameMaps, IEnumerable<string> masterTables)
+    public static ImportOption GetImportOption(this ProjectOption project, ILogger logger)
     {
-        model.NotNull();
-        name.NotEmpty();
-        nameMaps.NotNull();
-        masterTables.NotNull();
+        project.Verify();
+        project.OptionFile.NotEmpty();
+
+        string folder = project.GetProjectFolder();
+        string optionFile = PathTool.ApplyBasePath(project.OptionFile, folder)!;
+
+        optionFile.Assert(x => File.Exists(x), x => $"File {x} does not exist");
+
+        ImportOption importOption = File.ReadAllText(optionFile)
+            .ToObject<ImportOption>()
+            .NotNull();
+        logger.LogInformation("Read option file {file}", optionFile);
 
         return new ImportOption
         {
-            Name = name,
-            Schemas = model.Schemas.ToList(),
-            PrefixColumns = model.PrefixColumns.ToList(),
-            SufixColumns = model.SufixColumns.ToList(),
-            NameMaps = nameMaps.ToList(),
-            MasterTables = masterTables.ToList()
+            Schemas = importOption.Schemas.ToList(),
+            PrefixColumns = importOption.PrefixColumns.ToList(),
+            SufixColumns = importOption.SufixColumns.ToList(),
         };
     }
+
 }

@@ -10,12 +10,18 @@
 
   <ItemGroup>
     <None Remove="TestData\ImportOption.json" />
+    <None Remove="TestData\NameMap.json" />
+    <None Remove="TestData\Project.json" />
     <None Remove="TestData\SampleTables.csv" />
+    <None Remove="TestData\TableList.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="TestData\ImportOption.json" />
+    <EmbeddedResource Include="TestData\NameMap.json" />
+    <EmbeddedResource Include="TestData\Project.json" />
     <EmbeddedResource Include="TestData\SampleTables.csv" />
+    <EmbeddedResource Include="TestData\TableList.json" />
   </ItemGroup>
 
   <ItemGroup>

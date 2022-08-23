@@ -35,7 +35,6 @@ internal class ImportOptionActivity
             },
             PrefixColumns = ImportOptionDefaults.Prefix.ToArray(),
             SufixColumns = ImportOptionDefaults.Sufix.ToArray(),
-            NameMaps = ImportOptionDefaults.NameMaps.ToArray(),
         };
 
         _logger.LogInformation("Writing default option configuration file to {file}", configFile);

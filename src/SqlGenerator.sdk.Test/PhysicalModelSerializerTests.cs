@@ -17,7 +17,6 @@ public class PhysicalModelSerializerTests
 
         var m1 = new PhysicalModel
         {
-            Name = "test model",
             Schemas = new[]
             {
                 new SchemaModel { Name = "general", Security = Security.Unrestricted },

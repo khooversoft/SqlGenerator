@@ -1,55 +1,45 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using SqlGenerator.sdk.Project;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Toolbox.Extensions;
-using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Application;
 
 public record ProjectOption
 {
-    public string Name { get; init; } = null!;
-    public string SourceFile { get; init; } = null!;
-    public string OptionFile { get; init; } = null!;
-    public string NameMapFile { get; init; } = null!;
-    public string MasterTableFile { get; init; } = null!;
+    public string ProjectFile { get; init; } = null!;
+    public string? SourceFile { get; init; }
+    public string? OptionFile { get; init; }
+    public string? NameMapFile { get; init; }
+    public int? ShortNameMaxSize { get; init; }
+    public string? TableListFile { get; init; }
+    public string? MasterFile { get; init; }
+    public string? BuildFolder { get; init; }
 }
 
 
 public static class ProjectOptionExtensions
 {
-    public static ProjectOption Verify(this ProjectOption? subject)
+    public static ProjectOption LogProperties(this ProjectOption subject, ILogger logger)
     {
-        subject.NotNull();
-        subject.Name.NotEmpty();
-        subject.SourceFile.NotEmpty();
-        subject.OptionFile.NotEmpty();
-        subject.NameMapFile.NotEmpty();
-        subject.MasterTableFile.NotEmpty();
+        var line = new[]
+        {
+            "Project option properties...",
+            $" ProjectFile={subject.ProjectFile}",
+            $" SourceFile={subject.SourceFile}",
+            $" OptionFile={subject.OptionFile}",
+            $" NameMapFile={subject.NameMapFile}",
+            $" ShortNameMaxSize={subject.ShortNameMaxSize}",
+            $" TableListFile={subject.TableListFile}",
+            $" MasterFile={subject.MasterFile}",
+            $" BuildFolder={subject.BuildFolder}",
+        }.Join(Environment.NewLine);
+        logger.LogInformation(line);
 
         return subject;
-    }
-
-    public static ImportOption LoadOption(this ProjectOption project)
-    {
-        project.OptionFile.Assert(x => File.Exists(x), x => $"File {x} does not exist");
-        project.NameMapFile.Assert(x => File.Exists(x), x => $"File {x} does not exist");
-        project.MasterTableFile.Assert(x => File.Exists(x), x => $"File {x} does not exist");
-
-        ImportOptionModel importOptionModel = File.ReadAllText(project.OptionFile)
-            .ToObject<ImportOptionModel>()
-            .NotNull();
-
-        IReadOnlyList<NameMapRecord> nameMapRecords = File.ReadAllText(project.NameMapFile)
-            .ToObject<IReadOnlyList<NameMapRecord>>()
-            .NotNull();
-
-        IReadOnlyList<string> masterTableFile = File.ReadAllText(project.MasterTableFile)
-            .ToObject<IReadOnlyList<string>>()
-            .NotNull();
-
-        return importOptionModel.ConvertTo(project.Name, nameMapRecords, masterTableFile);
     }
 }

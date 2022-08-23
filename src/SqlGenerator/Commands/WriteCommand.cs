@@ -16,10 +16,8 @@ internal class WriteCommand : Command
     public WriteCommand(IServiceProvider serviceProvider) : base("write", "Generate default build configuration")
     {
         serviceProvider.NotNull();
-        Argument<string> configFile = new Argument<string>("configFile", "File name to write to");
 
         AddCommand(Option(serviceProvider));
-        AddCommand(Template(serviceProvider));
     }
 
     private Command Option(IServiceProvider serviceProvider)
@@ -40,26 +38,6 @@ internal class WriteCommand : Command
                 .Generate(configFile, modelName);
 
         }, configFile, modelName);
-
-        return command;
-    }
-
-    private Command Template(IServiceProvider serviceProvider)
-    {
-        Argument<string> configFile = new Argument<string>("file", "File name to write to");
-
-        var command = new Command("template", "Write template for model to file")
-        {
-            configFile,
-        };
-        
-        command.SetHandler(async (string configFile) =>
-        {
-            await serviceProvider
-                .GetRequiredService<TemplateActivity>()
-                .Generate(configFile);
-
-        }, configFile);
 
         return command;
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Toolbox.Extensions
         /// </summary>
         /// <param name="subject">subject</param>
         /// <returns>true or false</returns>
+        [DebuggerStepThrough]
         public static bool IsEmpty([NotNullWhen(false)] this string? subject) => string.IsNullOrWhiteSpace(subject);
 
         /// <summary>
@@ -23,6 +25,7 @@ namespace Toolbox.Extensions
         /// </summary>
         /// <param name="subject">subject to test</param>
         /// <returns>null or subject</returns>
+        [DebuggerStepThrough]
         public static string? ToNullIfEmpty(this string? subject) => string.IsNullOrWhiteSpace(subject) ? null : subject;
 
         /// <summary>
@@ -30,6 +33,7 @@ namespace Toolbox.Extensions
         /// </summary>
         /// <param name="self">string to convert, empty string will return empty guid</param>
         /// <returns>guid or empty guid</returns>
+        [DebuggerStepThrough]
         public static Guid ToGuid(this string self)
         {
             if (self.IsEmpty()) return Guid.Empty;
@@ -48,6 +52,7 @@ namespace Toolbox.Extensions
         /// <param name="propertyDelimiter"></param>
         /// <param name="valueDelimiter"></param>
         /// <returns></returns>
+        [DebuggerStepThrough]
         public static IReadOnlyDictionary<string, string> ToDictionary(this string subject, string propertyDelimiter = ";", string valueDelimiter = "=")
         {
             if (subject.IsEmpty()) return new Dictionary<string, string>();
@@ -70,6 +75,7 @@ namespace Toolbox.Extensions
         /// <param name="values">values</param>
         /// <param name="delimiter">delimiter to use in join</param>
         /// <returns>result</returns>
+        [DebuggerStepThrough]
         public static string Join(this IEnumerable<string?> values, string delimiter = "/") => string.Join(delimiter, values.Where(x => x != null));
 
         /// <summary>
@@ -77,6 +83,7 @@ namespace Toolbox.Extensions
         /// </summary>
         /// <param name="subject"></param>
         /// <returns>hex values for hash</returns>
+        [DebuggerStepThrough]
         public static string ToHashHex(this string subject) => subject
             .NotEmpty()
             .ToBytes()
@@ -89,6 +96,7 @@ namespace Toolbox.Extensions
         /// <param name="subject">subject to compare</param>
         /// <param name="value">value to compare to</param>
         /// <returns>true or false</returns>
+        [DebuggerStepThrough]
         public static bool EqualsIgnoreCase(this string subject, string value) => subject.Equals(value, StringComparison.OrdinalIgnoreCase);
 
         /// <summary>
@@ -96,6 +104,7 @@ namespace Toolbox.Extensions
         /// </summary>
         /// <param name="values">values</param>
         /// <returns>hash bytes</returns>
+        [DebuggerStepThrough]
         public static byte[] ComputeHash(this IEnumerable<string?> values)
         {
             values.NotNull();

@@ -1,26 +1,22 @@
 ﻿using CsvHelper;
 using SqlGenerator.sdk.Application;
-using SqlGenerator.sdk.Import;
 using SqlGenerator.sdk.Model;
 using System.Globalization;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 using System;
+using SqlGenerator.sdk.CsvStore;
 
 namespace SqlGenerator.sdk.Generator;
 
-public class ModelBuilder
+public class PhysicalModelBuilder
 {
-    public PhysicalModel Build(string name, IEnumerable<TableInfo> infos, ImportOption importOption)
+    public PhysicalModel Build(IEnumerable<TableInfo> infos, ImportOption importOption)
     {
-        name.NotEmpty();
         infos.NotNull();
         importOption.NotNull();
 
-        // Filter table 
-        IReadOnlyList<TableInfo> tableInfos = infos
-            .Join(importOption.MasterTables, x => x.TableName, x => x, (x, _) => x, StringComparer.OrdinalIgnoreCase)
-            .ToList();
+        IReadOnlyList<TableInfo> tableInfos = infos.ToList();
 
         SchemaModel dataSchemaModel = importOption.Schemas
             .Where(x => x.Security.ForTable())
@@ -36,7 +32,6 @@ public class ModelBuilder
 
         return new PhysicalModel
         {
-            Name = name,
             Schemas = importOption.Schemas
                 .Select(x => new SchemaModel { Name = x.Name, Security = x.Security })
                 .ToList(),
@@ -79,7 +74,7 @@ public class ModelBuilder
                     Name = y.ColumnName,
                     Security = y.GetSecurity(),
                     HashKey = y.HashKey,
-                    DisplayAs = sizeName(y.ColumnName),
+                    DisplayAs = y.ShortName,
                 }).ToList(),
             }).ToList();
 
@@ -87,24 +82,6 @@ public class ModelBuilder
         {
             null => tableName,
             string v => v.Replace("{tableName}", tableName),
-        };
-
-        string? sizeName(string columnName) => schemaModel.MaxColumnSize switch
-        {
-            null => null,
-            int v when columnName.Length <= v => null,
-
-            int v => importOption.NameMaps
-                        .Where(x => columnName.IndexOf(x.Long) >= 0)
-                        .FirstOrDefault() switch
-            {
-                null => string.Concat(columnName.AsSpan(0, v - 1), "_"),
-                NameMapRecord r => columnName.Replace(r.Long, r.Short) switch
-                {
-                    string v1 when v1.Length <= schemaModel.MaxColumnSize => v1,
-                    string v1 => string.Concat(v1.AsSpan(0, v - 1), "_"),
-                }
-            },
         };
     }
 }

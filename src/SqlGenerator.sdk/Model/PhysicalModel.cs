@@ -10,7 +10,6 @@ namespace SqlGenerator.sdk.Model;
 
 public sealed record PhysicalModel
 {
-    public string Name { get; init; } = null!;
     public IReadOnlyList<SchemaModel> Schemas { get; init; } = Array.Empty<SchemaModel>();
     public IReadOnlyList<TableModel> Tables { get; init; } = Array.Empty<TableModel>();
     public IReadOnlyList<ViewModel> Views { get; init; } = Array.Empty<ViewModel>();
@@ -20,7 +19,6 @@ public sealed record PhysicalModel
     public bool Equals(PhysicalModel? obj)
     {
         return obj is PhysicalModel model &&
-            Name == model.Name &&
             Schemas.Count == model.Schemas.Count &&
             Schemas.Zip(model.Schemas).All(x => x.First == x.Second) &&
             Views.Count == model.Views.Count &&
@@ -29,7 +27,7 @@ public sealed record PhysicalModel
             Tables.Zip(model.Tables).All(x => x.First == x.Second);
     }
 
-    public override int GetHashCode() => HashCode.Combine(Name, Schemas, Views, Tables);
+    public override int GetHashCode() => HashCode.Combine(Schemas, Views, Tables);
 }
 
 

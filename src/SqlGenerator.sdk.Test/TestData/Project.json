@@ -1,0 +1,7 @@
+{
+  "SourceFile": "SampleTables.csv",
+  "OptionFile": "ImportOption.json",
+  "NameMapFile": "NameMap.json",
+  "ShortNameMaxSize": 32,
+  "TableListFile": "TableList.json"
+}
