@@ -3,11 +3,14 @@ using Microsoft.Extensions.Logging;
 using SqlGenerator.Activities;
 using SqlGenerator.Commands;
 using SqlGenerator.sdk.Project;
+using SqlGenerator.sdk.Project.Activities;
 using System.CommandLine;
 using System.Reflection;
+using Toolbox.Logging;
 using Toolbox.Tools;
 
 string _programTitle = $"SQL Code Generator - Version {Assembly.GetExecutingAssembly().GetName().Version}";
+string _loggingFolder = Path.Combine(Path.GetTempPath(), Assembly.GetExecutingAssembly().GetName().Name.NotEmpty());
 
 try
 {
@@ -48,6 +51,7 @@ async Task<int> Run(string[] args)
     {
         Console.WriteLine();
         Console.WriteLine("Completed");
+        Console.WriteLine($"Detail logs are at {_loggingFolder}");
     }
 }
 
@@ -59,11 +63,15 @@ ServiceProvider BuildContainer()
     {
         x.AddConsole();
         x.AddDebug();
+
+        x.AddFileLogger(_loggingFolder, "SqlGenerator_log_");
+        x.AddFileLoggerFilter(x => true);
     });
 
     service.AddSingleton<ProjectOptionActivity>();
     service.AddSingleton<BuildActivity>();
     service.AddSingleton<ImportOptionActivity>();
+    service.AddSingleton<MergeActivity>();
     service.AddProjectBuild();
 
     service.AddSingleton<BuildCommand>();

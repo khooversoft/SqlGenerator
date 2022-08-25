@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Toolbox.Tools;
+﻿namespace Toolbox.Tools;
 
 public static class DirectoryTool
 {
@@ -33,4 +27,17 @@ public static class DirectoryTool
             _ => null,
         }
     };
+
+    public static string BackupFile(string file, string backupFolder)
+    {
+        file.NotEmpty();
+
+        string backupTargetFile = PathTool.SetFileExtension(
+            Path.Combine(backupFolder, Path.GetFileName(file)),
+            $".{DateTime.Now:yyyyMMdd}_{Guid.NewGuid()}.backup{Path.GetExtension(file)}"
+            );
+
+        File.Copy(file, backupTargetFile, false);
+        return backupTargetFile;
+    }
 }

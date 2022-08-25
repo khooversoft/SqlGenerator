@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.Project;
+namespace SqlGenerator.sdk.Project.Activities;
 
 public class ShortNameActivity
 {
@@ -17,7 +17,7 @@ public class ShortNameActivity
 
     public ShortNameActivity(ILogger<ShortNameActivity> logger) => _logger = logger.NotNull();
 
-    public Task AddShortName(string sourceFile, string shortNameMapFile, int maxColumnNameSize, string outputFile)
+    public Task<Counters> AddShortName(string sourceFile, string shortNameMapFile, int maxColumnNameSize, string outputFile)
     {
         sourceFile.NotEmpty();
         shortNameMapFile.NotEmpty();
@@ -49,6 +49,13 @@ public class ShortNameActivity
         CsvFile.Write(outputFile, result);
         _logger.LogInformation("Completed adding short names");
 
-        return Task.CompletedTask;
+        var counters = new Counters(nameof(ShortNameActivity))
+        {
+            ("Input table count", tableInfos.Select(x => x.TableName).Distinct().Count()),
+            ("Name map count", nameMap.Count()),
+            ("Output table count", result.Select(x => x.TableName).Distinct().Count()),
+        };
+
+        return Task.FromResult(counters);
     }
 }

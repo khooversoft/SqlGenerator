@@ -14,7 +14,7 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.Activities;
 
-public class ProjectOptionActivity
+internal class ProjectOptionActivity
 {
     const string _extension = ".project.json";
     private readonly ILogger<ProjectOptionActivity> _logger;
@@ -47,8 +47,8 @@ public class ProjectOptionActivity
             BuildFolder = buildFolder ?? project.BuildFolder,
         };
 
-        _logger.LogInformation("Writing project {outputFile} file", project.ProjectFile);
-        await File.WriteAllTextAsync(project.ProjectFile, project.ToJsonFormat());
+        _logger.LogInformation("Writing project {outputFile} file", projectFile);
+        await File.WriteAllTextAsync(projectFile, project.ToJsonFormat());
     }
 
     public ProjectOption Read(string projectFile) => File.ReadAllText(projectFile)
@@ -61,7 +61,7 @@ public class ProjectOptionActivity
         return File.Exists(projectFile) switch
         {
             true => Read(projectFile),
-            false => new ProjectOption { ProjectFile = projectFile },
+            false => new ProjectOption(),
         };
     }
 

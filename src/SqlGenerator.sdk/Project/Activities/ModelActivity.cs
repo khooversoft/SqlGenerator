@@ -2,6 +2,7 @@
 using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.CsvStore;
 using SqlGenerator.sdk.Generator;
+using SqlGenerator.sdk.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.Project;
+namespace SqlGenerator.sdk.Project.Activities;
 
 public class ModelActivity
 {
@@ -18,7 +19,7 @@ public class ModelActivity
 
     public ModelActivity(ILogger<ModelActivity> logger) => _logger = logger.NotNull();
 
-    public async Task Build(string sourceFile, ImportOption importOption, string outputFile)
+    public async Task<Counters> Build(string sourceFile, ImportOption importOption, string outputFile)
     {
         sourceFile.NotEmpty();
         importOption.NotNull();
@@ -30,5 +31,10 @@ public class ModelActivity
         var model = new PhysicalModelBuilder().Build(infos, importOption);
 
         await File.WriteAllTextAsync(outputFile, model.ToJsonFormat());
+
+        return new Counters(nameof(ModelActivity))
+        {
+            ("Input table count", infos.Select(x => x.TableName).Distinct().Distinct().Count()),
+        }.Add(model.ToCounters());
     }
 }

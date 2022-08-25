@@ -16,16 +16,18 @@ internal class BuildCommand : Command
     {
         Argument<string> projectFile = new ("projectFile", "Project file (.json)");
         Option<bool?> force = new ("--force", "Force build");
+        Option<bool?> useSource = new ("--useSource", "Use source file instead of master");
 
         AddArgument(projectFile);
         AddOption(force);
+        AddOption(useSource);
 
-        this.SetHandler(async (string projectFile, bool? force) =>
+        this.SetHandler(async (string projectFile, bool? force, bool? useSource) =>
         {
             await serviceProvider
                 .GetRequiredService<BuildActivity>()
-                .Generate(projectFile, force ?? false);
+                .Generate(projectFile, force ?? false, useSource ?? false);
 
-        }, projectFile, force);
+        }, projectFile, force, useSource);
     }
 }

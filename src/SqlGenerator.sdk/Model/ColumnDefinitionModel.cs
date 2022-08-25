@@ -10,6 +10,7 @@ public sealed record ColumnDefinitionModel
     public bool NotNull { get; init; }
     public bool HashKey { get; init; }
     public bool Private { get; init; }
+    public bool PrinaryKey { get; init; }
 
     public bool Equals(ColumnDefinitionModel? obj)
     {
@@ -19,10 +20,11 @@ public sealed record ColumnDefinitionModel
             DataType == model.DataType &&
             NotNull == model.NotNull &&
             HashKey == model.HashKey &&
-            Private == model.Private;
+            Private == model.Private &&
+            PrinaryKey == model.PrinaryKey;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Name, Security, DataType, NotNull, HashKey, Private);
+    public override int GetHashCode() => HashCode.Combine(Name, Security, DataType, NotNull, HashKey, Private, PrinaryKey);
 }
 
 
@@ -38,5 +40,9 @@ public static class ColumnDefinitionExtensions
         return subject;
     }
 
-    public static ColumnModel ToColumnModel(this ColumnDefinitionModel subject) => new ColumnModel { Name = subject.Name, Security = subject.Security };
+    public static ColumnModel ToColumnModel(this ColumnDefinitionModel subject) => new ColumnModel
+    { 
+        Name = subject.Name,
+        Security = subject.Security
+    };
 }

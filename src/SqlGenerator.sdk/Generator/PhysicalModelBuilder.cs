@@ -38,7 +38,7 @@ public class PhysicalModelBuilder
             Tables = tableModels,
             Views = viewModels,
             PrefixColumns = importOption.PrefixColumns.ToList(),
-            SufixColumns = importOption.SufixColumns.ToList(),
+            SuffixColumns = importOption.SufixColumns.ToList(),
         }.Verify();
     }
 
@@ -49,7 +49,6 @@ public class PhysicalModelBuilder
             .Select(x => new TableModel
             {
                 Name = new ObjectName { Schema = schemaModel.Name, Name = x.Key },
-                HashColumn = x.FirstOrDefault(y => y.HashKey)?.ColumnName,
                 Columns = x.Select(y => new ColumnDefinitionModel
                 {
                     Name = y.ColumnName,
@@ -57,6 +56,7 @@ public class PhysicalModelBuilder
                     DataType = y.DataType,
                     NotNull = y.NotNull,
                     HashKey = y.HashKey,
+                    PrinaryKey = y.PrimaryKey,
                 }).ToList(),
             }).ToList();
     }

@@ -33,7 +33,7 @@ public class FileStoreBuilder
                 await item.Lines.ForEachAsync(async x => await writer.WriteLineAsync(x));
             }
 
-            _logger.LogInformation("Lines written to file {fileName}", fileName);
+            _logger.LogTrace("Lines written to file {fileName}", fileName);
         }
 
         _logger.LogInformation("Completed");

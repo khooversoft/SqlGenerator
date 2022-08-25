@@ -20,7 +20,7 @@ public class SqlInstructionBuilder
         var list = new Instructions();
 
         list += (InstructionType.PushFolder, "Schema");
-        list += _physicalModel.Schemas.Select(x => Build(x));
+        list += _physicalModel.Schemas.Select(x => BuildSchemaModel(x));
         list += InstructionType.PopFolder;
 
         foreach (var schema in _physicalModel.Schemas)
@@ -28,11 +28,11 @@ public class SqlInstructionBuilder
             list += (InstructionType.PushFolder, schema.Name);
 
             list += (InstructionType.PushFolder, "Views");
-            list += _physicalModel.Views.Where(x => x.Name.Schema == schema.Name).Select(x => Build(x));
+            list += _physicalModel.Views.Where(x => x.Name.Schema == schema.Name).Select(x => BuildViewModel(x));
             list += InstructionType.PopFolder;
 
             list += (InstructionType.PushFolder, "Tables");
-            list += _physicalModel.Tables.Where(x => x.Name.Schema == schema.Name).Select(x => Build(x));
+            list += _physicalModel.Tables.Where(x => x.Name.Schema == schema.Name).Select(x => BuildTableModel(x));
             list += InstructionType.PopFolder;
 
             list += InstructionType.PopFolder;
@@ -41,7 +41,7 @@ public class SqlInstructionBuilder
         return list;
     }
 
-    private Instructions Build(SchemaModel schema)
+    private Instructions BuildSchemaModel(SchemaModel schema)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, $"{schema.Name}.sql");
@@ -55,7 +55,7 @@ public class SqlInstructionBuilder
     //   Unrestricted view => both Restricted and PII columns are hashed
     //   Restricted view => only PII columns are hashed
     //   PII view => all columns are visible
-    private Instructions Build(ViewModel viewModel)
+    private Instructions BuildViewModel(ViewModel viewModel)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, viewModel.Name.CalculateFileName());
@@ -69,13 +69,13 @@ public class SqlInstructionBuilder
         var columns = viewModel.Columns.Where(x => x.HashKey)
             .Concat(GetColumns(_physicalModel.PrefixColumns))
             .Concat(viewModel.Columns.Where(x => !x.HashKey))
-            .Concat(GetColumns(_physicalModel.SufixColumns))
+            .Concat(GetColumns(_physicalModel.SuffixColumns))
             .ToList();
 
         SchemaModel schemaModel = _physicalModel.GetSchemaModel(viewModel.Name.Schema).NotNull();
 
         list += columns
-            .Select((x, i) => Build(x, i == columns.Count - 1, schemaModel))
+            .Select((x, i) => BuildColumnModel(x, i == columns.Count - 1, schemaModel))
             .Func(x => new Instructions() + x);
 
         list += InstructionType.TabMinus;
@@ -83,7 +83,6 @@ public class SqlInstructionBuilder
         list += $"WHERE x.[ASAP_DeleteDateTime] IS NOT NULL";
         list += InstructionType.TabMinus;
         list += ";";
-        list += "GO";
 
         return list;
 
@@ -92,7 +91,7 @@ public class SqlInstructionBuilder
             .Select(x => x.ToColumnModel());
     }
 
-    private Instructions Build(TableModel tableModel)
+    private Instructions BuildTableModel(TableModel tableModel)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, tableModel.Name.CalculateFileName());
@@ -103,23 +102,29 @@ public class SqlInstructionBuilder
 
         IEnumerable<ColumnDefinitionModel> hashKeyColumns = tableModel.Columns.Where(x => x.HashKey);
 
-        IReadOnlyList<ColumnDefinitionModel> columns = hashKeyColumns
+        IReadOnlyList <ColumnDefinitionModel> columns = hashKeyColumns
             .Concat(_physicalModel.PrefixColumns)
             .Concat(tableModel.Columns.Where(x => !x.HashKey))
-            .Concat(_physicalModel.SufixColumns)
+            .Concat(_physicalModel.SuffixColumns)
             .ToList();
 
         int maxNameColumnSize = columns.Max(x => x.Name.Length) + 6;
 
         list += columns
-            .Select((x, i) => Build(x, i == columns.Count - 1, maxNameColumnSize))
+            .Select((x, i) => BuildColumnDefinitionModel(x, i == columns.Count - 1, maxNameColumnSize))
             .Func(x => new Instructions() + x);
 
         list += InstructionType.TabMinus;
         list += ")";
 
-        var hashColumns = hashKeyColumns.Select(x => $"[{x.Name}]").Join(", ").ToNullIfEmpty();
-        if (hashColumns != null)
+
+        var hashColumns = tableModel.Columns.Where(x => x.HashKey)
+            .Concat(tableModel.Columns.Where(x => x.PrinaryKey))
+            .Take(1)
+            .Select(x => $"[{x.Name}]")
+            .Join(", ");
+
+        if (!hashColumns.IsEmpty())
         {
             list += $"WITH (DISTRIBUTION = HASH ({hashColumns}), CLUSTERED COLUMNSTORE INDEX)";
         }
@@ -128,7 +133,7 @@ public class SqlInstructionBuilder
         return list;
     }
 
-    private Instruction Build(ColumnModel columnModel, bool last, SchemaModel schemaModel)
+    private Instruction BuildColumnModel(ColumnModel columnModel, bool last, SchemaModel schemaModel)
     {
         return new Instruction
         {
@@ -149,14 +154,15 @@ public class SqlInstructionBuilder
         string formatNormal(string name) => $"x.[{name}]" + displayAs();
         string formatProtected(string name) => $"HASHBYTE('SHA2_256', x.[{name}])" + displayAs();
 
-        string displayAs() => (columnModel.DisplayAs ?? columnModel.Name) switch
+        string displayAs() => columnModel.DisplayAs switch
         {
             null => string.Empty,
+            string v when v.IsEmpty() => string.Empty,
             string v => $" AS [{v}]",
         };
     }
 
-    private Instruction Build(ColumnDefinitionModel columnDefModel, bool last, int maxColumnSize)
+    private Instruction BuildColumnDefinitionModel(ColumnDefinitionModel columnDefModel, bool last, int maxColumnSize)
     {
         const int maxDataTypeColumn = 20;
 

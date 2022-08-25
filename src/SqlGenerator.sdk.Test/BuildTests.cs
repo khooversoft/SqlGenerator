@@ -31,7 +31,7 @@ public class BuildTests
             .BuildServiceProvider()
             .GetRequiredService<ProjectBuilder>();
 
-        Context context = await builder.Build(projectOption, false);
+        Context context = await builder.Build(projectFile, projectOption, false, false);
 
         context.SourceFile.Exists().Should().BeTrue();
         context.FilterFile.Exists().Should().BeTrue();

@@ -17,7 +17,7 @@ public static class CsvFile
             .ToList();
     }
 
-    public static void Write(string file, IEnumerable<TableInfoModel> tableInfos)
+    public static void Write<T>(string file, IEnumerable<T> tableInfos)
     {
         var records = tableInfos.ToList();
 

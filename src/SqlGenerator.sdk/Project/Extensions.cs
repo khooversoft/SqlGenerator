@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SqlGenerator.sdk.Generator;
+using SqlGenerator.sdk.Project.Activities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ public static class Extensions
         collection.AddSingleton<ModelActivity>();
         collection.AddSingleton<ShortNameActivity>();
         collection.AddSingleton<FileStoreBuilder>();
+        collection.AddSingleton<BuildDataDictionaryActivity>();
+        collection.AddSingleton<MergeActivity>();
         collection.AddSingleton<ProjectBuilder>();
 
 

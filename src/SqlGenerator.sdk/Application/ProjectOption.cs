@@ -11,7 +11,6 @@ namespace SqlGenerator.sdk.Application;
 
 public record ProjectOption
 {
-    public string ProjectFile { get; init; } = null!;
     public string? SourceFile { get; init; }
     public string? OptionFile { get; init; }
     public string? NameMapFile { get; init; }
@@ -29,7 +28,6 @@ public static class ProjectOptionExtensions
         var line = new[]
         {
             "Project option properties...",
-            $" ProjectFile={subject.ProjectFile}",
             $" SourceFile={subject.SourceFile}",
             $" OptionFile={subject.OptionFile}",
             $" NameMapFile={subject.NameMapFile}",

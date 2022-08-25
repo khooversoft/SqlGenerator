@@ -29,28 +29,4 @@ public static class ImportOptionBuilder
 
         return subject;
     }
-
-    public static ImportOption GetImportOption(this ProjectOption project, ILogger logger)
-    {
-        project.Verify();
-        project.OptionFile.NotEmpty();
-
-        string folder = project.GetProjectFolder();
-        string optionFile = PathTool.ApplyBasePath(project.OptionFile, folder)!;
-
-        optionFile.Assert(x => File.Exists(x), x => $"File {x} does not exist");
-
-        ImportOption importOption = File.ReadAllText(optionFile)
-            .ToObject<ImportOption>()
-            .NotNull();
-        logger.LogInformation("Read option file {file}", optionFile);
-
-        return new ImportOption
-        {
-            Schemas = importOption.Schemas.ToList(),
-            PrefixColumns = importOption.PrefixColumns.ToList(),
-            SufixColumns = importOption.SufixColumns.ToList(),
-        };
-    }
-
 }

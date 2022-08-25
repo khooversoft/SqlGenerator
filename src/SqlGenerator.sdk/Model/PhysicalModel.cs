@@ -1,6 +1,9 @@
-﻿using System;
+﻿using SqlGenerator.sdk.Project;
+using SqlGenerator.sdk.Project.Activities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Toolbox.Extensions;
@@ -14,7 +17,7 @@ public sealed record PhysicalModel
     public IReadOnlyList<TableModel> Tables { get; init; } = Array.Empty<TableModel>();
     public IReadOnlyList<ViewModel> Views { get; init; } = Array.Empty<ViewModel>();
     public IReadOnlyList<ColumnDefinitionModel> PrefixColumns { get; init;} = Array.Empty<ColumnDefinitionModel>();
-    public IReadOnlyList<ColumnDefinitionModel> SufixColumns { get; init; } = Array.Empty<ColumnDefinitionModel>();
+    public IReadOnlyList<ColumnDefinitionModel> SuffixColumns { get; init; } = Array.Empty<ColumnDefinitionModel>();
 
     public bool Equals(PhysicalModel? obj)
     {
@@ -46,7 +49,15 @@ public static class PhysicalModelExtensions
         return subject;
     }
 
-    public static bool IsSchemaPresent(this PhysicalModel subject, string name) => subject.GetSchemaModel(name) != null;
+    public static Counters ToCounters(this PhysicalModel model) => new Counters(nameof(ModelActivity))
+    {
+        ("Schema count", model.Schemas.Count),
+        ("Table count", model.Tables.Count),
+        ("View count", model.Views.Count),
+        ("Prefix columns count", model.PrefixColumns.Count),
+        ("Suffix columns count", model.SuffixColumns.Count),
+    };
 
+    public static bool IsSchemaPresent(this PhysicalModel subject, string name) => subject.GetSchemaModel(name) != null;
     public static SchemaModel? GetSchemaModel(this PhysicalModel subject, string name) => subject.Schemas.FirstOrDefault(x => x.Name == name);
 }
