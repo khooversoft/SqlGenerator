@@ -21,36 +21,6 @@ internal class ProjectOptionActivity
 
     public ProjectOptionActivity(ILogger<ProjectOptionActivity> logger) => _logger = logger;
 
-    //public async Task Create(
-    //    string projectFile,
-    //    string? sourceFile = null,
-    //    string? optionFile = null,
-    //    string? masterFile = null,
-    //    string? nameMapFile = null,
-    //    string? tableListFile = null,
-    //    int? shortNameMaxSize = null,
-    //    string? buildFolder = null)
-    //{
-    //    projectFile = ConstructProjectFilePath(projectFile);
-    //    string basePath = Path.GetDirectoryName(projectFile).NotNull();
-
-    //    ProjectOption project = ReadOrCreate(projectFile);
-
-    //    project = project with
-    //    {
-    //        SourceFile = GetRelativePath(sourceFile, basePath) ?? project.SourceFile,
-    //        OptionFile = GetRelativePath(optionFile, basePath) ?? project.OptionFile,
-    //        NameMapFile = GetRelativePath(nameMapFile, basePath) ?? project.NameMapFile,
-    //        ShortNameMaxSize = shortNameMaxSize ?? project.ShortNameMaxSize,
-    //        TableListFile = GetRelativePath(tableListFile, basePath) ?? project.TableListFile,
-    //        MasterFile = GetRelativePath(masterFile, basePath) ?? project.MasterFile,
-    //        BuildFolder = buildFolder ?? project.BuildFolder,
-    //    };
-
-    //    _logger.LogInformation("Writing project {outputFile} file", projectFile);
-    //    await File.WriteAllTextAsync(projectFile, project.ToJsonFormat());
-    //}
-
     public Task SetSourceFile(string projectFileReference, string? sourceFile) => SetValue(projectFileReference, (x, basePath) => x with
     {
         SourceFile = sourceFile == null ? null : GetRelativePath(sourceFile, basePath) ?? x.SourceFile,
@@ -105,6 +75,19 @@ internal class ProjectOptionActivity
                     DataTableName = dataTableName.NotNull(),
                     DataLayerName = dataLayerName.NotNull(),
                 }
+            },
+        });
+    }
+
+    public Task SetRawToCultivated(string projectFileReference, string outputFile, string pipelineName, string activityName)
+    {
+        return SetValue(projectFileReference, (x, basePath) => x with
+        {
+            RawToCultivated = new RawToCultivatedOption
+            {
+                OutputFile = outputFile,
+                PipelineName = pipelineName,
+                ActivityName = activityName,
             },
         });
     }

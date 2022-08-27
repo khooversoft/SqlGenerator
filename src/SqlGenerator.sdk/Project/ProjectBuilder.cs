@@ -17,6 +17,7 @@ public partial class ProjectBuilder
     private readonly BuildDataDictionaryActivity _buildDataDictionaryActivity;
     private readonly MergeActivity _mergeActivity;
     private readonly UspLoadTableMetaActivity _uspLoadTableMetaActivity;
+    private readonly RawToCultivatedActivity _rawToCultivatedActivity;
 
     public ProjectBuilder(
         FilterSourceActivity filterSourceActivity,
@@ -26,6 +27,7 @@ public partial class ProjectBuilder
         BuildDataDictionaryActivity buildDataDictionaryActivity,
         MergeActivity mergeActivity,
         UspLoadTableMetaActivity uspLoadTableMetaActivity,
+        RawToCultivatedActivity rawToCultivatedActivity,
         ILogger<ProjectBuilder> logger
         )
     {
@@ -36,6 +38,7 @@ public partial class ProjectBuilder
         _buildDataDictionaryActivity = buildDataDictionaryActivity.NotNull();
         _mergeActivity = mergeActivity.NotNull();
         _uspLoadTableMetaActivity = uspLoadTableMetaActivity.NotNull();
+        _rawToCultivatedActivity = rawToCultivatedActivity.NotNull();
         _logger = logger.NotNull();
     }
 
@@ -60,6 +63,7 @@ public partial class ProjectBuilder
         await BuildModel(context);
         await GenerateSql(context);
         await GenerateUspLoadTable(context);
+        await GenerateRawToCultivated(context);
 
         WriteStats(context);
 
@@ -238,9 +242,25 @@ public partial class ProjectBuilder
             return;
         }
 
-        Counters counters = await _uspLoadTableMetaActivity.Build(context.ModelFile, context.ModelFolder, context.ProjectOption.UspLoadTableOption);
-        context.Counters.Add(counters);
+        await _uspLoadTableMetaActivity.Build(context.ModelFile, context.ModelFolder, context.ProjectOption.UspLoadTableOption);
     }
+
+    private async Task GenerateRawToCultivated(Context context)
+    {
+        if (!context.ModelFile.Exists())
+        {
+            _logger.LogError("Model file {file} does not exist to generate SQL", context.ModelFile);
+            return;
+        }
+        if (context.ProjectOption.RawToCultivated == null)
+        {
+            _logger.LogError("RawToCultivated option not specified");
+            return;
+        }
+
+        await _rawToCultivatedActivity.Build(context.ModelFile, context.ModelFolder, context.ProjectOption.RawToCultivated);
+    }
+
 
     private Context CreateContext(string projectFile, ProjectOption projectOption, ConfigFile sourceFile, bool force)
     {

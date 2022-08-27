@@ -25,6 +25,7 @@ public static class Extensions
         collection.AddSingleton<MergeActivity>();
         collection.AddSingleton<UspLoadTableMetaBuilder>();
         collection.AddSingleton<UspLoadTableMetaActivity>();
+        collection.AddSingleton<RawToCultivatedActivity>();
         collection.AddSingleton<ProjectBuilder>();
 
 

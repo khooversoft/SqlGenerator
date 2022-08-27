@@ -20,17 +20,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Templates\UspLoadTableMeta.cs">
+    <Compile Update="Templates\RawToCultivatedScript.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>UspLoadTableMeta.tt</DependentUpon>
+      <DependentUpon>RawToCultivatedScript.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Templates\UspLoadTableMeta.tt">
+    <None Update="Templates\RawToCultivatedScript.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>UspLoadTableMeta.cs</LastGenOutput>
+      <LastGenOutput>RawToCultivatedScript.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

@@ -14,6 +14,7 @@ public record ProjectOption
     public string? MasterFile { get; init; }
     public string? BuildFolder { get; init; }
     public UspLoadTableOption? UspLoadTableOption { get; init; }
+    public RawToCultivatedOption? RawToCultivated { get; init; }
 }
 
 

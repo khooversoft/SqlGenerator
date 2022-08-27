@@ -1,0 +1,237 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+
+DECLARE @env AS NVARCHAR(16) = (SELECT @@SERVERNAME)
+DECLARE @src_storage_acct NVARCHAR(256)
+
+IF @env = 'asapcoretest'
+BEGIN	
+ SET @src_storage_acct = 'https://asapadlstest.blob.core.windows.net'
+END
+ELSE IF @env = 'asapcorepp'
+BEGIN	
+ SET @src_storage_acct = 'https://asapadlspp.blob.core.windows.net'
+END
+ELSE IF  @env = 'asapcore'
+BEGIN	
+ SET @src_storage_acct = 'https://asapadls.blob.core.windows.net'
+END
+
+
+PRINT CONCAT('@env:',@env)
+PRINT CONCAT('@src_storage_acct',@src_storage_acct)
+
+
+/*****************************************************
+--Global Metadata
+******************************************************/
+DECLARE @pipeline_name AS NVARCHAR(260) = N'<#= PipelineName #>';
+DECLARE @activity_name AS NVARCHAR(260) = N'<#= ActivityName #>';
+
+/*****************************************************
+--Pipeline Metadata
+******************************************************/
+DROP TABLE IF EXISTS #pipeline;
+
+SELECT TOP 1 pipeline_name, trigger_type INTO #pipeline FROM cntrl.pipeline;
+
+TRUNCATE TABLE #pipeline;
+
+INSERT INTO #pipeline (pipeline_name, trigger_type) VALUES (@pipeline_name, 'scheduled_daily');
+
+PRINT 'Merge Pipeline';
+
+MERGE cntrl.pipeline tgt
+USING #pipeline src
+ON tgt.pipeline_name = src.pipeline_name
+   AND tgt.trigger_type = src.trigger_type
+WHEN NOT MATCHED THEN INSERT (pipeline_name, trigger_type)
+                      VALUES
+                      (src.pipeline_name, src.trigger_type);
+
+/*****************************************************
+--Activity Metadata
+******************************************************/
+DROP TABLE IF EXISTS #activity;
+
+SELECT TOP 1
+       activity_name,
+       pipeline_id,
+       pipeline_name,
+       activity_type,
+       step_number,
+       is_rerunnable,
+       retry,
+       retry_interval,
+       activity_timeout
+INTO
+ #activity
+FROM
+ cntrl.activity;
+
+DECLARE @pipeline_id BIGINT = (SELECT pipeline_id FROM cntrl.pipeline WHERE pipeline_name = @pipeline_name);
+
+TRUNCATE TABLE #activity;
+
+INSERT INTO #activity (activity_name, pipeline_id, pipeline_name, activity_type, step_number, is_rerunnable, retry, retry_interval, activity_timeout)
+VALUES
+(@activity_name, @pipeline_id, @pipeline_name, 'copy_query', 1, 1, 3, 5, 1800);
+
+PRINT 'Merge Activity';
+
+MERGE cntrl.activity tgt
+USING #activity src
+ON tgt.activity_name = src.activity_name
+   AND tgt.pipeline_id = src.pipeline_id
+   AND tgt.pipeline_name = src.pipeline_name
+   AND tgt.activity_type = src.activity_type
+WHEN MATCHED AND (
+              ISNULL(tgt.pipeline_name, '0') <> ISNULL(src.pipeline_name, '0')
+              OR ISNULL(tgt.activity_type, '0') <> ISNULL(src.activity_type, '0')
+              OR ISNULL(tgt.step_number, '0') <> ISNULL(src.step_number, '0')
+              OR ISNULL(tgt.is_rerunnable, '0') <> ISNULL(src.is_rerunnable, '0')
+              OR ISNULL(tgt.retry, '0') <> ISNULL(src.retry, '0')
+              OR ISNULL(tgt.retry_interval, '0') <> ISNULL(src.retry_interval, '0')
+              OR ISNULL(tgt.activity_timeout, '0') <> ISNULL(src.activity_timeout, '0')
+             ) THEN UPDATE SET
+                     tgt.activity_name = src.activity_name,
+                     tgt.pipeline_id = src.pipeline_id,
+                     tgt.pipeline_name = src.pipeline_name,
+                     tgt.activity_type = src.activity_type,
+                     tgt.step_number = src.step_number,
+                     tgt.is_rerunnable = src.is_rerunnable,
+                     tgt.retry = src.retry,
+                     tgt.retry_interval = src.retry_interval,
+                     tgt.activity_timeout = src.activity_timeout,
+                     tgt.update_dttm = GETUTCDATE(),
+                     tgt.updated_by = SUSER_SNAME()
+WHEN NOT MATCHED THEN INSERT (activity_name, pipeline_id, pipeline_name, activity_type, step_number, is_rerunnable, retry, retry_interval, activity_timeout)
+                      VALUES
+                      (src.activity_name, src.pipeline_id, src.pipeline_name, src.activity_type, src.step_number, src.is_rerunnable, src.retry, src.retry_interval, src.activity_timeout);
+
+/*****************************************************
+--Activity Parameters
+******************************************************/
+DROP TABLE IF EXISTS #activity_parameter;
+
+SELECT TOP 1
+       activity_id,
+       activity_name,
+       activity_type,
+       context,
+       param_name,
+       param_value
+INTO
+ #activity_parameter
+FROM
+ cntrl.activity_parameter;
+
+DECLARE @activity_id BIGINT = (SELECT activity_id FROM cntrl.activity WHERE activity_name = @activity_name AND pipeline_id = @pipeline_id);
+
+TRUNCATE TABLE #activity_parameter;
+
+INSERT INTO #activity_parameter (activity_id, activity_name, activity_type, context, param_name, param_value)
+VALUES
+--Source											
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'src_linked_service', 'ls_sql_server'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'subject_area', 'copycmd'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'query_timeout', '120'),         --Default '120'
+                                                                                      --file options
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'file_compression', 'None'),     --gzip, None, snappy, zip, tar
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'compression_level', 'Optimal'), --Fastest, Optimal
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'field_terminator', '||'),        --| or ,
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'row_terminator', '\n'),       --
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'field_quote', '"'),             --"
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'encoding', 'UTF-8'),            --
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'max_errors', '10'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'file_type', 'csv'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'first_row', '2'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'src_storage_acct',  @src_storage_acct),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'src_container', 'raw'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'src_directory', 'Neto'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'src_filepath_pattern', 'yyyy/MM/dd'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'src_file_type', 'csv'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'error_file_container', 'raw'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'skip_line_count', '1'),                                                                                      
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'ingest_schema', 'ing_Neto'),          
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'cultivated_schema_name', 'clt_Neto'),          
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'latest_version_orderby_mapping', 'ASAP_SRC_FILEPATH'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'ASAP_RecordEffectiveDateTime_mapping', NULL),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'tgt_linked_service', 'asap_syn'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'parent_key', 'LNUM'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'date_from_format', 'YYYYMMDD_HHMMSS');
+
+PRINT 'Merge Activity Parameter';
+
+MERGE cntrl.activity_parameter tgt
+USING #activity_parameter src
+ON tgt.activity_id = src.activity_id
+   AND tgt.activity_name = src.activity_name
+   AND tgt.activity_type = src.activity_type
+   AND tgt.context = src.context
+   AND tgt.param_name = src.param_name
+WHEN MATCHED AND ISNULL(tgt.param_value, '0') <> ISNULL(src.param_value, '0') THEN UPDATE SET
+                                                                                    tgt.param_value = src.param_value,
+                                                                                    tgt.update_dttm = GETUTCDATE(),
+                                                                                    tgt.updated_by = SUSER_SNAME()
+WHEN NOT MATCHED THEN INSERT (activity_id, activity_name, activity_type, context, param_name, param_value)
+                      VALUES
+                      (src.activity_id, src.activity_name, src.activity_type, src.context, src.param_name, src.param_value);
+
+/*****************************************************
+--Data Object Parameters
+******************************************************/
+DROP TABLE IF EXISTS #data_object_parameter;
+
+SELECT TOP 1
+       data_object_name,
+       activity_id,
+       activity_name,
+       is_enabled,
+       context,
+       param_name,
+       param_value
+INTO
+ #data_object_parameter
+FROM
+ cntrl.data_object_parameter;
+
+
+TRUNCATE TABLE #data_object_parameter;
+
+INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
+VALUES
+
+--Query Option 3: Lookup Column, generated in copy parameter
+/************copy_into_test************/
+
+<#
+foreach(var item in GetTableNames())
+{
+    WriteLine(item);
+}
+
+#>
+
+PRINT 'Merge Data Object Parameter';
+
+MERGE cntrl.data_object_parameter tgt
+USING #data_object_parameter src
+ON tgt.data_object_name = src.data_object_name
+   AND tgt.activity_id = src.activity_id
+   AND tgt.activity_name = src.activity_name
+   AND tgt.context = src.context
+   AND tgt.param_name = src.param_name
+WHEN MATCHED AND (ISNULL(tgt.param_value, '0') <> ISNULL(src.param_value, '0') OR tgt.is_enabled <> src.is_enabled) THEN UPDATE SET
+                                                                                                                          tgt.param_value = src.param_value,
+                                                                                                                          tgt.is_enabled = src.is_enabled,
+                                                                                                                          tgt.update_dttm = GETUTCDATE(),
+                                                                                                                          tgt.updated_by = SUSER_SNAME()
+WHEN NOT MATCHED THEN INSERT (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
+                      VALUES
+                      (src.data_object_name, src.activity_id, src.activity_name, src.is_enabled, src.context, src.param_name, src.param_value);
+GO

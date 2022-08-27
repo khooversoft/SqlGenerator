@@ -24,7 +24,7 @@ public class UspLoadTableMetaActivity
         _logger = logger.NotNull();
     }
 
-    public async Task<Counters> Build(string modelFile, string modelFolder, UspLoadTableOption uspLoadTableOption)
+    public async Task Build(string modelFile, string modelFolder, UspLoadTableOption uspLoadTableOption)
     {
         modelFile.NotEmpty();
         modelFolder.NotEmpty();
@@ -38,10 +38,5 @@ public class UspLoadTableMetaActivity
 
         _logger.LogInformation("Generating Usp Load Table Metadata {model} to {folder}", modelFile, modelFolder);
         await _fileStoreBuilder.Build(instructionObjects, modelFolder);
-
-        return new Counters(nameof(UspLoadTableMetaActivity))
-        {
-            ("Usp Load meta data", instructionObjects.Items.Count()),
-        }.Add(physicalModel.ToCounters());
     }
 }

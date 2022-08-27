@@ -13,7 +13,7 @@ namespace SqlGenerator.Commands;
 
 internal class WriteCommand : Command
 {
-    public WriteCommand(IServiceProvider serviceProvider) : base("Write", "Generate default build configuration")
+    public WriteCommand(IServiceProvider serviceProvider) : base("write", "Generate default build configuration")
     {
         serviceProvider.NotNull();
 

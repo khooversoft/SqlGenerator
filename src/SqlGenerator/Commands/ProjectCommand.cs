@@ -27,6 +27,7 @@ internal class ProjectCommand : Command
         AddCommand(Filter(serviceProvider));
         AddCommand(ShortNameOptions(serviceProvider));
         AddCommand(UspLoadTable(serviceProvider));
+        AddCommand(RawToCultivated(serviceProvider));
 
         AddCommand(DisplayOption(serviceProvider));
     }
@@ -165,7 +166,7 @@ internal class ProjectCommand : Command
     {
         Argument<string> projectFile = new("projectFile", "Project file to read or create (extension is *.project.json");
         Argument<string> outputFile = new("outputFile", "Name of the file to generate the primary key definitions");
-        Argument<string> dataTableName = new("datTableName", "Name of the sql data table name (including schema) to insert into");
+        Argument<string> dataTableName = new("dataTableName", "Name of the sql data table name (including schema) to insert into");
         Argument<string> dataLayerName = new("dataLayerName", "Data layer name for insert");
 
         var command = new Command("UspLoadTable", "Configuration for 'Usp Load Table metadata' script")
@@ -182,6 +183,32 @@ internal class ProjectCommand : Command
                 .GetRequiredService<ProjectOptionActivity>()
                 .SetUspLoadTableOption(projectFile, outputFile, dataTableName, dataLayerName);
         }, projectFile, outputFile, dataTableName, dataLayerName);
+
+        return command;
+    }
+
+
+    private Command RawToCultivated(IServiceProvider serviceProvider)
+    {
+        Argument<string> projectFile = new("projectFile", "Project file to read or create (extension is *.project.json");
+        Argument<string> outputFile = new("outputFile", "Name of the file to generate the primary key definitions");
+        Argument<string> pipelineName = new("pipelineName", "Name of the pipeline");
+        Argument<string> activityName = new("activityName", "Name of the activity");
+
+        var command = new Command("rawToCultivated", "Set RawToCultivated configuration")
+        {
+            projectFile,
+            outputFile,
+            pipelineName,
+            activityName
+        };
+
+        command.SetHandler(async (string projectFile, string outputFile, string pipelineName, string activityName) =>
+        {
+            await serviceProvider
+                .GetRequiredService<ProjectOptionActivity>()
+                .SetRawToCultivated(projectFile, outputFile, pipelineName, activityName);
+        }, projectFile, outputFile, pipelineName, activityName);
 
         return command;
     }
