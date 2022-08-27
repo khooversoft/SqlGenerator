@@ -38,7 +38,15 @@ async Task<int> Run(string[] args)
             container.GetRequiredService<WriteCommand>(),
         };
 
-        return await rc.InvokeAsync(args);
+        int exitCode = await rc.InvokeAsync(args);
+        await Task.Delay(TimeSpan.FromMilliseconds(200));
+
+        Console.WriteLine();
+        Console.WriteLine(exitCode == 0 ? "Completed" : $"Exit code={exitCode}");
+        Console.WriteLine($"Detail logs are at {_loggingFolder}");
+        Console.WriteLine();
+
+        return exitCode;
     }
     catch (Exception ex)
     {
@@ -46,12 +54,6 @@ async Task<int> Run(string[] args)
         ILogger<Program> logger = factory.CreateLogger<Program>();
         logger.LogError(ex, "Failed");
         return 1;
-    }
-    finally
-    {
-        Console.WriteLine();
-        Console.WriteLine("Completed");
-        Console.WriteLine($"Detail logs are at {_loggingFolder}");
     }
 }
 

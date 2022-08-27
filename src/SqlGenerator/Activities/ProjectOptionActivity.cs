@@ -21,40 +21,119 @@ internal class ProjectOptionActivity
 
     public ProjectOptionActivity(ILogger<ProjectOptionActivity> logger) => _logger = logger;
 
-    public async Task Create(
-        string projectFile,
-        string? sourceFile = null,
-        string? optionFile = null,
-        string? masterFile = null,
-        string? nameMapFile = null,
-        string? tableListFile = null,
-        int? shortNameMaxSize = null,
-        string? buildFolder = null)
+    //public async Task Create(
+    //    string projectFile,
+    //    string? sourceFile = null,
+    //    string? optionFile = null,
+    //    string? masterFile = null,
+    //    string? nameMapFile = null,
+    //    string? tableListFile = null,
+    //    int? shortNameMaxSize = null,
+    //    string? buildFolder = null)
+    //{
+    //    projectFile = ConstructProjectFilePath(projectFile);
+    //    string basePath = Path.GetDirectoryName(projectFile).NotNull();
+
+    //    ProjectOption project = ReadOrCreate(projectFile);
+
+    //    project = project with
+    //    {
+    //        SourceFile = GetRelativePath(sourceFile, basePath) ?? project.SourceFile,
+    //        OptionFile = GetRelativePath(optionFile, basePath) ?? project.OptionFile,
+    //        NameMapFile = GetRelativePath(nameMapFile, basePath) ?? project.NameMapFile,
+    //        ShortNameMaxSize = shortNameMaxSize ?? project.ShortNameMaxSize,
+    //        TableListFile = GetRelativePath(tableListFile, basePath) ?? project.TableListFile,
+    //        MasterFile = GetRelativePath(masterFile, basePath) ?? project.MasterFile,
+    //        BuildFolder = buildFolder ?? project.BuildFolder,
+    //    };
+
+    //    _logger.LogInformation("Writing project {outputFile} file", projectFile);
+    //    await File.WriteAllTextAsync(projectFile, project.ToJsonFormat());
+    //}
+
+    public Task SetSourceFile(string projectFileReference, string? sourceFile) => SetValue(projectFileReference, (x, basePath) => x with
     {
-        projectFile = ConstructProjectFilePath(projectFile);
-        string basePath = Path.GetDirectoryName(projectFile).NotNull();
+        SourceFile = sourceFile == null ? null : GetRelativePath(sourceFile, basePath) ?? x.SourceFile,
+    });
 
-        ProjectOption project = ReadOrCreate(projectFile);
+    public Task SetOptionFile(string projectFileReference, string? optionFile) => SetValue(projectFileReference, (x, basePath) => x with
+    {
+        OptionFile = optionFile == null ? null : GetRelativePath(optionFile, basePath) ?? x.OptionFile,
+    });
 
-        project = project with
+    public Task SetMasterFile(string projectFileReference, string? masterFile) => SetValue(projectFileReference, (x, basePath) => x with
+    {
+        MasterFile = masterFile == null ? null : GetRelativePath(masterFile, basePath) ?? x.MasterFile,
+    });
+
+    public Task SetBuildFolder(string projectFileReference, string? buildFolder) => SetValue(projectFileReference, (x, basePath) => x with
+    {
+        BuildFolder = buildFolder == null ? null : GetRelativePath(buildFolder, basePath) ?? x.BuildFolder,
+    });
+
+    public Task SetTableListFile(string projectFileReference, string? tableListFile) => SetValue(projectFileReference, (x, basePath) => x with
+    {
+        TableListFile = tableListFile == null ? null : GetRelativePath(tableListFile, basePath) ?? x.TableListFile,
+    });
+
+    public Task SetNameMap(string projectFileReference, string? nameMapFile, int maxSize) => SetValue(projectFileReference, (x, basePath) => x with
+    {
+        NameMapFile = nameMapFile == null ? null : GetRelativePath(nameMapFile, basePath) ?? x.NameMapFile,
+        ShortNameMaxSize = nameMapFile == null ? null : maxSize,
+    });
+
+    public Task SetUspLoadTableOption(string projectFileReference, string outputFile, string? dataTableName, string? dataLayerName)
+    {
+        return SetValue(projectFileReference, (x, basePath) => x with
         {
-            SourceFile = GetRelativePath(sourceFile, basePath) ?? project.SourceFile,
-            OptionFile = GetRelativePath(optionFile, basePath) ?? project.OptionFile,
-            NameMapFile = GetRelativePath(nameMapFile, basePath) ?? project.NameMapFile,
-            ShortNameMaxSize = shortNameMaxSize ?? project.ShortNameMaxSize,
-            TableListFile = GetRelativePath(tableListFile, basePath) ?? project.TableListFile,
-            MasterFile = GetRelativePath(masterFile, basePath) ?? project.MasterFile,
-            BuildFolder = buildFolder ?? project.BuildFolder,
-        };
+            UspLoadTableOption = x.UspLoadTableOption switch
+            {
+                null => dataTableName switch
+                {
+                    null => null,
+                    _ => new UspLoadTableOption
+                    {
+                        OutputFile = outputFile,
+                        DataTableName = dataTableName.NotNull(),
+                        DataLayerName = dataLayerName.NotNull(),
+                    }
+                },
 
-        _logger.LogInformation("Writing project {outputFile} file", projectFile);
-        await File.WriteAllTextAsync(projectFile, project.ToJsonFormat());
+                _ => x.UspLoadTableOption with
+                {
+                    OutputFile = outputFile,
+                    DataTableName = dataTableName.NotNull(),
+                    DataLayerName = dataLayerName.NotNull(),
+                }
+            },
+        });
     }
 
     public ProjectOption Read(string projectFile) => File.ReadAllText(projectFile)
         .ToObject<ProjectOption>()
         .NotNull()
         .Action(x => _logger.LogInformation("Read project file {file}", projectFile));
+
+    private async Task SetValue(string projectFileReference, Func<ProjectOption, string, ProjectOption> set)
+    {
+        projectFileReference.NotEmpty();
+        set.NotNull();
+
+        (string projectFile, string baseFile) = GetPaths(projectFileReference);
+        ProjectOption project = ReadOrCreate(projectFile);
+        await Write(projectFile, set(project, baseFile));
+    }
+
+    private async Task Write(string projectFile, ProjectOption project)
+    {
+        _logger.LogInformation("Writing project {outputFile} file", projectFile);
+        await File.WriteAllTextAsync(projectFile, project.ToJsonFormat());
+    }
+
+    private (string projectFile, string baseFile) GetPaths(string projectFile)
+    {
+        return (ConstructProjectFilePath(projectFile), Path.GetDirectoryName(projectFile).NotNull());
+    }
 
     private ProjectOption ReadOrCreate(string projectFile)
     {

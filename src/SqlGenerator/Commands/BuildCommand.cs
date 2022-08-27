@@ -12,7 +12,7 @@ namespace SqlGenerator.Commands;
 
 internal class BuildCommand : Command
 {
-    public BuildCommand(IServiceProvider serviceProvider) : base("build", "Build SQL DLL schema")
+    public BuildCommand(IServiceProvider serviceProvider) : base("Build", "Build SQL DLL schema")
     {
         Argument<string> projectFile = new ("projectFile", "Project file (.json)");
         Option<bool?> force = new ("--force", "Force build");

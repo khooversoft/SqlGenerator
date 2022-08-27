@@ -49,7 +49,7 @@ public class PhysicalModelBuilder
             .Select(x => new TableModel
             {
                 Name = new ObjectName { Schema = schemaModel.Name, Name = x.Key },
-                Columns = x.Select(y => new ColumnDefinitionModel
+                Columns = x.Select((y, i) => new ColumnDefinitionModel
                 {
                     Name = y.ColumnName,
                     Security = y.GetSecurity(),
@@ -57,6 +57,7 @@ public class PhysicalModelBuilder
                     NotNull = y.NotNull,
                     HashKey = y.HashKey,
                     PrinaryKey = y.PrimaryKey,
+                    ColumnIndex = i,
                 }).ToList(),
             }).ToList();
     }

@@ -1,11 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using SqlGenerator.sdk.Project;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Toolbox.Extensions;
+using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Application;
 
@@ -18,6 +13,7 @@ public record ProjectOption
     public string? TableListFile { get; init; }
     public string? MasterFile { get; init; }
     public string? BuildFolder { get; init; }
+    public UspLoadTableOption? UspLoadTableOption { get; init; }
 }
 
 
@@ -25,17 +21,16 @@ public static class ProjectOptionExtensions
 {
     public static ProjectOption LogProperties(this ProjectOption subject, ILogger logger)
     {
-        var line = new[]
-        {
-            "Project option properties...",
-            $" SourceFile={subject.SourceFile}",
-            $" OptionFile={subject.OptionFile}",
-            $" NameMapFile={subject.NameMapFile}",
-            $" ShortNameMaxSize={subject.ShortNameMaxSize}",
-            $" TableListFile={subject.TableListFile}",
-            $" MasterFile={subject.MasterFile}",
-            $" BuildFolder={subject.BuildFolder}",
-        }.Join(Environment.NewLine);
+        subject.NotNull();
+        logger.NotNull();
+
+        var dict = subject.GetConfigurationValues();
+
+        string line = dict
+            .Select(x => $" {x.Key}={x.Value}")
+            .Prepend("Project option properties...")
+            .Join(Environment.NewLine);
+
         logger.LogInformation(line);
 
         return subject;

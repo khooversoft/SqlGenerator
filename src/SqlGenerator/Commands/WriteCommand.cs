@@ -13,7 +13,7 @@ namespace SqlGenerator.Commands;
 
 internal class WriteCommand : Command
 {
-    public WriteCommand(IServiceProvider serviceProvider) : base("write", "Generate default build configuration")
+    public WriteCommand(IServiceProvider serviceProvider) : base("Write", "Generate default build configuration")
     {
         serviceProvider.NotNull();
 
@@ -25,7 +25,7 @@ internal class WriteCommand : Command
         Argument<string> configFile = new Argument<string>("configFile", "File name to write to");
         Argument<string> modelName = new Argument<string>("modelName", "Name of the model");
 
-        var command = new Command("option", "Write default options to file")
+        var command = new Command("Option", "Write default options to file")
         {
             configFile,
             modelName,

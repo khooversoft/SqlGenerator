@@ -23,6 +23,8 @@ public static class Extensions
         collection.AddSingleton<FileStoreBuilder>();
         collection.AddSingleton<BuildDataDictionaryActivity>();
         collection.AddSingleton<MergeActivity>();
+        collection.AddSingleton<UspLoadTableMetaBuilder>();
+        collection.AddSingleton<UspLoadTableMetaActivity>();
         collection.AddSingleton<ProjectBuilder>();
 
 

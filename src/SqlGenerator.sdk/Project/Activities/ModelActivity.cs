@@ -16,10 +16,9 @@ namespace SqlGenerator.sdk.Project.Activities;
 public class ModelActivity
 {
     private readonly ILogger<ModelActivity> _logger;
-
     public ModelActivity(ILogger<ModelActivity> logger) => _logger = logger.NotNull();
 
-    public async Task<Counters> Build(string sourceFile, ImportOption importOption, string outputFile)
+    public Task<Counters> Build(string sourceFile, ImportOption importOption, string outputFile)
     {
         sourceFile.NotEmpty();
         importOption.NotNull();
@@ -30,11 +29,13 @@ public class ModelActivity
         var infos = CsvFile.Read(sourceFile);
         var model = new PhysicalModelBuilder().Build(infos, importOption);
 
-        await File.WriteAllTextAsync(outputFile, model.ToJsonFormat());
+        model.WriteToFile(outputFile);
 
-        return new Counters(nameof(ModelActivity))
+        var counters = new Counters(nameof(ModelActivity))
         {
             ("Input table count", infos.Select(x => x.TableName).Distinct().Distinct().Count()),
         }.Add(model.ToCounters());
+
+        return Task.FromResult(counters);
     }
 }

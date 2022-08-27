@@ -2,6 +2,7 @@
 using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Generator;
 using SqlGenerator.sdk.Model;
+using SqlGenerator.sdk.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,35 +13,35 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Project.Activities;
 
-public class GenerateSqlCodeActivity
+public class UspLoadTableMetaActivity
 {
-    private readonly ILogger<GenerateSqlCodeActivity> _logger;
     private readonly FileStoreBuilder _fileStoreBuilder;
+    private readonly ILogger<UspLoadTableMetaActivity> _logger;
 
-    public GenerateSqlCodeActivity(FileStoreBuilder fileStoreBuilder, ILogger<GenerateSqlCodeActivity> logger)
+    public UspLoadTableMetaActivity(FileStoreBuilder fileStoreBuilder, ILogger<UspLoadTableMetaActivity> logger)
     {
         _fileStoreBuilder = fileStoreBuilder.NotNull();
         _logger = logger.NotNull();
     }
 
-    public async Task<Counters> Build(string modelFile, string modelFolder)
+    public async Task<Counters> Build(string modelFile, string modelFolder, UspLoadTableOption uspLoadTableOption)
     {
         modelFile.NotEmpty();
         modelFolder.NotEmpty();
+        uspLoadTableOption.Verify();
 
         _logger.LogInformation("Reading physical model {file} read", modelFile);
-
         var physicalModel = PhysicalModelFile.Read(modelFile);
 
-        Instructions instructions = new SqlInstructionBuilder(physicalModel).Build();
+        Instructions instructions = new UspLoadTableMetaBuilder(physicalModel).Build(uspLoadTableOption);
         InstructionObjects instructionObjects = new InstructionObjectBuilder().Build(instructions);
 
-        _logger.LogInformation("Generating SQL code for tables and views for {model} to {folder}", modelFile, modelFolder);
+        _logger.LogInformation("Generating Usp Load Table Metadata {model} to {folder}", modelFile, modelFolder);
         await _fileStoreBuilder.Build(instructionObjects, modelFolder);
 
-        return new Counters(nameof(GenerateSqlCodeActivity))
+        return new Counters(nameof(UspLoadTableMetaActivity))
         {
-            ("SQL DLL/View count", instructionObjects.Items.Count()),
+            ("Usp Load meta data", instructionObjects.Items.Count()),
         }.Add(physicalModel.ToCounters());
     }
 }

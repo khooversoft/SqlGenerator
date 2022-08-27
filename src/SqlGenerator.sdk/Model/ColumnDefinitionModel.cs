@@ -11,6 +11,7 @@ public sealed record ColumnDefinitionModel
     public bool HashKey { get; init; }
     public bool Private { get; init; }
     public bool PrinaryKey { get; init; }
+    public int ColumnIndex { get; init; }
 
     public bool Equals(ColumnDefinitionModel? obj)
     {
@@ -21,10 +22,11 @@ public sealed record ColumnDefinitionModel
             NotNull == model.NotNull &&
             HashKey == model.HashKey &&
             Private == model.Private &&
-            PrinaryKey == model.PrinaryKey;
+            PrinaryKey == model.PrinaryKey &&
+            ColumnIndex == model.ColumnIndex;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Name, Security, DataType, NotNull, HashKey, Private, PrinaryKey);
+    public override int GetHashCode() => HashCode.Combine(Name, Security, DataType, NotNull, HashKey, Private, PrinaryKey, ColumnIndex);
 }
 
 

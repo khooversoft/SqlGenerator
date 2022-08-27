@@ -2,7 +2,10 @@
 using Microsoft.Extensions.Logging;
 using SqlGenerator.Activities;
 using SqlGenerator.sdk.Application;
+using System;
 using System.CommandLine;
+using System.CommandLine.Binding;
+using System.Diagnostics;
 using Toolbox.Tools;
 
 namespace SqlGenerator.Commands;
@@ -17,46 +20,109 @@ internal class ProjectCommand : Command
         serviceProvider.NotNull();
         _logger = logger.NotNull();
 
-        AddCommand(SetOptions(serviceProvider));
+        AddCommand(SetSourceFile(serviceProvider));
+        AddCommand(SetOptionFile(serviceProvider));
+        AddCommand(SetMasterFile(serviceProvider));
+        AddCommand(SetBuildFolder(serviceProvider));
         AddCommand(Filter(serviceProvider));
         AddCommand(ShortNameOptions(serviceProvider));
+        AddCommand(UspLoadTable(serviceProvider));
+
         AddCommand(DisplayOption(serviceProvider));
     }
 
-    private Command SetOptions(IServiceProvider serviceProvider)
+    private Argument<string> NewProjectFileArgument() => new("projectFile", "Project file to read or create (extension is *.project.json");
+
+    private Command SetSourceFile(IServiceProvider serviceProvider)
     {
-        Argument<string> projectFile = new ("projectFile", "Project file to read or create (extension is *.project.json");
+        var projectFile = NewProjectFileArgument();
+        Argument<string> sourceFile = new("sourceFile", "Source csv file with table and column data");
 
-        Option<string> sourceFile = new("--sourceFile", "Source csv file with table and column data");
-        Option<string> optionFile = new("--optionFile", "Processing options json file");
-        Option<string> masterFile = new("--masterFile", "Name of master file to create from source");
-        Option<string> buildFolder = new("--buildFolder", "Folder path build folder for generating SQL scripts (default 'model' in same folder as project file)");
-
-        var command = new Command("set", "Set project details")
+        var command = new Command("SourceFile", "Set source file")
         {
             projectFile,
             sourceFile,
-            optionFile,
-            masterFile,
-            buildFolder,
         };
 
-        command.SetHandler(async (string projectFile, string? sourceFile, string? optionFile, string? masterFile, string? buildFolder) =>
+        command.SetHandler(async (string projectFile, string file) =>
         {
             await serviceProvider
                 .GetRequiredService<ProjectOptionActivity>()
-                .Create(projectFile, sourceFile: sourceFile, optionFile: optionFile, masterFile: masterFile, buildFolder: buildFolder);
-        }, projectFile, sourceFile, optionFile, masterFile, buildFolder);
+                .SetSourceFile(projectFile, file);
+        }, projectFile, sourceFile);
+
+        return command;
+    }
+
+    private Command SetOptionFile(IServiceProvider serviceProvider)
+    {
+        var projectFile = NewProjectFileArgument();
+        Argument<string> optionFile = new("optionFile", "Processing options json file");
+
+        var command = new Command("OptionFile", "Set source file")
+        {
+            projectFile,
+            optionFile,
+        };
+
+        command.SetHandler(async (string projectFile, string file) =>
+        {
+            await serviceProvider
+                .GetRequiredService<ProjectOptionActivity>()
+                .SetOptionFile(projectFile, file);
+        }, projectFile, optionFile);
+
+        return command;
+    }
+
+    private Command SetMasterFile(IServiceProvider serviceProvider)
+    {
+        var projectFile = NewProjectFileArgument();
+        Argument<string> masterFile = new("masterFile", "Name of master file to create from source");
+
+        var command = new Command("MasterFile", "Set source file")
+        {
+            projectFile,
+            masterFile,
+        };
+
+        command.SetHandler(async (string projectFile, string file) =>
+        {
+            await serviceProvider
+                .GetRequiredService<ProjectOptionActivity>()
+                .SetMasterFile(projectFile, file);
+        }, projectFile, masterFile);
+
+        return command;
+    }
+
+    private Command SetBuildFolder(IServiceProvider serviceProvider)
+    {
+        var projectFile = NewProjectFileArgument();
+        Option<string> buildFolder = new("buildFolder", "Folder path build folder for generating SQL scripts (default 'model' in same folder as project file)");
+
+        var command = new Command("BuildFolder", "Set source file")
+        {
+            projectFile,
+            buildFolder,
+        };
+
+        command.SetHandler(async (string projectFile, string file) =>
+        {
+            await serviceProvider
+                .GetRequiredService<ProjectOptionActivity>()
+                .SetBuildFolder(projectFile, file);
+        }, projectFile, buildFolder);
 
         return command;
     }
 
     private Command Filter(IServiceProvider serviceProvider)
     {
-        Argument<string> projectFile = new ("projectFile", "Project file to read or create (extension is *.project.json");
-        Argument<string> tableListFile = new ("tableListFile", "File that list tables be included");
+        Argument<string> projectFile = new("projectFile", "Project file to read or create (extension is *.project.json");
+        Argument<string> tableListFile = new("tableListFile", "File that list tables be included");
 
-        var command = new Command("filter", "Set project details")
+        var command = new Command("Filter", "Set project details")
         {
             projectFile,
             tableListFile
@@ -66,7 +132,7 @@ internal class ProjectCommand : Command
         {
             await serviceProvider
                 .GetRequiredService<ProjectOptionActivity>()
-                .Create(projectFile, tableListFile: tableListFile);
+                .SetTableListFile(projectFile, tableListFile);
         }, projectFile, tableListFile);
 
         return command;
@@ -74,11 +140,11 @@ internal class ProjectCommand : Command
 
     private Command ShortNameOptions(IServiceProvider serviceProvider)
     {
-        Argument<string> projectFile = new ("projectFile", "Project file to read or create (extension is *.project.json");
+        Argument<string> projectFile = new("projectFile", "Project file to read or create (extension is *.project.json");
         Argument<string> nameMapFile = new("nameMapFile", "File to the long to short dictionary, used to create short names");
         Argument<int> shortMaxSize = new("shortMaxSize", "Max column name size for short name.");
 
-        var command = new Command("shortName", "Set details to generate short names")
+        var command = new Command("ShortName", "Set details to generate short names")
         {
             projectFile,
             nameMapFile,
@@ -89,8 +155,33 @@ internal class ProjectCommand : Command
         {
             await serviceProvider
                 .GetRequiredService<ProjectOptionActivity>()
-                .Create(projectFile, nameMapFile: nameMapFile, shortNameMaxSize: shortMaxSize);
+                .SetNameMap(projectFile, nameMapFile, shortMaxSize);
         }, projectFile, nameMapFile, shortMaxSize);
+
+        return command;
+    }
+
+    private Command UspLoadTable(IServiceProvider serviceProvider)
+    {
+        Argument<string> projectFile = new("projectFile", "Project file to read or create (extension is *.project.json");
+        Argument<string> outputFile = new("outputFile", "Name of the file to generate the primary key definitions");
+        Argument<string> dataTableName = new("datTableName", "Name of the sql data table name (including schema) to insert into");
+        Argument<string> dataLayerName = new("dataLayerName", "Data layer name for insert");
+
+        var command = new Command("UspLoadTable", "Configuration for 'Usp Load Table metadata' script")
+        {
+            projectFile,
+            outputFile,
+            dataTableName,
+            dataLayerName
+        };
+
+        command.SetHandler(async (string projectFile, string outputFile, string dataTableName, string dataLayerName) =>
+        {
+            await serviceProvider
+                .GetRequiredService<ProjectOptionActivity>()
+                .SetUspLoadTableOption(projectFile, outputFile, dataTableName, dataLayerName);
+        }, projectFile, outputFile, dataTableName, dataLayerName);
 
         return command;
     }

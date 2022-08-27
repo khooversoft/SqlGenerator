@@ -16,6 +16,7 @@ public partial class ProjectBuilder
     private readonly GenerateSqlCodeActivity _generateSqlCodeActivity;
     private readonly BuildDataDictionaryActivity _buildDataDictionaryActivity;
     private readonly MergeActivity _mergeActivity;
+    private readonly UspLoadTableMetaActivity _uspLoadTableMetaActivity;
 
     public ProjectBuilder(
         FilterSourceActivity filterSourceActivity,
@@ -24,6 +25,7 @@ public partial class ProjectBuilder
         GenerateSqlCodeActivity generateSqlCodeActivity,
         BuildDataDictionaryActivity buildDataDictionaryActivity,
         MergeActivity mergeActivity,
+        UspLoadTableMetaActivity uspLoadTableMetaActivity,
         ILogger<ProjectBuilder> logger
         )
     {
@@ -33,6 +35,7 @@ public partial class ProjectBuilder
         _generateSqlCodeActivity = generateSqlCodeActivity.NotNull();
         _buildDataDictionaryActivity = buildDataDictionaryActivity.NotNull();
         _mergeActivity = mergeActivity.NotNull();
+        _uspLoadTableMetaActivity = uspLoadTableMetaActivity.NotNull();
         _logger = logger.NotNull();
     }
 
@@ -56,6 +59,7 @@ public partial class ProjectBuilder
         await BuildDataDictionary(context);
         await BuildModel(context);
         await GenerateSql(context);
+        await GenerateUspLoadTable(context);
 
         WriteStats(context);
 
@@ -218,6 +222,23 @@ public partial class ProjectBuilder
         }
 
         Counters counters = await _generateSqlCodeActivity.Build(context.ModelFile, context.ModelFolder);
+        context.Counters.Add(counters);
+    }
+
+    private async Task GenerateUspLoadTable(Context context)
+    {
+        if (!context.ModelFile.Exists())
+        {
+            _logger.LogError("Model file {file} does not exist to generate SQL", context.ModelFile);
+            return;
+        }
+        if (context.ProjectOption.UspLoadTableOption == null)
+        {
+            _logger.LogError("UspLoadTableOption option not specified");
+            return;
+        }
+
+        Counters counters = await _uspLoadTableMetaActivity.Build(context.ModelFile, context.ModelFolder, context.ProjectOption.UspLoadTableOption);
         context.Counters.Add(counters);
     }
 
