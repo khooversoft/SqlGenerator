@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlGenerator", "SqlGenerator\SqlGenerator.csproj", "{63BC1FD6-34DC-4D23-9741-8A6F8DB11168}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlGenerator", "SqlGenerator\SqlGenerator.csproj", "{63BC1FD6-34DC-4D23-9741-8A6F8DB11168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbox", "Toolbox\Toolbox.csproj", "{708E45DD-DF65-4AE7-AE9A-64C4E2FB1C84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolbox", "Toolbox\Toolbox.csproj", "{708E45DD-DF65-4AE7-AE9A-64C4E2FB1C84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbox.Test", "Toolbox.Test\Toolbox.Test.csproj", "{E2DAADCB-0C52-412F-94BD-9780C1A31E84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolbox.Test", "Toolbox.Test\Toolbox.Test.csproj", "{E2DAADCB-0C52-412F-94BD-9780C1A31E84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlGenerator.sdk", "SqlGenerator.sdk\SqlGenerator.sdk.csproj", "{AEABBBF0-D489-4AE2-BBB6-29A4A66E25A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlGenerator.sdk", "SqlGenerator.sdk\SqlGenerator.sdk.csproj", "{AEABBBF0-D489-4AE2-BBB6-29A4A66E25A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlGenerator.sdk.Test", "SqlGenerator.sdk.Test\SqlGenerator.sdk.Test.csproj", "{7C10646B-8F44-40C5-AC01-CF354B550412}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlGenerator.sdk.Test", "SqlGenerator.sdk.Test\SqlGenerator.sdk.Test.csproj", "{7C10646B-8F44-40C5-AC01-CF354B550412}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGenerator", "DataGenerator\DataGenerator.csproj", "{4128CBC9-C4A5-49B2-A311-DE52BAAC10E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7C10646B-8F44-40C5-AC01-CF354B550412}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C10646B-8F44-40C5-AC01-CF354B550412}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C10646B-8F44-40C5-AC01-CF354B550412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4128CBC9-C4A5-49B2-A311-DE52BAAC10E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4128CBC9-C4A5-49B2-A311-DE52BAAC10E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4128CBC9-C4A5-49B2-A311-DE52BAAC10E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4128CBC9-C4A5-49B2-A311-DE52BAAC10E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
