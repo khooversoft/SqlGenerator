@@ -60,4 +60,5 @@ public static class PhysicalModelExtensions
 
     public static bool IsSchemaPresent(this PhysicalModel subject, string name) => subject.GetSchemaModel(name) != null;
     public static SchemaModel? GetSchemaModel(this PhysicalModel subject, string name) => subject.Schemas.FirstOrDefault(x => x.Name == name);
+    public static TableModel? GetTableModel(this PhysicalModel subject, string name) => subject.Tables.FirstOrDefault(x => x.Name.Name == name);
 }

@@ -2,7 +2,7 @@
   "profiles": {
     "DataGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "mask \"D:\\Work\\SqlGenerator\\Alkima\\model\\AlkamiPhysicalModel.stats.csv\" \"D:\\Work\\SqlGenerator\\Alkima\\AlkamiPhysicalModel.stats.masked.csv\" \"D:\\Work\\SqlGenerator\\Alkima\\MaskOption.json\""
+      "commandLineArgs": "extract \"D:\\Work\\SqlGenerator\\AA\\TestSheet.xlsx\" \"D:\\Work\\SqlGenerator\\AA\\TestSheet_data.csv\""
     }
   }
 }

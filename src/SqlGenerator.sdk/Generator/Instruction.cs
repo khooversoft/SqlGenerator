@@ -31,6 +31,7 @@ public class Instructions : IInstruction
     public static Instructions operator +(Instructions collection, IInstruction value) => collection.Action(x => x._list.Add(value));
     public static Instructions operator +(Instructions collection, IEnumerable<IInstruction> values) => collection.Action(x => x._list.AddRange(values));
     public static Instructions operator +(Instructions collection, string value) => collection.Action(x => x._list.Add(Create(value)));
+    public static Instructions operator +(Instructions collection, IEnumerable<string> values) => collection.Action(x => x._list.AddRange(values.Select(x => Create(x))));
     public static Instructions operator +(Instructions collection, InstructionType type) => collection.Action(x => x._list.Add(Create(type)));
     public static Instructions operator +(Instructions collection, (InstructionType type, string value) subject) => collection.Action(x => x._list.Add(Create(subject)));
 

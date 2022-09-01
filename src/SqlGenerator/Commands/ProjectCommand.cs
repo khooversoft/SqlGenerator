@@ -194,21 +194,23 @@ internal class ProjectCommand : Command
         Argument<string> outputFile = new("outputFile", "Name of the file to generate the primary key definitions");
         Argument<string> pipelineName = new("pipelineName", "Name of the pipeline");
         Argument<string> activityName = new("activityName", "Name of the activity");
+        Argument<string?> paramValueFormat = new("paramValueFormat", "Param value format '{prefix}*{suffix}");
 
         var command = new Command("rawToCultivated", "Set RawToCultivated configuration")
         {
             projectFile,
             outputFile,
             pipelineName,
-            activityName
+            activityName,
+            paramValueFormat
         };
 
-        command.SetHandler(async (string projectFile, string outputFile, string pipelineName, string activityName) =>
+        command.SetHandler(async (string projectFile, string outputFile, string pipelineName, string activityName, string? paramValueFormat) =>
         {
             await serviceProvider
                 .GetRequiredService<ProjectOptionActivity>()
-                .SetRawToCultivated(projectFile, outputFile, pipelineName, activityName);
-        }, projectFile, outputFile, pipelineName, activityName);
+                .SetRawToCultivated(projectFile, outputFile, pipelineName, activityName, paramValueFormat);
+        }, projectFile, outputFile, pipelineName, activityName, paramValueFormat);
 
         return command;
     }

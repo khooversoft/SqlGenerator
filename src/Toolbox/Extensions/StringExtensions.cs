@@ -45,7 +45,7 @@ namespace Toolbox.Extensions
             }
         }
 
-        /// <summary>
+        /// <summary>Join
         /// Convert property string ex "property1=value1;property2=value2";
         /// </summary>
         /// <param name="subject"></param>
@@ -76,7 +76,7 @@ namespace Toolbox.Extensions
         /// <param name="delimiter">delimiter to use in join</param>
         /// <returns>result</returns>
         [DebuggerStepThrough]
-        public static string Join(this IEnumerable<string?> values, string delimiter = "/") => string.Join(delimiter, values.Where(x => x != null));
+        public static string Join(this IEnumerable<string?> values, string delimiter = "") => string.Join(delimiter, values.Where(x => x != null));
 
         /// <summary>
         /// Return string's hash in hex numeric form

@@ -21,7 +21,7 @@ public class FileStoreBuilder
         baseFolder.NotEmpty();
         using var ls = _logger.LogEntryExit();
 
-        _logger.LogInformation("Writing objects to BaseFolder={baseFolder}", baseFolder);
+        _logger.LogInformation("Writing objects to baseFolder={baseFolder}", baseFolder);
 
         foreach (var item in instructionObjects.Items)
         {

@@ -12,6 +12,7 @@ public record RawToCultivatedOption
     public string OutputFile { get; init; } = null!;
     public string PipelineName { get; init; } = null!;
     public string ActivityName { get; init; } = null!;
+    public string? ParamValueFormat { get; init; }
 }
 
 

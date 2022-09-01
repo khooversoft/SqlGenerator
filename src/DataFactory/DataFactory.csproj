@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -11,10 +11,10 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
-		<PackageReference Include="Open-XML-SDK" Version="2.9.1" />
 		<PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
 		<PackageReference Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta4.22272.1" />
 		<PackageReference Include="CsvHelper" Version="28.0.1" />
+		<PackageReference Include="YamlDotNet" Version="12.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -24,7 +24,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\SqlGenerator.sdk\SqlGenerator.sdk.csproj" />
+	  <Folder Include="Application\" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Toolbox\Toolbox.csproj" />
 	</ItemGroup>
 

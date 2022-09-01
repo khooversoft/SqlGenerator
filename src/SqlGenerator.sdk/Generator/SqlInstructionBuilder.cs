@@ -1,4 +1,6 @@
-﻿using SqlGenerator.sdk.Model;
+﻿using DocumentFormat.OpenXml.Office2010.ExcelAc;
+using DocumentFormat.OpenXml.Wordprocessing;
+using SqlGenerator.sdk.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +11,26 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Generator;
 
+public enum BuildType
+{
+    UpdateOnly,
+    Overwrite
+}
+
 public class SqlInstructionBuilder
 {
     private readonly PhysicalModel _physicalModel;
+    private readonly IReadOnlyList<string> _headers = new[]
+    {
+        "-- -----------------------------------------------------",
+        "-- Auto generated",
+        "-- -----------------------------------------------------",
+        "",
+    };
 
     public SqlInstructionBuilder(PhysicalModel model) => _physicalModel = model.Verify();
 
-    public Instructions Build()
+    public Instructions Build(BuildType buildType)
     {
         var list = new Instructions();
 
@@ -28,11 +43,11 @@ public class SqlInstructionBuilder
             list += (InstructionType.PushFolder, schema.Name);
 
             list += (InstructionType.PushFolder, "Views");
-            list += _physicalModel.Views.Where(x => x.Name.Schema == schema.Name).Select(x => BuildViewModel(x));
+            list += _physicalModel.Views.Where(x => x.Name.Schema == schema.Name).Select(x => BuildViewModel(x, buildType));
             list += InstructionType.PopFolder;
 
             list += (InstructionType.PushFolder, "Tables");
-            list += _physicalModel.Tables.Where(x => x.Name.Schema == schema.Name).Select(x => BuildTableModel(x));
+            list += _physicalModel.Tables.Where(x => x.Name.Schema == schema.Name).Select(x => BuildTableModel(x, buildType));
             list += InstructionType.PopFolder;
 
             list += InstructionType.PopFolder;
@@ -55,11 +70,13 @@ public class SqlInstructionBuilder
     //   Unrestricted view => both Restricted and PII columns are hashed
     //   Restricted view => only PII columns are hashed
     //   PII view => all columns are visible
-    private Instructions BuildViewModel(ViewModel viewModel)
+    private Instructions BuildViewModel(ViewModel viewModel, BuildType buildType)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, viewModel.Name.CalculateFileName());
 
+        list += _headers;
+        list += "";
         list += $"CREATE VIEW {viewModel.Name}";
         list += "AS";
         list += InstructionType.TabPlus;
@@ -91,11 +108,12 @@ public class SqlInstructionBuilder
             .Select(x => x.ToColumnModel());
     }
 
-    private Instructions BuildTableModel(TableModel tableModel)
+    private Instructions BuildTableModel(TableModel tableModel, BuildType buildType)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, tableModel.Name.CalculateFileName());
 
+        list += _headers;
         list += $"CREATE TABLE {tableModel.Name}";
         list += "(";
         list += InstructionType.TabPlus;
@@ -140,19 +158,21 @@ public class SqlInstructionBuilder
             Type = InstructionType.Code,
             Text = columnModel.Security switch
             {
-                Security.Unrestricted => protectField(false, columnModel.Name),
+                Security.Unrestricted => formatNormal(columnModel.Name),
                 Security.Data => throw new ArgumentException("Data security"),
 
-                Security v when v == schemaModel.Security => protectField(false, columnModel.Name),
-                _ => protectField(true, columnModel.Name),
+                Security v when v == schemaModel.Security => formatNormal(columnModel.Name),
+
+                _ => formatProtected(columnModel.Name),
             }
             + (last ? string.Empty : ","),
         };
 
-        string protectField(bool protect, string name) => protect ? formatProtected(name) : formatNormal(name);
 
         string formatNormal(string name) => $"x.[{name}]" + displayAs();
-        string formatProtected(string name) => $"HASHBYTE('SHA2_256', x.[{name}])" + displayAs();
+
+        string formatProtected(string name) =>
+            $"HASHBYTES('SHA2_256', {castAs(name, columnModel.DataType)})" + (displayAs().ToNullIfEmpty() ?? $" AS [{name}]");
 
         string displayAs() => columnModel.DisplayAs switch
         {
@@ -160,6 +180,24 @@ public class SqlInstructionBuilder
             string v when v.IsEmpty() => string.Empty,
             string v => $" AS [{v}]",
         };
+
+        string castAs(string name, string dataType)
+        {
+            return dataType.ToLower().ToNullIfEmpty() switch
+            {
+                null => throw new ArgumentException("Data type is null"),
+
+                string v when v.StartsWith("char") => normalFmt(name),
+                string v when v.StartsWith("nchar") => normalFmt(name),
+                string v when v.StartsWith("varchar") => normalFmt(name),
+                string v when v.StartsWith("nvarchar") => normalFmt(name),
+
+                _ => castFmt(name),
+            };
+
+            string normalFmt(string name) => $"x.[{name}]";
+            string castFmt(string name) => $"CAST(x.[{name}] AS NVARCHAR(50))";
+        }
     }
 
     private Instruction BuildColumnDefinitionModel(ColumnDefinitionModel columnDefModel, bool last, int maxColumnSize)

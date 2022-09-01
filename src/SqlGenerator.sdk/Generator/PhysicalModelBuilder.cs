@@ -76,6 +76,7 @@ public class PhysicalModelBuilder
                     Security = y.GetSecurity(),
                     HashKey = y.HashKey,
                     DisplayAs = y.ShortName,
+                    DataType = y.DataType,
                 }).ToList(),
             }).ToList();
 

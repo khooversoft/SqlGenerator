@@ -26,6 +26,7 @@ public static class Extensions
         collection.AddSingleton<UspLoadTableMetaBuilder>();
         collection.AddSingleton<UspLoadTableMetaActivity>();
         collection.AddSingleton<RawToCultivatedActivity>();
+        collection.AddSingleton<FileSingleBuilder>();
         collection.AddSingleton<ProjectBuilder>();
 
 

@@ -79,7 +79,7 @@ internal class ProjectOptionActivity
         });
     }
 
-    public Task SetRawToCultivated(string projectFileReference, string outputFile, string pipelineName, string activityName)
+    public Task SetRawToCultivated(string projectFileReference, string outputFile, string pipelineName, string activityName, string? paramValueFormat)
     {
         return SetValue(projectFileReference, (x, basePath) => x with
         {
@@ -88,6 +88,7 @@ internal class ProjectOptionActivity
                 OutputFile = outputFile,
                 PipelineName = pipelineName,
                 ActivityName = activityName,
+                ParamValueFormat = paramValueFormat
             },
         });
     }

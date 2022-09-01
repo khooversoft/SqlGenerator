@@ -2,7 +2,7 @@
   "profiles": {
     "SqlGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "build \"D:\\Work\\SqlGenerator\\NetO\\NetO.project.json\" --force"
+      "commandLineArgs": "build \"D:\\Work\\SqlGenerator\\NetO\\NetO.project.json\""
     }
   }
 }

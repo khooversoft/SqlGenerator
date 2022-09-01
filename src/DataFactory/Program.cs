@@ -1,12 +1,10 @@
-﻿using System.Reflection;
-using System;
+﻿using DataFactory.Activities;
+using DataFactory.Commands;
 using Microsoft.Extensions.DependencyInjection;
-using System.CommandLine;
-using DataGenerator.Commands;
-using Toolbox.Tools;
 using Microsoft.Extensions.Logging;
-using DataGenerator.Activities;
-using SqlGenerator.sdk.Excel;
+using System.CommandLine;
+using System.Reflection;
+using Toolbox.Tools;
 
 string _programTitle = $"Data Generator - Version {Assembly.GetExecutingAssembly().GetName().Version}";
 
@@ -31,8 +29,7 @@ async Task<int> Run(string[] args)
     {
         var rc = new RootCommand("Data utilities")
         {
-            container.GetRequiredService<MaskCommand>(),
-            container.GetRequiredService<ExtractCommand>(),
+            container.GetRequiredService<BuildCommand>(),
         };
 
         int exitCode = await rc.InvokeAsync(args);
@@ -63,13 +60,9 @@ ServiceProvider BuildContainer()
         x.AddDebug();
     });
 
-    service.AddSingleton<ReadExcelSheet>();
+    service.AddSingleton<BuildActivity>();
 
-    service.AddSingleton<MaskActivity>();
-    service.AddSingleton<ExtractActivity>();
-
-    service.AddSingleton<MaskCommand>();
-    service.AddSingleton<ExtractCommand>();
+    service.AddSingleton<BuildCommand>();
 
     return service.BuildServiceProvider();
 }

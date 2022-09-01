@@ -27,7 +27,13 @@ public class RawToCultivatedActivity
         _logger.LogInformation("Reading physical model {file} read", modelFile);
         var physicalModel = PhysicalModelFile.Read(modelFile);
 
-        var page = new RawToCultivatedScript(physicalModel, rawToCultivatedOption.PipelineName, rawToCultivatedOption.ActivityName);
+        var page = new RawToCultivatedScript(
+            physicalModel,
+            rawToCultivatedOption.PipelineName,
+            rawToCultivatedOption.ActivityName,
+            rawToCultivatedOption.ParamValueFormat
+            );
+
         string lines = page.TransformText();
 
         string file = Path.Combine(modelFolder, rawToCultivatedOption.OutputFile);

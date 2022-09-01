@@ -117,6 +117,35 @@ namespace Toolbox.Extensions
             return list;
         }
 
+        /// <summary>
+        /// Handle null collections safely
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static IEnumerable<T> ToSafe<T>(this IEnumerable<T>? list) => (list ?? Array.Empty<T>());
+
+        /// <summary>
+        /// Insert separator between items in sequence
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="values"></param>
+        /// <param name="separator"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> SequenceJoin<T>(this IEnumerable<T> values, T separator)
+        {
+            bool run = false;
+
+            foreach (var item in values)
+            {
+                if (run)
+                {
+                    yield return separator;
+                }
+
+                run = true;
+                yield return item;
+            }
+        }
     }
 }
