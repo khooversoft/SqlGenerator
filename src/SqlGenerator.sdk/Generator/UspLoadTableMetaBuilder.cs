@@ -39,21 +39,10 @@ public class UspLoadTableMetaBuilder
         {
             list += $"INSERT INTO {uspLoadTableOption.DataTableName} (DataLayer, TableName, ColumnName, ColumnOrder)";
 
-            var lines = table
-                .SelectMany(x => new[]
-                {
-                    $"SELECT '{uspLoadTableOption.DataLayerName}', '{x.TableName}', '{x.Column.Name}', {x.Column.ColumnIndex}",
-                    "UNION ALL",
-                })
+            list += table
+                .Select(x => $"SELECT '{uspLoadTableOption.DataLayerName}', '{x.TableName}', '{x.Column.Name}', {x.Column.ColumnIndex}")
+                .SequenceJoin("UNION ALL")
                 .ToList();
-
-            lines
-                .Take(lines.Count - 1)
-                .ForEach(x => list += x);
-
-            //lines
-            //    .Select((x, i) => i == lines.Count - 1 ? x : x + ",")
-            //    .ForEach(x => list += x);
 
             list += "GO";
             list += "";
