@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using System.Globalization;
+using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -27,35 +28,29 @@ public static class CsvFile
         csv.WriteRecords(records);
     }
 
-    public static CsvTable ReadTable(string file)
+    public static StringTable ReadTable(string file)
     {
         using var reader = new StreamReader(file);
         using CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
+        StringTable table = new StringTable(true);
+
         csv.Read().Assert(x => x == true, $"No header row detected in file {file}");
         csv.ReadHeader();
 
-        IReadOnlyList<string> headers = csv.HeaderRecord
+        table += csv.HeaderRecord
             .NotNull(name: "Headers are empty")
             .ToList();
 
-        var rows = new List<CsvRow>();
-
         while (csv.Read())
         {
-            List<string> rowValues = Enumerable.Range(0, headers.Count)
+            table += Enumerable.Range(0, table.Header.Count)
                 .Select(x => tryGet(csv, x)!)
                 .Where(x => !x.IsEmpty())
                 .ToList();
-
-            rows.Add(new CsvRow { Rows = rowValues });
         }
 
-        return new CsvTable
-        {
-            Headers = headers,
-            Rows = rows,
-        };
+        return table;
 
         static string? tryGet(CsvReader csv, int index)
         {
@@ -66,16 +61,23 @@ public static class CsvFile
         }
     }
 
-    public static void Write(this CsvTable csvTable, string file)
+    public static void WriteToCsv(this StringTable table, string file)
     {
         file.NotEmpty();
-        csvTable.NotNull();
+        table.NotNull();
+        table.Header.Count.Assert(x => x > 0, "No headers");
+
+        table.Data
+            .Select(x => x.Count)
+            .All(x => x == table.Header.Count)
+            .Assert(x => x == true, "Body does not match header count");
 
         using var writer = new StreamWriter(file);
         using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
 
-        var records = csvTable.Rows
-            .Select(x => csvTable.CreateRecord(x.Rows))
+        var records = table.Data
+            .Select(data => table.Header.Zip(data).Select(x => new KeyValuePair<string, object>(x.First, x.Second)))
+            .Select(x => x.ToDynamic())
             .ToList();
 
         csv.WriteRecords(records);

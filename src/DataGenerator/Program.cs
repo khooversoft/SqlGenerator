@@ -63,7 +63,7 @@ ServiceProvider BuildContainer()
         x.AddDebug();
     });
 
-    service.AddSingleton<ReadExcelSheet>();
+    service.AddSingleton<ExcelFile>();
 
     service.AddSingleton<MaskActivity>();
     service.AddSingleton<ExtractActivity>();

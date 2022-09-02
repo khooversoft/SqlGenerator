@@ -1,23 +1,27 @@
 ﻿using FluentAssertions;
+using Toolbox.Data;
 using Toolbox.Extensions;
-using Toolbox.Tools;
 
-namespace Toolbox.Test.Tools;
+namespace Toolbox.Test.Data;
 
 public class SequenceTests
 {
     [Fact]
-    public void GivenSingleSequence_WhenJoined_ShouldPass()
+    public void GivenDuplicateSequence_WhenEqual_ShouldPass()
     {
-        var list = Enumerable.Range(0, 10)
-            .SequenceJoin(99)
-            .ToList();
+        var row = new Sequence<string>
+        {
+            "First",
+            "Second",
+        };
 
-        list.Count.Should().Be(19);
+        var row2 = new Sequence<string>
+        {
+            "First",
+            "Second",
+        };
 
-        list
-            .Where((x, i) => i % 2 == 0 ? x == i / 2 : x == 99)
-            .Count().Should().Be(19);
+        (row == row2).Should().BeTrue();
     }
 
     [Fact]

@@ -10,18 +10,22 @@ internal class ExtractCommand : Command
     {
         Argument<string> inputFile = new("inputFile", "Data file to mask");
         Argument<string> outputFile = new("outputFile", "File to write masked data to");
-        Option<string?> firstHeaderText = new("firstHeaderText", "Name of the first header, wild card can be used (default is 'load*'");
+        Argument<string> tableName = new("tableName", "Name of table");
+        Option<string?> firstHeaderText = new("firstHeaderText", "Name of the first header, wild card can be used (default is 'load*')");
+        Option<int?> minCharLength = new("minCharLength", "Min character length for char(n) or varchar(n)");
 
         AddArgument(inputFile);
         AddArgument(outputFile);
+        AddArgument(tableName);
         AddOption(firstHeaderText);
+        AddOption(minCharLength);
 
-        this.SetHandler(async (string inputFile, string outputFile, string? firstHeaderText) =>
+        this.SetHandler(async (string inputFile, string outputFile, string tableName, string? firstHeaderText, int? minCharLength) =>
         {
             await serviceProvider
                 .GetRequiredService<ExtractActivity>()
-                .Extract(inputFile, outputFile, firstHeaderText);
+                .Extract(inputFile, outputFile, tableName, firstHeaderText, minCharLength);
 
-        }, inputFile, outputFile, firstHeaderText);
+        }, inputFile, outputFile, tableName, firstHeaderText, minCharLength);
     }
 }

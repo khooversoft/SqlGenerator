@@ -11,11 +11,11 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Generator;
 
-public enum BuildType
-{
-    UpdateOnly,
-    Overwrite
-}
+//public enum BuildType
+//{
+//    UpdateOnly,
+//    Overwrite
+//}
 
 public class SqlInstructionBuilder
 {
@@ -30,7 +30,7 @@ public class SqlInstructionBuilder
 
     public SqlInstructionBuilder(PhysicalModel model) => _physicalModel = model.Verify();
 
-    public Instructions Build(BuildType buildType)
+    public Instructions Build()
     {
         var list = new Instructions();
 
@@ -43,11 +43,11 @@ public class SqlInstructionBuilder
             list += (InstructionType.PushFolder, schema.Name);
 
             list += (InstructionType.PushFolder, "Views");
-            list += _physicalModel.Views.Where(x => x.Name.Schema == schema.Name).Select(x => BuildViewModel(x, buildType));
+            list += _physicalModel.Views.Where(x => x.Name.Schema == schema.Name).Select(x => BuildViewModel(x));
             list += InstructionType.PopFolder;
 
             list += (InstructionType.PushFolder, "Tables");
-            list += _physicalModel.Tables.Where(x => x.Name.Schema == schema.Name).Select(x => BuildTableModel(x, buildType));
+            list += _physicalModel.Tables.Where(x => x.Name.Schema == schema.Name).Select(x => BuildTableModel(x));
             list += InstructionType.PopFolder;
 
             list += InstructionType.PopFolder;
@@ -70,7 +70,7 @@ public class SqlInstructionBuilder
     //   Unrestricted view => both Restricted and PII columns are hashed
     //   Restricted view => only PII columns are hashed
     //   PII view => all columns are visible
-    private Instructions BuildViewModel(ViewModel viewModel, BuildType buildType)
+    private Instructions BuildViewModel(ViewModel viewModel)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, viewModel.Name.CalculateFileName());
@@ -108,7 +108,7 @@ public class SqlInstructionBuilder
             .Select(x => x.ToColumnModel());
     }
 
-    private Instructions BuildTableModel(TableModel tableModel, BuildType buildType)
+    private Instructions BuildTableModel(TableModel tableModel)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, tableModel.Name.CalculateFileName());

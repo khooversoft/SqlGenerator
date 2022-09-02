@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Dynamic;
+using Toolbox.Tools;
 
 namespace Toolbox.Extensions;
 
@@ -18,4 +15,18 @@ public static class TypeExtensions
     }
 
     public static string GetTypeName<T>(this T _) => typeof(T).GetTypeName();
+
+    public static dynamic ToDynamic(this IEnumerable<KeyValuePair<string, object>> values)
+    {
+        values.NotNull();
+
+        dynamic record = new ExpandoObject();
+
+        foreach (var item in values)
+        {
+            ((ICollection<KeyValuePair<string, object>>)record).Add(item);
+        }
+
+        return record;
+    }
 }

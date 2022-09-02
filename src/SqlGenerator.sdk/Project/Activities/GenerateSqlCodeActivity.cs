@@ -34,7 +34,7 @@ public class GenerateSqlCodeActivity
 
         var physicalModel = PhysicalModelFile.Read(modelFile);
 
-        Instructions instructions = new SqlInstructionBuilder(physicalModel).Build(BuildType.UpdateOnly);
+        Instructions instructions = new SqlInstructionBuilder(physicalModel).Build();
         InstructionObjects instructionObjects = new InstructionObjectBuilder().Build(instructions);
 
         _logger.LogInformation("Generating SQL code for tables and views for {model} to {folder}", modelFile, modelFolder);

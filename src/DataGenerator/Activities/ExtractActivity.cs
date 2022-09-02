@@ -1,13 +1,7 @@
-﻿using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Spreadsheet;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.CsvStore;
 using SqlGenerator.sdk.Excel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -15,32 +9,77 @@ namespace DataGenerator.Activities;
 
 internal class ExtractActivity
 {
-    private readonly ReadExcelSheet _readExcelSheet;
+    private readonly ExcelFile _readExcelSheet;
     private readonly ILogger<ExtractActivity> _logger;
-    public ExtractActivity(ReadExcelSheet readExcelSheet, ILogger<ExtractActivity> logger)
+    public ExtractActivity(ExcelFile readExcelSheet, ILogger<ExtractActivity> logger)
     {
         _readExcelSheet = readExcelSheet.NotNull();
         _logger = logger.NotNull();
     }
 
-    public Task Extract(string inputFile, string outputFile, string? firstColumnText)
+    public Task Extract(string inputFile, string outputFile, string tableName, string? firstColumnText, int? minCharLength)
     {
         _logger.LogInformation(
-            "Extracting inputFile={inputFile},outputFile={outputFile}, firstColumnText={firstColumnText}",
+            "Extracting inputFile={inputFile}, outputFile={outputFile}, firstColumnText={firstColumnText}",
             inputFile,
             outputFile,
             firstColumnText
             );
 
-        ExcelData excelData = _readExcelSheet.Read(inputFile);
-        if (excelData.Rows.Count == 0)
-        {
-            _logger.LogError("No rows in spreadsheet, file={file}", inputFile);
-            return Task.CompletedTask;
-        }
+        StringTable? stringTable = ReadSheet(inputFile);
+        if (stringTable == null) return Task.CompletedTask;
 
-        var analysis = new ExcelDataAnalysis().Run(excelData.Rows, firstColumnText);
+        AnalysisResult? analysis = RunAnalysis(tableName, stringTable, firstColumnText, minCharLength ?? 50);
+        if (analysis == null) return Task.CompletedTask;
+
+        WriteTable(analysis, outputFile);
+        WriteDataDictionary(analysis, outputFile);
 
         return Task.CompletedTask;
+    }
+
+    private StringTable? ReadSheet(string inputFile)
+    {
+        StringTable stringTable = _readExcelSheet.Read(inputFile);
+        if (stringTable.Count == 0)
+        {
+            _logger.LogError("No rows in spreadsheet, file={file}", inputFile);
+            return null;
+        }
+
+        _logger.LogInformation("Read {rows} from {file}", stringTable.Count, inputFile);
+        return stringTable;
+    }
+
+    private AnalysisResult? RunAnalysis(string tableName, StringTable stringTable, string? firstColumnText, int minCharLength)
+    {
+        AnalysisResult analysis = new DataAnalysis().Run(tableName, stringTable, firstColumnText, minCharLength);
+        if (analysis.NoData)
+        {
+            _logger.LogError("No data detected");
+            return null;
+        }
+
+        analysis.GetConfigurationValues()
+            .Select(x => $"{x.Key}={x.Value}")
+            .Prepend("Analysis result...")
+            .Join(Environment.NewLine)
+            .Action(x => _logger.LogInformation("Analysis Result: " + x));
+
+        return analysis;
+    }
+
+    private void WriteTable(AnalysisResult analysis, string outputFile)
+    {
+        _logger.LogInformation("Write extract data to {file}", outputFile);
+        analysis.Table.WriteToCsv(outputFile);
+    }
+
+    private void WriteDataDictionary(AnalysisResult analysis, string outputFile)
+    {
+        string file = PathTool.SetFileExtension(outputFile, ".datadictionary.csv");
+        _logger.LogInformation("Writing data dictionary to {file}", file);
+
+        CsvFile.Write(file, analysis.TableInfos.Select(x => x.ConvertTo()));
     }
 }

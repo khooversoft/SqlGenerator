@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -34,15 +35,15 @@ public class MaskActivity
     public void MaskTable(string inputFile, string outputFile, MaskOption maskOption)
     {
         _logger.LogInformation("Reading CSV {file}", inputFile);
-        CsvTable csvTable = CsvFile.ReadTable(inputFile);
+        StringTable csvTable = CsvFile.ReadTable(inputFile);
 
         maskOption
             .ColumnsToMask
-            .Where(x => !csvTable.Headers.Contains(x, StringComparer.OrdinalIgnoreCase))
+            .Where(x => !csvTable.Header.Contains(x, StringComparer.OrdinalIgnoreCase))
             .Join(", ")
             .Assert(x => x.IsEmpty(), x => $"Missing columns from mask file, {x}");
 
-        List<int> maskedIndexes = csvTable.Headers
+        List<int> maskedIndexes = csvTable.Header
             .Select((x, i) => (HeaderName: x, Index: i))
             .Join(maskOption.ColumnsToMask, x => x.HeaderName, x => x, (o, _) => o)
             .Select(x => x.Index)
@@ -54,25 +55,17 @@ public class MaskActivity
             throw new InvalidOperationException(msg);
         }
 
-        var filteredTable = new CsvTable
-        {
-            Headers = csvTable.Headers,
-            Rows = csvTable.Rows
+        var filteredTable = new StringTable(true)
+            + csvTable.Header
+            + csvTable.Data
                 .Select(x => Mask(x, maskedIndexes))
-                .ToList(),
-        };
+                .ToList();
 
         _logger.LogInformation("Writing {file} with masked data", outputFile);
-        filteredTable.Write(outputFile);
+        filteredTable.WriteToCsv(outputFile);
     }
 
-    private CsvRow Mask(CsvRow csvRow, List<int> maskedIndex)
-    {
-        return new CsvRow
-        {
-            Rows = csvRow.Rows
-                .Select((x, i) => maskedIndex.Contains(i) ? x.ToHashHex() : x)
-                .ToList(),
-        };
-    }
+    private StringRow Mask(StringRow csvRow, List<int> maskedIndex) => new StringRow() + csvRow
+        .Select((x, i) => maskedIndex.Contains(i) ? x.ToHashHex() : x)
+        .ToList();
 }

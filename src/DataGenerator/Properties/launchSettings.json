@@ -2,7 +2,7 @@
   "profiles": {
     "DataGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "extract \"D:\\Work\\SqlGenerator\\AA\\TestSheet.xlsx\" \"D:\\Work\\SqlGenerator\\AA\\TestSheet_data.csv\""
+      "commandLineArgs": "extract \"D:\\Work\\SqlGenerator\\AA\\TestSheet.xlsx\" \"D:\\Work\\SqlGenerator\\AA\\TestSheet_data.csv\" testdatatbl"
     }
   }
 }
