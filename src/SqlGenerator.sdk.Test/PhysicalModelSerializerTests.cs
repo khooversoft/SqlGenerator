@@ -10,7 +10,6 @@ public class PhysicalModelSerializerTests
     [Fact]
     public void GivenModel_WhenSerialized_WillRoundtrip()
     {
-        const int viewCount = 5;
         const int columnCount = 5;
         const int tableCount = 3;
         Random rnd = new Random();
@@ -23,47 +22,6 @@ public class PhysicalModelSerializerTests
                 new SchemaModel { Name = "protected", Security = Security.Restricted},
                 new SchemaModel { Name = "PII", Security = Security.PII},
             },
-            Views = Enumerable.Range(0, viewCount)
-                .Select(x => new ViewModel
-                {
-                    Name = new ObjectName
-                    {
-                        Schema = x switch
-                        {
-                            int v when v % 3 == 0 => "general",
-                            int v when v % 3 == 1 => "protected",
-                            int v when v % 3 == 2 => "PII",
-
-                            _ => throw new InvalidOperationException(),
-                        },
-                        Name = $"View_{x}",
-                    },
-                    Table = new ObjectName
-                    {
-                        Schema = x switch
-                        {
-                            int v when v % 3 == 0 => "general",
-                            int v when v % 3 == 1 => "protected",
-                            int v when v % 3 == 2 => "PII",
-
-                            _ => throw new InvalidOperationException(),
-                        },
-                        Name = $"Table_{x}",
-                    },
-                    Columns = Enumerable.Range(0, columnCount)
-                        .Select(y => new ColumnModel
-                        {
-                            Name = $"Column_{y}",
-                            Security = x switch
-                            {
-                                int v when v % 3 == 0 => Security.Unrestricted,
-                                int v when v % 3 == 1 => Security.Restricted,
-                                int v when v % 3 == 2 => Security.PII,
-
-                                _ => throw new InvalidOperationException(),
-                            },
-                        }).ToArray(),
-                }).ToArray(),
             Tables = Enumerable.Range(0, tableCount)
                 .Select(x => new TableModel
                 {
@@ -80,7 +38,7 @@ public class PhysicalModelSerializerTests
                         Name = $"Table_{x}",
                     },
                     Columns = Enumerable.Range(0, columnCount)
-                        .Select(y => new ColumnDefinitionModel
+                        .Select(y => new ColumnModel
                         {
                             Name = $"ColumnDef_{y}",
                             Security = x switch

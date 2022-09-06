@@ -10,17 +10,17 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Application;
 
-public record ImportOption
+public record SchemaOption
 {
     public IReadOnlyList<SchemaModel> Schemas { get; init; } = Array.Empty<SchemaModel>();
-    public IReadOnlyList<ColumnDefinitionModel> PrefixColumns { get; init; } = Array.Empty<ColumnDefinitionModel>();
-    public IReadOnlyList<ColumnDefinitionModel> SufixColumns { get; init; } = Array.Empty<ColumnDefinitionModel>();
+    public IReadOnlyList<ColumnModel> PrefixColumns { get; init; } = Array.Empty<ColumnModel>();
+    public IReadOnlyList<ColumnModel> SufixColumns { get; init; } = Array.Empty<ColumnModel>();
 }
 
 
 public static class ImportOptionBuilder
 {
-    public static ImportOption Verify(this ImportOption? subject)
+    public static SchemaOption Verify(this SchemaOption? subject)
     {
         subject.NotNull();
         subject.Schemas.NotNull();

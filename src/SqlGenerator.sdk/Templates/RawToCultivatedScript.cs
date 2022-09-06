@@ -147,32 +147,32 @@ DECLARE @pipeline_name AS NVARCHAR(260) = N'");
                     "vity_name, \'copy_cmd\', \'Source\', \'cultivated_schema_name\', \'clt_Neto\'),         " +
                     " \r\n(@activity_id, @activity_name, \'copy_cmd\', \'Source\', \'latest_version_orderby_" +
                     "mapping\', \'ASAP_SRC_FILEPATH\'),\r\n(@activity_id, @activity_name, \'copy_cmd\', \'Sou" +
-                    "rce\', \'ASAP_RecordEffectiveDateTime_mapping\', NULL),\r\n(@activity_id, @activity_n" +
-                    "ame, \'copy_cmd\', \'Source\', \'tgt_linked_service\', \'asap_syn\'),\r\n(@activity_id, @a" +
-                    "ctivity_name, \'copy_cmd\', \'Source\', \'parent_key\', \'LNUM\'),\r\n(@activity_id, @acti" +
-                    "vity_name, \'copy_cmd\', \'Source\', \'date_from_format\', \'YYYYMMDD_HHMMSS\');\r\n\r\nPRIN" +
-                    "T \'Merge Activity Parameter\';\r\n\r\nMERGE cntrl.activity_parameter tgt\r\nUSING #acti" +
-                    "vity_parameter src\r\nON tgt.activity_id = src.activity_id\r\n   AND tgt.activity_na" +
-                    "me = src.activity_name\r\n   AND tgt.activity_type = src.activity_type\r\n   AND tgt" +
-                    ".context = src.context\r\n   AND tgt.param_name = src.param_name\r\nWHEN MATCHED AND" +
-                    " ISNULL(tgt.param_value, \'0\') <> ISNULL(src.param_value, \'0\') THEN UPDATE SET\r\n " +
-                    "                                                                                " +
-                    "   tgt.param_value = src.param_value,\r\n                                         " +
-                    "                                           tgt.update_dttm = GETUTCDATE(),\r\n    " +
-                    "                                                                                " +
-                    "tgt.updated_by = SUSER_SNAME()\r\nWHEN NOT MATCHED THEN INSERT (activity_id, activ" +
-                    "ity_name, activity_type, context, param_name, param_value)\r\n                    " +
-                    "  VALUES\r\n                      (src.activity_id, src.activity_name, src.activit" +
-                    "y_type, src.context, src.param_name, src.param_value);\r\n\r\n/*********************" +
-                    "********************************\r\n--Data Object Parameters\r\n********************" +
-                    "**********************************/\r\nDROP TABLE IF EXISTS #data_object_parameter" +
-                    ";\r\n\r\nSELECT TOP 1\r\n       data_object_name,\r\n       activity_id,\r\n       activit" +
-                    "y_name,\r\n       is_enabled,\r\n       context,\r\n       param_name,\r\n       param_v" +
-                    "alue\r\nINTO\r\n #data_object_parameter\r\nFROM\r\n cntrl.data_object_parameter;\r\n\r\n\r\nTR" +
-                    "UNCATE TABLE #data_object_parameter;\r\n\r\nINSERT INTO #data_object_parameter (data" +
-                    "_object_name, activity_id, activity_name, is_enabled, context, param_name, param" +
-                    "_value)\r\nVALUES\r\n\r\n--Query Option 3: Lookup Column, generated in copy parameter\r" +
-                    "\n/************copy_into_test************/\r\n\r\n");
+                    "rce\', \'ASAP_RecordEffectiveDateTime_mapping\', \'ASAP_SRC_FILE_DATE\'),\r\n(@activity" +
+                    "_id, @activity_name, \'copy_cmd\', \'Source\', \'tgt_linked_service\', \'asap_syn\'),\r\n(" +
+                    "@activity_id, @activity_name, \'copy_cmd\', \'Source\', \'parent_key\', \'LNUM\'),\r\n(@ac" +
+                    "tivity_id, @activity_name, \'copy_cmd\', \'Source\', \'date_from_format\', \'YYYYMMDD_H" +
+                    "HMMSS\');\r\n\r\nPRINT \'Merge Activity Parameter\';\r\n\r\nMERGE cntrl.activity_parameter " +
+                    "tgt\r\nUSING #activity_parameter src\r\nON tgt.activity_id = src.activity_id\r\n   AND" +
+                    " tgt.activity_name = src.activity_name\r\n   AND tgt.activity_type = src.activity_" +
+                    "type\r\n   AND tgt.context = src.context\r\n   AND tgt.param_name = src.param_name\r\n" +
+                    "WHEN MATCHED AND ISNULL(tgt.param_value, \'0\') <> ISNULL(src.param_value, \'0\') TH" +
+                    "EN UPDATE SET\r\n                                                                 " +
+                    "                   tgt.param_value = src.param_value,\r\n                         " +
+                    "                                                           tgt.update_dttm = GET" +
+                    "UTCDATE(),\r\n                                                                    " +
+                    "                tgt.updated_by = SUSER_SNAME()\r\nWHEN NOT MATCHED THEN INSERT (ac" +
+                    "tivity_id, activity_name, activity_type, context, param_name, param_value)\r\n    " +
+                    "                  VALUES\r\n                      (src.activity_id, src.activity_n" +
+                    "ame, src.activity_type, src.context, src.param_name, src.param_value);\r\n\r\n/*****" +
+                    "************************************************\r\n--Data Object Parameters\r\n****" +
+                    "**************************************************/\r\nDROP TABLE IF EXISTS #data_" +
+                    "object_parameter;\r\n\r\nSELECT TOP 1\r\n       data_object_name,\r\n       activity_id," +
+                    "\r\n       activity_name,\r\n       is_enabled,\r\n       context,\r\n       param_name," +
+                    "\r\n       param_value\r\nINTO\r\n #data_object_parameter\r\nFROM\r\n cntrl.data_object_pa" +
+                    "rameter;\r\n\r\n\r\nTRUNCATE TABLE #data_object_parameter;\r\n\r\nINSERT INTO #data_object" +
+                    "_parameter (data_object_name, activity_id, activity_name, is_enabled, context, p" +
+                    "aram_name, param_value)\r\nVALUES\r\n\r\n--Query Option 3: Lookup Column, generated in" +
+                    " copy parameter\r\n/************copy_into_test************/\r\n\r\n");
             
             #line 212 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
 

@@ -23,6 +23,8 @@ public sealed record ObjectName
     }
 
     public override int GetHashCode() => HashCode.Combine(Schema, Name);
+
+    public static implicit operator string(ObjectName objectName) => objectName.ToString();
 }
 
 

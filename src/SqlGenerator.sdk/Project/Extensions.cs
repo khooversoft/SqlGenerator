@@ -19,7 +19,6 @@ public static class Extensions
         collection.AddSingleton<FilterSourceActivity>();
         collection.AddSingleton<GenerateSqlCodeActivity>();
         collection.AddSingleton<ModelActivity>();
-        collection.AddSingleton<ShortNameActivity>();
         collection.AddSingleton<FileStoreBuilder>();
         collection.AddSingleton<BuildDataDictionaryActivity>();
         collection.AddSingleton<MergeActivity>();

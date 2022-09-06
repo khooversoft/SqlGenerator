@@ -138,14 +138,34 @@ namespace Toolbox.Extensions
 
             foreach (var item in values)
             {
-                if (run)
-                {
-                    yield return separator;
-                }
+                if (run) yield return separator;
 
                 run = true;
                 yield return item;
             }
+        }
+
+        /// <summary>
+        /// Sequence join - separator is append to all but last element
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="values"></param>
+        /// <param name="separatorSelect"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> SequenceJoin<T>(this IEnumerable<T> values, Func<T, T> separatorSelect)
+        {
+            bool hasValue = false;
+            T save = default!;
+
+            foreach (var item in values)
+            {
+                if (hasValue) yield return separatorSelect(save);
+
+                hasValue = true;
+                save = item;
+            }
+
+            if (hasValue) yield return save;
         }
     }
 }

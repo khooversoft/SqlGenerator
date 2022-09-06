@@ -6,16 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Generator;
 
-//public enum BuildType
-//{
-//    UpdateOnly,
-//    Overwrite
-//}
+public enum BuildType
+{
+    SchemaOnly,
+    Overwrite
+}
 
 public class SqlInstructionBuilder
 {
@@ -30,38 +31,116 @@ public class SqlInstructionBuilder
 
     public SqlInstructionBuilder(PhysicalModel model) => _physicalModel = model.Verify();
 
-    public Instructions Build()
+    public Instructions Build(BuildType buildType)
     {
         var list = new Instructions();
 
         list += (InstructionType.PushFolder, "Schema");
-        list += _physicalModel.Schemas.Select(x => BuildSchemaModel(x));
+        list += _physicalModel.Schemas.Select(x => BuildSchemaModel(x, buildType));
         list += InstructionType.PopFolder;
 
-        foreach (var schema in _physicalModel.Schemas)
+        foreach (var schema in _physicalModel.Schemas.Where(x => x.Security.ForTable()))
         {
             list += (InstructionType.PushFolder, schema.Name);
 
-            list += (InstructionType.PushFolder, "Views");
-            list += _physicalModel.Views.Where(x => x.Name.Schema == schema.Name).Select(x => BuildViewModel(x));
-            list += InstructionType.PopFolder;
-
             list += (InstructionType.PushFolder, "Tables");
-            list += _physicalModel.Tables.Where(x => x.Name.Schema == schema.Name).Select(x => BuildTableModel(x));
-            list += InstructionType.PopFolder;
+            list += _physicalModel.Tables
+                .Where(x => x.Name.Schema == schema.Name)
+                .Select(x => BuildTableModel(x, buildType));
 
+            list += InstructionType.PopFolder;
+            list += InstructionType.PopFolder;
+        }
+
+        foreach (var schema in _physicalModel.Schemas.Where(x => x.Security.ForView()))
+        {
+            list += (InstructionType.PushFolder, schema.Name);
+            list += (InstructionType.PushFolder, "Views");
+
+            list += _physicalModel.Tables
+                .Select(x => BuildViewModel(x, buildType));
+
+            list += InstructionType.PopFolder;
             list += InstructionType.PopFolder;
         }
 
         return list;
     }
 
-    private Instructions BuildSchemaModel(SchemaModel schema)
+    private Instructions BuildSchemaModel(SchemaModel schema, BuildType buildType)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, $"{schema.Name}.sql");
-        list += $"CREATE SCHEMA {schema.Name};";
-        list += "GO";
+
+        list += buildType switch
+        {
+            BuildType.SchemaOnly => GetSchemaCommand(schema.Name).ToEnumerable(),
+
+            _ => new[]
+            {
+                $"IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{schema.Name}')",
+                "BEGIN",
+                "   " + GetSchemaCommand(schema.Name),
+                "END",
+                "GO",
+                "",
+            }
+        };
+
+        return list;
+
+        static string GetSchemaCommand(string name) => $"CREATE SCHEMA {name};";
+    }
+
+
+    private Instructions BuildTableModel(TableModel tableModel, BuildType buildType)
+    {
+        var list = new Instructions();
+        list += (InstructionType.Stream, tableModel.Name.CalculateFileName());
+
+        list += _headers;
+
+        list += buildType switch
+        {
+            BuildType.SchemaOnly => Array.Empty<string>(),
+            _ => new Sequence<string>()
+                + $"DROP TABLE IF EXISTS {tableModel.Name};"
+                + "GO"
+                + ""
+        };
+
+        list += $"CREATE TABLE {tableModel.Name}";
+        list += "(";
+        list += InstructionType.TabPlus;
+
+        IReadOnlyList<ColumnModel> columns = tableModel.Columns.Where(x => x.PrimaryKey)
+            .Concat(_physicalModel.PrefixColumns)
+            .Concat(tableModel.Columns.Where(x => !x.PrimaryKey))
+            .Concat(_physicalModel.SuffixColumns)
+            .ToList();
+
+        int maxNameColumnSize = columns.Max(x => x.Name.Length) + 6;
+
+        list += columns
+            .Select((x, i) => ColumnInstructions(x, i == columns.Count - 1, maxNameColumnSize))
+            .Func(x => new Instructions() + x);
+
+        list += InstructionType.TabMinus;
+        list += ")";
+
+        list += tableModel.IndexType switch
+        {
+            IndexType.Hash => new Sequence<string>()
+                                + HashIndexInstructions(tableModel)
+                                + ";",
+
+            IndexType.Cluster => new Sequence<string>()
+                                    + new[] { ";", "GO", string.Empty }
+                                    + ClusterIndexInstructions(tableModel)
+                                    + new[] { "GO", string.Empty },
+
+            _ => Array.Empty<string>(),
+        };
 
         return list;
     }
@@ -70,102 +149,66 @@ public class SqlInstructionBuilder
     //   Unrestricted view => both Restricted and PII columns are hashed
     //   Restricted view => only PII columns are hashed
     //   PII view => all columns are visible
-    private Instructions BuildViewModel(ViewModel viewModel)
-    {
-        var list = new Instructions();
-        list += (InstructionType.Stream, viewModel.Name.CalculateFileName());
-
-        list += _headers;
-        list += "";
-        list += $"CREATE VIEW {viewModel.Name}";
-        list += "AS";
-        list += InstructionType.TabPlus;
-        list += "SELECT";
-        list += InstructionType.TabPlus;
-
-        var columns = viewModel.Columns.Where(x => x.HashKey)
-            .Concat(GetColumns(_physicalModel.PrefixColumns))
-            .Concat(viewModel.Columns.Where(x => !x.HashKey))
-            .Concat(GetColumns(_physicalModel.SuffixColumns))
-            .ToList();
-
-        SchemaModel schemaModel = _physicalModel.GetSchemaModel(viewModel.Name.Schema).NotNull();
-
-        list += columns
-            .Select((x, i) => BuildColumnModel(x, i == columns.Count - 1, schemaModel))
-            .Func(x => new Instructions() + x);
-
-        list += InstructionType.TabMinus;
-        list += $"FROM {viewModel.Table} x";
-        list += $"WHERE x.[ASAP_DeleteDateTime] IS NOT NULL";
-        list += InstructionType.TabMinus;
-        list += ";";
-
-        return list;
-
-        IEnumerable<ColumnModel> GetColumns(IEnumerable<ColumnDefinitionModel> columns) => columns
-            .Where(x => !x.Private)
-            .Select(x => x.ToColumnModel());
-    }
-
-    private Instructions BuildTableModel(TableModel tableModel)
+    private Instructions BuildViewModel(TableModel tableModel, BuildType buildType)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, tableModel.Name.CalculateFileName());
 
         list += _headers;
-        list += $"CREATE TABLE {tableModel.Name}";
-        list += "(";
+
+        list += buildType switch
+        {
+            BuildType.SchemaOnly => Array.Empty<string>(),
+            _ => new Sequence<string>()
+                + $"DROP VIEW IF EXISTS {tableModel.Name};"
+                + "GO"
+                + ""
+        };
+
+        list += "";
+        list += $"CREATE VIEW {tableModel.Name}";
+        list += "AS";
+        list += InstructionType.TabPlus;
+        list += "SELECT";
         list += InstructionType.TabPlus;
 
-        IEnumerable<ColumnDefinitionModel> hashKeyColumns = tableModel.Columns.Where(x => x.HashKey);
+        var columns = tableModel.Columns.Where(x => x.PrimaryKey)
+            .Concat(_physicalModel.PrefixColumns.Where(x => !x.Private))
+            .Concat(tableModel.Columns.Where(x => !x.PrimaryKey))
+            .Concat(_physicalModel.SuffixColumns.Where(x => !x.PrimaryKey))
+            .ToArray();
 
-        IReadOnlyList <ColumnDefinitionModel> columns = hashKeyColumns
-            .Concat(_physicalModel.PrefixColumns)
-            .Concat(tableModel.Columns.Where(x => !x.HashKey))
-            .Concat(_physicalModel.SuffixColumns)
-            .ToList();
-
-        int maxNameColumnSize = columns.Max(x => x.Name.Length) + 6;
+        SchemaModel schemaModel = _physicalModel.GetSchemaModel(tableModel.Name.Schema).NotNull();
 
         list += columns
-            .Select((x, i) => BuildColumnDefinitionModel(x, i == columns.Count - 1, maxNameColumnSize))
-            .Func(x => new Instructions() + x);
+            .Select(x => BuildColumnModel(x, schemaModel))
+            .SequenceJoin(x => x += ",");
 
         list += InstructionType.TabMinus;
-        list += ")";
-
-
-        var hashColumns = tableModel.Columns.Where(x => x.HashKey)
-            .Concat(tableModel.Columns.Where(x => x.PrinaryKey))
-            .Take(1)
-            .Select(x => $"[{x.Name}]")
-            .Join(", ");
-
-        if (!hashColumns.IsEmpty())
-        {
-            list += $"WITH (DISTRIBUTION = HASH ({hashColumns}), CLUSTERED COLUMNSTORE INDEX)";
-        }
+        list += $"FROM {tableModel.Name} x";
+        list += $"WHERE x.[ASAP_DeleteDateTime] IS NOT NULL";
+        list += InstructionType.TabMinus;
         list += ";";
+
+        list += buildType switch
+        {
+            BuildType.SchemaOnly => Array.Empty<string>(),
+            _ => "GO".ToEnumerable(),
+        };
 
         return list;
     }
 
-    private Instruction BuildColumnModel(ColumnModel columnModel, bool last, SchemaModel schemaModel)
+    private string BuildColumnModel(ColumnModel columnModel, SchemaModel schemaModel)
     {
-        return new Instruction
+        return columnModel.Security switch
         {
-            Type = InstructionType.Code,
-            Text = columnModel.Security switch
-            {
-                Security.Unrestricted => formatNormal(columnModel.Name),
-                Security.Data => throw new ArgumentException("Data security"),
+            Security.Unrestricted => formatNormal(columnModel.Name),
+            Security.Data => throw new ArgumentException("Data security"),
 
-                Security v when v == schemaModel.Security => formatNormal(columnModel.Name),
+            Security v when v == schemaModel.Security => formatNormal(columnModel.Name),
 
-                _ => formatProtected(columnModel.Name),
-            }
-            + (last ? string.Empty : ","),
+            _ => formatProtected(columnModel.Name),
         };
 
 
@@ -174,7 +217,7 @@ public class SqlInstructionBuilder
         string formatProtected(string name) =>
             $"HASHBYTES('SHA2_256', {castAs(name, columnModel.DataType)})" + (displayAs().ToNullIfEmpty() ?? $" AS [{name}]");
 
-        string displayAs() => columnModel.DisplayAs switch
+        string displayAs() => columnModel.ShortName switch
         {
             null => string.Empty,
             string v when v.IsEmpty() => string.Empty,
@@ -200,7 +243,7 @@ public class SqlInstructionBuilder
         }
     }
 
-    private Instruction BuildColumnDefinitionModel(ColumnDefinitionModel columnDefModel, bool last, int maxColumnSize)
+    private Instruction ColumnInstructions(ColumnModel columnDefModel, bool last, int maxColumnSize)
     {
         const int maxDataTypeColumn = 20;
 
@@ -212,7 +255,7 @@ public class SqlInstructionBuilder
         {
             Type = InstructionType.Code,
             Text = new[]
-            { 
+            {
                 Format(column, maxColumnSize),
                 Format(dataType, maxDataTypeColumn),
                 nullable
@@ -221,4 +264,24 @@ public class SqlInstructionBuilder
 
         static string Format(string value, int columnSize) => value + (columnSize - value.Length).Func(x => x <= 0 ? string.Empty : new string(' ', x));
     }
+
+    static IEnumerable<string> HashIndexInstructions(TableModel tableModel) => tableModel.Columns
+        .Where(x => x.PrimaryKey)
+        .Concat(tableModel.Columns.Where(x => x.PrimaryKey))
+        .Take(1)
+        .Select(x => $"[{x.Name}]")
+        .Join(", ") switch
+    {
+        string v when v.IsEmpty() => Array.Empty<string>(),
+        string v => $"WITH (DISTRIBUTION = HASH ({v}), CLUSTERED COLUMNSTORE INDEX)".ToEnumerable(),
+    };
+
+    static IEnumerable<string> ClusterIndexInstructions(TableModel tableModel) => tableModel.Columns
+        .Where(x => x.PrimaryKey)
+        .Select(x => $"[{x.Name}]")
+        .Join(", ") switch
+    {
+        string v when v.IsEmpty() => Array.Empty<string>(),
+        string v => $"CREATE CLUSTERED INDEX {tableModel.Name}_ix on {tableModel.Name} ({v});".ToEnumerable(),
+    };
 }

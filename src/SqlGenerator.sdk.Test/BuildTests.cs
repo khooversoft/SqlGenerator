@@ -20,11 +20,6 @@ public class BuildTests
         (string baseFolder, string projectFile) = BuildTempFolder();
         ProjectOption projectOption = ProjectOptionBuilder.Read(projectFile);
 
-        projectOption = projectOption with
-        {
-            MasterFile = Path.Combine(baseFolder, "master.csv"),
-        };
-
         ProjectBuilder builder = new ServiceCollection()
             .AddProjectBuild()
             .AddLogging(x => x.AddDebug().AddFilter(x => true))
@@ -35,9 +30,7 @@ public class BuildTests
 
         context.SourceFile.Exists().Should().BeTrue();
         context.FilterFile.Exists().Should().BeTrue();
-        context.ShortNameFile.Exists().Should().BeTrue();
         context.ModelFile.Exists().Should().BeTrue();
-        File.Exists(projectOption.MasterFile).Should().BeTrue();
 
         Directory.Exists(context.BuildFolder).Should().BeTrue();
         Directory.Exists(context.ModelFolder).Should().BeTrue();

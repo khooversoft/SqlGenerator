@@ -30,7 +30,6 @@ public class FileSingleBuilder
         foreach (var item in instructionObjects.Items)
         {
             await item.Lines.ForEachAsync(async x => await writer.WriteLineAsync(x));
-            await writer.WriteLineAsync("GO");
             await writer.WriteLineAsync("");
             count++;
         }

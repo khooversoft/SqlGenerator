@@ -160,7 +160,7 @@ VALUES
 (@activity_id, @activity_name, 'copy_cmd', 'Source', 'ingest_schema', 'ing_Neto'),          
 (@activity_id, @activity_name, 'copy_cmd', 'Source', 'cultivated_schema_name', 'clt_Neto'),          
 (@activity_id, @activity_name, 'copy_cmd', 'Source', 'latest_version_orderby_mapping', 'ASAP_SRC_FILEPATH'),
-(@activity_id, @activity_name, 'copy_cmd', 'Source', 'ASAP_RecordEffectiveDateTime_mapping', NULL),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'ASAP_RecordEffectiveDateTime_mapping', 'ASAP_SRC_FILE_DATE'),
 (@activity_id, @activity_name, 'copy_cmd', 'Source', 'tgt_linked_service', 'asap_syn'),
 (@activity_id, @activity_name, 'copy_cmd', 'Source', 'parent_key', 'LNUM'),
 (@activity_id, @activity_name, 'copy_cmd', 'Source', 'date_from_format', 'YYYYMMDD_HHMMSS');

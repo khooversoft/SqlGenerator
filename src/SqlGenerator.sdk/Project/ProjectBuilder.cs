@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.CsvStore;
+using SqlGenerator.sdk.Generator;
 using SqlGenerator.sdk.Project.Activities;
 using Toolbox.Extensions;
+using Toolbox.Logging;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Project;
@@ -11,7 +13,6 @@ public partial class ProjectBuilder
 {
     private readonly ILogger<ProjectBuilder> _logger;
     private readonly FilterSourceActivity _filterSourceActivity;
-    private readonly ShortNameActivity _shortNameActivity;
     private readonly ModelActivity _modelActivity;
     private readonly GenerateSqlCodeActivity _generateSqlCodeActivity;
     private readonly BuildDataDictionaryActivity _buildDataDictionaryActivity;
@@ -21,7 +22,6 @@ public partial class ProjectBuilder
 
     public ProjectBuilder(
         FilterSourceActivity filterSourceActivity,
-        ShortNameActivity shortNameActivity,
         ModelActivity modelActivity,
         GenerateSqlCodeActivity generateSqlCodeActivity,
         BuildDataDictionaryActivity buildDataDictionaryActivity,
@@ -32,7 +32,6 @@ public partial class ProjectBuilder
         )
     {
         _filterSourceActivity = filterSourceActivity.NotNull();
-        _shortNameActivity = shortNameActivity.NotNull();
         _modelActivity = modelActivity.NotNull();
         _generateSqlCodeActivity = generateSqlCodeActivity.NotNull();
         _buildDataDictionaryActivity = buildDataDictionaryActivity.NotNull();
@@ -57,10 +56,8 @@ public partial class ProjectBuilder
 
         Setup(context);
         await BuildFilteredFile(context);
-        await BuildShortFile(context);
-        await CreateMasterFile(context);
-        await BuildDataDictionary(context);
         await BuildModel(context);
+        await BuildDataDictionary(context);
         await GenerateSql(context);
         await GenerateUspLoadTable(context);
         await GenerateRawToCultivated(context);
@@ -87,7 +84,6 @@ public partial class ProjectBuilder
 
         _logger.LogInformation("--force specified, cleaning work files");
         context.FilterFile.Delete();
-        context.ShortNameFile.Delete();
         context.ModelFile.Delete();
         context.DataDictionaryFile.Delete();
     }
@@ -110,100 +106,22 @@ public partial class ProjectBuilder
         context.Counters.Add(counters);
     }
 
-    private async Task BuildShortFile(Context context)
-    {
-        if (context.ProjectOption.NameMapFile.IsEmpty())
-        {
-            _logger.LogWarning("Skipping name shorting, no name map file specified.");
-            return;
-        }
-
-        if (context.ProjectOption.ShortNameMaxSize == null)
-        {
-            _logger.LogInformation("Skipping name shorting, no max size specified.");
-            return;
-        }
-
-        // Get source file in priority order
-        ConfigFile sourceFile = context switch
-        {
-            Context v when v.FilterFile.Exists() => v.FilterFile,
-            Context v when v.SourceFile.Exists() => v.SourceFile,
-
-            _ => throw new InvalidOperationException(),
-        };
-
-        if (sourceFile.GetLastUpdateDate() > context.ShortNameFile.GetLastUpdateDate())
-        {
-            _logger.LogInformation("Skipping building short name file, file is up to date");
-            return;
-        }
-
-        var counters = await _shortNameActivity.AddShortName(
-            sourceFile,
-            context.ProjectOption.NameMapFile,
-            (int)context.ProjectOption.ShortNameMaxSize,
-            context.ShortNameFile
-            );
-        context.Counters.Add(counters);
-    }
-
-    private async Task CreateMasterFile(Context context)
-    {
-        ConfigFile sourceFile = context switch
-        {
-            Context v when v.ShortNameFile.Exists() => v.ShortNameFile,
-            Context v when v.FilterFile.Exists() => v.FilterFile,
-            Context v when v.SourceFile.Exists() => v.SourceFile,
-
-            _ => throw new InvalidOperationException(),
-        };
-
-        if (!context.MasterFile.Exists())
-        {
-            _logger.LogInformation("Copying result file {sourceFile} to master {masterFile}", sourceFile, context.MasterFile);
-            File.Copy(sourceFile, context.MasterFile, false);
-            return;
-        }
-
-        // Backup master file first
-        string backupFile = DirectoryTool.BackupFile(context.MasterFile, context.BackupFolder);
-        _logger.LogInformation("Backup master file {file} to {backupFile}", context.MasterFile, backupFile);
-
-        // Copy source to master file, and merge current settings from the backup file
-        File.Copy(sourceFile, context.MasterFile, true);
-
-        _logger.LogInformation("Creating master {file} with settings from previous master file", context.MasterFile);
-        await _mergeActivity.Merge(backupFile, context.MasterFile);
-    }
-
-    private async Task BuildDataDictionary(Context context)
-    {
-        ConfigFile sourceFile = context switch
-        {
-            Context v when v.MasterFile.Exists() => v.MasterFile,
-            Context v when v.ShortNameFile.Exists() => v.ShortNameFile,
-            Context v when v.FilterFile.Exists() => v.FilterFile,
-            Context v when v.SourceFile.Exists() => v.SourceFile,
-
-            _ => throw new InvalidOperationException(),
-        };
-
-        await _buildDataDictionaryActivity.Build(sourceFile, context.DataDictionaryFile);
-    }
-
     private async Task BuildModel(Context context)
     {
         if (context.ProjectOption.OptionFile.IsEmpty())
         {
             _logger.LogWarning("Skipping building model, no option file was specified.");
             return;
+        } 
+        
+        if (context.ProjectOption.NameMapFile.IsEmpty())
+        {
+            _logger.LogWarning("Skipping, NameMapFile has not been specified.");
+            return;
         }
 
         ConfigFile sourceFile = context switch
         {
-            Context v when v.MasterFile.Exists() => v.MasterFile,
-            Context v when v.ShortNameFile.Exists() => v.ShortNameFile,
             Context v when v.FilterFile.Exists() => v.FilterFile,
             Context v when v.SourceFile.Exists() => v.SourceFile,
 
@@ -211,10 +129,22 @@ public partial class ProjectBuilder
         };
 
         _logger.LogInformation("Reading option {file} file", context.ProjectOption.OptionFile);
-        ImportOption importOption = context.GetImportOption(_logger);
+        SchemaOption schemaOption = context.GetSchemaOption(_logger);
 
-        Counters counters = await _modelActivity.Build(sourceFile, importOption, context.ModelFile);
+        Counters counters = await _modelActivity.Build(sourceFile, schemaOption, context.ModelFile, context.ProjectOption.NameMapFile);
         context.Counters.Add(counters);
+    }
+
+    private async Task BuildDataDictionary(Context context)
+    {
+        if (!context.ModelFile.Exists())
+        {
+            _logger.LogWarning("Model file {file} does not exist, skipping", context.ModelFile);
+            return;
+
+        }
+
+        await _buildDataDictionaryActivity.Build(context.ModelFile, context.DataDictionaryFile);
     }
 
     private async Task GenerateSql(Context context)
@@ -265,7 +195,7 @@ public partial class ProjectBuilder
     private Context CreateContext(string projectFile, ProjectOption projectOption, ConfigFile sourceFile, bool force)
     {
         var context = projectOption.CreateContext(projectFile, sourceFile, force);
-        context.LogProperties(_logger);
+        context.LogProperties("Build properties...", _logger);
         return context;
     }
 }

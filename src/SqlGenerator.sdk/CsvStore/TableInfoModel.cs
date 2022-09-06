@@ -28,14 +28,6 @@ public record TableInfoModel
     [Name("PII")]
     [Optional]
     public string? PII { get; init; }
-
-    [Name("HashKey")]
-    [Optional]
-    public string? HashKey { get; init; }
-
-    [Name("ShortName")]
-    [Optional]
-    public string? ShortName { get; init; }
 }
 
 
@@ -52,8 +44,6 @@ public static class TableInfoModelExtensions
             PrimaryKey = IsYes(subject.PrimaryKey),
             Restricted = IsYes(subject.Restricted),
             PII = IsYes(subject.PII),
-            HashKey = IsYes(subject.HashKey),
-            ShortName = subject.ShortName,
         };
 
         static bool IsNotNull(string? value) => value?.Equals("not null", StringComparison.OrdinalIgnoreCase) ?? false;

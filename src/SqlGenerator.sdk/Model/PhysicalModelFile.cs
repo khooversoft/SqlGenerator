@@ -5,7 +5,7 @@ namespace SqlGenerator.sdk.Model;
 
 public static class PhysicalModelFile
 {
-    public static void WriteToFile(this PhysicalModel model, string fileName) => File.WriteAllText(fileName, model.ToJsonFormat());
+    public static void Write(this PhysicalModel model, string fileName) => File.WriteAllText(fileName, model.ToJsonFormat());
 
     public static PhysicalModel Read(string fileName) => File.ReadAllText(fileName)
         .NotNull()

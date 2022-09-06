@@ -19,7 +19,7 @@ internal class ImportOptionActivity
 
         _logger.LogInformation("Writing option file {configFile} for model {modelName}", configFile, modelName);
 
-        var config = new ImportOption
+        var config = new SchemaOption
         {
             Schemas = new[]
             {
@@ -33,8 +33,8 @@ internal class ImportOptionActivity
                 new SchemaModel { Security = Security.Restricted, Name = $"{modelName}_restricted", Format = "Vw_sas_{tableName}", MaxColumnSize=32 },
                 new SchemaModel { Security = Security.PII, Name = $"{modelName}_pii", Format = "Vw_sas_{tableName}", MaxColumnSize=32 },
             },
-            PrefixColumns = ImportOptionDefaults.Prefix.ToArray(),
-            SufixColumns = ImportOptionDefaults.Sufix.ToArray(),
+            PrefixColumns = SchemaOptionDefaults.Prefix.ToArray(),
+            SufixColumns = SchemaOptionDefaults.Sufix.ToArray(),
         };
 
         _logger.LogInformation("Writing default option configuration file to {file}", configFile);

@@ -41,13 +41,6 @@ public record TableInfoExportModel
 
     [Name("PII")]
     public string? PII { get; init; }
-
-    [Name("HashKey")]
-    public string? HashKey { get; init; }
-
-    [Name("ShortName")]
-    [Optional]
-    public string? ShortName { get; init; }
 }
 
 
@@ -68,8 +61,6 @@ public static class TableInfoExportModelExtensions
             PrimaryKey = subject.PrimaryKey,
             Restricted = subject.Restricted,
             PII = subject.PII,
-            HashKey = subject.HashKey,
-            ShortName = subject.ShortName,
         };
     }
 }

@@ -29,7 +29,7 @@ public class UspLoadTableMetaBuilder
 
         var tables = _physicalModel.Tables
             .SelectMany(x =>
-                x.Columns.Where(y => y.PrinaryKey).OrderBy(x => x.ColumnIndex),
+                x.Columns.Where(y => y.PrimaryKey).OrderBy(x => x.ColumnIndex),
                 (o, i) => (TableName: o.Name.Name, Column: i)
             )
             .OrderBy(x => x.TableName)
@@ -40,7 +40,7 @@ public class UspLoadTableMetaBuilder
             list += $"INSERT INTO {uspLoadTableOption.DataTableName} (DataLayer, TableName, ColumnName, ColumnOrder)";
 
             list += table
-                .Select(x => $"SELECT '{uspLoadTableOption.DataLayerName}', '{x.TableName}', '{x.Column.Name}', {x.Column.ColumnIndex}")
+                .Select(x => $"SELECT '{uspLoadTableOption.DataLayerName}', '{x.TableName}', '{x.Column.Name}', {x.Column.ColumnIndex + 1}")
                 .SequenceJoin("UNION ALL")
                 .ToList();
 

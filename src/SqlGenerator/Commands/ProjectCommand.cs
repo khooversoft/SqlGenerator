@@ -6,6 +6,7 @@ using System;
 using System.CommandLine;
 using System.CommandLine.Binding;
 using System.Diagnostics;
+using Toolbox.Logging;
 using Toolbox.Tools;
 
 namespace SqlGenerator.Commands;
@@ -22,7 +23,6 @@ internal class ProjectCommand : Command
 
         AddCommand(SetSourceFile(serviceProvider));
         AddCommand(SetOptionFile(serviceProvider));
-        AddCommand(SetMasterFile(serviceProvider));
         AddCommand(SetBuildFolder(serviceProvider));
         AddCommand(Filter(serviceProvider));
         AddCommand(ShortNameOptions(serviceProvider));
@@ -76,27 +76,6 @@ internal class ProjectCommand : Command
         return command;
     }
 
-    private Command SetMasterFile(IServiceProvider serviceProvider)
-    {
-        var projectFile = NewProjectFileArgument();
-        Argument<string> masterFile = new("masterFile", "Name of master file to create from source");
-
-        var command = new Command("MasterFile", "Set source file")
-        {
-            projectFile,
-            masterFile,
-        };
-
-        command.SetHandler(async (string projectFile, string file) =>
-        {
-            await serviceProvider
-                .GetRequiredService<ProjectOptionActivity>()
-                .SetMasterFile(projectFile, file);
-        }, projectFile, masterFile);
-
-        return command;
-    }
-
     private Command SetBuildFolder(IServiceProvider serviceProvider)
     {
         var projectFile = NewProjectFileArgument();
@@ -143,21 +122,19 @@ internal class ProjectCommand : Command
     {
         Argument<string> projectFile = new("projectFile", "Project file to read or create (extension is *.project.json");
         Argument<string> nameMapFile = new("nameMapFile", "File to the long to short dictionary, used to create short names");
-        Argument<int> shortMaxSize = new("shortMaxSize", "Max column name size for short name.");
 
         var command = new Command("ShortName", "Set details to generate short names")
         {
             projectFile,
             nameMapFile,
-            shortMaxSize
         };
 
-        command.SetHandler(async (string projectFile, string nameMapFile, int shortMaxSize) =>
+        command.SetHandler(async (string projectFile, string nameMapFile) =>
         {
             await serviceProvider
                 .GetRequiredService<ProjectOptionActivity>()
-                .SetNameMap(projectFile, nameMapFile, shortMaxSize);
-        }, projectFile, nameMapFile, shortMaxSize);
+                .SetNameMap(projectFile, nameMapFile);
+        }, projectFile, nameMapFile);
 
         return command;
     }
@@ -229,7 +206,7 @@ internal class ProjectCommand : Command
             serviceProvider
                 .GetRequiredService<ProjectOptionActivity>()
                 .Read(projectFile)
-                .LogProperties(_logger);
+                .LogProperties("Options...", _logger);
 
         }, projectFile);
 

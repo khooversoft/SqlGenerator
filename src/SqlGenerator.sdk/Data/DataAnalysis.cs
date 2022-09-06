@@ -11,7 +11,7 @@ using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.Excel;
+namespace SqlGenerator.sdk.Data;
 
 public class DataAnalysis
 {
@@ -52,7 +52,7 @@ public class DataAnalysis
         .Where(x => x.Count == areaColumnCount)
         .ToList();
 
-    private StringTable GetTableData(IReadOnlyList<StringRow> rows, string? firstColumnText)
+    private StringTable GetTableData(IReadOnlyList<StringRow> rows, string firstColumnText)
     {
         var table = new StringTable(true) + rows
             .SkipWhile(x => !MatchFirstColumn(x.First(), firstColumnText))
@@ -81,7 +81,7 @@ public class DataAnalysis
         return tableInfos;
     }
 
-    private static bool MatchFirstColumn(string column, string? firstColumnText) => firstColumnText?.Split('*') switch
+    private static bool MatchFirstColumn(string column, string firstColumnText) => firstColumnText.Split('*') switch
     {
         null => false,
         string[] v when v.Length == 1 => column.StartsWith(v[0]),

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.CsvStore;
+using SqlGenerator.sdk.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,27 @@ public class BuildDataDictionaryActivity
 
     public BuildDataDictionaryActivity(ILogger<BuildDataDictionaryActivity> logger) => _logger = logger;
 
-    public Task Build(string sourceFile, string outputFile)
+    public Task Build(string modelFile, string outputFile)
     {
-        sourceFile.NotEmpty();
+        modelFile.NotEmpty();
         outputFile.NotNull();
 
-        _logger.LogInformation("Building data dictionary {file} from {sourceFile}", outputFile, sourceFile);
+        _logger.LogInformation("Building data dictionary {file} from model {modelFile}", outputFile, modelFile);
 
-        IReadOnlyList<TableInfo> tableInfos = CsvFile.Read(sourceFile);
+        PhysicalModel model = PhysicalModelFile.Read(modelFile);
+
+        IReadOnlyList<TableInfo> tableInfos = model.Tables
+            .SelectMany(x => x.Columns, (o, i) => (table: o, column: i))
+            .Select(x => new TableInfo
+            {
+                TableName = x.table.Name.Name,
+                ColumnName = x.column.Name,
+                DataType = x.column.DataType,
+                NotNull = x.column.NotNull,
+                PrimaryKey = x.column.PrimaryKey,
+                Restricted = x.column.Restricted,
+                PII = x.column.PII,
+            }).ToList();
 
         var tableColumns = tableInfos
             .GroupBy(x => x.TableName)

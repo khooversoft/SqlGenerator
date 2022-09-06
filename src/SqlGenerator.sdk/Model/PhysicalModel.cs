@@ -15,22 +15,19 @@ public sealed record PhysicalModel
 {
     public IReadOnlyList<SchemaModel> Schemas { get; init; } = Array.Empty<SchemaModel>();
     public IReadOnlyList<TableModel> Tables { get; init; } = Array.Empty<TableModel>();
-    public IReadOnlyList<ViewModel> Views { get; init; } = Array.Empty<ViewModel>();
-    public IReadOnlyList<ColumnDefinitionModel> PrefixColumns { get; init;} = Array.Empty<ColumnDefinitionModel>();
-    public IReadOnlyList<ColumnDefinitionModel> SuffixColumns { get; init; } = Array.Empty<ColumnDefinitionModel>();
+    public IReadOnlyList<ColumnModel> PrefixColumns { get; init;} = Array.Empty<ColumnModel>();
+    public IReadOnlyList<ColumnModel> SuffixColumns { get; init; } = Array.Empty<ColumnModel>();
 
     public bool Equals(PhysicalModel? obj)
     {
         return obj is PhysicalModel model &&
             Schemas.Count == model.Schemas.Count &&
             Schemas.Zip(model.Schemas).All(x => x.First == x.Second) &&
-            Views.Count == model.Views.Count &&
-            Views.Zip(model.Views).All(x => x.First == x.Second) &&
             Tables.Count == model.Tables.Count &&
             Tables.Zip(model.Tables).All(x => x.First == x.Second);
     }
 
-    public override int GetHashCode() => HashCode.Combine(Schemas, Views, Tables);
+    public override int GetHashCode() => HashCode.Combine(Schemas, Tables);
 }
 
 
@@ -40,10 +37,8 @@ public static class PhysicalModelExtensions
     {
         subject.NotNull();
         subject.NotNull().Schemas.ForEach(x => x.Verify());
-        subject.NotNull().Views.ForEach(x => x.Verify());
         subject.NotNull().Tables.ForEach(x => x.Verify());
 
-        subject.Views.ForEach(x => subject.IsSchemaPresent(x.Name.Schema).Assert(x => x == true, $"Schema={x.Name.Schema} not found"));
         subject.Tables.ForEach(x => subject.IsSchemaPresent(x.Name.Schema).Assert(x => x == true, $"Schema={x.Name.Schema} not found"));
 
         return subject;
@@ -53,12 +48,10 @@ public static class PhysicalModelExtensions
     {
         ("Schema count", model.Schemas.Count),
         ("Table count", model.Tables.Count),
-        ("View count", model.Views.Count),
         ("Prefix columns count", model.PrefixColumns.Count),
         ("Suffix columns count", model.SuffixColumns.Count),
     };
 
     public static bool IsSchemaPresent(this PhysicalModel subject, string name) => subject.GetSchemaModel(name) != null;
     public static SchemaModel? GetSchemaModel(this PhysicalModel subject, string name) => subject.Schemas.FirstOrDefault(x => x.Name == name);
-    public static TableModel? GetTableModel(this PhysicalModel subject, string name) => subject.Tables.FirstOrDefault(x => x.Name.Name == name);
 }

@@ -16,7 +16,6 @@ public static class ProjectOptionBuilder
             OptionFile = ToFullPath(projectFile, x.OptionFile),
             NameMapFile = ToFullPath(projectFile, x.NameMapFile),
             TableListFile = ToFullPath(projectFile, x.TableListFile),
-            MasterFile = ToFullPath(projectFile, x.MasterFile),
         })
         .Verify();
 

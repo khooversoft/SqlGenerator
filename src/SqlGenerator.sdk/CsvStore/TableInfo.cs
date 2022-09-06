@@ -12,8 +12,6 @@ public record TableInfo
     public bool PrimaryKey { get; init; }
     public bool Restricted { get; init; }
     public bool PII { get; init; }
-    public bool HashKey { get; init; }
-    public string? ShortName { get; init; }
 }
 
 
@@ -30,8 +28,6 @@ public static class TableInfoExtensions
             PrimaryKey = subject.PrimaryKey ? "Yes" : null,
             Restricted = subject.Restricted ? "Yes" : null,
             PII = subject.PII ? "Yes" : null,
-            HashKey = subject.HashKey ? "Yes" : null,
-            ShortName = subject.ShortName,
         };
     }
 

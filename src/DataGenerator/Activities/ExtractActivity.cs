@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.CsvStore;
+using SqlGenerator.sdk.Data;
 using SqlGenerator.sdk.Excel;
 using Toolbox.Data;
 using Toolbox.Extensions;
+using Toolbox.Logging;
 using Toolbox.Tools;
 
 namespace DataGenerator.Activities;
@@ -60,11 +62,7 @@ internal class ExtractActivity
             return null;
         }
 
-        analysis.GetConfigurationValues()
-            .Select(x => $"{x.Key}={x.Value}")
-            .Prepend("Analysis result...")
-            .Join(Environment.NewLine)
-            .Action(x => _logger.LogInformation("Analysis Result: " + x));
+        analysis.LogProperties("Analysis result...", _logger);
 
         return analysis;
     }

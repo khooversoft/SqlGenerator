@@ -31,11 +31,6 @@ internal class ProjectOptionActivity
         OptionFile = optionFile == null ? null : GetRelativePath(optionFile, basePath) ?? x.OptionFile,
     });
 
-    public Task SetMasterFile(string projectFileReference, string? masterFile) => SetValue(projectFileReference, (x, basePath) => x with
-    {
-        MasterFile = masterFile == null ? null : GetRelativePath(masterFile, basePath) ?? x.MasterFile,
-    });
-
     public Task SetBuildFolder(string projectFileReference, string? buildFolder) => SetValue(projectFileReference, (x, basePath) => x with
     {
         BuildFolder = buildFolder == null ? null : GetRelativePath(buildFolder, basePath) ?? x.BuildFolder,
@@ -46,10 +41,9 @@ internal class ProjectOptionActivity
         TableListFile = tableListFile == null ? null : GetRelativePath(tableListFile, basePath) ?? x.TableListFile,
     });
 
-    public Task SetNameMap(string projectFileReference, string? nameMapFile, int maxSize) => SetValue(projectFileReference, (x, basePath) => x with
+    public Task SetNameMap(string projectFileReference, string? nameMapFile) => SetValue(projectFileReference, (x, basePath) => x with
     {
         NameMapFile = nameMapFile == null ? null : GetRelativePath(nameMapFile, basePath) ?? x.NameMapFile,
-        ShortNameMaxSize = nameMapFile == null ? null : maxSize,
     });
 
     public Task SetUspLoadTableOption(string projectFileReference, string outputFile, string? dataTableName, string? dataLayerName)

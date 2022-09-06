@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Toolbox.Data;
 
-namespace SqlGenerator.sdk.Excel;
+namespace SqlGenerator.sdk.Data;
 
 public record AnalysisResult
 {

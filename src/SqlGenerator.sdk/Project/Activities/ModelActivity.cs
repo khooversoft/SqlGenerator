@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Toolbox.Extensions;
+using Toolbox.Logging;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Project.Activities;
@@ -18,18 +19,25 @@ public class ModelActivity
     private readonly ILogger<ModelActivity> _logger;
     public ModelActivity(ILogger<ModelActivity> logger) => _logger = logger.NotNull();
 
-    public Task<Counters> Build(string sourceFile, ImportOption importOption, string outputFile)
+    public Task<Counters> Build(string sourceFile, SchemaOption schemaOption, string outputFile, string nameMapFile)
     {
         sourceFile.NotEmpty();
-        importOption.NotNull();
+        schemaOption.NotNull();
         outputFile.NotEmpty();
+        nameMapFile.NotEmpty();
 
-        _logger.LogInformation("Creating model {outputFile} for {sourceFile}", outputFile, sourceFile);
+        var x = new
+        {
+            Source = sourceFile,
+            Output = outputFile,
+            NameMapFile = nameMapFile,
+        }.Action(x => _logger.LogProperties("Building model...", x));
 
         var infos = CsvFile.Read(sourceFile);
-        var model = new PhysicalModelBuilder().Build(infos, importOption);
+        var nameMaps = NameMapRecordFile.Read(nameMapFile);
 
-        model.WriteToFile(outputFile);
+        var model = new PhysicalModelBuilder().Build(infos, schemaOption, nameMaps);
+        model.Write(outputFile);
 
         var counters = new Counters(nameof(ModelActivity))
         {
