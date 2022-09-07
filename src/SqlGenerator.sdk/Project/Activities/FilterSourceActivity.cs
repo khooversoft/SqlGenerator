@@ -16,12 +16,12 @@ public class FilterSourceActivity
 
     public FilterSourceActivity(ILogger<FilterSourceActivity> logger) => _logger = logger.NotNull();
 
-    public Task<Counters> Filter(string sourceFile, string tableListFile, string? outputFile)
+    public Task<Counters> Filter(string sourceFile, string tableListFile, string outputFile)
     {
         sourceFile.NotEmpty();
         tableListFile.NotEmpty();
+        outputFile.NotEmpty();
 
-        outputFile = outputFile ?? sourceFile;
         using var ls = _logger.LogEntryExit();
 
         string logLine = new[]

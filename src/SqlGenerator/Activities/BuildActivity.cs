@@ -21,7 +21,7 @@ internal class BuildActivity
         projectFile.NotEmpty().Assert(x => File.Exists(x), x => $"File {x} does not exist");
 
         _logger.LogInformation("Building project {projectFile}", projectFile);
-        ProjectOption projectOption = ProjectOptionBuilder.Read(projectFile);
+        ProjectOption projectOption = ProjectOptionFile.Read(projectFile);
 
         Context context = await _projectBuilder.Build(projectFile, projectOption, force, useSource);
 

@@ -24,12 +24,15 @@ public static class Extensions
         return builder;
     }
 
-    public static void LogProperties<T>(this ILogger logger, string title, T value) where T : class =>
-        value.NotNull().GetConfigurationValues()
+    public static T LogProperties<T>(this T value, string title, ILogger logger) where T : class
+    {
+        value.NotNull()
+            .GetConfigurationValues()
             .Select(x => $"   {x.Key}={x.Value}")
             .Prepend(title.NotEmpty())
             .Join(Environment.NewLine)
             .Action(x => logger.LogInformation(x));
 
-    public static void LogProperties<T>(this T value, string title, ILogger logger) where T : class => logger.NotNull().LogProperties(title, value);
+        return value;
+    }
 }

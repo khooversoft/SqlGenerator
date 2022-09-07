@@ -6,13 +6,13 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.Activities;
 
-internal class ImportOptionActivity
+internal class DefaultOptionActivity
 {
-    private readonly ILogger<ImportOptionActivity> _logger;
+    private readonly ILogger<DefaultOptionActivity> _logger;
 
-    public ImportOptionActivity(ILogger<ImportOptionActivity> logger) => _logger = logger.NotNull();
+    public DefaultOptionActivity(ILogger<DefaultOptionActivity> logger) => _logger = logger.NotNull();
 
-    public async Task Generate(string configFile, string modelName)
+    public async Task WriteDefaultSchemaOption(string configFile, string modelName)
     {
         configFile.NotEmpty();
         modelName.NotEmpty();
@@ -39,5 +39,35 @@ internal class ImportOptionActivity
 
         _logger.LogInformation("Writing default option configuration file to {file}", configFile);
         await File.WriteAllTextAsync(configFile, config.ToJsonFormat());
+    }
+
+    public async Task WriteDefaultClassificationOption(string classificationFile)
+    {
+        var option = new ClassificationOption
+        {
+            Protection = new[]
+            {
+                new ClassificationRecord
+                {
+                    ColumnNameMatch = "{tableName}.{columnName}",
+                    PII = true,
+                    Restricted = false,
+                },
+                new ClassificationRecord
+                {
+                    ColumnNameMatch = "*.{columnName}",
+                    PII = true,
+                    Restricted = false,
+                },
+                new ClassificationRecord
+                {
+                    ColumnNameMatch = "*.*num*",
+                    PII = true,
+                    Restricted = false,
+                },                
+            },
+        };
+
+        await option.WriteAsync(classificationFile);
     }
 }

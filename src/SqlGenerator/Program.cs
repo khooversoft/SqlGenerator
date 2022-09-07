@@ -72,7 +72,7 @@ ServiceProvider BuildContainer()
 
     service.AddSingleton<ProjectOptionActivity>();
     service.AddSingleton<BuildActivity>();
-    service.AddSingleton<ImportOptionActivity>();
+    service.AddSingleton<DefaultOptionActivity>();
     service.AddSingleton<MergeActivity>();
     service.AddProjectBuild();
 

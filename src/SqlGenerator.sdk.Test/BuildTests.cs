@@ -18,7 +18,7 @@ public class BuildTests
     public async Task GivenSampleCsv_WhenBuild_ShouldPass()
     {
         (string baseFolder, string projectFile) = BuildTempFolder();
-        ProjectOption projectOption = ProjectOptionBuilder.Read(projectFile);
+        ProjectOption projectOption = ProjectOptionFile.Read(projectFile);
 
         ProjectBuilder builder = new ServiceCollection()
             .AddProjectBuild()

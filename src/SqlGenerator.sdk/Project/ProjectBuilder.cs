@@ -19,9 +19,11 @@ public partial class ProjectBuilder
     private readonly MergeActivity _mergeActivity;
     private readonly UspLoadTableMetaActivity _uspLoadTableMetaActivity;
     private readonly RawToCultivatedActivity _rawToCultivatedActivity;
+    private readonly ClassificationActivity _classificationActivity;
 
     public ProjectBuilder(
         FilterSourceActivity filterSourceActivity,
+        ClassificationActivity classificationActivity,
         ModelActivity modelActivity,
         GenerateSqlCodeActivity generateSqlCodeActivity,
         BuildDataDictionaryActivity buildDataDictionaryActivity,
@@ -32,6 +34,7 @@ public partial class ProjectBuilder
         )
     {
         _filterSourceActivity = filterSourceActivity.NotNull();
+        _classificationActivity = classificationActivity.NotNull();
         _modelActivity = modelActivity.NotNull();
         _generateSqlCodeActivity = generateSqlCodeActivity.NotNull();
         _buildDataDictionaryActivity = buildDataDictionaryActivity.NotNull();
@@ -56,6 +59,7 @@ public partial class ProjectBuilder
 
         Setup(context);
         await BuildFilteredFile(context);
+        await BuildClassificationFile(context);
         await BuildModel(context);
         await BuildDataDictionary(context);
         await GenerateSql(context);
@@ -78,7 +82,6 @@ public partial class ProjectBuilder
     {
         DirectoryTool.ClearDirectory(context.BuildFolder);
         DirectoryTool.ClearDirectory(context.ModelFolder);
-        Directory.CreateDirectory(context.BackupFolder);
 
         if (!context.Force) return;
 
@@ -106,6 +109,27 @@ public partial class ProjectBuilder
         context.Counters.Add(counters);
     }
 
+    private async Task BuildClassificationFile(Context context)
+    {
+        if (context.ProjectOption.ClassificationFile.IsEmpty())
+        {
+            _logger.LogWarning("Skipping building filtered file, no table list file is specified in project file.");
+            return;
+        }
+
+        ConfigFile sourceFile = context switch
+        {
+            Context v when v.ClassificationFile.Exists() => v.ClassificationFile,
+            Context v when v.FilterFile.Exists() => v.FilterFile,
+            Context v when v.SourceFile.Exists() => v.SourceFile,
+
+            _ => throw new InvalidOperationException(),
+        };
+
+        Counters counters = await _classificationActivity.Classify(sourceFile, context.ProjectOption.ClassificationFile, context.ClassificationFile);
+        context.Counters.Add(counters);
+    }
+
     private async Task BuildModel(Context context)
     {
         if (context.ProjectOption.OptionFile.IsEmpty())
@@ -122,6 +146,7 @@ public partial class ProjectBuilder
 
         ConfigFile sourceFile = context switch
         {
+            Context v when v.ClassificationFile.Exists() => v.ClassificationFile,
             Context v when v.FilterFile.Exists() => v.FilterFile,
             Context v when v.SourceFile.Exists() => v.SourceFile,
 

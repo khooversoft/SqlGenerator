@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Tools;
@@ -52,13 +53,13 @@ public class SqlInstructionBuilder
             list += InstructionType.PopFolder;
         }
 
-        foreach (var schema in _physicalModel.Schemas.Where(x => x.Security.ForView()))
+        foreach (SchemaModel schema in _physicalModel.Schemas.Where(x => x.Security.ForView()))
         {
             list += (InstructionType.PushFolder, schema.Name);
             list += (InstructionType.PushFolder, "Views");
 
             list += _physicalModel.Tables
-                .Select(x => BuildViewModel(x, buildType));
+                .Select(x => BuildViewModel(x, buildType, schema));
 
             list += InstructionType.PopFolder;
             list += InstructionType.PopFolder;
@@ -74,7 +75,7 @@ public class SqlInstructionBuilder
 
         list += buildType switch
         {
-            BuildType.SchemaOnly => GetSchemaCommand(schema.Name).ToEnumerable(),
+            BuildType.SchemaOnly => $"CREATE SCHEMA {schema.Name};".ToEnumerable(),
 
             _ => new[]
             {
@@ -88,8 +89,6 @@ public class SqlInstructionBuilder
         };
 
         return list;
-
-        static string GetSchemaCommand(string name) => $"CREATE SCHEMA {name};";
     }
 
 
@@ -103,10 +102,15 @@ public class SqlInstructionBuilder
         list += buildType switch
         {
             BuildType.SchemaOnly => Array.Empty<string>(),
-            _ => new Sequence<string>()
-                + $"DROP TABLE IF EXISTS {tableModel.Name};"
-                + "GO"
-                + ""
+            _ => new[]
+            {
+                $"IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '{tableModel.Name.Schema}' AND TABLE_NAME = '{tableModel.Name.Name}')",
+                "BEGIN",
+                $"   DROP TABLE {tableModel.Name}",
+                "END",
+                "GO",
+                "",
+            }
         };
 
         list += $"CREATE TABLE {tableModel.Name}";
@@ -130,17 +134,13 @@ public class SqlInstructionBuilder
 
         list += tableModel.IndexType switch
         {
-            IndexType.Hash => new Sequence<string>()
-                                + HashIndexInstructions(tableModel)
-                                + ";",
-
-            IndexType.Cluster => new Sequence<string>()
-                                    + new[] { ";", "GO", string.Empty }
-                                    + ClusterIndexInstructions(tableModel)
-                                    + new[] { "GO", string.Empty },
-
+            IndexType.Hash => HashIndexInstructions(tableModel),
+            IndexType.Cluster => ClusterIndexInstructions(tableModel),
             _ => Array.Empty<string>(),
         };
+        list += ";";
+
+        if (buildType == BuildType.Overwrite) list += new[] { "GO", "" };
 
         return list;
     }
@@ -149,24 +149,31 @@ public class SqlInstructionBuilder
     //   Unrestricted view => both Restricted and PII columns are hashed
     //   Restricted view => only PII columns are hashed
     //   PII view => all columns are visible
-    private Instructions BuildViewModel(TableModel tableModel, BuildType buildType)
+    private Instructions BuildViewModel(TableModel tableModel, BuildType buildType, SchemaModel schema)
     {
         var list = new Instructions();
         list += (InstructionType.Stream, tableModel.Name.CalculateFileName());
 
         list += _headers;
 
+        var viewName = new ObjectName { Schema = schema.Name, Name = tableModel.Name.Name };
+
         list += buildType switch
         {
             BuildType.SchemaOnly => Array.Empty<string>(),
-            _ => new Sequence<string>()
-                + $"DROP VIEW IF EXISTS {tableModel.Name};"
-                + "GO"
-                + ""
+            _ => new[]
+            {
+                $"IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = '{viewName.Schema}' AND TABLE_NAME = '{viewName.Name}')",
+                "BEGIN",
+                $"   DROP VIEW {viewName}",
+                "END",
+                "GO",
+                "",
+            }
         };
 
         list += "";
-        list += $"CREATE VIEW {tableModel.Name}";
+        list += $"CREATE VIEW {viewName}";
         list += "AS";
         list += InstructionType.TabPlus;
         list += "SELECT";
@@ -219,9 +226,8 @@ public class SqlInstructionBuilder
 
         string displayAs() => columnModel.ShortName switch
         {
-            null => string.Empty,
-            string v when v.IsEmpty() => string.Empty,
             string v => $" AS [{v}]",
+            _ => string.Empty,
         };
 
         string castAs(string name, string dataType)
@@ -282,6 +288,7 @@ public class SqlInstructionBuilder
         .Join(", ") switch
     {
         string v when v.IsEmpty() => Array.Empty<string>(),
-        string v => $"CREATE CLUSTERED INDEX {tableModel.Name}_ix on {tableModel.Name} ({v});".ToEnumerable(),
+        string v => $"WITH ( CLUSTERED INDEX ({v}) )".ToEnumerable(),
+        //string v => $"CREATE CLUSTERED INDEX {tableModel.Name}_ix on {tableModel.Name} ({v});".ToEnumerable(),
     };
 }

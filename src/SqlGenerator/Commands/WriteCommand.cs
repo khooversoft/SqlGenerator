@@ -1,12 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SqlGenerator.Activities;
-using System;
-using System.Collections.Generic;
 using System.CommandLine;
-using System.CommandLine.Invocation;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Toolbox.Tools;
 
 namespace SqlGenerator.Commands;
@@ -17,15 +11,16 @@ internal class WriteCommand : Command
     {
         serviceProvider.NotNull();
 
-        AddCommand(Option(serviceProvider));
+        AddCommand(SchemaOption(serviceProvider));
+        AddCommand(ClassiciationOption(serviceProvider));
     }
 
-    private Command Option(IServiceProvider serviceProvider)
+    private Command SchemaOption(IServiceProvider serviceProvider)
     {
         Argument<string> configFile = new Argument<string>("configFile", "File name to write to");
         Argument<string> modelName = new Argument<string>("modelName", "Name of the model");
 
-        var command = new Command("Option", "Write default options to file")
+        var command = new Command("Schema", "Write default schema to file")
         {
             configFile,
             modelName,
@@ -34,10 +29,30 @@ internal class WriteCommand : Command
         command.SetHandler(async (string configFile, string modelName) =>
         {
             await serviceProvider
-                .GetRequiredService<ImportOptionActivity>()
-                .Generate(configFile, modelName);
+                .GetRequiredService<DefaultOptionActivity>()
+                .WriteDefaultSchemaOption(configFile, modelName);
 
         }, configFile, modelName);
+
+        return command;
+    }
+
+    private Command ClassiciationOption(IServiceProvider serviceProvider)
+    {
+        Argument<string> configFile = new Argument<string>("configFile", "File name to write to");
+
+        var command = new Command("classification", "Write default classification to file")
+        {
+            configFile,
+        };
+        
+        command.SetHandler(async (string configFile) =>
+        {
+            await serviceProvider
+                .GetRequiredService<DefaultOptionActivity>()
+                .WriteDefaultClassificationOption(configFile);
+
+        }, configFile);
 
         return command;
     }

@@ -17,6 +17,7 @@ public static class Extensions
         collection.NotNull();
 
         collection.AddSingleton<FilterSourceActivity>();
+        collection.AddSingleton<ClassificationActivity>();
         collection.AddSingleton<GenerateSqlCodeActivity>();
         collection.AddSingleton<ModelActivity>();
         collection.AddSingleton<FileStoreBuilder>();

@@ -26,12 +26,12 @@ public class ModelActivity
         outputFile.NotEmpty();
         nameMapFile.NotEmpty();
 
-        var x = new
+        new
         {
             Source = sourceFile,
             Output = outputFile,
             NameMapFile = nameMapFile,
-        }.Action(x => _logger.LogProperties("Building model...", x));
+        }.LogProperties("Building model...", _logger);
 
         var infos = CsvFile.Read(sourceFile);
         var nameMaps = NameMapRecordFile.Read(nameMapFile);
