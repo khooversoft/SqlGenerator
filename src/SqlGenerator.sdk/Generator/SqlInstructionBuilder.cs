@@ -80,7 +80,7 @@ public class SqlInstructionBuilder
             {
                 $"IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{schema.Name}')",
                 "BEGIN",
-                "   " + GetSchemaCommand(schema.Name),
+                $"  EXEC( 'CREATE SCHEMA {schema.Name};' )",
                 "END",
                 "GO",
                 "",
