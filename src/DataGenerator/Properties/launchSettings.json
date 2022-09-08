@@ -2,7 +2,7 @@
   "profiles": {
     "DataGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "extract \"D:\\Work\\SqlGenerator\\AA\\TestSheet.xlsx\" \"D:\\Work\\SqlGenerator\\AA\\TestSheet_data.csv\" testdatatbl"
+      "commandLineArgs": "extract \"D:\\Work\\SqlGenerator\\Data\\DCFU\\DFCU-SN-04072022  BECU-Stifel  Funding Schedule (Digital).xlsx\" DFCU_Settlement"
     }
   }
 }

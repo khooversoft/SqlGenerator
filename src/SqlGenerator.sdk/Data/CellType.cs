@@ -33,29 +33,29 @@ public static class CellType
         [55] = "yyyy-MM-dd",
         [56] = "yyyy-MM-dd",
         [58] = "MM-dd",
-        [165] = "M/d/yy",
-        [166] = "dd MMMM yyyy",
-        [167] = "dd/MM/yyyy",
-        [168] = "dd/MM/yy",
-        [169] = "d.M.yy",
-        [170] = "yyyy-MM-dd",
-        [171] = "dd MMMM yyyy",
-        [172] = "d MMMM yyyy",
-        [173] = "M/d",
-        [174] = "M/d/yy",
-        [175] = "MM/dd/yy",
-        [176] = "d-MMM",
-        [177] = "d-MMM-yy",
-        [178] = "dd-MMM-yy",
-        [179] = "MMM-yy",
-        [180] = "MMMM-yy",
-        [181] = "MMMM d, yyyy",
-        [182] = "M/d/yy hh:mm t",
-        [183] = "M/d/y HH:mm",
-        [184] = "MMM",
-        [185] = "MMM-dd",
-        [186] = "M/d/yyyy",
-        [187] = "d-MMM-yyyy"
+        //[165] = "M/d/yy",
+        //[166] = "dd MMMM yyyy",
+        //[167] = "dd/MM/yyyy",
+        //[168] = "dd/MM/yy",
+        //[169] = "d.M.yy",
+        //[170] = "yyyy-MM-dd",
+        //[171] = "dd MMMM yyyy",
+        //[172] = "d MMMM yyyy",
+        //[173] = "M/d",
+        //[174] = "M/d/yy",
+        //[175] = "MM/dd/yy",
+        //[176] = "d-MMM",
+        //[177] = "d-MMM-yy",
+        //[178] = "dd-MMM-yy",
+        //[179] = "MMM-yy",
+        //[180] = "MMMM-yy",
+        //[181] = "MMMM d, yyyy",
+        //[182] = "M/d/yy hh:mm t",
+        //[183] = "M/d/y HH:mm",
+        //[184] = "MMM",
+        //[185] = "MMM-dd",
+        //[186] = "M/d/yyyy",
+        //[187] = "d-MMM-yyyy"
     };
 
     public static DateTime? GetDate(UInt32Value numberFormatId, string? cellText)
@@ -67,7 +67,11 @@ public static class CellType
 
         if (double.TryParse(cellText, out var cellDouble))
         {
-            return DateTime.FromOADate(cellDouble);
+            try
+            {
+                return DateTime.FromOADate(cellDouble);
+            }
+            catch { }
         }
 
         return null;

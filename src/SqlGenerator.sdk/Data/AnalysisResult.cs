@@ -11,11 +11,12 @@ namespace SqlGenerator.sdk.Data;
 
 public record AnalysisResult
 {
-    public bool NoData { get; init; }
-    public int? AreaColumnCount { get; init; }
-    public IReadOnlyList<StringRow>? DataAreaRows { get; init; }
     public StringTable Table { get; init; } = null!;
-
     public IReadOnlyList<TableInfo> TableInfos { get; init; } = null!;
+
+    public int HeaderCount => Table.Header.Count;
+    public int RowCount => Table.Data.Count;
+    public bool FirstRowIsHeader => Table.FirstRowIsHeader;
+    public int MaxColumnsInData => Table.Data.Select(x => x.Count).Max();
 }
 

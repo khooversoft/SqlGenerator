@@ -66,6 +66,6 @@ public class MaskActivity
     }
 
     private StringRow Mask(StringRow csvRow, List<int> maskedIndex) => new StringRow() + csvRow
-        .Select((x, i) => maskedIndex.Contains(i) ? x.ToHashHex() : x)
+        .Select((x, i) => maskedIndex.Contains(i) ? x?.ToHashHex() ?? "*" : x)
         .ToList();
 }

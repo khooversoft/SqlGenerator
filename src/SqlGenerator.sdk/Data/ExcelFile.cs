@@ -12,7 +12,7 @@ public class ExcelFile
     private readonly ILogger<ExcelFile> _logger;
     public ExcelFile(ILogger<ExcelFile> logger) => _logger = logger;
 
-    public StringTable Read(string file)
+    public StringTable Read(string file, int maxRows)
     {
         file.NotEmpty();
         StringTable stringTable = new StringTable();
@@ -32,7 +32,7 @@ public class ExcelFile
             Worksheet theWorksheet = ((WorksheetPart)workbookPart.GetPartById(thesheet.Id)).Worksheet;
             SheetData thesheetdata = theWorksheet.GetFirstChild<SheetData>();
 
-            for (int rCnt = 0; rCnt < thesheetdata.ChildElements.Count(); rCnt++)
+            for (int rCnt = 0; rCnt < thesheetdata.ChildElements.Count() && rCnt < maxRows; rCnt++)
             {
                 Sequence<string> rowList = new Sequence<string>();
 
@@ -70,18 +70,19 @@ public class ExcelFile
 
         var cellText = (text ?? string.Empty).Trim();
 
-        if (cell.StyleIndex != null)
+        if (cell.StyleIndex == null) return cellText;
+
+        CellFormat? cellFormat = (CellFormat)workbookPart
+            .WorkbookStylesPart
+            .Stylesheet
+            .CellFormats
+            .ChildElements[int.Parse(cell.StyleIndex.InnerText)];
+
+        return cellFormat switch
         {
-            var cellFormat = workbookPart.WorkbookStylesPart.Stylesheet.CellFormats.ChildElements[
-                int.Parse(cell.StyleIndex.InnerText)] as CellFormat;
+            null => cellText,
 
-            if (cellFormat != null)
-            {
-                DateTime? date = CellType.GetDate(cellFormat.NumberFormatId, cellText);
-                return date?.ToString("d") ?? string.Empty;
-            }
-        }
-
-        return cellText;
+            _ => CellType.GetDate(cellFormat.NumberFormatId, cellText)?.ToString("d") ?? cellText,
+        };
     }
 }

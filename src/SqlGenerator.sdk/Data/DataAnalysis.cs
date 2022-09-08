@@ -15,65 +15,62 @@ namespace SqlGenerator.sdk.Data;
 
 public class DataAnalysis
 {
-    public AnalysisResult Run(string tableName, IEnumerable<StringRow> dataRows, string? firstColumnText, int? minCharLength)
+    public AnalysisResult Run(string tableName, StringTable table, string? firstColumnText, int? minCharLength)
     {
         tableName.NotEmpty();
-        dataRows.NotNull();
-        firstColumnText ??= "loan*";
+        table.NotNull();
 
-        IReadOnlyList<StringRow> rows = dataRows.ToList();
+        if (!table.FirstRowIsHeader) table = GetTableData(table, firstColumnText);
 
-        bool noData = NoRow(rows);
-        int areaColumnCount = CalculateAreaColumnCount(rows);
-        IReadOnlyList<StringRow> dataArea = GetDataArea(rows, areaColumnCount);
-        StringTable table = GetTableData(rows, firstColumnText);
-        IReadOnlyList<TableInfo> TableInfos = CalculateColumnDefinitions(tableName, table, minCharLength ?? 50, areaColumnCount);
+        IReadOnlyList<TableInfo> TableInfos = CalculateColumnDefinitions(tableName, table, minCharLength ?? 50);
 
         return new AnalysisResult
         {
-            NoData = noData,
-            AreaColumnCount = areaColumnCount,
-            DataAreaRows = dataArea,
             Table = table,
             TableInfos = TableInfos,
         };
     }
 
-    private bool NoRow(IReadOnlyList<StringRow> rows) => rows.Count == 0;
-
-    private int CalculateAreaColumnCount(IReadOnlyList<StringRow> rows) => rows
-        .Select(x => x.Count())
-        .GroupBy(x => x)
-        .Select(x => (Index: x.Key, Count: x.Count()))
-        .OrderByDescending(x => x.Count)
-        .FirstOrDefault().Index;
-
-    private IReadOnlyList<StringRow> GetDataArea(IReadOnlyList<StringRow> rows, int areaColumnCount) => rows
-        .Where(x => x.Count == areaColumnCount)
-        .ToList();
-
-    private StringTable GetTableData(IReadOnlyList<StringRow> rows, string firstColumnText)
+    private StringTable GetTableData(StringTable stringTable, string? firstColumnText)
     {
-        var table = new StringTable(true) + rows
-            .SkipWhile(x => !MatchFirstColumn(x.First(), firstColumnText))
-            .ToList();
+        stringTable.NotNull();
+        firstColumnText ??= "loan*";
 
-        return new StringTable(true)
-            + table.Header.Select(x => ConvertToName(x))
-            + table.Data;
+        return firstColumnText switch
+        {
+            null => TrimTableToHeader(stringTable),
+
+            _ => stringTable
+                .SkipWhile(x => !PatternMatch.IsMatch(firstColumnText, x.First() ?? String.Empty))
+                .Func(x => new StringTable(x, true))
+                .Func(x => TrimTableToHeader(x)),
+        };
     }
 
-    private IReadOnlyList<TableInfo> CalculateColumnDefinitions(string tableName, StringTable table, int minCharLength, int areaColumnCount)
+    static StringTable TrimTableToHeader(StringTable stringTable)
+    {
+        var rows = stringTable
+            .Select((x, i) => i switch
+            {
+                0 => x.Select(x => ConvertToName(x)),
+                _ => x.Where((x1, y1) => y1 < stringTable.Header.Count),
+            })
+            .Select(x => new StringRow(x));
+
+        return new StringTable(rows, true);
+    }
+
+    private IReadOnlyList<TableInfo> CalculateColumnDefinitions(string tableName, StringTable table, int minCharLength)
     {
         var tableInfos = new Sequence<TableInfo>();
         tableName = ConvertToName(tableName);
 
-        for (int column = 0; column < areaColumnCount; column++)
+        for (int column = 0; column < table.Header.Count; column++)
         {
             tableInfos += new TableInfo
             {
                 TableName = tableName,
-                ColumnName = table.Header[column],
+                ColumnName = table.Header[column].NotEmpty(),
                 DataType = CalculateDataType(table.Data.Select(x => x[column]), minCharLength),
             };
         }
@@ -81,27 +78,17 @@ public class DataAnalysis
         return tableInfos;
     }
 
-    private static bool MatchFirstColumn(string column, string firstColumnText) => firstColumnText.Split('*') switch
+    private static string CalculateDataType(IEnumerable<string?> columnData, int minCharLength)
     {
-        null => false,
-        string[] v when v.Length == 1 => column.StartsWith(v[0]),
-        string[] v when v.Length == 2 && v[1].IsEmpty() => column.StartsWith(v[0], StringComparison.OrdinalIgnoreCase),
+        var baseEnum = columnData.Where(x => !x.IsEmpty());
 
-        string[] v when v.Length == 2 => column.StartsWith(v[0], StringComparison.OrdinalIgnoreCase) &&
-                                        column.EndsWith(v[1], StringComparison.OrdinalIgnoreCase),
-
-        _ => throw new ArgumentException("Invalid firstColumnText"),
-    };
-
-    private static string CalculateDataType(IEnumerable<string> columnData, int minCharLength)
-    {
-        Func<bool> intType = () => columnData.All(x => int.TryParse(x, out var _));
-        Func<bool> longType = () => columnData.All(x => long.TryParse(x, out var _));
-        Func<bool> dateTimeType = () => columnData.All(x => DateTime.TryParse(x, out var _));
-        Func<bool> decimalType = () => columnData.All(x => decimal.TryParse(x, out var _));
-        Func<bool> floatType = () => columnData.All(x => float.TryParse(x, out var _));
-        Func<bool> boolType = () => columnData.All(x => bool.TryParse(x, out var _));
-        Func<int> maxStringLen = () => columnData.Max(x => x.Length);
+        Func<bool> intType = () => baseEnum.All(x => int.TryParse(x, out var _));
+        Func<bool> longType = () => baseEnum.All(x => long.TryParse(x, out var _));
+        Func<bool> dateTimeType = () => baseEnum.All(x => DateTime.TryParse(x, out var _));
+        Func<bool> decimalType = () => baseEnum.All(x => decimal.TryParse(x, out var _));
+        Func<bool> floatType = () => baseEnum.All(x => float.TryParse(x, out var _));
+        Func<bool> boolType = () => baseEnum.All(x => bool.TryParse(x, out var _));
+        Func<int> maxStringLen = () => baseEnum.Max(x => x?.Length ?? 0);
 
         var list = new (Func<bool> isType, Func<string> getText)[]
         {
@@ -125,7 +112,7 @@ public class DataAnalysis
             .getText();
     }
 
-    string ConvertToName(string name) => name
+    static string ConvertToName(string? name) => (name ?? string.Empty)
         .Select(x => char.IsLetterOrDigit(x) ? x : '_')
         .Func(x => new string(x.ToArray()));
 }
