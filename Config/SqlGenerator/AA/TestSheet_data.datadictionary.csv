@@ -1,0 +1,6 @@
+Table Name,Column Name,Column Datatype,Column Null Option,Primary Key,Restricted,PII,HashKey,ShortName
+testdatatbl,Loan_Number,int,NULL,,,,,
+testdatatbl,Name,nvarchar(50),NULL,,,,,
+testdatatbl,Address,nvarchar(50),NULL,,,,,
+testdatatbl,City,nvarchar(50),NULL,,,,,
+testdatatbl,Start_Date,datetime,NULL,,,,,

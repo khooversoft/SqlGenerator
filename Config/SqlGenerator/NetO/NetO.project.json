@@ -1,0 +1,19 @@
+{
+  "sourceFile": "NetOPhysicalModel.csv",
+  "optionFile": "Neto.ImportOption.json",
+  "nameMapFile": "..\\NameMap.json",
+  "tableListFile": "NetOPhysicalModel_MasterTables.json",
+  "ClassificationFile": "NetO_Classification.json",
+  "buildFolder": null,
+  "uspLoadTableOption": {
+    "outputFile": "neto_usp_LoadTable_meta.sql",
+    "dataTableName": "etl.ETLGenPrimaryKeyColumns",
+    "dataLayerName": "clt_neto"
+  },
+  "rawToCultivated": {
+    "outputFile": "cntrl_Neto_raw_to_cultivated_copyinto_meta.sql",
+    "pipelineName": "pl_Neto_raw_to_cultivated_copyinto",
+    "activityName": "cp_extract_to_raw",
+    "paramValueFormat": "Netoxygen_*_20"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "protection": [
+    {
+      "columnNameMatch": "*.AGENT_NAME_F;*.AGENT_NAME_H;*.AGENT_PHONE_NO_H;*.AGENTNAME;*.AGENTNUM;*.APPL_ADDR;*.APPL_CITY;*.APPL_CREDIT_YN;*.APPL_DOB;*.APPL_FNAME",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.APPL_LNAME;*.APPL_MNAME;*.APPL_MO_INCOME;*.APPL_NAME_SUFFIX;*.APPL_SCORE;*.APPL_SSN;*.APPL_ST;*.APPL_ZIP;*.APPL2_ADDR;*.APPL2_CITY",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.APPL2_DOB;*.APPL2_FNAME;*.APPL2_LNAME;*.APPL2_MNAME;*.APPL2_MO_INCOME;*.APPL2_NAME_SUFFIX;*.APPL2_SCORE;*.APPL2_SSN;*.APPL2_ST;*.APPL2_ZIP",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.APPR_STATE_LIC;*.APPR_SUPER_FNAME;*.APPR_SUPER_LIC;*.APPR_SUPER_LNAME;*.ASSN;*.ATTR_NAME;*.ATTRIB_NAME;*.ATTRIBUTENAME;*.AUS_NAME;*.B_DOB",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.B_EMAIL;*.B_GENDER;*.B_HOME_PHONE;*.B_MAIL_ADDR1;*.B_MAIL_ADDR2;*.B_MAIL_CITY;*.B_MAIL_COUNTY;*.B_MAIL_STATE;*.B_MAIL_ZIP;*.B_MARITAL_STATUS",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.B_MARITAL_STATUS_DESC;*.B_NAME_FIRST;*.B_NAME_LAST;*.B_NAME_MID;*.B_RACE;*.B_RACE_DESC;*.B_SCORE;*.B_SCORE_OVR;*.B_SSN;*.B_WORK_PHONE",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.B010_AMOUNT;*.B080_AMOUNT;*.B090_AMOUNT;*.BIRTH_DATE;*.BIRTH_DT;*.BIRTHDATE;*.BK_SCORE;*.BORROWER;*.BORROWER_IDENTIFIER;*.BORROWER_NAME",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.BORROWER_NAMES;*.BORROWERFIRSTNAME;*.BORROWERLASTNAME;*.BORROWERMIDDLENAME;*.BORROWERNAME;*.BUR_ADDR;*.BUR_NAME;*.BUR_PHONE;*.BUSINESS_INCOME;*.CARDS_NUM",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.CARDS_WITH_BAL_NUM;*.CB_APPL_NBR;*.CB_CREDIT_SCORE;*.CB_MONTHLY_DEBT;*.CB_MONTHLY_INCOME;*.CB_NAME;*.CB_NAME_FIRST;*.CB_NAME_LAST;*.CB_NAME_MIDDLE;*.CB_NONPERM_RES_ALIEN",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.CB_PERM_RES_ALIEN;*.CB_SCORE1;*.CB_SCORE2;*.CB_SSN;*.CB_USCITIZEN_YN;*.CC_NUMBER;*.CCR_SERNO;*.CITIZEN;*.CITY;*.CLIENT_LOAN_ID",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.CONTACT_PERSON;*.CORR_CONTACT;*.CORR_OWN_NAME;*.CREDIT_AMT;*.CREDIT_LIMIT;*.CREDIT_LIMIT_AMOUNT;*.CREDIT_LIMIT_AMT;*.CREDIT_SCORE;*.CREDIT_SCORE_DATE;*.CREDIT_SCORE_IMPAIRMENT",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.CREDIT_SCORE_VALUE;*.CREDIT_SELECTION_METHOD;*.CREDIT_SOURCE;*.CRT_NAME;*.CRTACCT;*.CRTACCT2;*.CRTACCT3;*.CURRENT_AMT;*.CURRENT_BALANCE;*.CURRENT_BALANCE_AMT",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.CURRENT_BALANCE_DT;*.CURRENT_CUSTOMER;*.CURRENT_CUSTOMERID;*.CUST_ADDR1;*.CUST_ADDR2;*.CUST_CITY;*.CUST_NAME;*.CUST_NAR;*.CUST_PHONE;*.CUST_STATE",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.CUST_ZIP_CODE;*.CUSTATE;*.CUSTODIAN_NAME;*.CUSTOMER_NAME;*.CUSTOMER_NUM;*.DEFENDANT_NAME;*.DEFENDNT;*.DEFN_NAME;*.DEFNNAME;*.EMAIL_ADDR",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.EMAIL_CONSENT;*.EMAILADDR;*.EMPLOYEE_BORROWER;*.EXTERNAL_LNUM;*.EXTERNAL_LOAN_NBR;*.EXTERNAL_LOS_LOAN_NBR;*.F_SCORE;*.F_SERIAL;*.FILED_TAXID;*.FIRST_NAME",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.FIRST_NAME_CHK;*.FIRSTNAME;*.FNAME;*.FNCREQCONTACTALTPHONE;*.FNCREQCONTACTCELLPHONE;*.FNCREQCONTACTCEMAIL;*.FNCREQCONTACTNAME;*.FNCREQCONTACTPHONE;*.GENDER_E;*.GENDER_S",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.GENERATION_CODE;*.GF_CREDIT_SCORE;*.HCL_CREDIT;*.HOME_EXMP_OWNER;*.INTERNAL_ACCOUNT;*.INTERNAL_ACCOUNT_IDENTIFIER;*.JOINT_NAME;*.JOINT_SSN;*.L_SCORE;*.LAST_NAME",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.LAST_NAME_CHK;*.LAST_OR_BUS_NAME;*.LASTNAME;*.LENDER_LOAN_NUMBER;*.LICENSE_NUMBER;*.LICENSE_STATE;*.LOANNUMBER;*.MAIL_ADDR_FIRST;*.MAIL_ADDR_SECOND;*.MAIL_CITY",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.MAIL_STATE_CD;*.MAIL_ZIP_CD;*.MAN_SCORE1;*.MAN_SCORE2;*.MEMBER_ID;*.MEMNAME;*.MI_CREDIT_SCORE;*.MI_TAXID;*.MIDDLE_NAME;*.MIDDLE_NAME_CHK",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.MIDDLENAME;*.MNAME;*.NAME;*.NAME_AS_ON_PAPERS1;*.NAME_AS_ON_PAPERS2;*.NAME_AS_ON_PAPERS3;*.NAME_AS_ON_PAPERS4;*.NAME_DOCS_DRAWN_OTHER;*.NAME_IND;*.NAME_INDICATOR",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.NAME_ON_CARD;*.NAME_SUFFIX;*.NAMECOL;*.NOTESSN;*.ORIG_AMT;*.ORIG_CREDITOR_NAME;*.ORIG_FICO;*.ORIG_INVESTOR_LOAN_NBR;*.ORIG_VAL;*.OTHER_COMMENTS_SN",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.OTHER_INCOME;*.OTHER_NAME;*.OTHER_NUMBER;*.OTHER_PARTY;*.OTHER_PAYOR;*.OTHER_PERTINENT_INFO_SN;*.OTHER_PHONE_NUM;*.PARTNER_NAME;*.PAYEE;*.PAYEE_ADDRESS",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.PAYEE_ADDRESS2;*.PAYEE_CITY;*.PAYEE_CODE_CASH;*.PAYEE_CODE_MBS;*.PAYEE_COUNTRY;*.PAYEE_NAME;*.PAYEE_STATE;*.PAYEE_TITLE;*.PAYEE_ZIP;*.PB_CREDIT_SCORE",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.PB_NAME_FIRST;*.PB_NAME_LAST;*.PB_NAME_MIDDLE;*.PB_NONPERM_RES_ALIEN;*.PB_PERM_RES_ALIEN;*.PB_SSN;*.PB_USCITIZEN_YN;*.PP_ADDR1;*.PP_ADDR2;*.PP_CITY",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.PP_NAME;*.PP_STATE;*.PP_ZIP;*.PR_FNAME;*.PR_LNAME;*.PR_MNAME;*.PR_SSNBR;*.PRI_FNAM;*.PRI_LNAM;*.PRI_PHON",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.PRI_SNAM;*.PRI_SSN;*.PROPERTY_SELLER;*.PROPERTYNAME;*.PROXY_CARD;*.PROXY_USERID;*.RELATIONSHIP_DESC_SN;*.REQCONTACTALTPHONE;*.REQCONTACTCELLPHONE;*.REQCONTACTEMAIL",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.REQCONTACTNAME;*.REQCONTACTPHONE;*.SCORE;*.SCORE_FACTOR_CODE1;*.SCORE_FACTOR_CODE2;*.SCORE_FACTOR_CODE3;*.SCORE_FACTOR_CODE4;*.SEC_FNAM;*.SEC_LNAM;*.SEC_PHON",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.SEC_SNAM;*.seller_name;*.SELLER_SIGN_NAME;*.SPOUSE_ADD1;*.SPOUSE_ADD2;*.SPOUSE_CITY;*.SPOUSE_FNAME;*.SPOUSE_LNAME;*.SPOUSE_MNAME;*.SPOUSE_STATE",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.SPOUSE_ZIP;*.SSN;*.SSN_CHK;*.SSN_LINK;*.SSN_MATCH_STATUS;*.SSN_ONE;*.SSN_STATUS;*.SSN_THREE;*.SSN_TIN_USED_FOR_IRS;*.SSN_TWO",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.SSN_VERIFICATION_LEVEL;*.SSNFLAG;*.SSNFLAG1;*.SSNFLAG2;*.SSNFLAG3;*.SSNFLAG4;*.SSNFLAG5;*.SSNTIN;*.SSNUM;*.SUBSCRIBER_ADDR",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.SUBSCRIBER_CITY;*.SUBSCRIBER_DISPLAY_NAME;*.SUBSCRIBER_NAME;*.SUBSCRIBER_PHONE;*.SUBSCRIBER_STATE;*.SUBSCRIBER_ZIP;*.TOTAL_INCOME;*.TRSTNAME;*.TRSTTXID;*.USERNAME",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.ZIP;*.ZIP_CODE",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.ssnbr",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.*ssn*",
+      "PII": true,
+      "restricted": false
+    }
+  ]
+}

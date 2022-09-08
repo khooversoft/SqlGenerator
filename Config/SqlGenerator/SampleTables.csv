@@ -1,0 +1,11 @@
+Entity Name,Table Name,Attribute Name,Column Name,Column Datatype,Column Null Option,Primary Key,Restricted,PII,HashKey
+ETable1,Table1,"""Table1 quote""",Column1,nchar(20),NOT NULL,Yes,,,Yes
+ETable1,Table1,"Table1,quote",Column2,smallint,NOT NULL,,Yes,,
+ETable2,Table2,,Column1,nchar(20),NOT NULL,Yes,,,Yes
+ETable2,Table2,,Column2,datetime,NULL,,,Yes,
+ETable3,Table3,,Column1,nchar(20),NOT NULL,Yes,,,Yes
+ETable3,Table3,,Column2_isgreater_than_32characters,datetime,NULL,,,,
+ETable3,Table3,,Column3_isgreater_than_Accessibility,nchar(1),NULL,Yes,,Yes,
+ETable3,Table3,,Column4,nvarchar(50),NULL,No,Yes,,
+ETable4,Table4,,Column1,nchar(20),NOT NULL,Yes,,, 
+ETable4,Table4,,Column2,datetime,NULL,,, ,

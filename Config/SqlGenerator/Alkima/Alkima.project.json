@@ -1,0 +1,20 @@
+{
+  "sourceFile": "AlkamiPhysicalModel.csv",
+  "optionFile": "Alkima.ImportOption.json",
+  "nameMapFile": "..\\NameMap.json",
+  "shortNameMaxSize": 32,
+  "tableListFile": "AlkamiPhysicalModel_MasterTables.json",
+  "masterFile": "AlkamiPhysicalModel_master.csv",
+  "buildFolder": null,
+  "uspLoadTableOption": {
+    "outputFile": "alkami_usp_LoadTable_meta.sql",
+    "dataTableName": "etl.ETLGenPrimaryKeyColumns",
+    "dataLayerName": "clt_alkami"
+  },
+  "rawToCultivated": {
+    "outputFile": "cntrl_Alkami_raw_to_cultivated_copyinto_meta.sql",
+    "pipelineName": "pl_Alkami_raw_to_cultivated_copyinto",
+    "activityName": "cp_extract_to_raw",
+    "paramValueFormat": null
+  }
+}
