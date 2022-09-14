@@ -6,6 +6,7 @@ namespace SqlGenerator.sdk.Application;
 
 public record ProjectOption
 {
+    public string ProjectOptionFile { get; init; } = null!;
     public string? SourceFile { get; init; }
     public string? OptionFile { get; init; }
     public string? NameMapFile { get; init; }
@@ -25,6 +26,7 @@ public static class ProjectOptionFile
         .Verify()
         .Func(x => x with
         {
+            ProjectOptionFile = projectFile,
             SourceFile = ToFullPath(projectFile, x.SourceFile),
             OptionFile = ToFullPath(projectFile, x.OptionFile),
             NameMapFile = ToFullPath(projectFile, x.NameMapFile),

@@ -11,11 +11,10 @@ namespace SqlGenerator.sdk.Generator;
 
 public class PhysicalModelBuilder
 {
-    public PhysicalModel Build(IEnumerable<TableInfo> infos, SchemaOption schemaOption, IReadOnlyList<NameMapRecord> nameMaps)
+    public PhysicalModel Build(IEnumerable<TableInfo> infos, SchemaOption schemaOption, IReadOnlyList<NameMapRecord>? nameMaps)
     {
         infos.NotNull();
         schemaOption.Verify();
-        nameMaps.NotNull();
 
         IReadOnlyList<TableInfo> tableInfos = infos.ToList();
 
@@ -37,7 +36,7 @@ public class PhysicalModelBuilder
         }.Verify();
     }
 
-    private static IReadOnlyList<TableModel> GenerateTable(IReadOnlyList<TableInfo> tableInfos, SchemaModel schemaModel, IReadOnlyList<NameMapRecord> nameMaps)
+    private static IReadOnlyList<TableModel> GenerateTable(IReadOnlyList<TableInfo> tableInfos, SchemaModel schemaModel, IReadOnlyList<NameMapRecord>? nameMaps)
     {
         return tableInfos
             .GroupBy(x => x.TableName)
@@ -55,7 +54,7 @@ public class PhysicalModelBuilder
                     PII = y.PII,
                     Restricted = y.Restricted,
                     ColumnIndex = i,
-                    ShortName = nameMaps.ShortName(y.ColumnName, schemaModel.MaxColumnSize),
+                    ShortName = nameMaps?.ShortName(y.ColumnName, schemaModel.MaxColumnSize),
                 }).ToList(),
             }).ToList();
 

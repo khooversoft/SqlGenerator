@@ -12,10 +12,13 @@ namespace DataGenerator.Activities;
 internal class ExtractActivity
 {
     private readonly ExcelFile _readExcelSheet;
+    private readonly DataAnalysis _dataAnalysis;
     private readonly ILogger<ExtractActivity> _logger;
-    public ExtractActivity(ExcelFile readExcelSheet, ILogger<ExtractActivity> logger)
+
+    public ExtractActivity(ExcelFile readExcelSheet, DataAnalysis dataAnalysis, ILogger<ExtractActivity> logger)
     {
         _readExcelSheet = readExcelSheet.NotNull();
+        _dataAnalysis = dataAnalysis.NotNull();
         _logger = logger.NotNull();
     }
 
@@ -26,7 +29,7 @@ internal class ExtractActivity
         StringTable? stringTable = ReadSheet(inputFile, delimiter);
         if (stringTable == null) return Task.CompletedTask;
 
-        AnalysisResult? analysis = new DataAnalysis().Run(tableName, stringTable, firstColumnText, minCharLength ?? 50);
+        AnalysisResult? analysis = _dataAnalysis.Run(tableName, stringTable, firstColumnText, minCharLength ?? 50);
         if (analysis == null) return Task.CompletedTask;
 
         WriteTable(analysis, inputFile);

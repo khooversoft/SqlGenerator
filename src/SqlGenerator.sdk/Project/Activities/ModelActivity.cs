@@ -19,12 +19,11 @@ public class ModelActivity
     private readonly ILogger<ModelActivity> _logger;
     public ModelActivity(ILogger<ModelActivity> logger) => _logger = logger.NotNull();
 
-    public Task<Counters> Build(string sourceFile, SchemaOption schemaOption, string outputFile, string nameMapFile)
+    public Task<Counters> Build(string sourceFile, SchemaOption schemaOption, string outputFile, string? nameMapFile)
     {
         sourceFile.NotEmpty();
         schemaOption.NotNull();
         outputFile.NotEmpty();
-        nameMapFile.NotEmpty();
 
         new
         {
@@ -34,7 +33,7 @@ public class ModelActivity
         }.LogProperties("Building model...", _logger);
 
         var infos = CsvFile.Read(sourceFile);
-        var nameMaps = NameMapRecordFile.Read(nameMapFile);
+        IReadOnlyList<NameMapRecord>? nameMaps = nameMapFile != null ? NameMapRecordFile.Read(nameMapFile) : null;
 
         var model = new PhysicalModelBuilder().Build(infos, schemaOption, nameMaps);
         model.Write(outputFile);

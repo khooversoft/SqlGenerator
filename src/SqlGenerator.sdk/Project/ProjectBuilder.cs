@@ -136,12 +136,6 @@ public partial class ProjectBuilder
         {
             _logger.LogWarning("Skipping building model, no option file was specified.");
             return;
-        } 
-        
-        if (context.ProjectOption.NameMapFile.IsEmpty())
-        {
-            _logger.LogWarning("Skipping, NameMapFile has not been specified.");
-            return;
         }
 
         ConfigFile sourceFile = context switch
@@ -191,9 +185,10 @@ public partial class ProjectBuilder
             _logger.LogError("Model file {file} does not exist to generate SQL", context.ModelFile);
             return;
         }
+
         if (context.ProjectOption.UspLoadTableOption == null)
         {
-            _logger.LogError("UspLoadTableOption option not specified");
+            _logger.LogWarning("Skipping, UspLoadTableOption option not specified");
             return;
         }
 
@@ -207,9 +202,10 @@ public partial class ProjectBuilder
             _logger.LogError("Model file {file} does not exist to generate SQL", context.ModelFile);
             return;
         }
+
         if (context.ProjectOption.RawToCultivated == null)
         {
-            _logger.LogError("RawToCultivated option not specified");
+            _logger.LogWarning("Skipping, RawToCultivated option not specified");
             return;
         }
 

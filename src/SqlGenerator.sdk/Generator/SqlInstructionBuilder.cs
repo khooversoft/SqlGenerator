@@ -193,7 +193,7 @@ public class SqlInstructionBuilder
 
         list += InstructionType.TabMinus;
         list += $"FROM {tableModel.Name} x";
-        list += $"WHERE x.[ASAP_DeleteDateTime] IS NOT NULL";
+        list += $"WHERE x.[ASAP_DeleteDateTime] IS NULL";
         list += InstructionType.TabMinus;
         list += ";";
 

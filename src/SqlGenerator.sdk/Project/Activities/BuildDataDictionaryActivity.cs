@@ -40,7 +40,7 @@ public class BuildDataDictionaryActivity
 
         var tableColumns = tableInfos
             .GroupBy(x => x.TableName)
-            .SelectMany(x => x.Select((x, i) => x.ConvertTo().ToTableInfoExport(i)))
+            .SelectMany(x => x.Select(y => y.ConvertTo()))
             .ToList();
 
         CsvFile.Write(outputFile, tableColumns);

@@ -2,7 +2,7 @@
   "profiles": {
     "DataGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "extract \"D:\\Work\\SqlGenerator\\Data\\DCFU\\DFCU-SN-04072022  BECU-Stifel  Funding Schedule (Digital).xlsx\" DFCU_Settlement"
+      "commandLineArgs": "extract \"D:\\Work\\SqlGenerator\\AA\\PenFed\\###_Mortgage Loans_v2_202206_20220705052500.txt\" PenFed_Monthly --firstHeaderText \"LOAN NUMBER\""
     }
   }
 }

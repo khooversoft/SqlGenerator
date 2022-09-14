@@ -62,7 +62,16 @@ public static class ContextExtensions
         projectFile.NotEmpty();
         sourceFile.NotNull();
 
-        string folder = projectOption.BuildFolder ?? Path.GetDirectoryName(sourceFile).NotNull();
+        string folder = projectOption.BuildFolder switch
+        {
+            null => Path.GetDirectoryName(projectOption.ProjectOptionFile).NotNull(),
+
+            string v => Path.IsPathFullyQualified(v) switch
+            {
+                true => v,
+                false => Path.Combine(Path.GetDirectoryName(projectOption.ProjectOptionFile).NotNull(), v),
+            },
+        };
 
         string buildFolder = Path.Combine(folder, "build");
         string modelFolder = Path.Combine(folder, "model");

@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.CsvStore;
 using SqlGenerator.sdk.Model;
 using System;
@@ -9,16 +10,27 @@ using System.Text;
 using System.Threading.Tasks;
 using Toolbox.Data;
 using Toolbox.Extensions;
+using Toolbox.Logging;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Data;
 
 public class DataAnalysis
 {
+    private readonly ILogger<DataAnalysis> _logger;
+    public DataAnalysis(ILogger<DataAnalysis> logger) => _logger = logger;
+
     public AnalysisResult Run(string tableName, StringTable table, string? firstColumnText, int? minCharLength)
     {
         tableName.NotEmpty();
         table.NotNull();
+
+        new
+        {
+            TableName = tableName,
+            FirstColumnText = firstColumnText,
+            MinCharLength = minCharLength,
+        }.LogProperties("Analyzing data...", _logger);
 
         if (!table.FirstRowIsHeader) table = GetTableData(table, firstColumnText);
 
@@ -36,6 +48,8 @@ public class DataAnalysis
         stringTable.NotNull();
         firstColumnText ??= "loan*";
 
+        _logger.LogInformation("Getting table and looking for {firstColumnText}", firstColumnText);
+
         return firstColumnText switch
         {
             null => TrimTableToHeader(stringTable),
@@ -47,17 +61,29 @@ public class DataAnalysis
         };
     }
 
-    static StringTable TrimTableToHeader(StringTable stringTable)
+    private StringTable TrimTableToHeader(StringTable stringTable)
     {
+        int headerCount = stringTable.Header
+            .Select(x => x)
+            .Reverse()
+            .SkipWhile(x => x.IsEmpty())
+            .Count();
+
+        _logger.LogInformation("Header count={count}", headerCount);
+
         var rows = stringTable
             .Select((x, i) => i switch
             {
-                0 => x.Select(x => ConvertToName(x)),
-                _ => x.Where((x1, y1) => y1 < stringTable.Header.Count),
+                0 => x.Take(headerCount).Select(x => ConvertToName(x)),
+                _ => x.Take(headerCount),
             })
+            .Where(x => x.Count() == headerCount)
             .Select(x => new StringRow(x));
 
-        return new StringTable(rows, true);
+        var table = new StringTable(rows, true);
+        _logger.LogInformation("Headers detected: count={count}, {headers}", table.Header.Count, table.Header.Join(", "));
+
+        return table;
     }
 
     private IReadOnlyList<TableInfo> CalculateColumnDefinitions(string tableName, StringTable table, int minCharLength)
@@ -114,5 +140,6 @@ public class DataAnalysis
 
     static string ConvertToName(string? name) => (name ?? string.Empty)
         .Select(x => char.IsLetterOrDigit(x) ? x : '_')
-        .Func(x => new string(x.ToArray()));
+        .Func(x => new string(x.ToArray()))
+        .Func(x => x.Split('_', StringSplitOptions.RemoveEmptyEntries).Join("_"));
 }

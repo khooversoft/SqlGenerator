@@ -7,6 +7,7 @@ using Toolbox.Tools;
 using Microsoft.Extensions.Logging;
 using DataGenerator.Activities;
 using SqlGenerator.sdk.Excel;
+using SqlGenerator.sdk.Data;
 
 string _programTitle = $"Data Generator - Version {Assembly.GetExecutingAssembly().GetName().Version}";
 
@@ -64,6 +65,7 @@ ServiceProvider BuildContainer()
     });
 
     service.AddSingleton<ExcelFile>();
+    service.AddSingleton<DataAnalysis>();
 
     service.AddSingleton<MaskActivity>();
     service.AddSingleton<ExtractActivity>();

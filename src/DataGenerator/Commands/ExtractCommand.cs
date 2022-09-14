@@ -10,7 +10,7 @@ internal class ExtractCommand : Command
     {
         Argument<string> inputFile = new("inputFile", "Data file to mask");
         Argument<string> tableName = new("tableName", "Name of table");
-        Option<string?> firstHeaderText = new("firstHeaderText", "Name of the first header, wild card can be used (default is 'load*')");
+        Option<string?> firstHeaderText = new("--firstHeaderText", "Name of the first header, wild card can be used (default is 'load*')");
         Option<int?> minCharLength = new("--minCharLength", "Min character length for char(n) or varchar(n)");
         Option<string?> delimiter = new("--delimiter", "Use delimiter (default is ',')");
 
