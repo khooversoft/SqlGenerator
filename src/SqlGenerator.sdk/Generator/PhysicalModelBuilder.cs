@@ -42,7 +42,7 @@ public class PhysicalModelBuilder
             .GroupBy(x => x.TableName)
             .Select(x => new TableModel
             {
-                Name = new ObjectName { Schema = schemaModel.Name, Name = x.Key },
+                Name = new SqlObjectName { Schema = schemaModel.Name, Name = x.Key },
                 IndexType = getIndexType(x.ToArray()),
                 Columns = x.Select((y, i) => new ColumnModel
                 {

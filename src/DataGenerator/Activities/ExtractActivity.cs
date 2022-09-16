@@ -30,7 +30,11 @@ internal class ExtractActivity
         if (stringTable == null) return Task.CompletedTask;
 
         AnalysisResult? analysis = _dataAnalysis.Run(tableName, stringTable, firstColumnText, minCharLength ?? 50);
-        if (analysis == null) return Task.CompletedTask;
+        if (analysis == null)
+        {
+            _logger.LogError("Analysis failed");
+            return Task.CompletedTask;
+        }
 
         WriteTable(analysis, inputFile);
         WriteDataDictionary(analysis, inputFile);

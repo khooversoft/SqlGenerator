@@ -25,7 +25,7 @@ public class PhysicalModelSerializerTests
             Tables = Enumerable.Range(0, tableCount)
                 .Select(x => new TableModel
                 {
-                    Name = new ObjectName
+                    Name = new SqlObjectName
                     {
                         Schema = x switch
                         {

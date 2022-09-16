@@ -2,7 +2,7 @@
   "profiles": {
     "DataGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "extract \"D:\\Work\\SqlGenerator\\AA\\PenFed\\###_Mortgage Loans_v2_202206_20220705052500.txt\" PenFed_Monthly --firstHeaderText \"LOAN NUMBER\""
+      "commandLineArgs": "merge \"D:\\Work\\SqlGenerator\\AA\\SettlementMerge\\SettlementMerge.project.json\""
     }
   }
 }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolbox.Extensions;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Model;
 
-public sealed record ObjectName
+public sealed record SqlObjectName
 {
     public string Schema { get; init; } = null!;
     public string Name { get; init; } = null!;
@@ -15,22 +16,22 @@ public sealed record ObjectName
     public override string ToString() => $"[{Schema}].[{Name}]";
     public string CalculateFileName() => $"{Name}.sql";
 
-    public bool Equals(ObjectName? obj)
+    public bool Equals(SqlObjectName? obj)
     {
-        return obj is ObjectName model &&
+        return obj is SqlObjectName model &&
             Schema == model.Schema &&
             Name == model.Name;
     }
 
     public override int GetHashCode() => HashCode.Combine(Schema, Name);
 
-    public static implicit operator string(ObjectName objectName) => objectName.ToString();
+    public static implicit operator string(SqlObjectName objectName) => objectName.ToString();
 }
 
 
-public static class ObjectNameExtensions
+public static class SqlObjectNameTool
 {
-    public static ObjectName Verify(this ObjectName subject)
+    public static SqlObjectName Verify(this SqlObjectName subject)
     {
         subject.NotNull();
         subject.Schema.NotEmpty();
@@ -38,4 +39,9 @@ public static class ObjectNameExtensions
 
         return subject;
     }
+
+    public static string ToSafeName(string? name) => (name ?? string.Empty)
+        .Select(x => char.IsLetterOrDigit(x) ? x : '_')
+        .Func(x => new string(x.ToArray()))
+        .Func(x => x.Split('_', StringSplitOptions.RemoveEmptyEntries).Join("_"));
 }

@@ -19,7 +19,7 @@ public static class CsvFile
             .ToList();
     }
 
-    public static StringTable ReadDynamic(string file, string? delimiter)
+    public static StringTable ReadDynamic(string file, string? delimiter = ",")
     {
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
@@ -47,14 +47,14 @@ public static class CsvFile
         return new StringTable(rows, true);
     }
 
-    public static void Write<T>(string file, IEnumerable<T> tableInfos)
+    public static void Write<T>(string file, IEnumerable<T> records)
     {
-        var records = tableInfos.ToList();
+        records.NotNull();
 
         using var writer = new StreamWriter(file);
         using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
 
-        csv.WriteRecords(records);
+        csv.WriteRecords(records.ToList());
     }
 
     public static StringTable ReadTable(string file)
@@ -98,7 +98,7 @@ public static class CsvFile
 
         table.Data
             .Select(x => x.Count)
-            .All(x => x == table.Header.Count)
+            .All(x => x <= table.Header.Count)
             .Assert(x => x == true, "Body does not match header count");
 
         using var writer = new StreamWriter(file);

@@ -156,7 +156,7 @@ public class SqlInstructionBuilder
 
         list += _headers;
 
-        var viewName = new ObjectName { Schema = schema.Name, Name = tableModel.Name.Name };
+        var viewName = new SqlObjectName { Schema = schema.Name, Name = tableModel.Name.Name };
 
         list += buildType switch
         {

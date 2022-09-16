@@ -12,7 +12,7 @@ public enum IndexType
 
 public sealed record TableModel
 {
-    public ObjectName Name { get; init; } = null!;
+    public SqlObjectName Name { get; init; } = null!;
     public IndexType IndexType { get; init; } = IndexType.None;
     public IReadOnlyList<ColumnModel> Columns { get; init; } = Array.Empty<ColumnModel>();
 

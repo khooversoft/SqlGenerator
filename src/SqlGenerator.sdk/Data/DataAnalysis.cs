@@ -74,7 +74,7 @@ public class DataAnalysis
         var rows = stringTable
             .Select((x, i) => i switch
             {
-                0 => x.Take(headerCount).Select(x => ConvertToName(x)),
+                0 => x.Take(headerCount).Select(x => SqlObjectNameTool.ToSafeName(x)),
                 _ => x.Take(headerCount),
             })
             .Where(x => x.Count() == headerCount)
@@ -89,7 +89,7 @@ public class DataAnalysis
     private IReadOnlyList<TableInfo> CalculateColumnDefinitions(string tableName, StringTable table, int minCharLength)
     {
         var tableInfos = new Sequence<TableInfo>();
-        tableName = ConvertToName(tableName);
+        tableName = SqlObjectNameTool.ToSafeName(tableName);
 
         for (int column = 0; column < table.Header.Count; column++)
         {
@@ -97,7 +97,7 @@ public class DataAnalysis
             {
                 TableName = tableName,
                 ColumnName = table.Header[column].NotEmpty(),
-                DataType = CalculateDataType(table.Data.Select(x => x[column]), minCharLength),
+                DataType = CalculateDataType(table.GetColumnData(column), minCharLength),
             };
         }
 
@@ -137,9 +137,4 @@ public class DataAnalysis
             .First()
             .getText();
     }
-
-    static string ConvertToName(string? name) => (name ?? string.Empty)
-        .Select(x => char.IsLetterOrDigit(x) ? x : '_')
-        .Func(x => new string(x.ToArray()))
-        .Func(x => x.Split('_', StringSplitOptions.RemoveEmptyEntries).Join("_"));
 }
