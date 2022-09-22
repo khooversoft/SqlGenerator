@@ -9,16 +9,6 @@ namespace SqlGenerator.sdk.CsvStore;
 
 public static class CsvFile
 {
-    public static IReadOnlyList<TableInfo> Read(string file)
-    {
-        using var reader = new StreamReader(file);
-        using CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-
-        return csv.GetRecords<TableInfoModel>()
-            .Select(x => x.ConvertTo())
-            .ToList();
-    }
-
     public static StringTable ReadDynamic(string file, string? delimiter = ",")
     {
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -30,21 +20,7 @@ public static class CsvFile
         using var reader = new StreamReader(file);
         using CsvReader csv = new CsvReader(reader, config);
 
-        var data = csv.GetRecords<dynamic>().ToList();
-        if( data.Count == 0) return new StringTable();
-
-        // Get header
-        StringRow header = ((IDictionary<string, object>)data.First())
-            .Select(x => x.Key)
-            .Func(x => new StringRow() + x);
-
-        IReadOnlyList<StringRow> rows = data
-            .Select(x => (IDictionary<string, object>)x)
-            .Select(x => new StringRow() + x.Values.Select(y => y.ToString()))
-            .Prepend(header)
-            .ToArray();
-
-        return new StringTable(rows, true);
+        return csv.GetRecords<dynamic>().ToTable();
     }
 
     public static void Write<T>(string file, IEnumerable<T> records)
@@ -54,7 +30,7 @@ public static class CsvFile
         using var writer = new StreamWriter(file);
         using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
 
-        csv.WriteRecords(records.ToList());
+        csv.WriteRecords(records.ToArray());
     }
 
     public static StringTable ReadTable(string file)

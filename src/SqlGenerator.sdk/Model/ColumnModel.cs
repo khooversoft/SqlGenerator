@@ -46,4 +46,16 @@ public static class ColumnDefinitionExtensions
 
         return subject;
     }
+
+    public static bool CanShowValue(this ColumnModel subject, Security schemaSecurity)
+    {
+        return schemaSecurity switch
+        {
+            Security.Unrestricted when !subject.PII && !subject.Restricted => true,
+            Security.Restricted when !subject.PII || subject.Restricted => true,
+            Security.PII when subject.PII || !subject.Restricted => true,
+
+            _ => false,
+        };
+    }
 }

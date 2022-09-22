@@ -41,4 +41,7 @@ public static class TableInfoExtensions
 
     public static (string tableName, string columnName) GetColumnId(this TableInfo subject) =>
         (subject.TableName.ToLower(), subject.ColumnName.ToLower());
+
+    public static string GetColumnKey(this TableInfo subject) =>
+        $"{subject.TableName.ToLower()}-{subject.ColumnName.ToLower()}";
 }

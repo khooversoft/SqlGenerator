@@ -35,6 +35,7 @@ async Task<int> Run(string[] args)
             container.GetRequiredService<MaskCommand>(),
             container.GetRequiredService<ExtractCommand>(),
             container.GetRequiredService<MergeCommand>(),
+            container.GetRequiredService<UpdateCommand>(),
         };
 
         int exitCode = await rc.InvokeAsync(args);
@@ -71,10 +72,12 @@ ServiceProvider BuildContainer()
     service.AddSingleton<MaskActivity>();
     service.AddSingleton<ExtractActivity>();
     service.AddSingleton<MergeActivity>();
+    service.AddSingleton<UpdateActivity>();
 
     service.AddSingleton<MaskCommand>();
     service.AddSingleton<ExtractCommand>();
     service.AddSingleton<MergeCommand>();
+    service.AddSingleton<UpdateCommand>();
 
     return service.BuildServiceProvider();
 }

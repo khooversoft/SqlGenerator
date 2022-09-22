@@ -69,7 +69,7 @@ public static class ContextExtensions
             string v => Path.IsPathFullyQualified(v) switch
             {
                 true => v,
-                false => Path.Combine(Path.GetDirectoryName(projectOption.ProjectOptionFile).NotNull(), v),
+                false => Path.Combine(Path.GetDirectoryName(projectOption.ProjectOptionFile).NotEmpty(), v),
             },
         };
 

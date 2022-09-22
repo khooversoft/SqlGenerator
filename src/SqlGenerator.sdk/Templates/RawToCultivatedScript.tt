@@ -194,7 +194,8 @@ SELECT TOP 1
        is_enabled,
        context,
        param_name,
-       param_value
+       param_value,
+       execution_type
 INTO
  #data_object_parameter
 FROM
@@ -203,7 +204,7 @@ FROM
 
 TRUNCATE TABLE #data_object_parameter;
 
-INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
+INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value, execution_type)
 VALUES
 
 --Query Option 3: Lookup Column, generated in copy parameter

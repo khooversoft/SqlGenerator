@@ -89,7 +89,11 @@ internal class MergeActivity
         string file = PathTool.SetFileExtension(projectFile, ".datadictionary.csv");
         _logger.LogInformation("Writing data dictionary to {file}", file);
 
-        CsvFile.Write(file, analysis.TableInfos.Select(x => x.ConvertTo()));
+        new DataDictionary
+        {
+            File = file,
+            Items = analysis.TableInfos.ToArray(),
+        }.Write();
     }
 
 
@@ -137,12 +141,5 @@ internal class MergeActivity
         public string File { get; init; } = null!;
         public string TableName { get; init; } = null!;
         public StringTable Table { get; init; } = null!;
-    }
-
-    private record DistanceDetail
-    {
-        public string First { get; init; } = null!;
-        public string Second { get; init; } = null!;
-        public int Distance { get; init; }
     }
 }

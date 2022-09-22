@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -26,6 +28,10 @@ public static class Extensions
 
     public static T LogProperties<T>(this T value, string title, ILogger logger) where T : class
     {
+        value.NotNull();
+        title.NotEmpty();
+        logger.NotNull();
+
         value.NotNull()
             .GetConfigurationValues()
             .Select(x => $"   {x.Key}={x.Value}")
@@ -34,5 +40,23 @@ public static class Extensions
             .Action(x => logger.LogInformation(x));
 
         return value;
+    }
+
+    public static IDisposable LogEntryExit(
+        this ILogger logger,
+        [CallerMemberName] string function = "",
+        [CallerFilePath] string path = "",
+        [CallerLineNumber] int lineNumber = 0
+    )
+    {
+        logger
+            .NotNull()
+            .LogTrace("Enter: Method={method}, path={path}, line={lineNumber}", function, path, lineNumber);
+
+        var sw = Stopwatch.StartNew();
+
+        return new FinalizeScope(() =>
+            logger.LogTrace("Exit: ms={ms} Method={method}, path={path}, line={lineNumber}", sw.ElapsedMilliseconds, function, path, lineNumber)
+            );
     }
 }

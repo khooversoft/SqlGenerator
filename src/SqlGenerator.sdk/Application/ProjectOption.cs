@@ -27,11 +27,11 @@ public static class ProjectOptionFile
         .Func(x => x with
         {
             ProjectOptionFile = projectFile,
-            SourceFile = ToFullPath(projectFile, x.SourceFile),
-            OptionFile = ToFullPath(projectFile, x.OptionFile),
-            NameMapFile = ToFullPath(projectFile, x.NameMapFile),
-            TableListFile = ToFullPath(projectFile, x.TableListFile),
-            ClassificationFile = ToFullPath(projectFile, x.ClassificationFile),
+            SourceFile = PathTool.ToFullPath(projectFile, x.SourceFile),
+            OptionFile = PathTool.ToFullPath(projectFile, x.OptionFile),
+            NameMapFile = PathTool.ToFullPath(projectFile, x.NameMapFile),
+            TableListFile = PathTool.ToFullPath(projectFile, x.TableListFile),
+            ClassificationFile = PathTool.ToFullPath(projectFile, x.ClassificationFile),
         })
         .Verify();
 
@@ -41,10 +41,4 @@ public static class ProjectOptionFile
 
         return subject;
     }
-
-    private static string? ToFullPath(string projectFile, string? file) => file switch
-    {
-        null => null,
-        _ => Path.Combine(Path.GetDirectoryName(projectFile).NotEmpty(), file)
-    };
 }

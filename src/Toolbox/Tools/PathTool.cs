@@ -13,29 +13,23 @@ public static class PathTool
     {
         null => null,
 
-        _ => Path.GetDirectoryName(path).ToNullIfEmpty() switch
+        string => Path.GetDirectoryName(path).ToNullIfEmpty() switch
         {
             null => Path.Combine(basePath, path),
             _ => path,
         }
     };
 
-    public static string? GetRelativePath(string? path, string basePath)
+    public static string? ToFullPath(string referenceFile, string? file) => file switch
     {
-        path = PathTool.ApplyBasePath(path, basePath);
+        null => null,
 
-        path = Path.GetExtension(path).IsEmpty() switch
+        string => Path.IsPathFullyQualified(file) switch
         {
-            true => Path.ChangeExtension(path, ".json"),
-            false => path,
-        };
-
-        return path switch
-        {
-            null => null,
-            _ => Path.GetRelativePath(basePath, path),
-        };
-    }
+            true => file,
+            false => Path.Combine(Path.GetDirectoryName(referenceFile).NotEmpty(), file),
+        },
+    };
 
     public static string SetFileExtension(string file, string extension)
     {

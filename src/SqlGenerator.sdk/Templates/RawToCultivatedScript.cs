@@ -168,13 +168,14 @@ DECLARE @pipeline_name AS NVARCHAR(260) = N'");
                     "**************************************************/\r\nDROP TABLE IF EXISTS #data_" +
                     "object_parameter;\r\n\r\nSELECT TOP 1\r\n       data_object_name,\r\n       activity_id," +
                     "\r\n       activity_name,\r\n       is_enabled,\r\n       context,\r\n       param_name," +
-                    "\r\n       param_value\r\nINTO\r\n #data_object_parameter\r\nFROM\r\n cntrl.data_object_pa" +
-                    "rameter;\r\n\r\n\r\nTRUNCATE TABLE #data_object_parameter;\r\n\r\nINSERT INTO #data_object" +
-                    "_parameter (data_object_name, activity_id, activity_name, is_enabled, context, p" +
-                    "aram_name, param_value)\r\nVALUES\r\n\r\n--Query Option 3: Lookup Column, generated in" +
-                    " copy parameter\r\n/************copy_into_test************/\r\n\r\n");
+                    "\r\n       param_value,\r\n       execution_type\r\nINTO\r\n #data_object_parameter\r\nFRO" +
+                    "M\r\n cntrl.data_object_parameter;\r\n\r\n\r\nTRUNCATE TABLE #data_object_parameter;\r\n\r\n" +
+                    "INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name" +
+                    ", is_enabled, context, param_name, param_value, execution_type)\r\nVALUES\r\n\r\n--Que" +
+                    "ry Option 3: Lookup Column, generated in copy parameter\r\n/************copy_into_" +
+                    "test************/\r\n\r\n");
             
-            #line 212 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+            #line 213 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
 
 foreach(var item in GetTableNames())
 {

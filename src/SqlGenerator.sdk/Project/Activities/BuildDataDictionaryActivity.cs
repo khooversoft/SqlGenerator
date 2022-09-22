@@ -40,10 +40,14 @@ public class BuildDataDictionaryActivity
 
         var tableColumns = tableInfos
             .GroupBy(x => x.TableName)
-            .SelectMany(x => x.Select(y => y.ConvertTo()))
-            .ToList();
+            .SelectMany(x => x);
 
-        CsvFile.Write(outputFile, tableColumns);
+        new DataDictionary
+        {
+            File = outputFile,
+            Items = tableColumns.ToArray(),
+        }.Write();
+
         return Task.CompletedTask;
     }
 }

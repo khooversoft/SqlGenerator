@@ -30,9 +30,9 @@ public class TestActivity
             Delimiter = delimiter,
         };
 
-        IReadOnlyList<TableInfo> tableInfos = CsvFile.Read(dataDictionaryFile);
+        DataDictionary dataDictionary = DataDictionaryFile.Read(dataDictionaryFile);
 
-        var tableGroups = tableInfos
+        var tableGroups = dataDictionary.Items
             .GroupBy(x => x.TableName);
 
         foreach (var table in tableGroups)

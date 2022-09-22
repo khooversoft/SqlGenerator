@@ -36,27 +36,30 @@ public class ClassificationActivity
             OutputFile = outputFile,
         }.LogProperties("Classification...", _logger);
 
-        IReadOnlyList<TableInfo> tableInfos = CsvFile.Read(sourceFile);
+        DataDictionary dataDictionary = DataDictionaryFile.Read(sourceFile);
         ClassificationOption classificationOption = await ClassificationOptionFile.ReadAsync(classificationOptionFile);
 
-        List<TableInfoModel> classificated = tableInfos
+        IReadOnlyList<TableInfo> classificated = dataDictionary.Items
             .Select(x => x with
             {
                 PII = classificationOption.IsPII(x.TableName, x.ColumnName),
                 Restricted = classificationOption.IsRestricted(x.TableName, x.ColumnName),
             })
-            .Select(x => x.ConvertTo())
             .ToList();
 
+        new DataDictionary
+        {
+            File = outputFile,
+            Items = classificated
+        }.Write();
 
-        CsvFile.Write(outputFile, classificated);
         _logger.LogInformation("Completed writing output={outputFile}", outputFile);
 
         var counters = LogStats(classificated);
         return counters;
     }
 
-    private Counters LogStats(IReadOnlyList<TableInfoModel> tableInfos) => new Counters(nameof(FilterSourceActivity))
+    private Counters LogStats(IReadOnlyList<TableInfo> tableInfos) => new Counters(nameof(FilterSourceActivity))
     {
         ("Table count", tableInfos.GroupBy(x => x.TableName).Count()),
         ("PII count", tableInfos.Select(x => x.PII).Count()),

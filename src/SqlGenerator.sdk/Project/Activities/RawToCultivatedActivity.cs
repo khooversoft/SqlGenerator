@@ -31,7 +31,8 @@ public class RawToCultivatedActivity
             physicalModel,
             rawToCultivatedOption.PipelineName,
             rawToCultivatedOption.ActivityName,
-            rawToCultivatedOption.ParamValueFormat
+            rawToCultivatedOption.ParamValueFormat,
+            "LNUM"
             );
 
         string lines = page.TransformText();

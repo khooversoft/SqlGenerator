@@ -1,13 +1,4 @@
-﻿using DocumentFormat.OpenXml.Office2010.ExcelAc;
-using DocumentFormat.OpenXml.Wordprocessing;
-using SqlGenerator.sdk.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Toolbox.Data;
+﻿using SqlGenerator.sdk.Model;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -208,31 +199,26 @@ public class SqlInstructionBuilder
 
     private string BuildColumnModel(ColumnModel columnModel, SchemaModel schemaModel)
     {
-        return columnModel.Security switch
+        return columnModel.CanShowValue(schemaModel.Security) switch
         {
-            Security.Unrestricted => formatNormal(columnModel.Name),
-            Security.Data => throw new ArgumentException("Data security"),
+            true => $"x.[{columnModel.Name}]" + displayAs(),
 
-            Security v when v == schemaModel.Security => formatNormal(columnModel.Name),
-
-            _ => formatProtected(columnModel.Name),
+            false => $"HASHBYTES('SHA2_256', {castAs(columnModel.Name, columnModel.DataType)})" + displayAs(columnModel.Name),
         };
 
-
-        string formatNormal(string name) => $"x.[{name}]" + displayAs();
-
-        string formatProtected(string name) =>
-            $"HASHBYTES('SHA2_256', {castAs(name, columnModel.DataType)})" + (displayAs().ToNullIfEmpty() ?? $" AS [{name}]");
-
-        string displayAs() => columnModel.ShortName switch
+        string displayAs(string? defaultName = null) => columnModel.ShortName switch
         {
             string v => $" AS [{v}]",
-            _ => string.Empty,
+            _ => defaultName switch
+            {
+                null => string.Empty,
+                _ => $" AS [{defaultName}]",
+            },
         };
 
         string castAs(string name, string dataType)
         {
-            return dataType.ToLower().ToNullIfEmpty() switch
+            return dataType.ToLower().Trim().ToNullIfEmpty() switch
             {
                 null => throw new ArgumentException("Data type is null"),
 
@@ -241,11 +227,10 @@ public class SqlInstructionBuilder
                 string v when v.StartsWith("varchar") => normalFmt(name),
                 string v when v.StartsWith("nvarchar") => normalFmt(name),
 
-                _ => castFmt(name),
+                _ => $"CAST(x.[{name}] AS NVARCHAR(50))",
             };
 
             string normalFmt(string name) => $"x.[{name}]";
-            string castFmt(string name) => $"CAST(x.[{name}] AS NVARCHAR(50))";
         }
     }
 

@@ -76,6 +76,10 @@ internal class ExtractActivity
         string file = PathTool.SetFileExtension(inputFile, ".datadictionary.csv");
         _logger.LogInformation("Writing data dictionary to {file}", file);
 
-        CsvFile.Write(file, analysis.TableInfos.Select(x => x.ConvertTo()));
+        new DataDictionary
+        {
+            File = file,
+            Items = analysis.TableInfos.ToArray(),
+        }.Write();
     }
 }

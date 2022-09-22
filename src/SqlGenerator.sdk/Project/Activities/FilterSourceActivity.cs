@@ -1,11 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.CsvStore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Toolbox.Extensions;
+using Toolbox.Logging;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Project.Activities;
@@ -32,29 +28,33 @@ public class FilterSourceActivity
         }.Join("," + Environment.NewLine);
         _logger.LogInformation(logLine);
 
-        var tableInfos = CsvFile.Read(sourceFile);
+        DataDictionary dataDictionary = DataDictionaryFile.Read(sourceFile);
 
         IReadOnlyList<string> tableList = File.ReadAllText(tableListFile)
             .NotNull()
             .ToObject<IReadOnlyList<string>>()
             .NotNull();
 
-        List<TableInfoModel> outputInfos = tableInfos
+        IReadOnlyList<TableInfo> outputInfos = dataDictionary.Items
             .Join(tableList, x => x.TableName, x => x, (x, _) => x, StringComparer.OrdinalIgnoreCase)
-            .Select(x => x.ConvertTo())
             .ToList();
 
-        CsvFile.Write(outputFile, outputInfos);
+        new DataDictionary
+        {
+            File = outputFile,
+            Items = outputInfos,
+        }.Write();
+
         _logger.LogInformation("Completed writing output={outputFile}", outputFile);
 
         Verify(tableList, outputInfos);
 
-        LogAnalysis(tableList, tableInfos);
-        var counters = LogStats(tableList, tableInfos, outputInfos);
+        LogAnalysis(tableList, dataDictionary.Items);
+        var counters = LogStats(tableList, dataDictionary.Items, outputInfos);
         return Task.FromResult(counters);
     }
 
-    private Counters LogStats(IReadOnlyList<string> tableList, IReadOnlyList<TableInfo> tableInfos, List<TableInfoModel> outputInfos)
+    private Counters LogStats(IReadOnlyList<string> tableList, IReadOnlyList<TableInfo> tableInfos, IReadOnlyList<TableInfo> outputInfos)
     {
         var filterNotInSource = tableList.Where(x => !tableInfos.Any(y => y.TableName.Equals(x, StringComparison.OrdinalIgnoreCase)));
 
@@ -77,7 +77,7 @@ public class FilterSourceActivity
         return counters;
     }
 
-    private void Verify(IReadOnlyList<string> tableList, IReadOnlyList<TableInfoModel> tableInfos)
+    private void Verify(IReadOnlyList<string> tableList, IReadOnlyList<TableInfo> tableInfos)
     {
         var tables = tableInfos.Select(x => x.TableName).Distinct().ToList();
         var tableListDistinct = tableList.Distinct().ToList();

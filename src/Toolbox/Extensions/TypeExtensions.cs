@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System.ComponentModel;
+using System.Dynamic;
 using Toolbox.Tools;
 
 namespace Toolbox.Extensions;
@@ -28,5 +29,15 @@ public static class TypeExtensions
         }
 
         return record;
+    }
+
+    public static dynamic ToDynamic(this object value)
+    {
+        IDictionary<string, object?> expando = new ExpandoObject();
+
+        foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(value.GetType()).NotNull())
+            expando.Add(property.Name, property.GetValue(value));
+
+        return (ExpandoObject)expando;
     }
 }

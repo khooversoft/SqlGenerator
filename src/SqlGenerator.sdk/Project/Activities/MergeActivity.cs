@@ -2,6 +2,7 @@
 using SqlGenerator.sdk.CsvStore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +24,12 @@ public class MergeActivity
 
         _logger.LogInformation("Merging {inputFile} into {targetFile} for PII and protected settings", inputFile, targetFile);
 
-        IReadOnlyList<TableInfo> input = CsvFile.Read(inputFile);
-        IReadOnlyList<TableInfo> target = CsvFile.Read(targetFile);
+        DataDictionary input = DataDictionaryFile.Read(inputFile);
+        DataDictionary target = DataDictionaryFile.Read(targetFile);
 
-        Dictionary<(string, string), TableInfo> inputDict = input.ToDictionary(x => x.GetColumnId(), x => x);
+        Dictionary<(string, string), TableInfo> inputDict = input.Items.ToDictionary(x => x.GetColumnId(), x => x);
 
-        IReadOnlyList<TableInfo> updated = target
+        IReadOnlyList<TableInfo> updated = target.Items
             .Select(x => lookup(x.GetColumnId()) switch
             {
                 null => x,
@@ -40,12 +41,19 @@ public class MergeActivity
             })
             .ToList();
 
-        (target.Count == updated.Count).Assert(x => x == true, $"Target count={target.Count} does not match updated count={updated.Count}");
+        (target.Items.Count == updated.Count)
+            .Assert(x => x == true, $"Target count={target.Items.Count} does not match updated count={updated.Count}");
 
-        LogStats(input, target, updated);
+        LogStats(input.Items, target.Items, updated);
 
-        CsvFile.Write(targetFile, updated.Select(x => x.ConvertTo()));
+        new DataDictionary
+        {
+            File = targetFile,
+            Items = updated,
+        }.Write();
+
         return Task.CompletedTask;
+
 
         TableInfo? lookup((string, string) value)
         {

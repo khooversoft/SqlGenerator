@@ -52,8 +52,8 @@ public partial class ProjectBuilder
 
         ConfigFile sourceFile = projectOption.SourceFile
             .NotNull(name: "No source file specified, master file or source file")
-            .Assert(x => File.Exists(x), x => $"File {x} does not exist")
-            .Func(x => new ConfigFile(x));
+            .Func(x => new ConfigFile(x))
+            .Assert(x => x.Exists(), x => $"File {x.SourceFile} does not exist");
 
         var context = CreateContext(projectFile, projectOption, sourceFile, force);
 

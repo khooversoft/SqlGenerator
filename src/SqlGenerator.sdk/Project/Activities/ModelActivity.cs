@@ -32,15 +32,15 @@ public class ModelActivity
             NameMapFile = nameMapFile,
         }.LogProperties("Building model...", _logger);
 
-        var infos = CsvFile.Read(sourceFile);
+        DataDictionary dataDictionary = DataDictionaryFile.Read(sourceFile);
         IReadOnlyList<NameMapRecord>? nameMaps = nameMapFile != null ? NameMapRecordFile.Read(nameMapFile) : null;
 
-        var model = new PhysicalModelBuilder().Build(infos, schemaOption, nameMaps);
+        var model = new PhysicalModelBuilder().Build(dataDictionary.Items, schemaOption, nameMaps);
         model.Write(outputFile);
 
         var counters = new Counters(nameof(ModelActivity))
         {
-            ("Input table count", infos.Select(x => x.TableName).Distinct().Distinct().Count()),
+            ("Input table count", dataDictionary.Items.Select(x => x.TableName).Distinct().Distinct().Count()),
         }.Add(model.ToCounters());
 
         return Task.FromResult(counters);
