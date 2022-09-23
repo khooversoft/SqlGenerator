@@ -176,10 +176,8 @@ public class SqlInstructionBuilder
             .Concat(_physicalModel.SuffixColumns.Where(x => !x.PrimaryKey))
             .ToArray();
 
-        SchemaModel schemaModel = _physicalModel.GetSchemaModel(tableModel.Name.Schema).NotNull();
-
         list += columns
-            .Select(x => BuildColumnModel(x, schemaModel))
+            .Select(x => BuildColumnModel(x, schema))
             .SequenceJoin(x => x += ",");
 
         list += InstructionType.TabMinus;

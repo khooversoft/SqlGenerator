@@ -13,6 +13,8 @@ public record UpdateOption
 {
     public string CurrentFile { get; init; } = null!;
     public string UpdateFile { get; init; } = null!;
+    public string? TableFilterFile { get; init; }
+    public string? TableDropFile { get; init; }
     public IReadOnlyList<ColumnOverride> ColumnOverrides { get; init; } = Array.Empty<ColumnOverride>();
 }
 
@@ -56,6 +58,8 @@ public static class UpdateOptionFile
         {
             CurrentFile = PathTool.ToFullPath(file, x.CurrentFile).NotEmpty(),
             UpdateFile = PathTool.ToFullPath(file, x.UpdateFile).NotEmpty(),
+            TableFilterFile = PathTool.ToFullPath(file, x.TableFilterFile),
+            TableDropFile = PathTool.ToFullPath(file, x.TableDropFile),
         });
 
     public static string GetColumnKey(this ColumnOverride subject) =>

@@ -33,8 +33,9 @@ internal class UpdateActivity
         update = ApplyOverrides(updateOption, update);
 
         IReadOnlyList<TableInfoDelta> deltas = CalculateDelta(current, update);
-        WriteAnalysis(updateOption.UpdateFile, deltas);
+        Analysis(updateOption, deltas);
         ProposeDataDictionary(updateOption.UpdateFile, deltas);
+        ProposeDataDictionaryForFilter(updateOption.UpdateFile, deltas, updateOption.TableFilterFile);
 
         return Task.CompletedTask;
     }
@@ -93,51 +94,125 @@ internal class UpdateActivity
         return list;
     }
 
-    private void WriteAnalysis(string updateFile, IReadOnlyList<TableInfoDelta> deltas)
+    private void Analysis(UpdateOption option, IReadOnlyList<TableInfoDelta> deltas)
     {
         write(".update.delta.csv", deltas.Where(x => x.State == UpdateState.Update));
         write(".new.delta.csv", deltas.Where(x => x.State == UpdateState.New));
         write(".delete.delta.csv", deltas.Where(x => x.State == UpdateState.Delete));
 
-        //writeUpdatedDetails();
-
-        //void writeUpdatedDetails()
-        //{
-        //    string file = PathTool.SetFileExtension(updateFile, ".updateDetails.delta.csv");
-        //    _logger.LogInformation("Writing update details delta results to file {file}", file);
-
-        //    var details = deltas
-        //        .Where(x => x.State == UpdateState.Update)
-        //        .SelectMany(x => x.Delta())
-        //        .Select(x => x.ToDynamic())
-        //        .ToArray();
-
-        //    CsvFile.Write(file, details);
-        //}
+        writeNewTables();
+        writeTableFilterVsDropList();
 
         void write(string extension, IEnumerable<TableInfoDelta> data)
         {
-            string file = PathTool.SetFileExtension(updateFile, extension);
+            string file = PathTool.SetFileExtension(option.UpdateFile, extension);
             _logger.LogInformation("Writing {file}", file);
             CsvFile.Write(file, data);
+        }
+
+        void writeNewTables()
+        {
+            var update = deltas
+                .Where(x => x.Update != null)
+                .Select(x => x.Update.NotNull().TableName.ToLower())
+                .Distinct();
+
+            var current = deltas
+                .Where(x => x.Current != null)
+                .Select(x => x.Current.TableName.ToLower())
+                .Distinct();
+
+            var newTables = update
+                .Except(current)
+                .Select(x => new { TableName = x }.ToDynamic())
+                .ToArray();
+
+            string file = PathTool.SetFileExtension(option.UpdateFile, ".newTable.delta.csv");
+            CsvFile.Write(file, newTables);
+        }
+
+        void writeTableFilterVsDropList()
+        {
+            if (option.TableFilterFile.IsEmpty() || option.TableDropFile.IsEmpty())
+            {
+                _logger.LogWarning("Skipping filter vs drop table list");
+                return;
+            }
+
+            IReadOnlyList<string> tableList = File.ReadAllText(option.TableFilterFile)
+                .NotNull()
+                .ToObject<IReadOnlyList<string>>()
+                .NotNull();
+
+            IReadOnlyList<string> dropList = File.ReadAllText(option.TableDropFile)
+                .NotNull()
+                .ToObject<IReadOnlyList<string>>()
+                .NotNull();
+
+            var tableNameHashSet = deltas
+                .SelectMany(x => new[]
+                    {
+                        x.Current?.TableName,
+                        x.Update?.TableName,
+                    }
+                    .Where(y => y != null)
+                    .OfType<string>()
+                )
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .Func(x => new HashSet<string>(x, StringComparer.OrdinalIgnoreCase));
+
+            var filesInDropNotInFilter = dropList
+                .Except(tableList)
+                .Select(x => new { Table = x, IsKnown = tableNameHashSet.Contains(x) }.ToDynamic())
+                .ToArray();
+
+            string file = PathTool.SetFileExtension(option.UpdateFile, ".filterVsDrop.delta.csv");
+            CsvFile.Write(file, filesInDropNotInFilter);
         }
     }
 
     private void ProposeDataDictionary(string updateFile, IReadOnlyList<TableInfoDelta> deltas)
     {
         var list = deltas
+            .Where(x => x.State != UpdateState.Delete)
             .Select(x => x.State switch
             {
                 UpdateState.Current => new UpdateTableInfo(x.Update.NotNull(), x.State),
                 UpdateState.Update => new UpdateTableInfo(x.Update.NotNull(), x.State, x.Changes()),
                 UpdateState.New => new UpdateTableInfo(x.Update.NotNull(), x.State),
-                UpdateState.Delete => new UpdateTableInfo(x.Current, x.State),
 
                 _ => throw new InvalidOperationException(),
             })
             .ToArray();
 
         string file = PathTool.SetFileExtension(updateFile, ".propose.dataDictionary.csv");
+        _logger.LogInformation("Writing propose data dictionary {file}", file);
+        CsvFile.Write(file, list);
+    }
+
+    private void ProposeDataDictionaryForFilter(string updateFile, IReadOnlyList<TableInfoDelta> deltas, string? tableFilterFile)
+    {
+        if (tableFilterFile.IsEmpty()) return;
+
+        IReadOnlyList<string> tableList = File.ReadAllText(tableFilterFile)
+            .NotNull()
+            .ToObject<IReadOnlyList<string>>()
+            .NotNull();
+
+        IReadOnlyList<UpdateTableInfo> list = deltas
+            .Where(x => x.State != UpdateState.Delete)
+            .Join(tableList, x => x.Update.NotNull().TableName, x => x, (x, _) => x, StringComparer.OrdinalIgnoreCase)
+            .Select(x => x.State switch
+            {
+                UpdateState.Current => new UpdateTableInfo(x.Update.NotNull(), x.State),
+                UpdateState.Update => new UpdateTableInfo(x.Update.NotNull(), x.State, x.Changes()),
+                UpdateState.New => new UpdateTableInfo(x.Update.NotNull(), x.State),
+
+                _ => throw new InvalidOperationException(),
+            })
+            .ToList();
+
+        string file = PathTool.SetFileExtension(updateFile, ".proposeFilter.dataDictionary.csv");
         _logger.LogInformation("Writing propose data dictionary {file}", file);
         CsvFile.Write(file, list);
     }
