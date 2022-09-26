@@ -41,4 +41,13 @@ public static class ProjectOptionFile
 
         return subject;
     }
+
+    public static void Write(this ProjectOption projectOption, string file)
+    {
+        projectOption.NotNull();
+        file.NotEmpty();
+
+        string json = projectOption.ToJsonFormat();
+        File.WriteAllText(file, json);
+    }
 }

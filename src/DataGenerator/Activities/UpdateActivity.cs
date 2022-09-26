@@ -1,13 +1,7 @@
 ﻿using DataGenerator.Application;
-using DocumentFormat.OpenXml.Office2010.Excel;
 using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.CsvStore;
-using SqlGenerator.sdk.Data;
-using SqlGenerator.sdk.Excel;
-using System.Linq;
-using System.Net.Sockets;
-using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Logging;
 using Toolbox.Tools;
@@ -23,7 +17,7 @@ internal class UpdateActivity
         _logger = logger.NotNull();
     }
 
-    public Task Update(UpdateOption updateOption)
+    public Task Update(UpdateOption updateOption, bool whatIf)
     {
         updateOption.LogProperties("Updating...", _logger);
 
@@ -36,6 +30,11 @@ internal class UpdateActivity
         Analysis(updateOption, deltas);
         ProposeDataDictionary(updateOption.UpdateFile, deltas);
         ProposeDataDictionaryForFilter(updateOption.UpdateFile, deltas, updateOption.TableFilterFile);
+
+        if (!whatIf)
+        {
+            UpdateProject(updateOption, deltas);
+        }
 
         return Task.CompletedTask;
     }
@@ -65,9 +64,6 @@ internal class UpdateActivity
                 Update = updateDict.TryGetValue(x.GetColumnKey(), out var value) ? value : null,
             }).ToArray();
 
-        var newCount = updateColumns.Where(x => x.Update == null).Count();
-        var delCount = updateColumns.Where(x => x.Current == null).Count();
-
         var newColumns = update.Items
             .Select(x => x.GetColumnKey())
             .Except(current.Items.Select(x => x.GetColumnKey()))
@@ -77,19 +73,21 @@ internal class UpdateActivity
                 Update = x,
             }).ToArray();
 
-        var deletedColumns = current.Items
-            .Select(x => x.GetColumnKey())
-            .Except(update.Items.Select(x => x.GetColumnKey()))
-            .Join(current.Items, x => x, x => x.GetColumnKey(), (o, i) => i)
-            .Select(x => new TableInfoDelta
-            {
-                Current = x,
-            }).ToArray();
-
         var list = updateColumns
             .Concat(newColumns)
-            .Concat(deletedColumns)
+            .Select(x => x.Update == null ? x : x with { Update = x.Update with { Ordinal = 0 } })
             .ToArray();
+
+        int baseOrdinal = ((((list.Length + 10) / 10) + 1000) * 10);
+        list = list
+            .Select((x, i) => x with
+            {
+                Update = x.Update switch
+                {
+                    null => null,
+                    not null => x.Update with { Ordinal = baseOrdinal + i },
+                },
+            }).ToArray();
 
         return list;
     }
@@ -98,10 +96,9 @@ internal class UpdateActivity
     {
         write(".update.delta.csv", deltas.Where(x => x.State == UpdateState.Update));
         write(".new.delta.csv", deltas.Where(x => x.State == UpdateState.New));
-        write(".delete.delta.csv", deltas.Where(x => x.State == UpdateState.Delete));
 
-        writeNewTables();
-        writeTableFilterVsDropList();
+        WriteNewTables(deltas, option);
+        WriteTableFilterVsDropList(option, deltas);
 
         void write(string extension, IEnumerable<TableInfoDelta> data)
         {
@@ -109,81 +106,73 @@ internal class UpdateActivity
             _logger.LogInformation("Writing {file}", file);
             CsvFile.Write(file, data);
         }
+    }
 
-        void writeNewTables()
+    private static void WriteNewTables(IReadOnlyList<TableInfoDelta> deltas, UpdateOption option)
+    {
+        var update = deltas
+            .Where(x => x.Update != null)
+            .Select(x => x.Update.NotNull().TableName.ToLower())
+            .Distinct();
+
+        var current = deltas
+            .Where(x => x.Current != null)
+            .Select(x => x.Current.TableName.ToLower())
+            .Distinct();
+
+        var newTables = update
+            .Except(current)
+            .OrderBy(x => x)
+            .Select(x => new { TableName = x }.ToDynamic())
+            .ToArray();
+
+        string file = PathTool.SetFileExtension(option.UpdateFile, ".newTable.delta.csv");
+        CsvFile.Write(file, newTables);
+    }
+
+    private void WriteTableFilterVsDropList(UpdateOption option, IReadOnlyList<TableInfoDelta> deltas)
+    {
+        if (option.TableFilterFile.IsEmpty() || option.TableDropFile.IsEmpty())
         {
-            var update = deltas
-                .Where(x => x.Update != null)
-                .Select(x => x.Update.NotNull().TableName.ToLower())
-                .Distinct();
-
-            var current = deltas
-                .Where(x => x.Current != null)
-                .Select(x => x.Current.TableName.ToLower())
-                .Distinct();
-
-            var newTables = update
-                .Except(current)
-                .Select(x => new { TableName = x }.ToDynamic())
-                .ToArray();
-
-            string file = PathTool.SetFileExtension(option.UpdateFile, ".newTable.delta.csv");
-            CsvFile.Write(file, newTables);
+            _logger.LogWarning("Skipping filter vs drop table list");
+            return;
         }
 
-        void writeTableFilterVsDropList()
-        {
-            if (option.TableFilterFile.IsEmpty() || option.TableDropFile.IsEmpty())
-            {
-                _logger.LogWarning("Skipping filter vs drop table list");
-                return;
-            }
+        IReadOnlyList<string> tableList = File.ReadAllText(option.TableFilterFile)
+            .NotNull()
+            .ToObject<IReadOnlyList<string>>()
+            .NotNull();
 
-            IReadOnlyList<string> tableList = File.ReadAllText(option.TableFilterFile)
-                .NotNull()
-                .ToObject<IReadOnlyList<string>>()
-                .NotNull();
+        IReadOnlyList<string> dropList = File.ReadAllText(option.TableDropFile)
+            .NotNull()
+            .ToObject<IReadOnlyList<string>>()
+            .NotNull();
 
-            IReadOnlyList<string> dropList = File.ReadAllText(option.TableDropFile)
-                .NotNull()
-                .ToObject<IReadOnlyList<string>>()
-                .NotNull();
+        var tableNameHashSet = deltas
+            .SelectMany(x => new[]
+                {
+                    x.Current?.TableName,
+                    x.Update?.TableName,
+                }
+                .Where(y => y != null)
+                .OfType<string>()
+            )
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .Func(x => new HashSet<string>(x, StringComparer.OrdinalIgnoreCase));
 
-            var tableNameHashSet = deltas
-                .SelectMany(x => new[]
-                    {
-                        x.Current?.TableName,
-                        x.Update?.TableName,
-                    }
-                    .Where(y => y != null)
-                    .OfType<string>()
-                )
-                .Distinct(StringComparer.OrdinalIgnoreCase)
-                .Func(x => new HashSet<string>(x, StringComparer.OrdinalIgnoreCase));
+        var filesInDropNotInFilter = dropList
+            .Except(tableList)
+            .OrderBy(x => x)
+            .Select(x => new { Table = x, IsKnown = tableNameHashSet.Contains(x) }.ToDynamic())
+            .ToArray();
 
-            var filesInDropNotInFilter = dropList
-                .Except(tableList)
-                .Select(x => new { Table = x, IsKnown = tableNameHashSet.Contains(x) }.ToDynamic())
-                .ToArray();
-
-            string file = PathTool.SetFileExtension(option.UpdateFile, ".filterVsDrop.delta.csv");
-            CsvFile.Write(file, filesInDropNotInFilter);
-        }
+        string file = PathTool.SetFileExtension(option.UpdateFile, ".filterVsDrop.delta.csv");
+        CsvFile.Write(file, filesInDropNotInFilter);
     }
 
     private void ProposeDataDictionary(string updateFile, IReadOnlyList<TableInfoDelta> deltas)
     {
-        var list = deltas
-            .Where(x => x.State != UpdateState.Delete)
-            .Select(x => x.State switch
-            {
-                UpdateState.Current => new UpdateTableInfo(x.Update.NotNull(), x.State),
-                UpdateState.Update => new UpdateTableInfo(x.Update.NotNull(), x.State, x.Changes()),
-                UpdateState.New => new UpdateTableInfo(x.Update.NotNull(), x.State),
-
-                _ => throw new InvalidOperationException(),
-            })
-            .ToArray();
+        var list = CalculateProposeDataDictionary(deltas);
 
         string file = PathTool.SetFileExtension(updateFile, ".propose.dataDictionary.csv");
         _logger.LogInformation("Writing propose data dictionary {file}", file);
@@ -199,30 +188,49 @@ internal class UpdateActivity
             .ToObject<IReadOnlyList<string>>()
             .NotNull();
 
-        IReadOnlyList<UpdateTableInfo> list = deltas
-            .Where(x => x.State != UpdateState.Delete)
-            .Join(tableList, x => x.Update.NotNull().TableName, x => x, (x, _) => x, StringComparer.OrdinalIgnoreCase)
-            .Select(x => x.State switch
-            {
-                UpdateState.Current => new UpdateTableInfo(x.Update.NotNull(), x.State),
-                UpdateState.Update => new UpdateTableInfo(x.Update.NotNull(), x.State, x.Changes()),
-                UpdateState.New => new UpdateTableInfo(x.Update.NotNull(), x.State),
-
-                _ => throw new InvalidOperationException(),
-            })
-            .ToList();
+        var list = CalculateProposeDataDictionary(deltas)
+            .Join(tableList, x => x.TableName, x => x, (x, _) => x, StringComparer.OrdinalIgnoreCase)
+            .ToArray();
 
         string file = PathTool.SetFileExtension(updateFile, ".proposeFilter.dataDictionary.csv");
         _logger.LogInformation("Writing propose data dictionary {file}", file);
         CsvFile.Write(file, list);
     }
 
+    private void UpdateProject(UpdateOption updateOption, IReadOnlyList<TableInfoDelta> deltas)
+    {
+        string versionSourceFile = PathTool.VersionFile(updateOption.CurrentFile);
+
+        var list = CalculateProposeDataDictionary(deltas)
+            .Select(x => x.ConvertTo().ConvertTo())
+            .ToArray();
+
+        _logger.LogInformation("Writing propose data dictionary {file}", versionSourceFile);
+        CsvFile.Write(versionSourceFile, list);
+    }
+
+    private static IReadOnlyList<UpdateTableInfo> CalculateProposeDataDictionary(IReadOnlyList<TableInfoDelta> deltas) => deltas
+        .Select(x => x.State switch
+        {
+            UpdateState.Current => x.Current switch
+            {
+                null => new UpdateTableInfo(x.Update.NotNull(), x.State),
+                _ => new UpdateTableInfo(x.Current.NotNull(), x.State),
+            },
+            UpdateState.Update => new UpdateTableInfo(x.Update.NotNull(), x.State, x.Changes()),
+            UpdateState.New => new UpdateTableInfo(x.Update.NotNull(), x.State),
+
+            _ => throw new InvalidOperationException(),
+        })
+        .OrderBy(x => x.TableName)
+        .ThenBy(x => x.Ordinal)
+        .ToArray();
+
     private enum UpdateState
     {
         Current,
         Update,
-        New,
-        Delete
+        New
     }
 
     private record TableInfoDelta
@@ -232,10 +240,10 @@ internal class UpdateActivity
 
         public UpdateState State => (Current != null, Update != null) switch
         {
-            (true, true) when Delta().Count() == 0 => UpdateState.Current,
+            (true, true) when Delta().Count == 0 => UpdateState.Current,
             (true, true) => UpdateState.Update,
             (false, true) => UpdateState.New,
-            (true, false) => UpdateState.Delete,
+            (true, false) => UpdateState.Current,
 
             (false, false) => throw new InvalidOperationException(),
         };
@@ -255,8 +263,6 @@ internal class UpdateActivity
                 Current.DataType == Update.DataType ? empty : ("DataType", Current.DataType, Update.DataType),
                 Current.NotNull == Update.NotNull ? empty : ("NotNull", Current.NotNull.ToString(), Update.NotNull.ToString()),
                 Current.PrimaryKey == Update.PrimaryKey ? empty : ("PrimaryKey", Current.PrimaryKey.ToString(), Update.PrimaryKey.ToString()),
-                //Current.Restricted == Update.Restricted ? empty : ("Restricted", Current.Restricted.ToString(), Update.Restricted.ToString()),
-                //Current.PII == Update.PII ? empty : ("PII", Current.PII.ToString(), Update.PII.ToString()),
             }
             .Where(x => x != empty)
             .ToArray();
@@ -281,9 +287,11 @@ internal class UpdateActivity
 
             State = state.ToString();
             Change = change ?? string.Empty;
+            Ordinal = subject.Ordinal;
         }
 
         public string State { get; init; }
         public string Change { get; init; }
+        public int Ordinal { get; init; }
     }
 }

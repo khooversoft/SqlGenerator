@@ -9,6 +9,14 @@ namespace SqlGenerator.sdk.CsvStore;
 
 public static class CsvFile
 {
+    public static IReadOnlyList<T> Read<T>(string file)
+    {
+        using var reader = new StreamReader(file);
+        using CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+
+        return csv.GetRecords<T>().ToArray();
+    }
+
     public static StringTable ReadDynamic(string file, string? delimiter = ",")
     {
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)

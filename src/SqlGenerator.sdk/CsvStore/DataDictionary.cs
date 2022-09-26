@@ -35,7 +35,7 @@ public static class DataDictionaryFile
         using CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
         return csv.GetRecords<TableInfoModel>()
-            .Select(x => x.ConvertTo())
+            .Select((x, i) => x.ConvertTo() with { Ordinal = i + 1 })
             .Func(x => new DataDictionary
             {
                 File = file,
@@ -47,7 +47,12 @@ public static class DataDictionaryFile
     {
         dataDictionary.Verify();
 
+        int startOrdinal = dataDictionary.Items.Count + 1;
+
         var records = dataDictionary.Items
+            .Select((x, i) => x.Ordinal > 0 ? x : x with { Ordinal = startOrdinal + i })
+            .OrderBy(x => x.TableName)
+            .ThenBy(x => x.Ordinal)
             .Select(x => x.ConvertTo());
 
         file = (file ?? dataDictionary.File).NotEmpty(name: $"{nameof(file)} not specified");

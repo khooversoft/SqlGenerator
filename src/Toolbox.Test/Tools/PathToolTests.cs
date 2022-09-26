@@ -34,4 +34,38 @@ public class PathToolTests
         Action act = () => PathTool.SetFileExtension(file, extension);
         act.Should().Throw<ArgumentException>();
     }
+
+    [Fact]
+    public void GivenFile_WhenVersioned_ShouldPass()
+    {
+        string version = DateTime.Now.ToString("yyyyMMdd");
+
+        string file = "file1";
+        string fileResult = PathTool.VersionFile(file);
+        fileResult.Should().Be($"file1-{version}");
+
+        file = "file1.csv";
+        fileResult = PathTool.VersionFile(file);
+        fileResult.Should().Be($"file1-{version}.csv");
+
+        file = @"d:\work\file1.csv";
+        fileResult = PathTool.VersionFile(file);
+        fileResult.Should().Be(@$"d:\work\file1-{version}.csv");
+
+        file = @$"d:\work\file1-{version}.csv";
+        fileResult = PathTool.VersionFile(file);
+        fileResult.Should().Be(@$"d:\work\file1-{version}-00.csv");
+
+        file = @$"d:\work\file1-{version}-00.csv";
+        fileResult = PathTool.VersionFile(file);
+        fileResult.Should().Be(@$"d:\work\file1-{version}-01.csv");
+
+        file = @$"D:\Work\SqlGenerator\NetO\TableUpdate\..\NetO.project.json";
+        fileResult = PathTool.VersionFile(file);
+        fileResult.Should().Be(@$"D:\Work\SqlGenerator\NetO\TableUpdate\..\NetO-{version}.project.json");
+
+        file = @$"D:\Work\SqlGenerator\NetO\TableUpdate\..\NetO-{version}.project.json";
+        fileResult = PathTool.VersionFile(file);
+        fileResult.Should().Be(@$"D:\Work\SqlGenerator\NetO\TableUpdate\..\NetO-{version}-00.project.json");
+    }
 }

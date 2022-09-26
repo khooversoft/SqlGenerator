@@ -11,17 +11,19 @@ internal class UpdateCommand : Command
     public UpdateCommand(IServiceProvider serviceProvider) : base("update", "Update data dictionary")
     {
         Argument<string> optionFile = new("optionFile", "Option file for update");
+        Option<bool?> whatIf = new("--whatIf", "Only performance analysis, project file and current source will not be updated");
 
         AddArgument(optionFile);
+        AddOption(whatIf);
 
-        this.SetHandler(async (string optionFile) =>
+        this.SetHandler(async (string optionFile, bool? whatIf) =>
         {
             UpdateOption updateOption = UpdateOptionFile.Read(optionFile);
 
             await serviceProvider
                 .GetRequiredService<UpdateActivity>()
-                .Update(updateOption);
+                .Update(updateOption, whatIf ?? false);
 
-        }, optionFile);
+        }, optionFile, whatIf);
     }
 }

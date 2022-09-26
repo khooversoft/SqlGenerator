@@ -13,30 +13,26 @@ public class TestCommand : Command
 {
     public TestCommand(IServiceProvider serviceProvider) : base("test", "Generate test data")
     {
-        Argument<string> dataDictionaryFile = new("dataDictionaryFile", "Data dictionary to create test data for");
-        Argument<string> folderPath = new("folderPath", "Path to folder to write test data");
+        Argument<string> sourceFile = new("sourceFile", "Source file used for based date");
+        Argument<string?> folderPath = new("folderPath", "Path to folder to write test data, (default is sourceFile folder + '/data')");
 
-        Option<int> count = new("--count", "Number of rows to generate (default = 5 million");
-        count.SetDefaultValue(5 - 000 - 000);
+        Option<int> count = new("--count", "Number of rows to generate (default = 20 million");
+        count.SetDefaultValue(20_000_000);
 
-        Option<int> pageSize = new("--pageSize", "Number of rows per file (default is 5 million_");
-        pageSize.SetDefaultValue(1 - 000 - 000);
+        Option<int> pageSize = new("--pageSize", "Number of rows per file (default is 5 million");
+        pageSize.SetDefaultValue(5_000_000);
 
-        Option<string> delimiter = new("--delimiter", "Delimiter to use (default = ','");
-        delimiter.SetDefaultValue(",");
-
-        AddArgument(dataDictionaryFile);
+        AddArgument(sourceFile);
         AddArgument(folderPath);
         AddOption(count);
         AddOption(pageSize);
-        AddOption(delimiter);
 
-        this.SetHandler(async (string dataDictionaryFile, string folderPath, int count, int pageSize, string delimiter) =>
+        this.SetHandler(async (string sourceFile, string? folderPath, int count, int pageSize) =>
         {
             await serviceProvider
                 .GetRequiredService<TestActivity>()
-                .Generate(dataDictionaryFile, folderPath, count, pageSize, delimiter);
+                .Generate(sourceFile, folderPath, count, pageSize);
 
-        }, dataDictionaryFile, folderPath, count, pageSize, delimiter);
+        }, sourceFile, folderPath, count, pageSize);
     }
 }

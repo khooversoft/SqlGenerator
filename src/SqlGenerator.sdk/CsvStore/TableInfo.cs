@@ -7,6 +7,7 @@ public record TableInfo
 {
     public string TableName { get; init; } = null!;
     public string ColumnName { get; init; } = null!;
+    public int Ordinal { get; init; }
     public string DataType { get; init; } = null!;
     public bool NotNull { get; init; }
     public bool PrimaryKey { get; init; }
