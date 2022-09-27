@@ -17,8 +17,11 @@ internal class UpdateActivity
         _logger = logger.NotNull();
     }
 
-    public Task Update(UpdateOption updateOption, bool whatIf)
+    public Task Update(string optionFile, bool whatIf)
     {
+        optionFile.NotEmpty();
+
+        UpdateOption updateOption = UpdateOptionFile.Read(optionFile);
         updateOption.LogProperties("Updating...", _logger);
 
         DataDictionary current = DataDictionaryFile.Read(updateOption.CurrentFile);

@@ -28,7 +28,11 @@ public static class CsvFile
         using var reader = new StreamReader(file);
         using CsvReader csv = new CsvReader(reader, config);
 
-        return csv.GetRecords<dynamic>().ToTable();
+        var rows = csv.GetRecords<dynamic>()
+            .ToArray();
+        
+        return rows
+            .ToTable();
     }
 
     public static void Write<T>(string file, IEnumerable<T> records)

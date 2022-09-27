@@ -59,9 +59,9 @@ internal class MergeActivity
         _logger.LogInformation("Reading {file}", file);
         return Task.FromResult(result);
 
-        static StringTable toSafeHeaders(StringTable x) => new StringTable(true)
-            + x.Header.Select(x => SqlObjectNameTool.ToSafeName(x))
-            + x.Data;
+        static StringTable toSafeHeaders(StringTable table) => new StringTable(true)
+            + table.Header.Select(x => SqlObjectNameTool.ToSafeName(x))
+            + table.Data;
     }
 
     private StringTable BuildMergedTable(string file, IReadOnlyList<string> newHeaders, IReadOnlyList<FileDetail> files, int matchRange)
@@ -126,14 +126,32 @@ internal class MergeActivity
     {
         var equalityCompare = new Distance(matchRange);
 
-        IReadOnlyList<string> headerList = files
-            .SelectMany(x => x.Table.Header.Select(x => SqlObjectNameTool.ToSafeName(x ?? string.Empty)))
+        (int index, string header)[] headerList = files
+            .SelectMany(x => x.Table
+                .Header
+                .Where(x => !x.IsEmpty())
+                .OfType<string>()
+                .Select((x, i) => (index: i, header: x))
+                )
             .ToArray();
 
-        return headerList
-            .Where(x => !x.IsEmpty())
+        string[] distinctHeaderList = headerList
+            .Select(x => x.header)
             .Distinct(equalityCompare)
             .ToArray();
+
+        (string header, int index)[] joined = headerList
+            .Join(distinctHeaderList, x => x.header, x => x, (outter, inner) => outter)
+            .GroupBy(x => x.header)
+            .Select(x => (header: x.Key, index: x.Min(y => y.index)))
+            .ToArray();
+
+        string[] headers = joined
+            .OrderBy(x => x.index)
+            .Select(x => x.header)
+            .ToArray();
+
+        return headers;
     }
 
     private record FileDetail

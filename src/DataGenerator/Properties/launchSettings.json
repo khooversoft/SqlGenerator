@@ -2,7 +2,7 @@
   "profiles": {
     "DataGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "update \"D:\\Work\\SqlGenerator\\NetO\\TableUpdate\\UpdatePhysicalModel.json\""
+      "commandLineArgs": "merge \"D:\\Work\\SqlGenerator\\AA\\Settlement\\SettlementMerge.project.json\""
     }
   }
 }

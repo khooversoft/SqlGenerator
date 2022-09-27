@@ -18,11 +18,9 @@ internal class UpdateCommand : Command
 
         this.SetHandler(async (string optionFile, bool? whatIf) =>
         {
-            UpdateOption updateOption = UpdateOptionFile.Read(optionFile);
-
             await serviceProvider
                 .GetRequiredService<UpdateActivity>()
-                .Update(updateOption, whatIf ?? false);
+                .Update(optionFile, whatIf ?? false);
 
         }, optionFile, whatIf);
     }

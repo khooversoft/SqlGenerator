@@ -78,14 +78,17 @@ public static class StringTableExtensions
 
     public static StringTable ToTable(this IEnumerable<dynamic> data)
     {
-        data.NotNull();
-        if (data.Count() == 0) return new StringTable();
+        var dataList = data
+            .NotNull()
+            .ToArray();
 
-        StringRow header = ((IDictionary<string, object>)data.First())
+        if (dataList.Length == 0) return new StringTable();
+
+        StringRow header = ((IDictionary<string, object>)dataList.First())
             .Select(x => x.Key)
             .Func(x => new StringRow() + x);
 
-        IReadOnlyList<StringRow> rows = data
+        IReadOnlyList<StringRow> rows = dataList
             .Select(x => (IDictionary<string, object>)x)
             .Select(x => new StringRow() + x.Values.Select(y => y.ToString()))
             .Prepend(header)
