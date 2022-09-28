@@ -10,10 +10,10 @@ using Toolbox.Tools;
 namespace Toolbox.Data;
 
 [DebuggerDisplay("ColumnName={ColumnName}, Count={Count}, Values={this.ToString()}")]
-public class StringColumn : Sequence<string?>
+public class StringColumn : Sequence<string>
 {
     public StringColumn(string columnName) => ColumnName = columnName.NotEmpty();
-    public StringColumn(string columnName, IEnumerable<string?> values)
+    public StringColumn(string columnName, IEnumerable<string> values)
         : base(values.ToList())
     {
         ColumnName = columnName.NotEmpty();
@@ -31,7 +31,7 @@ public class StringColumn : Sequence<string?>
 
     public override int GetHashCode() => HashCode.Combine(ColumnName, base.GetHashCode());
 
-    public static StringColumn operator +(StringColumn sequence, string? value) => sequence.Action(x => x.Add(value));
-    public static StringColumn operator +(StringColumn sequence, IEnumerable<string?> values) => sequence.Action(x => x.AddRange(values));
+    public static StringColumn operator +(StringColumn sequence, string value) => sequence.Action(x => x.Add(value));
+    public static StringColumn operator +(StringColumn sequence, IEnumerable<string> values) => sequence.Action(x => x.AddRange(values));
 }
 

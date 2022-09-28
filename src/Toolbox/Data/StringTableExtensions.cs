@@ -71,9 +71,31 @@ public static class StringTableExtensions
 
         IEnumerable<StringRow> rowGroups = pivot
             .GroupBy(x => x.Row)
-            .Select(x => new StringRow() + x.OrderBy(y => y.Column).Select(y => y.Data));
+            .Select(x => new StringRow() + buildRow(x.ToArray()))
+            .ToArray();
+            //.Select(x => new StringRow() + x.OrderBy(y => y.Column).Select(y => y.Data));
 
         return new StringTable(rowGroups, true);
+
+        static IReadOnlyList<string> buildRow((int Column, int Row, string Data)[] data)
+        {
+            int maxColumn = data.Max(x => x.Column) + 1;
+
+            var missing = Enumerable
+                .Range(0, maxColumn)
+                .Except(data.Select(x => x.Column))
+                .Select(x => (column: x, data: string.Empty))
+                .ToArray();
+
+            var merged = data
+                .Select(x => (column: x.Column, data: x.Data))
+                .Concat(missing)
+                .OrderBy(x => x.column)
+                .Select(x => x.data)
+                .ToArray();
+
+            return merged;
+        }
     }
 
     public static StringTable ToTable(this IEnumerable<dynamic> data)
