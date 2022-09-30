@@ -48,9 +48,8 @@ public class MergeActivity
 
         new DataDictionary
         {
-            File = targetFile,
             Items = updated,
-        }.Write();
+        }.Write(targetFile);
 
         return Task.CompletedTask;
 

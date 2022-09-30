@@ -24,6 +24,8 @@ internal class MergeActivity
 
     public async Task Run(string projectFile)
     {
+        projectFile.NotEmpty();
+
         MergeProjectOption option = MergeProjectOptionFile.Read(projectFile);
         option.Files.Count.Assert(x => x > 0, $"There are no files to merge / analysis in project file {projectFile}");
 
@@ -33,14 +35,21 @@ internal class MergeActivity
             .Select(x => ReadFile(projectFile, x))
             .FuncAsync(async x => await Task.WhenAll(x));
 
+        MasterTableOption? masterTableOption = option.TableListFile switch
+        {
+            null => null,
+            not null => MasterTableOptionFile.Read(option.TableListFile),
+        };
+
         IReadOnlyList<string> newHeaders = ProposeHeaders(files, option.MatchRange);
-        StringTable table = BuildMergedTable(projectFile, newHeaders, files, option.MatchRange);
+        StringTable table = BuildMergedTable(projectFile, newHeaders, files, option.MatchRange, masterTableOption);
 
         CreateDataDictionary(projectFile, option.TableName, table);
-        CreateAttributeMap(projectFile, newHeaders, files, option.MatchRange);
+        if (masterTableOption != null) CreateAttributeMap(masterTableOption, projectFile);
 
         _logger.LogInformation("Completed project {file}", projectFile);
     }
+
     private Task<FileDetail> ReadFile(string projectFile, string file)
     {
         file = Path.IsPathFullyQualified(file) switch
@@ -64,17 +73,46 @@ internal class MergeActivity
             + table.Data;
     }
 
-    private StringTable BuildMergedTable(string file, IReadOnlyList<string> newHeaders, IReadOnlyList<FileDetail> files, int matchRange)
+    private StringTable BuildMergedTable(string file, IReadOnlyList<string> newHeaders, IReadOnlyList<FileDetail> files, int matchRange, MasterTableOption? masterTableOption)
     {
-        var table = newHeaders
-            .SelectMany(columnName => files.Select(file => file.Table.GetColumnData(columnName)).Where(x => x != null).OfType<StringColumn>())
-            .ToTable();
+        string fullFile = PathTool.SetFileExtension(file, ".mergedTableFull.csv");
+        string mergedFile = PathTool.SetFileExtension(file, ".mergedTable.csv");
 
-        file = PathTool.SetFileExtension(file, ".mergedTable.csv");
-        _logger.LogInformation("Writing merged file {file}", file);
-        table.WriteToCsv(file);
+        return masterTableOption switch
+        {
+            null => noFilter(mergedFile),
+            not null => filtered(),
+        };
 
-        return table;
+        StringTable noFilter(string file)
+        {
+            StringTable fullTable = newHeaders
+                .SelectMany(columnName => files.Select(file => file.Table.GetColumnData(columnName)).OfType<StringColumn>())
+                .ToTable();
+
+            writeFile(file, fullTable);
+            return fullTable;
+        }
+
+        StringTable filtered()
+        {
+            noFilter(fullFile);
+
+            StringTable filteredTable = newHeaders
+                .Where(x => masterTableOption.IsIncludeColumn(x))
+                .Select(x => (columnName: x, mapToName: masterTableOption!.GetMapToName(x)))
+                .SelectMany(x => files.Select(file => file.Table.GetColumnData(x.columnName, x.mapToName)).OfType<StringColumn>())
+                .ToTable();
+
+            writeFile(mergedFile, filteredTable);
+            return filteredTable;
+        }
+
+        void writeFile(string file, StringTable table)
+        {
+            _logger.LogInformation("Writing file {file}", file);
+            table.WriteToCsv(file);
+        }
     }
 
     private void CreateDataDictionary(string projectFile, string tableName, StringTable table)
@@ -91,35 +129,18 @@ internal class MergeActivity
 
         new DataDictionary
         {
-            File = file,
             Items = analysis.TableInfos.ToArray(),
-        }.Write();
+        }.Write(file);
     }
 
-
-    private void CreateAttributeMap(string projectFile, IReadOnlyList<string> newHeaders, IReadOnlyList<FileDetail> files, int matchRange)
+    private void CreateAttributeMap(MasterTableOption masterTableOption, string projectFile)
     {
-        var equalityComparer = new Distance(matchRange);
-
-        var report = files
-            .SelectMany(x => x.Table.Header.Select(y => (Table: x.TableName, Column: y ?? "*", Match: match(y))))
-            .Select(x => new { Table = x.Table, Column = x.Column, Match = x.Match })
+        var report = masterTableOption.GetDetails()
+            .Select(x => new { TableName = x.TableName, ColumnName = x.ColumnName, MapToName = x.MapToName }.ToDynamic())
             .ToArray();
 
         string file = PathTool.SetFileExtension(projectFile, ".attributeMap.csv");
         CsvFile.Write(file, report);
-
-        _logger.LogInformation("Writing attribute map to file {file}", file);
-
-        string match(string? columnName)
-        {
-            if (columnName.IsEmpty()) return string.Empty;
-
-            return newHeaders
-                .Where(x => equalityComparer.Equals(columnName, x))
-                .Join(",")
-                .ToNullIfEmpty() ?? "<no match>";
-        }
     }
 
     private IReadOnlyList<string> ProposeHeaders(IReadOnlyList<FileDetail> files, int matchRange)

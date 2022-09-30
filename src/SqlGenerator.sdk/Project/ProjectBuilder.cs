@@ -105,7 +105,7 @@ public partial class ProjectBuilder
             return;
         }
 
-        Counters counters = await _filterSourceActivity.Filter(context.SourceFile, context.ProjectOption.TableListFile, context.FilterFile);
+        Counters counters = await _filterSourceActivity.Filter(context.SourceFile, context.ProjectOption.TableListFile, context.FilterFile, context.SourceMappingFile);
         context.Counters.Add(counters);
     }
 

@@ -78,8 +78,7 @@ internal class ExtractActivity
 
         new DataDictionary
         {
-            File = file,
             Items = analysis.TableInfos.ToArray(),
-        }.Write();
+        }.Write(file);
     }
 }

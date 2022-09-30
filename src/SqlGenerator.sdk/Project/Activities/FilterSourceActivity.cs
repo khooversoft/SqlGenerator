@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.CsvStore;
+using System.Diagnostics;
 using Toolbox.Extensions;
 using Toolbox.Logging;
 using Toolbox.Tools;
@@ -12,46 +14,68 @@ public class FilterSourceActivity
 
     public FilterSourceActivity(ILogger<FilterSourceActivity> logger) => _logger = logger.NotNull();
 
-    public Task<Counters> Filter(string sourceFile, string tableListFile, string outputFile)
+    public Task<Counters> Filter(string sourceFile, string tableListFile, string outputFile, string mappingFile)
     {
         sourceFile.NotEmpty();
         tableListFile.NotEmpty();
         outputFile.NotEmpty();
-
+        mappingFile.NotEmpty();
         using var ls = _logger.LogEntryExit();
 
-        string logLine = new[]
+        new
         {
-            $"Filtering source={sourceFile}",
-            $"TableListFile={tableListFile}",
-            $"OutputFile={outputFile}",
-        }.Join("," + Environment.NewLine);
-        _logger.LogInformation(logLine);
+            FilteringSource = sourceFile,
+            TableListFile = tableListFile,
+            OutputFile = outputFile,
+        }.LogProperties("Settings....", _logger);
 
+        MasterTableOption masterTableOption = MasterTableOptionFile.Read(tableListFile);
         DataDictionary dataDictionary = DataDictionaryFile.Read(sourceFile);
 
-        IReadOnlyList<string> tableList = File.ReadAllText(tableListFile)
-            .NotNull()
-            .ToObject<IReadOnlyList<string>>()
-            .NotNull();
+        var counters = WriteFilteredDataDictionary(dataDictionary, outputFile, masterTableOption);
+        WriteMappingFile(masterTableOption, dataDictionary, mappingFile);
 
+        return Task.FromResult(counters);
+    }
+
+    private Counters WriteFilteredDataDictionary(DataDictionary dataDictionary, string outputFile, MasterTableOption masterTableOption)
+    {
         IReadOnlyList<TableInfo> outputInfos = dataDictionary.Items
-            .Join(tableList, x => x.TableName, x => x, (x, _) => x, StringComparer.OrdinalIgnoreCase)
+            .Where(x => masterTableOption.IsInclude(x.TableName, x.ColumnName))
             .ToList();
 
         new DataDictionary
         {
-            File = outputFile,
             Items = outputInfos,
-        }.Write();
+        }.Write(outputFile);
 
         _logger.LogInformation("Completed writing output={outputFile}", outputFile);
 
-        Verify(tableList, outputInfos);
+        return LogStats(masterTableOption.Tables, dataDictionary.Items, outputInfos);
+    }
 
-        LogAnalysis(tableList, dataDictionary.Items);
-        var counters = LogStats(tableList, dataDictionary.Items, outputInfos);
-        return Task.FromResult(counters);
+    private void WriteMappingFile(MasterTableOption masterTableOption, DataDictionary dataDictionary, string mappingFile)
+    {
+        var optionList = masterTableOption
+            .GetDetails()
+            .Where(x => !x.MapToName.IsEmpty())
+            .ToArray();
+
+        if (optionList.Length == 0)
+        {
+            _logger.LogInformation("No MapToName records detected, skipping creating mapping file");
+            if (File.Exists(mappingFile)) File.Delete(mappingFile);
+            return;
+        }
+
+        var mappingDetails = dataDictionary.Items
+            .Select(x => (data: x, find: masterTableOption.Find(x.TableName, x.ColumnName)))
+            .Where(x => x.find != null && !x.find.MapToName.IsEmpty())
+            .Select(x => new { TableName = x.data.TableName, ColumnName = x.data.ColumnName, MapToName = x.find!.MapToName }.ToDynamic())
+            .ToArray();
+
+        _logger.LogInformation("Writing mapping file {file}", mappingFile);
+        CsvFile.Write(mappingFile, mappingDetails);
     }
 
     private Counters LogStats(IReadOnlyList<string> tableList, IReadOnlyList<TableInfo> tableInfos, IReadOnlyList<TableInfo> outputInfos)
@@ -75,33 +99,5 @@ public class FilterSourceActivity
             .Action(x => _logger.LogInformation(x));
 
         return counters;
-    }
-
-    private void Verify(IReadOnlyList<string> tableList, IReadOnlyList<TableInfo> tableInfos)
-    {
-        var tables = tableInfos.Select(x => x.TableName).Distinct().ToList();
-        var tableListDistinct = tableList.Distinct().ToList();
-        var notIncludedTables = tables.Except(tableListDistinct).ToList();
-
-        notIncludedTables.Assert(x => x.Count == 0, x => $"Tables not in the include table list, list={notIncludedTables.Join(",")}");
-    }
-
-    private void LogAnalysis(IReadOnlyList<string> tableList, IReadOnlyList<TableInfo> tableInfos)
-    {
-        var sourceDistinctTables = tableInfos.Select(x => x.TableName).Distinct().ToList();
-
-        tableList
-            .SelectMany(x => sourceDistinctTables
-                .Where(
-                    y => !y.Equals(x, StringComparison.OrdinalIgnoreCase) && y.Contains(x, StringComparison.OrdinalIgnoreCase)),
-                    (o, i) => (o, i)
-                    )
-            .Select(x => $"Filter table={x.o} fuzzy matches in model={x.i}")
-            .Distinct()
-            .ForEach(x => _logger.LogTrace(x));
-
-        tableList.Where(x => !tableInfos.Any(y => y.TableName.Equals(x, StringComparison.OrdinalIgnoreCase)))
-            .OrderBy(x => x)
-            .ForEach(x => _logger.LogTrace("Table {tableName} in filter list is not in model source", x));
     }
 }

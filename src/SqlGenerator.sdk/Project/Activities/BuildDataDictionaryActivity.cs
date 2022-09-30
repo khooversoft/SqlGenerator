@@ -44,9 +44,8 @@ public class BuildDataDictionaryActivity
 
         new DataDictionary
         {
-            File = outputFile,
             Items = tableColumns.ToArray(),
-        }.Write();
+        }.Write(outputFile);
 
         return Task.CompletedTask;
     }

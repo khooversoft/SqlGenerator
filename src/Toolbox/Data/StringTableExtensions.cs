@@ -20,7 +20,7 @@ public static class StringTableExtensions
         };
     }
 
-    public static StringColumn? GetColumnData(this StringTable subject, string columnName)
+    public static StringColumn? GetColumnData(this StringTable subject, string columnName, string? mapToName = null)
     {
         subject.NotNull();
 
@@ -29,7 +29,7 @@ public static class StringTableExtensions
             false => null,
             true => FindColumn() switch
             {
-                (string ColumnName, int Index) v when !v.ColumnName.IsEmpty() => new StringColumn(v.ColumnName) + subject.GetColumnData(v.Index),
+                (string ColumnName, int Index) v when !v.ColumnName.IsEmpty() => new StringColumn(mapToName ?? v.ColumnName) + subject.GetColumnData(v.Index),
                 _ => null,
             },
         };
@@ -73,7 +73,7 @@ public static class StringTableExtensions
             .GroupBy(x => x.Row)
             .Select(x => new StringRow() + buildRow(x.ToArray()))
             .ToArray();
-            //.Select(x => new StringRow() + x.OrderBy(y => y.Column).Select(y => y.Data));
+        //.Select(x => new StringRow() + x.OrderBy(y => y.Column).Select(y => y.Data));
 
         return new StringTable(rowGroups, true);
 
@@ -112,7 +112,7 @@ public static class StringTableExtensions
 
         IReadOnlyList<StringRow> rows = dataList
             .Select(x => (IDictionary<string, object>)x)
-            .Select(x => new StringRow() + x.Values.Select(y => y.ToString()))
+            .Select(x => new StringRow() + x.Values.Select(y => y.ToString()).OfType<string>())
             .Prepend(header)
             .ToArray();
 

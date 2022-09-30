@@ -49,9 +49,8 @@ public class ClassificationActivity
 
         new DataDictionary
         {
-            File = outputFile,
             Items = classificated
-        }.Write();
+        }.Write(outputFile);
 
         _logger.LogInformation("Completed writing output={outputFile}", outputFile);
 

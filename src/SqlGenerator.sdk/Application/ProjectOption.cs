@@ -32,8 +32,7 @@ public static class ProjectOptionFile
             NameMapFile = PathTool.ToFullPath(projectFile, x.NameMapFile),
             TableListFile = PathTool.ToFullPath(projectFile, x.TableListFile),
             ClassificationFile = PathTool.ToFullPath(projectFile, x.ClassificationFile),
-        })
-        .Verify();
+        });
 
     public static ProjectOption Verify(this ProjectOption? subject)
     {
@@ -42,12 +41,12 @@ public static class ProjectOptionFile
         return subject;
     }
 
-    public static void Write(this ProjectOption projectOption, string file)
+    public static async Task Write(this ProjectOption projectOption, string file)
     {
         projectOption.NotNull();
         file.NotEmpty();
 
         string json = projectOption.ToJsonFormat();
-        File.WriteAllText(file, json);
+        await File.WriteAllTextAsync(file, json);
     }
 }

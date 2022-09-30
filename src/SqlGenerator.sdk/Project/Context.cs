@@ -18,6 +18,7 @@ public record Context
     public ConfigFile ClassificationFile { get; init; } = null!;
     public ConfigFile ModelFile { get; init; } = null!;
     public ConfigFile DataDictionaryFile { get; init; } = null!;
+    public ConfigFile SourceMappingFile { get; init; } = null!;
     public ConfigFile StatsFile { get; init; } = null!;
 
     public Counters Counters { get; } = new();
@@ -30,6 +31,7 @@ public static class ContextExtensions
     private const string _classificiationExtension = ".classificiation.csv";
     private const string _modelExtension = ".model.json";
     private const string _dataDictionaryExtension = ".dataDictionary.csv";
+    private const string _sourceMappingExtension = ".sourceMapping.csv";
     private const string _statsExtension = ".stats.csv";
 
     public static SchemaOption GetSchemaOption(this Context context, ILogger logger)
@@ -94,6 +96,7 @@ public static class ContextExtensions
             ModelFile = new ConfigFile(buildTemplate, _modelExtension),
             DataDictionaryFile = new ConfigFile(modelTemplate, _dataDictionaryExtension),
             StatsFile = new ConfigFile(modelTemplate, _statsExtension),
+            SourceMappingFile = new ConfigFile(modelTemplate, _sourceMappingExtension),
         };
     }
 }
