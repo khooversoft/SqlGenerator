@@ -41,7 +41,7 @@ public class FilterSourceActivity
     private Counters WriteFilteredDataDictionary(DataDictionary dataDictionary, string outputFile, MasterTableOption masterTableOption)
     {
         IReadOnlyList<TableInfo> outputInfos = dataDictionary.Items
-            .Where(x => masterTableOption.IsInclude(x.TableName, x.ColumnName))
+            .Where(x => masterTableOption.IsIncluded(x.TableName, x.ColumnName))
             .ToList();
 
         new DataDictionary

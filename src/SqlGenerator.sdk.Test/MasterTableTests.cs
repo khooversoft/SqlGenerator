@@ -72,14 +72,14 @@ public class MasterTableTests
 
         var list = masterTable.GetDetails();
 
-        var matchList = new (string tableName, string? columnName, string? mapToName)[]
+        var matchList = new MasterTableRecord[]
         {
-            ("table1", null, "mapTable1"),
-            ("table2", "*", null),
-            ("table3", "Column_3_1", null),
-            ("table3", "Column_3_3", "mapTable3"),
-            ("table4", "*_*_3", null),
-            ("table4", "*_*_4", null),
+            new MasterTableRecord { TableName = "table1", ColumnName = null, MapToName = "mapTable1" },
+            new MasterTableRecord { TableName = "table2", ColumnName = "*", MapToName = null },
+            new MasterTableRecord { TableName = "table3", ColumnName = "Column_3_1", MapToName = null },
+            new MasterTableRecord { TableName = "table3", ColumnName = "Column_3_3", MapToName = "mapTable3" },
+            new MasterTableRecord { TableName = "table4", ColumnName = "*_*_3", MapToName = null },
+            new MasterTableRecord { TableName = "table4", ColumnName = "*_*_4", MapToName = null },
         };
 
         list.Count.Should().Be(matchList.Length);

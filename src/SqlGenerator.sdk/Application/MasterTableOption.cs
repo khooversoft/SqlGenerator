@@ -74,7 +74,6 @@ public static class MasterTableOptionFile
            })
            .ToArray();
 
-
         static (string table, string? mapToName) parseMapTo(string data) => data
             .Split("=>", StringSplitOptions.RemoveEmptyEntries)
             .Select(x => x.Trim())
@@ -99,7 +98,7 @@ public static class MasterTableOptionFile
         .Where(x => x.ColumnName.IsEmpty() || PatternMatch.IsMatch(x.ColumnName, columnName))
         .FirstOrDefault();
 
-    public static bool IsInclude(this MasterTableOption subject, string tableName, string columnName) => subject.Find(tableName, columnName) switch
+    public static bool IsIncluded(this MasterTableOption subject, string tableName, string columnName) => subject.Find(tableName, columnName) switch
     {
         null => false,
         MasterTableRecord v => v.MapToName.IsEmpty(),

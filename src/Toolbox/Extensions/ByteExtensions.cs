@@ -56,22 +56,6 @@ namespace Toolbox.Extensions
         public static byte[] ToHash(this IEnumerable<byte> bytes) => MD5.Create().ComputeHash(bytes.ToArray());
 
         /// <summary>
-        /// Convert to Json
-        /// </summary>
-        /// <typeparam name="T">type</typeparam>
-        /// <param name="subject">subject</param>
-        /// <returns>json</returns>
-        public static string ToJson<T>(this T subject) => Json.Default.Serialize(subject);
-
-        /// <summary>
-        /// Convert to Json formatted
-        /// </summary>
-        /// <typeparam name="T">type</typeparam>
-        /// <param name="subject">subject</param>
-        /// <returns>json</returns>
-        public static string ToJsonFormat<T>(this T subject) => Json.Default.SerializeFormat(subject);
-
-        /// <summary>
         /// Convert object to bytes
         /// </summary>
         /// <typeparam name="T">type</typeparam>
@@ -98,24 +82,6 @@ namespace Toolbox.Extensions
 
             string json = subject.BytesToString();
             return Json.Default.Deserialize<T>(json);
-        }
-
-        /// <summary>
-        /// Covert json string to object
-        /// </summary>
-        /// <typeparam name="T">deserialize to type</typeparam>
-        /// <param name="json">json string</param>
-        /// <returns>object</returns>
-        public static T? ToObject<T>(this string json, bool required = false)
-        {
-            if (json.IsEmpty()) return default;
-
-            var obj = Json.Default.Deserialize<T>(json);
-            return required switch
-            {
-                false => obj,
-                true => obj.NotNull(name: "Deserialize error"),
-            };
         }
     }
 }

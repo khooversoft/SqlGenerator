@@ -32,7 +32,7 @@ internal class MergeActivity
         _logger.LogInformation("Running merge for project {file}", projectFile);
 
         IReadOnlyList<FileDetail> files = await option.Files
-            .Select(x => ReadFile(projectFile, x))
+            .Select(x => ReadFile(projectFile, x, option))
             .FuncAsync(async x => await Task.WhenAll(x));
 
         MasterTableOption? masterTableOption = option.TableListFile switch
@@ -50,7 +50,7 @@ internal class MergeActivity
         _logger.LogInformation("Completed project {file}", projectFile);
     }
 
-    private Task<FileDetail> ReadFile(string projectFile, string file)
+    private Task<FileDetail> ReadFile(string projectFile, string file, MergeProjectOption option)
     {
         file = Path.IsPathFullyQualified(file) switch
         {
@@ -61,8 +61,12 @@ internal class MergeActivity
         var result = new FileDetail
         {
             File = file,
-            TableName = SqlObjectNameTool.ToSafeName(Path.GetFileNameWithoutExtension(file)),
-            Table = CsvFile.ReadDynamic(file).Func(toSafeHeaders),
+            TableName = file.Split('=') switch
+            {
+                string[] v when v.Length == 1 => SqlObjectNameTool.ToSafeName(Path.GetFileNameWithoutExtension(file)),
+                string[] v => v.First().Trim(),
+            },
+            Table = CsvFile.ReadDynamic(file, option.Delimiter ?? ",").Func(toSafeHeaders),
         };
 
         _logger.LogInformation("Reading {file}", file);
@@ -71,6 +75,38 @@ internal class MergeActivity
         static StringTable toSafeHeaders(StringTable table) => new StringTable(true)
             + table.Header.Select(x => SqlObjectNameTool.ToSafeName(x))
             + table.Data;
+    }
+
+    private IReadOnlyList<string> ProposeHeaders(IReadOnlyList<FileDetail> files, int matchRange)
+    {
+        var equalityCompare = new Distance(matchRange);
+
+        (int index, string header)[] headerList = files
+            .SelectMany(x => x.Table
+                .Header
+                .Where(x => !x.IsEmpty())
+                .OfType<string>()
+                .Select((x, i) => (index: i, header: x))
+                )
+            .ToArray();
+
+        string[] distinctHeaderList = headerList
+            .Select(x => x.header)
+            .Distinct(equalityCompare)
+            .ToArray();
+
+        (string header, int index)[] joined = headerList
+            .Join(distinctHeaderList, x => x.header, x => x, (outter, inner) => outter)
+            .GroupBy(x => x.header)
+            .Select(x => (header: x.Key, index: x.Min(y => y.index)))
+            .ToArray();
+
+        string[] headers = joined
+            .OrderBy(x => x.index)
+            .Select(x => x.header)
+            .ToArray();
+
+        return headers;
     }
 
     private StringTable BuildMergedTable(string file, IReadOnlyList<string> newHeaders, IReadOnlyList<FileDetail> files, int matchRange, MasterTableOption? masterTableOption)
@@ -143,42 +179,18 @@ internal class MergeActivity
         CsvFile.Write(file, report);
     }
 
-    private IReadOnlyList<string> ProposeHeaders(IReadOnlyList<FileDetail> files, int matchRange)
-    {
-        var equalityCompare = new Distance(matchRange);
-
-        (int index, string header)[] headerList = files
-            .SelectMany(x => x.Table
-                .Header
-                .Where(x => !x.IsEmpty())
-                .OfType<string>()
-                .Select((x, i) => (index: i, header: x))
-                )
-            .ToArray();
-
-        string[] distinctHeaderList = headerList
-            .Select(x => x.header)
-            .Distinct(equalityCompare)
-            .ToArray();
-
-        (string header, int index)[] joined = headerList
-            .Join(distinctHeaderList, x => x.header, x => x, (outter, inner) => outter)
-            .GroupBy(x => x.header)
-            .Select(x => (header: x.Key, index: x.Min(y => y.index)))
-            .ToArray();
-
-        string[] headers = joined
-            .OrderBy(x => x.index)
-            .Select(x => x.header)
-            .ToArray();
-
-        return headers;
-    }
 
     private record FileDetail
     {
         public string File { get; init; } = null!;
         public string TableName { get; init; } = null!;
         public StringTable Table { get; init; } = null!;
+    }
+
+    private record MappedDetail
+    {
+        public string TableName { get; init; } = null!;
+        public string ColumnName { get; init; } = null!;
+        public string MapToName { get; init; } = null!;
     }
 }
