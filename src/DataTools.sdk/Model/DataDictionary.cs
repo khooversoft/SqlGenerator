@@ -1,14 +1,10 @@
 ﻿using CsvHelper;
-using System;
-using System.Collections.Generic;
+using DataTools.sdk.Storage;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.CsvStore;
+namespace DataTools.sdk.Model;
 
 public record DataDictionary
 {

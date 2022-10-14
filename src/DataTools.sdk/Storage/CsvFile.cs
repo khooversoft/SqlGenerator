@@ -5,7 +5,7 @@ using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.CsvStore;
+namespace DataTools.sdk.Storage;
 
 public static class CsvFile
 {
@@ -30,7 +30,7 @@ public static class CsvFile
 
         var rows = csv.GetRecords<dynamic>()
             .ToArray();
-        
+
         return rows
             .ToTable();
     }
@@ -43,39 +43,6 @@ public static class CsvFile
         using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
 
         csv.WriteRecords(records.ToArray());
-    }
-
-    public static StringTable ReadTable(string file)
-    {
-        using var reader = new StreamReader(file);
-        using CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-
-        StringTable table = new StringTable(true);
-
-        csv.Read().Assert(x => x == true, $"No header row detected in file {file}");
-        csv.ReadHeader();
-
-        table += csv.HeaderRecord
-            .NotNull(name: "Headers are empty")
-            .ToList();
-
-        while (csv.Read())
-        {
-            table += Enumerable.Range(0, table.Header.Count)
-                .Select(x => tryGet(csv, x)!)
-                .Where(x => !x.IsEmpty())
-                .ToList();
-        }
-
-        return table;
-
-        static string? tryGet(CsvReader csv, int index)
-        {
-            bool found = csv.TryGetField<string>(index, out string? field);
-            if (!found) return null;
-
-            return field;
-        }
     }
 
     public static void WriteToCsv(this StringTable table, string file)

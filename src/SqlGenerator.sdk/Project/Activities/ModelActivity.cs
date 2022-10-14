@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DataTools.sdk.Model;
+using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.Application;
-using SqlGenerator.sdk.CsvStore;
 using SqlGenerator.sdk.Generator;
 using SqlGenerator.sdk.Model;
 using System;

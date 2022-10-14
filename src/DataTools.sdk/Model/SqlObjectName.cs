@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.Model;
+namespace DataTools.sdk.Model;
 
 public sealed record SqlObjectName
 {

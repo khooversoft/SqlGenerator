@@ -1,13 +1,7 @@
 ﻿using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Wordprocessing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Toolbox.Extensions;
 
-namespace SqlGenerator.sdk.Excel;
+namespace DataTools.sdk.Storage;
 
 public static class CellType
 {

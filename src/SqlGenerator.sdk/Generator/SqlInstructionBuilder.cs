@@ -1,4 +1,5 @@
-﻿using SqlGenerator.sdk.Model;
+﻿using DataTools.sdk.Model;
+using SqlGenerator.sdk.Model;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -142,12 +143,15 @@ public class SqlInstructionBuilder
     //   PII view => all columns are visible
     private Instructions BuildViewModel(TableModel tableModel, BuildType buildType, SchemaModel schema)
     {
+        SqlObjectName viewName = schema.Format switch
+        {
+            null => new SqlObjectName { Schema = schema.Name, Name = tableModel.Name.Name },
+            not null => new SqlObjectName { Schema = schema.Name, Name = schema.Format.Replace("{tableName}", tableModel.Name.Name) },
+        };
+
         var list = new Instructions();
-        list += (InstructionType.Stream, tableModel.Name.CalculateFileName());
-
+        list += (InstructionType.Stream, viewName.CalculateFileName());
         list += _headers;
-
-        var viewName = new SqlObjectName { Schema = schema.Name, Name = tableModel.Name.Name };
 
         list += buildType switch
         {
@@ -171,9 +175,9 @@ public class SqlInstructionBuilder
         list += InstructionType.TabPlus;
 
         var columns = tableModel.Columns.Where(x => x.PrimaryKey)
-            .Concat(_physicalModel.PrefixColumns.Where(x => !x.Private))
+            //.Concat(_physicalModel.PrefixColumns.Where(x => !x.Private))
             .Concat(tableModel.Columns.Where(x => !x.PrimaryKey))
-            .Concat(_physicalModel.SuffixColumns.Where(x => !x.PrimaryKey))
+            //.Concat(_physicalModel.SuffixColumns.Where(x => !x.PrimaryKey))
             .ToArray();
 
         list += columns

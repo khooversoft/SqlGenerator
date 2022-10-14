@@ -1,11 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using SqlGenerator.sdk.Application;
-using SqlGenerator.sdk.CsvStore;
-using SqlGenerator.sdk.Generator;
-using SqlGenerator.sdk.Model;
 using SqlGenerator.sdk.Project;
 using System.Reflection;
 using Toolbox.Tools;

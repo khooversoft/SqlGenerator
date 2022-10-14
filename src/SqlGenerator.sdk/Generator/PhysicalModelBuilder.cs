@@ -5,7 +5,7 @@ using System.Globalization;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 using System;
-using SqlGenerator.sdk.CsvStore;
+using DataTools.sdk.Model;
 
 namespace SqlGenerator.sdk.Generator;
 
@@ -27,12 +27,10 @@ public class PhysicalModelBuilder
 
         return new PhysicalModel
         {
-            Schemas = schemaOption.Schemas
-                .Select(x => new SchemaModel { Name = x.Name, Security = x.Security })
-                .ToList(),
+            Schemas = schemaOption.Schemas.ToArray(),
             Tables = tableModels,
-            PrefixColumns = schemaOption.PrefixColumns.ToList(),
-            SuffixColumns = schemaOption.SufixColumns.ToList(),
+            PrefixColumns = schemaOption.PrefixColumns.ToArray(),
+            SuffixColumns = schemaOption.SufixColumns.ToArray(),
         }.Verify();
     }
 

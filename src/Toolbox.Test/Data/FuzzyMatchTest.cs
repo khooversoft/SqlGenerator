@@ -22,21 +22,21 @@ public class FuzzyMatchTest
         new FuzzyMatch(0).Equals(first, second).Should().Be(isMatch);
     }
     
-    [Theory]
-    [InlineData(null, null, true)]
-    [InlineData(null, "", false)]
-    [InlineData("", "", true)]
-    [InlineData("abc", "abc", true)]
-    [InlineData("abc", "abd", false)]
-    [InlineData("abc", "xabc", true)]
-    [InlineData("abc", "abcx", true)]
-    [InlineData("abcx", "abc", true)]
-    [InlineData("xabc", "abc", true)]
-    public void GivenTwoString_FuzzyMatch_1_ShouldPass(string first, string second, bool isMatch)
-    {
-        new FuzzyMatch(1).Equals(first, second).Should().Be(isMatch);
-        new Distance(1).Equals(first, second).Should().Be(isMatch);
-    }
+    //[Theory]
+    //[InlineData(null, null, true)]
+    //[InlineData(null, "", false)]
+    //[InlineData("", "", true)]
+    //[InlineData("abc", "abc", true)]
+    //[InlineData("abc", "abd", false)]
+    //[InlineData("abc", "xabc", true)]
+    //[InlineData("abc", "abcx", true)]
+    //[InlineData("abcx", "abc", true)]
+    //[InlineData("xabc", "abc", true)]
+    //public void GivenTwoString_FuzzyMatch_1_ShouldPass(string first, string second, bool isMatch)
+    //{
+    //    new FuzzyMatch(1).Equals(first, second).Should().Be(isMatch);
+    //    new Distance(1).Equals(first, second).Should().Be(isMatch);
+    //}
 
     [Theory]
     [InlineData("Amount", "Amt", true)]

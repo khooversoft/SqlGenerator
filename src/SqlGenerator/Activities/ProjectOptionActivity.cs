@@ -1,14 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.Application;
-using SqlGenerator.sdk.CsvStore;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 

@@ -1,7 +1,8 @@
 ﻿using DataGenerator.Application;
+using DataTools.sdk.Model;
+using DataTools.sdk.Storage;
 using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.Application;
-using SqlGenerator.sdk.CsvStore;
 using Toolbox.Extensions;
 using Toolbox.Logging;
 using Toolbox.Tools;
@@ -141,10 +142,10 @@ internal class UpdateActivity
             return;
         }
 
-        IReadOnlyList<string> tableList = File.ReadAllText(option.TableFilterFile)
-            .NotNull()
-            .ToObject<IReadOnlyList<string>>()
-            .NotNull();
+        IReadOnlyList<string> tableList = MasterTableOptionFile.Read(option.TableFilterFile)
+            .GetDetails()
+            .Select(x => x.TableName)
+            .ToArray();
 
         IReadOnlyList<string> dropList = File.ReadAllText(option.TableDropFile)
             .NotNull()

@@ -1,18 +1,17 @@
 ﻿using DataGenerator.Application;
-using DocumentFormat.OpenXml.Spreadsheet;
+using DataTools.sdk.Application;
+using DataTools.sdk.Model;
+using DataTools.sdk.Storage;
 using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.Application;
-using SqlGenerator.sdk.CsvStore;
 using SqlGenerator.sdk.Data;
 using SqlGenerator.sdk.Model;
-using System.Text.RegularExpressions;
 using Toolbox.Data;
-using Toolbox.Extensions;
 using Toolbox.Tools;
 
 namespace DataGenerator.Activities;
 
-internal class MergeActivity
+internal partial class MergeActivity
 {
     private readonly DataAnalysis _dataAnalysis;
     private readonly ILogger<MergeActivity> _logger;
@@ -28,130 +27,40 @@ internal class MergeActivity
 
         MergeProjectOption option = MergeProjectOptionFile.Read(projectFile);
         option.Files.Count.Assert(x => x > 0, $"There are no files to merge / analysis in project file {projectFile}");
-
         _logger.LogInformation("Running merge for project {file}", projectFile);
 
-        IReadOnlyList<FileDetail> files = await option.Files
-            .Select(x => ReadFile(projectFile, x, option))
-            .FuncAsync(async x => await Task.WhenAll(x));
+        IReadOnlyList<DataFileContent> files = await DataFile.Read(projectFile, option, _logger);
 
-        MasterTableOption? masterTableOption = option.TableListFile switch
-        {
-            null => null,
-            not null => MasterTableOptionFile.Read(option.TableListFile),
-        };
+        var context = Context.Create(projectFile);
+        IReadOnlyList<MappedDetail> mappedDetails = ReadMappedFile(context, option);
 
-        IReadOnlyList<string> newHeaders = ProposeHeaders(files, option.MatchRange);
-        StringTable table = BuildMergedTable(projectFile, newHeaders, files, option.MatchRange, masterTableOption);
+        StringTable table = BuildMergedTable(context, files, mappedDetails);
 
-        CreateDataDictionary(projectFile, option.TableName, table);
-        if (masterTableOption != null) CreateAttributeMap(masterTableOption, projectFile);
+        CreateDataDictionary(context, option.TableName, table);
 
         _logger.LogInformation("Completed project {file}", projectFile);
     }
 
-    private Task<FileDetail> ReadFile(string projectFile, string file, MergeProjectOption option)
+    private IReadOnlyList<MappedDetail> ReadMappedFile(Context context, MergeProjectOption option)
     {
-        file = Path.IsPathFullyQualified(file) switch
-        {
-            true => file,
-            false => Path.Combine(Path.GetDirectoryName(projectFile).NotNull(), file),
-        };
+        _logger.LogInformation("Reading mapped file {file}", option.MappedFile);
+        IReadOnlyList<MappedDetail> mappedDetails = MappedFile.Read(option.MappedFile).ToMappedDetails();
 
-        var result = new FileDetail
-        {
-            File = file,
-            TableName = file.Split('=') switch
-            {
-                string[] v when v.Length == 1 => SqlObjectNameTool.ToSafeName(Path.GetFileNameWithoutExtension(file)),
-                string[] v => v.First().Trim(),
-            },
-            Table = CsvFile.ReadDynamic(file, option.Delimiter ?? ",").Func(toSafeHeaders),
-        };
-
-        _logger.LogInformation("Reading {file}", file);
-        return Task.FromResult(result);
-
-        static StringTable toSafeHeaders(StringTable table) => new StringTable(true)
-            + table.Header.Select(x => SqlObjectNameTool.ToSafeName(x))
-            + table.Data;
+        mappedDetails.Write(context.BuildFolder, _logger);
+        return mappedDetails;
     }
 
-    private IReadOnlyList<string> ProposeHeaders(IReadOnlyList<FileDetail> files, int matchRange)
+    private StringTable BuildMergedTable(Context context, IReadOnlyList<DataFileContent> files, IReadOnlyList<MappedDetail> mappedDetails)
     {
-        var equalityCompare = new Distance(matchRange);
+        _logger.LogInformation("Merging data");
+        var table = mappedDetails.Merge(files);
 
-        (int index, string header)[] headerList = files
-            .SelectMany(x => x.Table
-                .Header
-                .Where(x => !x.IsEmpty())
-                .OfType<string>()
-                .Select((x, i) => (index: i, header: x))
-                )
-            .ToArray();
-
-        string[] distinctHeaderList = headerList
-            .Select(x => x.header)
-            .Distinct(equalityCompare)
-            .ToArray();
-
-        (string header, int index)[] joined = headerList
-            .Join(distinctHeaderList, x => x.header, x => x, (outter, inner) => outter)
-            .GroupBy(x => x.header)
-            .Select(x => (header: x.Key, index: x.Min(y => y.index)))
-            .ToArray();
-
-        string[] headers = joined
-            .OrderBy(x => x.index)
-            .Select(x => x.header)
-            .ToArray();
-
-        return headers;
+        _logger.LogInformation("Writing file {file}", context.MergedFile);
+        table.WriteToCsv(context.MergedFile);
+        return table;
     }
 
-    private StringTable BuildMergedTable(string file, IReadOnlyList<string> newHeaders, IReadOnlyList<FileDetail> files, int matchRange, MasterTableOption? masterTableOption)
-    {
-        string fullFile = PathTool.SetFileExtension(file, ".mergedTableFull.csv");
-        string mergedFile = PathTool.SetFileExtension(file, ".mergedTable.csv");
-
-        return masterTableOption switch
-        {
-            null => noFilter(mergedFile),
-            not null => filtered(),
-        };
-
-        StringTable noFilter(string file)
-        {
-            StringTable fullTable = newHeaders
-                .SelectMany(columnName => files.Select(file => file.Table.GetColumnData(columnName)).OfType<StringColumn>())
-                .ToTable();
-
-            writeFile(file, fullTable);
-            return fullTable;
-        }
-
-        StringTable filtered()
-        {
-            noFilter(fullFile);
-
-            StringTable filteredTable = newHeaders
-                .Where(x => masterTableOption.IsIncludeColumn(x))
-                .Select(x => (columnName: x, mapToName: masterTableOption!.GetMapToName(x)))
-                .SelectMany(x => files.Select(file => file.Table.GetColumnData(x.columnName, x.mapToName)).OfType<StringColumn>())
-                .ToTable();
-
-            writeFile(mergedFile, filteredTable);
-            return filteredTable;
-        }
-
-        void writeFile(string file, StringTable table)
-        {
-            _logger.LogInformation("Writing file {file}", file);
-            table.WriteToCsv(file);
-        }
-    }
-
-    private void CreateDataDictionary(string projectFile, string tableName, StringTable table)
+    private void CreateDataDictionary(Context context, string tableName, StringTable table)
     {
         AnalysisResult? analysis = _dataAnalysis.Run(tableName, table, null, 100);
         if (analysis == null)
@@ -160,37 +69,33 @@ internal class MergeActivity
             return;
         }
 
-        string file = PathTool.SetFileExtension(projectFile, ".datadictionary.csv");
-        _logger.LogInformation("Writing data dictionary to {file}", file);
+        _logger.LogInformation("Writing data dictionary to {file}", context.DictionaryFile);
 
         new DataDictionary
         {
             Items = analysis.TableInfos.ToArray(),
-        }.Write(file);
+        }.Write(context.DictionaryFile);
     }
 
-    private void CreateAttributeMap(MasterTableOption masterTableOption, string projectFile)
+    private record Context
     {
-        var report = masterTableOption.GetDetails()
-            .Select(x => new { TableName = x.TableName, ColumnName = x.ColumnName, MapToName = x.MapToName }.ToDynamic())
-            .ToArray();
+        public string BuildFolder { get; init; } = null!;
+        public string MergedFile { get; init; } = null!;
+        public string DictionaryFile { get; init; } = null!;
 
-        string file = PathTool.SetFileExtension(projectFile, ".attributeMap.csv");
-        CsvFile.Write(file, report);
-    }
+        public static Context Create(string projectFile)
+        {
+            string buildFolder = Path.Combine(Path.GetDirectoryName(projectFile).NotEmpty(), "build");
+            string fileName = Path.GetFileName(projectFile);
+            
+            Directory.CreateDirectory(buildFolder);
 
-
-    private record FileDetail
-    {
-        public string File { get; init; } = null!;
-        public string TableName { get; init; } = null!;
-        public StringTable Table { get; init; } = null!;
-    }
-
-    private record MappedDetail
-    {
-        public string TableName { get; init; } = null!;
-        public string ColumnName { get; init; } = null!;
-        public string MapToName { get; init; } = null!;
+            return new Context
+            {
+                BuildFolder = buildFolder,
+                MergedFile = Path.Combine(buildFolder, PathTool.SetFileExtension(fileName, ".mergedTable.csv")),
+                DictionaryFile = Path.Combine(buildFolder, PathTool.SetFileExtension(fileName, ".datadictionary.csv")),
+            };
+        }
     }
 }

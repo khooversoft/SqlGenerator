@@ -40,9 +40,7 @@ public static class ContextExtensions
         context.ProjectOption.NotNull();
         context.ProjectOption.OptionFile.NotEmpty();
 
-        string folder = Path.GetDirectoryName(context.ProjectFile).NotEmpty();
-        string optionFile = PathTool.ApplyBasePath(context.ProjectOption.OptionFile, folder)!;
-
+        string optionFile = PathTool.ToFullPath(context.ProjectFile, context.ProjectOption.OptionFile).NotEmpty();
         optionFile.Assert(x => File.Exists(x), x => $"File {x} does not exist");
 
         SchemaOption importOption = File.ReadAllText(optionFile)

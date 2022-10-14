@@ -13,6 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\DataTools.sdk\DataTools.sdk.csproj" />
 		<ProjectReference Include="..\Toolbox\Toolbox.csproj" />
 	</ItemGroup>
 

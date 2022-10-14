@@ -1,10 +1,6 @@
-﻿using FluentAssertions;
+﻿using DataTools.sdk.Model;
+using FluentAssertions;
 using SqlGenerator.sdk.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlGenerator.sdk.Test;
 

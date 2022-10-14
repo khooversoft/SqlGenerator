@@ -1,4 +1,4 @@
-﻿namespace SqlGenerator.sdk.Model;
+﻿namespace DataTools.sdk.Model;
 
 public enum Security
 {

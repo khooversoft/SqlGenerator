@@ -1,8 +1,6 @@
 ﻿using DataGenerator.Activities;
-using DataGenerator.Application;
 using Microsoft.Extensions.DependencyInjection;
 using System.CommandLine;
-using System.Net.Sockets;
 
 namespace DataGenerator.Commands;
 

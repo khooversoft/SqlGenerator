@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using DataTools.sdk.Model;
+using System.Xml.Linq;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Model;

@@ -1,12 +1,10 @@
-﻿using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Packaging;
+﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.Extensions.Logging;
 using Toolbox.Data;
-using Toolbox.Extensions;
 using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.Excel;
+namespace DataTools.sdk.Storage;
 
 public class ExcelFile
 {
@@ -59,7 +57,7 @@ public class ExcelFile
     {
         CellValue cellValue = cell.CellValue;
 
-        string text = (cellValue == null) ? cell.InnerText : cellValue.Text;
+        string text = cellValue == null ? cell.InnerText : cellValue.Text;
 
         if (cell.DataType?.Value == CellValues.SharedString)
         {

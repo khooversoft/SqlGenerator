@@ -45,6 +45,10 @@ ELSE IF  @env = 'asapcore'
 BEGIN	
  SET @src_storage_acct = 'https://asapadls.blob.core.windows.net'
 END
+ELSE IF @env = 'asapcoredev'
+BEGIN    
+SET @src_storage_acct = 'https://asapdevadl2.blob.core.windows.net'
+END
 
 
 PRINT CONCAT('@env:',@env)
@@ -56,14 +60,14 @@ PRINT CONCAT('@src_storage_acct',@src_storage_acct)
 ******************************************************/
 DECLARE @pipeline_name AS NVARCHAR(260) = N'");
             
-            #line 32 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+            #line 36 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PipelineName));
             
             #line default
             #line hidden
             this.Write("\';\r\nDECLARE @activity_name AS NVARCHAR(260) = N\'");
             
-            #line 33 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+            #line 37 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ActivityName));
             
             #line default
@@ -175,7 +179,7 @@ DECLARE @pipeline_name AS NVARCHAR(260) = N'");
                     "ry Option 3: Lookup Column, generated in copy parameter\r\n/************copy_into_" +
                     "test************/\r\n\r\n");
             
-            #line 213 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+            #line 217 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
 
 foreach(var item in GetTableNames())
 {

@@ -1,4 +1,5 @@
-﻿using Toolbox.Extensions;
+﻿using DataTools.sdk.Model;
+using Toolbox.Extensions;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Model;

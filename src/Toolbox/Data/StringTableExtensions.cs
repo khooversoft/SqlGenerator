@@ -73,7 +73,6 @@ public static class StringTableExtensions
             .GroupBy(x => x.Row)
             .Select(x => new StringRow() + buildRow(x.ToArray()))
             .ToArray();
-        //.Select(x => new StringRow() + x.OrderBy(y => y.Column).Select(y => y.Data));
 
         return new StringTable(rowGroups, true);
 

@@ -1,4 +1,4 @@
-﻿using SqlGenerator.sdk.CsvStore;
+﻿using DataTools.sdk.Model;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Model;

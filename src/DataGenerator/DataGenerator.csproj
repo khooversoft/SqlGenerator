@@ -24,8 +24,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\DataTools.sdk\DataTools.sdk.csproj" />
 	  <ProjectReference Include="..\SqlGenerator.sdk\SqlGenerator.sdk.csproj" />
 	  <ProjectReference Include="..\Toolbox\Toolbox.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Application\" />
 	</ItemGroup>
 
 </Project>

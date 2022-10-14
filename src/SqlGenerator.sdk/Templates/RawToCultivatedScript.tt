@@ -20,6 +20,10 @@ ELSE IF  @env = 'asapcore'
 BEGIN	
  SET @src_storage_acct = 'https://asapadls.blob.core.windows.net'
 END
+ELSE IF @env = 'asapcoredev'
+BEGIN    
+SET @src_storage_acct = 'https://asapdevadl2.blob.core.windows.net'
+END
 
 
 PRINT CONCAT('@env:',@env)

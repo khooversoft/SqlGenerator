@@ -8,26 +8,34 @@ using Toolbox.Tools;
 
 namespace DataGenerator.Application;
 
-internal record MergeProjectOption
+public record MergeProjectOption
 {
     public int MatchRange { get; init; }
     public string TableName { get; init; } = "mergedTable";
-    public string? TableListFile { get; init; }
     public string? Delimiter { get; init; }
-    public string? MappedFile { get; init; }
+    public string MappedFile { get; init; } = null!;
     public IReadOnlyList<string> Files { get; init; } = Array.Empty<string>();
 }
 
 
-internal static class MergeProjectOptionFile
+public static class MergeProjectOptionFile
 {
+    public static MergeProjectOption Verify(this MergeProjectOption? subject)
+    {
+        subject.NotNull();
+        subject.TableName.NotEmpty();
+        subject.MappedFile.NotEmpty();
+
+        return subject;
+    }
+
     public static MergeProjectOption Read(string file) => File.ReadAllText(file)
         .NotNull(name: $"File {file} is empty")
         .ToObject<MergeProjectOption>()
-        .NotNull()
+        .Verify()
         .Func(x => x with
         {
-            TableListFile = PathTool.ToFullPath(file, x.TableListFile),
+            MappedFile = PathTool.ToFullPath(file, x.MappedFile).NotEmpty(),
         })
         .NotNull(name: $"File {file} failed to convert");
 }

@@ -1,11 +1,6 @@
 ﻿using DataGenerator.Application;
+using DataTools.sdk.Storage;
 using Microsoft.Extensions.Logging;
-using SqlGenerator.sdk.CsvStore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Tools;
@@ -35,7 +30,7 @@ public class MaskActivity
     public void MaskTable(string inputFile, string outputFile, MaskOption maskOption)
     {
         _logger.LogInformation("Reading CSV {file}", inputFile);
-        StringTable csvTable = CsvFile.ReadTable(inputFile);
+        StringTable csvTable = CsvFile.ReadDynamic(inputFile);
 
         maskOption
             .ColumnsToMask

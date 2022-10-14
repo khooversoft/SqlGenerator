@@ -1,7 +1,6 @@
-﻿using SqlGenerator.sdk.Model;
-using Toolbox.Tools;
+﻿using Toolbox.Tools;
 
-namespace SqlGenerator.sdk.CsvStore;
+namespace DataTools.sdk.Model;
 
 public record TableInfo
 {
