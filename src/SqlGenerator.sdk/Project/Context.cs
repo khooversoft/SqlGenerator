@@ -50,9 +50,10 @@ public static class ContextExtensions
 
         return new SchemaOption
         {
-            Schemas = importOption.Schemas.ToList(),
-            PrefixColumns = importOption.PrefixColumns.ToList(),
-            SufixColumns = importOption.SufixColumns.ToList(),
+            Schemas = importOption.Schemas.ToArray(),
+            PrefixColumns = importOption.PrefixColumns.ToArray(),
+            SufixColumns = importOption.SufixColumns.ToArray(),
+            Relationships = importOption.Relationships.ToArray(),
         };
     }
 

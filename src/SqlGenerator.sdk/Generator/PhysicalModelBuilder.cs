@@ -23,7 +23,7 @@ public class PhysicalModelBuilder
             .FirstOrDefault()
             .NotNull(name: $"Cannot find data schema in option");
 
-        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, dataSchemaModel, nameMaps);
+        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, dataSchemaModel, nameMaps, schemaOption);
 
         return new PhysicalModel
         {
@@ -31,10 +31,11 @@ public class PhysicalModelBuilder
             Tables = tableModels,
             PrefixColumns = schemaOption.PrefixColumns.ToArray(),
             SuffixColumns = schemaOption.SufixColumns.ToArray(),
+            Relationships = schemaOption.Relationships.ToArray(),
         }.Verify();
     }
 
-    private static IReadOnlyList<TableModel> GenerateTable(IReadOnlyList<TableInfo> tableInfos, SchemaModel schemaModel, IReadOnlyList<NameMapRecord>? nameMaps)
+    private static IReadOnlyList<TableModel> GenerateTable(IReadOnlyList<TableInfo> tableInfos, SchemaModel schemaModel, IReadOnlyList<NameMapRecord>? nameMaps, SchemaOption schemaOption)
     {
         return tableInfos
             .GroupBy(x => x.TableName)
@@ -49,6 +50,7 @@ public class PhysicalModelBuilder
                     DataType = y.DataType,
                     NotNull = y.NotNull,
                     PrimaryKey = y.PrimaryKey,
+                    NonuniqueIndex = isNonuniqueIndex(schemaOption, x.Key, y.ColumnName),
                     PII = y.PII,
                     Restricted = y.Restricted,
                     ColumnIndex = i,
@@ -64,5 +66,9 @@ public class PhysicalModelBuilder
                 false => IndexType.Hash,
                 true => IndexType.Cluster
             };
+
+        static bool isNonuniqueIndex(SchemaOption schemaOption, string tableName, string columnName) => schemaOption.Relationships
+            .Any(x => x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase) && x.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase));
+
     }
 }

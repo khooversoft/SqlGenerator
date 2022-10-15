@@ -15,8 +15,9 @@ public sealed record PhysicalModel
 {
     public IReadOnlyList<SchemaModel> Schemas { get; init; } = Array.Empty<SchemaModel>();
     public IReadOnlyList<TableModel> Tables { get; init; } = Array.Empty<TableModel>();
-    public IReadOnlyList<ColumnModel> PrefixColumns { get; init;} = Array.Empty<ColumnModel>();
+    public IReadOnlyList<ColumnModel> PrefixColumns { get; init; } = Array.Empty<ColumnModel>();
     public IReadOnlyList<ColumnModel> SuffixColumns { get; init; } = Array.Empty<ColumnModel>();
+    public IReadOnlyList<RelationshipModel> Relationships { get; init; } = Array.Empty<RelationshipModel>();
 
     public bool Equals(PhysicalModel? obj)
     {
@@ -24,7 +25,9 @@ public sealed record PhysicalModel
             Schemas.Count == model.Schemas.Count &&
             Schemas.Zip(model.Schemas).All(x => x.First == x.Second) &&
             Tables.Count == model.Tables.Count &&
-            Tables.Zip(model.Tables).All(x => x.First == x.Second);
+            Tables.Zip(model.Tables).All(x => x.First == x.Second) &&
+            Relationships.Count == model.Relationships.Count &&
+            Relationships.Zip(model.Relationships).All(x => x.First == x.Second);
     }
 
     public override int GetHashCode() => HashCode.Combine(Schemas, Tables);
@@ -38,6 +41,7 @@ public static class PhysicalModelExtensions
         subject.NotNull();
         subject.NotNull().Schemas.ForEach(x => x.Verify());
         subject.NotNull().Tables.ForEach(x => x.Verify());
+        subject.NotNull().Relationships.ForEach(x => x.Verify());
 
         subject.Tables.ForEach(x => subject.IsSchemaPresent(x.Name.Schema).Assert(x => x == true, $"Schema={x.Name.Schema} not found"));
 
@@ -50,6 +54,7 @@ public static class PhysicalModelExtensions
         ("Table count", model.Tables.Count),
         ("Prefix columns count", model.PrefixColumns.Count),
         ("Suffix columns count", model.SuffixColumns.Count),
+        ("Relationships columns count", model.Relationships.Count),
     };
 
     public static bool IsSchemaPresent(this PhysicalModel subject, string name) => subject.GetSchemaModel(name) != null;

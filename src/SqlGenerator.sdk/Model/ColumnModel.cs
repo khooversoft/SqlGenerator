@@ -11,6 +11,7 @@ public sealed record ColumnModel
     public bool NotNull { get; init; }
     public bool Private { get; init; }
     public bool PrimaryKey { get; init; }
+    public bool NonuniqueIndex { get; init; }
     public int ColumnIndex { get; init; }
     public bool PII { get; init; }
     public bool Restricted { get; init; }
@@ -25,6 +26,7 @@ public sealed record ColumnModel
             NotNull == model.NotNull &&
             Private == model.Private &&
             PrimaryKey == model.PrimaryKey &&
+            NonuniqueIndex == model.NonuniqueIndex &&
             ColumnIndex == model.ColumnIndex &&
             PII == model.PII &&
             Restricted == model.Restricted &&

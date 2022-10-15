@@ -15,6 +15,7 @@ public record SchemaOption
     public IReadOnlyList<SchemaModel> Schemas { get; init; } = Array.Empty<SchemaModel>();
     public IReadOnlyList<ColumnModel> PrefixColumns { get; init; } = Array.Empty<ColumnModel>();
     public IReadOnlyList<ColumnModel> SufixColumns { get; init; } = Array.Empty<ColumnModel>();
+    public IReadOnlyList<RelationshipModel> Relationships { get; init; } = Array.Empty<RelationshipModel>();
 }
 
 
@@ -26,6 +27,7 @@ public static class ImportOptionBuilder
         subject.Schemas.NotNull();
         subject.PrefixColumns.NotNull();
         subject.SufixColumns.NotNull();
+        subject.Relationships.NotNull();
 
         return subject;
     }
