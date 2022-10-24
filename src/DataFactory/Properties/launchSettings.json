@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DataFactory": {
+      "commandName": "Project",
+      "commandLineArgs": "build \"D:\\Work\\DataFactory\\ImportPipeline\\Import.project.yaml\""
+    }
+  }
+}

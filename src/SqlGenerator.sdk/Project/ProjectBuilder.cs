@@ -118,7 +118,6 @@ public partial class ProjectBuilder
 
         ConfigFile sourceFile = context switch
         {
-            Context v when v.ClassificationFile.Exists() => v.ClassificationFile,
             Context v when v.FilterFile.Exists() => v.FilterFile,
             Context v when v.SourceFile.Exists() => v.SourceFile,
 

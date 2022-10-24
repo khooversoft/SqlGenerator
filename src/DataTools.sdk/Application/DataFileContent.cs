@@ -19,20 +19,20 @@ public record DataFileContent
 
 public static class DataFile
 {
-    public static async Task<IReadOnlyList<DataFileContent>> Read(string referenceFile, MergeProjectOption option, ILogger logger)
+    public static async Task<IReadOnlyList<DataFileContent>> ReadFiles(string referenceFile, MergeProjectOption option, ILogger logger)
     {
         referenceFile.NotEmpty();
         option.NotNull();
         logger.NotNull();
 
         IReadOnlyList<DataFileContent> files = await option.Files
-            .Select(x => Task.Run(() => ReadFile(referenceFile, x, option, logger)))
+            .Select(x => Task.Run(() => ReadFile(PathTool.ToFullPath(referenceFile, x).NotEmpty(), option.Delimiter, logger)))
             .FuncAsync(async x => await Task.WhenAll(x));
 
         return files;
     }
 
-    private static Task<DataFileContent> ReadFile(string referenceFile, string file, MergeProjectOption option, ILogger logger)
+    public static Task<DataFileContent> ReadFile(string file, string? delimiter, ILogger logger)
     {
         (string tableName, string filePath) = file.Split('=', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) switch
         {
@@ -41,15 +41,13 @@ public static class DataFile
             _ => throw new ArgumentException($"Syntax error: {file}"),
         };
 
-        filePath = PathTool.ToFullPath(referenceFile, filePath).NotEmpty();
-
         logger.LogInformation("Reading data file {file} for table {table}", filePath, tableName);
 
         var result = new DataFileContent
         {
             File = filePath,
             TableName = tableName,
-            Table = CsvFile.ReadDynamic(filePath, option.Delimiter ?? ",").Func(toSafeHeaders),
+            Table = CsvFile.ReadDynamic(filePath, delimiter ?? ",").Func(toSafeHeaders),
         };
 
         logger.LogInformation("Finished data file {file} for table {table}, rows={rows}", filePath, tableName, result.Table.Data.Count);

@@ -16,6 +16,7 @@ public record SchemaOption
     public IReadOnlyList<ColumnModel> PrefixColumns { get; init; } = Array.Empty<ColumnModel>();
     public IReadOnlyList<ColumnModel> SufixColumns { get; init; } = Array.Empty<ColumnModel>();
     public IReadOnlyList<RelationshipModel> Relationships { get; init; } = Array.Empty<RelationshipModel>();
+    public IReadOnlyList<LookupRelationshipModel> LookupRelationships { get; init; } = Array.Empty<LookupRelationshipModel>();
 }
 
 
@@ -28,6 +29,7 @@ public static class ImportOptionBuilder
         subject.PrefixColumns.NotNull();
         subject.SufixColumns.NotNull();
         subject.Relationships.NotNull();
+        subject.LookupRelationships.NotNull();
 
         return subject;
     }

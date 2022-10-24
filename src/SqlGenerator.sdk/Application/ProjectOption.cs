@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SqlGenerator.sdk.Model;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 

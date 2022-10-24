@@ -111,7 +111,7 @@ public class DataAnalysis
         var list = new (Func<bool> isType, Func<string> getText)[]
         {
             (() => intType(), () => "int"),
-            (() => longType(), () => "long"),
+            (() => longType(), () => "bigint"),
             (() => dateTimeType(), () => "datetime"),
             (() => decimalType(), () => "decimal(16,6)"),
             (() => floatType(), () => "float"),

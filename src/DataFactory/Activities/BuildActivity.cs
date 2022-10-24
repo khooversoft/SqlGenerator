@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DataFactory.Application;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ internal class BuildActivity
 
     public Task Build(string projectFile)
     {
+        DataFactoryOption dataFactoryOption = DataFactoryOptionFile.Read(projectFile);
+
         return Task.CompletedTask;
     }
 }

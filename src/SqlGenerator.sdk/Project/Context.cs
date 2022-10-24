@@ -48,13 +48,7 @@ public static class ContextExtensions
             .NotNull();
         logger.LogInformation("Read option file {file}", optionFile);
 
-        return new SchemaOption
-        {
-            Schemas = importOption.Schemas.ToArray(),
-            PrefixColumns = importOption.PrefixColumns.ToArray(),
-            SufixColumns = importOption.SufixColumns.ToArray(),
-            Relationships = importOption.Relationships.ToArray(),
-        };
+        return importOption;
     }
 
     public static Context CreateContext(this ProjectOption projectOption, string projectFile, ConfigFile sourceFile, bool force)

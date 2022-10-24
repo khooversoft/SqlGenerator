@@ -12,6 +12,7 @@ namespace SqlGenerator.sdk.Generator;
 
 public class SqlViewBuilder
 {
+    private const string _aliasFormat = "{alias}";
     private readonly PhysicalModel _physicalModel;
     public SqlViewBuilder(PhysicalModel model) => _physicalModel = model;
 
@@ -53,16 +54,26 @@ public class SqlViewBuilder
         list += "SELECT";
         list += InstructionType.TabPlus;
 
-        var columns = tableModel.Columns.Where(x => x.PrimaryKey)
+        IReadOnlyList<ColumnModel> columns = tableModel.Columns.Where(x => x.PrimaryKey)
             .Concat(tableModel.Columns.Where(x => !x.PrimaryKey))
             .ToArray();
 
+        var relationships = GetRelationship(tableModel);
+
         list += columns
             .Select(x => BuildColumnModel(x, schema))
+            .Concat(relationships.Select(x => x.Select))
             .SequenceJoin(x => x += ",");
 
         list += InstructionType.TabMinus;
         list += $"FROM {tableModel.Name} x";
+
+        if (relationships.Count > 0)
+        {
+            list += InstructionType.TabPlus;
+            list += relationships.Select(x => x.Join);
+            list += InstructionType.TabMinus;
+        }
 
         list += "WHERE";
         list += InstructionType.TabPlus;
@@ -140,5 +151,19 @@ public class SqlViewBuilder
             }.Join(" ")
             )
         };
+    }
+
+    private IReadOnlyList<RelationshipInstruction> GetRelationship(TableModel tableModel) => _physicalModel.LookupRelationships
+        .Where(x => PatternMatch.IsMatch($"{SqlObjectName.Parse(x.MatchTable)}", tableModel.Name))
+        .Select((x, index) => new RelationshipInstruction
+        {
+            Select = x.SelectLine.Replace(_aliasFormat, $"a{index}"),
+            Join = x.JoinLine.Replace(_aliasFormat, $"a{index}"),
+        }).ToArray();
+
+    private record RelationshipInstruction
+    {
+        public string Select { get; init; } = null!;
+        public string Join { get; init; } = null!;
     }
 }

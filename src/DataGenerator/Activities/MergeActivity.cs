@@ -29,7 +29,7 @@ internal partial class MergeActivity
         option.Files.Count.Assert(x => x > 0, $"There are no files to merge / analysis in project file {projectFile}");
         _logger.LogInformation("Running merge for project {file}", projectFile);
 
-        IReadOnlyList<DataFileContent> files = await DataFile.Read(projectFile, option, _logger);
+        IReadOnlyList<DataFileContent> files = await DataFile.ReadFiles(projectFile, option, _logger);
 
         var context = Context.Create(projectFile);
         IReadOnlyList<MappedDetail> mappedDetails = ReadMappedFile(context, option);
@@ -85,7 +85,7 @@ internal partial class MergeActivity
 
         public static Context Create(string projectFile)
         {
-            string buildFolder = Path.Combine(Path.GetDirectoryName(projectFile).NotEmpty(), "build");
+            string buildFolder = Path.Combine(Path.GetDirectoryName(projectFile).NotEmpty(), "mergeBuild");
             string fileName = Path.GetFileName(projectFile);
             
             Directory.CreateDirectory(buildFolder);
@@ -94,7 +94,7 @@ internal partial class MergeActivity
             {
                 BuildFolder = buildFolder,
                 MergedFile = Path.Combine(buildFolder, PathTool.SetFileExtension(fileName, ".mergedTable.csv")),
-                DictionaryFile = Path.Combine(buildFolder, PathTool.SetFileExtension(fileName, ".datadictionary.csv")),
+                DictionaryFile = Path.Combine(buildFolder, PathTool.SetFileExtension(fileName, ".dataDictionary.csv")),
             };
         }
     }

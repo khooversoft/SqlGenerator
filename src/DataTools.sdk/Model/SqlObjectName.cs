@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using Toolbox.Extensions;
@@ -14,6 +15,7 @@ public sealed record SqlObjectName
     public string Name { get; init; } = null!;
 
     public override string ToString() => $"[{Schema}].[{Name}]";
+
     public string CalculateFileName() => $"{Name}.sql";
 
     public bool Equals(SqlObjectName? obj)
@@ -26,6 +28,15 @@ public sealed record SqlObjectName
     public override int GetHashCode() => HashCode.Combine(Schema, Name);
 
     public static implicit operator string(SqlObjectName objectName) => objectName.ToString();
+
+    public static SqlObjectName Parse(string value) => value.NotEmpty()
+        .Replace("[", string.Empty)
+        .Replace("]", string.Empty)
+        .Split('.', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) switch
+    {
+        string[] v when v.Length == 2 => new SqlObjectName { Schema = v[0], Name = v[1] },
+        _ => throw new ArgumentException($"Syntax error: {value}"),
+    };
 }
 
 

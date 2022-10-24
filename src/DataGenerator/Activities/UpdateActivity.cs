@@ -13,10 +13,7 @@ internal class UpdateActivity
 {
     private readonly ILogger<UpdateActivity> _logger;
 
-    public UpdateActivity(ILogger<UpdateActivity> logger)
-    {
-        _logger = logger.NotNull();
-    }
+    public UpdateActivity(ILogger<UpdateActivity> logger) => _logger = logger.NotNull();
 
     public Task Update(string optionFile, bool whatIf)
     {

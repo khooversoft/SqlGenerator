@@ -9,18 +9,14 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Model;
 
-public enum RelationshipType
-{
-    DeleteFilter,
-}
-
 public record RelationshipModel
 {
     public string TableName { get; init; } = null!;
     public string ColumnName { get; init; } = null!;
     public string ReferenceObjectId { get; init; } = null!;
-    public RelationshipType RelationshipType { get; init; } = RelationshipType.DeleteFilter;
 }
+
+
 
 public static class RelationshipModelExtensions
 {
@@ -30,7 +26,6 @@ public static class RelationshipModelExtensions
         subject.TableName.NotEmpty();
         subject.ColumnName.NotEmpty();
         subject.ReferenceObjectId.NotEmpty();
-        subject.RelationshipType.AssertValid();
 
         return subject;
     }

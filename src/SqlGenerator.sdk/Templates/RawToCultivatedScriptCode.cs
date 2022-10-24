@@ -57,9 +57,10 @@ public partial class RawToCultivatedScript
             .Select(x => (tableName: x, hasLnum: hasLnum(x)))
             .SelectMany(x => new[]
             {
-                $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', '{FormatParamValue(x.tableName)}', {x.hasLnum})",
-                $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'pii_columns', '', {x.hasLnum})",
-                $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL, {x.hasLnum})",
+                $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', '{FormatParamValue(x.tableName)}')",
+                $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'pii_columns', '')",
+                $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL)",
+                $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '{x.hasLnum}')",
             })
             .ToList();
 

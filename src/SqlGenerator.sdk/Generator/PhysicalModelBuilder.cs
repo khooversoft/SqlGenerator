@@ -32,6 +32,7 @@ public class PhysicalModelBuilder
             PrefixColumns = schemaOption.PrefixColumns.ToArray(),
             SuffixColumns = schemaOption.SufixColumns.ToArray(),
             Relationships = schemaOption.Relationships.ToArray(),
+            LookupRelationships = schemaOption.LookupRelationships.ToArray(),
         }.Verify();
     }
 
