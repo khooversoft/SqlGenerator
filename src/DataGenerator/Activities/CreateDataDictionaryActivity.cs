@@ -14,11 +14,11 @@ public class CreateDataDictionaryActivity
 
     public CreateDataDictionaryActivity(ILogger<CreateDataDictionaryActivity> logger) => _logger = logger.NotNull();
 
-    public async Task Build(string dataFile)
+    public Task Build(string dataFile)
     {
         dataFile.NotEmpty();
         _logger.LogInformation("Reading data file {file}", dataFile);
 
-        var table = 
+        return Task.CompletedTask; 
     }
 }
