@@ -1,0 +1,43 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+
+CREATE VIEW [NetO_pii].[VwTRSTENTS]
+AS
+   SELECT
+      x.[LNUM],
+      x.[TRUSTNO],
+      x.[DBID],
+      x.[COUNTER],
+      x.[TRFLAG],
+      x.[FTRNAME],
+      x.[LTRNAME],
+      x.[TRSTTYPE],
+      x.[TRSTINST],
+      x.[MTRNAME],
+      x.[TRNAME_SUFFIX],
+      x.[POAFLAG],
+      x.[POA],
+      x.[ADDR],
+      x.[CITY],
+      x.[STATE],
+      x.[ZIP],
+      x.[AUTHORIZED_SIGNEE],
+      x.[TRSTTL],
+      x.[TRUSTPHONE],
+      x.[TRUST_FOREIGN_ADDRESS],
+      x.[TRUST_FOREIGN_COUNTRY],
+      x.[TRUST_STREET_ADDR2],
+      x.[EMAIL],
+      x.[S_TRUST_UNIT_TYPE],
+      x.[TRUST_UNIT_NUM],
+      x.[TRUST_COUNTRY_CODE],
+      x.[LIVING_TRUST_BNUM],
+      x.[TRST_STATE_FOR],
+      x.[TRST_POSTCODE]
+   FROM [clt_NetO].[TRSTENTS] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+   ;

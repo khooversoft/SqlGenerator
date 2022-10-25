@@ -1,0 +1,41 @@
+CREATE VIEW [Alkami].[Vw_sas_system_message]
+AS
+   SELECT
+      x.[system_message_id],
+      x.[system_message_type_id],
+      x.[system_message_remote_id],
+      x.[status_id],
+      x.[is_outgoing],
+      x.[init_date],
+      x.[processed_date],
+      x.[last_attempt_date],
+      x.[fail_count],
+      x.[parent_message_id],
+      x.[ack_message_id],
+      x.[remote_message_id],
+      x.[message_text],
+      x.[sender_id],
+      x.[receiver_id],
+      x.[message_id],
+      x.[message_date],
+      x.[doc_type],
+      x.[doc_sub_type],
+      x.[doc_control],
+      x.[doc_sub_control],
+      x.[doc_version],
+      x.[trigger_visit_id],
+      x.[invoice_id],
+      x.[payment_method_file_id],
+      x.[order_id],
+      x.[order_part_seq_id],
+      x.[order_revision],
+      x.[return_id],
+      x.[shipment_id],
+      x.[flow_id],
+      x.[party_id],
+      x.[http_code],
+      x.[last_updated_stamp],
+      x.[ASAP_SRC_NAME]
+   FROM [clt_Alkami].[system_message] x
+   WHERE x.[ASAP_DeleteDateTime] IS NOT NULL
+;

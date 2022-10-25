@@ -1,0 +1,10 @@
+{
+  "sourceFile": "PenFed-Settlement.datadictionary.csv",
+  "optionFile": "..\\AA.ImportOption.json",
+  "nameMapFile": null,
+  "tableListFile": null,
+  "ClassificationFile": null,
+  "buildFolder": "SettlementBuild",
+  "uspLoadTableOption": null,
+  "rawToCultivated": null
+}

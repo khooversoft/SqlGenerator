@@ -1,0 +1,56 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+CREATE TABLE [clt_NetO].[GF_TLR_TAXITEMS]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [ROWSERIALNO]                      int                  NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [HUDLINE]                          smallint             NULL,
+   [S_TAXTYPE]                        nvarchar(8)          NULL,
+   [ANN_AMT]                          decimal(16,6)        NULL,
+   [FIRST_DUE]                        datetime             NULL,
+   [ESCROW]                           nchar(1)             NULL,
+   [INSTYPE]                          nchar(1)             NULL,
+   [TRETS_ID]                         nvarchar(10)         NULL,
+   [MONTH_AG]                         decimal(16,6)        NULL,
+   [ANNUAL_AG]                        decimal(16,6)        NULL,
+   [MONTH_AMT]                        decimal(16,6)        NULL,
+   [MONTH_PD_1]                       datetime             NULL,
+   [MONTH_PD_2]                       datetime             NULL,
+   [MONTH_PD_3]                       datetime             NULL,
+   [MONTH_PD_4]                       datetime             NULL,
+   [PMT_AMT_1]                        decimal(16,6)        NULL,
+   [PMT_AMT_2]                        decimal(16,6)        NULL,
+   [PMT_AMT_3]                        decimal(16,6)        NULL,
+   [PMT_AMT_4]                        decimal(16,6)        NULL,
+   [DISBURSID]                        nvarchar(8)          NULL,
+   [AUTH_NAME]                        nvarchar(50)         NULL,
+   [TAX_DELINQUENT]                   nchar(1)             NULL,
+   [PAID_THRU_DATE]                   datetime             NULL,
+   [PARCEL_ID]                        nvarchar(250)        NULL,
+   [CUSHION]                          decimal(16,6)        NULL,
+   [SFREQUENCY]                       nvarchar(8)          NULL,
+   [PROJASESSEDVAL]                   decimal(16,6)        NULL,
+   [RATEPERTHOUSAND]                  decimal(16,6)        NULL,
+   [COLFIRSTYR]                       nchar(1)             NULL,
+   [S_ESCTAX]                         nvarchar(8)          NULL,
+   [ISMERGEDINT]                      nchar(1)             NULL,
+   [TAX_TYPE_DESC]                    nvarchar(80)         NULL,
+   [UPFRONT_TAX_AMOUNT]               decimal(16,2)        NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;

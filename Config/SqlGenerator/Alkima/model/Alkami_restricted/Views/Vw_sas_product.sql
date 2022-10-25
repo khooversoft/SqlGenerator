@@ -1,0 +1,39 @@
+CREATE VIEW [Alkami_restricted].[Vw_sas_product]
+AS
+   SELECT
+      x.[product_id],
+      x.[pseudo_id],
+      x.[product_type_enum_id],
+      x.[product_class_enum_id],
+      x.[asset_type_enum_id],
+      x.[asset_class_enum_id],
+      x.[status_id],
+      x.[owner_party_id],
+      x.[product_name],
+      x.[description],
+      x.[comments],
+      x.[sales_introduction_date],
+      x.[sales_discontinuation_date],
+      x.[sales_disc_when_not_avail],
+      x.[support_discontinuation_date],
+      x.[require_inventory],
+      x.[charge_shipping],
+      x.[signature_required_enum_id],
+      x.[shipping_insurance_reqd],
+      x.[in_shipping_box],
+      x.[default_shipment_box_type_id],
+      x.[taxable],
+      x.[tax_code],
+      x.[returnable],
+      x.[amount_uom_id],
+      x.[amount_fixed],
+      x.[amount_require],
+      x.[origin_geo_id],
+      x.[payment_constant],
+      x.[payment_rounding],
+      x.[screen_flow_id],
+      x.[last_updated_stamp],
+      x.[ASAP_SRC_NAME]
+   FROM [clt_Alkami].[product] x
+   WHERE x.[ASAP_DeleteDateTime] IS NOT NULL
+;

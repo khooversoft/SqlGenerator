@@ -1,0 +1,10 @@
+{
+  "sourceFile": "CommonMonthly.datadictionary.csv",
+  "optionFile": "AA.ImportOption.json",
+  "nameMapFile": null,
+  "tableListFile": null,
+  "ClassificationFile": null,
+  "buildFolder": "MonthlyBuild",
+  "uspLoadTableOption": null,
+  "rawToCultivated": null
+}

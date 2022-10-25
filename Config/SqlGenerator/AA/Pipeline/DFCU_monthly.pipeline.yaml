@@ -1,0 +1,13 @@
+---
+include: <file>
+
+sourceDictionaryFile: dfcu_monthly.dataDictionary.csv
+syncDictionaryFile: commonMonthly.dataDictionary.csv
+modelFolder: MonthlyModel
+
+source:
+  - folder: folder
+    type: csv
+    repository:
+      folder: folder
+      type: parquet

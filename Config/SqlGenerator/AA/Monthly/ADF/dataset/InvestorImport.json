@@ -1,0 +1,45 @@
+{
+	"name": "InvestorImport2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DatawareHouseDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "RowId",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "MonthEndDate",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "MemberNumber",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "OldMemberNumber",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "LoanNumber",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "LoanId",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ctl_Investor",
+			"table": "InvestorImport"
+		}
+	}
+}

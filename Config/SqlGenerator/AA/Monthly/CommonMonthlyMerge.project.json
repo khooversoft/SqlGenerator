@@ -1,0 +1,13 @@
+{
+	"MatchRange": 0,
+	"TableName": "CommonMonthly",
+	"TableListFile": null,
+	"Delimiter": "|",
+	"MappedFile": "CommonMonthly.mapping.csv",
+	"Files": [
+		"penfed = ###_Mortgage Loans_v2_202206_20220705052500.txt",
+		"penfed = ###_Mortgage Loans_v2_202207_20220803122500.txt",
+		"dfcu = DCU_MonthlyAutoData_20220601.txt",
+		"dfcu = DCU_MonthlyAutoData_20220701.txt"
+	]
+}

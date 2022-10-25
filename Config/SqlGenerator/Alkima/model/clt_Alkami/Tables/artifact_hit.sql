@@ -1,0 +1,35 @@
+CREATE TABLE [clt_Alkami].[artifact_hit]
+(
+   [hit_id]                           varchar(40)          NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              nvarchar(10)         NULL,
+   [visit_id]                         varchar(40)          NULL,
+   [user_id]                          varchar(40)          NULL,
+   [artifact_type]                    text                 NULL,
+   [artifact_sub_type]                text                 NULL,
+   [artifact_name]                    text                 NULL,
+   [parameter_string]                 text                 NULL,
+   [start_date_time]                  datetime             NULL,
+   [running_time_millis]              float                NULL,
+   [is_slow_hit]                      char(1)              NULL,
+   [output_size]                      numeric(20,0)        NULL,
+   [was_error]                        char(1)              NULL,
+   [error_message]                    text                 NULL,
+   [request_url]                      text                 NULL,
+   [referrer_url]                     text                 NULL,
+   [server_ip_address]                varchar(40)          NULL,
+   [server_host_name]                 text                 NULL,
+   [last_updated_stamp]               datetime             NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([hit_id]), CLUSTERED COLUMNSTORE INDEX)
+;

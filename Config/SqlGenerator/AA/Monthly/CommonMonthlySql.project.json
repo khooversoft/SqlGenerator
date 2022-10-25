@@ -1,0 +1,10 @@
+{
+  "sourceFile": "mergeBuild\\CommonMonthlyMerge.dataDictionary.csv",
+  "optionFile": "..\\AA.ImportOption.json",
+  "nameMapFile": null,
+  "tableListFile": null,
+  "ClassificationFile": "CommonMonthly_Classification.json",
+  "buildFolder": "Sql",
+  "uspLoadTableOption": null,
+  "rawToCultivated": null
+}

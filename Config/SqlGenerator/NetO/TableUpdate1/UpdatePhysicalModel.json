@@ -1,0 +1,24 @@
+{
+	"currentFile": "..\\NetOPhysicalModel.csv",
+	"updateFile": "TableUpdate-2022919.csv",
+	"tableFilterFile": "..\\NetOPhysicalModel_MasterTables.json",
+	"tableDropFile": "..\\NetO_TableDropList.json",
+	"projectFile": "..\\NetO.project.json",
+	"columnOverrides": [
+		{
+			"tableName": "GF_TLR_RES_NADA_VAL",
+			"columnName": "RESPONSEID",
+			"dataType": "bigint"
+		},
+		{
+			"tableName": "GF_TLR_RES_NADA_VAL",
+			"columnName": "NADARESPONSEID",
+			"dataType": "bigint"
+		},
+		{
+			"tableName": "UWAPPR",
+			"columnName": "APPR_COMMENTS",
+			"dataType": "nvarchar(2000)"
+		}
+	]
+}

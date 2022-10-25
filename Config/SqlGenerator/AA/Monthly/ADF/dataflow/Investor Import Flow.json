@@ -1,0 +1,53 @@
+{
+	"name": "Investor Import Flow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "InvestorHistoryData",
+						"type": "DatasetReference"
+					},
+					"name": "InvestorHistoryData",
+					"description": "Full investor history"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "InvestorImport2",
+						"type": "DatasetReference"
+					},
+					"name": "ToImport"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> InvestorHistoryData",
+				"InvestorHistoryData sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          RowId as string,",
+				"          MonthEndDate as long,",
+				"          MemberNumber as long,",
+				"          OldMemberNumber as long,",
+				"          LoanNumber as long,",
+				"          LoanId as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> ToImport"
+			]
+		}
+	}
+}

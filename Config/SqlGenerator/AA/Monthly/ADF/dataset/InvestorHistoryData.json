@@ -1,0 +1,20 @@
+{
+	"name": "InvestorHistoryData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Pipelines/InvestorInput/InvestoryHistory",
+				"fileSystem": "datacontainer"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

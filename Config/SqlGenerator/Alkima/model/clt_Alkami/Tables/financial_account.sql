@@ -1,0 +1,36 @@
+CREATE TABLE [clt_Alkami].[financial_account]
+(
+   [fin_account_id]                   varchar(40)          NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              nvarchar(10)         NULL,
+   [fin_account_type_id]              varchar(40)          NULL,
+   [status_id]                        varchar(40)          NULL,
+   [fin_account_name]                 text                 NULL,
+   [fin_account_code]                 text                 NULL,
+   [fin_account_pin]                  text                 NULL,
+   [organization_party_id]            varchar(40)          NULL,
+   [owner_party_id]                   varchar(40)          NULL,
+   [post_to_gl_account_id]            varchar(40)          NULL,
+   [from_date]                        datetime             NULL,
+   [thru_date]                        datetime             NULL,
+   [is_refundable]                    char(1)              NULL,
+   [currency_uom_id]                  varchar(40)          NULL,
+   [negative_balance_limit]           numeric(24,4)        NULL,
+   [actual_balance]                   numeric(24,4)        NULL,
+   [available_balance]                numeric(24,4)        NULL,
+   [replenish_payment_id]             varchar(40)          NULL,
+   [replenish_level]                  numeric(24,4)        NULL,
+   [last_updated_stamp]               datetime             NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([fin_account_id]), CLUSTERED COLUMNSTORE INDEX)
+;

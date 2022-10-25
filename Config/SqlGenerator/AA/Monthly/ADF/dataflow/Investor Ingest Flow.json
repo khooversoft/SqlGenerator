@@ -1,0 +1,141 @@
+{
+	"name": "Investor Ingest Flow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "InvestorDropFolder",
+						"type": "DatasetReference"
+					},
+					"name": "InvestorSource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "InvestorRawData",
+						"type": "DatasetReference"
+					},
+					"name": "InvestorRawData",
+					"description": "Sync for raw date from import"
+				},
+				{
+					"dataset": {
+						"referenceName": "InvestorHistoryData",
+						"type": "DatasetReference"
+					},
+					"name": "InvestorHistory",
+					"description": "History for all investor data ingest"
+				},
+				{
+					"dataset": {
+						"referenceName": "InvestorBadData",
+						"type": "DatasetReference"
+					},
+					"name": "BadDataSync",
+					"description": "Data that has bad data types"
+				}
+			],
+			"transformations": [
+				{
+					"name": "TagRows"
+				},
+				{
+					"name": "SelectRequired"
+				},
+				{
+					"name": "OnlyMemberChangedRows",
+					"description": "Good data and OldMemberNumber <> \"0\""
+				},
+				{
+					"name": "TagBadData",
+					"description": "Tag bad data based on data types"
+				},
+				{
+					"name": "BadData"
+				},
+				{
+					"name": "ApplyDataTypes",
+					"description": "Apply data types to required columns"
+				},
+				{
+					"name": "SelectCultivated",
+					"description": "Select required columns for final schema"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     rowUrlColumn: 'FileName',",
+				"     skipLines: 3) ~> InvestorSource",
+				"InvestorSource derive(RowId = uuid(),",
+				"          MonthEndDate = regexExtract(FileName, \"_(\\\\d+)[.][cC][sS][vV]$\"),",
+				"          MemberNumber = toString(byName(\"MEMBER NUMBER\")),",
+				"          OldMemberNumber = toString(byName(\"MEMBER NBR OLD\")),",
+				"          LoanNumber = toString(byName(\"LOAN NUMBER\")),",
+				"          LoanId = toString(byName(\"Unique Account #\"))) ~> TagRows",
+				"TagRows select(mapColumn(",
+				"          RowId,",
+				"          FileName,",
+				"          MonthEndDate,",
+				"          MemberNumber,",
+				"          OldMemberNumber,",
+				"          LoanNumber,",
+				"          LoanId",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SelectRequired",
+				"TagBadData filter(OldMemberNumber != \"0\" && DataTypesAreGood == true()) ~> OnlyMemberChangedRows",
+				"SelectRequired derive(DataTypesAreGood = iif(isLong(toString(byName(\"MonthEndDate\"))) &&\r",
+				" isLong(toString(byName(\"MemberNumber\"))) &&\r",
+				"  isLong(toString(byName(\"OldMemberNumber\"))) &&\r",
+				"   isLong(toString(byName(\"LoanNumber\"))) &&\r",
+				"    isLong(toString(byName(\"LoanId\"))),\r",
+				"    true(), false())) ~> TagBadData",
+				"TagBadData filter(DataTypesAreGood == false()) ~> BadData",
+				"OnlyMemberChangedRows derive(MonthEndDate = toLong(toString(byName(\"MonthEndDate\"))),",
+				"          MemberNumber = toLong(toString(byName(\"MemberNumber\"))),",
+				"          OldMemberNumber = toLong(toString(byName(\"OldMemberNumber\"))),",
+				"          LoanNumber = toLong(toString(byName(\"LoanNumber\"))),",
+				"          LoanId = \"DFCU-\" + toString(byName(\"LoanId\"))) ~> ApplyDataTypes",
+				"ApplyDataTypes select(mapColumn(",
+				"          RowId,",
+				"          MonthEndDate,",
+				"          MemberNumber,",
+				"          OldMemberNumber,",
+				"          LoanNumber,",
+				"          LoanId",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SelectCultivated",
+				"SelectRequired sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> InvestorRawData",
+				"SelectCultivated sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> InvestorHistory",
+				"BadData sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> BadDataSync"
+			]
+		}
+	}
+}

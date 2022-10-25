@@ -1,0 +1,55 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+CREATE TABLE [clt_NetO].[UNDCOND2]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [CNTR]                             int                  NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [S_SUNDCON]                        nvarchar(8)          NULL,
+   [S_UNDCAT]                         nvarchar(8)          NULL,
+   [S_UNDTYP]                         nvarchar(8)          NULL,
+   [CUUSRID]                          int                  NULL,
+   [CUUSGRP]                          int                  NULL,
+   [CUDATE]                           datetime             NULL,
+   [CUSTATE]                          nchar(1)             NULL,
+   [SIGNDT]                           datetime             NULL,
+   [WAIVEDDT]                         datetime             NULL,
+   [LOANTYPE]                         nchar(1)             NULL,
+   [UWCKLIST]                         nvarchar(30)         NULL,
+   [ISACTIVE]                         nchar(1)             NULL,
+   [S_ASSOCDOC]                       nvarchar(8)          NULL,
+   [SHWWAIVE]                         nchar(1)             NULL,
+   [DISCLOSE]                         nchar(1)             NULL,
+   [S_COMFLG]                         nvarchar(8)          NULL,
+   [RESPONSIBLE_P]                    nvarchar(8)          NULL,
+   [DUEDATE]                          datetime             NULL,
+   [ERRORCAUSEBY]                     nvarchar(8)          NULL,
+   [S_CONDITION_SRC]                  nvarchar(8)          NULL,
+   [CREATED_DATE]                     datetime             NULL,
+   [CREATED_USER]                     nvarchar(30)         NULL,
+   [RECEIVED_DT]                      datetime             NULL,
+   [IMGSTATUS]                        nchar(1)             NULL,
+   [REVIEWED_DT]                      datetime             NULL,
+   [WAIVE_REASON_TEXT]                nvarchar(256)        NULL,
+   [CONDITION_TEXT]                   nvarchar(2000)       NULL,
+   [PUBLISHED]                        nchar(1)             NULL,
+   [REASON_ADD_COND]                  nvarchar(100)        NULL,
+   [REJECTED_DT]                      datetime             NULL,
+   [RESET_DT]                         datetime             NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;

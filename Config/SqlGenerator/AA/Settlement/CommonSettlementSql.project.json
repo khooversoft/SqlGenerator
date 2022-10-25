@@ -1,0 +1,10 @@
+{
+  "sourceFile": "SettlementMerge.datadictionary.csv",
+  "optionFile": "..\\AA.ImportOption.json",
+  "nameMapFile": null,
+  "tableListFile": "CommentSettlement.MasterTable.json",
+  "ClassificationFile": "CommonSettlement_Classification.json",
+  "buildFolder": null,
+  "uspLoadTableOption": null,
+  "rawToCultivated": null
+}

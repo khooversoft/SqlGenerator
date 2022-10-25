@@ -1,0 +1,42 @@
+CREATE VIEW [Alkami_pii].[Vw_product_store]
+AS
+   SELECT
+      x.[product_store_id],
+      x.[store_name],
+      x.[organization_party_id],
+      x.[inventory_facility_id],
+      x.[reservation_order_enum_id],
+      x.[reservation_auto_enum_id],
+      x.[require_inventory],
+      x.[default_disable_promotions],
+      x.[default_disable_shipping_calc],
+      x.[default_disable_tax_calc],
+      x.[return_postal_contact_mech_id],
+      x.[markup_order_ship_labels],
+      x.[markup_shipment_ship_labels],
+      x.[shipment_any_carrier_method],
+      x.[insurance_package_threshold],
+      x.[auto_approve_delay],
+      x.[store_domain],
+      x.[profile_url_path],
+      x.[wiki_space_id],
+      x.[content_data_document_id],
+      x.[blog_data_document_id],
+      x.[product_data_document_id],
+      x.[default_locale],
+      x.[default_currency_uom_id],
+      x.[default_sales_channel_enum_id],
+      x.[require_customer_role],
+      x.[tax_gateway_config_id],
+      x.[system_message_remote_id],
+      x.[allow_sales_rep_view_all],
+      x.[from_date],
+      x.[thru_date],
+      x.[publish_date],
+      x.[hide_date],
+      x.[account_screen_flow_id],
+      x.[last_updated_stamp],
+      x.[ASAP_SRC_NAME]
+   FROM [clt_Alkami].[product_store] x
+   WHERE x.[ASAP_DeleteDateTime] IS NOT NULL
+;

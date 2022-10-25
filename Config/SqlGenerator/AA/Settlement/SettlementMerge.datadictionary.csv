@@ -1,0 +1,12 @@
+Table Name,Column Name,Column Datatype,Column Null Option,Primary Key,Restricted,PII
+CommonSettlement,loan_number,long,NULL,,,
+CommonSettlement,product_type,nvarchar(100),NULL,,,
+CommonSettlement,service_fee,"decimal(16,6)",NULL,,,
+CommonSettlement,balance,"decimal(16,6)",NULL,,,
+CommonSettlement,participation_balance_90,"decimal(16,6)",NULL,,,
+CommonSettlement,date_interest_paid_to,datetime,NULL,,,
+CommonSettlement,original_loan_to_value_ratio,"decimal(16,6)",NULL,,,
+CommonSettlement,net_int,"decimal(16,6)",NULL,,,
+CommonSettlement,price,"decimal(16,6)",NULL,,,
+CommonSettlement,premium_discount,"decimal(16,6)",NULL,,,
+CommonSettlement,funds_due,"decimal(16,6)",NULL,,,

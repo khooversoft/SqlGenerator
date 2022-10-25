@@ -1,0 +1,343 @@
+{
+  "schemas": [
+    {
+      "security": "data",
+      "name": "clt_AssetAcq",
+      "format": null,
+      "maxColumnSize": null
+    },
+    {
+      "security": "unrestricted",
+      "name": "AssetAcq",
+      "format": null,
+      "maxColumnSize": null
+    },
+    {
+      "security": "restricted",
+      "name": "AssetAcq_restricted",
+      "format": null,
+      "maxColumnSize": null
+    },
+    {
+      "security": "pii",
+      "name": "AssetAcq_pii",
+      "format": null,
+      "maxColumnSize": null
+    }
+  ],
+  "tables": [
+    {
+      "name": {
+        "schema": "clt_AssetAcq",
+        "name": "CommonSettlement"
+      },
+      "indexType": "hash",
+      "columns": [
+        {
+          "name": "loan_number",
+          "security": "unrestricted",
+          "dataType": "long",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "product_type",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "rate",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "interest_rate",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "service_fee",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "balance",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "participation_balance_90",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "date_interest_paid_to",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "original_loan_to_value_ratio",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "net_int",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "price",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "premium_discount",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        },
+        {
+          "name": "funds_due",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
+        }
+      ]
+    }
+  ],
+  "prefixColumns": [
+    {
+      "name": "ASAP_RecordEffectiveDateTime",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": true,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_DeleteDateTime",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    }
+  ],
+  "suffixColumns": [
+    {
+      "name": "ASAP_ROW_HASH",
+      "security": "unrestricted",
+      "dataType": "nvarchar(64)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_DML_FLAG",
+      "security": "unrestricted",
+      "dataType": "nvarchar(2)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_CREATED_DATE",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_UPDATED_DATE",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_LINEAGE_ID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_ACTIVITY_ID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_TRIGGER_ID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_SRC_FILEPATH",
+      "security": "unrestricted",
+      "dataType": "nvarchar(1000)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_SRC_FILE_DATE",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "private": true,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    },
+    {
+      "name": "ASAP_SRC_NAME",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "private": false,
+      "primaryKey": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false,
+      "shortName": null
+    }
+  ]
+}

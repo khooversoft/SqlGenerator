@@ -1,0 +1,14 @@
+{
+  "protection": [
+    {
+      "columnNameMatch": "*.borrower_fico;*.last_name;*.property_address;*.property_city;*.property_state;*.total_debt_ratio",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.loan_app_nbr;*.old_loan_number",
+      "PII": true,
+      "restricted": true
+    }
+  ]
+}

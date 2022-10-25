@@ -1,0 +1,57 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+CREATE TABLE [clt_NetO].[DENIAL]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [APPRGUIDE]                        nchar(1)             NULL,
+   [APPRINCON]                        nchar(1)             NULL,
+   [APPRCOMP]                         nchar(1)             NULL,
+   [APPRUNACC]                        nchar(1)             NULL,
+   [APPRRATIO]                        nchar(1)             NULL,
+   [APPROTHR]                         nchar(1)             NULL,
+   [APPRREASN]                        nvarchar(80)         NULL,
+   [CRDHISTRY]                        nchar(1)             NULL,
+   [BANKRPTCY]                        nchar(1)             NULL,
+   [PYMTPRES]                         nchar(1)             NULL,
+   [PYMTPREV]                         nchar(1)             NULL,
+   [CRDEXPLAN]                        nchar(1)             NULL,
+   [NONCRD]                           nchar(1)             NULL,
+   [OBLIGATN]                         nchar(1)             NULL,
+   [CRDOTHR]                          nchar(1)             NULL,
+   [CRDREASN]                         nvarchar(80)         NULL,
+   [IRREGEMP]                         nchar(1)             NULL,
+   [ESTINC]                           nchar(1)             NULL,
+   [STABLEINC]                        nchar(1)             NULL,
+   [EMPOTHR]                          nchar(1)             NULL,
+   [EMPREASN]                         nvarchar(80)         NULL,
+   [LIQASST]                          nchar(1)             NULL,
+   [CASH]                             nchar(1)             NULL,
+   [SECFINC]                          nchar(1)             NULL,
+   [ASSTOTHR]                         nchar(1)             NULL,
+   [ASSTREASN]                        nvarchar(80)         NULL,
+   [INCINSUF1]                        nchar(1)             NULL,
+   [INCINSUF2]                        nchar(1)             NULL,
+   [SHORTINC]                         nchar(1)             NULL,
+   [EXCESSRAT]                        nchar(1)             NULL,
+   [QUALOTHR]                         nchar(1)             NULL,
+   [QUALREASN]                        nvarchar(80)         NULL,
+   [APPLINCMP]                        nchar(1)             NULL,
+   [OTHER]                            nchar(1)             NULL,
+   [OTHERREASN]                       nvarchar(80)         NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;

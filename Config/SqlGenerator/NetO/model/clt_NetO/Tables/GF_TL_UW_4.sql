@@ -1,0 +1,55 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+CREATE TABLE [clt_NetO].[GF_TL_UW_4]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [ADDRESVS]                         nchar(1)             NULL,
+   [ADUTPROD]                         nchar(1)             NULL,
+   [ALTSCORE]                         smallint             NULL,
+   [BADCREDIT]                        nchar(1)             NULL,
+   [BADHR]                            nchar(1)             NULL,
+   [BADLTV]                           nchar(1)             NULL,
+   [BORROWERDEL]                      nchar(1)             NULL,
+   [CHGREFI]                          nchar(1)             NULL,
+   [COBORROWERDEL]                    nchar(1)             NULL,
+   [CTROFFYES]                        nchar(1)             NULL,
+   [DELETED]                          nchar(1)             NULL,
+   [EMPLYUNA]                         nchar(1)             NULL,
+   [FHAYES]                           nchar(1)             NULL,
+   [FRED500YES]                       nchar(1)             NULL,
+   [LOWERLTV]                         nchar(1)             NULL,
+   [MAJCRDGS]                         nchar(1)             NULL,
+   [MANAYES]                          nchar(1)             NULL,
+   [MINCRDGS]                         nchar(1)             NULL,
+   [NOSAVE]                           nchar(1)             NULL,
+   [PMTSHOCK]                         nchar(1)             NULL,
+   [PORTFOUR]                         nchar(1)             NULL,
+   [PORTONE]                          nchar(1)             NULL,
+   [PORTPLUS]                         nchar(1)             NULL,
+   [PORTTHREE]                        nchar(1)             NULL,
+   [PORTTWO]                          nchar(1)             NULL,
+   [TTL_MONTH_INCOME]                 decimal(18,3)        NULL,
+   [TTL_MONTH_DEBTS]                  decimal(18,3)        NULL,
+   [CREDIT_SCORE_IMPAIRMENT]          nvarchar(8)          NULL,
+   [CREDIT_SELECTION_METHOD]          nvarchar(8)          NULL,
+   [CHKAPPENDIXQ]                     nchar(1)             NULL,
+   [APPQREASON]                       nvarchar(256)        NULL,
+   [OVERALL_FRAUD_SCORE]              int                  NULL,
+   [INCL_INVST_PRP_IN_QM_TEST]        nchar(1)             NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;

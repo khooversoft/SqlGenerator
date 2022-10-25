@@ -1,0 +1,2 @@
+CREATE SCHEMA Alkami_pii;
+GO

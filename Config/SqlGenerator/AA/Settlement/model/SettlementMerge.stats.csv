@@ -1,0 +1,20 @@
+Step,Name,Count
+FilterSourceActivity,Input table count,13
+FilterSourceActivity,Input table count(distinct),1
+FilterSourceActivity,Filter table count,18
+FilterSourceActivity,Filter table count(distinct),18
+FilterSourceActivity,Output count,13
+FilterSourceActivity,Output count(distinct),1
+FilterSourceActivity,"Tables count from filter, not in source",18
+FilterSourceActivity,Table count,1
+FilterSourceActivity,PII count,13
+FilterSourceActivity,Restricted count,13
+ModelActivity,Input table count,1
+ModelActivity,Schema count,4
+ModelActivity,Table count,1
+ModelActivity,Prefix columns count,2
+ModelActivity,Suffix columns count,10
+ModelActivity,Schema count,4
+ModelActivity,Table count,1
+ModelActivity,Prefix columns count,2
+ModelActivity,Suffix columns count,10

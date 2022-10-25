@@ -1,0 +1,17 @@
+TableName,ColumnName,MapToName
+CommonSettlement,loan_number,
+CommonSettlement,desc,product_type
+CommonSettlement,product_type,
+CommonSettlement,sfee,service_fee
+CommonSettlement,service_fee,
+CommonSettlement,balance,
+CommonSettlement,participation_balance_90,
+CommonSettlement,90_participation,participation_balance_90
+CommonSettlement,int_date,date_interest_paid_to
+CommonSettlement,date_interest_paid_to,
+CommonSettlement,original_loan_to_value_ratio,
+CommonSettlement,amor_ltv,original_loan_to_value_ratio
+CommonSettlement,net_int,
+CommonSettlement,price,
+CommonSettlement,premium_discount,
+CommonSettlement,funds_due,

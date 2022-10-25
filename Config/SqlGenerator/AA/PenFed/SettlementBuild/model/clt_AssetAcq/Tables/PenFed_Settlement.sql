@@ -1,0 +1,53 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+CREATE TABLE [clt_AssetAcq].[PenFed_Settlement]
+(
+   [ASAP_RecordEffectiveDateTime]             datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]                      datetime2(7)         NULL,
+   [Loan_Number]                              int                  NULL,
+   [Product_Type]                             nvarchar(50)         NULL,
+   [INTEREST_RATE]                            decimal(16,6)        NULL,
+   [SERVICE_FEE]                              decimal(16,6)        NULL,
+   [CURRENT_BALANCE]                          decimal(16,6)        NULL,
+   [90__PARTICIPATION]                        decimal(16,6)        NULL,
+   [Date_Interest_Paid_To]                    datetime             NULL,
+   [ORIGINAL_BALANCE]                         int                  NULL,
+   [Original_Term__months_]                   int                  NULL,
+   [AUDITED_PRODUCT_TYPE]                     nvarchar(50)         NULL,
+   [Current_Monthly_Principal___Interest]     decimal(16,6)        NULL,
+   [Calculated_Remaining_Term]                decimal(16,6)        NULL,
+   [Date_of_First_Payment]                    datetime             NULL,
+   [Date_of_Next_Payment]                     datetime             NULL,
+   [Purpose_Description]                      nvarchar(50)         NULL,
+   [PROP_TYPE]                                nvarchar(50)         NULL,
+   [OCCUPANCY]                                nvarchar(50)         NULL,
+   [APPRAISAL]                                int                  NULL,
+   [Original_Loan_to_Value_Ratio]             int                  NULL,
+   [Current_Balance_to_Loan_Value_Ratio]      int                  NULL,
+   [Combined_LTV_Ratio]                       int                  NULL,
+   [Borrower_FICO]                            int                  NULL,
+   [Units]                                    int                  NULL,
+   [MI_Coverage_Percentage]                   int                  NULL,
+   [Condo_or_PUD_Name]                        nvarchar(50)         NULL,
+   [County_Code]                              int                  NULL,
+   [County_Name]                              nvarchar(50)         NULL,
+   [Last_Name]                                nvarchar(50)         NULL,
+   [Property_Address]                         nvarchar(50)         NULL,
+   [Property_City]                            nvarchar(50)         NULL,
+   [Property_State]                           nvarchar(50)         NULL,
+   [Property_Zip__1st_five_digits_]           int                  NULL,
+   [Total_Debt_Ratio]                         decimal(16,6)        NULL,
+   [ASAP_ROW_HASH]                            nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                            nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                        datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                        datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                          nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                         nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                          nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                        nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]                       datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                            nvarchar(36)         NULL
+)
+;

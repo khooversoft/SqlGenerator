@@ -1,0 +1,23 @@
+Step,Name,Count
+FilterSourceActivity,Input table count,5129
+FilterSourceActivity,Input table count(distinct),613
+FilterSourceActivity,Filter table count,240
+FilterSourceActivity,Filter table count(distinct),240
+FilterSourceActivity,Output count,2093
+FilterSourceActivity,Output count(distinct),240
+FilterSourceActivity,"Tables count from filter, not in source",0
+ShortNameActivity,Input table count,240
+ShortNameActivity,Name map count,94
+ShortNameActivity,Output table count,240
+ModelActivity,Input table count,240
+ModelActivity,Schema count,7
+ModelActivity,Table count,240
+ModelActivity,View count,1440
+ModelActivity,Prefix columns count,2
+ModelActivity,Suffix columns count,10
+GenerateSqlCodeActivity,SQL DLL/View count,3127
+ModelActivity,Schema count,7
+ModelActivity,Table count,240
+ModelActivity,View count,1440
+ModelActivity,Prefix columns count,2
+ModelActivity,Suffix columns count,10

@@ -1,0 +1,2 @@
+CREATE SCHEMA clt_Alkami;
+GO

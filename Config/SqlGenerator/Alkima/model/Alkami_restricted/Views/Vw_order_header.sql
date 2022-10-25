@@ -1,0 +1,42 @@
+CREATE VIEW [Alkami_restricted].[Vw_order_header]
+AS
+   SELECT
+      x.[order_id],
+      x.[order_name],
+      x.[entry_date],
+      x.[placed_date],
+      x.[approved_date],
+      x.[completed_date],
+      x.[status_id],
+      x.[processing_status_id],
+      x.[order_revision],
+      x.[currency_uom_id],
+      x.[billing_account_id],
+      x.[product_store_id],
+      x.[sales_channel_enum_id],
+      x.[terminal_id],
+      x.[display_id],
+      x.[external_id],
+      x.[external_revision],
+      x.[origin_id],
+      x.[origin_url],
+      x.[sync_status_id],
+      x.[system_message_remote_id],
+      x.[visit_id],
+      x.[entered_by_party_id],
+      x.[parent_order_id],
+      x.[recur_cron_expression],
+      x.[last_ordered_date],
+      x.[recur_auto_invoice],
+      x.[remaining_sub_total],
+      x.[grand_total],
+      x.[requested_date],
+      x.[decision_date],
+      x.[lock_date],
+      x.[lock_user_id],
+      x.[merchant_id],
+      x.[last_updated_stamp],
+      x.[ASAP_SRC_NAME]
+   FROM [clt_Alkami].[order_header] x
+   WHERE x.[ASAP_DeleteDateTime] IS NOT NULL
+;

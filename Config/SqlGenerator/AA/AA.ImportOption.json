@@ -1,0 +1,153 @@
+{
+  "schemas": [
+    {
+      "security": "data",
+      "name": "clt_AssetAcq",
+      "format": null,
+      "maxColumnSize": null
+    },
+    {
+      "security": "unrestricted",
+      "name": "AssetAcq",
+      "format": "Vw_{tableName}",
+      "maxColumnSize": null
+    },
+    {
+      "security": "restricted",
+      "name": "AssetAcq_restricted",
+      "format": "Vw_{tableName}",
+      "maxColumnSize": null
+    },
+    {
+      "security": "pii",
+      "name": "AssetAcq_pii",
+      "format": "Vw_{tableName}",
+      "maxColumnSize": null
+    }
+  ],
+  "prefixColumns": [
+    {
+      "name": "ASAP_RecordEffectiveDateTime",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": true,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "ASAP_DeleteDateTime",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    }
+  ],
+  "sufixColumns": [
+    {
+      "name": "ASAP_ROW_HASH",
+      "security": "unrestricted",
+      "dataType": "nvarchar(64)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "ASAP_DML_FLAG",
+      "security": "unrestricted",
+      "dataType": "nvarchar(2)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "ASAP_CREATED_DATE",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "ASAP_UPDATED_DATE",
+      "security": "unrestricted",
+      "dataType": "datetime2(7)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "ASAP_LINEAGE_ID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "ASAP_ACTIVITY_ID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "ASAP_TRIGGER_ID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(36)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "ASAP_SRC_FILEPATH",
+      "security": "unrestricted",
+      "dataType": "nvarchar(1000)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "VendorId",
+      "security": "unrestricted",
+      "dataType": "nvarchar(50)",
+      "notNull": false,
+      "hashKey": false,
+      "private": true
+    },
+    {
+      "name": "DealID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(50)",
+      "notNull": false,
+      "hashKey": false,
+      "private": false
+    },
+    {
+      "name": "OriginalAccountNumber",
+      "security": "unrestricted",
+      "dataType": "nvarchar(50)",
+      "notNull": false,
+      "hashKey": false,
+      "private": false
+    },
+    {
+      "name": "OriginalPartyID",
+      "security": "unrestricted",
+      "dataType": "nvarchar(50)",
+      "notNull": false,
+      "hashKey": false,
+      "private": false
+    }
+  ],
+  
+  "lookupRelationships": [
+    {
+      "referenceTable": "ctl_Investor.InvestorLoanIdMap",
+      "matchTable": "clt_AssetAcq.CommonMonthly",
+      "selectLine": "{alias}.[OriginalMemberNumber] AS [OriginalAccountNumber]",
+      "joinLine": "LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] {alias} ON x.[CurrentAccountNumber] = {alias}.[LoanId]"
+    }
+  ]
+}
