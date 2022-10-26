@@ -148,7 +148,14 @@ public partial class ProjectBuilder
         _logger.LogInformation("Reading option {file} file", context.ProjectOption.OptionFile);
         SchemaOption schemaOption = context.GetSchemaOption(_logger);
 
-        Counters counters = await _modelActivity.Build(sourceFile, schemaOption, context.ModelFile, context.ProjectOption.NameMapFile);
+        Counters counters = await _modelActivity.Build(
+            sourceFile,
+            schemaOption,
+            context.ModelFile,
+            context.ProjectOption.NameMapFile,
+            context.ProjectOption.TableTypeMetadata
+            );
+
         context.Counters.Add(counters);
     }
 

@@ -184,7 +184,8 @@ AS
       x.[S_PROD_PRICE_ENGINE_OVR],
       x.[S_PPY_FILTER],
       x.[BUILDER_LOCK_ADJ],
-      x.[REQLOANTERM]
+      x.[REQLOANTERM],
+      x.[DLR_PIPMT]
    FROM [clt_NetO].[PRODUCT] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

@@ -11,7 +11,12 @@ namespace SqlGenerator.sdk.Generator;
 
 public class PhysicalModelBuilder
 {
-    public PhysicalModel Build(IEnumerable<TableInfo> infos, SchemaOption schemaOption, IReadOnlyList<NameMapRecord>? nameMaps)
+    public PhysicalModel Build(
+        IReadOnlyList<TableInfo> infos,
+        SchemaOption schemaOption,
+        IReadOnlyList<NameMapRecord>? nameMaps,
+        IReadOnlyList<TableTypeMetadata>? tableMetadata
+        )
     {
         infos.NotNull();
         schemaOption.Verify();
@@ -23,7 +28,7 @@ public class PhysicalModelBuilder
             .FirstOrDefault()
             .NotNull(name: $"Cannot find data schema in option");
 
-        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, dataSchemaModel, nameMaps, schemaOption);
+        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, dataSchemaModel, nameMaps, schemaOption, tableMetadata);
 
         return new PhysicalModel
         {
@@ -36,7 +41,13 @@ public class PhysicalModelBuilder
         }.Verify();
     }
 
-    private static IReadOnlyList<TableModel> GenerateTable(IReadOnlyList<TableInfo> tableInfos, SchemaModel schemaModel, IReadOnlyList<NameMapRecord>? nameMaps, SchemaOption schemaOption)
+    private static IReadOnlyList<TableModel> GenerateTable(
+        IReadOnlyList<TableInfo> tableInfos,
+        SchemaModel schemaModel,
+        IReadOnlyList<NameMapRecord>? nameMaps,
+        SchemaOption schemaOption,
+        IReadOnlyList<TableTypeMetadata>? tableMetadata
+        )
     {
         return tableInfos
             .GroupBy(x => x.TableName)
@@ -44,6 +55,7 @@ public class PhysicalModelBuilder
             {
                 Name = new SqlObjectName { Schema = schemaModel.Name, Name = x.Key },
                 IndexType = getIndexType(x.ToArray()),
+                TableMode = getTableMode(x.Key, tableMetadata),
                 Columns = x.Select((y, i) => new ColumnModel
                 {
                     Name = y.ColumnName,
@@ -69,7 +81,25 @@ public class PhysicalModelBuilder
             };
 
         static bool isNonuniqueIndex(SchemaOption schemaOption, string tableName, string columnName) => schemaOption.Relationships
-            .Any(x => x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase) && x.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase));
+            .Any(x =>
+                x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase) &&
+                x.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase)
+                );
 
+        static TableMode getTableMode(string tableName, IReadOnlyList<TableTypeMetadata>? tableMetadata) => tableMetadata switch
+        {
+            null => TableMode.None,
+            not null => tableMetadata.FirstOrDefault(x => x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase)) switch
+            {
+                TableTypeMetadata v => convertTo(v),
+                _ => TableMode.None,
+            }
+        };
+
+        static TableMode convertTo(TableTypeMetadata tableTypeMetadata) => tableTypeMetadata.Mode.FindEnumValue<TableMode>(true) switch
+        {
+            string v => v.ToEnum<TableMode>(),
+            _ => TableMode.None,
+        };
     }
 }

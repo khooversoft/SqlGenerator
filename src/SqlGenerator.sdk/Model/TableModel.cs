@@ -11,10 +11,18 @@ public enum IndexType
     Cluster,
 }
 
+public enum TableMode
+{
+    None,
+    Append,
+    Full
+}
+
 public sealed record TableModel
 {
     public SqlObjectName Name { get; init; } = null!;
     public IndexType IndexType { get; init; } = IndexType.None;
+    public TableMode TableMode { get; init; } = TableMode.None;
     public IReadOnlyList<ColumnModel> Columns { get; init; } = Array.Empty<ColumnModel>();
 
     public bool Equals(TableModel? obj)
@@ -22,6 +30,7 @@ public sealed record TableModel
         return obj is TableModel model &&
             Name == model.Name &&
             IndexType == model.IndexType &&
+            TableMode == model.TableMode &&
             Columns.Count == model.Columns.Count &&
             Columns.Zip(model.Columns).All(x => x.First == x.Second);
     }
@@ -37,6 +46,7 @@ public static class TableModelExtensions
         subject.NotNull();
         subject.Name.Verify();
         subject.IndexType.AssertValid();
+        subject.TableMode.AssertValid();
         subject.Columns.NotNull().ForEach(x => x.Verify());
 
         return subject;

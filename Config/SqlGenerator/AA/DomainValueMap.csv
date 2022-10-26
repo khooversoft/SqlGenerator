@@ -1,0 +1,6 @@
+ColumnName,DataType,Nullable
+VendorId,varchar(60),NOT NULL
+VendorAttributeName,nvarchar(60),NOT NULL
+VendorCode,nvarchar(200),NOT NULL
+BecuAttributeName,nvarchar(60),NOT NULL
+BecuCode,nvarchar(200),NOT NULL

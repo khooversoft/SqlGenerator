@@ -14,6 +14,7 @@ public record ProjectOption
     public string? TableListFile { get; init; }
     public string? BuildFolder { get; init; }
     public string? ClassificationFile { get; init; }
+    public string? TableTypeMetadata { get; init; }
     public UspLoadTableOption? UspLoadTableOption { get; init; }
     public RawToCultivatedOption? RawToCultivated { get; init; }
 }
@@ -33,6 +34,7 @@ public static class ProjectOptionFile
             NameMapFile = PathTool.ToFullPath(projectFile, x.NameMapFile),
             TableListFile = PathTool.ToFullPath(projectFile, x.TableListFile),
             ClassificationFile = PathTool.ToFullPath(projectFile, x.ClassificationFile),
+            TableTypeMetadata = PathTool.ToFullPath(projectFile, x.TableTypeMetadata),
         });
 
     public static ProjectOption Verify(this ProjectOption? subject)

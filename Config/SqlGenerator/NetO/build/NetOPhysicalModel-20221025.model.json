@@ -50,6 +50,7 @@
         "name": "ADV_ACTN"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -1359,6 +1360,7 @@
         "name": "APPREQ"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -2304,6 +2306,7 @@
         "name": "ARMINFO"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -3392,6 +3395,7 @@
         "name": "ASSETS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -3960,6 +3964,7 @@
         "name": "BORDEP"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -4164,6 +4169,7 @@
         "name": "BORROWER"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -6552,6 +6558,7 @@
         "name": "CONSREFI"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -6912,6 +6919,7 @@
         "name": "DATES"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -8078,6 +8086,7 @@
         "name": "DECLRTN"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -9296,6 +9305,7 @@
         "name": "DELIVERY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -10436,6 +10446,7 @@
         "name": "DENIAL"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -10913,6 +10924,7 @@
         "name": "DOWNPYMT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -11442,6 +11454,7 @@
         "name": "DTLTRAN"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -11672,6 +11685,7 @@
         "name": "FEEVALS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -12565,6 +12579,7 @@
         "name": "FIELD_HISTORY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -12665,6 +12680,7 @@
         "name": "FLOOD"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -12895,6 +12911,7 @@
         "name": "GF_TL_DATES"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -14347,6 +14364,7 @@
         "name": "GF_TL_DATES3"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -14850,6 +14868,7 @@
         "name": "GF_TL_HOUSING_PROPSD"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -15340,6 +15359,7 @@
         "name": "GF_TL_LOAN_CONTACTS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -16779,6 +16799,7 @@
         "name": "GF_TL_LOAN_CONTACTS2"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -18283,6 +18304,7 @@
         "name": "GF_TL_LOAN_DATA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -19670,6 +19692,7 @@
         "name": "GF_TL_LOAN_STATUS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -19809,6 +19832,7 @@
         "name": "GF_TL_MISC_CK"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -20104,6 +20128,7 @@
         "name": "GF_TL_PMT_STREAMS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -20334,6 +20359,7 @@
         "name": "GF_TL_PNP_IPG_DETAIL"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -21110,6 +21136,7 @@
         "name": "GF_TL_POINT_OF_SALE_INFO"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -22055,6 +22082,7 @@
         "name": "GF_TL_TRANSOVR"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -22233,6 +22261,7 @@
         "name": "GF_TL_UW_4"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -22684,6 +22713,7 @@
         "name": "GF_TL_UWAPPREXT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -23070,6 +23100,7 @@
         "name": "GF_TLB_EQ_RES_EDAS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -23313,6 +23344,7 @@
         "name": "GF_TLB_EX_RES_TRENDS_SUM"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -23491,6 +23523,7 @@
         "name": "GF_TLB_HOUSING_PRSNT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -23773,6 +23806,7 @@
         "name": "GF_TLB_MAILING"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -23990,6 +24024,7 @@
         "name": "GF_TLB_TU_RES_CRED_SUM"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -24233,6 +24268,7 @@
         "name": "GF_TLBC_EQ_RES_COLLECT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -24567,6 +24603,7 @@
         "name": "GF_TLBC_TU_RES_GEOCODE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -24823,6 +24860,7 @@
         "name": "GF_TLBC_TU_RES_PUB_REC"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -25131,6 +25169,7 @@
         "name": "GF_TLBC_TU_RES_TRADELINE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -25790,6 +25829,7 @@
         "name": "GF_TLBR_ADDITIONALDATA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -26488,6 +26528,7 @@
         "name": "GF_TLBR_ALIAS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -26666,6 +26707,7 @@
         "name": "GF_TLBR_ASSIST_PROGRAMS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -26961,6 +27003,7 @@
         "name": "GF_TLBR_BORROWERID"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -27165,6 +27208,7 @@
         "name": "GF_TLBR_CREDIT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -27330,6 +27374,7 @@
         "name": "GF_TLBR_CREDIT_SCORE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -27547,6 +27592,7 @@
         "name": "GF_TLBR_DEPENDENTS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -27686,6 +27732,7 @@
         "name": "GF_TLBR_EMPLOYER"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -28163,6 +28210,7 @@
         "name": "GF_TLBR_ETHNICITY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -28263,6 +28311,7 @@
         "name": "GF_TLBR_HOUSNG_PRSNT_OTH"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -28363,6 +28412,7 @@
         "name": "GF_TLBR_RACE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -28463,6 +28513,7 @@
         "name": "GF_TLBR_RAW_SCORES"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -28641,6 +28692,7 @@
         "name": "GF_TLBR_SUBETHNICITY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -28741,6 +28793,7 @@
         "name": "GF_TLBR_SUBRACE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -28854,6 +28907,7 @@
         "name": "GF_TLR_DISBURSEMENTS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -29716,7 +29770,7 @@
         {
           "name": "ACH_ACCOUNT_TYPE",
           "security": "unrestricted",
-          "dataType": "varchar(1)",
+          "dataType": "varchar(8)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -29729,7 +29783,7 @@
         {
           "name": "ACH_DEBIT_OR_CREDIT",
           "security": "unrestricted",
-          "dataType": "varchar(1)",
+          "dataType": "varchar(8)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -29742,7 +29796,7 @@
         {
           "name": "ACH_ROUTING_NUMBER",
           "security": "unrestricted",
-          "dataType": "varchar(1)",
+          "dataType": "varchar(30)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -29755,7 +29809,7 @@
         {
           "name": "ACH_ACCOUNT_NUMBER",
           "security": "unrestricted",
-          "dataType": "varchar(1)",
+          "dataType": "varchar(30)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -29773,6 +29827,7 @@
         "name": "GF_TLR_DISCL_DATA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -30029,6 +30084,7 @@
         "name": "GF_TLR_FLOOD_DETMN"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -30519,6 +30575,7 @@
         "name": "GF_TLR_FUNDITEM"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -30736,6 +30793,7 @@
         "name": "GF_TLR_INSURANCE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -31538,6 +31596,7 @@
         "name": "GF_TLR_REG_O"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -31755,6 +31814,7 @@
         "name": "GF_TLR_REOWNED_BORROWERS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -31842,6 +31902,7 @@
         "name": "GF_TLR_REQ_CREDIT_LIAB_REP"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -31968,6 +32029,7 @@
         "name": "GF_TLR_REQ_NADA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -32120,6 +32182,7 @@
         "name": "GF_TLR_RES_CREDIT_FILE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -32298,6 +32361,7 @@
         "name": "GF_TLR_RES_CREDIT_INQUIRY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -32580,6 +32644,7 @@
         "name": "GF_TLR_RES_CREDIT_LIABILITY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -33447,6 +33512,7 @@
         "name": "GF_TLR_RES_CREDIT_SUMMARY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -34717,6 +34783,7 @@
         "name": "GF_TLR_RES_NADA_VAL"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -35285,6 +35352,7 @@
         "name": "GF_TLR_RESPONSE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -35411,6 +35479,7 @@
         "name": "GF_TLR_RSP_LP_LOANFDBCK"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -36603,6 +36672,7 @@
         "name": "GF_TLR_SUBJPRP_INSURANCE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -36651,6 +36721,7 @@
         "name": "GF_TLR_SUBJPRP_TAX"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -36699,6 +36770,7 @@
         "name": "GF_TLR_TAXITEMS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -37163,6 +37235,7 @@
         "name": "GF_TLR_TL_REC_DOC_ROLES"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -37341,6 +37414,7 @@
         "name": "GF_TLRR_FUNDDISB"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -37441,6 +37515,7 @@
         "name": "GF_TS_AUDIT_LOAN_DELETE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "DELETED_LNUM",
@@ -37541,6 +37616,7 @@
         "name": "GF_TS_AUDIT_USER_LOCK"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "UL_ID",
@@ -37706,6 +37782,7 @@
         "name": "GF_TS_CMS_CONTACT_ADDRESS"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CID",
@@ -37884,6 +37961,7 @@
         "name": "GF_TS_CMS_CONTACT_EMAIL"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CID",
@@ -37945,6 +38023,7 @@
         "name": "GF_TS_CMS_CONTACT_INFO"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CID",
@@ -38214,6 +38293,7 @@
         "name": "GF_TS_CMS_CONTACT_PHONE"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CID",
@@ -38288,6 +38368,7 @@
         "name": "GF_TS_CMS_CONTACT_TYPE"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CID",
@@ -38323,6 +38404,7 @@
         "name": "GF_TS_PNP_IPG_INVESTOR"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "INVESTORCODE",
@@ -38488,6 +38570,7 @@
         "name": "GF_TS_PNP_IPG_PRICING"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "PRICING_GROUP_CODE",
@@ -38575,6 +38658,7 @@
         "name": "GF_TS_PNP_IPG_PRODUCT"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "PRODUCTCODE",
@@ -38675,6 +38759,7 @@
         "name": "GF_TS_PNP_IPG_PROGRAM"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "PROGRAMCODE",
@@ -38762,6 +38847,7 @@
         "name": "GF_TS_PNP_PRICE_OFERING"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "PA_DBCODE",
@@ -38810,6 +38896,7 @@
         "name": "GF_TS_WF_GROUP_USER"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "S_PROC_GROUP",
@@ -38897,6 +38984,7 @@
         "name": "GF_TS_WF_PROCESS"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "S_PROCESS",
@@ -38945,6 +39033,7 @@
         "name": "GF_TS_WF_PROCESS_MODEL"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "S_PROCESS_MODEL",
@@ -38993,6 +39082,7 @@
         "name": "GF_TS_WF_WORKTYPE"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "S_WORKTYPE",
@@ -39132,6 +39222,7 @@
         "name": "GF_TW_WF_ACTION_MGR"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "ACTION_ID",
@@ -39375,6 +39466,7 @@
         "name": "GF_TW_WF_PROC_MODEL_MGR"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "PROC_MDL_MGR_ID",
@@ -39540,6 +39632,7 @@
         "name": "GF_TW_WF_PROCESS_MGR"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "PROC_MGR_ID",
@@ -39718,6 +39811,7 @@
         "name": "GFXVARTEXTMAP"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "TABLENAME",
@@ -39896,6 +39990,7 @@
         "name": "GSSGRP"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "GRPID",
@@ -40009,6 +40104,7 @@
         "name": "GSSMEM"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "GRPID",
@@ -40044,6 +40140,7 @@
         "name": "GSSUSR"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "USRID",
@@ -40131,6 +40228,7 @@
         "name": "HELOC"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -40465,6 +40563,7 @@
         "name": "HELOC2"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -40591,6 +40690,7 @@
         "name": "HMDAINFO"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -41458,6 +41558,7 @@
         "name": "HMDAXPRT"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "PRI_DBID",
@@ -41857,6 +41958,7 @@
         "name": "INCOME"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -42828,6 +42930,7 @@
         "name": "INFO1008"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -43162,6 +43265,7 @@
         "name": "L_SYMBOL"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "FLDNAME",
@@ -43340,6 +43444,7 @@
         "name": "LIABLTY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -44766,6 +44871,7 @@
         "name": "MISC1003"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -44853,6 +44959,7 @@
         "name": "POA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -45018,6 +45125,7 @@
         "name": "PREDCTRS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -45183,6 +45291,7 @@
         "name": "PREVRES"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -45530,6 +45639,7 @@
         "name": "PRODUCT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -47857,6 +47967,19 @@
           "pii": false,
           "restricted": false,
           "shortName": null
+        },
+        {
+          "name": "DLR_PIPMT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 179,
+          "pii": false,
+          "restricted": false,
+          "shortName": null
         }
       ]
     },
@@ -47866,6 +47989,7 @@
         "name": "PRTFOLIO"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -48486,6 +48610,7 @@
         "name": "REOWNED"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -49405,6 +49530,7 @@
         "name": "SEIA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -50974,6 +51100,7 @@
         "name": "SELLER"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -51607,6 +51734,7 @@
         "name": "SERVICNG"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -52149,6 +52277,7 @@
         "name": "SUBJPRP"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -54082,6 +54211,7 @@
         "name": "TAXINFO"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -54676,6 +54806,7 @@
         "name": "TILINFO"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -55699,6 +55830,7 @@
         "name": "TRACKING"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -56891,6 +57023,7 @@
         "name": "TRANSDATA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -57095,6 +57228,7 @@
         "name": "TRSTENTS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -57494,6 +57628,7 @@
         "name": "TRUSTS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -57763,6 +57898,7 @@
         "name": "UNDCOND1"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -58149,6 +58285,7 @@
         "name": "UNDCOND2"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -58600,6 +58737,7 @@
         "name": "UWAPPR"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -59909,6 +60047,7 @@
         "name": "VARTXT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "DBID",
@@ -59983,6 +60122,7 @@
         "name": "VETINFO"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -61071,6 +61211,7 @@
         "name": "WG_ASSET"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -61275,6 +61416,7 @@
         "name": "WG_ASSET_ACCT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -61557,6 +61699,7 @@
         "name": "WG_ASSET_MARINE_ENG"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -61800,6 +61943,7 @@
         "name": "WG_ASSET_VEHICLE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -62251,6 +62395,7 @@
         "name": "WG_ASSET_VHCL_AUTO"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -62351,6 +62496,7 @@
         "name": "WG_ASSET_VHCL_MARINE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -62737,6 +62883,7 @@
         "name": "WG_ASSET_VHCL_OPTIONS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -62876,6 +63023,7 @@
         "name": "WG_ASSET_VHCL_RV"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -63015,6 +63163,7 @@
         "name": "WG_ASSET_VHCL_TRAILER"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -63089,6 +63238,7 @@
         "name": "WG_ASSET_VHCL_VALUATION"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -63475,6 +63625,7 @@
         "name": "WG_AUTO_DEBIT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -63601,6 +63752,7 @@
         "name": "WG_BRM_DEFN_FIELDS"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "FIELDID",
@@ -63753,6 +63905,7 @@
         "name": "WG_BRM_DEFN_GRID"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "GRIDID",
@@ -63944,6 +64097,7 @@
         "name": "WG_BRM_DEFN_GRID_DTL"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "GRIDID",
@@ -64161,6 +64315,7 @@
         "name": "WG_BRM_EXPORT"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "EXPORTID",
@@ -64391,6 +64546,7 @@
         "name": "WG_BRM_IDENTIFIERS"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "BRM_IDENT_FIELD",
@@ -64465,6 +64621,7 @@
         "name": "WG_BRM_IMPORT"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "IMPORTID",
@@ -64838,6 +64995,7 @@
         "name": "WG_BRM_LKUP_BASE"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "BRMID",
@@ -65120,6 +65278,7 @@
         "name": "WG_BRM_LKUP_RULE_BASE"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "BRMID",
@@ -65207,6 +65366,7 @@
         "name": "WG_BRM_LKUP_RULE_DETAIL"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "BRMID",
@@ -65372,6 +65532,7 @@
         "name": "WG_BRM_LKUP_RULE_FIELD"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "BRMID",
@@ -65498,6 +65659,7 @@
         "name": "WG_BRM_LKUP_RULE_ITEMS"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "BRMID",
@@ -65624,6 +65786,7 @@
         "name": "WG_BRM_LKUP_RULE_VALUE"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "BRMID",
@@ -65763,6 +65926,7 @@
         "name": "WG_BULK_IMPORT_DATA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "BULK_ID",
@@ -67072,6 +67236,7 @@
         "name": "WG_CNS_LOAN_APPLICATION"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -67419,6 +67584,7 @@
         "name": "WG_COLLATERAL_ADDRESS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -67610,6 +67776,7 @@
         "name": "WG_COLLATERAL_PLEDGOR"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -67762,6 +67929,7 @@
         "name": "WG_COLLATERAL_TYPES"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -67862,6 +68030,7 @@
         "name": "WG_CORR_FUNDING"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -68157,6 +68326,7 @@
         "name": "WG_CRM_CUSTOMER"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CUSTOMER_ID",
@@ -68712,6 +68882,7 @@
         "name": "WG_CRM_CUSTOMER_ACCT_DETAIL"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CURRENT_CUSTOMERID",
@@ -69137,6 +69308,7 @@
         "name": "WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CURRENT_CUSTOMERID",
@@ -69302,6 +69474,7 @@
         "name": "WG_CRM_CUSTOMER_ADDRESS"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CUSTOMER_ID",
@@ -69493,6 +69666,7 @@
         "name": "WG_CRM_CUSTOMER_PHONE"
       },
       "indexType": "hash",
+      "tableMode": "full",
       "columns": [
         {
           "name": "CUSTOMER_ID",
@@ -69554,6 +69728,7 @@
         "name": "WG_HMDAINFO_EXT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -71071,6 +71246,7 @@
         "name": "WG_HOEPA_DATA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -71275,6 +71451,7 @@
         "name": "WG_INCOME_SOURCE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -71973,6 +72150,7 @@
         "name": "WG_KELLEYBLUEBOOK_RESPONSE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -72333,6 +72511,7 @@
         "name": "WG_RPT_AMOUNTS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -72758,6 +72937,7 @@
         "name": "WG_RPT_BORROWER"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -73339,6 +73519,7 @@
         "name": "WG_RPT_CMS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -75155,6 +75336,7 @@
         "name": "WG_RPT_DATES"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -76178,6 +76360,7 @@
         "name": "WG_RPT_HMDA"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -76889,6 +77072,7 @@
         "name": "WG_RPT_INV_LOCK_SNAPSHOT"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -77197,6 +77381,7 @@
         "name": "WG_RPT_INVESTOR"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -77323,6 +77508,7 @@
         "name": "WG_RPT_IPG_DETAIL"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -77839,6 +78025,7 @@
         "name": "WG_RPT_LOAN"
       },
       "indexType": "cluster",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -78615,6 +78802,7 @@
         "name": "WG_RPT_LOAN_ACTIVITY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -78689,6 +78877,7 @@
         "name": "WG_RPT_LOAN_CONDITIONS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -78854,6 +79043,7 @@
         "name": "WG_RPT_LOAN_REMARKS"
       },
       "indexType": "cluster",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -78993,6 +79183,7 @@
         "name": "WG_RPT_LOAN_STATUS"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "ROWCNTR",
@@ -79067,6 +79258,7 @@
         "name": "WG_RPT_PROPERTY"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -79310,6 +79502,7 @@
         "name": "WG_RPT_WORKFLOW"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "WORKTYPE_INSTANCE",
@@ -79579,6 +79772,7 @@
         "name": "WG_SC_DECISION"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -79627,6 +79821,7 @@
         "name": "WG_TLBR_VET_MILT_SERVICE"
       },
       "indexType": "hash",
+      "tableMode": "append",
       "columns": [
         {
           "name": "LNUM",
@@ -79925,8 +80120,8 @@
     {
       "tableName": "GF_TS_AUDIT_LOAN_DELETE",
       "columnName": "DELETED_LNUM",
-      "referenceObjectId": "*.LNUM",
-      "relationshipType": "deleteFilter"
+      "referenceObjectId": "*.LNUM"
     }
-  ]
+  ],
+  "lookupRelationships": []
 }
