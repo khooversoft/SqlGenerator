@@ -1,23 +1,23 @@
 Step,Name,Count
-FilterSourceActivity,Input table count,6205
+FilterSourceActivity,Input table count,6204
 FilterSourceActivity,Input table count(distinct),188
-FilterSourceActivity,Filter table count,189
-FilterSourceActivity,Filter table count(distinct),189
-FilterSourceActivity,Output count,6205
-FilterSourceActivity,Output count(distinct),188
-FilterSourceActivity,"Tables count from filter, not in source",1
-FilterSourceActivity,Table count,188
-FilterSourceActivity,PII count,6205
-FilterSourceActivity,Restricted count,6205
-ModelActivity,Input table count,188
+FilterSourceActivity,Filter table count,182
+FilterSourceActivity,Filter table count(distinct),182
+FilterSourceActivity,Output count,6006
+FilterSourceActivity,Output count(distinct),182
+FilterSourceActivity,"Tables count from filter, not in source",0
+FilterSourceActivity,Table count,182
+FilterSourceActivity,PII count,6006
+FilterSourceActivity,Restricted count,6006
+ModelActivity,Input table count,182
 ModelActivity,Schema count,7
-ModelActivity,Table count,188
+ModelActivity,Table count,182
 ModelActivity,Prefix columns count,2
 ModelActivity,Suffix columns count,10
 ModelActivity,Relationships columns count,1
 ModelActivity,LookupRelationships columns count,0
 ModelActivity,Schema count,7
-ModelActivity,Table count,188
+ModelActivity,Table count,182
 ModelActivity,Prefix columns count,2
 ModelActivity,Suffix columns count,10
 ModelActivity,Relationships columns count,1

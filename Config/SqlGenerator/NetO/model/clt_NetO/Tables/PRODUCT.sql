@@ -185,7 +185,6 @@ CREATE TABLE [clt_NetO].[PRODUCT]
    [S_PPY_FILTER]                     nvarchar(8)          NULL,
    [BUILDER_LOCK_ADJ]                 decimal(16,6)        NULL,
    [REQLOANTERM]                      int                  NULL,
-   [DLR_PIPMT]                        numeric(18,3)        NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
