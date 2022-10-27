@@ -23,8 +23,10 @@ AS
       x.[ACCT_TYPE_CODE],
       x.[CLOSED_DT],
       x.[SCHED_PAYMENT_AMT],
+      x.[TERMS_FREQUENCY],
       x.[INDUSTRY_CODE],
       x.[MEMBER_CODE],
+      x.[CLOSED_DATE_IND],
       x.[CURRENCY],
       x.[CURRENT_BALANCE_AMT],
       x.[TERMS_PMT_AMT],
@@ -40,7 +42,9 @@ AS
       x.[MAX_DELINQUENCY_AMT],
       x.[MAX_DELINQUENCY_DT],
       x.[MAX_DELINQUENCY_ACCT_RT],
+      x.[PMT_SCHED_TYPE_CODE],
       x.[PMT_SCHED_DT],
+      x.[PORTFOLIO_SALE_CODE],
       x.[PORTFOLIO_SALE_NAME],
       x.[AFFILIATE_REMARK_CODE],
       x.[GENERIC_REMARK_CODE],
@@ -51,11 +55,7 @@ AS
       x.[LAST_PMT_DT],
       x.[TERMS_PMT_SCHED_MNTH_CNT],
       x.[PAST_DUE_AMT],
-      x.[CREDIT_LIMIT_AMT],
-      x.[TERMS_FREQUENCY],
-      x.[CLOSED_DATE_IND],
-      x.[PMT_SCHED_TYPE_CODE],
-      x.[PORTFOLIO_SALE_CODE]
+      x.[CREDIT_LIMIT_AMT]
    FROM [clt_NetO].[GF_TLBC_TU_RES_TRADELINE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

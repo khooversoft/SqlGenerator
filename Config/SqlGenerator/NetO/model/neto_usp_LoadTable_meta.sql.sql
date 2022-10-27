@@ -89,12 +89,14 @@ GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
 SELECT 'clt_neto', 'FIELD_HISTORY', 'LNUM', 1
-UNION ALL
-SELECT 'clt_neto', 'FIELD_HISTORY', 'PKFIX', 7
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
 SELECT 'clt_neto', 'FLOOD', 'LNUM', 1
+GO
+
+INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
+SELECT 'clt_neto', 'GF_TL_AFFORDABILITY', 'LNUM', 1
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
@@ -325,8 +327,6 @@ UNION ALL
 SELECT 'clt_neto', 'GF_TLBR_CREDIT_SCORE', 'SCOREID', 4
 UNION ALL
 SELECT 'clt_neto', 'GF_TLBR_CREDIT_SCORE', 'DBID', 5
-UNION ALL
-SELECT 'clt_neto', 'GF_TLBR_CREDIT_SCORE', 'BORROWER_ID', 13
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
@@ -452,6 +452,14 @@ SELECT 'clt_neto', 'GF_TLR_INSURANCE', 'ROWSERIALNO', 3
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
+SELECT 'clt_neto', 'GF_TLR_PYMT_HIST', 'LNUM', 1
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_PYMT_HIST', 'DBID', 2
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_PYMT_HIST', 'ROWSERIALNO', 3
+GO
+
+INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
 SELECT 'clt_neto', 'GF_TLR_REG_O', 'LNUM', 1
 UNION ALL
 SELECT 'clt_neto', 'GF_TLR_REG_O', 'BNUM', 2
@@ -495,6 +503,30 @@ UNION ALL
 SELECT 'clt_neto', 'GF_TLR_REQ_NADA', 'REQUESTID', 3
 UNION ALL
 SELECT 'clt_neto', 'GF_TLR_REQ_NADA', 'NADAREQUESTID', 4
+GO
+
+INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
+SELECT 'clt_neto', 'GF_TLR_REQUESTS', 'LNUM', 1
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_REQUESTS', 'DBID', 2
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_REQUESTS', 'REQUESTID', 3
+GO
+
+INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
+SELECT 'clt_neto', 'GF_TLR_RES_CRD_FILE_ALIAS', 'LNUM', 1
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_RES_CRD_FILE_ALIAS', 'DBID', 2
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_RES_CRD_FILE_ALIAS', 'RESPONSEID', 3
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_RES_CRD_FILE_ALIAS', 'CREDITRESPONSEID', 4
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_RES_CRD_FILE_ALIAS', 'CREDITFILEID', 5
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_RES_CRD_FILE_ALIAS', 'BORROWER_ID', 6
+UNION ALL
+SELECT 'clt_neto', 'GF_TLR_RES_CRD_FILE_ALIAS', 'ALIAS_ID', 7
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
@@ -631,8 +663,6 @@ GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
 SELECT 'clt_neto', 'GF_TS_AUDIT_LOAN_DELETE', 'DELETED_LNUM', 1
-UNION ALL
-SELECT 'clt_neto', 'GF_TS_AUDIT_LOAN_DELETE', 'USRID', 3
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
@@ -853,10 +883,6 @@ UNION ALL
 SELECT 'clt_neto', 'SEIA', 'METHOD', 4
 UNION ALL
 SELECT 'clt_neto', 'SEIA', 'CNTR', 5
-UNION ALL
-SELECT 'clt_neto', 'SEIA', 'DBID', 71
-UNION ALL
-SELECT 'clt_neto', 'SEIA', 'CTR', 72
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
@@ -937,10 +963,6 @@ GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
 SELECT 'clt_neto', 'VETINFO', 'LNUM', 1
-UNION ALL
-SELECT 'clt_neto', 'VETINFO', 'BNUM', 36
-UNION ALL
-SELECT 'clt_neto', 'VETINFO', 'DBID', 37
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
@@ -987,8 +1009,6 @@ UNION ALL
 SELECT 'clt_neto', 'WG_ASSET_VHCL_OPTIONS', 'ASSETID', 2
 UNION ALL
 SELECT 'clt_neto', 'WG_ASSET_VHCL_OPTIONS', 'ROWCOUNTER', 3
-UNION ALL
-SELECT 'clt_neto', 'WG_ASSET_VHCL_OPTIONS', 'VALUATION_CNTR', 8
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
@@ -1144,6 +1164,10 @@ SELECT 'clt_neto', 'WG_COLLATERAL_PLEDGOR', 'CHILDROWSERIALNO', 4
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
+SELECT 'clt_neto', 'WG_COLLATERAL_TRADEIN', 'LNUM', 1
+GO
+
+INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
 SELECT 'clt_neto', 'WG_COLLATERAL_TYPES', 'LNUM', 1
 UNION ALL
 SELECT 'clt_neto', 'WG_COLLATERAL_TYPES', 'DBID', 2
@@ -1269,8 +1293,6 @@ GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
 SELECT 'clt_neto', 'WG_RPT_LOAN_REMARKS', 'LNUM', 1
-UNION ALL
-SELECT 'clt_neto', 'WG_RPT_LOAN_REMARKS', 'RMKID', 10
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
@@ -1285,6 +1307,10 @@ GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
 SELECT 'clt_neto', 'WG_RPT_WORKFLOW', 'WORKTYPE_INSTANCE', 1
+GO
+
+INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)
+SELECT 'clt_neto', 'WG_SC_ATTRIBUTES', 'LNUM', 1
 GO
 
 INSERT INTO etl.ETLGenPrimaryKeyColumns (DataLayer, TableName, ColumnName, ColumnOrder)

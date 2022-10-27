@@ -9,6 +9,7 @@ AS
       x.[BULK_ID],
       x.[RECORD_ID],
       x.[RECORD_PROCESSED],
+      x.[LNUM],
       x.[EXT_LNUM],
       x.[CLIENT_LNUM],
       x.[PB_NAME_FIRST],
@@ -104,7 +105,6 @@ AS
       x.[LOCK_EXP_DATE],
       x.[TEMPLATE_ID],
       x.[SELLER_LOAN_REG_CID],
-      x.[LNUM],
       x.[PROP_COUNTY]
    FROM [clt_NetO].[WG_BULK_IMPORT_DATA] x
    WHERE

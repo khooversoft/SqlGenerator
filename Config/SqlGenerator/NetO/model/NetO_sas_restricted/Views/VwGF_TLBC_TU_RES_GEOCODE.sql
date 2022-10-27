@@ -12,6 +12,7 @@ AS
       x.[RESPONSEID],
       x.[CREDITRESPONSEID],
       x.[ROWCOUNTER],
+      x.[ADDRESS_IND],
       x.[GEO_ZIP_CODE],
       x.[BLOCK_GROUP_STATUS],
       x.[GEO_STATUS],
@@ -23,8 +24,7 @@ AS
       x.[CENSUS_TRACK_SUFFIX],
       x.[BLOCK_CODE],
       x.[LATITIUDE],
-      x.[LONGITUDE],
-      x.[ADDRESS_IND]
+      x.[LONGITUDE]
    FROM [clt_NetO].[GF_TLBC_TU_RES_GEOCODE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

@@ -7,8 +7,8 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[USRID],
       x.[DELETED_CLNUM],
+      x.[USRID],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],

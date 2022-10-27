@@ -1,5 +1,5 @@
 {
-	"sourceFile": "NetOPhysicalModel-20221025.csv",
+	"sourceFile": "NetOPhysicalModel-20221027.csv",
 	"optionFile": "Neto.ImportOption.json",
 	"nameMapFile": "..\\NameMap.json",
 	"tableListFile": "NetOPhysicalModel_MasterTables.json",

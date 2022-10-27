@@ -66,16 +66,16 @@ AS
       HASHBYTES('SHA2_256', x.[PAYEE_COUNTRY]) AS [PAYEE_COUNTRY],
       x.[WIRE_CONFIRMATION_NBR],
       x.[DISBDESC],
+      x.[ACH_ACCOUNT_TYPE],
+      x.[ACH_DEBIT_OR_CREDIT],
+      x.[ACH_ROUTING_NUMBER],
+      x.[ACH_ACCOUNT_NUMBER],
       x.[W_APPRVDBY1],
       x.[W_REQUESTEDDT],
       x.[W_REQUESTEDBY],
       x.[W_APPRVDBY2],
       x.[W_APPRVDDT1],
-      x.[W_APPRVDDT2],
-      x.[ACH_ACCOUNT_TYPE],
-      x.[ACH_DEBIT_OR_CREDIT],
-      x.[ACH_ROUTING_NUMBER],
-      x.[ACH_ACCOUNT_NUMBER]
+      x.[W_APPRVDDT2]
    FROM [clt_NetO].[GF_TLR_DISBURSEMENTS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

@@ -5,7 +5,6 @@
 CREATE TABLE [clt_NetO].[WG_RPT_LOAN_REMARKS]
 (
    [LNUM]                             nchar(20)            NOT NULL,
-   [RMKID]                            int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [ENTERED_DATE]                     datetime             NOT NULL,
@@ -14,8 +13,9 @@ CREATE TABLE [clt_NetO].[WG_RPT_LOAN_REMARKS]
    [REMARK_TYPE]                      nvarchar(20)         NULL,
    [ACTIVITY]                         nvarchar(128)        NULL,
    [TASK]                             nvarchar(128)        NULL,
-   [REMARK]                           nvarchar(max)        NULL,
-   [REMARKS_TXT]                      nvarchar(max)        NULL,
+   [REMARK]                           nvarchar(MAX)        NULL,
+   [RMKID]                            int                  NOT NULL,
+   [REMARKS_TXT]                      nvarchar(MAX)        NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -27,5 +27,5 @@ CREATE TABLE [clt_NetO].[WG_RPT_LOAN_REMARKS]
    [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
    [ASAP_SRC_NAME]                    nvarchar(36)         NULL
 )
-WITH ( CLUSTERED INDEX ([LNUM], [RMKID]) )
+WITH ( CLUSTERED INDEX ([LNUM]) )
 ;

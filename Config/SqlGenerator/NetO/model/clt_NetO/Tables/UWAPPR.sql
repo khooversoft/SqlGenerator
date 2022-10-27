@@ -93,7 +93,7 @@ CREATE TABLE [clt_NetO].[UWAPPR]
    [APPR_SUPER_FNAME]                 nvarchar(30)         NULL,
    [APPR_SUPER_LNAME]                 nvarchar(30)         NULL,
    [APPRREINSPFEE]                    numeric(16,6)        NULL,
-   [APPR_COMMENTS]                    nvarchar(2000)       NULL,
+   [APPR_COMMENTS]                    nvarchar(4000)       NULL,
    [RUSHED]                           nchar(1)             NULL,
    [SENIORLVLRVW]                     nchar(1)             NULL,
    [GROSSLIVINGAREA]                  numeric(16,6)        NULL,

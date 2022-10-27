@@ -7,6 +7,7 @@ CREATE VIEW [NetO_sas_pii].[VwWG_RPT_WORKFLOW]
 AS
    SELECT
       x.[WORKTYPE_INSTANCE],
+      x.[LNUM],
       x.[WORKTYPE_CODE],
       x.[EST_EFFORT_TIME],
       x.[EXP_RESOLVE_DATE],
@@ -24,8 +25,7 @@ AS
       x.[WORKED_TIME],
       x.[WORKTYPE],
       x.[RESERVED_USERID],
-      x.[PROC_GROUP_CODE],
-      x.[LNUM]
+      x.[PROC_GROUP_CODE]
    FROM [clt_NetO].[WG_RPT_WORKFLOW] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

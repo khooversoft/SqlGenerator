@@ -5,8 +5,6 @@
 CREATE TABLE [clt_NetO].[VETINFO]
 (
    [LNUM]                             nchar(20)            NOT NULL,
-   [BNUM]                             smallint             NOT NULL,
-   [DBID]                             nchar(5)             NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [SERVNUM]                          nchar(15)            NULL,
@@ -43,6 +41,8 @@ CREATE TABLE [clt_NetO].[VETINFO]
    [DVETSSN]                          nchar(11)            NULL,
    [DVETCAIVR]                        nvarchar(20)         NULL,
    [STATASCR]                         nchar(1)             NULL,
+   [BNUM]                             smallint             NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
    [AWAREVAL]                         nchar(1)             NULL,
    [CERTENCS]                         nchar(1)             NULL,
    [CERTLOST]                         nchar(1)             NULL,
