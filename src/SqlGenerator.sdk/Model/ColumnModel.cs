@@ -15,7 +15,6 @@ public sealed record ColumnModel
     public int ColumnIndex { get; init; }
     public bool PII { get; init; }
     public bool Restricted { get; init; }
-    public string? ShortName { get; init; }
 
     public bool Equals(ColumnModel? obj)
     {
@@ -29,8 +28,7 @@ public sealed record ColumnModel
             NonuniqueIndex == model.NonuniqueIndex &&
             ColumnIndex == model.ColumnIndex &&
             PII == model.PII &&
-            Restricted == model.Restricted &&
-            ShortName == model.ShortName;
+            Restricted == model.Restricted;
     }
 
     public override int GetHashCode() => HashCode.Combine(Name, Security, DataType, NotNull, Private, PrimaryKey, ColumnIndex);

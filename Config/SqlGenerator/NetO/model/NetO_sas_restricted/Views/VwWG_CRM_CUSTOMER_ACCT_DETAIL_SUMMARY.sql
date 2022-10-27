@@ -3,7 +3,7 @@
 -- -----------------------------------------------------
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY]
+CREATE VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_ACCT_DETAIL_S_]
 AS
    SELECT
       HASHBYTES('SHA2_256', x.[CURRENT_CUSTOMERID]) AS [CURRENT_CUSTOMERID],

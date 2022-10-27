@@ -23,7 +23,6 @@ public class ModelActivity
         string sourceFile,
         SchemaOption schemaOption,
         string outputFile,
-        string? nameMapFile,
         string? tableTypeMetadata
         )
     {
@@ -35,14 +34,12 @@ public class ModelActivity
         {
             Source = sourceFile,
             Output = outputFile,
-            NameMapFile = nameMapFile,
         }.LogProperties("Building model...", _logger);
 
         DataDictionary dataDictionary = DataDictionaryFile.Read(sourceFile);
-        IReadOnlyList<NameMapRecord>? nameMaps = nameMapFile != null ? NameMapRecordFile.Read(nameMapFile) : null;
         IReadOnlyList<TableTypeMetadata>? tableMetadata = tableTypeMetadata != null ? TableTypeMetadataFile.Read(tableTypeMetadata) : null;
 
-        var model = new PhysicalModelBuilder().Build(dataDictionary.Items, schemaOption, nameMaps, tableMetadata);
+        var model = new PhysicalModelBuilder().Build(dataDictionary.Items, schemaOption, tableMetadata);
         model.Write(outputFile);
 
         var counters = new Counters(nameof(ModelActivity))

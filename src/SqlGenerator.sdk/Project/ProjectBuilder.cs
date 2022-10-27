@@ -152,7 +152,6 @@ public partial class ProjectBuilder
             sourceFile,
             schemaOption,
             context.ModelFile,
-            context.ProjectOption.NameMapFile,
             context.ProjectOption.TableTypeMetadata
             );
 
@@ -179,7 +178,7 @@ public partial class ProjectBuilder
             return;
         }
 
-        Counters counters = await _generateSqlCodeActivity.Build(context.ModelFile, context.ModelFolder);
+        Counters counters = await _generateSqlCodeActivity.Build(context.ModelFile, context.ModelFolder, context.ProjectOption.NameMapFile);
         context.Counters.Add(counters);
     }
 

@@ -36,25 +36,25 @@ public static class NameMapRecordFile
     /// Lookup shorter name if required
     /// </summary>
     /// <param name="nameMapRecords">name shorting map</param>
-    /// <param name="columnName">column name to short</param>
+    /// <param name="name">column name to short</param>
     /// <param name="maxColumNameSize">max column size, if null no short name is created</param>
     /// <returns>null or short name</returns>
-    public static string? ShortName(this IReadOnlyList<NameMapRecord> nameMapRecords, string columnName, int? maxColumNameSize)
+    public static string? ShortName(this IReadOnlyList<NameMapRecord> nameMapRecords, string name, int? maxColumNameSize)
     {
         nameMapRecords.NotNull();
 
         return maxColumNameSize switch
         {
             null => null,
-            int v when columnName.Length <= v => null,
+            int v when name.Length <= v => null,
 
             int v => nameMapRecords
-                .Where(x => columnName.IndexOf(x.Long) >= 0)
+                .Where(x => name.IndexOf(x.Long) >= 0)
                 .FirstOrDefault() switch
             {
-                null => string.Concat(columnName.AsSpan(0, v - 1), "_"),
+                null => string.Concat(name.AsSpan(0, v - 1), "_"),
 
-                NameMapRecord r => columnName.Replace(r.Long, r.Short) switch
+                NameMapRecord r => name.Replace(r.Long, r.Short) switch
                 {
                     string v1 when v1.Length <= maxColumNameSize => v1,
                     string v1 => string.Concat(v1.AsSpan(0, v - 1), "_"),
