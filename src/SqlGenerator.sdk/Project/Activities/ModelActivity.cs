@@ -37,6 +37,11 @@ public class ModelActivity
         }.LogProperties("Building model...", _logger);
 
         DataDictionary dataDictionary = DataDictionaryFile.Read(sourceFile);
+        dataDictionary = dataDictionary with
+        {
+            Items = dataDictionary.Items.Where(x => !x.NoData).ToArray(),
+        };
+
         IReadOnlyList<TableTypeMetadata>? tableMetadata = tableTypeMetadata != null ? TableTypeMetadataFile.Read(tableTypeMetadata) : null;
 
         var model = new PhysicalModelBuilder().Build(dataDictionary.Items, schemaOption, tableMetadata);

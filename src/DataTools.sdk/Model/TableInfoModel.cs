@@ -26,6 +26,10 @@ public record TableInfoModel
     [Name("PII")]
     [Optional]
     public string? PII { get; init; }
+
+    [Name("NoData")]
+    [Optional]
+    public string? NoData { get; init; }
 }
 
 
@@ -42,6 +46,7 @@ public static class TableInfoModelExtensions
             PrimaryKey = IsYes(subject.PrimaryKey),
             Restricted = IsYes(subject.Restricted),
             PII = IsYes(subject.PII),
+            NoData = IsYes(subject.NoData),
         };
 
         static bool IsNotNull(string? value) => value?.Equals("not null", StringComparison.OrdinalIgnoreCase) ?? false;

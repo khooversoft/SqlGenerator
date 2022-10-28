@@ -1,8 +1,8 @@
 {
-	"sourceFile": "NetOPhysicalModel-20221027.csv",
+	"sourceFile": "NetOPhysicalModel-20221027a.csv",
 	"optionFile": "Neto.ImportOption.json",
 	"nameMapFile": "..\\NameMap.json",
-	"tableListFile": "NetOPhysicalModel_MasterTables.json",
+	"tableListFile": null,
 	"buildFolder": null,
 	"classificationFile": "NetO_Classification.json",
 	"tableTypeMetadata": "ConsASAP_MetaData.csv",
