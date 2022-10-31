@@ -7,6 +7,7 @@ CREATE VIEW [NetO_pii].[VwWG_RPT_LOAN_REMARKS]
 AS
    SELECT
       x.[LNUM],
+      x.[RMKID],
       x.[ENTERED_DATE],
       x.[USRID],
       x.[USERNAME],
@@ -14,7 +15,6 @@ AS
       x.[ACTIVITY],
       x.[TASK],
       x.[REMARK],
-      x.[RMKID],
       x.[REMARKS_TXT]
    FROM [clt_NetO].[WG_RPT_LOAN_REMARKS] x
    WHERE

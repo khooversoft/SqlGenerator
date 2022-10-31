@@ -7,6 +7,8 @@ CREATE VIEW [NetO_sas_pii].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       x.[STRTSERV],
@@ -41,8 +43,6 @@ AS
       x.[DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],

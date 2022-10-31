@@ -5,6 +5,7 @@
 CREATE TABLE [clt_NetO].[WG_COLLATERAL_TRADEIN]
 (
    [LNUM]                             nchar(20)            NOT NULL,
+   [TRDINCNTR]                        int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [YEAR]                             int                  NULL,
@@ -20,7 +21,6 @@ CREATE TABLE [clt_NetO].[WG_COLLATERAL_TRADEIN]
    [ISFINANCED]                       nchar(1)             NULL,
    [FININSTITUTE]                     nvarchar(40)         NULL,
    [MNTHPAYMENT]                      numeric(8,2)         NULL,
-   [TRDINCNTR]                        int                  NOT NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,

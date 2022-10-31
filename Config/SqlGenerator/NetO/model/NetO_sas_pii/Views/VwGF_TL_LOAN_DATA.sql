@@ -111,7 +111,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

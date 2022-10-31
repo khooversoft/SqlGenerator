@@ -9,11 +9,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x

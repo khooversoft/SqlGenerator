@@ -7,6 +7,7 @@ CREATE VIEW [NetO_sas_restricted].[VwWG_RPT_LOAN_REMARKS]
 AS
    SELECT
       x.[LNUM],
+      x.[RMKID],
       x.[ENTERED_DATE],
       x.[USRID],
       HASHBYTES('SHA2_256', x.[USERNAME]) AS [USERNAME],
@@ -14,7 +15,6 @@ AS
       x.[ACTIVITY],
       x.[TASK],
       x.[REMARK],
-      x.[RMKID],
       x.[REMARKS_TXT]
    FROM [clt_NetO].[WG_RPT_LOAN_REMARKS] x
    WHERE

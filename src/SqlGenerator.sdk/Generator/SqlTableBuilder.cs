@@ -89,7 +89,6 @@ public class SqlTableBuilder
 
     static IEnumerable<string> HashIndexInstructions(TableModel tableModel) => tableModel.Columns
         .Where(x => x.PrimaryKey)
-        .Concat(tableModel.Columns.Where(x => x.PrimaryKey))
         .Take(1)
         .Select(x => $"[{x.Name}]")
         .Join(", ") switch

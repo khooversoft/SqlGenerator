@@ -1433,6 +1433,7 @@ GO
 CREATE TABLE [clt_NetO].[FIELD_HISTORY]
 (
    [LNUM]                             nchar(20)            NOT NULL,
+   [PKFIX]                            int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [FLDNAME]                          nvarchar(20)         NULL,
@@ -1440,7 +1441,6 @@ CREATE TABLE [clt_NetO].[FIELD_HISTORY]
    [MODIFY_DATE]                      datetime             NULL,
    [TEXT_VALUE]                       nvarchar(256)        NULL,
    [P_TEXT_VALUE]                     nvarchar(256)        NULL,
-   [PKFIX]                            int                  NOT NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -2231,6 +2231,7 @@ CREATE TABLE [clt_NetO].[GF_TL_LOAN_DATA]
    [BOP_VERBIAGE_TXT]                   nvarchar(2000)       NULL,
    [EFCC_HIGH_RISK_INDICATOR]           nchar(1)             NULL,
    [PROMOTION_CODE]                     nvarchar(20)         NULL,
+   [ONBOARD_DISB_STATUS]                nvarchar(50)         NULL,
    [ASAP_ROW_HASH]                      nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                      nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                  datetime2(7)         NULL,
@@ -3498,6 +3499,7 @@ CREATE TABLE [clt_NetO].[GF_TLBR_CREDIT_SCORE]
    [CREDITRESPONSEID]                 int                  NOT NULL,
    [SCOREID]                          int                  NOT NULL,
    [DBID]                             nchar(5)             NOT NULL,
+   [BORROWER_ID]                      nvarchar(20)         NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [BNUM]                             smallint             NULL,
@@ -3507,7 +3509,6 @@ CREATE TABLE [clt_NetO].[GF_TLBR_CREDIT_SCORE]
    [MODEL_TYPE]                       nvarchar(8)          NULL,
    [OTHER_DESCRIPTION]                nvarchar(80)         NULL,
    [SCORE_VALUE]                      decimal(16,6)        NULL,
-   [BORROWER_ID]                      nvarchar(20)         NOT NULL,
    [CREDREPOSSRCTYPEOTHERDESC]        nvarchar(50)         NULL,
    [FACTAINQUIRIESINDICATOR]          nchar(1)             NULL,
    [RANK_PERCENTILE]                  int                  NULL,
@@ -5275,10 +5276,10 @@ GO
 CREATE TABLE [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE]
 (
    [DELETED_LNUM]                     nchar(20)            NOT NULL,
+   [USRID]                            int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [DELETED_CLNUM]                    nvarchar(20)         NULL,
-   [USRID]                            int                  NOT NULL,
    [ACTIVITY]                         nvarchar(40)         NULL,
    [TERMINAL]                         nvarchar(50)         NULL,
    [OS_USER]                          nvarchar(30)         NULL,
@@ -7313,6 +7314,8 @@ CREATE TABLE [clt_NetO].[SEIA]
    [TAXYEAR]                          int                  NOT NULL,
    [METHOD]                           nchar(1)             NOT NULL,
    [CNTR]                             int                  NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [CTR]                              smallint             NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [SCHCPRFT]                         decimal(18,3)        NULL,
@@ -7380,8 +7383,6 @@ CREATE TABLE [clt_NetO].[SEIA]
    [D_TOTAL]                          decimal(18,3)        NULL,
    [NOMONTHS]                         int                  NULL,
    [MNTHAVRG]                         decimal(18,3)        NULL,
-   [DBID]                             nchar(5)             NOT NULL,
-   [CTR]                              smallint             NOT NULL,
    [TOTINC]                           decimal(18,3)        NULL,
    [DEPR2106]                         decimal(18,3)        NULL,
    [SCHCOTHI]                         decimal(18,3)        NULL,
@@ -7579,6 +7580,7 @@ CREATE TABLE [clt_NetO].[SERVICNG]
    [DOCS_SENT]                         datetime             NULL,
    [INDEMNF_AMT]                       decimal(18,3)        NULL,
    [PC_FEDEX_NUM]                      nchar(50)            NULL,
+   [S_SERVICING_STATUS]                nvarchar(8)          NULL,
    [ASAP_ROW_HASH]                     nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                     nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                 datetime2(7)         NULL,
@@ -8533,6 +8535,8 @@ GO
 CREATE TABLE [clt_NetO].[VETINFO]
 (
    [LNUM]                             nchar(20)            NOT NULL,
+   [BNUM]                             smallint             NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [SERVNUM]                          nchar(15)            NULL,
@@ -8569,8 +8573,6 @@ CREATE TABLE [clt_NetO].[VETINFO]
    [DVETSSN]                          nchar(11)            NULL,
    [DVETCAIVR]                        nvarchar(20)         NULL,
    [STATASCR]                         nchar(1)             NULL,
-   [BNUM]                             smallint             NOT NULL,
-   [DBID]                             nchar(5)             NOT NULL,
    [AWAREVAL]                         nchar(1)             NULL,
    [CERTENCS]                         nchar(1)             NULL,
    [CERTLOST]                         nchar(1)             NULL,
@@ -8952,13 +8954,13 @@ CREATE TABLE [clt_NetO].[WG_ASSET_VHCL_OPTIONS]
    [LNUM]                             nchar(20)            NOT NULL,
    [ASSETID]                          int                  NOT NULL,
    [ROWCOUNTER]                       int                  NOT NULL,
+   [VALUATION_CNTR]                   int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [S_OPTION_TYPE]                    nvarchar(8)          NULL,
    [VHCL_OPTION_VALUE]                numeric(16,6)        NULL,
    [SELECTED_YN]                      nchar(1)             NULL,
    [VHCL_OPTION]                      nvarchar(50)         NULL,
-   [VALUATION_CNTR]                   int                  NOT NULL,
    [OPTIONS_PRICING_VALUE]            nchar(1)             NULL,
    [VHCL_OPTION_PRICE]                numeric(18,3)        NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
@@ -9952,6 +9954,7 @@ GO
 CREATE TABLE [clt_NetO].[WG_COLLATERAL_TRADEIN]
 (
    [LNUM]                             nchar(20)            NOT NULL,
+   [TRDINCNTR]                        int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [YEAR]                             int                  NULL,
@@ -9967,7 +9970,6 @@ CREATE TABLE [clt_NetO].[WG_COLLATERAL_TRADEIN]
    [ISFINANCED]                       nchar(1)             NULL,
    [FININSTITUTE]                     nvarchar(40)         NULL,
    [MNTHPAYMENT]                      numeric(8,2)         NULL,
-   [TRDINCNTR]                        int                  NOT NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -11495,6 +11497,7 @@ GO
 CREATE TABLE [clt_NetO].[WG_RPT_LOAN_REMARKS]
 (
    [LNUM]                             nchar(20)            NOT NULL,
+   [RMKID]                            int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [ENTERED_DATE]                     datetime             NOT NULL,
@@ -11504,7 +11507,6 @@ CREATE TABLE [clt_NetO].[WG_RPT_LOAN_REMARKS]
    [ACTIVITY]                         nvarchar(128)        NULL,
    [TASK]                             nvarchar(128)        NULL,
    [REMARK]                           nvarchar(MAX)        NULL,
-   [RMKID]                            int                  NOT NULL,
    [REMARKS_TXT]                      nvarchar(MAX)        NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
@@ -11517,7 +11519,7 @@ CREATE TABLE [clt_NetO].[WG_RPT_LOAN_REMARKS]
    [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
    [ASAP_SRC_NAME]                    nvarchar(36)         NULL
 )
-WITH ( CLUSTERED INDEX ([LNUM]) )
+WITH ( CLUSTERED INDEX ([LNUM], [RMKID]) )
 ;
 GO
 
@@ -13147,12 +13149,12 @@ CREATE VIEW [NetO].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -13870,7 +13872,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -14933,6 +14936,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -14940,7 +14944,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -16413,8 +16416,8 @@ CREATE VIEW [NetO].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[DELETED_CLNUM],
       x.[USRID],
+      x.[DELETED_CLNUM],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -18084,6 +18087,8 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
+      x.[DBID],
+      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -18149,8 +18154,6 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
-      x.[DBID],
-      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -18329,7 +18332,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -19178,6 +19182,8 @@ CREATE VIEW [NetO].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       x.[STRTSERV],
@@ -19212,8 +19218,6 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -19534,11 +19538,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -20333,6 +20337,7 @@ CREATE VIEW [NetO].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -20345,8 +20350,7 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -21664,6 +21668,7 @@ CREATE VIEW [NetO].[VwWG_RPT_LOAN_REMARKS]
 AS
    SELECT
       x.[LNUM],
+      x.[RMKID],
       x.[ENTERED_DATE],
       x.[USRID],
       HASHBYTES('SHA2_256', x.[USERNAME]) AS [USERNAME],
@@ -21671,7 +21676,6 @@ AS
       x.[ACTIVITY],
       x.[TASK],
       x.[REMARK],
-      x.[RMKID],
       x.[REMARKS_TXT]
    FROM [clt_NetO].[WG_RPT_LOAN_REMARKS] x
    WHERE
@@ -23251,12 +23255,12 @@ CREATE VIEW [NetO_restricted].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -23974,7 +23978,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -25037,6 +25042,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -25044,7 +25050,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -26517,8 +26522,8 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[DELETED_CLNUM],
       x.[USRID],
+      x.[DELETED_CLNUM],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -28188,6 +28193,8 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
+      x.[DBID],
+      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -28253,8 +28260,6 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
-      x.[DBID],
-      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -28433,7 +28438,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -29282,6 +29288,8 @@ CREATE VIEW [NetO_restricted].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       x.[STRTSERV],
@@ -29316,8 +29324,6 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -29638,11 +29644,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -30437,6 +30443,7 @@ CREATE VIEW [NetO_restricted].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -30449,8 +30456,7 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -31768,6 +31774,7 @@ CREATE VIEW [NetO_restricted].[VwWG_RPT_LOAN_REMARKS]
 AS
    SELECT
       x.[LNUM],
+      x.[RMKID],
       x.[ENTERED_DATE],
       x.[USRID],
       HASHBYTES('SHA2_256', x.[USERNAME]) AS [USERNAME],
@@ -31775,7 +31782,6 @@ AS
       x.[ACTIVITY],
       x.[TASK],
       x.[REMARK],
-      x.[RMKID],
       x.[REMARKS_TXT]
    FROM [clt_NetO].[WG_RPT_LOAN_REMARKS] x
    WHERE
@@ -33355,12 +33361,12 @@ CREATE VIEW [NetO_pii].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -34078,7 +34084,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -35141,6 +35148,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -35148,7 +35156,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -36621,8 +36628,8 @@ CREATE VIEW [NetO_pii].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[DELETED_CLNUM],
       x.[USRID],
+      x.[DELETED_CLNUM],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -38292,6 +38299,8 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
+      x.[DBID],
+      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -38357,8 +38366,6 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
-      x.[DBID],
-      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -38537,7 +38544,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -39386,6 +39394,8 @@ CREATE VIEW [NetO_pii].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       x.[STRTSERV],
@@ -39420,8 +39430,6 @@ AS
       x.[DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -39742,11 +39750,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -40541,6 +40549,7 @@ CREATE VIEW [NetO_pii].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -40553,8 +40562,7 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -41872,6 +41880,7 @@ CREATE VIEW [NetO_pii].[VwWG_RPT_LOAN_REMARKS]
 AS
    SELECT
       x.[LNUM],
+      x.[RMKID],
       x.[ENTERED_DATE],
       x.[USRID],
       x.[USERNAME],
@@ -41879,7 +41888,6 @@ AS
       x.[ACTIVITY],
       x.[TASK],
       x.[REMARK],
-      x.[RMKID],
       x.[REMARKS_TXT]
    FROM [clt_NetO].[WG_RPT_LOAN_REMARKS] x
    WHERE
@@ -43459,12 +43467,12 @@ CREATE VIEW [NetO_sas].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -44182,7 +44190,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -45245,6 +45254,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -45252,7 +45262,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -46725,8 +46734,8 @@ CREATE VIEW [NetO_sas].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[DELETED_CLNUM],
       x.[USRID],
+      x.[DELETED_CLNUM],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -48396,6 +48405,8 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
+      x.[DBID],
+      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -48461,8 +48472,6 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
-      x.[DBID],
-      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -48641,7 +48650,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -49490,6 +49500,8 @@ CREATE VIEW [NetO_sas].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       x.[STRTSERV],
@@ -49524,8 +49536,6 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -49846,11 +49856,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -50645,6 +50655,7 @@ CREATE VIEW [NetO_sas].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -50657,8 +50668,7 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -51976,6 +51986,7 @@ CREATE VIEW [NetO_sas].[VwWG_RPT_LOAN_REMARKS]
 AS
    SELECT
       x.[LNUM],
+      x.[RMKID],
       x.[ENTERED_DATE],
       x.[USRID],
       HASHBYTES('SHA2_256', x.[USERNAME]) AS [USERNAME],
@@ -51983,7 +51994,6 @@ AS
       x.[ACTIVITY],
       x.[TASK],
       x.[REMARK],
-      x.[RMKID],
       x.[REMARKS_TXT]
    FROM [clt_NetO].[WG_RPT_LOAN_REMARKS] x
    WHERE
@@ -53563,12 +53573,12 @@ CREATE VIEW [NetO_sas_restricted].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -54286,7 +54296,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -55349,6 +55360,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -55356,7 +55368,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -56829,8 +56840,8 @@ CREATE VIEW [NetO_sas_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[DELETED_CLNUM],
       x.[USRID],
+      x.[DELETED_CLNUM],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -58500,6 +58511,8 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
+      x.[DBID],
+      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -58565,8 +58578,6 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
-      x.[DBID],
-      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -58745,7 +58756,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -59594,6 +59606,8 @@ CREATE VIEW [NetO_sas_restricted].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       x.[STRTSERV],
@@ -59628,8 +59642,6 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -59950,11 +59962,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -60749,6 +60761,7 @@ CREATE VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -60761,8 +60774,7 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -62080,6 +62092,7 @@ CREATE VIEW [NetO_sas_restricted].[VwWG_RPT_LOAN_REMARKS]
 AS
    SELECT
       x.[LNUM],
+      x.[RMKID],
       x.[ENTERED_DATE],
       x.[USRID],
       HASHBYTES('SHA2_256', x.[USERNAME]) AS [USERNAME],
@@ -62087,7 +62100,6 @@ AS
       x.[ACTIVITY],
       x.[TASK],
       x.[REMARK],
-      x.[RMKID],
       x.[REMARKS_TXT]
    FROM [clt_NetO].[WG_RPT_LOAN_REMARKS] x
    WHERE
@@ -63667,12 +63679,12 @@ CREATE VIEW [NetO_sas_pii].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -64390,7 +64402,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -65453,6 +65466,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -65460,7 +65474,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -66933,8 +66946,8 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[DELETED_CLNUM],
       x.[USRID],
+      x.[DELETED_CLNUM],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -68604,6 +68617,8 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
+      x.[DBID],
+      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -68669,8 +68684,6 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
-      x.[DBID],
-      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -68849,7 +68862,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -69698,6 +69712,8 @@ CREATE VIEW [NetO_sas_pii].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       x.[STRTSERV],
@@ -69732,8 +69748,6 @@ AS
       x.[DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -70054,11 +70068,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -70853,6 +70867,7 @@ CREATE VIEW [NetO_sas_pii].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -70865,8 +70880,7 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -72184,6 +72198,7 @@ CREATE VIEW [NetO_sas_pii].[VwWG_RPT_LOAN_REMARKS]
 AS
    SELECT
       x.[LNUM],
+      x.[RMKID],
       x.[ENTERED_DATE],
       x.[USRID],
       x.[USERNAME],
@@ -72191,7 +72206,6 @@ AS
       x.[ACTIVITY],
       x.[TASK],
       x.[REMARK],
-      x.[RMKID],
       x.[REMARKS_TXT]
    FROM [clt_NetO].[WG_RPT_LOAN_REMARKS] x
    WHERE

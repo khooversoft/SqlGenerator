@@ -7,12 +7,12 @@ CREATE VIEW [NetO_sas_restricted].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

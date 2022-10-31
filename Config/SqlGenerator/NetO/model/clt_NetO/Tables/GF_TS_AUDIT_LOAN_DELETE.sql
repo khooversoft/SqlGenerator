@@ -5,10 +5,10 @@
 CREATE TABLE [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE]
 (
    [DELETED_LNUM]                     nchar(20)            NOT NULL,
+   [USRID]                            int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [DELETED_CLNUM]                    nvarchar(20)         NULL,
-   [USRID]                            int                  NOT NULL,
    [ACTIVITY]                         nvarchar(40)         NULL,
    [TERMINAL]                         nvarchar(50)         NULL,
    [OS_USER]                          nvarchar(30)         NULL,

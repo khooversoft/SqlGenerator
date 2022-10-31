@@ -1,7 +1,7 @@
 Step,Name,Count
 FilterSourceActivity,Table count,188
-FilterSourceActivity,PII count,6205
-FilterSourceActivity,Restricted count,6205
+FilterSourceActivity,PII count,6207
+FilterSourceActivity,Restricted count,6207
 ModelActivity,Input table count,188
 ModelActivity,Schema count,7
 ModelActivity,Table count,188

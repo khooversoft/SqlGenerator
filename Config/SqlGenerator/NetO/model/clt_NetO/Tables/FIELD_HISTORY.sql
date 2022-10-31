@@ -5,6 +5,7 @@
 CREATE TABLE [clt_NetO].[FIELD_HISTORY]
 (
    [LNUM]                             nchar(20)            NOT NULL,
+   [PKFIX]                            int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [FLDNAME]                          nvarchar(20)         NULL,
@@ -12,7 +13,6 @@ CREATE TABLE [clt_NetO].[FIELD_HISTORY]
    [MODIFY_DATE]                      datetime             NULL,
    [TEXT_VALUE]                       nvarchar(256)        NULL,
    [P_TEXT_VALUE]                     nvarchar(256)        NULL,
-   [PKFIX]                            int                  NOT NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,

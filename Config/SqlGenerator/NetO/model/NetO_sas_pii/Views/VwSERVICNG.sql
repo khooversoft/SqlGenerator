@@ -46,7 +46,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
