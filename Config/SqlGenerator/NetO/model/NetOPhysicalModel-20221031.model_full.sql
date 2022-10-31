@@ -2231,7 +2231,6 @@ CREATE TABLE [clt_NetO].[GF_TL_LOAN_DATA]
    [BOP_VERBIAGE_TXT]                   nvarchar(2000)       NULL,
    [EFCC_HIGH_RISK_INDICATOR]           nchar(1)             NULL,
    [PROMOTION_CODE]                     nvarchar(20)         NULL,
-   [ONBOARD_DISB_STATUS]                nvarchar(50)         NULL,
    [ASAP_ROW_HASH]                      nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                      nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                  datetime2(7)         NULL,
@@ -7580,7 +7579,6 @@ CREATE TABLE [clt_NetO].[SERVICNG]
    [DOCS_SENT]                         datetime             NULL,
    [INDEMNF_AMT]                       decimal(18,3)        NULL,
    [PC_FEDEX_NUM]                      nchar(50)            NULL,
-   [S_SERVICING_STATUS]                nvarchar(8)          NULL,
    [ASAP_ROW_HASH]                     nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                     nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                 datetime2(7)         NULL,
@@ -13872,8 +13870,7 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE],
-      x.[ONBOARD_DISB_STATUS]
+      x.[PROMOTION_CODE]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -18332,8 +18329,7 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[PC_FEDEX_NUM]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -23978,8 +23974,7 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE],
-      x.[ONBOARD_DISB_STATUS]
+      x.[PROMOTION_CODE]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -28438,8 +28433,7 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[PC_FEDEX_NUM]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -34084,8 +34078,7 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE],
-      x.[ONBOARD_DISB_STATUS]
+      x.[PROMOTION_CODE]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -38544,8 +38537,7 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[PC_FEDEX_NUM]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -44190,8 +44182,7 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE],
-      x.[ONBOARD_DISB_STATUS]
+      x.[PROMOTION_CODE]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -48650,8 +48641,7 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[PC_FEDEX_NUM]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -54296,8 +54286,7 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE],
-      x.[ONBOARD_DISB_STATUS]
+      x.[PROMOTION_CODE]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -58756,8 +58745,7 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[PC_FEDEX_NUM]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -64402,8 +64390,7 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE],
-      x.[ONBOARD_DISB_STATUS]
+      x.[PROMOTION_CODE]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -68862,8 +68849,7 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[PC_FEDEX_NUM]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

@@ -38,14 +38,14 @@ public class SqlViewBuilder
             Name = GetRealViewName(tableModel, schema),
         };
 
-        SqlObjectName tableName = new SqlObjectName
-        {
-            Schema = schema.Name,
-            Name = GetRealTableName(tableModel, schema),
-        };
+        //SqlObjectName tableName = new SqlObjectName
+        //{
+        //    Schema = schema.Name,
+        //    Name = GetRealTableName(tableModel, schema),
+        //};
 
         var list = new Instructions();
-        list += (InstructionType.Stream, tableName.CalculateFileName());
+        list += (InstructionType.Stream, viewName.CalculateFileName());
         list += SqlInstructionBuilder._headers;
 
         list += buildType switch
@@ -107,14 +107,14 @@ public class SqlViewBuilder
         return list;
     }
 
-    private string GetRealTableName(TableModel tableModel, SchemaModel schema)
-    {
-        return schema.Format switch
-        {
-            null => tableModel.Name.Name,
-            not null => schema.Format.Replace(_tableFormat, tableModel.Name.Name),
-        };
-    }
+    //private string GetRealTableName(TableModel tableModel, SchemaModel schema)
+    //{
+    //    return schema.Format switch
+    //    {
+    //        null => tableModel.Name.Name,
+    //        not null => schema.Format.Replace(_tableFormat, tableModel.Name.Name),
+    //    };
+    //}
 
     private string GetRealViewName(TableModel tableModel, SchemaModel schema)
     {

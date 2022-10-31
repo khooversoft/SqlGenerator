@@ -18391,18 +18391,6 @@
           "columnIndex": 105,
           "pii": false,
           "restricted": false
-        },
-        {
-          "name": "ONBOARD_DISB_STATUS",
-          "security": "unrestricted",
-          "dataType": "nvarchar(50)",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "nonuniqueIndex": false,
-          "columnIndex": 106,
-          "pii": false,
-          "restricted": false
         }
       ]
     },
@@ -48977,18 +48965,6 @@
           "primaryKey": false,
           "nonuniqueIndex": false,
           "columnIndex": 40,
-          "pii": false,
-          "restricted": false
-        },
-        {
-          "name": "S_SERVICING_STATUS",
-          "security": "unrestricted",
-          "dataType": "nvarchar(8)",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "nonuniqueIndex": false,
-          "columnIndex": 41,
           "pii": false,
           "restricted": false
         }

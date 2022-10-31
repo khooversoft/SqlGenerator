@@ -112,7 +112,6 @@ CREATE TABLE [clt_NetO].[GF_TL_LOAN_DATA]
    [BOP_VERBIAGE_TXT]                   nvarchar(2000)       NULL,
    [EFCC_HIGH_RISK_INDICATOR]           nchar(1)             NULL,
    [PROMOTION_CODE]                     nvarchar(20)         NULL,
-   [ONBOARD_DISB_STATUS]                nvarchar(50)         NULL,
    [ASAP_ROW_HASH]                      nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                      nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                  datetime2(7)         NULL,
