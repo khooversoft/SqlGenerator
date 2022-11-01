@@ -2,7 +2,7 @@
   "profiles": {
     "DataGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "merge \"D:\\Work\\SqlGenerator\\AA\\Monthly\\CommonMonthlyMerge.project.json\""
+      "commandLineArgs": "merge \"C:\\Sources\\SqlGenerator\\Config\\SqlGenerator\\AA\\Settlement\\SettlementMerge.project.json\""
     }
   }
 }

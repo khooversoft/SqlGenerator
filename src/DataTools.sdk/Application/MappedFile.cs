@@ -70,7 +70,7 @@ public static class MappedFile
 
         foreach (var item in group)
         {
-            string file = Path.Combine(folder, $"{item.Key}_toCommon.csv");
+            string file = Path.Combine(folder, $"{item.Key.Replace("*", "(star)")}_toCommon.csv");
             logger.LogInformation("Writing mapped file {file}", file);
 
             var line = item.Select(x => new { Table = x.TableName, Column = x.ColumnName, x.MapToName }.ToDynamic());
@@ -101,7 +101,7 @@ public static class MappedFile
         StringTable transformTable(string tableName)
         {
             var map = mappedDetails
-                .Where(x => x.TableName == tableName)
+                .Where(x => PatternMatch.IsMatch(x.TableName, tableName))
                 .ToArray();
 
             var file = files.First(x => x.TableName == tableName);
