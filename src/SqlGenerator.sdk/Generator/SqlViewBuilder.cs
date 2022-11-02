@@ -17,12 +17,12 @@ public class SqlViewBuilder
     private const string _aliasFormat = "{alias}";
     private const string _tableFormat = "{tableName}";
     private readonly PhysicalModel _physicalModel;
-    private readonly IReadOnlyList<NameMapRecord> _nameMaps;
+    private readonly IReadOnlyList<NameMapRecord>? _nameMaps;
 
     public SqlViewBuilder(PhysicalModel model, IReadOnlyList<NameMapRecord>? nameMaps)
     {
         _physicalModel = model.NotNull();
-        _nameMaps = nameMaps.NotNull();
+        _nameMaps = nameMaps;
     }
 
 
@@ -127,7 +127,7 @@ public class SqlViewBuilder
         realViewName = schema.MaxColumnSize switch
         {
             null => realViewName,
-            int v => _nameMaps.ShortName(realViewName, v) ?? realViewName,
+            int v => _nameMaps?.ShortName(realViewName, v) ?? realViewName,
         };
 
         return realViewName;
@@ -145,7 +145,7 @@ public class SqlViewBuilder
         string? getRealColumnName() => schemaModel.MaxColumnSize switch
         {
             null => null,
-            int v => _nameMaps.ShortName(columnModel.Name, v),
+            int v => _nameMaps?.ShortName(columnModel.Name, v) ?? columnModel.Name,
         };
 
         string displayAs(string? defaultName = null) => getRealColumnName() switch

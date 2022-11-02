@@ -31,7 +31,7 @@ public class SqlInstructionBuilder
         _physicalModel = model.Verify();
 
         _sqlTableBuilder = new SqlTableBuilder(model);
-        _sqlViewBuilder = new SqlViewBuilder(model, nameMaps.NotNull());
+        _sqlViewBuilder = new SqlViewBuilder(model, nameMaps);
     }
 
     public Instructions Build(BuildType buildType)

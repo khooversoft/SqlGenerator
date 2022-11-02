@@ -3,13 +3,11 @@
 -- -----------------------------------------------------
 
 
-CREATE VIEW [AssetAcq_restricted].[CommonSettlement]
+CREATE VIEW [AssetAcq_pii].[Vw_CommonSettlement]
 AS
    SELECT
       x.[loan_number],
       x.[product_type],
-      x.[rate],
-      x.[interest_rate],
       x.[service_fee],
       x.[balance],
       x.[participation_balance_90],
@@ -19,16 +17,9 @@ AS
       x.[price],
       x.[premium_discount],
       x.[funds_due],
-      x.[ASAP_ROW_HASH],
-      x.[ASAP_DML_FLAG],
-      x.[ASAP_CREATED_DATE],
-      x.[ASAP_UPDATED_DATE],
-      x.[ASAP_LINEAGE_ID],
-      x.[ASAP_ACTIVITY_ID],
-      x.[ASAP_TRIGGER_ID],
-      x.[ASAP_SRC_FILEPATH],
-      x.[ASAP_SRC_FILE_DATE],
-      x.[ASAP_SRC_NAME]
+      x.[VendorID],
+      x.[DealID]
    FROM [clt_AssetAcq].[CommonSettlement] x
-   WHERE x.[ASAP_DeleteDateTime] IS NULL
-;
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+   ;

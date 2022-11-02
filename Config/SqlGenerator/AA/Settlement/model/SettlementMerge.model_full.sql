@@ -40,10 +40,8 @@ CREATE TABLE [clt_AssetAcq].[CommonSettlement]
 (
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
-   [loan_number]                      long                 NULL,
+   [loan_number]                      bigint               NULL,
    [product_type]                     nvarchar(100)        NULL,
-   [rate]                             decimal(16,6)        NULL,
-   [interest_rate]                    decimal(16,6)        NULL,
    [service_fee]                      decimal(16,6)        NULL,
    [balance]                          decimal(16,6)        NULL,
    [participation_balance_90]         decimal(16,6)        NULL,
@@ -53,6 +51,8 @@ CREATE TABLE [clt_AssetAcq].[CommonSettlement]
    [price]                            decimal(16,6)        NULL,
    [premium_discount]                 decimal(16,6)        NULL,
    [funds_due]                        decimal(16,6)        NULL,
+   [VendorID]                         nvarchar(100)        NULL,
+   [DealID]                           int                  NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -60,9 +60,7 @@ CREATE TABLE [clt_AssetAcq].[CommonSettlement]
    [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
    [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
    [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
-   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
-   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
-   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL
 )
 ;
 GO
@@ -72,20 +70,18 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq' AND TABLE_NAME = 'CommonSettlement')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq' AND TABLE_NAME = 'Vw_CommonSettlement')
 BEGIN
-   DROP VIEW [AssetAcq].[CommonSettlement]
+   DROP VIEW [AssetAcq].[Vw_CommonSettlement]
 END
 GO
 
 
-CREATE VIEW [AssetAcq].[CommonSettlement]
+CREATE VIEW [AssetAcq].[Vw_CommonSettlement]
 AS
    SELECT
       x.[loan_number],
       x.[product_type],
-      x.[rate],
-      x.[interest_rate],
       x.[service_fee],
       x.[balance],
       x.[participation_balance_90],
@@ -95,39 +91,30 @@ AS
       x.[price],
       x.[premium_discount],
       x.[funds_due],
-      x.[ASAP_ROW_HASH],
-      x.[ASAP_DML_FLAG],
-      x.[ASAP_CREATED_DATE],
-      x.[ASAP_UPDATED_DATE],
-      x.[ASAP_LINEAGE_ID],
-      x.[ASAP_ACTIVITY_ID],
-      x.[ASAP_TRIGGER_ID],
-      x.[ASAP_SRC_FILEPATH],
-      x.[ASAP_SRC_FILE_DATE],
-      x.[ASAP_SRC_NAME]
+      x.[VendorID],
+      x.[DealID]
    FROM [clt_AssetAcq].[CommonSettlement] x
-   WHERE x.[ASAP_DeleteDateTime] IS NULL
-;
-GO
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+   ;
+   GO
 
 -- -----------------------------------------------------
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_restricted' AND TABLE_NAME = 'CommonSettlement')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_restricted' AND TABLE_NAME = 'Vw_CommonSettlement')
 BEGIN
-   DROP VIEW [AssetAcq_restricted].[CommonSettlement]
+   DROP VIEW [AssetAcq_restricted].[Vw_CommonSettlement]
 END
 GO
 
 
-CREATE VIEW [AssetAcq_restricted].[CommonSettlement]
+CREATE VIEW [AssetAcq_restricted].[Vw_CommonSettlement]
 AS
    SELECT
       x.[loan_number],
       x.[product_type],
-      x.[rate],
-      x.[interest_rate],
       x.[service_fee],
       x.[balance],
       x.[participation_balance_90],
@@ -137,39 +124,30 @@ AS
       x.[price],
       x.[premium_discount],
       x.[funds_due],
-      x.[ASAP_ROW_HASH],
-      x.[ASAP_DML_FLAG],
-      x.[ASAP_CREATED_DATE],
-      x.[ASAP_UPDATED_DATE],
-      x.[ASAP_LINEAGE_ID],
-      x.[ASAP_ACTIVITY_ID],
-      x.[ASAP_TRIGGER_ID],
-      x.[ASAP_SRC_FILEPATH],
-      x.[ASAP_SRC_FILE_DATE],
-      x.[ASAP_SRC_NAME]
+      x.[VendorID],
+      x.[DealID]
    FROM [clt_AssetAcq].[CommonSettlement] x
-   WHERE x.[ASAP_DeleteDateTime] IS NULL
-;
-GO
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+   ;
+   GO
 
 -- -----------------------------------------------------
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_pii' AND TABLE_NAME = 'CommonSettlement')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_pii' AND TABLE_NAME = 'Vw_CommonSettlement')
 BEGIN
-   DROP VIEW [AssetAcq_pii].[CommonSettlement]
+   DROP VIEW [AssetAcq_pii].[Vw_CommonSettlement]
 END
 GO
 
 
-CREATE VIEW [AssetAcq_pii].[CommonSettlement]
+CREATE VIEW [AssetAcq_pii].[Vw_CommonSettlement]
 AS
    SELECT
       x.[loan_number],
       x.[product_type],
-      x.[rate],
-      x.[interest_rate],
       x.[service_fee],
       x.[balance],
       x.[participation_balance_90],
@@ -179,18 +157,11 @@ AS
       x.[price],
       x.[premium_discount],
       x.[funds_due],
-      x.[ASAP_ROW_HASH],
-      x.[ASAP_DML_FLAG],
-      x.[ASAP_CREATED_DATE],
-      x.[ASAP_UPDATED_DATE],
-      x.[ASAP_LINEAGE_ID],
-      x.[ASAP_ACTIVITY_ID],
-      x.[ASAP_TRIGGER_ID],
-      x.[ASAP_SRC_FILEPATH],
-      x.[ASAP_SRC_FILE_DATE],
-      x.[ASAP_SRC_NAME]
+      x.[VendorID],
+      x.[DealID]
    FROM [clt_AssetAcq].[CommonSettlement] x
-   WHERE x.[ASAP_DeleteDateTime] IS NULL
-;
-GO
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+   ;
+   GO
 
