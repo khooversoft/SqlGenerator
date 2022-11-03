@@ -6,17 +6,17 @@
 CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_REQ_NADA]
 AS
    SELECT
-      x.[LNUM],
-      x.[DBID],
-      x.[REQUESTID],
-      x.[NADAREQUESTID],
-      x.[VIN],
-      x.[REGION],
-      x.[VEHICLEYEAR],
-      x.[MAKE],
-      x.[SERIES],
-      x.[BODY],
-      x.[MILEAGE]
+      x.[LNUM] AS [LNUM],
+      x.[DBID] AS [DBID],
+      x.[REQUESTID] AS [REQUESTID],
+      x.[NADAREQUESTID] AS [NADAREQUESTID],
+      x.[VIN] AS [VIN],
+      x.[REGION] AS [REGION],
+      x.[VEHICLEYEAR] AS [VEHICLEYEAR],
+      x.[MAKE] AS [MAKE],
+      x.[SERIES] AS [SERIES],
+      x.[BODY] AS [BODY],
+      x.[MILEAGE] AS [MILEAGE]
    FROM [clt_NetO].[GF_TLR_REQ_NADA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

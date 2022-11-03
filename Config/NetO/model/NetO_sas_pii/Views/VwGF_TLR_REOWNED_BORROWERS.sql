@@ -6,12 +6,12 @@
 CREATE VIEW [NetO_sas_pii].[VwGF_TLR_REOWNED_BORROWERS]
 AS
    SELECT
-      x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
-      x.[REOCNTR],
-      x.[REL_DBID],
-      x.[REL_BNUM]
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[REOCNTR] AS [REOCNTR],
+      x.[REL_DBID] AS [REL_DBID],
+      x.[REL_BNUM] AS [REL_BNUM]
    FROM [clt_NetO].[GF_TLR_REOWNED_BORROWERS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

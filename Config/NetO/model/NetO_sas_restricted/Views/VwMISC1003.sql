@@ -6,12 +6,12 @@
 CREATE VIEW [NetO_sas_restricted].[VwMISC1003]
 AS
    SELECT
-      x.[LNUM],
-      x.[APPNUM],
-      x.[OTHINCM],
-      x.[COMMUNTY],
-      x.[JOINTLY],
-      x.[PROF_MERGE_BWRS]
+      x.[LNUM] AS [LNUM],
+      x.[APPNUM] AS [APPNUM],
+      x.[OTHINCM] AS [OTHINCM],
+      x.[COMMUNTY] AS [COMMUNTY],
+      x.[JOINTLY] AS [JOINTLY],
+      x.[PROF_MERGE_BWRS] AS [PROF_MERGE_BWRS]
    FROM [clt_NetO].[MISC1003] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

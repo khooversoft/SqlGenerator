@@ -6,18 +6,18 @@
 CREATE VIEW [NetO_sas_pii].[VwWG_RPT_LOAN_CONDITIONS]
 AS
    SELECT
-      x.[LNUM],
-      x.[CNDTN_CNTR],
-      x.[CATEGORY],
-      x.[CONDITION_TYPE],
-      x.[CONDITION_STATE],
-      x.[DUE_DATE],
-      x.[MAINT_DATE],
-      x.[WAIVED_DATE],
-      x.[ACTIVE_YN],
-      x.[SIGN_OFF_DATE],
-      x.[CONDITION],
-      x.[UWCONDITION]
+      x.[LNUM] AS [LNUM],
+      x.[CNDTN_CNTR] AS [CNDTN_CNTR],
+      x.[CATEGORY] AS [CATEGORY],
+      x.[CONDITION_TYPE] AS [CONDITION_TYPE],
+      x.[CONDITION_STATE] AS [CONDITION_STATE],
+      x.[DUE_DATE] AS [DUE_DATE],
+      x.[MAINT_DATE] AS [MAINT_DATE],
+      x.[WAIVED_DATE] AS [WAIVED_DATE],
+      x.[ACTIVE_YN] AS [ACTIVE_YN],
+      x.[SIGN_OFF_DATE] AS [SIGN_OFF_DATE],
+      x.[CONDITION] AS [CONDITION],
+      x.[UWCONDITION] AS [UWCONDITION]
    FROM [clt_NetO].[WG_RPT_LOAN_CONDITIONS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

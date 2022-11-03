@@ -44,7 +44,7 @@ public class UspLoadTableMetaBuilder
                 .SequenceJoin("UNION ALL")
                 .ToList();
 
-            list += "GO";
+            list += ";";
             list += "";
         }
 
@@ -55,7 +55,6 @@ public class UspLoadTableMetaBuilder
     {
         var list = new Instructions();
         list += $"DELETE FROM {uspLoadTableOption.DataTableName} WHERE DataLayer = '{uspLoadTableOption.DataLayerName}';";
-        list += "GO";
         list += "";
 
         return list;

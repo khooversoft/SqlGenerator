@@ -6,19 +6,19 @@
 CREATE VIEW [NetO_sas_pii].[VwGF_TLBR_ALIAS]
 AS
    SELECT
-      x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
-      x.[ROWSERIALNO],
-      x.[FIRST_NAME],
-      x.[MID_NAME],
-      x.[LAST_NAME],
-      x.[S_BORR_ALIAS],
-      x.[NAME_SUFFIX],
-      x.[ALIAS_TYPE_OTH_DESC],
-      x.[CREDITORNAME],
-      x.[ALIASACCTNUM],
-      x.[RECORD_CREATED]
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[ROWSERIALNO] AS [ROWSERIALNO],
+      x.[FIRST_NAME] AS [FIRST_NAME],
+      x.[MID_NAME] AS [MID_NAME],
+      x.[LAST_NAME] AS [LAST_NAME],
+      x.[S_BORR_ALIAS] AS [S_BORR_ALIAS],
+      x.[NAME_SUFFIX] AS [NAME_SUFFIX],
+      x.[ALIAS_TYPE_OTH_DESC] AS [ALIAS_TYPE_OTH_DESC],
+      x.[CREDITORNAME] AS [CREDITORNAME],
+      x.[ALIASACCTNUM] AS [ALIASACCTNUM],
+      x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ALIAS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

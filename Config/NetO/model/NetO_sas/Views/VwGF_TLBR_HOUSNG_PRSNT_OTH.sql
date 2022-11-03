@@ -6,13 +6,13 @@
 CREATE VIEW [NetO_sas].[VwGF_TLBR_HOUSNG_PRSNT_OTH]
 AS
    SELECT
-      x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
-      x.[CTR],
-      x.[OTHER_HOUSING_EXP_AMT],
-      x.[OTHER_HOUSING_EXP_DESC],
-      x.[RECORD_CREATED]
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[CTR] AS [CTR],
+      x.[OTHER_HOUSING_EXP_AMT] AS [OTHER_HOUSING_EXP_AMT],
+      x.[OTHER_HOUSING_EXP_DESC] AS [OTHER_HOUSING_EXP_DESC],
+      x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_HOUSNG_PRSNT_OTH] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

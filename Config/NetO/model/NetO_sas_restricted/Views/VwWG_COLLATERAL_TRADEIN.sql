@@ -6,21 +6,21 @@
 CREATE VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
-      x.[LNUM],
-      x.[TRDINCNTR],
-      x.[YEAR],
-      x.[MAKE],
-      x.[VIN],
-      x.[MODEL],
-      x.[TRIM],
-      x.[VALUE],
-      x.[REG_NUM],
-      x.[ASSETID],
-      x.[TRDIN_LOAN_VALUE],
-      x.[NET_TRDIN_VALUE],
-      x.[ISFINANCED],
-      x.[FININSTITUTE],
-      x.[MNTHPAYMENT]
+      x.[LNUM] AS [LNUM],
+      x.[TRDINCNTR] AS [TRDINCNTR],
+      x.[YEAR] AS [YEAR],
+      x.[MAKE] AS [MAKE],
+      x.[VIN] AS [VIN],
+      x.[MODEL] AS [MODEL],
+      x.[TRIM] AS [TRIM],
+      x.[VALUE] AS [VALUE],
+      x.[REG_NUM] AS [REG_NUM],
+      x.[ASSETID] AS [ASSETID],
+      x.[TRDIN_LOAN_VALUE] AS [TRDIN_LOAN_VALUE],
+      x.[NET_TRDIN_VALUE] AS [NET_TRDIN_VALUE],
+      x.[ISFINANCED] AS [ISFINANCED],
+      x.[FININSTITUTE] AS [FININSTITUTE],
+      x.[MNTHPAYMENT] AS [MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

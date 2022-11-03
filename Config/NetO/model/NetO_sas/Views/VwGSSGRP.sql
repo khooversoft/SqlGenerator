@@ -6,14 +6,14 @@
 CREATE VIEW [NetO_sas].[VwGSSGRP]
 AS
    SELECT
-      x.[GRPID],
-      x.[GRPNAME],
-      x.[DESCRIPT],
-      x.[GRPABBR],
-      x.[SRCENV],
-      x.[REC_CUSTOM],
-      x.[CREATE_DATE],
-      x.[MODIFY_DATE]
+      x.[GRPID] AS [GRPID],
+      x.[GRPNAME] AS [GRPNAME],
+      x.[DESCRIPT] AS [DESCRIPT],
+      x.[GRPABBR] AS [GRPABBR],
+      x.[SRCENV] AS [SRCENV],
+      x.[REC_CUSTOM] AS [REC_CUSTOM],
+      x.[CREATE_DATE] AS [CREATE_DATE],
+      x.[MODIFY_DATE] AS [MODIFY_DATE]
    FROM [clt_NetO].[GSSGRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

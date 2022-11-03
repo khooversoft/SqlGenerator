@@ -6,18 +6,18 @@
 CREATE VIEW [NetO_sas].[VwPREDCTRS]
 AS
    SELECT
-      x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
-      x.[SOURCE],
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[SOURCE] AS [SOURCE],
       HASHBYTES('SHA2_256', x.[NAME]) AS [NAME],
-      x.[CTR],
-      x.[CQOPER],
-      x.[ORGORRES],
-      x.[SCORES],
-      x.[FACTORS],
-      x.[EXCLUSION],
-      x.[RECORD_CREATED]
+      x.[CTR] AS [CTR],
+      x.[CQOPER] AS [CQOPER],
+      x.[ORGORRES] AS [ORGORRES],
+      x.[SCORES] AS [SCORES],
+      x.[FACTORS] AS [FACTORS],
+      x.[EXCLUSION] AS [EXCLUSION],
+      x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[PREDCTRS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

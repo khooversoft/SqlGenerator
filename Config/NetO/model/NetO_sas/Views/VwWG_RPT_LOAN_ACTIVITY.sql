@@ -6,11 +6,11 @@
 CREATE VIEW [NetO_sas].[VwWG_RPT_LOAN_ACTIVITY]
 AS
    SELECT
-      x.[LNUM],
-      x.[S_LOAN_ACTIVITY],
-      x.[LOAN_ACTIVITY],
-      x.[INITIAL_DATE],
-      x.[LAST_DATE]
+      x.[LNUM] AS [LNUM],
+      x.[S_LOAN_ACTIVITY] AS [S_LOAN_ACTIVITY],
+      x.[LOAN_ACTIVITY] AS [LOAN_ACTIVITY],
+      x.[INITIAL_DATE] AS [INITIAL_DATE],
+      x.[LAST_DATE] AS [LAST_DATE]
    FROM [clt_NetO].[WG_RPT_LOAN_ACTIVITY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

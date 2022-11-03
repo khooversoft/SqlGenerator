@@ -6,18 +6,18 @@
 CREATE VIEW [NetO_sas_restricted].[VwPOA]
 AS
    SELECT
-      x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
-      x.[POADBID],
-      x.[POASN],
-      x.[POA_SIGN_NAME],
-      x.[POA_TITLE],
-      x.[POA_CAPACITY],
-      x.[POA_DESC_TEXT],
-      x.[POA_EMAIL],
-      x.[POA_TELEPHONE],
-      x.[POA_MOBILE]
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[POADBID] AS [POADBID],
+      x.[POASN] AS [POASN],
+      x.[POA_SIGN_NAME] AS [POA_SIGN_NAME],
+      x.[POA_TITLE] AS [POA_TITLE],
+      x.[POA_CAPACITY] AS [POA_CAPACITY],
+      x.[POA_DESC_TEXT] AS [POA_DESC_TEXT],
+      x.[POA_EMAIL] AS [POA_EMAIL],
+      x.[POA_TELEPHONE] AS [POA_TELEPHONE],
+      x.[POA_MOBILE] AS [POA_MOBILE]
    FROM [clt_NetO].[POA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

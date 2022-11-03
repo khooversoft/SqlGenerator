@@ -216,11 +216,7 @@ CREATE TABLE [clt_AssetAcq].[CommonMonthly]
    [ASAP_LINEAGE_ID]                      nvarchar(36)         NULL,
    [ASAP_ACTIVITY_ID]                     nvarchar(36)         NULL,
    [ASAP_TRIGGER_ID]                      nvarchar(36)         NULL,
-   [ASAP_SRC_FILEPATH]                    nvarchar(1000)       NULL,
-   [VendorId]                             nvarchar(50)         NULL,
-   [DealID]                               nvarchar(50)         NULL,
-   [OriginalAccountNumber]                nvarchar(50)         NULL,
-   [OriginalPartyID]                      nvarchar(50)         NULL
+   [ASAP_SRC_FILEPATH]                    nvarchar(1000)       NULL
 )
 ;
 GO
@@ -282,11 +278,11 @@ AS
       x.[PrepayPenaltyTerm],
       x.[OccupancyCode],
       x.[PropertyTypeDescription],
-      x.[PropertyStateCode],
-      x.[PropertyCityName],
-      x.[PropertyCountyName],
-      x.[ZipCode5],
-      x.[PropertyMSA],
+      HASHBYTES('SHA2_256', x.[PropertyStateCode]) AS [PropertyStateCode],
+      HASHBYTES('SHA2_256', x.[PropertyCityName]) AS [PropertyCityName],
+      HASHBYTES('SHA2_256', CAST(x.[PropertyCountyName] AS NVARCHAR(50))) AS [PropertyCountyName],
+      HASHBYTES('SHA2_256', CAST(x.[ZipCode5] AS NVARCHAR(50))) AS [ZipCode5],
+      HASHBYTES('SHA2_256', x.[PropertyMSA]) AS [PropertyMSA],
       x.[LienPosition],
       x.[OriginalAppraisalType],
       x.[OriginalAppraisalAmount],
@@ -383,8 +379,8 @@ AS
       x.[VehicleModel],
       x.[CollateralTypeDescription],
       x.[CollateralYear],
-      x.[CollateralStateCode],
-      x.[CollateralZipCode],
+      HASHBYTES('SHA2_256', x.[CollateralStateCode]) AS [CollateralStateCode],
+      HASHBYTES('SHA2_256', x.[CollateralZipCode]) AS [CollateralZipCode],
       x.[ContractResidualValue],
       x.[CreditImpairedFlag],
       x.[CurrentCollateralValue],
@@ -408,7 +404,7 @@ AS
       x.[RecourseFlag],
       x.[Servicer],
       x.[VehicleManufacturer],
-      x.[VehicleIdentificationNumber],
+      HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]) AS [VehicleIdentificationNumber],
       a0.[OriginalMemberNumber] AS [OriginalAccountNumber]
    FROM [clt_AssetAcq].[CommonMonthly] x
       LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] a0 ON x.[CurrentAccountNumber] = a0.[LoanId]
@@ -473,11 +469,11 @@ AS
       x.[PrepayPenaltyTerm],
       x.[OccupancyCode],
       x.[PropertyTypeDescription],
-      x.[PropertyStateCode],
-      x.[PropertyCityName],
-      x.[PropertyCountyName],
-      x.[ZipCode5],
-      x.[PropertyMSA],
+      HASHBYTES('SHA2_256', x.[PropertyStateCode]) AS [PropertyStateCode],
+      HASHBYTES('SHA2_256', x.[PropertyCityName]) AS [PropertyCityName],
+      HASHBYTES('SHA2_256', CAST(x.[PropertyCountyName] AS NVARCHAR(50))) AS [PropertyCountyName],
+      HASHBYTES('SHA2_256', CAST(x.[ZipCode5] AS NVARCHAR(50))) AS [ZipCode5],
+      HASHBYTES('SHA2_256', x.[PropertyMSA]) AS [PropertyMSA],
       x.[LienPosition],
       x.[OriginalAppraisalType],
       x.[OriginalAppraisalAmount],
@@ -574,8 +570,8 @@ AS
       x.[VehicleModel],
       x.[CollateralTypeDescription],
       x.[CollateralYear],
-      x.[CollateralStateCode],
-      x.[CollateralZipCode],
+      HASHBYTES('SHA2_256', x.[CollateralStateCode]) AS [CollateralStateCode],
+      HASHBYTES('SHA2_256', x.[CollateralZipCode]) AS [CollateralZipCode],
       x.[ContractResidualValue],
       x.[CreditImpairedFlag],
       x.[CurrentCollateralValue],
@@ -599,7 +595,7 @@ AS
       x.[RecourseFlag],
       x.[Servicer],
       x.[VehicleManufacturer],
-      x.[VehicleIdentificationNumber],
+      HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]) AS [VehicleIdentificationNumber],
       a0.[OriginalMemberNumber] AS [OriginalAccountNumber]
    FROM [clt_AssetAcq].[CommonMonthly] x
       LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] a0 ON x.[CurrentAccountNumber] = a0.[LoanId]

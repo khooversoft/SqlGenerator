@@ -6,11 +6,11 @@
 CREATE VIEW [NetO_sas_pii].[VwWG_ASSET_VHCL_TRAILER]
 AS
    SELECT
-      x.[LNUM],
-      x.[ASSETID],
-      x.[S_AXLE_TYPE],
-      x.[BRAKES_YN],
-      x.[TRAILER_LENGTH]
+      x.[LNUM] AS [LNUM],
+      x.[ASSETID] AS [ASSETID],
+      x.[S_AXLE_TYPE] AS [S_AXLE_TYPE],
+      x.[BRAKES_YN] AS [BRAKES_YN],
+      x.[TRAILER_LENGTH] AS [TRAILER_LENGTH]
    FROM [clt_NetO].[WG_ASSET_VHCL_TRAILER] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

@@ -6,21 +6,21 @@
 CREATE VIEW [NetO_sas].[VwTRANSDATA]
 AS
    SELECT
-      x.[LNUM],
-      x.[PURPRICE],
-      x.[IMPCOST],
-      x.[COSTLAND],
-      x.[REFAMT],
-      x.[ESTPREPD],
-      x.[ESTCLOS],
-      x.[MIFUND],
-      x.[DISCOUNT],
-      x.[SUBFIN],
-      x.[SELLCLOS],
-      x.[FINFEES],
-      x.[LOANONLY],
-      x.[SUB_BELOW_MARKET],
-      x.[SUBORDINATE_TOTAL]
+      x.[LNUM] AS [LNUM],
+      x.[PURPRICE] AS [PURPRICE],
+      x.[IMPCOST] AS [IMPCOST],
+      x.[COSTLAND] AS [COSTLAND],
+      x.[REFAMT] AS [REFAMT],
+      x.[ESTPREPD] AS [ESTPREPD],
+      x.[ESTCLOS] AS [ESTCLOS],
+      x.[MIFUND] AS [MIFUND],
+      x.[DISCOUNT] AS [DISCOUNT],
+      x.[SUBFIN] AS [SUBFIN],
+      x.[SELLCLOS] AS [SELLCLOS],
+      x.[FINFEES] AS [FINFEES],
+      x.[LOANONLY] AS [LOANONLY],
+      x.[SUB_BELOW_MARKET] AS [SUB_BELOW_MARKET],
+      x.[SUBORDINATE_TOTAL] AS [SUBORDINATE_TOTAL]
    FROM [clt_NetO].[TRANSDATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

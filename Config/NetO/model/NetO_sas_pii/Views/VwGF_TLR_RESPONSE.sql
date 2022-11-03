@@ -6,15 +6,15 @@
 CREATE VIEW [NetO_sas_pii].[VwGF_TLR_RESPONSE]
 AS
    SELECT
-      x.[LNUM],
-      x.[RESPONSEID],
-      x.[DBID],
-      x.[INTERNAL_ACCOUNT],
-      x.[TIMESTAMP],
-      x.[DISPLAYFORLOAN],
-      x.[CONTEXTNAME],
-      x.[REQUESTID],
-      x.[VENDOR_NAME]
+      x.[LNUM] AS [LNUM],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[DBID] AS [DBID],
+      x.[INTERNAL_ACCOUNT] AS [INTERNAL_ACCOUNT],
+      x.[TIMESTAMP] AS [TIMESTAMP],
+      x.[DISPLAYFORLOAN] AS [DISPLAYFORLOAN],
+      x.[CONTEXTNAME] AS [CONTEXTNAME],
+      x.[REQUESTID] AS [REQUESTID],
+      x.[VENDOR_NAME] AS [VENDOR_NAME]
    FROM [clt_NetO].[GF_TLR_RESPONSE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

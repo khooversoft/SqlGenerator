@@ -6,19 +6,19 @@
 CREATE VIEW [NetO_sas_pii].[VwGF_TLR_TL_REC_DOC_ROLES]
 AS
    SELECT
-      x.[LNUM],
-      x.[RESPONSEID],
-      x.[TITLERESPONSEID],
-      x.[DBID],
-      x.[RECDOCID],
-      x.[RECDOCEXTID],
-      x.[EXTITEMSID],
-      x.[FIRSTNAME],
-      x.[LASTNAME],
-      x.[VESTINGINFO],
-      x.[COMMENTS],
-      x.[UNPARSEDNAME],
-      x.[EXTTYPE]
+      x.[LNUM] AS [LNUM],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[TITLERESPONSEID] AS [TITLERESPONSEID],
+      x.[DBID] AS [DBID],
+      x.[RECDOCID] AS [RECDOCID],
+      x.[RECDOCEXTID] AS [RECDOCEXTID],
+      x.[EXTITEMSID] AS [EXTITEMSID],
+      x.[FIRSTNAME] AS [FIRSTNAME],
+      x.[LASTNAME] AS [LASTNAME],
+      x.[VESTINGINFO] AS [VESTINGINFO],
+      x.[COMMENTS] AS [COMMENTS],
+      x.[UNPARSEDNAME] AS [UNPARSEDNAME],
+      x.[EXTTYPE] AS [EXTTYPE]
    FROM [clt_NetO].[GF_TLR_TL_REC_DOC_ROLES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

@@ -6,16 +6,16 @@
 CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_DEPENDENTS]
 AS
    SELECT
-      x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
-      x.[ROWSERIALNO],
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[ROWSERIALNO] AS [ROWSERIALNO],
       HASHBYTES('SHA2_256', x.[FIRST_NAME]) AS [FIRST_NAME],
       HASHBYTES('SHA2_256', x.[MIDDLE_NAME]) AS [MIDDLE_NAME],
       HASHBYTES('SHA2_256', x.[LAST_NAME]) AS [LAST_NAME],
-      x.[AGE],
+      x.[AGE] AS [AGE],
       HASHBYTES('SHA2_256', x.[SSN]) AS [SSN],
-      x.[DOB]
+      x.[DOB] AS [DOB]
    FROM [clt_NetO].[GF_TLBR_DEPENDENTS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

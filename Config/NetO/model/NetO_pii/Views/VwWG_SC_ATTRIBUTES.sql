@@ -132,7 +132,13 @@ AS
       x.[CO_BOR_MEM_MNTH_OVR],
       x.[PRI_BOR_OLD_TRD_AGE_OVR],
       x.[CO_BOR_OLD_TRD_AGE_OVR],
-      x.[COLLAT_VEHICLE_AGE_OVR]
+      x.[COLLAT_VEHICLE_AGE_OVR],
+      x.[LOAN_ELIGIBILITY_ATT],
+      x.[LOAN_ELIGIBILITY_SRC],
+      x.[LOAN_ELIGIBILITY_OVR],
+      x.[COLLATERAL_ATT],
+      x.[COLLATERAL_SRC],
+      x.[COLLATERAL_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

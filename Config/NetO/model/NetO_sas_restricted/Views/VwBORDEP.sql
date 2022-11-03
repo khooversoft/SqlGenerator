@@ -6,21 +6,21 @@
 CREATE VIEW [NetO_sas_restricted].[VwBORDEP]
 AS
    SELECT
-      x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
-      x.[AGES],
-      x.[AGENCY],
-      x.[CONTACT],
-      x.[COST],
-      x.[PAYFLAG],
-      x.[NOPYDBID],
-      x.[NOPAYSN],
-      x.[AGYADD1],
-      x.[AGYADD2],
-      x.[AGYCITY],
-      x.[AGYSTATE],
-      x.[AGYZIP]
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[AGES] AS [AGES],
+      x.[AGENCY] AS [AGENCY],
+      x.[CONTACT] AS [CONTACT],
+      x.[COST] AS [COST],
+      x.[PAYFLAG] AS [PAYFLAG],
+      x.[NOPYDBID] AS [NOPYDBID],
+      x.[NOPAYSN] AS [NOPAYSN],
+      x.[AGYADD1] AS [AGYADD1],
+      x.[AGYADD2] AS [AGYADD2],
+      x.[AGYCITY] AS [AGYCITY],
+      x.[AGYSTATE] AS [AGYSTATE],
+      x.[AGYZIP] AS [AGYZIP]
    FROM [clt_NetO].[BORDEP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

@@ -6,16 +6,16 @@
 CREATE VIEW [NetO_sas_pii].[VwWG_RPT_LOAN_REMARKS]
 AS
    SELECT
-      x.[LNUM],
-      x.[RMKID],
-      x.[ENTERED_DATE],
-      x.[USRID],
-      x.[USERNAME],
-      x.[REMARK_TYPE],
-      x.[ACTIVITY],
-      x.[TASK],
-      x.[REMARK],
-      x.[REMARKS_TXT]
+      x.[LNUM] AS [LNUM],
+      x.[RMKID] AS [RMKID],
+      x.[ENTERED_DATE] AS [ENTERED_DATE],
+      x.[USRID] AS [USRID],
+      x.[USERNAME] AS [USERNAME],
+      x.[REMARK_TYPE] AS [REMARK_TYPE],
+      x.[ACTIVITY] AS [ACTIVITY],
+      x.[TASK] AS [TASK],
+      x.[REMARK] AS [REMARK],
+      x.[REMARKS_TXT] AS [REMARKS_TXT]
    FROM [clt_NetO].[WG_RPT_LOAN_REMARKS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

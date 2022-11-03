@@ -6,13 +6,13 @@
 CREATE VIEW [NetO_sas].[VwGF_TLRR_FUNDDISB]
 AS
    SELECT
-      x.[LNUM],
-      x.[DISB_DBID],
-      x.[DISB_SERNO],
-      x.[ORIG_CNTR],
-      x.[ORIG_DBID],
-      x.[VOIDED_YN],
-      x.[PCT_OF_FUNDITEM]
+      x.[LNUM] AS [LNUM],
+      x.[DISB_DBID] AS [DISB_DBID],
+      x.[DISB_SERNO] AS [DISB_SERNO],
+      x.[ORIG_CNTR] AS [ORIG_CNTR],
+      x.[ORIG_DBID] AS [ORIG_DBID],
+      x.[VOIDED_YN] AS [VOIDED_YN],
+      x.[PCT_OF_FUNDITEM] AS [PCT_OF_FUNDITEM]
    FROM [clt_NetO].[GF_TLRR_FUNDDISB] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

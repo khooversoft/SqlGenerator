@@ -6,26 +6,26 @@
 CREATE VIEW [NetO_sas_pii].[VwTRUSTS]
 AS
    SELECT
-      x.[LNUM],
-      x.[TRUSTCNT],
-      x.[TRSTDBID],
-      x.[TRSTSERI],
-      x.[TRSTNAME],
-      x.[TRSTDATE],
-      x.[TRSTTXID],
-      x.[TRSTADT1],
-      x.[TRSTADT2],
-      x.[TRSTNUMB],
-      x.[S_TRSTYP],
-      x.[TRSTINST],
-      x.[TRSTREV],
-      x.[STATE],
-      x.[TRSTNOMINEE],
-      x.[IDENTIFICATION_NUM],
-      x.[QPRT_IND],
-      x.[QPRT_EXP_DATE],
-      x.[QPRT_BEN_WAIVER],
-      x.[LIVTRST]
+      x.[LNUM] AS [LNUM],
+      x.[TRUSTCNT] AS [TRUSTCNT],
+      x.[TRSTDBID] AS [TRSTDBID],
+      x.[TRSTSERI] AS [TRSTSERI],
+      x.[TRSTNAME] AS [TRSTNAME],
+      x.[TRSTDATE] AS [TRSTDATE],
+      x.[TRSTTXID] AS [TRSTTXID],
+      x.[TRSTADT1] AS [TRSTADT1],
+      x.[TRSTADT2] AS [TRSTADT2],
+      x.[TRSTNUMB] AS [TRSTNUMB],
+      x.[S_TRSTYP] AS [S_TRSTYP],
+      x.[TRSTINST] AS [TRSTINST],
+      x.[TRSTREV] AS [TRSTREV],
+      x.[STATE] AS [STATE],
+      x.[TRSTNOMINEE] AS [TRSTNOMINEE],
+      x.[IDENTIFICATION_NUM] AS [IDENTIFICATION_NUM],
+      x.[QPRT_IND] AS [QPRT_IND],
+      x.[QPRT_EXP_DATE] AS [QPRT_EXP_DATE],
+      x.[QPRT_BEN_WAIVER] AS [QPRT_BEN_WAIVER],
+      x.[LIVTRST] AS [LIVTRST]
    FROM [clt_NetO].[TRUSTS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

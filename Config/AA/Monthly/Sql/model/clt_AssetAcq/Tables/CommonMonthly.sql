@@ -182,10 +182,6 @@ CREATE TABLE [clt_AssetAcq].[CommonMonthly]
    [ASAP_LINEAGE_ID]                      nvarchar(36)         NULL,
    [ASAP_ACTIVITY_ID]                     nvarchar(36)         NULL,
    [ASAP_TRIGGER_ID]                      nvarchar(36)         NULL,
-   [ASAP_SRC_FILEPATH]                    nvarchar(1000)       NULL,
-   [VendorId]                             nvarchar(50)         NULL,
-   [DealID]                               nvarchar(50)         NULL,
-   [OriginalAccountNumber]                nvarchar(50)         NULL,
-   [OriginalPartyID]                      nvarchar(50)         NULL
+   [ASAP_SRC_FILEPATH]                    nvarchar(1000)       NULL
 )
 ;
