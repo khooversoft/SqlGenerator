@@ -2,7 +2,7 @@
   "profiles": {
     "SqlGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "build \"D:\\Work\\SqlGenerator\\AA\\Monthly\\CommonMonthlySql.project.json\""
+      "commandLineArgs": "build \"C:\\Sources\\SqlGenerator\\Config\\SqlGenerator\\AA\\Settlement\\CommonSettlementSql.project.json\""
     }
   }
 }

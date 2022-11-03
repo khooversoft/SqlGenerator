@@ -1,5 +1,5 @@
 {
-  "sourceFile": "SettlementMerge.datadictionary.csv",
+  "sourceFile": "mergeBuild\\SettlementMerge.dataDictionary.csv",
   "optionFile": "..\\AA.ImportOption.json",
   "nameMapFile": null,
   "tableListFile": "CommentSettlement.MasterTable.json",

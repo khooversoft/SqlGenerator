@@ -1,7 +1,7 @@
 {
 	"MatchRange":0,
 	"TableName": "CommonSettlement",
-	"TableListFile": "CommentSettlement.MasterTable.json",
+	"MappedFile": "CommonSettlement.mapping.csv",
 	"Files":[
 		"DFCU Combined Deal 1.csv",
 		"PF Combined Deal 1.csv",

@@ -53,7 +53,7 @@ CREATE TABLE [clt_NetO].[WG_RPT_LOAN]
    [FUNDING_METHOD_DESC]              nvarchar(256)        NULL,
    [DELIVERY_TERMS]                   nvarchar(128)        NULL,
    [DELIVERY_TERMS_DESC]              nvarchar(256)        NULL,
-   [CONDITION_TEXT]                   nvarchar(max)        NULL,
+   [CONDITION_TEXT]                   nvarchar(MAX)        NULL,
    [CUSTATE]                          nchar(1)             NULL,
    [CUISACTIVE_YN]                    nchar(1)             NULL,
    [ESCROW_WAIVER]                    nchar(1)             NULL,

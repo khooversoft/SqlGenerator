@@ -24,7 +24,7 @@ public class UspLoadTableMetaBuilder
 
         var list = new Instructions();
 
-        list += (InstructionType.Stream, $"{uspLoadTableOption.OutputFile}.sql");
+        list += (InstructionType.Stream, $"{uspLoadTableOption.OutputFile}");
         list += DeleteLayer(uspLoadTableOption);
 
         var tables = _physicalModel.Tables

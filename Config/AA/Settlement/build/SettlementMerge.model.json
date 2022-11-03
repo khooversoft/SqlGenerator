@@ -9,19 +9,19 @@
     {
       "security": "unrestricted",
       "name": "AssetAcq",
-      "format": null,
+      "format": "Vw_{tableName}",
       "maxColumnSize": null
     },
     {
       "security": "restricted",
       "name": "AssetAcq_restricted",
-      "format": null,
+      "format": "Vw_{tableName}",
       "maxColumnSize": null
     },
     {
       "security": "pii",
       "name": "AssetAcq_pii",
-      "format": null,
+      "format": "Vw_{tableName}",
       "maxColumnSize": null
     }
   ],
@@ -32,18 +32,19 @@
         "name": "CommonSettlement"
       },
       "indexType": "hash",
+      "tableMode": "none",
       "columns": [
         {
           "name": "loan_number",
           "security": "unrestricted",
-          "dataType": "long",
+          "dataType": "bigint",
           "notNull": false,
           "private": false,
           "primaryKey": false,
+          "nonuniqueIndex": false,
           "columnIndex": 0,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "product_type",
@@ -52,34 +53,10 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
+          "nonuniqueIndex": false,
           "columnIndex": 1,
           "pii": false,
-          "restricted": false,
-          "shortName": null
-        },
-        {
-          "name": "rate",
-          "security": "unrestricted",
-          "dataType": "decimal(16,6)",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 2,
-          "pii": false,
-          "restricted": false,
-          "shortName": null
-        },
-        {
-          "name": "interest_rate",
-          "security": "unrestricted",
-          "dataType": "decimal(16,6)",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 3,
-          "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "service_fee",
@@ -88,10 +65,10 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 4,
+          "nonuniqueIndex": false,
+          "columnIndex": 2,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "balance",
@@ -100,10 +77,10 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 5,
+          "nonuniqueIndex": false,
+          "columnIndex": 3,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "participation_balance_90",
@@ -112,10 +89,10 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 6,
+          "nonuniqueIndex": false,
+          "columnIndex": 4,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "date_interest_paid_to",
@@ -124,10 +101,10 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 7,
+          "nonuniqueIndex": false,
+          "columnIndex": 5,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "original_loan_to_value_ratio",
@@ -136,10 +113,10 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 8,
+          "nonuniqueIndex": false,
+          "columnIndex": 6,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "net_int",
@@ -148,10 +125,10 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 9,
+          "nonuniqueIndex": false,
+          "columnIndex": 7,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "price",
@@ -160,10 +137,10 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 10,
+          "nonuniqueIndex": false,
+          "columnIndex": 8,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "premium_discount",
@@ -172,10 +149,10 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 11,
+          "nonuniqueIndex": false,
+          "columnIndex": 9,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         },
         {
           "name": "funds_due",
@@ -184,10 +161,34 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "VendorID",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DealID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
           "columnIndex": 12,
           "pii": false,
-          "restricted": false,
-          "shortName": null
+          "restricted": false
         }
       ]
     }
@@ -200,10 +201,10 @@
       "notNull": true,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
+      "restricted": false
     },
     {
       "name": "ASAP_DeleteDateTime",
@@ -212,10 +213,10 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
+      "restricted": false
     }
   ],
   "suffixColumns": [
@@ -226,10 +227,10 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
+      "restricted": false
     },
     {
       "name": "ASAP_DML_FLAG",
@@ -238,10 +239,10 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
+      "restricted": false
     },
     {
       "name": "ASAP_CREATED_DATE",
@@ -250,10 +251,10 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
+      "restricted": false
     },
     {
       "name": "ASAP_UPDATED_DATE",
@@ -262,10 +263,10 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
+      "restricted": false
     },
     {
       "name": "ASAP_LINEAGE_ID",
@@ -274,10 +275,10 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
+      "restricted": false
     },
     {
       "name": "ASAP_ACTIVITY_ID",
@@ -286,10 +287,10 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
+      "restricted": false
     },
     {
       "name": "ASAP_TRIGGER_ID",
@@ -298,10 +299,10 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
+      "restricted": false
     },
     {
       "name": "ASAP_SRC_FILEPATH",
@@ -310,34 +311,19 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
+      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
-      "restricted": false,
-      "shortName": null
-    },
+      "restricted": false
+    }
+  ],
+  "relationships": [],
+  "lookupRelationships": [
     {
-      "name": "ASAP_SRC_FILE_DATE",
-      "security": "unrestricted",
-      "dataType": "datetime2(7)",
-      "notNull": false,
-      "private": true,
-      "primaryKey": false,
-      "columnIndex": 0,
-      "pii": false,
-      "restricted": false,
-      "shortName": null
-    },
-    {
-      "name": "ASAP_SRC_NAME",
-      "security": "unrestricted",
-      "dataType": "nvarchar(36)",
-      "notNull": false,
-      "private": false,
-      "primaryKey": false,
-      "columnIndex": 0,
-      "pii": false,
-      "restricted": false,
-      "shortName": null
+      "referenceTable": "ctl_Investor.InvestorLoanIdMap",
+      "matchTable": "clt_AssetAcq.CommonMonthly",
+      "selectLine": "{alias}.[OriginalMemberNumber] AS [OriginalAccountNumber]",
+      "joinLine": "LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] {alias} ON x.[CurrentAccountNumber] = {alias}.[LoanId]"
     }
   ]
 }

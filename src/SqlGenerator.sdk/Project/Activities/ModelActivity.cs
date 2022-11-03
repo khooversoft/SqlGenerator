@@ -19,7 +19,12 @@ public class ModelActivity
     private readonly ILogger<ModelActivity> _logger;
     public ModelActivity(ILogger<ModelActivity> logger) => _logger = logger.NotNull();
 
-    public Task<Counters> Build(string sourceFile, SchemaOption schemaOption, string outputFile, string? nameMapFile)
+    public Task<Counters> Build(
+        string sourceFile,
+        SchemaOption schemaOption,
+        string outputFile,
+        string? tableTypeMetadata
+        )
     {
         sourceFile.NotEmpty();
         schemaOption.NotNull();
@@ -29,13 +34,17 @@ public class ModelActivity
         {
             Source = sourceFile,
             Output = outputFile,
-            NameMapFile = nameMapFile,
         }.LogProperties("Building model...", _logger);
 
         DataDictionary dataDictionary = DataDictionaryFile.Read(sourceFile);
-        IReadOnlyList<NameMapRecord>? nameMaps = nameMapFile != null ? NameMapRecordFile.Read(nameMapFile) : null;
+        dataDictionary = dataDictionary with
+        {
+            Items = dataDictionary.Items.Where(x => !x.NoData).ToArray(),
+        };
 
-        var model = new PhysicalModelBuilder().Build(dataDictionary.Items, schemaOption, nameMaps);
+        IReadOnlyList<TableTypeMetadata>? tableMetadata = tableTypeMetadata != null ? TableTypeMetadataFile.Read(tableTypeMetadata) : null;
+
+        var model = new PhysicalModelBuilder().Build(dataDictionary.Items, schemaOption, tableMetadata);
         model.Write(outputFile);
 
         var counters = new Counters(nameof(ModelActivity))

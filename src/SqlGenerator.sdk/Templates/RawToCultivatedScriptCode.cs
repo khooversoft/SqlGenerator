@@ -14,9 +14,9 @@ public partial class RawToCultivatedScript
 {
     public RawToCultivatedScript(
         PhysicalModel physicalModel,
-        string pipelineName, 
-        string activityName, 
-        string? paramValueFormat, 
+        string pipelineName,
+        string activityName,
+        string? paramValueFormat,
         string executionTypeColumn)
     {
         PhysicalModel = physicalModel.NotNull();
@@ -54,13 +54,14 @@ public partial class RawToCultivatedScript
             .Select(x => x.Name.Name)
             .Distinct()
             .OrderBy(x => x)
-            .Select(x => (tableName: x, hasLnum: hasLnum(x)))
+            .Select(x => (tableName: x, hasLnum: hasLnum(x), tableMode: getTableMode(x)))
             .SelectMany(x => new[]
             {
                 $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', '{FormatParamValue(x.tableName)}')",
                 $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'pii_columns', '')",
                 $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL)",
                 $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '{x.hasLnum}')",
+                $"('{x.tableName}', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '{x.tableMode}')",
             })
             .ToList();
 
@@ -71,5 +72,13 @@ public partial class RawToCultivatedScript
         int hasLnum(string tableName) => PhysicalModel.Tables
             .Where(x => x.Name.Name == tableName)
             .Any(x => x.Columns.Any(y => y.Name == ExecutionTypeColumn)) ? 0 : 1;
+
+        int getTableMode(string tableName) => PhysicalModel.Tables
+            .Where(x => x.Name.Name == tableName)
+            .FirstOrDefault() switch
+        {
+            TableModel v when v.TableMode == TableMode.Full => 1,
+            _ => 0,
+        };
     }
 }

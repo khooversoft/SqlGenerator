@@ -1,4 +1,5 @@
 ﻿using DataTools.sdk.Model;
+using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Model;
 using Toolbox.Extensions;
 using Toolbox.Tools;
@@ -25,11 +26,12 @@ public class SqlInstructionBuilder
         "",
     };
 
-    public SqlInstructionBuilder(PhysicalModel model)
+    public SqlInstructionBuilder(PhysicalModel model, IReadOnlyList<NameMapRecord>? nameMaps)
     {
         _physicalModel = model.Verify();
+
         _sqlTableBuilder = new SqlTableBuilder(model);
-        _sqlViewBuilder = new SqlViewBuilder(model);
+        _sqlViewBuilder = new SqlViewBuilder(model, nameMaps);
     }
 
     public Instructions Build(BuildType buildType)

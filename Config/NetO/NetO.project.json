@@ -1,10 +1,11 @@
 {
-	"sourceFile": "NetOPhysicalModel-20221006.csv",
+	"sourceFile": "NetOPhysicalModel-20221031.csv",
 	"optionFile": "Neto.ImportOption.json",
 	"nameMapFile": "..\\NameMap.json",
-	"tableListFile": "NetOPhysicalModel_MasterTables.json",
+	"tableListFile": null,
 	"buildFolder": null,
 	"classificationFile": "NetO_Classification.json",
+	"tableTypeMetadata": "ConsASAP_MetaData.csv",
 	"uspLoadTableOption": {
 		"outputFile": "neto_usp_LoadTable_meta.sql",
 		"dataTableName": "etl.ETLGenPrimaryKeyColumns",

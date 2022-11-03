@@ -1,7 +1,9 @@
 ﻿using DataTools.sdk.Model;
+using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +15,15 @@ namespace SqlGenerator.sdk.Generator;
 public class SqlViewBuilder
 {
     private const string _aliasFormat = "{alias}";
+    private const string _tableFormat = "{tableName}";
     private readonly PhysicalModel _physicalModel;
-    public SqlViewBuilder(PhysicalModel model) => _physicalModel = model;
+    private readonly IReadOnlyList<NameMapRecord>? _nameMaps;
+
+    public SqlViewBuilder(PhysicalModel model, IReadOnlyList<NameMapRecord>? nameMaps)
+    {
+        _physicalModel = model.NotNull();
+        _nameMaps = nameMaps;
+    }
 
 
     // Creating view for all non data security groups (lookup schema to get security level of schema)
@@ -23,11 +32,17 @@ public class SqlViewBuilder
     //   PII view => all columns are visible
     public Instructions BuildViewModel(TableModel tableModel, BuildType buildType, SchemaModel schema)
     {
-        SqlObjectName viewName = schema.Format switch
+        var viewName = new SqlObjectName
         {
-            null => new SqlObjectName { Schema = schema.Name, Name = tableModel.Name.Name },
-            not null => new SqlObjectName { Schema = schema.Name, Name = schema.Format.Replace("{tableName}", tableModel.Name.Name) },
+            Schema = schema.Name,
+            Name = GetRealViewName(tableModel, schema),
         };
+
+        //SqlObjectName tableName = new SqlObjectName
+        //{
+        //    Schema = schema.Name,
+        //    Name = GetRealTableName(tableModel, schema),
+        //};
 
         var list = new Instructions();
         list += (InstructionType.Stream, viewName.CalculateFileName());
@@ -92,6 +107,32 @@ public class SqlViewBuilder
         return list;
     }
 
+    //private string GetRealTableName(TableModel tableModel, SchemaModel schema)
+    //{
+    //    return schema.Format switch
+    //    {
+    //        null => tableModel.Name.Name,
+    //        not null => schema.Format.Replace(_tableFormat, tableModel.Name.Name),
+    //    };
+    //}
+
+    private string GetRealViewName(TableModel tableModel, SchemaModel schema)
+    {
+        string realViewName = schema.Format switch
+        {
+            null => tableModel.Name.Name,
+            not null => schema.Format.Replace(_tableFormat, tableModel.Name.Name),
+        };
+
+        realViewName = schema.MaxColumnSize switch
+        {
+            null => realViewName,
+            int v => _nameMaps?.ShortName(realViewName, v) ?? realViewName,
+        };
+
+        return realViewName;
+    }
+
     private string BuildColumnModel(ColumnModel columnModel, SchemaModel schemaModel)
     {
         return columnModel.CanShowValue(schemaModel.Security) switch
@@ -101,7 +142,13 @@ public class SqlViewBuilder
             false => $"HASHBYTES('SHA2_256', {castAs(columnModel.Name, columnModel.DataType)})" + displayAs(columnModel.Name),
         };
 
-        string displayAs(string? defaultName = null) => columnModel.ShortName switch
+        string? getRealColumnName() => schemaModel.MaxColumnSize switch
+        {
+            null => null,
+            int v => _nameMaps?.ShortName(columnModel.Name, v) ?? columnModel.Name,
+        };
+
+        string displayAs(string? defaultName = null) => getRealColumnName() switch
         {
             string v => $" AS [{v}]",
             _ => defaultName switch

@@ -6,8 +6,8 @@ CREATE TABLE [clt_NetO].[GF_TLR_RES_NADA_VAL]
 (
    [LNUM]                             nchar(20)            NOT NULL,
    [DBID]                             nchar(5)             NOT NULL,
-   [RESPONSEID]                       bigint               NOT NULL,
-   [NADARESPONSEID]                   bigint               NOT NULL,
+   [RESPONSEID]                       int                  NOT NULL,
+   [NADARESPONSEID]                   int                  NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [BASE_VALUE_TRADEIN]               decimal(18,3)        NULL,

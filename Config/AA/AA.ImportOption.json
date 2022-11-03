@@ -107,38 +107,6 @@
       "notNull": false,
       "hashKey": false,
       "private": true
-    },
-    {
-      "name": "VendorId",
-      "security": "unrestricted",
-      "dataType": "nvarchar(50)",
-      "notNull": false,
-      "hashKey": false,
-      "private": true
-    },
-    {
-      "name": "DealID",
-      "security": "unrestricted",
-      "dataType": "nvarchar(50)",
-      "notNull": false,
-      "hashKey": false,
-      "private": false
-    },
-    {
-      "name": "OriginalAccountNumber",
-      "security": "unrestricted",
-      "dataType": "nvarchar(50)",
-      "notNull": false,
-      "hashKey": false,
-      "private": false
-    },
-    {
-      "name": "OriginalPartyID",
-      "security": "unrestricted",
-      "dataType": "nvarchar(50)",
-      "notNull": false,
-      "hashKey": false,
-      "private": false
     }
   ],
   

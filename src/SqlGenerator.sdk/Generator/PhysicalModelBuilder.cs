@@ -11,7 +11,11 @@ namespace SqlGenerator.sdk.Generator;
 
 public class PhysicalModelBuilder
 {
-    public PhysicalModel Build(IEnumerable<TableInfo> infos, SchemaOption schemaOption, IReadOnlyList<NameMapRecord>? nameMaps)
+    public PhysicalModel Build(
+        IReadOnlyList<TableInfo> infos,
+        SchemaOption schemaOption,
+        IReadOnlyList<TableTypeMetadata>? tableMetadata
+        )
     {
         infos.NotNull();
         schemaOption.Verify();
@@ -23,7 +27,7 @@ public class PhysicalModelBuilder
             .FirstOrDefault()
             .NotNull(name: $"Cannot find data schema in option");
 
-        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, dataSchemaModel, nameMaps, schemaOption);
+        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, dataSchemaModel, schemaOption, tableMetadata);
 
         return new PhysicalModel
         {
@@ -36,7 +40,12 @@ public class PhysicalModelBuilder
         }.Verify();
     }
 
-    private static IReadOnlyList<TableModel> GenerateTable(IReadOnlyList<TableInfo> tableInfos, SchemaModel schemaModel, IReadOnlyList<NameMapRecord>? nameMaps, SchemaOption schemaOption)
+    private static IReadOnlyList<TableModel> GenerateTable(
+        IReadOnlyList<TableInfo> tableInfos,
+        SchemaModel schemaModel,
+        SchemaOption schemaOption,
+        IReadOnlyList<TableTypeMetadata>? tableMetadata
+        )
     {
         return tableInfos
             .GroupBy(x => x.TableName)
@@ -44,6 +53,7 @@ public class PhysicalModelBuilder
             {
                 Name = new SqlObjectName { Schema = schemaModel.Name, Name = x.Key },
                 IndexType = getIndexType(x.ToArray()),
+                TableMode = getTableMode(x.Key, tableMetadata),
                 Columns = x.Select((y, i) => new ColumnModel
                 {
                     Name = y.ColumnName,
@@ -55,21 +65,37 @@ public class PhysicalModelBuilder
                     PII = y.PII,
                     Restricted = y.Restricted,
                     ColumnIndex = i,
-                    ShortName = nameMaps?.ShortName(y.ColumnName, schemaModel.MaxColumnSize),
                 }).ToList(),
             }).ToList();
-
-
-        static IndexType getIndexType(IReadOnlyList<TableInfo> tableInfos) =>
-            tableInfos
-            .Any(x => x.DataType.IndexOf("max", StringComparison.OrdinalIgnoreCase) >= 0) switch
-            {
-                false => IndexType.Hash,
-                true => IndexType.Cluster
-            };
-
-        static bool isNonuniqueIndex(SchemaOption schemaOption, string tableName, string columnName) => schemaOption.Relationships
-            .Any(x => x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase) && x.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase));
-
     }
+
+    static IndexType getIndexType(IReadOnlyList<TableInfo> tableInfos) =>
+        tableInfos
+        .Any(x => x.DataType.IndexOf("max", StringComparison.OrdinalIgnoreCase) >= 0) switch
+        {
+            false => IndexType.Hash,
+            true => IndexType.Cluster
+        };
+
+    static bool isNonuniqueIndex(SchemaOption schemaOption, string tableName, string columnName) => schemaOption.Relationships
+        .Any(x =>
+            x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase) &&
+            x.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase)
+            );
+
+    static TableMode getTableMode(string tableName, IReadOnlyList<TableTypeMetadata>? tableMetadata) => tableMetadata switch
+    {
+        null => TableMode.None,
+        not null => tableMetadata.FirstOrDefault(x => x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase)) switch
+        {
+            TableTypeMetadata v => convertTo(v),
+            _ => TableMode.None,
+        }
+    };
+
+    static TableMode convertTo(TableTypeMetadata tableTypeMetadata) => tableTypeMetadata.Mode.FindEnumValue<TableMode>(true) switch
+    {
+        string v => v.ToEnum<TableMode>(),
+        _ => TableMode.None,
+    };
 }
