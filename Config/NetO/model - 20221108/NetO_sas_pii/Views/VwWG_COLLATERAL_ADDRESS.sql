@@ -1,0 +1,27 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+
+CREATE VIEW [NetO_sas_pii].[VwWG_COLLATERAL_ADDRESS]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[ASSETID] AS [ASSETID],
+      x.[ROWSERIALNO] AS [ROWSERIALNO],
+      x.[COLLATERALADD1] AS [COLLATERALADD1],
+      x.[COLLATERALADD2] AS [COLLATERALADD2],
+      x.[COLLATERALCITY] AS [COLLATERALCITY],
+      x.[COLLATERALSTATE] AS [COLLATERALSTATE],
+      x.[COLLATERALCOUNTY] AS [COLLATERALCOUNTY],
+      x.[COLLATERALZIP] AS [COLLATERALZIP],
+      x.[COLLATERALCOUNTRY] AS [COLLATERALCOUNTRY],
+      x.[LANDLORD_PARKNAME] AS [LANDLORD_PARKNAME],
+      x.[PARK_LORTENT] AS [PARK_LORTENT]
+   FROM [clt_NetO].[WG_COLLATERAL_ADDRESS] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+   ;

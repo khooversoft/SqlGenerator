@@ -1,0 +1,29 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+
+CREATE VIEW [NetO_sas].[VwGF_TL_AFFORDABILITY]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[INCOME] AS [INCOME],
+      x.[DEBTS] AS [DEBTS],
+      x.[TAXRATE] AS [TAXRATE],
+      x.[HAZRATE] AS [HAZRATE],
+      x.[CASHONHAND] AS [CASHONHAND],
+      x.[LIMITDOWNPMT] AS [LIMITDOWNPMT],
+      x.[PROPOSEDINTRATE] AS [PROPOSEDINTRATE],
+      x.[PROPOSEDLOANTERM] AS [PROPOSEDLOANTERM],
+      x.[PROPOSEDHOUSINGRATIO] AS [PROPOSEDHOUSINGRATIO],
+      x.[PROPOSEDDEBTRATIO] AS [PROPOSEDDEBTRATIO],
+      x.[AFFORDPITI] AS [AFFORDPITI],
+      x.[AFFORDLOANAMT] AS [AFFORDLOANAMT],
+      x.[AFFORDSALESPRICE] AS [AFFORDSALESPRICE],
+      x.[AFFORDPNTS] AS [AFFORDPNTS],
+      x.[AFFORDCLOSINGCOSTS] AS [AFFORDCLOSINGCOSTS]
+   FROM [clt_NetO].[GF_TL_AFFORDABILITY] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+   ;

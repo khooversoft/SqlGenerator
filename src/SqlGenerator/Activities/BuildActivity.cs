@@ -16,14 +16,14 @@ internal class BuildActivity
         _logger = logger.NotNull();
     }
 
-    public async Task Generate(string projectFile, bool force, bool useSource)
+    public async Task Generate(string projectFile)
     {
         projectFile.NotEmpty().Assert(x => File.Exists(x), x => $"File {x} does not exist");
 
         _logger.LogInformation("Building project {projectFile}", projectFile);
-        ProjectOption projectOption = ProjectOptionFile.Read(projectFile);
+        SqlProjectOption sqlProjectOption = SqlProjectOptionFile.Read(projectFile);
 
-        Context context = await _projectBuilder.Build(projectFile, projectOption, force, useSource);
+        Context context = await _projectBuilder.Build(projectFile, sqlProjectOption);
 
         _logger.LogInformation("Completed");
     }

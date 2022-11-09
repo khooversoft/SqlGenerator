@@ -1,0 +1,32 @@
+{
+	"includeFiles":[
+		"Neto.ImportOption.json",
+		"..\\NameMap.json",
+		"NetO_Classification.json"
+	],
+
+	"sourceFile": "NetOPhysicalModel-20221103.csv",
+	"buildFolder": null,
+	"tableTypeMetadata": "ConsASAP_MetaData_20221103.csv",
+	"uspLoadTableOption": {
+		"outputFile": "neto_usp_LoadTable_meta.sql",
+		"dataTableName": "etl.ETLGenPrimaryKeyColumns",
+		"dataLayerName": "clt_neto"
+	},
+	"rawToCultivated": {
+		"outputFile": "cntrl_Neto_raw_to_cultivated_copyinto_meta.sql",
+		"pipelineName": "pl_Neto_raw_to_cultivated_copyinto",
+		"activityName": "cp_extract_to_raw",
+		"paramValueFormat": "Netoxygen_*_20"
+	},
+
+	"updateCommands": [
+		"exclude = GF_TL_LOAN_DATA.ONBOARD_DISB_STATUS",
+		"exclude = GF_TLBR_ADDITIONALDATA.MOTHERS_MAIDEN",
+		"exclude = SERVICNG.S_SERVICING_STATUS",
+
+		"primaryKey = WG_SYMBOL_XREF.TABLENAME",
+		"primaryKey = WG_SYMBOL_XREF.COLUMNNAME",
+		"primaryKey = WG_SYMBOL_XREF.FLDNAME"
+	]
+}

@@ -26,12 +26,12 @@ public class SqlInstructionBuilder
         "",
     };
 
-    public SqlInstructionBuilder(PhysicalModel model, IReadOnlyList<NameMapRecord>? nameMaps)
+    public SqlInstructionBuilder(PhysicalModel model, SqlProjectOption option)
     {
         _physicalModel = model.Verify();
 
         _sqlTableBuilder = new SqlTableBuilder(model);
-        _sqlViewBuilder = new SqlViewBuilder(model, nameMaps);
+        _sqlViewBuilder = new SqlViewBuilder(model, option);
     }
 
     public Instructions Build(BuildType buildType)

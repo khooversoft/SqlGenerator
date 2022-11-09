@@ -34,8 +34,6 @@ async Task<int> Run(string[] args)
         var rc = new RootCommand("Generator SQL code from table and column dataset.")
         {
             container.GetRequiredService<BuildCommand>(),
-            container.GetRequiredService<ProjectCommand>(),
-            container.GetRequiredService<WriteCommand>(),
         };
 
         int exitCode = await rc.InvokeAsync(args);
@@ -70,15 +68,11 @@ ServiceProvider BuildContainer()
         x.AddFileLoggerFilter(x => true);
     });
 
-    service.AddSingleton<ProjectOptionActivity>();
     service.AddSingleton<BuildActivity>();
-    service.AddSingleton<DefaultOptionActivity>();
     service.AddSingleton<MergeActivity>();
     service.AddProjectBuild();
 
     service.AddSingleton<BuildCommand>();
-    service.AddSingleton<ProjectCommand>();
-    service.AddSingleton<WriteCommand>();
 
     return service.BuildServiceProvider();
 }

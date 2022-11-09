@@ -3,7 +3,7 @@
     {
       "security": "data",
       "name": "clt_NetO",
-      "format": null,
+      "format": "",
       "maxColumnSize": null
     },
     {
@@ -77820,7 +77820,7 @@
           "dataType": "nvarchar(35)",
           "notNull": true,
           "private": false,
-          "primaryKey": false,
+          "primaryKey": true,
           "nonuniqueIndex": false,
           "columnIndex": 0,
           "pii": false,
@@ -77832,7 +77832,7 @@
           "dataType": "nvarchar(35)",
           "notNull": true,
           "private": false,
-          "primaryKey": false,
+          "primaryKey": true,
           "nonuniqueIndex": false,
           "columnIndex": 1,
           "pii": false,
@@ -77844,7 +77844,7 @@
           "dataType": "nvarchar(35)",
           "notNull": true,
           "private": false,
-          "primaryKey": false,
+          "primaryKey": true,
           "nonuniqueIndex": false,
           "columnIndex": 2,
           "pii": false,

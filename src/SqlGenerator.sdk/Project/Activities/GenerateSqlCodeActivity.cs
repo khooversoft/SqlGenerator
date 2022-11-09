@@ -25,35 +25,32 @@ public class GenerateSqlCodeActivity
         _logger = logger.NotNull();
     }
 
-    public async Task<Counters> Build(string modelFile, string modelFolder, string? nameMapFile)
+    public async Task Build(string modelFile, string modelFolder, SqlProjectOption option)
     {
         modelFile.NotEmpty();
         modelFolder.NotEmpty();
+        option.NotNull();
 
         _logger.LogInformation("Reading physical model {file} read", modelFile);
 
         PhysicalModel physicalModel = PhysicalModelFile.Read(modelFile);
-        IReadOnlyList<NameMapRecord>? nameMaps = nameMapFile != null ? NameMapRecordFile.Read(nameMapFile) : null;
 
-        await GenerateForSqlProject(physicalModel, modelFile, modelFolder, nameMaps);
-        await GenerateSingleBuildFile(physicalModel, modelFile, modelFolder, nameMaps);
-
-        return new Counters(nameof(GenerateSqlCodeActivity))
-            .Add(physicalModel.ToCounters());
+        await GenerateForSqlProject(physicalModel, modelFile, modelFolder, option);
+        await GenerateSingleBuildFile(physicalModel, modelFile, modelFolder, option);
     }
 
-    private async Task GenerateForSqlProject(PhysicalModel physicalModel, string modelFile, string modelFolder, IReadOnlyList<NameMapRecord>? nameMaps)
+    private async Task GenerateForSqlProject(PhysicalModel physicalModel, string modelFile, string modelFolder, SqlProjectOption option)
     {
-        Instructions instructions = new SqlInstructionBuilder(physicalModel, nameMaps).Build(BuildType.SchemaOnly);
+        Instructions instructions = new SqlInstructionBuilder(physicalModel, option).Build(BuildType.SchemaOnly);
         InstructionObjects instructionObjects = new InstructionObjectBuilder().Build(instructions);
 
         _logger.LogInformation("Generating SQL code for tables and views for {model} to {folder}", modelFile, modelFolder);
         await _fileStoreBuilder.Build(instructionObjects, modelFolder);
     }
 
-    private async Task GenerateSingleBuildFile(PhysicalModel physicalModel, string modelFile, string modelFolder, IReadOnlyList<NameMapRecord>? nameMaps)
+    private async Task GenerateSingleBuildFile(PhysicalModel physicalModel, string modelFile, string modelFolder, SqlProjectOption option)
     {
-        Instructions instructions = new SqlInstructionBuilder(physicalModel, nameMaps).Build(BuildType.Overwrite);
+        Instructions instructions = new SqlInstructionBuilder(physicalModel, option).Build(BuildType.Overwrite);
         InstructionObjects instructionObjects = new InstructionObjectBuilder().Build(instructions);
 
         string outputFile = Path.Combine(modelFolder, Path.GetFileNameWithoutExtension(modelFile) + "_full.sql");

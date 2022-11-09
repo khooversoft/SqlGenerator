@@ -13,37 +13,37 @@ public class PhysicalModelBuilder
 {
     public PhysicalModel Build(
         IReadOnlyList<TableInfo> infos,
-        SchemaOption schemaOption,
+        SqlProjectOption projectOption,
         IReadOnlyList<TableTypeMetadata>? tableMetadata
         )
     {
         infos.NotNull();
-        schemaOption.Verify();
+        projectOption.Verify();
 
         IReadOnlyList<TableInfo> tableInfos = infos.ToList();
 
-        SchemaModel dataSchemaModel = schemaOption.Schemas
+        SchemaModel dataSchemaModel = projectOption.Schemas
             .Where(x => x.Security.ForTable())
             .FirstOrDefault()
             .NotNull(name: $"Cannot find data schema in option");
 
-        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, dataSchemaModel, schemaOption, tableMetadata);
+        IReadOnlyList<TableModel> tableModels = GenerateTable(tableInfos, dataSchemaModel, projectOption, tableMetadata);
 
         return new PhysicalModel
         {
-            Schemas = schemaOption.Schemas.ToArray(),
+            Schemas = projectOption.Schemas.ToArray(),
             Tables = tableModels,
-            PrefixColumns = schemaOption.PrefixColumns.ToArray(),
-            SuffixColumns = schemaOption.SufixColumns.ToArray(),
-            Relationships = schemaOption.Relationships.ToArray(),
-            LookupRelationships = schemaOption.LookupRelationships.ToArray(),
+            PrefixColumns = projectOption.PrefixColumns.ToArray(),
+            SuffixColumns = projectOption.SufixColumns.ToArray(),
+            Relationships = projectOption.Relationships.ToArray(),
+            LookupRelationships = projectOption.LookupRelationships.ToArray(),
         }.Verify();
     }
 
     private static IReadOnlyList<TableModel> GenerateTable(
         IReadOnlyList<TableInfo> tableInfos,
         SchemaModel schemaModel,
-        SchemaOption schemaOption,
+        SqlProjectOption projectOption,
         IReadOnlyList<TableTypeMetadata>? tableMetadata
         )
     {
@@ -61,7 +61,7 @@ public class PhysicalModelBuilder
                     DataType = y.DataType,
                     NotNull = y.NotNull,
                     PrimaryKey = y.PrimaryKey,
-                    NonuniqueIndex = isNonuniqueIndex(schemaOption, x.Key, y.ColumnName),
+                    NonuniqueIndex = isNonuniqueIndex(projectOption, x.Key, y.ColumnName),
                     PII = y.PII,
                     Restricted = y.Restricted,
                     ColumnIndex = i,
@@ -77,7 +77,7 @@ public class PhysicalModelBuilder
             true => IndexType.Cluster
         };
 
-    static bool isNonuniqueIndex(SchemaOption schemaOption, string tableName, string columnName) => schemaOption.Relationships
+    static bool isNonuniqueIndex(SqlProjectOption projectOption, string tableName, string columnName) => projectOption.Relationships
         .Any(x =>
             x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase) &&
             x.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase)

@@ -8,11 +8,6 @@ using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Application;
 
-public record ClassificationOption
-{
-    public IReadOnlyList<ClassificationRecord> Protection { get; init; } = Array.Empty<ClassificationRecord>();
-}
-
 public record ClassificationRecord
 {
     public string ColumnNameMatch { get; init; } = null!;
@@ -23,29 +18,23 @@ public record ClassificationRecord
 
 public static class ClassificationOptionFile
 {
-    public static ClassificationOption Verify(this ClassificationOption subject)
+    public static ClassificationRecord Verify(this ClassificationRecord subject)
     {
         subject.NotNull();
-        subject.Protection.NotNull();
+        subject.ColumnNameMatch.NotEmpty();
+        (subject.PII || subject.Restricted).Assert(x => x == true, "PII and/or Restricted is required");
 
         return subject;
     }
 
-    public static async Task<ClassificationOption> ReadAsync(string file) => (await File.ReadAllTextAsync(file.NotEmpty()))
-        .NotNull(name: $"File {file} is empty")
-        .ToObject<ClassificationOption>()
-        .NotNull(name: $"File {file} did not deserialize");
-
-    public static Task WriteAsync(this ClassificationOption option, string file) => File.WriteAllTextAsync(file.NotEmpty(), option.NotNull().ToJsonFormat());
-
-    public static bool IsPII(this ClassificationOption option, string tableName, string columnName)
+    public static bool IsPII(this SqlProjectOption option, string tableName, string columnName)
     {
         return option.Protection
             .Where(x => x.PII)
             .Any(x => IsMatch(x, tableName, columnName));
     }
 
-    public static bool IsRestricted(this ClassificationOption option, string tableName, string columnName)
+    public static bool IsRestricted(this SqlProjectOption option, string tableName, string columnName)
     {
         return option.Protection
             .Where(x => x.Restricted)

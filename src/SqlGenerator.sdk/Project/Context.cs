@@ -9,49 +9,21 @@ namespace SqlGenerator.sdk.Project;
 public record Context
 {
     public string ProjectFile { get; init; } = null!;
-    public ProjectOption ProjectOption { get; init; } = null!;
-    public bool Force { get; init; }
+    public SqlProjectOption ProjectOption { get; init; } = null!;
     public string BuildFolder { get; init; } = null!;
     public string ModelFolder { get; init; } = null!;
     public ConfigFile SourceFile { get; init; } = null!;
-    public ConfigFile FilterFile { get; init; } = null!;
-    public ConfigFile ClassificationFile { get; init; } = null!;
     public ConfigFile ModelFile { get; init; } = null!;
     public ConfigFile DataDictionaryFile { get; init; } = null!;
-    public ConfigFile SourceMappingFile { get; init; } = null!;
-    public ConfigFile StatsFile { get; init; } = null!;
-
-    public Counters Counters { get; } = new();
 }
 
 
 public static class ContextExtensions
 {
-    private const string _filterExtension = ".filtered.csv";
-    private const string _classificiationExtension = ".classificiation.csv";
     private const string _modelExtension = ".model.json";
     private const string _dataDictionaryExtension = ".dataDictionary.csv";
-    private const string _sourceMappingExtension = ".sourceMapping.csv";
-    private const string _statsExtension = ".stats.csv";
 
-    public static SchemaOption GetSchemaOption(this Context context, ILogger logger)
-    {
-        context.NotNull();
-        context.ProjectOption.NotNull();
-        context.ProjectOption.OptionFile.NotEmpty();
-
-        string optionFile = PathTool.ToFullPath(context.ProjectFile, context.ProjectOption.OptionFile).NotEmpty();
-        optionFile.Assert(x => File.Exists(x), x => $"File {x} does not exist");
-
-        SchemaOption importOption = File.ReadAllText(optionFile)
-            .ToObject<SchemaOption>()
-            .NotNull();
-        logger.LogInformation("Read option file {file}", optionFile);
-
-        return importOption;
-    }
-
-    public static Context CreateContext(this ProjectOption projectOption, string projectFile, ConfigFile sourceFile, bool force)
+    public static Context CreateContext(this SqlProjectOption projectOption, string projectFile, ConfigFile sourceFile)
     {
         projectOption.NotNull();
         projectFile.NotEmpty();
@@ -78,18 +50,13 @@ public static class ContextExtensions
         {
             ProjectFile = projectFile,
             ProjectOption = projectOption,
-            Force = force,
             SourceFile = sourceFile,
 
             BuildFolder = buildFolder,
             ModelFolder = modelFolder,
 
-            FilterFile = new ConfigFile(buildTemplate, _filterExtension),
-            ClassificationFile = new ConfigFile(buildTemplate, _classificiationExtension),
             ModelFile = new ConfigFile(buildTemplate, _modelExtension),
             DataDictionaryFile = new ConfigFile(modelTemplate, _dataDictionaryExtension),
-            StatsFile = new ConfigFile(modelTemplate, _statsExtension),
-            SourceMappingFile = new ConfigFile(modelTemplate, _sourceMappingExtension),
         };
     }
 }

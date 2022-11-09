@@ -27,9 +27,9 @@ public record TableInfoModel
     [Optional]
     public string? PII { get; init; }
 
-    [Name("NoData")]
+    [Name("Excluded")]
     [Optional]
-    public string? NoData { get; init; }
+    public string? Excluded { get; init; }
 }
 
 
@@ -46,7 +46,7 @@ public static class TableInfoModelExtensions
             PrimaryKey = IsYes(subject.PrimaryKey),
             Restricted = IsYes(subject.Restricted),
             PII = IsYes(subject.PII),
-            NoData = IsYes(subject.NoData),
+            Excluded = IsYes(subject.Excluded),
         };
 
         static bool IsNotNull(string? value) => value?.Equals("not null", StringComparison.OrdinalIgnoreCase) ?? false;

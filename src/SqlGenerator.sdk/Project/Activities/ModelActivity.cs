@@ -19,15 +19,9 @@ public class ModelActivity
     private readonly ILogger<ModelActivity> _logger;
     public ModelActivity(ILogger<ModelActivity> logger) => _logger = logger.NotNull();
 
-    public Task<Counters> Build(
-        string sourceFile,
-        SchemaOption schemaOption,
-        string outputFile,
-        string? tableTypeMetadata
-        )
+    public Task Build(string sourceFile, SqlProjectOption projectOption, string outputFile)
     {
         sourceFile.NotEmpty();
-        schemaOption.NotNull();
         outputFile.NotEmpty();
 
         new
@@ -39,19 +33,14 @@ public class ModelActivity
         DataDictionary dataDictionary = DataDictionaryFile.Read(sourceFile);
         dataDictionary = dataDictionary with
         {
-            Items = dataDictionary.Items.Where(x => !x.NoData).ToArray(),
+            Items = dataDictionary.Items.Where(x => !x.Excluded).ToArray(),
         };
 
-        IReadOnlyList<TableTypeMetadata>? tableMetadata = tableTypeMetadata != null ? TableTypeMetadataFile.Read(tableTypeMetadata) : null;
+        IReadOnlyList<TableTypeMetadata>? tableMetadata = projectOption.TableTypeMetadata != null ? TableTypeMetadataFile.Read(projectOption.TableTypeMetadata) : null;
 
-        var model = new PhysicalModelBuilder().Build(dataDictionary.Items, schemaOption, tableMetadata);
+        var model = new PhysicalModelBuilder().Build(dataDictionary.Items, projectOption, tableMetadata);
         model.Write(outputFile);
 
-        var counters = new Counters(nameof(ModelActivity))
-        {
-            ("Input table count", dataDictionary.Items.Select(x => x.TableName).Distinct().Distinct().Count()),
-        }.Add(model.ToCounters());
-
-        return Task.FromResult(counters);
+        return Task.CompletedTask;
     }
 }

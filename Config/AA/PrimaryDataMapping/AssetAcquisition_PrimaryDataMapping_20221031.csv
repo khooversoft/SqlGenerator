@@ -1,0 +1,5 @@
+VendorID,VendorAttributeName,VendorCode,BECUAttributeName,BECUCode
+PenFed,PRODUCT_TYPE,MORTGAGE,ProductType,Fixed
+PenFed,PRODUCT_TYPE,FLEX-MORTGAGE,ProductType,ARM
+DFCU,PRODUCT_TYPE,Auto Sale New,ProductType,New Auto
+DFCU,PRODUCT_TYPE,Auto Sale Used,ProductType,Used Auto

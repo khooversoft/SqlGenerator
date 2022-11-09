@@ -1,0 +1,24 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+
+CREATE VIEW [NetO_pii].[VwWG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY]
+AS
+   SELECT
+      x.[CURRENT_CUSTOMERID],
+      x.[AG_DA_ACCT_TYPE],
+      x.[AG_DA_ACCT_TOTALASSETS],
+      x.[TOTALASSETSDAVGLAST60DAYS],
+      x.[TOTALASSETSDAVGLAST180DAYS],
+      x.[SAVINGACCBALDAVGLAST60DAYS],
+      x.[SAVINGACCBALDAVGLAST180DAYS],
+      x.[AGDIRECRDEPOSITVLAST30DAYS],
+      x.[AGGREGATEDIREALUELAST60DAYS],
+      x.[AGDEPOSITVALUELAST30DAYS],
+      x.[AGDEPOSITVALUELAST60DAYS],
+      x.[AGDEPOSITVALUELAST180DAYS]
+   FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+   ;

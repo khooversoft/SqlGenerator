@@ -4,11 +4,11 @@
 
 CREATE TABLE [clt_NetO].[WG_SYMBOL_XREF]
 (
-   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
-   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [TABLENAME]                        nvarchar(35)         NOT NULL,
    [COLUMNNAME]                       nvarchar(35)         NOT NULL,
    [FLDNAME]                          nvarchar(35)         NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [LKP_TABLE]                        nvarchar(35)         NOT NULL,
    [LKP_COLUMN]                       nvarchar(35)         NOT NULL,
    [LKP_DISPLAY_COLUMN]               nvarchar(35)         NOT NULL,
@@ -23,4 +23,5 @@ CREATE TABLE [clt_NetO].[WG_SYMBOL_XREF]
    [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
    [ASAP_SRC_NAME]                    nvarchar(36)         NULL
 )
+WITH (DISTRIBUTION = HASH ([TABLENAME]), CLUSTERED COLUMNSTORE INDEX)
 ;

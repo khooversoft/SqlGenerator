@@ -17,12 +17,12 @@ public class SqlViewBuilder
     private const string _aliasFormat = "{alias}";
     private const string _tableFormat = "{tableName}";
     private readonly PhysicalModel _physicalModel;
-    private readonly IReadOnlyList<NameMapRecord>? _nameMaps;
+    private readonly SqlProjectOption _option;
 
-    public SqlViewBuilder(PhysicalModel model, IReadOnlyList<NameMapRecord>? nameMaps)
+    public SqlViewBuilder(PhysicalModel model, SqlProjectOption option)
     {
         _physicalModel = model.NotNull();
-        _nameMaps = nameMaps;
+        _option = option.NotNull();
     }
 
 
@@ -37,12 +37,6 @@ public class SqlViewBuilder
             Schema = schema.Name,
             Name = GetRealViewName(tableModel, schema),
         };
-
-        //SqlObjectName tableName = new SqlObjectName
-        //{
-        //    Schema = schema.Name,
-        //    Name = GetRealTableName(tableModel, schema),
-        //};
 
         var list = new Instructions();
         list += (InstructionType.Stream, viewName.CalculateFileName());
@@ -107,15 +101,6 @@ public class SqlViewBuilder
         return list;
     }
 
-    //private string GetRealTableName(TableModel tableModel, SchemaModel schema)
-    //{
-    //    return schema.Format switch
-    //    {
-    //        null => tableModel.Name.Name,
-    //        not null => schema.Format.Replace(_tableFormat, tableModel.Name.Name),
-    //    };
-    //}
-
     private string GetRealViewName(TableModel tableModel, SchemaModel schema)
     {
         string realViewName = schema.Format switch
@@ -127,7 +112,7 @@ public class SqlViewBuilder
         realViewName = schema.MaxColumnSize switch
         {
             null => realViewName,
-            int v => _nameMaps?.ShortName(realViewName, v) ?? realViewName,
+            int v => _option?.ShortName(realViewName, v) ?? realViewName,
         };
 
         return realViewName;
@@ -145,7 +130,7 @@ public class SqlViewBuilder
         string? getRealColumnName() => schemaModel.MaxColumnSize switch
         {
             null => null,
-            int v => _nameMaps?.ShortName(columnModel.Name, v) ?? columnModel.Name,
+            int v => _option?.ShortName(columnModel.Name, v) ?? columnModel.Name,
         };
 
         string displayAs(string? defaultName = null) => getRealColumnName() switch

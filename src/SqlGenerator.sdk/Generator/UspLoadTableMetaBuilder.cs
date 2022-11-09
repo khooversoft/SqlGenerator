@@ -35,18 +35,16 @@ public class UspLoadTableMetaBuilder
             .OrderBy(x => x.TableName)
             .GroupBy(x => x.TableName);
 
-        foreach (var table in tables)
-        {
-            list += $"INSERT INTO {uspLoadTableOption.DataTableName} (DataLayer, TableName, ColumnName, ColumnOrder)";
+        list += $"INSERT INTO {uspLoadTableOption.DataTableName} (DataLayer, TableName, ColumnName, ColumnOrder)";
 
-            list += table
-                .Select(x => $"SELECT '{uspLoadTableOption.DataLayerName}', '{x.TableName}', '{x.Column.Name}', {x.Column.ColumnIndex + 1}")
-                .SequenceJoin("UNION ALL")
-                .ToList();
+        list += tables
+            .SelectMany(x => x.Select((y, i) => (data: y, index: i + 1)))
+            .Select(x => $"SELECT '{uspLoadTableOption.DataLayerName}', '{x.data.TableName}', '{x.data.Column.Name}', {x.index}")
+            .SequenceJoin("UNION ALL")
+            .ToList();
 
-            list += ";";
-            list += "";
-        }
+        list += ";";
+        list += "";
 
         return list;
     }

@@ -15,19 +15,15 @@ internal class BuildCommand : Command
     public BuildCommand(IServiceProvider serviceProvider) : base("build", "Build SQL DLL schema")
     {
         Argument<string> projectFile = new ("projectFile", "Project file (.json)");
-        Option<bool?> force = new ("--force", "Force build");
-        Option<bool?> useSource = new ("--useSource", "Use source file instead of master");
 
         AddArgument(projectFile);
-        AddOption(force);
-        AddOption(useSource);
 
-        this.SetHandler(async (string projectFile, bool? force, bool? useSource) =>
+        this.SetHandler(async (string projectFile) =>
         {
             await serviceProvider
                 .GetRequiredService<BuildActivity>()
-                .Generate(projectFile, force ?? false, useSource ?? false);
+                .Generate(projectFile);
 
-        }, projectFile, force, useSource);
+        }, projectFile);
     }
 }
