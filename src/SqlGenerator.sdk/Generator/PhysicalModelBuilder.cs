@@ -37,6 +37,7 @@ public class PhysicalModelBuilder
             SuffixColumns = projectOption.SufixColumns.ToArray(),
             Relationships = projectOption.Relationships.ToArray(),
             LookupRelationships = projectOption.LookupRelationships.ToArray(),
+            Commands = projectOption.CommandOptions.ToArray(),
         }.Verify();
     }
 

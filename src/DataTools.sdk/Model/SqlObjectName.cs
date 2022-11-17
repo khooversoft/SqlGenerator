@@ -11,18 +11,19 @@ namespace DataTools.sdk.Model;
 
 public sealed record SqlObjectName
 {
-    public string Schema { get; init; } = null!;
-    public string Name { get; init; } = null!;
+    public required string Schema { get; init; } = null!;
+    public required string Name { get; init; } = null!;
 
     public override string ToString() => $"[{Schema}].[{Name}]";
+    public string ToSimpleString() => $"{Schema}.{Name}";
 
     public string CalculateFileName() => $"{Name}.sql";
 
     public bool Equals(SqlObjectName? obj)
     {
         return obj is SqlObjectName model &&
-            Schema == model.Schema &&
-            Name == model.Name;
+            Schema.EqualsIgnoreCase(model.Schema) &&
+            Name.EqualsIgnoreCase(model.Name);
     }
 
     public override int GetHashCode() => HashCode.Combine(Schema, Name);

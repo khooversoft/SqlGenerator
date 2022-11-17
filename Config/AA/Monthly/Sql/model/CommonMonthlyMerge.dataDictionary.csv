@@ -1,4 +1,4 @@
-Table Name,Column Name,Column Datatype,Column Null Option,Primary Key,Restricted,PII,NoData
+Table Name,Column Name,Column Datatype,Column Null Option,Primary Key,Restricted,PII,Excluded
 CommonMonthly,MonthEndDate,int,NULL,,,,
 CommonMonthly,CurrentAccountNumber,bigint,NULL,,,,
 CommonMonthly,AssetClass,nvarchar(100),NULL,,,,

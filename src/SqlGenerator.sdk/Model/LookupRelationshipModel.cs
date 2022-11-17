@@ -22,7 +22,6 @@ public static class LookupRelationshipModelExtensions
     public static LookupRelationshipModel Verify(this LookupRelationshipModel subject)
     {
         subject.NotNull();
-        subject.ReferenceTable.NotEmpty();
         subject.MatchTable.NotEmpty();
         subject.SelectLine.NotEmpty();
         subject.JoinLine.NotEmpty();

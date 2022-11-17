@@ -87,7 +87,9 @@ public class SqlTableBuilder
         static string Format(string value, int columnSize) => value + (columnSize - value.Length).Func(x => x <= 0 ? string.Empty : new string(' ', x));
     }
 
-    static IEnumerable<string> HashIndexInstructions(TableModel tableModel) => tableModel.Columns
+    IEnumerable<string> HashIndexInstructions(TableModel tableModel) => tableModel.Columns
+        .Concat(_physicalModel.PrefixColumns)
+        .Concat(_physicalModel.SuffixColumns)
         .Where(x => x.PrimaryKey)
         .Take(1)
         .Select(x => $"[{x.Name}]")
@@ -97,7 +99,9 @@ public class SqlTableBuilder
             string v => $"WITH (DISTRIBUTION = HASH ({v}), CLUSTERED COLUMNSTORE INDEX)".ToEnumerable(),
         };
 
-    static IEnumerable<string> ClusterIndexInstructions(TableModel tableModel) => tableModel.Columns
+    IEnumerable<string> ClusterIndexInstructions(TableModel tableModel) => tableModel.Columns
+        .Concat(_physicalModel.PrefixColumns)
+        .Concat(_physicalModel.SuffixColumns)
         .Where(x => x.PrimaryKey)
         .Select(x => $"[{x.Name}]")
         .Join(", ") switch

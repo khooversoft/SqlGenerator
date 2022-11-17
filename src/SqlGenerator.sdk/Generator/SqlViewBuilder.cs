@@ -64,7 +64,9 @@ public class SqlViewBuilder
         list += InstructionType.TabPlus;
 
         IReadOnlyList<ColumnModel> columns = tableModel.Columns.Where(x => x.PrimaryKey)
+            .Concat(_physicalModel.PrefixColumns.Where(x => !x.Private))
             .Concat(tableModel.Columns.Where(x => !x.PrimaryKey))
+            .Concat(_physicalModel.SuffixColumns.Where(x => !x.Private))
             .ToArray();
 
         var relationships = GetRelationship(tableModel);
@@ -72,6 +74,7 @@ public class SqlViewBuilder
         list += columns
             .Select(x => BuildColumnModel(x, schema))
             .Concat(relationships.Select(x => x.Select))
+            .Concat(CalculatedViews(tableModel, relationships))
             .SequenceJoin(x => x += ",");
 
         list += InstructionType.TabMinus;
@@ -99,6 +102,27 @@ public class SqlViewBuilder
         };
 
         return list;
+    }
+
+    private IReadOnlyList<string> CalculatedViews(TableModel tableModel, IReadOnlyList<RelationshipInstruction> relationships)
+    {
+        var cmdFunction = new CommandFunction()
+            .Add("alias", getAlias);
+
+        var list = _physicalModel.Commands
+            .Where(x => x.Type == CommandType.ViewColumn)
+            .Where(x => PatternMatch.IsMatch(x.Pattern, tableModel.Name.ToSimpleString()))
+            .Select(x => cmdFunction.Resolve(x.Command.NotEmpty()))
+            .ToArray();
+
+        return list;
+
+
+        string getAlias(string tableName) => relationships
+            .Where(x => SqlObjectName.Parse(tableName) == SqlObjectName.Parse(x.ReferenceTableName))
+            .Select(x => ToAlias(x.Index))
+            .FirstOrDefault()
+            .NotEmpty(name: $"Table {tableName} does not exist");
     }
 
     private string GetRealViewName(TableModel tableModel, SchemaModel schema)
@@ -186,15 +210,21 @@ public class SqlViewBuilder
     }
 
     private IReadOnlyList<RelationshipInstruction> GetRelationship(TableModel tableModel) => _physicalModel.LookupRelationships
-        .Where(x => PatternMatch.IsMatch($"{SqlObjectName.Parse(x.MatchTable)}", tableModel.Name))
+        .Where(x => PatternMatch.IsMatch(x.MatchTable, tableModel.Name.ToSimpleString()))
         .Select((x, index) => new RelationshipInstruction
         {
-            Select = x.SelectLine.Replace(_aliasFormat, $"a{index}"),
-            Join = x.JoinLine.Replace(_aliasFormat, $"a{index}"),
+            ReferenceTableName = x.ReferenceTable,
+            Index = index,
+            Select = x.SelectLine.Replace(_aliasFormat, ToAlias(index)),
+            Join = x.JoinLine.Replace(_aliasFormat, ToAlias(index)),
         }).ToArray();
+
+    private string ToAlias(int index) => $"a{index}";
 
     private record RelationshipInstruction
     {
+        public string ReferenceTableName { get; init; } = null!;
+        public int Index { get; init; }
         public string Select { get; init; } = null!;
         public string Join { get; init; } = null!;
     }

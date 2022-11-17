@@ -3,7 +3,7 @@
     {
       "security": "data",
       "name": "clt_AssetAcq",
-      "format": null,
+      "format": "",
       "maxColumnSize": null
     },
     {
@@ -2067,6 +2067,18 @@
   ],
   "prefixColumns": [
     {
+      "name": "BECU_AccountNumber",
+      "security": "unrestricted",
+      "dataType": "nvarchar(50)",
+      "notNull": true,
+      "private": false,
+      "primaryKey": true,
+      "nonuniqueIndex": false,
+      "columnIndex": 0,
+      "pii": false,
+      "restricted": false
+    },
+    {
       "name": "ASAP_RecordEffectiveDateTime",
       "security": "unrestricted",
       "dataType": "datetime2(7)",
@@ -2195,7 +2207,14 @@
       "referenceTable": "ctl_Investor.InvestorLoanIdMap",
       "matchTable": "clt_AssetAcq.CommonMonthly",
       "selectLine": "{alias}.[OriginalMemberNumber] AS [OriginalAccountNumber]",
-      "joinLine": "LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] {alias} ON x.[CurrentAccountNumber] = {alias}.[LoanId]"
+      "joinLine": "LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] {alias} ON x.[BECU_AccountNumber] = {alias}.[LoanId]"
+    }
+  ],
+  "commands": [
+    {
+      "type": "viewColumn",
+      "pattern": "clt_AssetAcq.CommonMonthly",
+      "command": "coalesce([{alias(ctl_Investor.InvestorLoanIdMap)}].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]"
     }
   ]
 }

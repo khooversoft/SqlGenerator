@@ -1,4 +1,5 @@
-﻿using SqlGenerator.sdk.Project;
+﻿using SqlGenerator.sdk.Application;
+using SqlGenerator.sdk.Project;
 using SqlGenerator.sdk.Project.Activities;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ public sealed record PhysicalModel
     public IReadOnlyList<ColumnModel> SuffixColumns { get; init; } = Array.Empty<ColumnModel>();
     public IReadOnlyList<RelationshipModel> Relationships { get; init; } = Array.Empty<RelationshipModel>();
     public IReadOnlyList<LookupRelationshipModel> LookupRelationships { get; init; } = Array.Empty<LookupRelationshipModel>();
+    public IReadOnlyList<CommandOption> Commands { get; init; } = Array.Empty<CommandOption>();
 
     public bool Equals(PhysicalModel? obj)
     {
@@ -30,7 +32,9 @@ public sealed record PhysicalModel
             Relationships.Count == model.Relationships.Count &&
             Relationships.Zip(model.Relationships).All(x => x.First == x.Second) &&
             LookupRelationships.Count == model.LookupRelationships.Count &&
-            LookupRelationships.Zip(model.LookupRelationships).All(x => x.First == x.Second);
+            LookupRelationships.Zip(model.LookupRelationships).All(x => x.First == x.Second) &&
+            Commands.Count == model.Commands.Count &&
+            Commands.Zip(model.Commands).All(x => x.First == x.Second);
     }
 
     public override int GetHashCode() => HashCode.Combine(Schemas, Tables);
@@ -46,6 +50,7 @@ public static class PhysicalModelExtensions
         subject.NotNull().Tables.ForEach(x => x.Verify());
         subject.NotNull().Relationships.ForEach(x => x.Verify());
         subject.NotNull().LookupRelationships.ForEach(x => x.Verify());
+        subject.NotNull().Commands.ForEach(x => x.Verify().Command.NotEmpty());
 
         subject.Tables.ForEach(x => subject.IsSchemaPresent(x.Name.Schema).Assert(x => x == true, $"Schema={x.Name.Schema} not found"));
 

@@ -1,10 +1,18 @@
 {
+  "includeFiles":[
+		"Monthly.ImportOption.json",
+		"CommonMonthly_Classification.json"
+	],
+
   "sourceFile": "mergeBuild\\CommonMonthlyMerge.dataDictionary.csv",
-  "optionFile": "..\\AA.ImportOption.json",
+  "optionFile": "Monthly.ImportOption.json",
   "nameMapFile": null,
   "tableListFile": null,
-  "ClassificationFile": "CommonMonthly_Classification.json",
   "buildFolder": "Sql",
   "uspLoadTableOption": null,
-  "rawToCultivated": null
+  "rawToCultivated": null,
+
+  "updateCommands": [
+		"viewColumn += clt_AssetAcq.CommonMonthly = 'coalesce([{alias(ctl_Investor.InvestorLoanIdMap)}].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]'"
+	]
 }

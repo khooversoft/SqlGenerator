@@ -88,7 +88,6 @@ public partial class ProjectBuilder
         await _modelActivity.Build(sourceFile, context.ProjectOption, context.ModelFile);
     }
 
-
     private async Task GenerateSql(Context context)
     {
         if (!context.ModelFile.Exists())

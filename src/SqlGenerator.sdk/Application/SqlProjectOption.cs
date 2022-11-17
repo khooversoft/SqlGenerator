@@ -36,7 +36,7 @@ public static class SqlProjectOptionFile
     {
         IncludeOption include = IncludeOptionFile.Read(projectFile);
 
-        return  new ConfigurationBuilder()
+        return new ConfigurationBuilder()
             .Action(x => include.IncludeFiles.ForEach(y => x.AddJsonFile(PathTool.ToFullPath(projectFile, y))))
             .AddJsonFile(projectFile)
             .Build()
@@ -47,7 +47,7 @@ public static class SqlProjectOptionFile
                 ProjectOptionFile = projectFile,
                 SourceFile = PathTool.ToFullPath(projectFile, x.SourceFile),
                 TableTypeMetadata = PathTool.ToFullPath(projectFile, x.TableTypeMetadata),
-                CommandOptions = x.UpdateCommands.Select(y => CommandOptionTool.Create(y)).ToArray(),
+                CommandOptions = x.UpdateCommands.Select(y => CommandOption.Create(y)).ToArray(),
             });
     }
 

@@ -16,6 +16,7 @@ public sealed record ColumnModel
     public bool PII { get; init; }
     public bool Restricted { get; init; }
 
+
     public bool Equals(ColumnModel? obj)
     {
         return obj is ColumnModel model &&
