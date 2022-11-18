@@ -11,27 +11,42 @@ public static class CommandOptionTool
     {
         new Func<IToken, object?>[]
         {
-            x => x is TokenValue v && v.Value.ToLower() == "exclude" ? CommandType.Exclude: null,
+            x => x is TokenValue v && v.Value.EqualsIgnoreCase("exclude") ? CommandType.Exclude : null,
             x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
             x => x is TokenValue v ? v.Value : null,
         },
 
         new Func<IToken, object?>[]
         {
-            x => x is TokenValue v && v.Value.ToLower() == "primarykey" ? CommandType.PrimaryKey : null,
+            x => x is TokenValue v && v.Value.EqualsIgnoreCase("primaryKey") ? CommandType.PrimaryKey : null,
             x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
             x => x is TokenValue v ? v.Value : null,
         },
 
         new Func<IToken, object?>[]
         {
-            x => x is TokenValue v && v.Value.ToLower() == "viewcolumn" ? CommandType.ViewColumn : null,
+            x => x is TokenValue v && v.Value.EqualsIgnoreCase("viewColumn") ? CommandType.ViewColumn : null,
             x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
             x => x is TokenValue v ? v.Value : null,
             x => x is TokenValue v && v.Value == "=" ? "=" : null,
             x => x is TokenValue v ? v.Value : (x is BlockToken b ? b.Value : null),
-        }
-    };    
+        },
+
+        new Func<IToken, object?>[]
+        {
+            x => x is TokenValue v && v.Value.EqualsIgnoreCase("excludeView") ? CommandType.ExcludeView : null,
+            x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
+            x => x is TokenValue v ? v.Value : null,
+        },
+
+        new Func<IToken, object?>[]
+        {
+            x => x is TokenValue v && v.Value.EqualsIgnoreCase("excludeView") ? CommandType.ExcludeViewNot : null,
+            x => x is TokenValue v && v.Value == "-=" ? "-=" : null,
+            x => x is TokenValue v ? v.Value : null,
+        },
+
+    };
 
 
     public static bool IsValid(string command) => Parse(command) != null;
@@ -52,7 +67,7 @@ public static class CommandOptionTool
         IReadOnlyList<IToken> tokens = new StringTokenizer()
             .UseDoubleQuote()
             .UseSingleQuote()
-            .Add("=", "+=")
+            .Add("=", "+=", "-=")
             .Parse(command)
             .Where(x => x is TokenValue v ? !v.Value.IsEmpty() : true)
             .Select(x => x switch

@@ -50,7 +50,7 @@ public static class PhysicalModelExtensions
         subject.NotNull().Tables.ForEach(x => x.Verify());
         subject.NotNull().Relationships.ForEach(x => x.Verify());
         subject.NotNull().LookupRelationships.ForEach(x => x.Verify());
-        subject.NotNull().Commands.ForEach(x => x.Verify().Command.NotEmpty());
+        subject.NotNull().Commands.ForEach(x => x.Verify());
 
         subject.Tables.ForEach(x => subject.IsSchemaPresent(x.Name.Schema).Assert(x => x == true, $"Schema={x.Name.Schema} not found"));
 

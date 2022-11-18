@@ -78159,7 +78159,7 @@
       "security": "unrestricted",
       "dataType": "nvarchar(36)",
       "notNull": false,
-      "private": false,
+      "private": true,
       "primaryKey": false,
       "nonuniqueIndex": false,
       "columnIndex": 0,
@@ -78174,5 +78174,47 @@
       "referenceObjectId": "*.LNUM"
     }
   ],
-  "lookupRelationships": []
+  "lookupRelationships": [],
+  "commands": [
+    {
+      "type": "exclude",
+      "pattern": "GF_TL_LOAN_DATA.ONBOARD_DISB_STATUS",
+      "command": null
+    },
+    {
+      "type": "exclude",
+      "pattern": "GF_TLBR_ADDITIONALDATA.MOTHERS_MAIDEN",
+      "command": null
+    },
+    {
+      "type": "exclude",
+      "pattern": "SERVICNG.S_SERVICING_STATUS",
+      "command": null
+    },
+    {
+      "type": "excludeView",
+      "pattern": "WG_RPT*.*",
+      "command": null
+    },
+    {
+      "type": "excludeViewNot",
+      "pattern": "WG_RPT_LOAN_STATUS.*",
+      "command": null
+    },
+    {
+      "type": "primaryKey",
+      "pattern": "WG_SYMBOL_XREF.TABLENAME",
+      "command": null
+    },
+    {
+      "type": "primaryKey",
+      "pattern": "WG_SYMBOL_XREF.COLUMNNAME",
+      "command": null
+    },
+    {
+      "type": "primaryKey",
+      "pattern": "WG_SYMBOL_XREF.FLDNAME",
+      "command": null
+    }
+  ]
 }

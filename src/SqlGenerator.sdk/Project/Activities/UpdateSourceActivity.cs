@@ -25,7 +25,7 @@ public class UpdateSourceActivity
         new
         {
             FilteringSource = sourceFile,
-            TableListFile = option.CommandOptions
+            ExcludeCommands = option.CommandOptions
                 .Where(x => x.Type == CommandType.Exclude)
                 .Select(x => x.ToString())
                 .Join(", "),

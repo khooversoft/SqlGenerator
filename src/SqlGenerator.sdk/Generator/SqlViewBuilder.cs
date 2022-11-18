@@ -32,13 +32,23 @@ public class SqlViewBuilder
     //   PII view => all columns are visible
     public Instructions BuildViewModel(TableModel tableModel, BuildType buildType, SchemaModel schema)
     {
+        var list = new Instructions();
+
+        IReadOnlyList<ColumnModel> columns = tableModel.Columns.Where(x => x.PrimaryKey)
+            .Concat(_physicalModel.PrefixColumns.Where(x => !x.Private))
+            .Concat(tableModel.Columns.Where(x => !x.PrimaryKey))
+            .Concat(_physicalModel.SuffixColumns.Where(x => !x.Private))
+            .Where(x => FilterView(tableModel, x))
+            .ToArray();
+
+        if (columns.Count == 0) return list;
+
         var viewName = new SqlObjectName
         {
             Schema = schema.Name,
             Name = GetRealViewName(tableModel, schema),
         };
 
-        var list = new Instructions();
         list += (InstructionType.Stream, viewName.CalculateFileName());
         list += SqlInstructionBuilder._headers;
 
@@ -62,12 +72,6 @@ public class SqlViewBuilder
         list += InstructionType.TabPlus;
         list += "SELECT";
         list += InstructionType.TabPlus;
-
-        IReadOnlyList<ColumnModel> columns = tableModel.Columns.Where(x => x.PrimaryKey)
-            .Concat(_physicalModel.PrefixColumns.Where(x => !x.Private))
-            .Concat(tableModel.Columns.Where(x => !x.PrimaryKey))
-            .Concat(_physicalModel.SuffixColumns.Where(x => !x.Private))
-            .ToArray();
 
         var relationships = GetRelationship(tableModel);
 
@@ -102,6 +106,21 @@ public class SqlViewBuilder
         };
 
         return list;
+    }
+
+    private bool FilterView(TableModel tableModel, ColumnModel columnModel)
+    {
+        bool excludeNot = _physicalModel.Commands
+            .Where(x => x.Type == CommandType.ExcludeViewNot)
+            .Any(x => PatternMatch.IsMatch(x.Pattern, $"{tableModel.Name.Name}.{columnModel.Name}"));
+
+        if (excludeNot) return true;
+
+        bool exclude = _physicalModel.Commands
+            .Where(x => x.Type == CommandType.ExcludeView)
+            .Any(x => PatternMatch.IsMatch(x.Pattern, $"{tableModel.Name.Name}.{columnModel.Name}"));
+
+        return !exclude;
     }
 
     private IReadOnlyList<string> CalculatedViews(TableModel tableModel, IReadOnlyList<RelationshipInstruction> relationships)

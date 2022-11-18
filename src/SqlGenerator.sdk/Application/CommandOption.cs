@@ -15,7 +15,9 @@ public enum CommandType
     None,
     Exclude,
     PrimaryKey,
-    ViewColumn
+    ViewColumn,
+    ExcludeView,
+    ExcludeViewNot,
 }
 
 public record CommandOption
@@ -35,6 +37,8 @@ public static class CommandOptionExtensions
         option.NotNull();
         option.Type.AssertValid();
         option.Pattern.NotEmpty();
+
+        if (option.Type == CommandType.ViewColumn) option.Command.NotEmpty();
 
         return option;
     }

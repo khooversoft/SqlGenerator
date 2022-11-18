@@ -140,7 +140,7 @@
       "dataType": "nvarchar(36)",
       "notNull": false,
       "hashKey": false,
-      "private": false
+      "private": true
     }
   ],
   "Relationships": [
