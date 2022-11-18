@@ -23,6 +23,7 @@ CREATE TABLE [clt_NetO].[DTLTRAN]
    [USE_BY_SYSTEM]                    nchar(1)             NULL,
    [BUILDER_EARNEST_CREDIT]           nchar(1)             NULL,
    [EXCLOTHCREDPREP]                  nchar(1)             NULL,
+   [POSTCLOSE_TOLERANCECURE]          nchar(1)             NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,

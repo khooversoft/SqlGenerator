@@ -105,7 +105,10 @@ AS
       x.[LOCK_EXP_DATE],
       x.[TEMPLATE_ID],
       x.[SELLER_LOAN_REG_CID],
-      x.[PROP_COUNTY]
+      x.[PROP_COUNTY],
+      x.[CATEGORY_TYPE],
+      x.[GOVREFITYPE_NM],
+      x.[PROJ_ATTACH_TYPE]
    FROM [clt_NetO].[WG_BULK_IMPORT_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

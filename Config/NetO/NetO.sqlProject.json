@@ -22,9 +22,6 @@
 	},
 
 	"updateCommands": [
-		"exclude += GF_TL_LOAN_DATA.ONBOARD_DISB_STATUS",
-		"exclude += GF_TLBR_ADDITIONALDATA.MOTHERS_MAIDEN",
-		"exclude += SERVICNG.S_SERVICING_STATUS",
 		"excludeView += WG_RPT*.*",
 		"excludeView -= WG_RPT_LOAN_STATUS.*",
 		"primaryKey += WG_SYMBOL_XREF.TABLENAME",

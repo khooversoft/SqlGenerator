@@ -1123,6 +1123,8 @@ CREATE TABLE [clt_NetO].[DELIVERY]
    [APPR_DOC_ID_OVER]                 nvarchar(20)         NULL,
    [MLADISCCOMPLETE]                  nchar(1)             NULL,
    [S_SIGNDOCPUSHBACK]                nvarchar(8)          NULL,
+   [MI_CANCELLED]                     nchar(1)             NULL,
+   [HFA_IDENTIFIER]                   nvarchar(7)          NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -1306,6 +1308,7 @@ CREATE TABLE [clt_NetO].[DTLTRAN]
    [USE_BY_SYSTEM]                    nchar(1)             NULL,
    [BUILDER_EARNEST_CREDIT]           nchar(1)             NULL,
    [EXCLOTHCREDPREP]                  nchar(1)             NULL,
+   [POSTCLOSE_TOLERANCECURE]          nchar(1)             NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -2231,6 +2234,7 @@ CREATE TABLE [clt_NetO].[GF_TL_LOAN_DATA]
    [BOP_VERBIAGE_TXT]                   nvarchar(2000)       NULL,
    [EFCC_HIGH_RISK_INDICATOR]           nchar(1)             NULL,
    [PROMOTION_CODE]                     nvarchar(20)         NULL,
+   [ONBOARD_DISB_STATUS]                nvarchar(50)         NULL,
    [ASAP_ROW_HASH]                      nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                      nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                  datetime2(7)         NULL,
@@ -3319,6 +3323,8 @@ CREATE TABLE [clt_NetO].[GF_TLBR_ADDITIONALDATA]
    [HMDA_DISC_NOTICE]                 nchar(1)             NULL,
    [CRDTSCORE_MODEL_OTHDESC_OVR]      nvarchar(100)        NULL,
    [PERSON_RECORD_FOUND]              nchar(1)             NULL,
+   [MOTHERS_MAIDEN]                   nvarchar(100)        NULL,
+   [APP_DISCL_READ]                   nchar(1)             NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -7334,9 +7340,9 @@ CREATE TABLE [clt_NetO].[PRODUCT]
    [BUILDLOCKCANCEL]                  nchar(1)             NULL,
    [BUILDER_LOCK]                     nchar(1)             NULL,
    [OPL_OPT]                          int                  NULL,
-   [REFUND_PERCENT]                   decimal(18,2)        NULL,
-   [UPFRONT_PERCENT]                  decimal(18,2)        NULL,
-   [RATE_ADD_PERCENT]                 decimal(18,2)        NULL,
+   [REFUND_PERCENT]                   decimal(18,6)        NULL,
+   [UPFRONT_PERCENT]                  decimal(18,6)        NULL,
+   [RATE_ADD_PERCENT]                 decimal(18,6)        NULL,
    [BUILDER_UNLOCK]                   nchar(1)             NULL,
    [DT_FIRST_FLOAT_ELIG_OVR]          datetime             NULL,
    [DT_FINAL_FLOAT_ELIG_OVR]          datetime             NULL,
@@ -7826,6 +7832,7 @@ CREATE TABLE [clt_NetO].[SERVICNG]
    [DOCS_SENT]                         datetime             NULL,
    [INDEMNF_AMT]                       decimal(18,3)        NULL,
    [PC_FEDEX_NUM]                      nchar(50)            NULL,
+   [S_SERVICING_STATUS]                nvarchar(8)          NULL,
    [ASAP_ROW_HASH]                     nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                     nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                 datetime2(7)         NULL,
@@ -8004,6 +8011,7 @@ CREATE TABLE [clt_NetO].[SUBJPRP]
    [LEASE_HOLDER]                     nvarchar(30)         NULL,
    [LEASEHOLD_DATE]                   datetime             NULL,
    [TX_50F2]                          nchar(1)             NULL,
+   [RESALE_RESTRICTION]               int                  NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -10029,6 +10037,9 @@ CREATE TABLE [clt_NetO].[WG_BULK_IMPORT_DATA]
    [TEMPLATE_ID]                      int                  NULL,
    [SELLER_LOAN_REG_CID]              nvarchar(10)         NULL,
    [PROP_COUNTY]                      nvarchar(70)         NULL,
+   [CATEGORY_TYPE]                    nvarchar(8)          NULL,
+   [GOVREFITYPE_NM]                   nvarchar(8)          NULL,
+   [PROJ_ATTACH_TYPE]                 nvarchar(8)          NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -12049,6 +12060,39 @@ CREATE TABLE [clt_NetO].[WG_SC_ATTRIBUTES]
    [COLLATERAL_ATT]                   nvarchar(20)         NULL,
    [COLLATERAL_SRC]                   nvarchar(20)         NULL,
    [COLLATERAL_OVR]                   nvarchar(20)         NULL,
+   [CO_AGE_OLD_AUT_TRD_OVR]           int                  NULL,
+   [PRI_AGE_OLD_AUT_TRD_OVR]          int                  NULL,
+   [CO_AUT_TRD_OP_24_MO_OVR]          int                  NULL,
+   [PRI_AUT_TRD_OP_24_MO_OVR]         int                  NULL,
+   [CO_AVG_AGE_TRD_LNS_OVR]           int                  NULL,
+   [PRI_AVG_AGE_TRD_LNS_OVR]          int                  NULL,
+   [CO_AUT_TOT_BAL_TRD_OVR]           int                  NULL,
+   [PRI_AUT_TOT_BAL_TRD_OVR]          int                  NULL,
+   [CO_CRDT_OPN_IN_6_MO_OVR]          int                  NULL,
+   [PRI_CRDT_OPN_IN_6_MO_OVR]         int                  NULL,
+   [CO_NO_TMS_30L_2YRS_OVR]           int                  NULL,
+   [PRI_NO_TMS_30L_2YRS_OVR]          int                  NULL,
+   [CO_INQ_6M_EX_14DYS_OVR]           int                  NULL,
+   [PRI_INQ_6M_EX_14DYS_OVR]          int                  NULL,
+   [CO_INQ_6M_EX_30DYS_OVR]           int                  NULL,
+   [PRI_INQ_6M_EX_30DYS_OVR]          int                  NULL,
+   [CO_AF_INQ_6M_EX_14D_OVR]          int                  NULL,
+   [PRI_AF_INQ_6M_EX_14D_OVR]         int                  NULL,
+   [CO_NO_OF_MON_RE_DEQ_OVR]          int                  NULL,
+   [PRI_NO_OF_MON_RE_DEQ_OVR]         int                  NULL,
+   [PRI_RTO_BAL_REV_BNK_OVR]          int                  NULL,
+   [CO_RTO_BAL_REV_BANK_OVR]          int                  NULL,
+   [PRI_HC_TRD_RPT_IN_6M_OVR]         int                  NULL,
+   [CO_HC_TRD_RPT_IN_6M_OVR]          int                  NULL,
+   [PRI_TRD_OPN_PAST_6M_OVR]          int                  NULL,
+   [CO_TRD_OPN_PAST_6M_OVR]           int                  NULL,
+   [PRI_TRD_WRS_RAT_60P_OVR]          int                  NULL,
+   [CO_TRD_WRST_RAT_60P_OVR]          int                  NULL,
+   [PRI_REVOLV_TRD_HCR_OVR]           int                  NULL,
+   [CO_REVOLV_TRD_HCR_OVR]            int                  NULL,
+   [PRI_TOT_NSF_24MONS_OVR]           int                  NULL,
+   [CO_TOT_NSF_24MONS_OVR]            int                  NULL,
+   [CUST_CREDIT_SCORE_OVR]            int                  NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -13168,7 +13212,9 @@ AS
       x.[ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE],
-      x.[S_SIGNDOCPUSHBACK]
+      x.[S_SIGNDOCPUSHBACK],
+      x.[MI_CANCELLED],
+      x.[HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -13324,7 +13370,8 @@ AS
       x.[RECORD_CREATED],
       x.[USE_BY_SYSTEM],
       x.[BUILDER_EARNEST_CREDIT],
-      x.[EXCLOTHCREDPREP]
+      x.[EXCLOTHCREDPREP],
+      x.[POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -14159,7 +14206,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -15076,7 +15124,9 @@ AS
       x.[ISCURRENTCUSTOMER],
       x.[HMDA_DISC_NOTICE],
       x.[CRDTSCORE_MODEL_OTHDESC_OVR],
-      x.[PERSON_RECORD_FOUND]
+      x.[PERSON_RECORD_FOUND],
+      x.[MOTHERS_MAIDEN],
+      x.[APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -18826,7 +18876,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -18995,7 +19046,8 @@ AS
       x.[ADJCLTV],
       x.[LEASE_HOLDER],
       x.[LEASEHOLD_DATE],
-      x.[TX_50F2]
+      x.[TX_50F2],
+      x.[RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -20693,7 +20745,10 @@ AS
       x.[LOCK_EXP_DATE],
       x.[TEMPLATE_ID],
       x.[SELLER_LOAN_REG_CID],
-      x.[PROP_COUNTY]
+      x.[PROP_COUNTY],
+      x.[CATEGORY_TYPE],
+      x.[GOVREFITYPE_NM],
+      x.[PROJ_ATTACH_TYPE]
    FROM [clt_NetO].[WG_BULK_IMPORT_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -21593,7 +21648,40 @@ AS
       x.[LOAN_ELIGIBILITY_OVR],
       x.[COLLATERAL_ATT],
       x.[COLLATERAL_SRC],
-      x.[COLLATERAL_OVR]
+      x.[COLLATERAL_OVR],
+      x.[CO_AGE_OLD_AUT_TRD_OVR],
+      x.[PRI_AGE_OLD_AUT_TRD_OVR],
+      x.[CO_AUT_TRD_OP_24_MO_OVR],
+      x.[PRI_AUT_TRD_OP_24_MO_OVR],
+      x.[CO_AVG_AGE_TRD_LNS_OVR],
+      x.[PRI_AVG_AGE_TRD_LNS_OVR],
+      x.[CO_AUT_TOT_BAL_TRD_OVR],
+      x.[PRI_AUT_TOT_BAL_TRD_OVR],
+      x.[CO_CRDT_OPN_IN_6_MO_OVR],
+      x.[PRI_CRDT_OPN_IN_6_MO_OVR],
+      x.[CO_NO_TMS_30L_2YRS_OVR],
+      x.[PRI_NO_TMS_30L_2YRS_OVR],
+      x.[CO_INQ_6M_EX_14DYS_OVR],
+      x.[PRI_INQ_6M_EX_14DYS_OVR],
+      x.[CO_INQ_6M_EX_30DYS_OVR],
+      x.[PRI_INQ_6M_EX_30DYS_OVR],
+      x.[CO_AF_INQ_6M_EX_14D_OVR],
+      x.[PRI_AF_INQ_6M_EX_14D_OVR],
+      x.[CO_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_RTO_BAL_REV_BNK_OVR],
+      x.[CO_RTO_BAL_REV_BANK_OVR],
+      x.[PRI_HC_TRD_RPT_IN_6M_OVR],
+      x.[CO_HC_TRD_RPT_IN_6M_OVR],
+      x.[PRI_TRD_OPN_PAST_6M_OVR],
+      x.[CO_TRD_OPN_PAST_6M_OVR],
+      x.[PRI_TRD_WRS_RAT_60P_OVR],
+      x.[CO_TRD_WRST_RAT_60P_OVR],
+      x.[PRI_REVOLV_TRD_HCR_OVR],
+      x.[CO_REVOLV_TRD_HCR_OVR],
+      x.[PRI_TOT_NSF_24MONS_OVR],
+      x.[CO_TOT_NSF_24MONS_OVR],
+      x.[CUST_CREDIT_SCORE_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -22676,7 +22764,9 @@ AS
       x.[ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE],
-      x.[S_SIGNDOCPUSHBACK]
+      x.[S_SIGNDOCPUSHBACK],
+      x.[MI_CANCELLED],
+      x.[HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -22832,7 +22922,8 @@ AS
       x.[RECORD_CREATED],
       x.[USE_BY_SYSTEM],
       x.[BUILDER_EARNEST_CREDIT],
-      x.[EXCLOTHCREDPREP]
+      x.[EXCLOTHCREDPREP],
+      x.[POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -23667,7 +23758,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -24584,7 +24676,9 @@ AS
       x.[ISCURRENTCUSTOMER],
       x.[HMDA_DISC_NOTICE],
       x.[CRDTSCORE_MODEL_OTHDESC_OVR],
-      x.[PERSON_RECORD_FOUND]
+      x.[PERSON_RECORD_FOUND],
+      x.[MOTHERS_MAIDEN],
+      x.[APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -28334,7 +28428,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -28503,7 +28598,8 @@ AS
       x.[ADJCLTV],
       x.[LEASE_HOLDER],
       x.[LEASEHOLD_DATE],
-      x.[TX_50F2]
+      x.[TX_50F2],
+      x.[RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -30201,7 +30297,10 @@ AS
       x.[LOCK_EXP_DATE],
       x.[TEMPLATE_ID],
       x.[SELLER_LOAN_REG_CID],
-      x.[PROP_COUNTY]
+      x.[PROP_COUNTY],
+      x.[CATEGORY_TYPE],
+      x.[GOVREFITYPE_NM],
+      x.[PROJ_ATTACH_TYPE]
    FROM [clt_NetO].[WG_BULK_IMPORT_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -31101,7 +31200,40 @@ AS
       x.[LOAN_ELIGIBILITY_OVR],
       x.[COLLATERAL_ATT],
       x.[COLLATERAL_SRC],
-      x.[COLLATERAL_OVR]
+      x.[COLLATERAL_OVR],
+      x.[CO_AGE_OLD_AUT_TRD_OVR],
+      x.[PRI_AGE_OLD_AUT_TRD_OVR],
+      x.[CO_AUT_TRD_OP_24_MO_OVR],
+      x.[PRI_AUT_TRD_OP_24_MO_OVR],
+      x.[CO_AVG_AGE_TRD_LNS_OVR],
+      x.[PRI_AVG_AGE_TRD_LNS_OVR],
+      x.[CO_AUT_TOT_BAL_TRD_OVR],
+      x.[PRI_AUT_TOT_BAL_TRD_OVR],
+      x.[CO_CRDT_OPN_IN_6_MO_OVR],
+      x.[PRI_CRDT_OPN_IN_6_MO_OVR],
+      x.[CO_NO_TMS_30L_2YRS_OVR],
+      x.[PRI_NO_TMS_30L_2YRS_OVR],
+      x.[CO_INQ_6M_EX_14DYS_OVR],
+      x.[PRI_INQ_6M_EX_14DYS_OVR],
+      x.[CO_INQ_6M_EX_30DYS_OVR],
+      x.[PRI_INQ_6M_EX_30DYS_OVR],
+      x.[CO_AF_INQ_6M_EX_14D_OVR],
+      x.[PRI_AF_INQ_6M_EX_14D_OVR],
+      x.[CO_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_RTO_BAL_REV_BNK_OVR],
+      x.[CO_RTO_BAL_REV_BANK_OVR],
+      x.[PRI_HC_TRD_RPT_IN_6M_OVR],
+      x.[CO_HC_TRD_RPT_IN_6M_OVR],
+      x.[PRI_TRD_OPN_PAST_6M_OVR],
+      x.[CO_TRD_OPN_PAST_6M_OVR],
+      x.[PRI_TRD_WRS_RAT_60P_OVR],
+      x.[CO_TRD_WRST_RAT_60P_OVR],
+      x.[PRI_REVOLV_TRD_HCR_OVR],
+      x.[CO_REVOLV_TRD_HCR_OVR],
+      x.[PRI_TOT_NSF_24MONS_OVR],
+      x.[CO_TOT_NSF_24MONS_OVR],
+      x.[CUST_CREDIT_SCORE_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -32184,7 +32316,9 @@ AS
       x.[ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE],
-      x.[S_SIGNDOCPUSHBACK]
+      x.[S_SIGNDOCPUSHBACK],
+      x.[MI_CANCELLED],
+      x.[HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -32340,7 +32474,8 @@ AS
       x.[RECORD_CREATED],
       x.[USE_BY_SYSTEM],
       x.[BUILDER_EARNEST_CREDIT],
-      x.[EXCLOTHCREDPREP]
+      x.[EXCLOTHCREDPREP],
+      x.[POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -33175,7 +33310,8 @@ AS
       x.[BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE]
+      x.[PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -34092,7 +34228,9 @@ AS
       x.[ISCURRENTCUSTOMER],
       x.[HMDA_DISC_NOTICE],
       x.[CRDTSCORE_MODEL_OTHDESC_OVR],
-      x.[PERSON_RECORD_FOUND]
+      x.[PERSON_RECORD_FOUND],
+      x.[MOTHERS_MAIDEN],
+      x.[APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -37842,7 +37980,8 @@ AS
       x.[GUARANTEE_FEE],
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
-      x.[PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -38011,7 +38150,8 @@ AS
       x.[ADJCLTV],
       x.[LEASE_HOLDER],
       x.[LEASEHOLD_DATE],
-      x.[TX_50F2]
+      x.[TX_50F2],
+      x.[RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -39709,7 +39849,10 @@ AS
       x.[LOCK_EXP_DATE],
       x.[TEMPLATE_ID],
       x.[SELLER_LOAN_REG_CID],
-      x.[PROP_COUNTY]
+      x.[PROP_COUNTY],
+      x.[CATEGORY_TYPE],
+      x.[GOVREFITYPE_NM],
+      x.[PROJ_ATTACH_TYPE]
    FROM [clt_NetO].[WG_BULK_IMPORT_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -40609,7 +40752,40 @@ AS
       x.[LOAN_ELIGIBILITY_OVR],
       x.[COLLATERAL_ATT],
       x.[COLLATERAL_SRC],
-      x.[COLLATERAL_OVR]
+      x.[COLLATERAL_OVR],
+      x.[CO_AGE_OLD_AUT_TRD_OVR],
+      x.[PRI_AGE_OLD_AUT_TRD_OVR],
+      x.[CO_AUT_TRD_OP_24_MO_OVR],
+      x.[PRI_AUT_TRD_OP_24_MO_OVR],
+      x.[CO_AVG_AGE_TRD_LNS_OVR],
+      x.[PRI_AVG_AGE_TRD_LNS_OVR],
+      x.[CO_AUT_TOT_BAL_TRD_OVR],
+      x.[PRI_AUT_TOT_BAL_TRD_OVR],
+      x.[CO_CRDT_OPN_IN_6_MO_OVR],
+      x.[PRI_CRDT_OPN_IN_6_MO_OVR],
+      x.[CO_NO_TMS_30L_2YRS_OVR],
+      x.[PRI_NO_TMS_30L_2YRS_OVR],
+      x.[CO_INQ_6M_EX_14DYS_OVR],
+      x.[PRI_INQ_6M_EX_14DYS_OVR],
+      x.[CO_INQ_6M_EX_30DYS_OVR],
+      x.[PRI_INQ_6M_EX_30DYS_OVR],
+      x.[CO_AF_INQ_6M_EX_14D_OVR],
+      x.[PRI_AF_INQ_6M_EX_14D_OVR],
+      x.[CO_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_RTO_BAL_REV_BNK_OVR],
+      x.[CO_RTO_BAL_REV_BANK_OVR],
+      x.[PRI_HC_TRD_RPT_IN_6M_OVR],
+      x.[CO_HC_TRD_RPT_IN_6M_OVR],
+      x.[PRI_TRD_OPN_PAST_6M_OVR],
+      x.[CO_TRD_OPN_PAST_6M_OVR],
+      x.[PRI_TRD_WRS_RAT_60P_OVR],
+      x.[CO_TRD_WRST_RAT_60P_OVR],
+      x.[PRI_REVOLV_TRD_HCR_OVR],
+      x.[CO_REVOLV_TRD_HCR_OVR],
+      x.[PRI_TOT_NSF_24MONS_OVR],
+      x.[CO_TOT_NSF_24MONS_OVR],
+      x.[CUST_CREDIT_SCORE_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -41692,7 +41868,9 @@ AS
       x.[ADJ_LOAN_AMT_OVRD] AS [ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER] AS [APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE] AS [MLADISCCOMPLETE],
-      x.[S_SIGNDOCPUSHBACK] AS [S_SIGNDOCPUSHBACK]
+      x.[S_SIGNDOCPUSHBACK] AS [S_SIGNDOCPUSHBACK],
+      x.[MI_CANCELLED] AS [MI_CANCELLED],
+      x.[HFA_IDENTIFIER] AS [HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -41848,7 +42026,8 @@ AS
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[USE_BY_SYSTEM] AS [USE_BY_SYSTEM],
       x.[BUILDER_EARNEST_CREDIT] AS [BUILDER_EARNEST_CREDIT],
-      x.[EXCLOTHCREDPREP] AS [EXCLOTHCREDPREP]
+      x.[EXCLOTHCREDPREP] AS [EXCLOTHCREDPREP],
+      x.[POSTCLOSE_TOLERANCECURE] AS [POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -42683,7 +42862,8 @@ AS
       x.[BRANCH_COST_CENTER] AS [BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT] AS [BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR] AS [EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE] AS [PROMOTION_CODE]
+      x.[PROMOTION_CODE] AS [PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS] AS [ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -43600,7 +43780,9 @@ AS
       x.[ISCURRENTCUSTOMER] AS [ISCURRENTCUSTOMER],
       x.[HMDA_DISC_NOTICE] AS [HMDA_DISC_NOTICE],
       x.[CRDTSCORE_MODEL_OTHDESC_OVR] AS [CRDTSCORE_MODEL_OTHDESC_OVR],
-      x.[PERSON_RECORD_FOUND] AS [PERSON_RECORD_FOUND]
+      x.[PERSON_RECORD_FOUND] AS [PERSON_RECORD_FOUND],
+      x.[MOTHERS_MAIDEN] AS [MOTHERS_MAIDEN],
+      x.[APP_DISCL_READ] AS [APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -47350,7 +47532,8 @@ AS
       x.[GUARANTEE_FEE] AS [GUARANTEE_FEE],
       x.[DOCS_SENT] AS [DOCS_SENT],
       x.[INDEMNF_AMT] AS [INDEMNF_AMT],
-      x.[PC_FEDEX_NUM] AS [PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM] AS [PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS] AS [S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -47519,7 +47702,8 @@ AS
       x.[ADJCLTV] AS [ADJCLTV],
       x.[LEASE_HOLDER] AS [LEASE_HOLDER],
       x.[LEASEHOLD_DATE] AS [LEASEHOLD_DATE],
-      x.[TX_50F2] AS [TX_50F2]
+      x.[TX_50F2] AS [TX_50F2],
+      x.[RESALE_RESTRICTION] AS [RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -49217,7 +49401,10 @@ AS
       x.[LOCK_EXP_DATE] AS [LOCK_EXP_DATE],
       x.[TEMPLATE_ID] AS [TEMPLATE_ID],
       x.[SELLER_LOAN_REG_CID] AS [SELLER_LOAN_REG_CID],
-      x.[PROP_COUNTY] AS [PROP_COUNTY]
+      x.[PROP_COUNTY] AS [PROP_COUNTY],
+      x.[CATEGORY_TYPE] AS [CATEGORY_TYPE],
+      x.[GOVREFITYPE_NM] AS [GOVREFITYPE_NM],
+      x.[PROJ_ATTACH_TYPE] AS [PROJ_ATTACH_TYPE]
    FROM [clt_NetO].[WG_BULK_IMPORT_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -50117,7 +50304,40 @@ AS
       x.[LOAN_ELIGIBILITY_OVR] AS [LOAN_ELIGIBILITY_OVR],
       x.[COLLATERAL_ATT] AS [COLLATERAL_ATT],
       x.[COLLATERAL_SRC] AS [COLLATERAL_SRC],
-      x.[COLLATERAL_OVR] AS [COLLATERAL_OVR]
+      x.[COLLATERAL_OVR] AS [COLLATERAL_OVR],
+      x.[CO_AGE_OLD_AUT_TRD_OVR] AS [CO_AGE_OLD_AUT_TRD_OVR],
+      x.[PRI_AGE_OLD_AUT_TRD_OVR] AS [PRI_AGE_OLD_AUT_TRD_OVR],
+      x.[CO_AUT_TRD_OP_24_MO_OVR] AS [CO_AUT_TRD_OP_24_MO_OVR],
+      x.[PRI_AUT_TRD_OP_24_MO_OVR] AS [PRI_AUT_TRD_OP_24_MO_OVR],
+      x.[CO_AVG_AGE_TRD_LNS_OVR] AS [CO_AVG_AGE_TRD_LNS_OVR],
+      x.[PRI_AVG_AGE_TRD_LNS_OVR] AS [PRI_AVG_AGE_TRD_LNS_OVR],
+      x.[CO_AUT_TOT_BAL_TRD_OVR] AS [CO_AUT_TOT_BAL_TRD_OVR],
+      x.[PRI_AUT_TOT_BAL_TRD_OVR] AS [PRI_AUT_TOT_BAL_TRD_OVR],
+      x.[CO_CRDT_OPN_IN_6_MO_OVR] AS [CO_CRDT_OPN_IN_6_MO_OVR],
+      x.[PRI_CRDT_OPN_IN_6_MO_OVR] AS [PRI_CRDT_OPN_IN_6_MO_OVR],
+      x.[CO_NO_TMS_30L_2YRS_OVR] AS [CO_NO_TMS_30L_2YRS_OVR],
+      x.[PRI_NO_TMS_30L_2YRS_OVR] AS [PRI_NO_TMS_30L_2YRS_OVR],
+      x.[CO_INQ_6M_EX_14DYS_OVR] AS [CO_INQ_6M_EX_14DYS_OVR],
+      x.[PRI_INQ_6M_EX_14DYS_OVR] AS [PRI_INQ_6M_EX_14DYS_OVR],
+      x.[CO_INQ_6M_EX_30DYS_OVR] AS [CO_INQ_6M_EX_30DYS_OVR],
+      x.[PRI_INQ_6M_EX_30DYS_OVR] AS [PRI_INQ_6M_EX_30DYS_OVR],
+      x.[CO_AF_INQ_6M_EX_14D_OVR] AS [CO_AF_INQ_6M_EX_14D_OVR],
+      x.[PRI_AF_INQ_6M_EX_14D_OVR] AS [PRI_AF_INQ_6M_EX_14D_OVR],
+      x.[CO_NO_OF_MON_RE_DEQ_OVR] AS [CO_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_NO_OF_MON_RE_DEQ_OVR] AS [PRI_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_RTO_BAL_REV_BNK_OVR] AS [PRI_RTO_BAL_REV_BNK_OVR],
+      x.[CO_RTO_BAL_REV_BANK_OVR] AS [CO_RTO_BAL_REV_BANK_OVR],
+      x.[PRI_HC_TRD_RPT_IN_6M_OVR] AS [PRI_HC_TRD_RPT_IN_6M_OVR],
+      x.[CO_HC_TRD_RPT_IN_6M_OVR] AS [CO_HC_TRD_RPT_IN_6M_OVR],
+      x.[PRI_TRD_OPN_PAST_6M_OVR] AS [PRI_TRD_OPN_PAST_6M_OVR],
+      x.[CO_TRD_OPN_PAST_6M_OVR] AS [CO_TRD_OPN_PAST_6M_OVR],
+      x.[PRI_TRD_WRS_RAT_60P_OVR] AS [PRI_TRD_WRS_RAT_60P_OVR],
+      x.[CO_TRD_WRST_RAT_60P_OVR] AS [CO_TRD_WRST_RAT_60P_OVR],
+      x.[PRI_REVOLV_TRD_HCR_OVR] AS [PRI_REVOLV_TRD_HCR_OVR],
+      x.[CO_REVOLV_TRD_HCR_OVR] AS [CO_REVOLV_TRD_HCR_OVR],
+      x.[PRI_TOT_NSF_24MONS_OVR] AS [PRI_TOT_NSF_24MONS_OVR],
+      x.[CO_TOT_NSF_24MONS_OVR] AS [CO_TOT_NSF_24MONS_OVR],
+      x.[CUST_CREDIT_SCORE_OVR] AS [CUST_CREDIT_SCORE_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -51200,7 +51420,9 @@ AS
       x.[ADJ_LOAN_AMT_OVRD] AS [ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER] AS [APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE] AS [MLADISCCOMPLETE],
-      x.[S_SIGNDOCPUSHBACK] AS [S_SIGNDOCPUSHBACK]
+      x.[S_SIGNDOCPUSHBACK] AS [S_SIGNDOCPUSHBACK],
+      x.[MI_CANCELLED] AS [MI_CANCELLED],
+      x.[HFA_IDENTIFIER] AS [HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -51356,7 +51578,8 @@ AS
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[USE_BY_SYSTEM] AS [USE_BY_SYSTEM],
       x.[BUILDER_EARNEST_CREDIT] AS [BUILDER_EARNEST_CREDIT],
-      x.[EXCLOTHCREDPREP] AS [EXCLOTHCREDPREP]
+      x.[EXCLOTHCREDPREP] AS [EXCLOTHCREDPREP],
+      x.[POSTCLOSE_TOLERANCECURE] AS [POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -52191,7 +52414,8 @@ AS
       x.[BRANCH_COST_CENTER] AS [BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT] AS [BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR] AS [EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE] AS [PROMOTION_CODE]
+      x.[PROMOTION_CODE] AS [PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS] AS [ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -53108,7 +53332,9 @@ AS
       x.[ISCURRENTCUSTOMER] AS [ISCURRENTCUSTOMER],
       x.[HMDA_DISC_NOTICE] AS [HMDA_DISC_NOTICE],
       x.[CRDTSCORE_MODEL_OTHDESC_OVR] AS [CRDTSCORE_MODEL_OTHDESC_OVR],
-      x.[PERSON_RECORD_FOUND] AS [PERSON_RECORD_FOUND]
+      x.[PERSON_RECORD_FOUND] AS [PERSON_RECORD_FOUND],
+      x.[MOTHERS_MAIDEN] AS [MOTHERS_MAIDEN],
+      x.[APP_DISCL_READ] AS [APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -56858,7 +57084,8 @@ AS
       x.[GUARANTEE_FEE] AS [GUARANTEE_FEE],
       x.[DOCS_SENT] AS [DOCS_SENT],
       x.[INDEMNF_AMT] AS [INDEMNF_AMT],
-      x.[PC_FEDEX_NUM] AS [PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM] AS [PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS] AS [S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -57027,7 +57254,8 @@ AS
       x.[ADJCLTV] AS [ADJCLTV],
       x.[LEASE_HOLDER] AS [LEASE_HOLDER],
       x.[LEASEHOLD_DATE] AS [LEASEHOLD_DATE],
-      x.[TX_50F2] AS [TX_50F2]
+      x.[TX_50F2] AS [TX_50F2],
+      x.[RESALE_RESTRICTION] AS [RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -58725,7 +58953,10 @@ AS
       x.[LOCK_EXP_DATE] AS [LOCK_EXP_DATE],
       x.[TEMPLATE_ID] AS [TEMPLATE_ID],
       x.[SELLER_LOAN_REG_CID] AS [SELLER_LOAN_REG_CID],
-      x.[PROP_COUNTY] AS [PROP_COUNTY]
+      x.[PROP_COUNTY] AS [PROP_COUNTY],
+      x.[CATEGORY_TYPE] AS [CATEGORY_TYPE],
+      x.[GOVREFITYPE_NM] AS [GOVREFITYPE_NM],
+      x.[PROJ_ATTACH_TYPE] AS [PROJ_ATTACH_TYPE]
    FROM [clt_NetO].[WG_BULK_IMPORT_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -59625,7 +59856,40 @@ AS
       x.[LOAN_ELIGIBILITY_OVR] AS [LOAN_ELIGIBILITY_OVR],
       x.[COLLATERAL_ATT] AS [COLLATERAL_ATT],
       x.[COLLATERAL_SRC] AS [COLLATERAL_SRC],
-      x.[COLLATERAL_OVR] AS [COLLATERAL_OVR]
+      x.[COLLATERAL_OVR] AS [COLLATERAL_OVR],
+      x.[CO_AGE_OLD_AUT_TRD_OVR] AS [CO_AGE_OLD_AUT_TRD_OVR],
+      x.[PRI_AGE_OLD_AUT_TRD_OVR] AS [PRI_AGE_OLD_AUT_TRD_OVR],
+      x.[CO_AUT_TRD_OP_24_MO_OVR] AS [CO_AUT_TRD_OP_24_MO_OVR],
+      x.[PRI_AUT_TRD_OP_24_MO_OVR] AS [PRI_AUT_TRD_OP_24_MO_OVR],
+      x.[CO_AVG_AGE_TRD_LNS_OVR] AS [CO_AVG_AGE_TRD_LNS_OVR],
+      x.[PRI_AVG_AGE_TRD_LNS_OVR] AS [PRI_AVG_AGE_TRD_LNS_OVR],
+      x.[CO_AUT_TOT_BAL_TRD_OVR] AS [CO_AUT_TOT_BAL_TRD_OVR],
+      x.[PRI_AUT_TOT_BAL_TRD_OVR] AS [PRI_AUT_TOT_BAL_TRD_OVR],
+      x.[CO_CRDT_OPN_IN_6_MO_OVR] AS [CO_CRDT_OPN_IN_6_MO_OVR],
+      x.[PRI_CRDT_OPN_IN_6_MO_OVR] AS [PRI_CRDT_OPN_IN_6_MO_OVR],
+      x.[CO_NO_TMS_30L_2YRS_OVR] AS [CO_NO_TMS_30L_2YRS_OVR],
+      x.[PRI_NO_TMS_30L_2YRS_OVR] AS [PRI_NO_TMS_30L_2YRS_OVR],
+      x.[CO_INQ_6M_EX_14DYS_OVR] AS [CO_INQ_6M_EX_14DYS_OVR],
+      x.[PRI_INQ_6M_EX_14DYS_OVR] AS [PRI_INQ_6M_EX_14DYS_OVR],
+      x.[CO_INQ_6M_EX_30DYS_OVR] AS [CO_INQ_6M_EX_30DYS_OVR],
+      x.[PRI_INQ_6M_EX_30DYS_OVR] AS [PRI_INQ_6M_EX_30DYS_OVR],
+      x.[CO_AF_INQ_6M_EX_14D_OVR] AS [CO_AF_INQ_6M_EX_14D_OVR],
+      x.[PRI_AF_INQ_6M_EX_14D_OVR] AS [PRI_AF_INQ_6M_EX_14D_OVR],
+      x.[CO_NO_OF_MON_RE_DEQ_OVR] AS [CO_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_NO_OF_MON_RE_DEQ_OVR] AS [PRI_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_RTO_BAL_REV_BNK_OVR] AS [PRI_RTO_BAL_REV_BNK_OVR],
+      x.[CO_RTO_BAL_REV_BANK_OVR] AS [CO_RTO_BAL_REV_BANK_OVR],
+      x.[PRI_HC_TRD_RPT_IN_6M_OVR] AS [PRI_HC_TRD_RPT_IN_6M_OVR],
+      x.[CO_HC_TRD_RPT_IN_6M_OVR] AS [CO_HC_TRD_RPT_IN_6M_OVR],
+      x.[PRI_TRD_OPN_PAST_6M_OVR] AS [PRI_TRD_OPN_PAST_6M_OVR],
+      x.[CO_TRD_OPN_PAST_6M_OVR] AS [CO_TRD_OPN_PAST_6M_OVR],
+      x.[PRI_TRD_WRS_RAT_60P_OVR] AS [PRI_TRD_WRS_RAT_60P_OVR],
+      x.[CO_TRD_WRST_RAT_60P_OVR] AS [CO_TRD_WRST_RAT_60P_OVR],
+      x.[PRI_REVOLV_TRD_HCR_OVR] AS [PRI_REVOLV_TRD_HCR_OVR],
+      x.[CO_REVOLV_TRD_HCR_OVR] AS [CO_REVOLV_TRD_HCR_OVR],
+      x.[PRI_TOT_NSF_24MONS_OVR] AS [PRI_TOT_NSF_24MONS_OVR],
+      x.[CO_TOT_NSF_24MONS_OVR] AS [CO_TOT_NSF_24MONS_OVR],
+      x.[CUST_CREDIT_SCORE_OVR] AS [CUST_CREDIT_SCORE_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -60708,7 +60972,9 @@ AS
       x.[ADJ_LOAN_AMT_OVRD] AS [ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER] AS [APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE] AS [MLADISCCOMPLETE],
-      x.[S_SIGNDOCPUSHBACK] AS [S_SIGNDOCPUSHBACK]
+      x.[S_SIGNDOCPUSHBACK] AS [S_SIGNDOCPUSHBACK],
+      x.[MI_CANCELLED] AS [MI_CANCELLED],
+      x.[HFA_IDENTIFIER] AS [HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -60864,7 +61130,8 @@ AS
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[USE_BY_SYSTEM] AS [USE_BY_SYSTEM],
       x.[BUILDER_EARNEST_CREDIT] AS [BUILDER_EARNEST_CREDIT],
-      x.[EXCLOTHCREDPREP] AS [EXCLOTHCREDPREP]
+      x.[EXCLOTHCREDPREP] AS [EXCLOTHCREDPREP],
+      x.[POSTCLOSE_TOLERANCECURE] AS [POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -61699,7 +61966,8 @@ AS
       x.[BRANCH_COST_CENTER] AS [BRANCH_COST_CENTER],
       x.[BOP_VERBIAGE_TXT] AS [BOP_VERBIAGE_TXT],
       x.[EFCC_HIGH_RISK_INDICATOR] AS [EFCC_HIGH_RISK_INDICATOR],
-      x.[PROMOTION_CODE] AS [PROMOTION_CODE]
+      x.[PROMOTION_CODE] AS [PROMOTION_CODE],
+      x.[ONBOARD_DISB_STATUS] AS [ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -62616,7 +62884,9 @@ AS
       x.[ISCURRENTCUSTOMER] AS [ISCURRENTCUSTOMER],
       x.[HMDA_DISC_NOTICE] AS [HMDA_DISC_NOTICE],
       x.[CRDTSCORE_MODEL_OTHDESC_OVR] AS [CRDTSCORE_MODEL_OTHDESC_OVR],
-      x.[PERSON_RECORD_FOUND] AS [PERSON_RECORD_FOUND]
+      x.[PERSON_RECORD_FOUND] AS [PERSON_RECORD_FOUND],
+      x.[MOTHERS_MAIDEN] AS [MOTHERS_MAIDEN],
+      x.[APP_DISCL_READ] AS [APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -66366,7 +66636,8 @@ AS
       x.[GUARANTEE_FEE] AS [GUARANTEE_FEE],
       x.[DOCS_SENT] AS [DOCS_SENT],
       x.[INDEMNF_AMT] AS [INDEMNF_AMT],
-      x.[PC_FEDEX_NUM] AS [PC_FEDEX_NUM]
+      x.[PC_FEDEX_NUM] AS [PC_FEDEX_NUM],
+      x.[S_SERVICING_STATUS] AS [S_SERVICING_STATUS]
    FROM [clt_NetO].[SERVICNG] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -66535,7 +66806,8 @@ AS
       x.[ADJCLTV] AS [ADJCLTV],
       x.[LEASE_HOLDER] AS [LEASE_HOLDER],
       x.[LEASEHOLD_DATE] AS [LEASEHOLD_DATE],
-      x.[TX_50F2] AS [TX_50F2]
+      x.[TX_50F2] AS [TX_50F2],
+      x.[RESALE_RESTRICTION] AS [RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -68233,7 +68505,10 @@ AS
       x.[LOCK_EXP_DATE] AS [LOCK_EXP_DATE],
       x.[TEMPLATE_ID] AS [TEMPLATE_ID],
       x.[SELLER_LOAN_REG_CID] AS [SELLER_LOAN_REG_CID],
-      x.[PROP_COUNTY] AS [PROP_COUNTY]
+      x.[PROP_COUNTY] AS [PROP_COUNTY],
+      x.[CATEGORY_TYPE] AS [CATEGORY_TYPE],
+      x.[GOVREFITYPE_NM] AS [GOVREFITYPE_NM],
+      x.[PROJ_ATTACH_TYPE] AS [PROJ_ATTACH_TYPE]
    FROM [clt_NetO].[WG_BULK_IMPORT_DATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -69133,7 +69408,40 @@ AS
       x.[LOAN_ELIGIBILITY_OVR] AS [LOAN_ELIGIBILITY_OVR],
       x.[COLLATERAL_ATT] AS [COLLATERAL_ATT],
       x.[COLLATERAL_SRC] AS [COLLATERAL_SRC],
-      x.[COLLATERAL_OVR] AS [COLLATERAL_OVR]
+      x.[COLLATERAL_OVR] AS [COLLATERAL_OVR],
+      x.[CO_AGE_OLD_AUT_TRD_OVR] AS [CO_AGE_OLD_AUT_TRD_OVR],
+      x.[PRI_AGE_OLD_AUT_TRD_OVR] AS [PRI_AGE_OLD_AUT_TRD_OVR],
+      x.[CO_AUT_TRD_OP_24_MO_OVR] AS [CO_AUT_TRD_OP_24_MO_OVR],
+      x.[PRI_AUT_TRD_OP_24_MO_OVR] AS [PRI_AUT_TRD_OP_24_MO_OVR],
+      x.[CO_AVG_AGE_TRD_LNS_OVR] AS [CO_AVG_AGE_TRD_LNS_OVR],
+      x.[PRI_AVG_AGE_TRD_LNS_OVR] AS [PRI_AVG_AGE_TRD_LNS_OVR],
+      x.[CO_AUT_TOT_BAL_TRD_OVR] AS [CO_AUT_TOT_BAL_TRD_OVR],
+      x.[PRI_AUT_TOT_BAL_TRD_OVR] AS [PRI_AUT_TOT_BAL_TRD_OVR],
+      x.[CO_CRDT_OPN_IN_6_MO_OVR] AS [CO_CRDT_OPN_IN_6_MO_OVR],
+      x.[PRI_CRDT_OPN_IN_6_MO_OVR] AS [PRI_CRDT_OPN_IN_6_MO_OVR],
+      x.[CO_NO_TMS_30L_2YRS_OVR] AS [CO_NO_TMS_30L_2YRS_OVR],
+      x.[PRI_NO_TMS_30L_2YRS_OVR] AS [PRI_NO_TMS_30L_2YRS_OVR],
+      x.[CO_INQ_6M_EX_14DYS_OVR] AS [CO_INQ_6M_EX_14DYS_OVR],
+      x.[PRI_INQ_6M_EX_14DYS_OVR] AS [PRI_INQ_6M_EX_14DYS_OVR],
+      x.[CO_INQ_6M_EX_30DYS_OVR] AS [CO_INQ_6M_EX_30DYS_OVR],
+      x.[PRI_INQ_6M_EX_30DYS_OVR] AS [PRI_INQ_6M_EX_30DYS_OVR],
+      x.[CO_AF_INQ_6M_EX_14D_OVR] AS [CO_AF_INQ_6M_EX_14D_OVR],
+      x.[PRI_AF_INQ_6M_EX_14D_OVR] AS [PRI_AF_INQ_6M_EX_14D_OVR],
+      x.[CO_NO_OF_MON_RE_DEQ_OVR] AS [CO_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_NO_OF_MON_RE_DEQ_OVR] AS [PRI_NO_OF_MON_RE_DEQ_OVR],
+      x.[PRI_RTO_BAL_REV_BNK_OVR] AS [PRI_RTO_BAL_REV_BNK_OVR],
+      x.[CO_RTO_BAL_REV_BANK_OVR] AS [CO_RTO_BAL_REV_BANK_OVR],
+      x.[PRI_HC_TRD_RPT_IN_6M_OVR] AS [PRI_HC_TRD_RPT_IN_6M_OVR],
+      x.[CO_HC_TRD_RPT_IN_6M_OVR] AS [CO_HC_TRD_RPT_IN_6M_OVR],
+      x.[PRI_TRD_OPN_PAST_6M_OVR] AS [PRI_TRD_OPN_PAST_6M_OVR],
+      x.[CO_TRD_OPN_PAST_6M_OVR] AS [CO_TRD_OPN_PAST_6M_OVR],
+      x.[PRI_TRD_WRS_RAT_60P_OVR] AS [PRI_TRD_WRS_RAT_60P_OVR],
+      x.[CO_TRD_WRST_RAT_60P_OVR] AS [CO_TRD_WRST_RAT_60P_OVR],
+      x.[PRI_REVOLV_TRD_HCR_OVR] AS [PRI_REVOLV_TRD_HCR_OVR],
+      x.[CO_REVOLV_TRD_HCR_OVR] AS [CO_REVOLV_TRD_HCR_OVR],
+      x.[PRI_TOT_NSF_24MONS_OVR] AS [PRI_TOT_NSF_24MONS_OVR],
+      x.[CO_TOT_NSF_24MONS_OVR] AS [CO_TOT_NSF_24MONS_OVR],
+      x.[CUST_CREDIT_SCORE_OVR] AS [CUST_CREDIT_SCORE_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

@@ -9645,6 +9645,30 @@
           "columnIndex": 86,
           "pii": false,
           "restricted": false
+        },
+        {
+          "name": "MI_CANCELLED",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 87,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "HFA_IDENTIFIER",
+          "security": "unrestricted",
+          "dataType": "nvarchar(7)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 88,
+          "pii": false,
+          "restricted": false
         }
       ]
     },
@@ -10789,6 +10813,18 @@
           "primaryKey": false,
           "nonuniqueIndex": false,
           "columnIndex": 16,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "POSTCLOSE_TOLERANCECURE",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 17,
           "pii": false,
           "restricted": false
         }
@@ -18391,6 +18427,18 @@
           "columnIndex": 105,
           "pii": false,
           "restricted": false
+        },
+        {
+          "name": "ONBOARD_DISB_STATUS",
+          "security": "unrestricted",
+          "dataType": "nvarchar(50)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 106,
+          "pii": false,
+          "restricted": false
         }
       ]
     },
@@ -24795,6 +24843,30 @@
           "primaryKey": false,
           "nonuniqueIndex": false,
           "columnIndex": 52,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MOTHERS_MAIDEN",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 53,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APP_DISCL_READ",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 54,
           "pii": false,
           "restricted": false
         }
@@ -46381,7 +46453,7 @@
         {
           "name": "REFUND_PERCENT",
           "security": "unrestricted",
-          "dataType": "decimal(18,2)",
+          "dataType": "decimal(18,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -46393,7 +46465,7 @@
         {
           "name": "UPFRONT_PERCENT",
           "security": "unrestricted",
-          "dataType": "decimal(18,2)",
+          "dataType": "decimal(18,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -46405,7 +46477,7 @@
         {
           "name": "RATE_ADD_PERCENT",
           "security": "unrestricted",
-          "dataType": "decimal(18,2)",
+          "dataType": "decimal(18,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -50531,6 +50603,18 @@
           "columnIndex": 40,
           "pii": false,
           "restricted": false
+        },
+        {
+          "name": "S_SERVICING_STATUS",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 41,
+          "pii": false,
+          "restricted": false
         }
       ]
     },
@@ -52315,6 +52399,18 @@
           "primaryKey": false,
           "nonuniqueIndex": false,
           "columnIndex": 147,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESALE_RESTRICTION",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 148,
           "pii": false,
           "restricted": false
         }
@@ -64365,6 +64461,42 @@
           "primaryKey": false,
           "nonuniqueIndex": false,
           "columnIndex": 99,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CATEGORY_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 100,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "GOVREFITYPE_NM",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 101,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PROJ_ATTACH_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 102,
           "pii": false,
           "restricted": false
         }
@@ -77757,6 +77889,402 @@
           "columnIndex": 132,
           "pii": false,
           "restricted": false
+        },
+        {
+          "name": "CO_AGE_OLD_AUT_TRD_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 133,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_AGE_OLD_AUT_TRD_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 134,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_AUT_TRD_OP_24_MO_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 135,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_AUT_TRD_OP_24_MO_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 136,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_AVG_AGE_TRD_LNS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 137,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_AVG_AGE_TRD_LNS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 138,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_AUT_TOT_BAL_TRD_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 139,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_AUT_TOT_BAL_TRD_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 140,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_CRDT_OPN_IN_6_MO_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 141,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_CRDT_OPN_IN_6_MO_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 142,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_NO_TMS_30L_2YRS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 143,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_NO_TMS_30L_2YRS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 144,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_INQ_6M_EX_14DYS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 145,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_INQ_6M_EX_14DYS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 146,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_INQ_6M_EX_30DYS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 147,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_INQ_6M_EX_30DYS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 148,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_AF_INQ_6M_EX_14D_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 149,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_AF_INQ_6M_EX_14D_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 150,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_NO_OF_MON_RE_DEQ_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 151,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_NO_OF_MON_RE_DEQ_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 152,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_RTO_BAL_REV_BNK_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 153,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_RTO_BAL_REV_BANK_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 154,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_HC_TRD_RPT_IN_6M_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 155,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_HC_TRD_RPT_IN_6M_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 156,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_TRD_OPN_PAST_6M_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 157,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_TRD_OPN_PAST_6M_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 158,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_TRD_WRS_RAT_60P_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 159,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_TRD_WRST_RAT_60P_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 160,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_REVOLV_TRD_HCR_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 161,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_REVOLV_TRD_HCR_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 162,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRI_TOT_NSF_24MONS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 163,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_TOT_NSF_24MONS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 164,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CUST_CREDIT_SCORE_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "nonuniqueIndex": false,
+          "columnIndex": 165,
+          "pii": false,
+          "restricted": false
         }
       ]
     },
@@ -78176,21 +78704,6 @@
   ],
   "lookupRelationships": [],
   "commands": [
-    {
-      "type": "exclude",
-      "pattern": "GF_TL_LOAN_DATA.ONBOARD_DISB_STATUS",
-      "command": null
-    },
-    {
-      "type": "exclude",
-      "pattern": "GF_TLBR_ADDITIONALDATA.MOTHERS_MAIDEN",
-      "command": null
-    },
-    {
-      "type": "exclude",
-      "pattern": "SERVICNG.S_SERVICING_STATUS",
-      "command": null
-    },
     {
       "type": "excludeView",
       "pattern": "WG_RPT*.*",

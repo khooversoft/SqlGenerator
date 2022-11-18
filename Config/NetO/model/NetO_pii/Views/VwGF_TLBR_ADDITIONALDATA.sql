@@ -58,7 +58,9 @@ AS
       x.[ISCURRENTCUSTOMER],
       x.[HMDA_DISC_NOTICE],
       x.[CRDTSCORE_MODEL_OTHDESC_OVR],
-      x.[PERSON_RECORD_FOUND]
+      x.[PERSON_RECORD_FOUND],
+      x.[MOTHERS_MAIDEN],
+      x.[APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

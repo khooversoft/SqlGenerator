@@ -154,6 +154,7 @@ CREATE TABLE [clt_NetO].[SUBJPRP]
    [LEASE_HOLDER]                     nvarchar(30)         NULL,
    [LEASEHOLD_DATE]                   datetime             NULL,
    [TX_50F2]                          nchar(1)             NULL,
+   [RESALE_RESTRICTION]               int                  NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,

@@ -22,7 +22,8 @@ AS
       x.[RECORD_CREATED],
       x.[USE_BY_SYSTEM],
       x.[BUILDER_EARNEST_CREDIT],
-      x.[EXCLOTHCREDPREP]
+      x.[EXCLOTHCREDPREP],
+      x.[POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

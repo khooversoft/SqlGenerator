@@ -59,6 +59,8 @@ CREATE TABLE [clt_NetO].[GF_TLBR_ADDITIONALDATA]
    [HMDA_DISC_NOTICE]                 nchar(1)             NULL,
    [CRDTSCORE_MODEL_OTHDESC_OVR]      nvarchar(100)        NULL,
    [PERSON_RECORD_FOUND]              nchar(1)             NULL,
+   [MOTHERS_MAIDEN]                   nvarchar(100)        NULL,
+   [APP_DISCL_READ]                   nchar(1)             NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,

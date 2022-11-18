@@ -153,7 +153,8 @@ AS
       x.[ADJCLTV],
       x.[LEASE_HOLDER],
       x.[LEASEHOLD_DATE],
-      x.[TX_50F2]
+      x.[TX_50F2],
+      x.[RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

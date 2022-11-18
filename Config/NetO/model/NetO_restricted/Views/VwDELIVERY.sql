@@ -92,7 +92,9 @@ AS
       x.[ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE],
-      x.[S_SIGNDOCPUSHBACK]
+      x.[S_SIGNDOCPUSHBACK],
+      x.[MI_CANCELLED],
+      x.[HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
