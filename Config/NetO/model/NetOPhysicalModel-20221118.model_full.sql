@@ -6842,7 +6842,7 @@ CREATE TABLE [clt_NetO].[L_SYMBOL]
    [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
    [ASAP_SRC_NAME]                    nvarchar(36)         NULL
 )
-WITH (DISTRIBUTION = HASH ([FLDNAME]), CLUSTERED COLUMNSTORE INDEX)
+WITH ( CLUSTERED INDEX ([FLDNAME], [DBSYMBOL]) )
 ;
 GO
 
@@ -12173,7 +12173,7 @@ CREATE TABLE [clt_NetO].[WG_SYMBOL_XREF]
    [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
    [ASAP_SRC_NAME]                    nvarchar(36)         NULL
 )
-WITH (DISTRIBUTION = HASH ([TABLENAME]), CLUSTERED COLUMNSTORE INDEX)
+WITH ( CLUSTERED INDEX ([TABLENAME], [COLUMNNAME], [FLDNAME]) )
 ;
 GO
 
@@ -74387,6 +74387,8 @@ AS
 			,s.[DESCRIPT]
 	FROM	[clt_NetO].[WG_SYMBOL_XREF] x
 			INNER JOIN [clt_NetO].[L_SYMBOL] s on s.FLDNAME = x.FLDNAME
+	WHERE	x.[ASAP_DeleteDateTime] is NULL
+	AND		s.[ASAP_DeleteDateTime] is NULL	
 ;
 GO
 

@@ -42283,7 +42283,7 @@
         "schema": "clt_NetO",
         "name": "L_SYMBOL"
       },
-      "indexType": "hash",
+      "indexType": "cluster",
       "tableMode": "full",
       "columns": [
         {
@@ -78339,7 +78339,7 @@
         "schema": "clt_NetO",
         "name": "WG_SYMBOL_XREF"
       },
-      "indexType": "hash",
+      "indexType": "cluster",
       "tableMode": "full",
       "columns": [
         {
@@ -78734,6 +78734,16 @@
     {
       "type": "primaryKey",
       "pattern": "WG_SYMBOL_XREF.FLDNAME",
+      "command": null
+    },
+    {
+      "type": "primaryKey",
+      "pattern": "L_SYMBOL.FLDNAME",
+      "command": null
+    },
+    {
+      "type": "primaryKey",
+      "pattern": "L_SYMBOL.DBSYMBOL",
       "command": null
     },
     {

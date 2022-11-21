@@ -53,16 +53,20 @@ public class PhysicalModelBuilder
             .Select(x => new TableModel
             {
                 Name = new SqlObjectName { Schema = schemaModel.Name, Name = x.Key },
-                IndexType = getIndexType(x.ToArray()),
-                TableMode = getTableMode(x.Key, tableMetadata),
+                IndexType = GetIndexType(x.ToArray()) switch
+                {
+                    IndexType.Hash => x.Any(y => IsPrimaryKey(x.Key, y.ColumnName, projectOption)) ? IndexType.Cluster : IndexType.Hash,
+                    var v => v,
+                },
+                TableMode = GetTableMode(x.Key, tableMetadata),
                 Columns = x.Select((y, i) => new ColumnModel
                 {
                     Name = y.ColumnName,
                     Security = y.GetSecurity(),
                     DataType = y.DataType,
                     NotNull = y.NotNull,
-                    PrimaryKey = y.PrimaryKey,
-                    NonuniqueIndex = isNonuniqueIndex(projectOption, x.Key, y.ColumnName),
+                    PrimaryKey = y.PrimaryKey || IsPrimaryKey(x.Key, y.ColumnName, projectOption),
+                    NonuniqueIndex = IsNonuniqueIndex(projectOption, x.Key, y.ColumnName),
                     PII = y.PII,
                     Restricted = y.Restricted,
                     ColumnIndex = i,
@@ -70,7 +74,7 @@ public class PhysicalModelBuilder
             }).ToList();
     }
 
-    static IndexType getIndexType(IReadOnlyList<TableInfo> tableInfos) =>
+    private static IndexType GetIndexType(IReadOnlyList<TableInfo> tableInfos) =>
         tableInfos
         .Any(x => x.DataType.IndexOf("max", StringComparison.OrdinalIgnoreCase) >= 0) switch
         {
@@ -78,23 +82,24 @@ public class PhysicalModelBuilder
             true => IndexType.Cluster
         };
 
-    static bool isNonuniqueIndex(SqlProjectOption projectOption, string tableName, string columnName) => projectOption.Relationships
-        .Any(x =>
-            x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase) &&
-            x.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase)
-            );
+    private static bool IsPrimaryKey(string tableName, string columnName, SqlProjectOption projectOption) => projectOption.CommandOptions
+        .Where(x => x.Type == CommandType.PrimaryKey)
+        .Any(x => PatternMatch.IsMatch(x.Pattern, $"{tableName}.{columnName}"));
 
-    static TableMode getTableMode(string tableName, IReadOnlyList<TableTypeMetadata>? tableMetadata) => tableMetadata switch
+    private static bool IsNonuniqueIndex(SqlProjectOption projectOption, string tableName, string columnName) => projectOption.Relationships
+        .Any(x => x.TableName.EqualsIgnoreCase(tableName) && x.ColumnName.EqualsIgnoreCase(columnName));
+
+    private static TableMode GetTableMode(string tableName, IReadOnlyList<TableTypeMetadata>? tableMetadata) => tableMetadata switch
     {
         null => TableMode.None,
-        not null => tableMetadata.FirstOrDefault(x => x.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase)) switch
+        not null => tableMetadata.FirstOrDefault(x => x.TableName.EqualsIgnoreCase(tableName)) switch
         {
-            TableTypeMetadata v => convertTo(v),
+            TableTypeMetadata v => ConvertTo(v),
             _ => TableMode.None,
         }
     };
 
-    static TableMode convertTo(TableTypeMetadata tableTypeMetadata) => tableTypeMetadata.Mode.FindEnumValue<TableMode>(true) switch
+    private static TableMode ConvertTo(TableTypeMetadata tableTypeMetadata) => tableTypeMetadata.Mode.FindEnumValue<TableMode>(true) switch
     {
         string v => v.ToEnum<TableMode>(),
         _ => TableMode.None,
