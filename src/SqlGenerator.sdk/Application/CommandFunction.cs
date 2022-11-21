@@ -15,8 +15,17 @@ namespace SqlGenerator.sdk.Application;
 public class CommandFunction
 {
     private ConcurrentDictionary<string, Func<string, string>> _functionDict = new(StringComparer.OrdinalIgnoreCase);
+    private ConcurrentDictionary<string, string> _replaceVariables = new(StringComparer.OrdinalIgnoreCase);
 
-    public CommandFunction Add(string name, Func<string, string> function) => this.Action(_ => _functionDict[name.NotEmpty()] = function);
+    public CommandFunction Add(string name, Func<string, string> function) => this.Action(_ => _functionDict[name.NotEmpty()] = function.NotNull());
+
+    public CommandFunction Add(string name, string? variable)
+    {
+        if (variable.IsEmpty()) return this;
+
+        _replaceVariables[name.NotEmpty()] = variable;
+        return this;
+    }
 
     public string Resolve(string line)
     {
@@ -31,11 +40,21 @@ public class CommandFunction
         .Select(x => x switch
         {
             (false, string data) v => v.Data,
-            (true, string data) v => ParseFunction(v.Data).Func(x => _functionDict.TryGetValue(x.FunctionName, out var func) switch
+
+            (true, string data) v => ParseFunction(v.Data) switch
             {
-                true => func(x.Value),
-                _ => throw new ArgumentException($"Unknown function {x.FunctionName}"),
-            }),
+                null => _replaceVariables.TryGetValue(v.Data, out var variable) switch
+                {
+                    true => variable,
+                    false => throw new ArgumentException($"Unknown variable {v.Data}"),
+                },
+
+                (string FunctionName, string Value) f => _functionDict.TryGetValue(f.FunctionName, out var func) switch
+                {
+                    true => func(f.Value),
+                    _ => throw new ArgumentException($"Unknown function {f.FunctionName}"),
+                }
+            }
         })
         .ToArray();
 
@@ -70,7 +89,7 @@ public class CommandFunction
         return parts;
     }
 
-    private static (string FunctionName, string Value) ParseFunction(string line)
+    private static (string FunctionName, string Value)? ParseFunction(string line)
     {
         // format: {functionName}({value})
         IReadOnlyList<TokenValue> tokens = new StringTokenizer()
@@ -93,9 +112,9 @@ public class CommandFunction
             .TakeWhile(x => x != null)
             .ToArray() switch
         {
-            string[] v when v.Length == 4 => new(tokens[0].Value, tokens[2].Value),
+            string[] v when v.Length == 4 => new(tokens[0].Value, tokens[2].Value.NotEmpty()),
 
-            _ => throw new ArgumentException($"Syntax error for function: {line}"),
+            _ => null,
         };
     }
 }

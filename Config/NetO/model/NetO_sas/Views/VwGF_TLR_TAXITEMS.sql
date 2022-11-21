@@ -11,6 +11,7 @@ AS
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[HUDLINE] AS [HUDLINE],
       x.[S_TAXTYPE] AS [S_TAXTYPE],
+      A0.Descript AS [S_TAXTYPE_Description],
       x.[ANN_AMT] AS [ANN_AMT],
       x.[FIRST_DUE] AS [FIRST_DUE],
       x.[ESCROW] AS [ESCROW],
@@ -38,10 +39,13 @@ AS
       x.[RATEPERTHOUSAND] AS [RATEPERTHOUSAND],
       x.[COLFIRSTYR] AS [COLFIRSTYR],
       x.[S_ESCTAX] AS [S_ESCTAX],
+      A1.Descript AS [S_ESCTAX_Description],
       x.[ISMERGEDINT] AS [ISMERGEDINT],
       x.[TAX_TYPE_DESC] AS [TAX_TYPE_DESC],
       x.[UPFRONT_TAX_AMOUNT] AS [UPFRONT_TAX_AMOUNT]
    FROM [clt_NetO].[GF_TLR_TAXITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TAXTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_TAXITEMS' and A0.[COLUMNNAME] = 'S_TAXTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ESCTAX = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_TAXITEMS' and A1.[COLUMNNAME] = 'S_ESCTAX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

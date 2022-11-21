@@ -46,6 +46,14 @@ public static class CommandOptionTool
             x => x is TokenValue v ? v.Value : null,
         },
 
+        new Func<IToken, object?>[]
+        {
+            x => x is TokenValue v && v.Value.EqualsIgnoreCase("copy") ? CommandType.Copy : null,
+            x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
+            x => x is TokenValue v ? v.Value : (x is BlockToken b ? b.Value : null),
+            x => x is TokenValue v && v.Value == "=>" ? "=>" : null,
+            x => x is TokenValue v ? v.Value : (x is BlockToken b ? b.Value : null),
+        },
     };
 
 
@@ -67,7 +75,7 @@ public static class CommandOptionTool
         IReadOnlyList<IToken> tokens = new StringTokenizer()
             .UseDoubleQuote()
             .UseSingleQuote()
-            .Add("=", "+=", "-=")
+            .Add("=", "+=", "-=", "=>")
             .Parse(command)
             .Where(x => x is TokenValue v ? !v.Value.IsEmpty() : true)
             .Select(x => x switch

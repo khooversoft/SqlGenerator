@@ -47,8 +47,10 @@ AS
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
       x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[S_SERVICING_STATUS],
+      A0.Descript AS [S_SERVICING_STATUS_Description]
    FROM [clt_NetO].[SERVICNG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SERVICING_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'SERVICNG' and A0.[COLUMNNAME] = 'S_SERVICING_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

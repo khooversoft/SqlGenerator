@@ -10,6 +10,7 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_INSTYPE],
+      A0.Descript AS [S_INSTYPE_Description],
       x.[COVAMNT],
       x.[MINCOVER],
       x.[PREMAMT],
@@ -43,9 +44,11 @@ AS
       x.[PMTOPTDBID],
       x.[PMTOPTSERNO],
       x.[S_OTH_INS_TYPE_DESC],
+      A1.Descript AS [S_OTH_INS_TYPE_DESC_Description],
       x.[HUDLINE],
       x.[POLICY_TERM],
       x.[S_ESCINS],
+      A2.Descript AS [S_ESCINS_Description],
       x.[ASSETID],
       x.[DT_ORDERED],
       x.[DT_EXPECTED],
@@ -68,6 +71,9 @@ AS
       x.[NFIP_MAX_COVERAGE],
       x.[MINIMUM_COVERAGE]
    FROM [clt_NetO].[GF_TLR_INSURANCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_INSURANCE' and A0.[COLUMNNAME] = 'S_INSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OTH_INS_TYPE_DESC = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_INSURANCE' and A1.[COLUMNNAME] = 'S_OTH_INS_TYPE_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ESCINS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_INSURANCE' and A2.[COLUMNNAME] = 'S_ESCINS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

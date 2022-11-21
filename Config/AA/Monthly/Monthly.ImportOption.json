@@ -111,7 +111,7 @@
   "lookupRelationships": [
     {
       "referenceTable": "ctl_Investor.InvestorLoanIdMap",
-      "matchTable": "clt_AssetAcq.CommonMonthly",
+      "pattern": "clt_AssetAcq.CommonMonthly",
       "selectLine": "{alias}.[OriginalMemberNumber] AS [OriginalAccountNumber]",
       "joinLine": "LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] {alias} ON x.[BECU_AccountNumber] = {alias}.[LoanId]"
     }

@@ -10,8 +10,8 @@ namespace SqlGenerator.sdk.Model;
 
 public record LookupRelationshipModel
 {
-    public string ReferenceTable { get; init; } = null!;
-    public string MatchTable { get; init; } = null!;
+    public string? ReferenceTable { get; init; }
+    public string Pattern { get; init; } = null!;
     public string SelectLine { get; init; } = null!;
     public string JoinLine { get; init; } = null!;
 }
@@ -22,7 +22,7 @@ public static class LookupRelationshipModelExtensions
     public static LookupRelationshipModel Verify(this LookupRelationshipModel subject)
     {
         subject.NotNull();
-        subject.MatchTable.NotEmpty();
+        subject.Pattern.NotEmpty();
         subject.SelectLine.NotEmpty();
         subject.JoinLine.NotEmpty();
 

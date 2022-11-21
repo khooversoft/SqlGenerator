@@ -11,7 +11,6 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
-      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -19,6 +18,7 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
+      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]

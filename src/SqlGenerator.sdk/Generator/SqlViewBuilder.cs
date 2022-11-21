@@ -1,4 +1,5 @@
 ﻿using DataTools.sdk.Model;
+using DocumentFormat.OpenXml.Wordprocessing;
 using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Model;
 using System;
@@ -73,11 +74,13 @@ public class SqlViewBuilder
         list += "SELECT";
         list += InstructionType.TabPlus;
 
-        var relationships = GetRelationship(tableModel);
+        var relationships = GetRelationship(tableModel, columns);
 
         list += columns
-            .Select(x => BuildColumnModel(x, schema))
-            .Concat(relationships.Select(x => x.Select))
+            .Select(x => (index: x.ColumnIndex, line: BuildColumnModel(x, schema)))
+            .Concat(relationships.Select(x => (index: x.ColumnIndex, line: x.Select)))
+            .OrderBy(x => x.index)
+            .Select(x => x.line)
             .Concat(CalculatedViews(tableModel, relationships))
             .SequenceJoin(x => x += ",");
 
@@ -138,8 +141,8 @@ public class SqlViewBuilder
 
 
         string getAlias(string tableName) => relationships
-            .Where(x => SqlObjectName.Parse(tableName) == SqlObjectName.Parse(x.ReferenceTableName))
-            .Select(x => ToAlias(x.Index))
+            .Where(x => SqlObjectName.Parse(tableName) == SqlObjectName.Parse(x.ReferenceTableName.NotEmpty()))
+            .Select(x => x.Alias)
             .FirstOrDefault()
             .NotEmpty(name: $"Table {tableName} does not exist");
     }
@@ -228,23 +231,61 @@ public class SqlViewBuilder
         };
     }
 
+    private IReadOnlyList<RelationshipInstruction> GetRelationship(TableModel tableModel, IReadOnlyList<ColumnModel> columns)
+    {
+        IReadOnlyList<RelationshipInstruction> tableRelationship = GetRelationship(tableModel);
+        IReadOnlyList<RelationshipInstruction> columnRelationship = columns.SelectMany((x, i) => GetRelationship(tableModel, x)).ToArray();
+
+        var result = tableRelationship
+            .Concat(columnRelationship)
+            .Select((x, i) => x with { Alias = $"A{i}" })
+            .Select(x => (x, cmd: getCommandFunction(x)))
+            .Select(x => x.x with
+            {
+                Select = x.cmd.Resolve(x.x.Select),
+                Join = x.cmd.Resolve(x.x.Join),
+            })
+            .ToArray();
+
+        return result;
+
+
+        CommandFunction getCommandFunction(RelationshipInstruction relationship) => new CommandFunction()
+            .Add("alias", relationship.Alias)
+            .Add("tableName", relationship.TableName)
+            .Add("viewColumnName", relationship.ViewColumnName);
+    }
+
     private IReadOnlyList<RelationshipInstruction> GetRelationship(TableModel tableModel) => _physicalModel.LookupRelationships
-        .Where(x => PatternMatch.IsMatch(x.MatchTable, tableModel.Name.ToSimpleString()))
+        .Where(x => PatternMatch.IsMatch(x.Pattern, tableModel.Name.ToSimpleString()))
         .Select((x, index) => new RelationshipInstruction
         {
             ReferenceTableName = x.ReferenceTable,
-            Index = index,
-            Select = x.SelectLine.Replace(_aliasFormat, ToAlias(index)),
-            Join = x.JoinLine.Replace(_aliasFormat, ToAlias(index)),
+            Select = x.SelectLine,
+            Join = x.JoinLine,
+            ColumnIndex = int.MaxValue,
         }).ToArray();
 
-    private string ToAlias(int index) => $"a{index}";
+    private IReadOnlyList<RelationshipInstruction> GetRelationship(TableModel tableModel, ColumnModel columnModel) => _physicalModel.LookupRelationships
+        .Where(x => PatternMatch.IsMatch(x.Pattern, $"{tableModel.Name.Name}.{columnModel.Name}"))
+        .Select((x, index) => new RelationshipInstruction
+        {
+            ReferenceTableName = x.ReferenceTable,
+            Select = x.SelectLine,
+            Join = x.JoinLine,
+            TableName = tableModel.Name.Name,
+            ViewColumnName = columnModel.Name,
+            ColumnIndex = columnModel.ColumnIndex,
+        }).ToArray();
 
     private record RelationshipInstruction
     {
-        public string ReferenceTableName { get; init; } = null!;
-        public int Index { get; init; }
+        public string? ReferenceTableName { get; init; }
+        public string Alias { get; init; } = null!;
         public string Select { get; init; } = null!;
         public string Join { get; init; } = null!;
+        public string? TableName { get; init; }
+        public string? ViewColumnName { get; init; }
+        public int ColumnIndex { get; init; }
     }
 }

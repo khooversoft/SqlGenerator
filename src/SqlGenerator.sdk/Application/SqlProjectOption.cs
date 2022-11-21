@@ -63,7 +63,7 @@ public static class SqlProjectOptionFile
         subject.Relationships.NotNull().ForEach(x => x.Verify());
         subject.LookupRelationships.NotNull().ForEach(x => x.Verify());
         subject.NameMap.NotNull().ForEach(x => x.Verify());
-        subject.UpdateCommands.NotNull().ForEach(x => CommandOptionTool.IsValid(x).Assert(y => y == true, y => $"Syntax error: {y}"));
+        subject.UpdateCommands.NotNull().ForEach(x => CommandOptionTool.IsValid(x).Assert(y => y == true, y => $"Syntax error: {x}"));
 
         return subject;
     }

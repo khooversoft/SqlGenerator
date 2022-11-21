@@ -10,11 +10,14 @@ AS
       x.[DBID],
       x.[TRANCTR],
       x.[S_TRAN],
+      A0.Descript AS [S_TRAN_Description],
       x.[TRANDESC],
       x.[TRANAMT],
       x.[OTHERAMT],
       x.[S_PURCH_CREDIT_TYPE],
+      A1.Descript AS [S_PURCH_CREDIT_TYPE_Description],
       x.[S_PURCH_SOURCE_TYPE],
+      A2.Descript AS [S_PURCH_SOURCE_TYPE_Description],
       x.[OTHERPURCHCREDTYPEDESC],
       x.[OTHERPURCHSRCTYPEDESC],
       x.[MANUALAMT],
@@ -25,6 +28,9 @@ AS
       x.[EXCLOTHCREDPREP],
       x.[POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRAN = A0.DBSYMBOL AND A0.[TableName] = 'DTLTRAN' and A0.[COLUMNNAME] = 'S_TRAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PURCH_CREDIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'DTLTRAN' and A1.[COLUMNNAME] = 'S_PURCH_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PURCH_SOURCE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DTLTRAN' and A2.[COLUMNNAME] = 'S_PURCH_SOURCE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

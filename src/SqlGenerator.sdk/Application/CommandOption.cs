@@ -18,6 +18,7 @@ public enum CommandType
     ViewColumn,
     ExcludeView,
     ExcludeViewNot,
+    Copy,
 }
 
 public record CommandOption

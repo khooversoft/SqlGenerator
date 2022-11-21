@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Toolbox.Extensions;
 using Toolbox.Tokenizer;
 using Toolbox.Tokenizer.Token;
 using Xunit;
@@ -138,5 +139,49 @@ public class StringTokenizerTests
             .Zip(expectedTokens, (o, i) => (o, i))
             .All(x => x.o.Value == x.i.Value)
             .Should().BeTrue();
+    }
+
+    [Fact]
+    public void Quote_WhenEscapeIsUsed_ShouldReturnValidTokens()
+    {
+        IReadOnlyList<IToken> tokens = new StringTokenizer()
+            .UseDoubleQuote()
+            .UseSingleQuote()
+            .Parse("Escape 'first Name' end");
+
+        var expectedTokens = new IToken[]
+        {
+            new TokenValue("Escape "),
+            new TokenValue("first Name"),
+            new TokenValue(" end"),
+        };
+
+        tokens.Count.Should().Be(expectedTokens.Length);
+
+        tokens
+            .Zip(expectedTokens, (o, i) => (o, i))
+            .ForEach(x => x.o.Value.Should().Be(x.i.Value));
+    }
+
+    [Fact]
+    public void Quote_WhenDoubleEscapeIsUsed_ShouldReturnValidTokens()
+    {
+        IReadOnlyList<IToken> tokens = new StringTokenizer()
+            .UseDoubleQuote()
+            .UseSingleQuote()
+            .Parse("Escape \"first, 'first Name' second\" end");
+
+        var expectedTokens = new IToken[]
+        {
+            new TokenValue("Escape "),
+            new TokenValue("first, 'first Name' second"),
+            new TokenValue(" end"),
+        };
+
+        tokens.Count.Should().Be(expectedTokens.Length);
+
+        tokens
+            .Zip(expectedTokens, (o, i) => (o, i))
+            .ForEach(x => x.o.Value.Should().Be(x.i.Value));
     }
 }

@@ -11,6 +11,7 @@ AS
       x.[DBID],
       x.[LIABCTR],
       x.[S_LIAB],
+      A0.Descript AS [S_LIAB_Description],
       x.[LIABDESC],
       x.[ACCTNUM],
       x.[HOLDER],
@@ -26,6 +27,7 @@ AS
       x.[ACCTBAL],
       x.[ACCTPYMT],
       x.[S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[MTHPYMT],
       x.[PYMTLEFT],
       x.[INCPYMT],
@@ -40,6 +42,7 @@ AS
       x.[PAYTYPE],
       x.[VERIFY],
       x.[S_LIENPS],
+      A2.Descript AS [S_LIENPS_Description],
       x.[ORIGDBTDT],
       x.[EXPDBTDT],
       x.[RESUBIND],
@@ -47,7 +50,9 @@ AS
       x.[MTG_TYPE_DESCRIPT],
       x.[PURCH_MONEY_IND],
       x.[S_EXCLUSION_REASON],
+      A3.Descript AS [S_EXCLUSION_REASON_Description],
       x.[S_MTG_TYPE],
+      A4.Descript AS [S_MTG_TYPE_Description],
       x.[SECURITY_INSTR_VOLUME],
       x.[DEBT_CCTIN_TITLE],
       x.[TRUSTEE_NAME],
@@ -76,6 +81,7 @@ AS
       x.[INVESTMENT_CREDIT_LINE],
       x.[CREDIT_TYPE_OTH],
       x.[S_CREDIT_CARD_TYPE],
+      A5.Descript AS [S_CREDIT_CARD_TYPE_Description],
       x.[INTERNAL_REFI],
       x.[HCOUNTRY],
       x.[SOURCE_CB_PMT],
@@ -100,6 +106,7 @@ AS
       x.[DEBT_REROUTING_NO],
       x.[REBEN_ACCT_NUM],
       x.[S_LIABILITYDISBTYPE],
+      A6.Descript AS [S_LIABILITYDISBTYPE_Description],
       x.[P_PYMTLEFT],
       x.[P_MNPAYLFT],
       x.[P_BALANCE],
@@ -109,6 +116,7 @@ AS
       x.[OWNERSHP_TYPE],
       x.[DEDUCT_FROM_INC],
       x.[S_ACCOUNT_OWNERSHIP],
+      A7.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[LATE_30_DAYS],
       x.[LATE_60_DAYS],
       x.[LATE_90_DAYS],
@@ -116,6 +124,14 @@ AS
       x.[CREDIT_LIMIT_AMOUNT],
       x.[INC_CREDIT_LINE]
    FROM [clt_NetO].[LIABLTY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LIAB = A0.DBSYMBOL AND A0.[TableName] = 'LIABLTY' and A0.[COLUMNNAME] = 'S_LIAB'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'LIABLTY' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIENPS = A2.DBSYMBOL AND A2.[TableName] = 'LIABLTY' and A2.[COLUMNNAME] = 'S_LIENPS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_EXCLUSION_REASON = A3.DBSYMBOL AND A3.[TableName] = 'LIABLTY' and A3.[COLUMNNAME] = 'S_EXCLUSION_REASON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_MTG_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'LIABLTY' and A4.[COLUMNNAME] = 'S_MTG_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CREDIT_CARD_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'LIABLTY' and A5.[COLUMNNAME] = 'S_CREDIT_CARD_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIABILITYDISBTYPE = A6.DBSYMBOL AND A6.[TableName] = 'LIABLTY' and A6.[COLUMNNAME] = 'S_LIABILITYDISBTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ACCOUNT_OWNERSHIP = A7.DBSYMBOL AND A7.[TableName] = 'LIABLTY' and A7.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

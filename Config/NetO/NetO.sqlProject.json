@@ -26,6 +26,8 @@
 		"excludeView -= WG_RPT_LOAN_STATUS.*",
 		"primaryKey += WG_SYMBOL_XREF.TABLENAME",
 		"primaryKey += WG_SYMBOL_XREF.COLUMNNAME",
-		"primaryKey += WG_SYMBOL_XREF.FLDNAME"
+		"primaryKey += WG_SYMBOL_XREF.FLDNAME",
+
+		"copy += Include\\VwSymbolLookup.sql => clt_NetO\\Views\\VwSymbolLookup.sql"
 	]
 }

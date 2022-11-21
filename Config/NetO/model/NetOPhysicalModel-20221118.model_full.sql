@@ -12528,8 +12528,12 @@ AS
       x.[MIN_1ST_ADJ_RATE],
       x.[FIR_MAX_MONTHLY_AMT],
       x.[S_FRE_INDEX_TYPE],
-      x.[S_FNM_INDEX_TYPE]
+      A0.Descript AS [S_FRE_INDEX_TYPE_Description],
+      x.[S_FNM_INDEX_TYPE],
+      A1.Descript AS [S_FNM_INDEX_TYPE_Description]
    FROM [clt_NetO].[ARMINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FRE_INDEX_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'ARMINFO' and A0.[COLUMNNAME] = 'S_FRE_INDEX_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FNM_INDEX_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'ARMINFO' and A1.[COLUMNNAME] = 'S_FNM_INDEX_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -12555,6 +12559,7 @@ AS
       x.[DBID],
       x.[ASSETCTR],
       x.[S_ASSET],
+      A0.Descript AS [S_ASSET_Description],
       x.[ASSETDSC],
       x.[ACCTNUM],
       x.[HOLDER],
@@ -12590,10 +12595,15 @@ AS
       x.[BUILDER_EARNEST],
       x.[ASSET_INDICATOR],
       x.[S_ACCOUNT_OWNERSHIP],
+      A1.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[S_GIFT_PRVDR_TYPE],
+      A2.Descript AS [S_GIFT_PRVDR_TYPE_Description],
       x.[GIFT_PRVDR_OTH_DESC],
       x.[GIFT_DEPOSIT_STATUS]
    FROM [clt_NetO].[ASSETS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET = A0.DBSYMBOL AND A0.[TableName] = 'ASSETS' and A0.[COLUMNNAME] = 'S_ASSET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACCOUNT_OWNERSHIP = A1.DBSYMBOL AND A1.[TableName] = 'ASSETS' and A1.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GIFT_PRVDR_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'ASSETS' and A2.[COLUMNNAME] = 'S_GIFT_PRVDR_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -12660,6 +12670,7 @@ AS
       x.[AGE],
       x.[YRSSCHL],
       x.[S_MARITL],
+      A0.Descript AS [S_MARITL_Description],
       x.[FRNINFO],
       x.[GENDER],
       x.[NUMDEP],
@@ -12675,6 +12686,7 @@ AS
       x.[APPNUMB],
       x.[FIRSTBUY],
       x.[S_OWNSHP],
+      A1.Descript AS [S_OWNSHP_Description],
       x.[VOR_ACCT],
       x.[VOR_NAME],
       x.[OTHINCM],
@@ -12682,8 +12694,10 @@ AS
       x.[JOINTLY],
       x.[DOB],
       x.[S_BORTYP],
+      A2.Descript AS [S_BORTYP_Description],
       x.[ALIASES],
       x.[S_VESTNG],
+      A3.Descript AS [S_VESTNG_Description],
       x.[PRTENTTL],
       x.[PARTNOTE],
       x.[COUNTY],
@@ -12748,6 +12762,7 @@ AS
       x.[ELEC_DISC_CONSENT],
       x.[ELEC_DISC_WITHDRAW],
       x.[S_IVMETH],
+      A4.Descript AS [S_IVMETH_Description],
       x.[ATALLLIQUIDTOTAL],
       x.[ATGIFTTOTAL],
       x.[ATREONETPROCEEDSTOTAL],
@@ -12755,6 +12770,7 @@ AS
       x.[LTNONSUBJDEBTMOTOTAL],
       x.[LTNONSUBJPAYOFFTOTAL],
       x.[S_CBSOURCE],
+      A5.Descript AS [S_CBSOURCE_Description],
       x.[VETERAN],
       x.[ENTITLEMENT],
       x.[LDP_NUMBER],
@@ -12778,7 +12794,9 @@ AS
       x.[DISPLAY_NAME],
       x.[NON_INDIV_BORR_NAME],
       x.[S_LEGAL_ENTITY_TYPE],
+      A6.Descript AS [S_LEGAL_ENTITY_TYPE_Description],
       x.[S_LEGAL_ENTITY_TYP_OTH],
+      A7.Descript AS [S_LEGAL_ENTITY_TYP_OTH_Description],
       x.[ULDD_TAXPAYER_ID],
       x.[INCLUDE_IN_PROFORMA],
       x.[FADDR_INDICATOR],
@@ -12794,9 +12812,11 @@ AS
       x.[MNTHS_AT_PRSNT],
       x.[BORR_COVERED],
       x.[S_COV_BORR_STATUS],
+      A8.Descript AS [S_COV_BORR_STATUS_Description],
       x.[BORR_VERBDISC],
       x.[MLACERTID],
       x.[S_BOR_UNIT_TYPE],
+      A9.Descript AS [S_BOR_UNIT_TYPE_Description],
       x.[BOR_UNIT_NUM],
       x.[BOR_COUNTRY],
       x.[BOR_COUNTRY_CODE],
@@ -12813,8 +12833,11 @@ AS
       x.[COPIED_MAIL_ADDRESS],
       x.[CHECK_ALIAS],
       x.[S_PARTY_TYPE],
+      A10.Descript AS [S_PARTY_TYPE_Description],
       x.[S_CITIZENSHIP],
+      A11.Descript AS [S_CITIZENSHIP_Description],
       x.[S_UNMARRIED],
+      A12.Descript AS [S_UNMARRIED_Description],
       x.[ATTR_PORTAL_REG],
       x.[ATTR_COUNSELING_REQUIRED],
       x.[ATTR_CHILD_CARE],
@@ -12822,6 +12845,7 @@ AS
       x.[ATTR_GUARDIANSHIP],
       x.[ATTR_SOLE_PROPRIETOR],
       x.[S_UNMARRIED_RLTNSHIP],
+      A13.Descript AS [S_UNMARRIED_RLTNSHIP_Description],
       x.[UNMARRIED_RLTNSHIP_STATE],
       x.[UNMARRIED_RLTNSHIP_OTHERDESC],
       x.[RETIRED_BORROWER],
@@ -12834,6 +12858,20 @@ AS
       x.[IS_DEALER_EMPLOYEE],
       x.[LIVE_RENT_FREE_ENUMS]
    FROM [clt_NetO].[BORROWER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARITL = A0.DBSYMBOL AND A0.[TableName] = 'BORROWER' and A0.[COLUMNNAME] = 'S_MARITL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OWNSHP = A1.DBSYMBOL AND A1.[TableName] = 'BORROWER' and A1.[COLUMNNAME] = 'S_OWNSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BORTYP = A2.DBSYMBOL AND A2.[TableName] = 'BORROWER' and A2.[COLUMNNAME] = 'S_BORTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_VESTNG = A3.DBSYMBOL AND A3.[TableName] = 'BORROWER' and A3.[COLUMNNAME] = 'S_VESTNG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_IVMETH = A4.DBSYMBOL AND A4.[TableName] = 'BORROWER' and A4.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CBSOURCE = A5.DBSYMBOL AND A5.[TableName] = 'BORROWER' and A5.[COLUMNNAME] = 'S_CBSOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LEGAL_ENTITY_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'BORROWER' and A6.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LEGAL_ENTITY_TYP_OTH = A7.DBSYMBOL AND A7.[TableName] = 'BORROWER' and A7.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYP_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COV_BORR_STATUS = A8.DBSYMBOL AND A8.[TableName] = 'BORROWER' and A8.[COLUMNNAME] = 'S_COV_BORR_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BOR_UNIT_TYPE = A9.DBSYMBOL AND A9.[TableName] = 'BORROWER' and A9.[COLUMNNAME] = 'S_BOR_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_PARTY_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'BORROWER' and A10.[COLUMNNAME] = 'S_PARTY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_CITIZENSHIP = A11.DBSYMBOL AND A11.[TableName] = 'BORROWER' and A11.[COLUMNNAME] = 'S_CITIZENSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_UNMARRIED = A12.DBSYMBOL AND A12.[TableName] = 'BORROWER' and A12.[COLUMNNAME] = 'S_UNMARRIED'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_UNMARRIED_RLTNSHIP = A13.DBSYMBOL AND A13.[TableName] = 'BORROWER' and A13.[COLUMNNAME] = 'S_UNMARRIED_RLTNSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -12861,15 +12899,19 @@ AS
       x.[CSTIMPRO],
       x.[IMPDESC],
       x.[S_REFPRP],
+      A0.Descript AS [S_REFPRP_Description],
       x.[IMPMADE],
       x.[LOTACQUR],
       x.[REFIIMP],
       x.[CASHAMT],
       x.[S_GSE_REFINANCE_PURPOSE],
+      A1.Descript AS [S_GSE_REFINANCE_PURPOSE_Description],
       x.[S_CONST_PERM_CLOSING],
+      A2.Descript AS [S_CONST_PERM_CLOSING_Description],
       x.[INTERNREFI],
       HASHBYTES('SHA2_256', x.[ORIG_INVESTOR_LOAN_NBR]) AS [ORIG_INVESTOR_LOAN_NBR],
       x.[S_ORIG_INVESTOR],
+      A3.Descript AS [S_ORIG_INVESTOR_Description],
       x.[OTHER_INVESTOR_DESC],
       x.[OTHERGSEREFIPURPTYPEDESC],
       x.[REPLACE_EXIST_CONSTR_LOAN],
@@ -12877,11 +12919,21 @@ AS
       x.[PREVIOUS_REFI_MONTHS],
       x.[CO_REFI_PURCH_CONST],
       x.[S_CONST_PERM_FEATURE],
+      A4.Descript AS [S_CONST_PERM_FEATURE_Description],
       x.[S_FNM_REFI_PGM],
+      A5.Descript AS [S_FNM_REFI_PGM_Description],
       x.[S_FRE_REFI_PGM],
+      A6.Descript AS [S_FRE_REFI_PGM_Description],
       x.[LIMIT_DESC],
       x.[REFI_LOAN_ACCT_NBR]
    FROM [clt_NetO].[CONSREFI] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFPRP = A0.DBSYMBOL AND A0.[TableName] = 'CONSREFI' and A0.[COLUMNNAME] = 'S_REFPRP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GSE_REFINANCE_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'CONSREFI' and A1.[COLUMNNAME] = 'S_GSE_REFINANCE_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CONST_PERM_CLOSING = A2.DBSYMBOL AND A2.[TableName] = 'CONSREFI' and A2.[COLUMNNAME] = 'S_CONST_PERM_CLOSING'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ORIG_INVESTOR = A3.DBSYMBOL AND A3.[TableName] = 'CONSREFI' and A3.[COLUMNNAME] = 'S_ORIG_INVESTOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_CONST_PERM_FEATURE = A4.DBSYMBOL AND A4.[TableName] = 'CONSREFI' and A4.[COLUMNNAME] = 'S_CONST_PERM_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_FNM_REFI_PGM = A5.DBSYMBOL AND A5.[TableName] = 'CONSREFI' and A5.[COLUMNNAME] = 'S_FNM_REFI_PGM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_FRE_REFI_PGM = A6.DBSYMBOL AND A6.[TableName] = 'CONSREFI' and A6.[COLUMNNAME] = 'S_FRE_REFI_PGM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -13055,7 +13107,9 @@ AS
       x.[M_DBID],
       x.[M_SERIAL],
       x.[S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[BNKRPT_DISCHARGE_MOS],
       x.[FORECLOSURE_MOS],
       x.[NON_PERMANENT_RESIDENT_ALIEN],
@@ -13080,6 +13134,7 @@ AS
       x.[SHORT_SALE],
       x.[PROPFORECLOSE],
       x.[S_BANKRUPTCY_TYPE],
+      A2.Descript AS [S_BANKRUPTCY_TYPE_Description],
       x.[PREFORECLOS_NOTES],
       x.[PROPFORECL_NOTES],
       x.[PRIMRESID_NOTES],
@@ -13106,6 +13161,9 @@ AS
       x.[DECBANKRUPTCY_INCINFORM],
       x.[FHA_SECOND_RESID_IND]
    FROM [clt_NetO].[DECLRTN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'DECLRTN' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'DECLRTN' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BANKRUPTCY_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DECLRTN' and A2.[COLUMNNAME] = 'S_BANKRUPTCY_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -13140,35 +13198,55 @@ AS
       x.[RENTS3],
       x.[RENTS4],
       x.[S_SPF1],
+      A0.Descript AS [S_SPF1_Description],
       x.[S_SPF2],
+      A1.Descript AS [S_SPF2_Description],
       x.[S_SPF3],
+      A2.Descript AS [S_SPF3_Description],
       x.[S_SPF4],
+      A3.Descript AS [S_SPF4_Description],
       x.[S_SPF5],
+      A4.Descript AS [S_SPF5_Description],
       x.[S_SPF6],
+      A5.Descript AS [S_SPF6_Description],
       x.[ASSUM],
       x.[RDF],
       x.[INTPD],
       x.[MATDATE],
       x.[S_SFSRC1],
+      A6.Descript AS [S_SFSRC1_Description],
       x.[S_SFSRC2],
+      A7.Descript AS [S_SFSRC2_Description],
       x.[SFAMT1],
       x.[SFAMT2],
       x.[S_BECA1],
+      A8.Descript AS [S_BECA1_Description],
       x.[S_BECA2],
+      A9.Descript AS [S_BECA2_Description],
       x.[S_BECF1],
+      A10.Descript AS [S_BECF1_Description],
       x.[S_BECF2],
+      A11.Descript AS [S_BECF2_Description],
       x.[S_DPSRC1],
+      A12.Descript AS [S_DPSRC1_Description],
       x.[S_DPSRC2],
+      A13.Descript AS [S_DPSRC2_Description],
       x.[S_DPSRC3],
+      A14.Descript AS [S_DPSRC3_Description],
       x.[S_DPSRC4],
+      A15.Descript AS [S_DPSRC4_Description],
       x.[DPAMT1],
       x.[DPAMT2],
       x.[DPAMT3],
       x.[DPAMT4],
       x.[S_CCSRC1],
+      A16.Descript AS [S_CCSRC1_Description],
       x.[S_CCSRC2],
+      A17.Descript AS [S_CCSRC2_Description],
       x.[S_CCSRC3],
+      A18.Descript AS [S_CCSRC3_Description],
       x.[S_CCSRC4],
+      A19.Descript AS [S_CCSRC4_Description],
       x.[CCAMT1],
       x.[CCAMT2],
       x.[CCAMT3],
@@ -13176,12 +13254,14 @@ AS
       x.[MICOV],
       x.[UPB],
       x.[S_LFC],
+      A20.Descript AS [S_LFC_Description],
       x.[INTEND],
       x.[LPID],
       x.[INTONLY],
       x.[LOOKBACK],
       x.[NETNEGAM],
       x.[S_RFC],
+      A21.Descript AS [S_RFC_Description],
       x.[UWNAME],
       x.[INVLNUM],
       x.[MTGORIG],
@@ -13191,9 +13271,13 @@ AS
       x.[SELLER],
       x.[CID_SELLER_AGENT],
       x.[S_SPF7],
+      A22.Descript AS [S_SPF7_Description],
       x.[S_SPF8],
+      A23.Descript AS [S_SPF8_Description],
       x.[S_SPF9],
+      A24.Descript AS [S_SPF9_Description],
       x.[S_SPF10],
+      A25.Descript AS [S_SPF10_Description],
       x.[UPBO],
       x.[ESCROW_ACCT_BALANCE],
       x.[ESCROW_PYMT_AMT],
@@ -13201,21 +13285,59 @@ AS
       x.[APPR_DOC_ID],
       x.[READY_FOR_DELIVERY],
       x.[S_INT_ACCRUAL_TYPE],
+      A26.Descript AS [S_INT_ACCRUAL_TYPE_Description],
       x.[S_INT_CALC_BASIS_TYPE],
+      A27.Descript AS [S_INT_CALC_BASIS_TYPE_Description],
       x.[INT_CALC_EFF_MONTHS],
       x.[S_INT_CALC_PERIOD],
+      A28.Descript AS [S_INT_CALC_PERIOD_Description],
       x.[S_INT_CALC_METHOD],
+      A29.Descript AS [S_INT_CALC_METHOD_Description],
       x.[LOAN_DELIV_GSE],
       x.[LTV_RATIO_PCT],
       x.[S_FNM_HOME_IMP_PROD],
+      A30.Descript AS [S_FNM_HOME_IMP_PROD_Description],
       x.[ADJ_LOAN_AMT],
       x.[ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE],
       x.[S_SIGNDOCPUSHBACK],
+      A31.Descript AS [S_SIGNDOCPUSHBACK_Description],
       x.[MI_CANCELLED],
       x.[HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SPF1 = A0.DBSYMBOL AND A0.[TableName] = 'DELIVERY' and A0.[COLUMNNAME] = 'S_SPF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPF2 = A1.DBSYMBOL AND A1.[TableName] = 'DELIVERY' and A1.[COLUMNNAME] = 'S_SPF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPF3 = A2.DBSYMBOL AND A2.[TableName] = 'DELIVERY' and A2.[COLUMNNAME] = 'S_SPF3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPF4 = A3.DBSYMBOL AND A3.[TableName] = 'DELIVERY' and A3.[COLUMNNAME] = 'S_SPF4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_SPF5 = A4.DBSYMBOL AND A4.[TableName] = 'DELIVERY' and A4.[COLUMNNAME] = 'S_SPF5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SPF6 = A5.DBSYMBOL AND A5.[TableName] = 'DELIVERY' and A5.[COLUMNNAME] = 'S_SPF6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SFSRC1 = A6.DBSYMBOL AND A6.[TableName] = 'DELIVERY' and A6.[COLUMNNAME] = 'S_SFSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SFSRC2 = A7.DBSYMBOL AND A7.[TableName] = 'DELIVERY' and A7.[COLUMNNAME] = 'S_SFSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_BECA1 = A8.DBSYMBOL AND A8.[TableName] = 'DELIVERY' and A8.[COLUMNNAME] = 'S_BECA1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BECA2 = A9.DBSYMBOL AND A9.[TableName] = 'DELIVERY' and A9.[COLUMNNAME] = 'S_BECA2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_BECF1 = A10.DBSYMBOL AND A10.[TableName] = 'DELIVERY' and A10.[COLUMNNAME] = 'S_BECF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BECF2 = A11.DBSYMBOL AND A11.[TableName] = 'DELIVERY' and A11.[COLUMNNAME] = 'S_BECF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_DPSRC1 = A12.DBSYMBOL AND A12.[TableName] = 'DELIVERY' and A12.[COLUMNNAME] = 'S_DPSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_DPSRC2 = A13.DBSYMBOL AND A13.[TableName] = 'DELIVERY' and A13.[COLUMNNAME] = 'S_DPSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DPSRC3 = A14.DBSYMBOL AND A14.[TableName] = 'DELIVERY' and A14.[COLUMNNAME] = 'S_DPSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_DPSRC4 = A15.DBSYMBOL AND A15.[TableName] = 'DELIVERY' and A15.[COLUMNNAME] = 'S_DPSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_CCSRC1 = A16.DBSYMBOL AND A16.[TableName] = 'DELIVERY' and A16.[COLUMNNAME] = 'S_CCSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CCSRC2 = A17.DBSYMBOL AND A17.[TableName] = 'DELIVERY' and A17.[COLUMNNAME] = 'S_CCSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CCSRC3 = A18.DBSYMBOL AND A18.[TableName] = 'DELIVERY' and A18.[COLUMNNAME] = 'S_CCSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_CCSRC4 = A19.DBSYMBOL AND A19.[TableName] = 'DELIVERY' and A19.[COLUMNNAME] = 'S_CCSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_LFC = A20.DBSYMBOL AND A20.[TableName] = 'DELIVERY' and A20.[COLUMNNAME] = 'S_LFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_RFC = A21.DBSYMBOL AND A21.[TableName] = 'DELIVERY' and A21.[COLUMNNAME] = 'S_RFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_SPF7 = A22.DBSYMBOL AND A22.[TableName] = 'DELIVERY' and A22.[COLUMNNAME] = 'S_SPF7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_SPF8 = A23.DBSYMBOL AND A23.[TableName] = 'DELIVERY' and A23.[COLUMNNAME] = 'S_SPF8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_SPF9 = A24.DBSYMBOL AND A24.[TableName] = 'DELIVERY' and A24.[COLUMNNAME] = 'S_SPF9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_SPF10 = A25.DBSYMBOL AND A25.[TableName] = 'DELIVERY' and A25.[COLUMNNAME] = 'S_SPF10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_INT_ACCRUAL_TYPE = A26.DBSYMBOL AND A26.[TableName] = 'DELIVERY' and A26.[COLUMNNAME] = 'S_INT_ACCRUAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_INT_CALC_BASIS_TYPE = A27.DBSYMBOL AND A27.[TableName] = 'DELIVERY' and A27.[COLUMNNAME] = 'S_INT_CALC_BASIS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_INT_CALC_PERIOD = A28.DBSYMBOL AND A28.[TableName] = 'DELIVERY' and A28.[COLUMNNAME] = 'S_INT_CALC_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_INT_CALC_METHOD = A29.DBSYMBOL AND A29.[TableName] = 'DELIVERY' and A29.[COLUMNNAME] = 'S_INT_CALC_METHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A30 on x.S_FNM_HOME_IMP_PROD = A30.DBSYMBOL AND A30.[TableName] = 'DELIVERY' and A30.[COLUMNNAME] = 'S_FNM_HOME_IMP_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A31 on x.S_SIGNDOCPUSHBACK = A31.DBSYMBOL AND A31.[TableName] = 'DELIVERY' and A31.[COLUMNNAME] = 'S_SIGNDOCPUSHBACK'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -13298,6 +13420,7 @@ AS
       x.[DBID],
       x.[DPYMTCTR],
       x.[S_TYPE],
+      A0.Descript AS [S_TYPE_Description],
       x.[AMOUNT],
       HASHBYTES('SHA2_256', x.[NAME]) AS [NAME],
       x.[ADDR1],
@@ -13322,18 +13445,31 @@ AS
       x.[VERIFYFND],
       x.[OTHERDOWNPAYTYPEDESC],
       x.[S_DOWN_PMT_SRC_TYP],
+      A1.Descript AS [S_DOWN_PMT_SRC_TYP_Description],
       x.[S_DOWN_PMT_SRC_OTH],
+      A2.Descript AS [S_DOWN_PMT_SRC_OTH_Description],
       x.[S_DOWN_PMT_TYP],
+      A3.Descript AS [S_DOWN_PMT_TYP_Description],
       x.[S_TYPE_OTH],
+      A4.Descript AS [S_TYPE_OTH_Description],
       x.[PRIMARY_SRC],
       x.[DOWNPAYMENTPERCENT],
       x.[S_DOWN_PMT_SRC],
+      A5.Descript AS [S_DOWN_PMT_SRC_Description],
       x.[S_TYPENM],
+      A6.Descript AS [S_TYPENM_Description],
       x.[DOWNPAYTYPENMOTHERDESC],
       x.[RECORD_CREATED],
       x.[TOTAL_GIFT_FUNDS],
       x.[ASSETCTR]
    FROM [clt_NetO].[DOWNPYMT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_DOWN_PMT_SRC_TYP = A1.DBSYMBOL AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOWN_PMT_SRC_OTH = A2.DBSYMBOL AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_DOWN_PMT_TYP = A3.DBSYMBOL AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TYPE_OTH = A4.DBSYMBOL AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DOWN_PMT_SRC = A5.DBSYMBOL AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TYPENM = A6.DBSYMBOL AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -13358,11 +13494,14 @@ AS
       x.[DBID],
       x.[TRANCTR],
       x.[S_TRAN],
+      A0.Descript AS [S_TRAN_Description],
       x.[TRANDESC],
       x.[TRANAMT],
       x.[OTHERAMT],
       x.[S_PURCH_CREDIT_TYPE],
+      A1.Descript AS [S_PURCH_CREDIT_TYPE_Description],
       x.[S_PURCH_SOURCE_TYPE],
+      A2.Descript AS [S_PURCH_SOURCE_TYPE_Description],
       x.[OTHERPURCHCREDTYPEDESC],
       x.[OTHERPURCHSRCTYPEDESC],
       x.[MANUALAMT],
@@ -13373,6 +13512,9 @@ AS
       x.[EXCLOTHCREDPREP],
       x.[POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRAN = A0.DBSYMBOL AND A0.[TableName] = 'DTLTRAN' and A0.[COLUMNNAME] = 'S_TRAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PURCH_CREDIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'DTLTRAN' and A1.[COLUMNNAME] = 'S_PURCH_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PURCH_SOURCE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DTLTRAN' and A2.[COLUMNNAME] = 'S_PURCH_SOURCE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -13427,6 +13569,7 @@ AS
       x.[WAIVED],
       x.[CSHMONTH],
       x.[S_PERIOD],
+      A0.Descript AS [S_PERIOD_Description],
       x.[TOTALATC],
       x.[INCGFE],
       x.[SPOVERRIDE],
@@ -13437,6 +13580,7 @@ AS
       x.[INCHCL],
       x.[CID_FEE_SRVC_PRVDR_CO],
       x.[S_MISC_DESC],
+      A1.Descript AS [S_MISC_DESC_Description],
       x.[LOCKEDYN],
       x.[LOCKEDTOTAL],
       x.[ISSUE_CHECK],
@@ -13446,22 +13590,38 @@ AS
       x.[SUBFEE],
       x.[FEECODE],
       x.[S_AGGTYPE],
+      A2.Descript AS [S_AGGTYPE_Description],
       x.[S_RESP_PARTY],
+      A3.Descript AS [S_RESP_PARTY_Description],
       x.[S_PAIDBY],
+      A4.Descript AS [S_PAIDBY_Description],
       x.[S_PAIDTO],
+      A5.Descript AS [S_PAIDTO_Description],
       x.[SUBCODE],
       x.[IS_NOCOST],
       x.[MANAGED_OVR],
       x.[TO_AFFILIATE],
       x.[S_SECTION_TYPE],
+      A6.Descript AS [S_SECTION_TYPE_Description],
       x.[ID_SECTION_SUBTYPE],
       x.[PREPAID_MONTH],
       x.[S_TOLERANCE_CATEGORY],
+      A7.Descript AS [S_TOLERANCE_CATEGORY_Description],
       x.[S_CHANGE_TYPE],
+      A8.Descript AS [S_CHANGE_TYPE_Description],
       x.[CHANGE_REASON],
       x.[BOROPT],
       x.[EXC_MAPR]
    FROM [clt_NetO].[FEEVALS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PERIOD = A0.DBSYMBOL AND A0.[TableName] = 'FEEVALS' and A0.[COLUMNNAME] = 'S_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MISC_DESC = A1.DBSYMBOL AND A1.[TableName] = 'FEEVALS' and A1.[COLUMNNAME] = 'S_MISC_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AGGTYPE = A2.DBSYMBOL AND A2.[TableName] = 'FEEVALS' and A2.[COLUMNNAME] = 'S_AGGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESP_PARTY = A3.DBSYMBOL AND A3.[TableName] = 'FEEVALS' and A3.[COLUMNNAME] = 'S_RESP_PARTY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PAIDBY = A4.DBSYMBOL AND A4.[TableName] = 'FEEVALS' and A4.[COLUMNNAME] = 'S_PAIDBY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PAIDTO = A5.DBSYMBOL AND A5.[TableName] = 'FEEVALS' and A5.[COLUMNNAME] = 'S_PAIDTO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SECTION_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'FEEVALS' and A6.[COLUMNNAME] = 'S_SECTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TOLERANCE_CATEGORY = A7.DBSYMBOL AND A7.[TableName] = 'FEEVALS' and A7.[COLUMNNAME] = 'S_TOLERANCE_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CHANGE_TYPE = A8.DBSYMBOL AND A8.[TableName] = 'FEEVALS' and A8.[COLUMNNAME] = 'S_CHANGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -13483,12 +13643,12 @@ CREATE VIEW [NetO].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
-      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE]
+      x.[P_TEXT_VALUE],
+      x.[PKFIX]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -13517,7 +13677,9 @@ AS
       x.[DETMNNUM],
       x.[DETMNDAT],
       x.[S_FIRM],
+      A0.Descript AS [S_FIRM_Description],
       x.[S_FLDZON],
+      A1.Descript AS [S_FLDZON_Description],
       x.[FLDMAPDT],
       x.[COMMNUMB],
       x.[SFHAREA],
@@ -13528,6 +13690,8 @@ AS
       x.[NFIP_MAP_PANEL_DATE],
       x.[COMMNAME]
    FROM [clt_NetO].[FLOOD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRM = A0.DBSYMBOL AND A0.[TableName] = 'FLOOD' and A0.[COLUMNNAME] = 'S_FIRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FLDZON = A1.DBSYMBOL AND A1.[TableName] = 'FLOOD' and A1.[COLUMNNAME] = 'S_FLDZON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -14168,7 +14332,9 @@ AS
       x.[CUR_HOUSING_PMT],
       x.[OTHERINDEXTYPEDESC],
       x.[S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[S_PAYEETYPE],
+      A1.Descript AS [S_PAYEETYPE_Description],
       x.[PAYEETYPEOTHERDESC],
       x.[CLNUM_COUNTER],
       x.[LEAD_COUNTER],
@@ -14179,18 +14345,22 @@ AS
       x.[DMI_OWN_RIGHTS],
       x.[DMI_BILLING_MODE],
       x.[S_AUSUWTYPE],
+      A2.Descript AS [S_AUSUWTYPE_Description],
       x.[MSP_INVESTOR_ID],
       x.[MSP_INVESTOR_ID_OVERRIDE],
       x.[MSP_INVESTOR_CATEGORY],
       x.[MSP_INVESTOR_CATEGORY_OVERRIDE],
       x.[FIRST_DISB_REC_AMT],
       x.[S_INTPRD_COMM_MET],
+      A3.Descript AS [S_INTPRD_COMM_MET_Description],
       x.[EXCLUDE_FROM_QRM],
       x.[READY_REDISCLSR],
       x.[S_WELCOME_CALL],
+      A4.Descript AS [S_WELCOME_CALL_Description],
       x.[LOAN_AMOUNT_TOLER],
       x.[MAX_APPR_RATE],
       x.[S_AUS_RESULT],
+      A5.Descript AS [S_AUS_RESULT_Description],
       x.[P_ADMINOVR],
       x.[P_CB_ADMINOVR],
       x.[P_COMPOVR],
@@ -14199,8 +14369,10 @@ AS
       x.[HARP_MI_REQUIRED],
       x.[NET_NEW_DOLLARS],
       x.[S_INIT_DISC_DELIVERY_MTHD],
+      A6.Descript AS [S_INIT_DISC_DELIVERY_MTHD_Description],
       x.[CONFIDENCE_SCR_HLMAI],
       x.[S_BRANCH_TYPE],
+      A7.Descript AS [S_BRANCH_TYPE_Description],
       x.[BRANCH_ID],
       x.[BRANCH_BANK_CODE],
       x.[BRANCH_COST_CENTER],
@@ -14209,6 +14381,14 @@ AS
       x.[PROMOTION_CODE],
       x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_DATA' and A0.[COLUMNNAME] = 'S_INDEX'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYEETYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_DATA' and A1.[COLUMNNAME] = 'S_PAYEETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AUSUWTYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_DATA' and A2.[COLUMNNAME] = 'S_AUSUWTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_INTPRD_COMM_MET = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_LOAN_DATA' and A3.[COLUMNNAME] = 'S_INTPRD_COMM_MET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_WELCOME_CALL = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_LOAN_DATA' and A4.[COLUMNNAME] = 'S_WELCOME_CALL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_AUS_RESULT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_LOAN_DATA' and A5.[COLUMNNAME] = 'S_AUS_RESULT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_INIT_DISC_DELIVERY_MTHD = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_LOAN_DATA' and A6.[COLUMNNAME] = 'S_INIT_DISC_DELIVERY_MTHD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_BRANCH_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_LOAN_DATA' and A7.[COLUMNNAME] = 'S_BRANCH_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -14231,8 +14411,11 @@ AS
    SELECT
       x.[LNUM],
       x.[S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[S_UW_STATUS],
+      A1.Descript AS [S_UW_STATUS_Description],
       x.[S_LOCK_STATUS],
+      A2.Descript AS [S_LOCK_STATUS_Description],
       x.[LOCK_STATUS_DISPLAY],
       x.[SENT_TO_MIDANET],
       x.[AP_ADMIN_ONLY],
@@ -14240,6 +14423,9 @@ AS
       x.[EXT_LOAN_STATUS_VERSION_ID],
       x.[EXT_LOAN_STATUS_VERSION]
    FROM [clt_NetO].[GF_TL_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UW_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_STATUS' and A1.[COLUMNNAME] = 'S_UW_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOCK_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_STATUS' and A2.[COLUMNNAME] = 'S_LOCK_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -14348,9 +14534,13 @@ AS
       x.[PRICE_GROUP_CODE],
       x.[IPG_NAME],
       x.[S_SEC_MANAGE_TYPE],
+      A0.Descript AS [S_SEC_MANAGE_TYPE_Description],
       x.[S_SEC_LOAN_TYPE],
+      A1.Descript AS [S_SEC_LOAN_TYPE_Description],
       x.[S_SEC_POOL_TYPE],
+      A2.Descript AS [S_SEC_POOL_TYPE_Description],
       x.[S_PREPAY_PEN],
+      A3.Descript AS [S_PREPAY_PEN_Description],
       x.[OVER_ALLOW_PCT],
       x.[SHORT_ALLOW_PCT],
       x.[OVER_SPLIT_PCT],
@@ -14374,13 +14564,16 @@ AS
       x.[OLD_AGENCY_NUM_IND],
       x.[PRODUCT_IDENTIFIER],
       x.[S_AUS_IND],
+      A4.Descript AS [S_AUS_IND_Description],
       x.[S_SERVICE_TYPE],
+      A5.Descript AS [S_SERVICE_TYPE_Description],
       x.[SERVICING_INTERFACE_IND],
       x.[SERVICING_LOCATION],
       x.[SUB_PRIME_IND],
       x.[MI_REQUIRE],
       x.[INTEREST_ONLY_PRODUCT],
       x.[S_SPEC_PROG],
+      A6.Descript AS [S_SPEC_PROG_Description],
       x.[CRA_REPORT],
       x.[INV_CODE_OVR],
       x.[INV_PROD_CODE_OVR],
@@ -14399,8 +14592,17 @@ AS
       x.[EVAL_QM],
       x.[APPLY_MLA_RULES],
       x.[LNDR_PD_MI_ALLOWED],
-      x.[S_ASSUMABILITY_FEATURE]
+      x.[S_ASSUMABILITY_FEATURE],
+      A7.Descript AS [S_ASSUMABILITY_FEATURE_Description]
    FROM [clt_NetO].[GF_TL_PNP_IPG_DETAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SEC_MANAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A0.[COLUMNNAME] = 'S_SEC_MANAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEC_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A1.[COLUMNNAME] = 'S_SEC_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SEC_POOL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A2.[COLUMNNAME] = 'S_SEC_POOL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PREPAY_PEN = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A3.[COLUMNNAME] = 'S_PREPAY_PEN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_AUS_IND = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A4.[COLUMNNAME] = 'S_AUS_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SERVICE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A5.[COLUMNNAME] = 'S_SERVICE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SPEC_PROG = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A6.[COLUMNNAME] = 'S_SPEC_PROG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ASSUMABILITY_FEATURE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A7.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -14423,16 +14625,20 @@ AS
    SELECT
       x.[LNUM],
       x.[S_REFSC],
+      A0.Descript AS [S_REFSC_Description],
       x.[TBDADDR],
       x.[POSFHA],
       x.[S_PROPTYPE],
+      A1.Descript AS [S_PROPTYPE_Description],
       x.[PROJCLAS],
       x.[PROJNAME],
       x.[DPPERCT],
       x.[HELINE],
       x.[HECURBAL],
       x.[S_DOCLVL],
+      A2.Descript AS [S_DOCLVL_Description],
       x.[S_LNSTATUS],
+      A3.Descript AS [S_LNSTATUS_Description],
       x.[HLTVH],
       x.[TSWE_INC_EXPECTED],
       x.[QUAL_TSWE_LOAN],
@@ -14448,6 +14654,7 @@ AS
       x.[LO_NMLS_NUM_OVR],
       x.[LO_PHONE_OVR],
       x.[S_GFE_TIME_ZONE],
+      A4.Descript AS [S_GFE_TIME_ZONE_Description],
       x.[ALLOWWITHDRAWLOAN],
       x.[GFE_INT_RATE_LSC],
       x.[GFE_INT_RATE_LIR],
@@ -14494,6 +14701,11 @@ AS
       x.[LP2_RISK_CLASS_OVR],
       x.[DU_DISPLAY_OVR]
    FROM [clt_NetO].[GF_TL_POINT_OF_SALE_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFSC = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A0.[COLUMNNAME] = 'S_REFSC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_PROPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOCLVL = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_DOCLVL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LNSTATUS = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_LNSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_GFE_TIME_ZONE = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -14640,6 +14852,7 @@ AS
       x.[REPAIRAMOUNT],
       x.[REPLACEMENTAMOUNT],
       x.[S_FLOODMAPZONE],
+      A0.Descript AS [S_FLOODMAPZONE_Description],
       x.[APP_SENT_BORROWER],
       x.[APPRAISAL_DELIVERED],
       x.[APP_TIME_WAIVE],
@@ -14653,13 +14866,20 @@ AS
       x.[PERCENT_MULTI_FAM],
       x.[PERCENT_COMMERCIAL],
       x.[S_PROP_LOC_TYPE],
+      A1.Descript AS [S_PROP_LOC_TYPE_Description],
       x.[PROP_LTN_TYP_OTHDESC],
       x.[S_CAR_STORAGE_TYPE],
+      A2.Descript AS [S_CAR_STORAGE_TYPE_Description],
       x.[CARSTORAGE_TYPE_OTHR_DESC],
       x.[CARSTORAGE_NBR_CARS],
       x.[S_FOUNDATION_TYPE],
+      A3.Descript AS [S_FOUNDATION_TYPE_Description],
       x.[FNDN_TYPE_OTHER_DESC]
    FROM [clt_NetO].[GF_TL_UWAPPREXT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FLOODMAPZONE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_UWAPPREXT' and A0.[COLUMNNAME] = 'S_FLOODMAPZONE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROP_LOC_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_UWAPPREXT' and A1.[COLUMNNAME] = 'S_PROP_LOC_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CAR_STORAGE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_UWAPPREXT' and A2.[COLUMNNAME] = 'S_CAR_STORAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FOUNDATION_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_UWAPPREXT' and A3.[COLUMNNAME] = 'S_FOUNDATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -14807,11 +15027,13 @@ AS
       x.[MAILCOUNTRY],
       x.[MAIL_FADDR_INDICATOR],
       x.[S_MAIL_UNIT_TYPE],
+      A0.Descript AS [S_MAIL_UNIT_TYPE_Description],
       x.[MAIL_UNIT_NUM],
       x.[MAIL_COUNTRY_CODE],
       x.[BOR_MAIL_STATE_FOREIN],
       x.[MAIL_POST_CODE_FOREIN]
    FROM [clt_NetO].[GF_TLB_MAILING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MAIL_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLB_MAILING' and A0.[COLUMNNAME] = 'S_MAIL_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15079,21 +15301,28 @@ AS
       x.[CELL_PHONE],
       x.[PRIM_CONTACT],
       x.[S_FIRSTTIMEHBCOUNSEL],
+      A0.Descript AS [S_FIRSTTIMEHBCOUNSEL_Description],
       x.[S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       HASHBYTES('SHA2_256', x.[CURRENT_CUSTOMER]) AS [CURRENT_CUSTOMER],
       x.[WORK_EXT],
       x.[CREDIT_AUTHORIZATION_YN],
       x.[NATIONALITY],
       x.[AFFILIATE],
       x.[S_COUNSEL_CONFIRM_TYP],
+      A2.Descript AS [S_COUNSEL_CONFIRM_TYP_Description],
       x.[S_COUNSEL_CONFIRM_OTH],
+      A3.Descript AS [S_COUNSEL_CONFIRM_OTH_Description],
       x.[S_COUNSEL_FORMAT_TYP],
+      A4.Descript AS [S_COUNSEL_FORMAT_TYP_Description],
       x.[CREDIT_AUTHORIZATION_DATE],
       x.[CUSTOMER_ID],
       x.[S_CRDTSCORE_MODEL_OVR],
+      A5.Descript AS [S_CRDTSCORE_MODEL_OVR_Description],
       x.[URLA_BESTCONTACT],
       x.[URLA_ALTCONTACT],
       x.[S_CREDIT_TYPE],
+      A6.Descript AS [S_CREDIT_TYPE_Description],
       x.[JOINT_CREDIT_BNUM],
       HASHBYTES('SHA2_256', x.[SPOUSE_FNAME]) AS [SPOUSE_FNAME],
       HASHBYTES('SHA2_256', x.[SPOUSE_MNAME]) AS [SPOUSE_MNAME],
@@ -15110,6 +15339,7 @@ AS
       x.[ATTR_CAIVRS],
       x.[ATTR_ESIGN],
       x.[S_LANGUAGEPREFERENCE],
+      A7.Descript AS [S_LANGUAGEPREFERENCE_Description],
       x.[OTHER_LANGUAGE],
       x.[CURRENTINCOTHERTOTAL],
       x.[CURRENTINCOMETOTAL],
@@ -15128,6 +15358,14 @@ AS
       x.[MOTHERS_MAIDEN],
       x.[APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRSTTIMEHBCOUNSEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_COUNSEL_CONFIRM_TYP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A2.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COUNSEL_CONFIRM_OTH = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A3.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COUNSEL_FORMAT_TYP = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A4.[COLUMNNAME] = 'S_COUNSEL_FORMAT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CRDTSCORE_MODEL_OVR = A5.DBSYMBOL AND A5.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A5.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_CREDIT_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LANGUAGEPREFERENCE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15156,12 +15394,14 @@ AS
       x.[MID_NAME],
       HASHBYTES('SHA2_256', x.[LAST_NAME]) AS [LAST_NAME],
       x.[S_BORR_ALIAS],
+      A0.Descript AS [S_BORR_ALIAS_Description],
       HASHBYTES('SHA2_256', x.[NAME_SUFFIX]) AS [NAME_SUFFIX],
       x.[ALIAS_TYPE_OTH_DESC],
       x.[CREDITORNAME],
       x.[ALIASACCTNUM],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ALIAS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BORR_ALIAS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ALIAS' and A0.[COLUMNNAME] = 'S_BORR_ALIAS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15191,6 +15431,7 @@ AS
       x.[GRANT_CRA_CODE],
       x.[PROGRAM_EXP],
       x.[S_ASSIST_TYPE],
+      A0.Descript AS [S_ASSIST_TYPE_Description],
       x.[REPAY_TERM],
       x.[REPAY_RATE],
       x.[REPAY_PMT],
@@ -15201,10 +15442,13 @@ AS
       x.[ALLOW_AP_EXCEPT],
       x.[PROVIDER_EIN],
       x.[S_ASSIST_PVDR_TYP],
+      A1.Descript AS [S_ASSIST_PVDR_TYP_Description],
       x.[AP_OTH_DESC],
       x.[RECORD_CREATED],
       x.[ASSETCTR]
    FROM [clt_NetO].[GF_TLBR_ASSIST_PROGRAMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSIST_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A0.[COLUMNNAME] = 'S_ASSIST_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSIST_PVDR_TYP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A1.[COLUMNNAME] = 'S_ASSIST_PVDR_TYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15299,7 +15543,6 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
-      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -15307,6 +15550,7 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
+      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -15389,16 +15633,20 @@ AS
       x.[SELFEMPL],
       x.[PERCBUSOWN],
       x.[S_JOB_TYPE],
+      A0.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE],
+      A1.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC],
       x.[IS_EMPLOYED_ABROAD],
       x.[COUNTRY],
       x.[MONTHS_AT_JOB],
       x.[MONTHS_IN_PROFESSION]
    FROM [clt_NetO].[GF_TLBR_EMPLOYER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_JOB_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_EMPLOYER' and A0.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPECBOREMPRELTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_EMPLOYER' and A1.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15424,9 +15672,11 @@ AS
       x.[DBID],
       x.[ETHNICITY_CTR],
       x.[S_ETHNICITY],
+      A0.Descript AS [S_ETHNICITY_Description],
       x.[FURNISH_INFO_YN],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ETHNICITY' and A0.[COLUMNNAME] = 'S_ETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15480,9 +15730,11 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_RACE],
+      A0.Descript AS [S_RACE_Description],
       x.[OTHER_AMERICAN_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_RACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_RACE' and A0.[COLUMNNAME] = 'S_RACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15542,9 +15794,11 @@ AS
       x.[DBID],
       x.[SUBETHNICITY_CTR],
       x.[S_SUBETHNICITY],
+      A0.Descript AS [S_SUBETHNICITY_Description],
       x.[OTHER_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBETHNICITY' and A0.[COLUMNNAME] = 'S_SUBETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15570,10 +15824,12 @@ AS
       x.[DBID],
       x.[SUBRACE_CTR],
       x.[S_SUBRACE],
+      A0.Descript AS [S_SUBRACE_Description],
       x.[OTHER_ASIAN_DESC],
       x.[OTHER_PACISLDR_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBRACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBRACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBRACE' and A0.[COLUMNNAME] = 'S_SUBRACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15599,8 +15855,11 @@ AS
       x.[ROWSERIALNO],
       x.[MODIFIED_USERID],
       x.[S_FMETHOD],
+      A0.Descript AS [S_FMETHOD_Description],
       x.[S_FSTATUS],
+      A1.Descript AS [S_FSTATUS_Description],
       x.[S_DMETHOD],
+      A2.Descript AS [S_DMETHOD_Description],
       x.[AMOUNT],
       HASHBYTES('SHA2_256', x.[PAYEE_NAME]) AS [PAYEE_NAME],
       HASHBYTES('SHA2_256', x.[PAYEE_ADDRESS]) AS [PAYEE_ADDRESS],
@@ -15610,7 +15869,9 @@ AS
       x.[ISSUEDATE],
       x.[REQDATE],
       x.[S_TYPE],
+      A3.Descript AS [S_TYPE_Description],
       x.[S_FUNDLOC],
+      A4.Descript AS [S_FUNDLOC_Description],
       x.[ROUTENUM],
       x.[ACCOUNTNUM],
       x.[TRANSNUM],
@@ -15665,6 +15926,11 @@ AS
       x.[W_APPRVDDT1],
       x.[W_APPRVDDT2]
    FROM [clt_NetO].[GF_TLR_DISBURSEMENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FMETHOD = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_DISBURSEMENTS' and A0.[COLUMNNAME] = 'S_FMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FSTATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_DISBURSEMENTS' and A1.[COLUMNNAME] = 'S_FSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DMETHOD = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_DMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FUNDLOC = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'S_FUNDLOC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15824,6 +16090,7 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_INSTYPE],
+      A0.Descript AS [S_INSTYPE_Description],
       x.[COVAMNT],
       x.[MINCOVER],
       x.[PREMAMT],
@@ -15857,9 +16124,11 @@ AS
       x.[PMTOPTDBID],
       x.[PMTOPTSERNO],
       x.[S_OTH_INS_TYPE_DESC],
+      A1.Descript AS [S_OTH_INS_TYPE_DESC_Description],
       x.[HUDLINE],
       x.[POLICY_TERM],
       x.[S_ESCINS],
+      A2.Descript AS [S_ESCINS_Description],
       x.[ASSETID],
       x.[DT_ORDERED],
       x.[DT_EXPECTED],
@@ -15882,6 +16151,9 @@ AS
       x.[NFIP_MAX_COVERAGE],
       x.[MINIMUM_COVERAGE]
    FROM [clt_NetO].[GF_TLR_INSURANCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_INSURANCE' and A0.[COLUMNNAME] = 'S_INSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OTH_INS_TYPE_DESC = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_INSURANCE' and A1.[COLUMNNAME] = 'S_OTH_INS_TYPE_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ESCINS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_INSURANCE' and A2.[COLUMNNAME] = 'S_ESCINS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -15951,6 +16223,7 @@ AS
       x.[REG_O_BORROWER],
       HASHBYTES('SHA2_256', x.[EMPLOYEE_BORROWER]) AS [EMPLOYEE_BORROWER],
       x.[S_EMP_REGO_TYPE],
+      A0.Descript AS [S_EMP_REGO_TYPE_Description],
       x.[EXEC_EDUC],
       x.[EXEC_OFFIC_OTH],
       x.[EXEC_OFFIC_YN],
@@ -15958,6 +16231,7 @@ AS
       x.[BOD_APPROVAL_DATE],
       x.[COMMITTEE_APPROVAL]
    FROM [clt_NetO].[GF_TLR_REG_O] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMP_REGO_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_REG_O' and A0.[COLUMNNAME] = 'S_EMP_REGO_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -16136,9 +16410,11 @@ AS
       x.[INFILE_DATE],
       x.[BNUM],
       x.[S_RESULTSTATUSTYPE],
+      A0.Descript AS [S_RESULTSTATUSTYPE_Description],
       x.[RESULTSTATUSTTHERDESC],
       x.[CREDREPOSSRCTYPEOTHERDESC]
    FROM [clt_NetO].[GF_TLR_RES_CREDIT_FILE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RESULTSTATUSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RES_CREDIT_FILE' and A0.[COLUMNNAME] = 'S_RESULTSTATUSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -16564,6 +16840,7 @@ AS
       x.[ERRORRPTIMAGEID],
       x.[MERGEDCREDITCERTIMAGEID],
       x.[S_CRWELIGIBILITYTYPE],
+      A0.Descript AS [S_CRWELIGIBILITYTYPE_Description],
       x.[HVERPTIMAGEID],
       x.[MERGEDCREDITIMAGEID],
       x.[LPATTLASSETDEFICITAMT],
@@ -16592,6 +16869,7 @@ AS
       x.[LPATTLREQUIREDRESERVESAMT],
       x.[CREDIT_INFILE]
    FROM [clt_NetO].[GF_TLR_RSP_LP_LOANFDBCK] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CRWELIGIBILITYTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RSP_LP_LOANFDBCK' and A0.[COLUMNNAME] = 'S_CRWELIGIBILITYTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -16665,6 +16943,7 @@ AS
       x.[ROWSERIALNO],
       x.[HUDLINE],
       x.[S_TAXTYPE],
+      A0.Descript AS [S_TAXTYPE_Description],
       x.[ANN_AMT],
       x.[FIRST_DUE],
       x.[ESCROW],
@@ -16692,10 +16971,13 @@ AS
       x.[RATEPERTHOUSAND],
       x.[COLFIRSTYR],
       x.[S_ESCTAX],
+      A1.Descript AS [S_ESCTAX_Description],
       x.[ISMERGEDINT],
       x.[TAX_TYPE_DESC],
       x.[UPFRONT_TAX_AMOUNT]
    FROM [clt_NetO].[GF_TLR_TAXITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TAXTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_TAXITEMS' and A0.[COLUMNNAME] = 'S_TAXTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ESCTAX = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_TAXITEMS' and A1.[COLUMNNAME] = 'S_ESCTAX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -16779,8 +17061,8 @@ CREATE VIEW [NetO].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[USRID],
       x.[DELETED_CLNUM],
+      x.[USRID],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -16840,6 +17122,7 @@ AS
       x.[CID],
       x.[ROWSERIALNO],
       x.[S_ADDRTYPE],
+      A0.Descript AS [S_ADDRTYPE_Description],
       x.[ADDR1],
       x.[ADDR2],
       HASHBYTES('SHA2_256', x.[CITY]) AS [CITY],
@@ -16849,8 +17132,11 @@ AS
       HASHBYTES('SHA2_256', x.[ZIP]) AS [ZIP],
       x.[TIMEZONE],
       x.[S_CMSADR_UNIT_TYPE],
+      A1.Descript AS [S_CMSADR_UNIT_TYPE_Description],
       x.[CMSADR_UNIT_NUM]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_ADDRESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ADDRTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A0.[COLUMNNAME] = 'S_ADDRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -16873,8 +17159,10 @@ AS
       x.[CID],
       x.[ROWSERIALNO],
       x.[S_EMAILTYPE],
+      A0.Descript AS [S_EMAILTYPE_Description],
       HASHBYTES('SHA2_256', x.[EMAILADDR]) AS [EMAILADDR]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_EMAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -16897,10 +17185,12 @@ AS
       x.[CID],
       x.[ACTIVE],
       x.[S_CMSSTATUS],
+      A0.Descript AS [S_CMSSTATUS_Description],
       x.[FULLNAME],
       x.[SHORTNAME],
       HASHBYTES('SHA2_256', x.[SSNTIN]) AS [SSNTIN],
       x.[S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[REFCODE],
       x.[CREATED_BY_USER],
       x.[CREATED_DATE],
@@ -16915,6 +17205,8 @@ AS
       x.[SUFFIXNAME],
       x.[PORTAL_REFCODE]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSSTATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A0.[COLUMNNAME] = 'S_CMSSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -16937,9 +17229,11 @@ AS
       x.[CID],
       x.[ROWSERIALNO],
       x.[S_PHONETYPE],
+      A0.Descript AS [S_PHONETYPE_Description],
       x.[PHONENBR],
       x.[PHONEEXT]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_PHONE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -16960,8 +17254,10 @@ CREATE VIEW [NetO].[VwGF_TS_CMS_CONTACT_TYPE]
 AS
    SELECT
       x.[CID],
-      x.[S_CMSTYPE]
+      x.[S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_TYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -16983,12 +17279,15 @@ AS
    SELECT
       x.[CID],
       x.[S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description],
       x.[S_STATUS],
+      A1.Descript AS [S_STATUS_Description],
       x.[STATUS_START_DT],
       x.[STATUS_STOP_DT],
       x.[STATUS_CHGD_DT],
       x.[USEPARENT],
       x.[S_GRADE],
+      A2.Descript AS [S_GRADE_Description],
       x.[COMPLIANCE_MONITOR],
       x.[COMPLIANCE_EMAIL],
       x.[EMPLOYER_ID],
@@ -17000,9 +17299,14 @@ AS
       x.[SAR_ID],
       x.[PROVIDER_ID],
       x.[S_TYPE_OF_COMPANY],
+      A3.Descript AS [S_TYPE_OF_COMPANY_Description],
       x.[CMS_SHORT_DESC],
       x.[CMS_COMMENTS]
    FROM [clt_NetO].[GF_TS_CMS_INFOBYTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A1.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRADE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A2.[COLUMNNAME] = 'S_GRADE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17023,10 +17327,12 @@ CREATE VIEW [NetO].[VwGF_TS_INDEX_VALUE]
 AS
    SELECT
       x.[S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[INDEX_ID],
       x.[EFFECTIVE_DATE],
       x.[INDEX_VALUE]
    FROM [clt_NetO].[GF_TS_INDEX_VALUE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17181,12 +17487,16 @@ CREATE VIEW [NetO].[VwGF_TS_WF_GROUP_USER]
 AS
    SELECT
       x.[S_PROC_GROUP],
+      A0.Descript AS [S_PROC_GROUP_Description],
       x.[USERID],
       x.[S_USER_TYPE],
+      A1.Descript AS [S_USER_TYPE_Description],
       x.[IS_ACTIVE],
       x.[WEIGHT],
       x.[SUPERVISOR_ID]
    FROM [clt_NetO].[GF_TS_WF_GROUP_USER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROC_GROUP = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_GROUP_USER' and A0.[COLUMNNAME] = 'S_PROC_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17207,9 +17517,11 @@ CREATE VIEW [NetO].[VwGF_TS_WF_PROCESS]
 AS
    SELECT
       x.[S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[IS_ACTIVE],
       x.[EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17230,9 +17542,11 @@ CREATE VIEW [NetO].[VwGF_TS_WF_PROCESS_MODEL]
 AS
    SELECT
       x.[S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[IS_ACTIVE],
       x.[EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS_MODEL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17253,16 +17567,24 @@ CREATE VIEW [NetO].[VwGF_TS_WF_WORKTYPE]
 AS
    SELECT
       x.[S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_WT_TYPE],
+      A1.Descript AS [S_WT_TYPE_Description],
       x.[WT_EXECUTABLE],
       x.[EST_TO_COMPLETE],
       x.[S_USERINTERFACE],
+      A2.Descript AS [S_USERINTERFACE_Description],
       x.[S_REASSIGN_RULE],
+      A3.Descript AS [S_REASSIGN_RULE_Description],
       x.[WEIGHT_TIER1],
       x.[WEIGHT_TIER2],
       x.[WEIGHT_TIER3],
       x.[DISPLAY_IDX]
    FROM [clt_NetO].[GF_TS_WF_WORKTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_WORKTYPE' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_WT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_WORKTYPE' and A1.[COLUMNNAME] = 'S_WT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USERINTERFACE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_WF_WORKTYPE' and A2.[COLUMNNAME] = 'S_USERINTERFACE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17316,7 +17638,9 @@ AS
       x.[OLD_AGENCY_NUM_REQUIRED],
       x.[PROD_IDENTIFIER],
       x.[S_AUS_INDICATOR],
+      A0.Descript AS [S_AUS_INDICATOR_Description],
       x.[S_SERVICE_TYPE_IND],
+      A1.Descript AS [S_SERVICE_TYPE_IND_Description],
       x.[SERVICE_INT_INDICATOR],
       x.[SERVICE_LOC_CID],
       x.[SUB_PRIME_INDICATOR],
@@ -17331,6 +17655,7 @@ AS
       x.[INTEREST_ONLY_PRODUCT],
       x.[ODDDEFER],
       x.[S_SPEC_PRG],
+      A2.Descript AS [S_SPEC_PRG_Description],
       x.[MI_REQUIRED],
       x.[CRA_REPORTABLE],
       x.[MIN_ALLOW_TERM],
@@ -17342,12 +17667,17 @@ AS
       x.[PREQUAL_ALLOWED_YN],
       x.[PREAPPROVAL_ALLOWED_YN],
       x.[S_LOANFIT_PURP_CAT],
+      A3.Descript AS [S_LOANFIT_PURP_CAT_Description],
       x.[S_LOANFIT_PROD_CAT],
+      A4.Descript AS [S_LOANFIT_PROD_CAT_Description],
       x.[S_LOANFIT_LIEN_CAT],
+      A5.Descript AS [S_LOANFIT_LIEN_CAT_Description],
       x.[LOANFIT_CATEGORY_POSN],
       x.[LOANFIT_DISPLAY_POSN],
       x.[S_LOANFIT_AMT_GROUP],
+      A6.Descript AS [S_LOANFIT_AMT_GROUP_Description],
       x.[S_LOANFIT_LTV_GROUP],
+      A7.Descript AS [S_LOANFIT_LTV_GROUP_Description],
       x.[LOANFIT_MIN_LOAN],
       x.[LOANFIT_MAX_LOAN],
       x.[LOANFIT_MIN_LTV],
@@ -17367,6 +17697,7 @@ AS
       x.[CREATE_DATE],
       x.[MODIFY_DATE],
       x.[S_CONST_PROGRAM],
+      A8.Descript AS [S_CONST_PROGRAM_Description],
       x.[CONST_MONTHS],
       x.[IPG_RENOVA_PROD],
       x.[DOCMAGIC_PLAN_CODE],
@@ -17375,9 +17706,24 @@ AS
       x.[DAYS_FINAL_FLOAT_ELIG],
       x.[IPG_FINAL_INVESTOR],
       x.[S_ASSUMABILITY_FEATURE],
+      A9.Descript AS [S_ASSUMABILITY_FEATURE_Description],
       x.[S_IPG_BUYDWN],
-      x.[S_BUYDWN_CNTRBTR]
+      A10.Descript AS [S_IPG_BUYDWN_Description],
+      x.[S_BUYDWN_CNTRBTR],
+      A11.Descript AS [S_BUYDWN_CNTRBTR_Description]
    FROM [clt_NetO].[GF_TSR_PNP_IPG_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AUS_INDICATOR = A0.DBSYMBOL AND A0.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A0.[COLUMNNAME] = 'S_AUS_INDICATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SERVICE_TYPE_IND = A1.DBSYMBOL AND A1.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A1.[COLUMNNAME] = 'S_SERVICE_TYPE_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPEC_PRG = A2.DBSYMBOL AND A2.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A2.[COLUMNNAME] = 'S_SPEC_PRG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LOANFIT_PURP_CAT = A3.DBSYMBOL AND A3.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A3.[COLUMNNAME] = 'S_LOANFIT_PURP_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOANFIT_PROD_CAT = A4.DBSYMBOL AND A4.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A4.[COLUMNNAME] = 'S_LOANFIT_PROD_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LOANFIT_LIEN_CAT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A5.[COLUMNNAME] = 'S_LOANFIT_LIEN_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LOANFIT_AMT_GROUP = A6.DBSYMBOL AND A6.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A6.[COLUMNNAME] = 'S_LOANFIT_AMT_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LOANFIT_LTV_GROUP = A7.DBSYMBOL AND A7.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A7.[COLUMNNAME] = 'S_LOANFIT_LTV_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CONST_PROGRAM = A8.DBSYMBOL AND A8.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A8.[COLUMNNAME] = 'S_CONST_PROGRAM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_ASSUMABILITY_FEATURE = A9.DBSYMBOL AND A9.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A9.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_IPG_BUYDWN = A10.DBSYMBOL AND A10.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A10.[COLUMNNAME] = 'S_IPG_BUYDWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17399,8 +17745,11 @@ AS
    SELECT
       x.[ACTION_ID],
       x.[S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_ACTION_RESOLUTION],
+      A1.Descript AS [S_ACTION_RESOLUTION_Description],
       x.[S_PROC_MDL_RESOLUTION],
+      A2.Descript AS [S_PROC_MDL_RESOLUTION_Description],
       x.[EXTERNAL_CODE],
       x.[INSERT_DATE],
       x.[EXP_DATE_TO_COMPLETE],
@@ -17411,11 +17760,16 @@ AS
       x.[ACTION_STATUS_FLAG],
       x.[RESERVED_BY],
       x.[S_PROC_GROUP],
+      A3.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MDL_MGR_ID],
       x.[RESERVE_DATE],
       x.[WF_SESSION_ID],
       x.[OPENED_DATE]
    FROM [clt_NetO].[GF_TW_WF_ACTION_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_ACTION_MGR' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACTION_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_ACTION_MGR' and A1.[COLUMNNAME] = 'S_ACTION_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_MDL_RESOLUTION = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_ACTION_MGR' and A2.[COLUMNNAME] = 'S_PROC_MDL_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17437,7 +17791,9 @@ AS
    SELECT
       x.[PROC_MDL_MGR_ID],
       x.[S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[S_PROC_MDL_MGR_RESOLUTION],
+      A1.Descript AS [S_PROC_MDL_MGR_RESOLUTION_Description],
       x.[EXP_DATE_TO_COMPLETE],
       x.[START_DATE],
       x.[END_DATE],
@@ -17445,9 +17801,13 @@ AS
       x.[IS_COMPLETE],
       x.[RESERVED_BY],
       x.[S_PROC_GROUP],
+      A2.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MGR_ID],
       x.[PARENT_PROC_MDL_MGR_ID]
    FROM [clt_NetO].[GF_TW_WF_PROC_MODEL_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_MDL_MGR_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A1.[COLUMNNAME] = 'S_PROC_MDL_MGR_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17469,6 +17829,7 @@ AS
    SELECT
       x.[PROC_MGR_ID],
       x.[S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[EXTERNAL_CODE],
       x.[EXT_CODE_DESC],
       x.[EXP_COMP_DATE],
@@ -17479,8 +17840,11 @@ AS
       x.[MODELS_COMPLETED],
       x.[IS_COMPLETE],
       x.[RESERVED_BY],
-      x.[S_PROC_GROUP]
+      x.[S_PROC_GROUP],
+      A1.Descript AS [S_PROC_GROUP_Description]
    FROM [clt_NetO].[GF_TW_WF_PROCESS_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A0.[COLUMNNAME] = 'S_PROCESS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17623,18 +17987,24 @@ AS
       x.[CTAXLTV],
       x.[NUM_CARDS],
       x.[S_LOCTYPE],
+      A0.Descript AS [S_LOCTYPE_Description],
       x.[ANNUAL_FEE],
       x.[REPAY_MTHS],
       x.[TERMIN_FEE],
       x.[DRAWACCESS_FEE],
       x.[S_FUNDS_TO_BE_DRAWN],
+      A1.Descript AS [S_FUNDS_TO_BE_DRAWN_Description],
       x.[OVERDRAFT_PROTECTION],
       x.[ODP_ACCOUNT_NUMBER],
       x.[ODP_ROUTING_NUMBER],
       x.[ANNUAL_CALC_OVR],
       x.[TERM_CALC_OVR],
-      x.[S_REPAYMENT_METHOD]
+      x.[S_REPAYMENT_METHOD],
+      A2.Descript AS [S_REPAYMENT_METHOD_Description]
    FROM [clt_NetO].[HELOC] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOCTYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC' and A0.[COLUMNNAME] = 'S_LOCTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FUNDS_TO_BE_DRAWN = A1.DBSYMBOL AND A1.[TableName] = 'HELOC' and A1.[COLUMNNAME] = 'S_FUNDS_TO_BE_DRAWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_REPAYMENT_METHOD = A2.DBSYMBOL AND A2.[TableName] = 'HELOC' and A2.[COLUMNNAME] = 'S_REPAYMENT_METHOD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -17662,9 +18032,11 @@ AS
       x.[MIN_BALANCE],
       x.[OPENEND_CREDIT_IND],
       x.[S_RTC_TYPE],
+      A0.Descript AS [S_RTC_TYPE_Description],
       x.[WAIVE_ANNUAL_FEE],
       x.[ANNUAL_FEE_START_DT]
    FROM [clt_NetO].[HELOC2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RTC_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC2' and A0.[COLUMNNAME] = 'S_RTC_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -17800,9 +18172,11 @@ AS
       x.[RPTYEAR],
       x.[CFPNUM],
       x.[S_CUSTOMQRY],
+      A0.Descript AS [S_CUSTOMQRY_Description],
       x.[CEMAIL],
       x.[HMDA_LAR_LEI]
    FROM [clt_NetO].[HMDAXPRT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -17848,7 +18222,9 @@ AS
       x.[JEXPAMT],
       x.[PRIMINC],
       x.[S_INCOME],
+      A0.Descript AS [S_INCOME_Description],
       x.[S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[INCAMT],
       x.[INCDESC],
       x.[MNTEQUIV],
@@ -17868,10 +18244,12 @@ AS
       x.[TSWE_INCOME_IND],
       x.[EFFECTIVE_MO_INC],
       x.[S_JOB_TYPE],
+      A2.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE],
+      A3.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC],
       x.[RURALHOUSINGCALC],
       x.[COUNTRY],
@@ -17880,9 +18258,11 @@ AS
       x.[STATED_FLAG],
       x.[RECORD_CREATED],
       x.[S_INCOMECATEGORY],
+      A4.Descript AS [S_INCOMECATEGORY_Description],
       x.[OCCUPATION],
       x.[INCSTIND],
       x.[S_SELFEMPTYPE],
+      A5.Descript AS [S_SELFEMPTYPE_Description],
       x.[PRE_VERI_GROSS_INC],
       x.[USE_GROSS_INCOME],
       x.[YTD_AMOUNT],
@@ -17897,6 +18277,12 @@ AS
       x.[FROM_INCOME_CALC],
       x.[STATED_INC]
    FROM [clt_NetO].[INCOME] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME = A0.DBSYMBOL AND A0.[TableName] = 'INCOME' and A0.[COLUMNNAME] = 'S_INCOME'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'INCOME' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_JOB_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'INCOME' and A2.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPECBOREMPRELTYPE = A3.DBSYMBOL AND A3.[TableName] = 'INCOME' and A3.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_INCOMECATEGORY = A4.DBSYMBOL AND A4.[TableName] = 'INCOME' and A4.[COLUMNNAME] = 'S_INCOMECATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SELFEMPTYPE = A5.DBSYMBOL AND A5.[TableName] = 'INCOME' and A5.[COLUMNNAME] = 'S_SELFEMPTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -18001,6 +18387,7 @@ AS
       x.[DBID],
       x.[LIABCTR],
       x.[S_LIAB],
+      A0.Descript AS [S_LIAB_Description],
       x.[LIABDESC],
       x.[ACCTNUM],
       x.[HOLDER],
@@ -18016,6 +18403,7 @@ AS
       x.[ACCTBAL],
       x.[ACCTPYMT],
       x.[S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[MTHPYMT],
       x.[PYMTLEFT],
       x.[INCPYMT],
@@ -18030,6 +18418,7 @@ AS
       x.[PAYTYPE],
       x.[VERIFY],
       x.[S_LIENPS],
+      A2.Descript AS [S_LIENPS_Description],
       x.[ORIGDBTDT],
       x.[EXPDBTDT],
       x.[RESUBIND],
@@ -18037,7 +18426,9 @@ AS
       x.[MTG_TYPE_DESCRIPT],
       x.[PURCH_MONEY_IND],
       x.[S_EXCLUSION_REASON],
+      A3.Descript AS [S_EXCLUSION_REASON_Description],
       x.[S_MTG_TYPE],
+      A4.Descript AS [S_MTG_TYPE_Description],
       x.[SECURITY_INSTR_VOLUME],
       x.[DEBT_CCTIN_TITLE],
       x.[TRUSTEE_NAME],
@@ -18066,6 +18457,7 @@ AS
       x.[INVESTMENT_CREDIT_LINE],
       x.[CREDIT_TYPE_OTH],
       x.[S_CREDIT_CARD_TYPE],
+      A5.Descript AS [S_CREDIT_CARD_TYPE_Description],
       x.[INTERNAL_REFI],
       x.[HCOUNTRY],
       x.[SOURCE_CB_PMT],
@@ -18090,6 +18482,7 @@ AS
       x.[DEBT_REROUTING_NO],
       x.[REBEN_ACCT_NUM],
       x.[S_LIABILITYDISBTYPE],
+      A6.Descript AS [S_LIABILITYDISBTYPE_Description],
       x.[P_PYMTLEFT],
       x.[P_MNPAYLFT],
       x.[P_BALANCE],
@@ -18099,6 +18492,7 @@ AS
       x.[OWNERSHP_TYPE],
       x.[DEDUCT_FROM_INC],
       x.[S_ACCOUNT_OWNERSHIP],
+      A7.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[LATE_30_DAYS],
       x.[LATE_60_DAYS],
       x.[LATE_90_DAYS],
@@ -18106,6 +18500,14 @@ AS
       HASHBYTES('SHA2_256', CAST(x.[CREDIT_LIMIT_AMOUNT] AS NVARCHAR(50))) AS [CREDIT_LIMIT_AMOUNT],
       x.[INC_CREDIT_LINE]
    FROM [clt_NetO].[LIABLTY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LIAB = A0.DBSYMBOL AND A0.[TableName] = 'LIABLTY' and A0.[COLUMNNAME] = 'S_LIAB'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'LIABLTY' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIENPS = A2.DBSYMBOL AND A2.[TableName] = 'LIABLTY' and A2.[COLUMNNAME] = 'S_LIENPS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_EXCLUSION_REASON = A3.DBSYMBOL AND A3.[TableName] = 'LIABLTY' and A3.[COLUMNNAME] = 'S_EXCLUSION_REASON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_MTG_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'LIABLTY' and A4.[COLUMNNAME] = 'S_MTG_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CREDIT_CARD_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'LIABLTY' and A5.[COLUMNNAME] = 'S_CREDIT_CARD_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIABILITYDISBTYPE = A6.DBSYMBOL AND A6.[TableName] = 'LIABLTY' and A6.[COLUMNNAME] = 'S_LIABILITYDISBTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ACCOUNT_OWNERSHIP = A7.DBSYMBOL AND A7.[TableName] = 'LIABLTY' and A7.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -18229,6 +18631,7 @@ AS
       x.[RESST],
       x.[RESZIP],
       x.[S_OWNRNT],
+      A0.Descript AS [S_OWNRNT_Description],
       x.[RESNMYRS],
       x.[ACCTPREV],
       x.[ACCTHLDR],
@@ -18240,12 +18643,17 @@ AS
       x.[YRS_AT_PREV],
       x.[MNTHS_AT_PREV],
       x.[S_RES_UNIT_TYPE],
+      A1.Descript AS [S_RES_UNIT_TYPE_Description],
       x.[RES_UNIT_NUM],
       x.[RES_CNTRY_CODE],
       x.[PREV_STATE_FOREIN],
       x.[PREV_POSTCODE],
-      x.[S_LIVE_RENT_FREE_ENUMS]
+      x.[S_LIVE_RENT_FREE_ENUMS],
+      A2.Descript AS [S_LIVE_RENT_FREE_ENUMS_Description]
    FROM [clt_NetO].[PREVRES] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRNT = A0.DBSYMBOL AND A0.[TableName] = 'PREVRES' and A0.[COLUMNNAME] = 'S_OWNRNT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RES_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'PREVRES' and A1.[COLUMNNAME] = 'S_RES_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIVE_RENT_FREE_ENUMS = A2.DBSYMBOL AND A2.[TableName] = 'PREVRES' and A2.[COLUMNNAME] = 'S_LIVE_RENT_FREE_ENUMS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -18268,31 +18676,43 @@ AS
    SELECT
       x.[LNUM],
       x.[S_PROD],
+      A0.Descript AS [S_PROD_Description],
       x.[S_RATE],
+      A1.Descript AS [S_RATE_Description],
       x.[S_RTCODE],
+      A2.Descript AS [S_RTCODE_Description],
       x.[OLA],
       x.[LTV],
       x.[S_LCKTYP],
+      A3.Descript AS [S_LCKTYP_Description],
       x.[LOCKDATE],
       x.[LOCKEXP],
       x.[LOCKDAYS],
       x.[INTRATE],
       x.[LOANTERM],
       x.[S_LCKEXP],
+      A4.Descript AS [S_LCKEXP_Description],
       x.[S_RATIO],
+      A5.Descript AS [S_RATIO_Description],
       x.[S_BYDOWN],
+      A6.Descript AS [S_BYDOWN_Description],
       x.[S_MIPLAN],
+      A7.Descript AS [S_MIPLAN_Description],
       x.[FMIRFLAG],
       x.[FMIRFCTR],
       x.[BALLFLAG],
       x.[AMTERM],
       x.[PIPMT],
       x.[S_PMTSTR],
+      A8.Descript AS [S_PMTSTR_Description],
       x.[S_DISC],
+      A9.Descript AS [S_DISC_Description],
       x.[S_ORIG],
+      A10.Descript AS [S_ORIG_Description],
       x.[BASELA],
       x.[LOCKED],
       x.[S_QRATE],
+      A11.Descript AS [S_QRATE_Description],
       x.[BASERATE],
       x.[CNFIRM],
       x.[BASEMKTDISC],
@@ -18308,8 +18728,11 @@ AS
       x.[MKTDISCOVERRIDE],
       x.[INTRATEOVERRIDE],
       x.[S_RTCODEOVR],
+      A12.Descript AS [S_RTCODEOVR_Description],
       x.[S_LTYPE],
+      A13.Descript AS [S_LTYPE_Description],
       x.[S_PROGRM],
+      A14.Descript AS [S_PROGRM_Description],
       x.[FINMIPERC],
       x.[QUALRATE],
       x.[BASEQUAL],
@@ -18322,8 +18745,10 @@ AS
       x.[BASELAEDT],
       x.[ODDRATE],
       x.[S_AMTYPE],
+      A15.Descript AS [S_AMTYPE_Description],
       x.[SELRTCODE],
       x.[S_RCOMNUM],
+      A16.Descript AS [S_RCOMNUM_Description],
       x.[BYDNPMT4],
       x.[BYDNPMT5],
       x.[BYDNPMT6],
@@ -18348,11 +18773,13 @@ AS
       x.[LOCKEXPDT],
       x.[SELECTEDINVESTOR],
       x.[S_BALLOON_TYPE],
+      A17.Descript AS [S_BALLOON_TYPE_Description],
       x.[AMORT_OTHER],
       x.[CLIENTRATEINFO],
       x.[SELECTEDPROGRAM],
       x.[BUYDOWNOVERRIDES],
       x.[S_MORTGAGETYPE],
+      A18.Descript AS [S_MORTGAGETYPE_Description],
       x.[TOTALPMTNO],
       x.[MININTPMTRATE],
       x.[REFI_RESCISSION_EXEMPT],
@@ -18370,8 +18797,10 @@ AS
       x.[BASE_ADJ_DISC],
       x.[PMTRCODE],
       x.[S_AMORT_SUB_TYPE],
+      A19.Descript AS [S_AMORT_SUB_TYPE_Description],
       x.[QUALMETHOD],
       x.[S_QUALMETHODOVR],
+      A20.Descript AS [S_QUALMETHODOVR_Description],
       x.[YSP],
       x.[YSP_OVRD],
       x.[OVERAGE],
@@ -18398,10 +18827,13 @@ AS
       x.[BORR_RESCISSION_EXEMPT],
       x.[CORR_BOR_RATE_LOCKDATE],
       x.[S_203KTYPE],
+      A21.Descript AS [S_203KTYPE_Description],
       x.[PRODUCT_DENIAL],
       x.[REQ_RESCISSION],
       x.[S_PRICING_REGION],
+      A22.Descript AS [S_PRICING_REGION_Description],
       x.[S_PRICING_CHANNEL],
+      A23.Descript AS [S_PRICING_CHANNEL_Description],
       x.[ROE],
       x.[ROA],
       x.[ROEEXP],
@@ -18441,12 +18873,42 @@ AS
       x.[AUS_INDICATOR],
       x.[LOAN_TYPE_CHG_FLAG],
       x.[S_PROD_PRICE_ENGINE],
+      A24.Descript AS [S_PROD_PRICE_ENGINE_Description],
       x.[S_PROD_PRICE_ENGINE_OVR],
+      A25.Descript AS [S_PROD_PRICE_ENGINE_OVR_Description],
       x.[S_PPY_FILTER],
+      A26.Descript AS [S_PPY_FILTER_Description],
       x.[BUILDER_LOCK_ADJ],
       x.[REQLOANTERM],
       x.[DLR_PIPMT]
    FROM [clt_NetO].[PRODUCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROD = A0.DBSYMBOL AND A0.[TableName] = 'PRODUCT' and A0.[COLUMNNAME] = 'S_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RATE = A1.DBSYMBOL AND A1.[TableName] = 'PRODUCT' and A1.[COLUMNNAME] = 'S_RATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_RTCODE = A2.DBSYMBOL AND A2.[TableName] = 'PRODUCT' and A2.[COLUMNNAME] = 'S_RTCODE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LCKTYP = A3.DBSYMBOL AND A3.[TableName] = 'PRODUCT' and A3.[COLUMNNAME] = 'S_LCKTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LCKEXP = A4.DBSYMBOL AND A4.[TableName] = 'PRODUCT' and A4.[COLUMNNAME] = 'S_LCKEXP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_RATIO = A5.DBSYMBOL AND A5.[TableName] = 'PRODUCT' and A5.[COLUMNNAME] = 'S_RATIO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_BYDOWN = A6.DBSYMBOL AND A6.[TableName] = 'PRODUCT' and A6.[COLUMNNAME] = 'S_BYDOWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_MIPLAN = A7.DBSYMBOL AND A7.[TableName] = 'PRODUCT' and A7.[COLUMNNAME] = 'S_MIPLAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_PMTSTR = A8.DBSYMBOL AND A8.[TableName] = 'PRODUCT' and A8.[COLUMNNAME] = 'S_PMTSTR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_DISC = A9.DBSYMBOL AND A9.[TableName] = 'PRODUCT' and A9.[COLUMNNAME] = 'S_DISC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_ORIG = A10.DBSYMBOL AND A10.[TableName] = 'PRODUCT' and A10.[COLUMNNAME] = 'S_ORIG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_QRATE = A11.DBSYMBOL AND A11.[TableName] = 'PRODUCT' and A11.[COLUMNNAME] = 'S_QRATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_RTCODEOVR = A12.DBSYMBOL AND A12.[TableName] = 'PRODUCT' and A12.[COLUMNNAME] = 'S_RTCODEOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_LTYPE = A13.DBSYMBOL AND A13.[TableName] = 'PRODUCT' and A13.[COLUMNNAME] = 'S_LTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROGRM = A14.DBSYMBOL AND A14.[TableName] = 'PRODUCT' and A14.[COLUMNNAME] = 'S_PROGRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_AMTYPE = A15.DBSYMBOL AND A15.[TableName] = 'PRODUCT' and A15.[COLUMNNAME] = 'S_AMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_RCOMNUM = A16.DBSYMBOL AND A16.[TableName] = 'PRODUCT' and A16.[COLUMNNAME] = 'S_RCOMNUM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_BALLOON_TYPE = A17.DBSYMBOL AND A17.[TableName] = 'PRODUCT' and A17.[COLUMNNAME] = 'S_BALLOON_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_MORTGAGETYPE = A18.DBSYMBOL AND A18.[TableName] = 'PRODUCT' and A18.[COLUMNNAME] = 'S_MORTGAGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_AMORT_SUB_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'PRODUCT' and A19.[COLUMNNAME] = 'S_AMORT_SUB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_QUALMETHODOVR = A20.DBSYMBOL AND A20.[TableName] = 'PRODUCT' and A20.[COLUMNNAME] = 'S_QUALMETHODOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_203KTYPE = A21.DBSYMBOL AND A21.[TableName] = 'PRODUCT' and A21.[COLUMNNAME] = 'S_203KTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PRICING_REGION = A22.DBSYMBOL AND A22.[TableName] = 'PRODUCT' and A22.[COLUMNNAME] = 'S_PRICING_REGION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_PRICING_CHANNEL = A23.DBSYMBOL AND A23.[TableName] = 'PRODUCT' and A23.[COLUMNNAME] = 'S_PRICING_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_PROD_PRICE_ENGINE = A24.DBSYMBOL AND A24.[TableName] = 'PRODUCT' and A24.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_PROD_PRICE_ENGINE_OVR = A25.DBSYMBOL AND A25.[TableName] = 'PRODUCT' and A25.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_PPY_FILTER = A26.DBSYMBOL AND A26.[TableName] = 'PRODUCT' and A26.[COLUMNNAME] = 'S_PPY_FILTER'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -18546,7 +19008,9 @@ AS
       x.[REOSTATE],
       x.[REOZIP],
       x.[S_REOPST],
+      A0.Descript AS [S_REOPST_Description],
       x.[S_REOTYP],
+      A1.Descript AS [S_REOTYP_Description],
       x.[PRESVAL],
       x.[PRESMTG],
       x.[GROSRENT],
@@ -18556,6 +19020,7 @@ AS
       x.[PGROSINC],
       x.[AGROSINC],
       x.[S_ONRSHP],
+      A2.Descript AS [S_ONRSHP_Description],
       x.[REOCNTRY],
       x.[PRIM_RES],
       x.[SUBJECTP],
@@ -18597,15 +19062,24 @@ AS
       x.[UNITNUMREO],
       x.[UNITTYPEREO],
       x.[S_ACCOUNT_OWNERSHIP],
+      A3.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[XPROCEEDOVR],
       x.[S_REO_INTEND_OCCUPANCY],
+      A4.Descript AS [S_REO_INTEND_OCCUPANCY_Description],
       x.[REO_OTHROCCUP_DESC],
       x.[S_REO_CURR_PROP_USAGE],
+      A5.Descript AS [S_REO_CURR_PROP_USAGE_Description],
       x.[REO_STATE_FOREIN],
       x.[REO_POSTCODE],
       x.[REO_CNTRY_COD],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[REOWNED] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REOPST = A0.DBSYMBOL AND A0.[TableName] = 'REOWNED' and A0.[COLUMNNAME] = 'S_REOPST'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_REOTYP = A1.DBSYMBOL AND A1.[TableName] = 'REOWNED' and A1.[COLUMNNAME] = 'S_REOTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ONRSHP = A2.DBSYMBOL AND A2.[TableName] = 'REOWNED' and A2.[COLUMNNAME] = 'S_ONRSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ACCOUNT_OWNERSHIP = A3.DBSYMBOL AND A3.[TableName] = 'REOWNED' and A3.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_REO_INTEND_OCCUPANCY = A4.DBSYMBOL AND A4.[TableName] = 'REOWNED' and A4.[COLUMNNAME] = 'S_REO_INTEND_OCCUPANCY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_REO_CURR_PROP_USAGE = A5.DBSYMBOL AND A5.[TableName] = 'REOWNED' and A5.[COLUMNNAME] = 'S_REO_CURR_PROP_USAGE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -18631,8 +19105,6 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
-      x.[DBID],
-      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -18698,6 +19170,8 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
+      x.[DBID],
+      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -18803,19 +19277,25 @@ AS
       x.[POWER_OF_ATT_DESC],
       x.[ESTABLISHED_STATE],
       x.[S_BOR_SELLER_OPTION],
+      A0.Descript AS [S_BOR_SELLER_OPTION_Description],
       x.[S_SEL_UNIT_TYPE],
+      A1.Descript AS [S_SEL_UNIT_TYPE_Description],
       x.[SEL_UNIT_NUM],
       x.[SEL_COUNTRY_CODE],
       x.[SEL_STATE_FOREIN],
       x.[SEL_POSTCODE],
       x.[EMAIL],
       x.[S_IDENTIFICATION_TYPE],
+      A2.Descript AS [S_IDENTIFICATION_TYPE_Description],
       x.[IDENTIFICATION_NUMBER],
       x.[SELLER_LIENHOLDER],
       x.[SELLER_CODE],
       x.[SALES_TAX_ID],
       x.[REGION]
    FROM [clt_NetO].[SELLER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BOR_SELLER_OPTION = A0.DBSYMBOL AND A0.[TableName] = 'SELLER' and A0.[COLUMNNAME] = 'S_BOR_SELLER_OPTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEL_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'SELLER' and A1.[COLUMNNAME] = 'S_SEL_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_IDENTIFICATION_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'SELLER' and A2.[COLUMNNAME] = 'S_IDENTIFICATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -18877,8 +19357,10 @@ AS
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
       x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[S_SERVICING_STATUS],
+      A0.Descript AS [S_SERVICING_STATUS_Description]
    FROM [clt_NetO].[SERVICNG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SERVICING_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'SERVICNG' and A0.[COLUMNNAME] = 'S_SERVICING_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -18910,14 +19392,18 @@ AS
       x.[SUBJTHLD],
       x.[SUBJMHLD],
       x.[S_OWNRHT],
+      A0.Descript AS [S_OWNRHT_Description],
       x.[SUBJOREX],
       x.[SUBJLPRI],
       x.[SUBJAV],
       x.[SUBJSP],
       x.[S_PRPTYP],
+      A1.Descript AS [S_PRPTYP_Description],
       x.[SUBJSCFN],
       x.[S_DPAYMT],
+      A2.Descript AS [S_DPAYMT_Description],
       x.[S_RESTYP],
+      A3.Descript AS [S_RESTYP_Description],
       x.[SUBJESTE],
       x.[SUBJLEXP],
       x.[SUBJCNTY],
@@ -18925,11 +19411,14 @@ AS
       x.[BLOCKNUM],
       x.[SUBDIV],
       x.[S_PURP],
+      A4.Descript AS [S_PURP_Description],
       x.[STCODE],
       x.[CYCODE],
       x.[MSACODE],
       x.[S_LIENPO],
+      A5.Descript AS [S_LIENPO_Description],
       x.[S_LIENHO],
+      A6.Descript AS [S_LIENHO_Description],
       x.[BALOTHMT],
       x.[SUBJLTV],
       x.[COMBLTV],
@@ -18937,6 +19426,7 @@ AS
       x.[STRALIAS],
       x.[CITYFLAG],
       x.[S_PRJCLS],
+      A7.Descript AS [S_PRJCLS_Description],
       x.[PROJNAME],
       x.[DECLDBID],
       x.[DECLSERL],
@@ -18964,7 +19454,9 @@ AS
       x.[LIENPOSOTHER],
       x.[PROPTYPEOTHER],
       x.[S_FREPRJCLS],
+      A8.Descript AS [S_FREPRJCLS_Description],
       x.[S_FNMPRJCLS],
+      A9.Descript AS [S_FNMPRJCLS_Description],
       x.[HOTEL_INDICATOR],
       x.[NONWARRANTABLE],
       x.[NUMBSTORIES],
@@ -18976,39 +19468,54 @@ AS
       x.[OTHERPROPRITTYPEDESC],
       x.[OTHEROWNTYPEDESC],
       x.[S_UNIQUEDWELLINGTYPE],
+      A10.Descript AS [S_UNIQUEDWELLINGTYPE_Description],
       x.[OTHERUNIQDWELLINGTYPDSC],
       x.[S_NATIVEAMERICANLANDSTYPE],
+      A11.Descript AS [S_NATIVEAMERICANLANDSTYPE_Description],
       x.[OTHERNATAMERLANDSTYPEDESC],
       x.[COMMLANDTRUSTINDCTR],
       x.[INCLUSIONARYZONEINDCTR],
       x.[S_CATEGORYTYPE],
+      A12.Descript AS [S_CATEGORYTYPE_Description],
       x.[OTHERCATEGORYTYPEDESC],
       x.[S_PROJECTDESIGNTYPE],
+      A13.Descript AS [S_PROJECTDESIGNTYPE_Description],
       x.[OTHERPROJDESIGNTYPEDESC],
       x.[S_PROJECTCLASSTYPE],
+      A14.Descript AS [S_PROJECTCLASSTYPE_Description],
       x.[OTHERPROJCLASSTYPEDESC],
       x.[OTHERDOWNPAYTYPEDESC],
       x.[S_UNITOWNERSHIPTYPE],
+      A15.Descript AS [S_UNITOWNERSHIPTYPE_Description],
       x.[CONCURRENT_FIN_INPUT],
       x.[INCLUDE_ASSIST_PROGS],
       x.[S_DPAYMTNM],
+      A16.Descript AS [S_DPAYMTNM_Description],
       x.[DOWNPAYNMDESC],
       x.[SUBESTAV],
       x.[LTV_ROUNDED],
       x.[TLTV_ROUNDED],
       x.[S_CONDO_PROJECT_STATUS],
+      A17.Descript AS [S_CONDO_PROJECT_STATUS_Description],
       x.[S_PROJ_ATTACH_TYPE],
+      A18.Descript AS [S_PROJ_ATTACH_TYPE_Description],
       x.[S_PROJECT_DESIGN_TYPE],
+      A19.Descript AS [S_PROJECT_DESIGN_TYPE_Description],
       x.[S_ATTACHMENT_TYPE],
+      A20.Descript AS [S_ATTACHMENT_TYPE_Description],
       x.[S_PROJ_CLASS_ID_FNM],
+      A21.Descript AS [S_PROJ_CLASS_ID_FNM_Description],
       x.[S_PROJ_CLASS_ID_FRE],
+      A22.Descript AS [S_PROJ_CLASS_ID_FRE_Description],
       x.[PROJ_UNITS_TOTAL],
       x.[PROJ_UNITS_SOLD],
       x.[ISUSPSVALIDATED],
       x.[SUBJADD3],
       x.[CPMPROID],
       x.[S_FRPROJ],
+      A23.Descript AS [S_FRPROJ_Description],
       x.[S_FMPROJ],
+      A24.Descript AS [S_FMPROJ_Description],
       x.[PROPDESC],
       x.[RENTINC_VERIFIED],
       x.[RENTINC_VERIFY_TYPE],
@@ -19016,12 +19523,14 @@ AS
       x.[CONDO_UNITS_COV_HAZ],
       x.[CONDO_UNITS_COV_FLD],
       x.[S_STRUCTURETYPE],
+      A25.Descript AS [S_STRUCTURETYPE_Description],
       x.[CEMA],
       x.[FHAHUDAPPROVAL],
       x.[IMP_COST_PLUS_EEM],
       x.[MAX_LIMIT_LOAN_AMT],
       x.[TOTAL_MTG_PROPERTIES],
       x.[S_SUBJUNITTYPE],
+      A26.Descript AS [S_SUBJUNITTYPE_Description],
       x.[CRAEXEMPTION],
       x.[MDINDICATOR],
       x.[MSAINDICATOR],
@@ -19029,7 +19538,9 @@ AS
       x.[INCOME_RESTRICT],
       x.[PROPVALUE_RELIED_ON],
       x.[S_APPRMTHDREQ],
+      A27.Descript AS [S_APPRMTHDREQ_Description],
       x.[S_APPRMTHDREQOVR],
+      A28.Descript AS [S_APPRMTHDREQOVR_Description],
       x.[EXIST_EEM_AMT],
       x.[ISCONDOMINIUM],
       x.[ISCOOPERATIVE],
@@ -19040,6 +19551,7 @@ AS
       x.[MFHOME],
       x.[TX_50A6],
       x.[S_TRSTYP],
+      A29.Descript AS [S_TRSTYP_Description],
       x.[SHORT_LEGAL_DESC_OVR],
       x.[SUBJTHLCUR],
       x.[ADJLTV],
@@ -19049,6 +19561,36 @@ AS
       x.[TX_50F2],
       x.[RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRHT = A0.DBSYMBOL AND A0.[TableName] = 'SUBJPRP' and A0.[COLUMNNAME] = 'S_OWNRHT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PRPTYP = A1.DBSYMBOL AND A1.[TableName] = 'SUBJPRP' and A1.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DPAYMT = A2.DBSYMBOL AND A2.[TableName] = 'SUBJPRP' and A2.[COLUMNNAME] = 'S_DPAYMT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESTYP = A3.DBSYMBOL AND A3.[TableName] = 'SUBJPRP' and A3.[COLUMNNAME] = 'S_RESTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PURP = A4.DBSYMBOL AND A4.[TableName] = 'SUBJPRP' and A4.[COLUMNNAME] = 'S_PURP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LIENPO = A5.DBSYMBOL AND A5.[TableName] = 'SUBJPRP' and A5.[COLUMNNAME] = 'S_LIENPO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIENHO = A6.DBSYMBOL AND A6.[TableName] = 'SUBJPRP' and A6.[COLUMNNAME] = 'S_LIENHO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_PRJCLS = A7.DBSYMBOL AND A7.[TableName] = 'SUBJPRP' and A7.[COLUMNNAME] = 'S_PRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_FREPRJCLS = A8.DBSYMBOL AND A8.[TableName] = 'SUBJPRP' and A8.[COLUMNNAME] = 'S_FREPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_FNMPRJCLS = A9.DBSYMBOL AND A9.[TableName] = 'SUBJPRP' and A9.[COLUMNNAME] = 'S_FNMPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_UNIQUEDWELLINGTYPE = A10.DBSYMBOL AND A10.[TableName] = 'SUBJPRP' and A10.[COLUMNNAME] = 'S_UNIQUEDWELLINGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_NATIVEAMERICANLANDSTYPE = A11.DBSYMBOL AND A11.[TableName] = 'SUBJPRP' and A11.[COLUMNNAME] = 'S_NATIVEAMERICANLANDSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_CATEGORYTYPE = A12.DBSYMBOL AND A12.[TableName] = 'SUBJPRP' and A12.[COLUMNNAME] = 'S_CATEGORYTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_PROJECTDESIGNTYPE = A13.DBSYMBOL AND A13.[TableName] = 'SUBJPRP' and A13.[COLUMNNAME] = 'S_PROJECTDESIGNTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROJECTCLASSTYPE = A14.DBSYMBOL AND A14.[TableName] = 'SUBJPRP' and A14.[COLUMNNAME] = 'S_PROJECTCLASSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_UNITOWNERSHIPTYPE = A15.DBSYMBOL AND A15.[TableName] = 'SUBJPRP' and A15.[COLUMNNAME] = 'S_UNITOWNERSHIPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_DPAYMTNM = A16.DBSYMBOL AND A16.[TableName] = 'SUBJPRP' and A16.[COLUMNNAME] = 'S_DPAYMTNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CONDO_PROJECT_STATUS = A17.DBSYMBOL AND A17.[TableName] = 'SUBJPRP' and A17.[COLUMNNAME] = 'S_CONDO_PROJECT_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_PROJ_ATTACH_TYPE = A18.DBSYMBOL AND A18.[TableName] = 'SUBJPRP' and A18.[COLUMNNAME] = 'S_PROJ_ATTACH_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_PROJECT_DESIGN_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'SUBJPRP' and A19.[COLUMNNAME] = 'S_PROJECT_DESIGN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_ATTACHMENT_TYPE = A20.DBSYMBOL AND A20.[TableName] = 'SUBJPRP' and A20.[COLUMNNAME] = 'S_ATTACHMENT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_PROJ_CLASS_ID_FNM = A21.DBSYMBOL AND A21.[TableName] = 'SUBJPRP' and A21.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PROJ_CLASS_ID_FRE = A22.DBSYMBOL AND A22.[TableName] = 'SUBJPRP' and A22.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FRE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_FRPROJ = A23.DBSYMBOL AND A23.[TableName] = 'SUBJPRP' and A23.[COLUMNNAME] = 'S_FRPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_FMPROJ = A24.DBSYMBOL AND A24.[TableName] = 'SUBJPRP' and A24.[COLUMNNAME] = 'S_FMPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_STRUCTURETYPE = A25.DBSYMBOL AND A25.[TableName] = 'SUBJPRP' and A25.[COLUMNNAME] = 'S_STRUCTURETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_SUBJUNITTYPE = A26.DBSYMBOL AND A26.[TableName] = 'SUBJPRP' and A26.[COLUMNNAME] = 'S_SUBJUNITTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_APPRMTHDREQ = A27.DBSYMBOL AND A27.[TableName] = 'SUBJPRP' and A27.[COLUMNNAME] = 'S_APPRMTHDREQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_APPRMTHDREQOVR = A28.DBSYMBOL AND A28.[TableName] = 'SUBJPRP' and A28.[COLUMNNAME] = 'S_APPRMTHDREQOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_TRSTYP = A29.DBSYMBOL AND A29.[TableName] = 'SUBJPRP' and A29.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19190,10 +19732,13 @@ AS
       x.[SECINTOWN],
       x.[SECINTOTH],
       x.[S_LATECHARGETYPE],
+      A0.Descript AS [S_LATECHARGETYPE_Description],
       x.[S_PPPOPT],
+      A1.Descript AS [S_PPPOPT_Description],
       x.[PMMS_RATE],
       x.[LOCK_REDISCLOSE_IND],
       x.[S_TIL2011_OVRD],
+      A2.Descript AS [S_TIL2011_OVRD_Description],
       x.[FLAT_AMT],
       x.[BPRESOTHPRGS],
       x.[DISCLOSE_APR],
@@ -19214,6 +19759,9 @@ AS
       x.[PRESENT_SHARES],
       x.[OTHER_COLLATERAL]
    FROM [clt_NetO].[TILINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LATECHARGETYPE = A0.DBSYMBOL AND A0.[TableName] = 'TILINFO' and A0.[COLUMNNAME] = 'S_LATECHARGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PPPOPT = A1.DBSYMBOL AND A1.[TableName] = 'TILINFO' and A1.[COLUMNNAME] = 'S_PPPOPT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_TIL2011_OVRD = A2.DBSYMBOL AND A2.[TableName] = 'TILINFO' and A2.[COLUMNNAME] = 'S_TIL2011_OVRD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19239,18 +19787,26 @@ AS
       x.[TRLNDRCN],
       x.[CLNUM],
       x.[S_IVMETH],
+      A0.Descript AS [S_IVMETH_Description],
       x.[S_IVID],
+      A1.Descript AS [S_IVID_Description],
       x.[S_BUSCHL],
+      A2.Descript AS [S_BUSCHL_Description],
       x.[CLOSEDT],
       x.[DISBURDT],
       x.[FSTPMTDT],
       x.[ODDDAYS],
       x.[FEEFIRST],
       x.[S_COPT1],
+      A3.Descript AS [S_COPT1_Description],
       x.[S_COPT2],
+      A4.Descript AS [S_COPT2_Description],
       x.[S_COPT3],
+      A5.Descript AS [S_COPT3_Description],
       x.[S_COPT4],
+      A6.Descript AS [S_COPT4_Description],
       x.[S_COPT5],
+      A7.Descript AS [S_COPT5_Description],
       x.[CUSHION],
       x.[AGGEADJ],
       x.[DOWNPYMT],
@@ -19267,15 +19823,24 @@ AS
       x.[WHOMCFM],
       x.[PREQUAL],
       x.[S_COPT6],
+      A8.Descript AS [S_COPT6_Description],
       x.[S_COPT7],
+      A9.Descript AS [S_COPT7_Description],
       x.[S_COPT8],
+      A10.Descript AS [S_COPT8_Description],
       x.[S_COPT9],
+      A11.Descript AS [S_COPT9_Description],
       x.[S_COPT10],
+      A12.Descript AS [S_COPT10_Description],
       x.[S_CRDGRDRQ],
+      A13.Descript AS [S_CRDGRDRQ_Description],
       x.[S_DOCLEVEL],
+      A14.Descript AS [S_DOCLEVEL_Description],
       x.[GRADEDC],
       x.[S_CRDGRDAP],
+      A15.Descript AS [S_CRDGRDAP_Description],
       x.[S_QUALITY],
+      A16.Descript AS [S_QUALITY_Description],
       x.[DMSGRADE],
       x.[ESTCLOSD],
       x.[SRVCNUM],
@@ -19292,6 +19857,7 @@ AS
       x.[LRDATE],
       x.[TPBROKR],
       x.[S_DELTERMS],
+      A17.Descript AS [S_DELTERMS_Description],
       x.[SELLCL],
       x.[WLSTATUS],
       x.[CLTYPE],
@@ -19301,7 +19867,9 @@ AS
       x.[USERQUALIFIER],
       x.[PURPOSE_TYPE],
       x.[S_CASE_STATUS],
+      A18.Descript AS [S_CASE_STATUS_Description],
       x.[S_REPAY],
+      A19.Descript AS [S_REPAY_Description],
       x.[UNITPER],
       x.[UNITPEROVR],
       x.[LASTLOCKED],
@@ -19315,6 +19883,7 @@ AS
       x.[OBLIGATED_BORROWER_COUNT],
       x.[SECURITY_TOKEN],
       x.[S_CHANNEL_SOURCE_CODE],
+      A20.Descript AS [S_CHANNEL_SOURCE_CODE_Description],
       x.[RECORD_CREATED],
       x.[LOAN_CREATE_DATE],
       x.[CLIENT_TOLL_FREE_NUM],
@@ -19326,6 +19895,27 @@ AS
       x.[AUTO_CREDIT_PULLED],
       x.[SELLER_SERVICING_NUM]
    FROM [clt_NetO].[TRACKING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IVMETH = A0.DBSYMBOL AND A0.[TableName] = 'TRACKING' and A0.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_IVID = A1.DBSYMBOL AND A1.[TableName] = 'TRACKING' and A1.[COLUMNNAME] = 'S_IVID'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BUSCHL = A2.DBSYMBOL AND A2.[TableName] = 'TRACKING' and A2.[COLUMNNAME] = 'S_BUSCHL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COPT1 = A3.DBSYMBOL AND A3.[TableName] = 'TRACKING' and A3.[COLUMNNAME] = 'S_COPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COPT2 = A4.DBSYMBOL AND A4.[TableName] = 'TRACKING' and A4.[COLUMNNAME] = 'S_COPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_COPT3 = A5.DBSYMBOL AND A5.[TableName] = 'TRACKING' and A5.[COLUMNNAME] = 'S_COPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COPT4 = A6.DBSYMBOL AND A6.[TableName] = 'TRACKING' and A6.[COLUMNNAME] = 'S_COPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_COPT5 = A7.DBSYMBOL AND A7.[TableName] = 'TRACKING' and A7.[COLUMNNAME] = 'S_COPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COPT6 = A8.DBSYMBOL AND A8.[TableName] = 'TRACKING' and A8.[COLUMNNAME] = 'S_COPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_COPT7 = A9.DBSYMBOL AND A9.[TableName] = 'TRACKING' and A9.[COLUMNNAME] = 'S_COPT7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_COPT8 = A10.DBSYMBOL AND A10.[TableName] = 'TRACKING' and A10.[COLUMNNAME] = 'S_COPT8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_COPT9 = A11.DBSYMBOL AND A11.[TableName] = 'TRACKING' and A11.[COLUMNNAME] = 'S_COPT9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_COPT10 = A12.DBSYMBOL AND A12.[TableName] = 'TRACKING' and A12.[COLUMNNAME] = 'S_COPT10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_CRDGRDRQ = A13.DBSYMBOL AND A13.[TableName] = 'TRACKING' and A13.[COLUMNNAME] = 'S_CRDGRDRQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DOCLEVEL = A14.DBSYMBOL AND A14.[TableName] = 'TRACKING' and A14.[COLUMNNAME] = 'S_DOCLEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_CRDGRDAP = A15.DBSYMBOL AND A15.[TableName] = 'TRACKING' and A15.[COLUMNNAME] = 'S_CRDGRDAP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_QUALITY = A16.DBSYMBOL AND A16.[TableName] = 'TRACKING' and A16.[COLUMNNAME] = 'S_QUALITY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_DELTERMS = A17.DBSYMBOL AND A17.[TableName] = 'TRACKING' and A17.[COLUMNNAME] = 'S_DELTERMS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CASE_STATUS = A18.DBSYMBOL AND A18.[TableName] = 'TRACKING' and A18.[COLUMNNAME] = 'S_CASE_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_REPAY = A19.DBSYMBOL AND A19.[TableName] = 'TRACKING' and A19.[COLUMNNAME] = 'S_REPAY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_CHANNEL_SOURCE_CODE = A20.DBSYMBOL AND A20.[TableName] = 'TRACKING' and A20.[COLUMNNAME] = 'S_CHANNEL_SOURCE_CODE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19407,12 +19997,14 @@ AS
       x.[TRUST_STREET_ADDR2],
       x.[EMAIL],
       x.[S_TRUST_UNIT_TYPE],
+      A0.Descript AS [S_TRUST_UNIT_TYPE_Description],
       x.[TRUST_UNIT_NUM],
       x.[TRUST_COUNTRY_CODE],
       x.[LIVING_TRUST_BNUM],
       x.[TRST_STATE_FOR],
       x.[TRST_POSTCODE]
    FROM [clt_NetO].[TRSTENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRUST_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'TRSTENTS' and A0.[COLUMNNAME] = 'S_TRUST_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19444,6 +20036,7 @@ AS
       x.[TRSTADT2],
       x.[TRSTNUMB],
       x.[S_TRSTYP],
+      A0.Descript AS [S_TRSTYP_Description],
       x.[TRSTINST],
       x.[TRSTREV],
       x.[STATE],
@@ -19454,6 +20047,7 @@ AS
       x.[QPRT_BEN_WAIVER],
       x.[LIVTRST]
    FROM [clt_NetO].[TRUSTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRSTYP = A0.DBSYMBOL AND A0.[TableName] = 'TRUSTS' and A0.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19476,12 +20070,19 @@ AS
    SELECT
       x.[LNUM],
       x.[S_DISPOSITION],
+      A0.Descript AS [S_DISPOSITION_Description],
       x.[S_UWOPT1],
+      A1.Descript AS [S_UWOPT1_Description],
       x.[S_UWOPT2],
+      A2.Descript AS [S_UWOPT2_Description],
       x.[S_UWOPT3],
+      A3.Descript AS [S_UWOPT3_Description],
       x.[S_UWOPT4],
+      A4.Descript AS [S_UWOPT4_Description],
       x.[S_UWOPT5],
+      A5.Descript AS [S_UWOPT5_Description],
       x.[S_UWOPT6],
+      A6.Descript AS [S_UWOPT6_Description],
       x.[INV_APPRV_DATE],
       x.[UNDW_EXP_DATE],
       x.[DOC_EXP_DATE],
@@ -19493,6 +20094,7 @@ AS
       x.[AUSCOMDBID],
       x.[AUSCOMSN],
       x.[S_TRGTINV],
+      A7.Descript AS [S_TRGTINV_Description],
       x.[UWENTITY],
       x.[CREDSCOVRD],
       x.[DELEGATED_ENDORSEMENT],
@@ -19500,10 +20102,20 @@ AS
       x.[EST_CRED_SCORE],
       x.[CREDIT_REPORT_REF],
       x.[S_CREDSCORE_OVERRIDE_REASON],
+      A8.Descript AS [S_CREDSCORE_OVERRIDE_REASON_Description],
       x.[CS_OVR_REAS_OTHERDESC],
       x.[DECISIONTARGETDATE],
       x.[DISPOSITION_DATETIME]
    FROM [clt_NetO].[UNDCOND1] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_DISPOSITION = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND1' and A0.[COLUMNNAME] = 'S_DISPOSITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UWOPT1 = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND1' and A1.[COLUMNNAME] = 'S_UWOPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UWOPT2 = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND1' and A2.[COLUMNNAME] = 'S_UWOPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_UWOPT3 = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND1' and A3.[COLUMNNAME] = 'S_UWOPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_UWOPT4 = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND1' and A4.[COLUMNNAME] = 'S_UWOPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_UWOPT5 = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND1' and A5.[COLUMNNAME] = 'S_UWOPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_UWOPT6 = A6.DBSYMBOL AND A6.[TableName] = 'UNDCOND1' and A6.[COLUMNNAME] = 'S_UWOPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TRGTINV = A7.DBSYMBOL AND A7.[TableName] = 'UNDCOND1' and A7.[COLUMNNAME] = 'S_TRGTINV'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CREDSCORE_OVERRIDE_REASON = A8.DBSYMBOL AND A8.[TableName] = 'UNDCOND1' and A8.[COLUMNNAME] = 'S_CREDSCORE_OVERRIDE_REASON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19528,8 +20140,11 @@ AS
       x.[DBID],
       x.[CNTR],
       x.[S_SUNDCON],
+      A0.Descript AS [S_SUNDCON_Description],
       x.[S_UNDCAT],
+      A1.Descript AS [S_UNDCAT_Description],
       x.[S_UNDTYP],
+      A2.Descript AS [S_UNDTYP_Description],
       x.[CUUSRID],
       x.[CUUSGRP],
       x.[CUDATE],
@@ -19540,13 +20155,16 @@ AS
       x.[UWCKLIST],
       x.[ISACTIVE],
       x.[S_ASSOCDOC],
+      A3.Descript AS [S_ASSOCDOC_Description],
       x.[SHWWAIVE],
       x.[DISCLOSE],
       x.[S_COMFLG],
+      A4.Descript AS [S_COMFLG_Description],
       x.[RESPONSIBLE_P],
       x.[DUEDATE],
       x.[ERRORCAUSEBY],
       x.[S_CONDITION_SRC],
+      A5.Descript AS [S_CONDITION_SRC_Description],
       x.[CREATED_DATE],
       x.[CREATED_USER],
       x.[RECEIVED_DT],
@@ -19559,6 +20177,12 @@ AS
       x.[REJECTED_DT],
       x.[RESET_DT]
    FROM [clt_NetO].[UNDCOND2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND2' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UNDCAT = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND2' and A1.[COLUMNNAME] = 'S_UNDCAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UNDTYP = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND2' and A2.[COLUMNNAME] = 'S_UNDTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ASSOCDOC = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND2' and A3.[COLUMNNAME] = 'S_ASSOCDOC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COMFLG = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND2' and A4.[COLUMNNAME] = 'S_COMFLG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CONDITION_SRC = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND2' and A5.[COLUMNNAME] = 'S_CONDITION_SRC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19583,6 +20207,7 @@ AS
       x.[CNTR],
       x.[DBID],
       x.[S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[UNITNUM],
       x.[PROJNAME],
       x.[APPRAISAL],
@@ -19613,6 +20238,7 @@ AS
       x.[NET6],
       x.[GROSS6],
       x.[S_APPRTYPE],
+      A1.Descript AS [S_APPRTYPE_Description],
       x.[SUBMFLG],
       x.[LANDTOVALUE],
       x.[APPRVALUEINDICATOR],
@@ -19627,12 +20253,16 @@ AS
       x.[LESS750],
       x.[HVE_EFFECTIVE_DT],
       x.[S_APPRFORMTYPE],
+      A2.Descript AS [S_APPRFORMTYPE_Description],
       x.[APPRFORMTYPEOTHDESC],
       x.[S_PRPFORMTYPE],
+      A3.Descript AS [S_PRPFORMTYPE_Description],
       x.[PRPFORMTYPEOTHDESC],
       x.[S_PRPMETHODTYPE],
+      A4.Descript AS [S_PRPMETHODTYPE_Description],
       x.[PRPMETHODTYPEOTHDESC],
       x.[S_LVLPRPRVW],
+      A5.Descript AS [S_LVLPRPRVW_Description],
       x.[APPRLVLPRPRVWTYPEOTHDESC],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_LIC]) AS [APPR_SUPER_LIC],
       x.[DATEORDERED],
@@ -19642,6 +20272,7 @@ AS
       x.[ACTUALCOST],
       x.[DATERECEIVED],
       x.[S_STATUS],
+      A6.Descript AS [S_STATUS_Description],
       x.[REQUESTEDDATE],
       x.[REQUESTEDBY],
       x.[DATEREVIEWED],
@@ -19661,8 +20292,11 @@ AS
       x.[SITEVALUE],
       x.[SUBJECTTOREPAIRS],
       x.[S_APPRMETH],
+      A7.Descript AS [S_APPRMETH_Description],
       x.[S_AVM],
+      A8.Descript AS [S_AVM_Description],
       x.[S_AVMOTH],
+      A9.Descript AS [S_AVMOTH_Description],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_FNAME]) AS [APPR_SUPER_FNAME],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_LNAME]) AS [APPR_SUPER_LNAME],
       x.[APPRREINSPFEE],
@@ -19678,8 +20312,20 @@ AS
       x.[ADDR2],
       x.[INV_COLL_PROG_ID],
       x.[FORECAST_STD_DEV],
-      x.[S_HOA_FEES_PERIOD_TYPE]
+      x.[S_HOA_FEES_PERIOD_TYPE],
+      A10.Descript AS [S_HOA_FEES_PERIOD_TYPE_Description]
    FROM [clt_NetO].[UWAPPR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'UWAPPR' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_APPRTYPE = A1.DBSYMBOL AND A1.[TableName] = 'UWAPPR' and A1.[COLUMNNAME] = 'S_APPRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_APPRFORMTYPE = A2.DBSYMBOL AND A2.[TableName] = 'UWAPPR' and A2.[COLUMNNAME] = 'S_APPRFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PRPFORMTYPE = A3.DBSYMBOL AND A3.[TableName] = 'UWAPPR' and A3.[COLUMNNAME] = 'S_PRPFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRPMETHODTYPE = A4.DBSYMBOL AND A4.[TableName] = 'UWAPPR' and A4.[COLUMNNAME] = 'S_PRPMETHODTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LVLPRPRVW = A5.DBSYMBOL AND A5.[TableName] = 'UWAPPR' and A5.[COLUMNNAME] = 'S_LVLPRPRVW'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_STATUS = A6.DBSYMBOL AND A6.[TableName] = 'UWAPPR' and A6.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_APPRMETH = A7.DBSYMBOL AND A7.[TableName] = 'UWAPPR' and A7.[COLUMNNAME] = 'S_APPRMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_AVM = A8.DBSYMBOL AND A8.[TableName] = 'UWAPPR' and A8.[COLUMNNAME] = 'S_AVM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_AVMOTH = A9.DBSYMBOL AND A9.[TableName] = 'UWAPPR' and A9.[COLUMNNAME] = 'S_AVMOTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_HOA_FEES_PERIOD_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'UWAPPR' and A10.[COLUMNNAME] = 'S_HOA_FEES_PERIOD_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19727,10 +20373,9 @@ CREATE VIEW [NetO].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[STRTSERV],
       x.[ENDSERV],
       x.[EXEMPT],
@@ -19747,14 +20392,17 @@ AS
       x.[SERVPERD],
       x.[OSRVNUM1],
       x.[S_OBRCH1],
+      A1.Descript AS [S_OBRCH1_Description],
       x.[OSTRTDT1],
       x.[OENDDT1],
       x.[OSRVNUM2],
       x.[S_OBRCH2],
+      A2.Descript AS [S_OBRCH2_Description],
       x.[OSTRTDT2],
       x.[OENDDT2],
       x.[OSRVNUM3],
       x.[S_OBRCH3],
+      A3.Descript AS [S_OBRCH3_Description],
       x.[OSTRTDT3],
       x.[OENDDT3],
       x.[VETSTATUS],
@@ -19763,6 +20411,8 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
+      x.[BNUM],
+      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -19810,6 +20460,10 @@ AS
       x.[SURVIVING_SPOUSE],
       x.[SERVICE_EXPIRATION_DATE]
    FROM [clt_NetO].[VETINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OBRCH1 = A1.DBSYMBOL AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_OBRCH2 = A2.DBSYMBOL AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_OBRCH3 = A3.DBSYMBOL AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19833,7 +20487,9 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_ASSET_TYPE],
+      A0.Descript AS [S_ASSET_TYPE_Description],
       x.[S_ASSET_PURPOSE],
+      A1.Descript AS [S_ASSET_PURPOSE_Description],
       x.[ASSET_VERIFIED],
       x.[VERIFICATION_REQD],
       x.[OWNER_EST_VALUE],
@@ -19846,6 +20502,8 @@ AS
       x.[PRIMARY_COLLATERAL],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[WG_ASSET] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET' and A0.[COLUMNNAME] = 'S_ASSET_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSET_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET' and A1.[COLUMNNAME] = 'S_ASSET_PURPOSE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19880,6 +20538,7 @@ AS
       x.[ACCT_START_DT],
       x.[ACCT_MATUR_DT],
       x.[S_ACCT_OWNERSHIP],
+      A0.Descript AS [S_ACCT_OWNERSHIP_Description],
       x.[ASSET_ACCT_NO],
       x.[SHARE_VALUE],
       x.[ASSET_COLL_VALUE],
@@ -19888,6 +20547,7 @@ AS
       x.[EXCHANGE_INFO],
       x.[USE_CALC_LOAN_RT]
    FROM [clt_NetO].[WG_ASSET_ACCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ACCT_OWNERSHIP = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_ACCT' and A0.[COLUMNNAME] = 'S_ACCT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19924,9 +20584,15 @@ AS
       x.[ENGINE_TITLE_NUM],
       x.[ENGINE_MODEL_NUM],
       x.[S_ENGINE_MFG],
+      A0.Descript AS [S_ENGINE_MFG_Description],
       x.[S_MULTIENGINETYPE],
-      x.[S_ENGINE_COLOR]
+      A1.Descript AS [S_MULTIENGINETYPE_Description],
+      x.[S_ENGINE_COLOR],
+      A2.Descript AS [S_ENGINE_COLOR_Description]
    FROM [clt_NetO].[WG_ASSET_MARINE_ENG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ENGINE_MFG = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_MARINE_ENG' and A0.[COLUMNNAME] = 'S_ENGINE_MFG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MULTIENGINETYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_MARINE_ENG' and A1.[COLUMNNAME] = 'S_MULTIENGINETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ENGINE_COLOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_MARINE_ENG' and A2.[COLUMNNAME] = 'S_ENGINE_COLOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -19957,23 +20623,31 @@ AS
       x.[NEW_YN],
       x.[SERIAL],
       x.[S_FUEL_TYPE],
+      A0.Descript AS [S_FUEL_TYPE_Description],
       x.[VEHICLE_REG_NUMBER],
       x.[BODY_TRIM],
       x.[S_VEHICLE_CONDITION],
+      A1.Descript AS [S_VEHICLE_CONDITION_Description],
       x.[COLL_TITLE_NUM],
       x.[S_CNRE_OWNERSHIP],
+      A2.Descript AS [S_CNRE_OWNERSHIP_Description],
       x.[LENGTH],
       x.[WIDTH],
       x.[PRIOR_TITLE_NUM],
       x.[S_TRANSF_AS],
+      A3.Descript AS [S_TRANSF_AS_Description],
       x.[S_TRANSF_TO],
+      A4.Descript AS [S_TRANSF_TO_Description],
       x.[S_DAMAGE_TYPE],
+      A5.Descript AS [S_DAMAGE_TYPE_Description],
       x.[IS_BONAFIDE_GIFT],
       x.[IS_REBUILDABLE],
       x.[IS_ENERGY_EFFICIENT],
       x.[PRIOR_STATE],
       x.[S_COLOR],
+      A6.Descript AS [S_COLOR_Description],
       x.[S_GV_WEIGHT_RATING],
+      A7.Descript AS [S_GV_WEIGHT_RATING_Description],
       x.[SCALE_WEIGHT],
       x.[PAYOFF_AMT],
       x.[MFG_REBATE],
@@ -19982,6 +20656,14 @@ AS
       x.[DLR_OPT_PRICE],
       x.[DLR_OPT_VALUE]
    FROM [clt_NetO].[WG_ASSET_VEHICLE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FUEL_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VEHICLE' and A0.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_VEHICLE_CONDITION = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VEHICLE' and A1.[COLUMNNAME] = 'S_VEHICLE_CONDITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CNRE_OWNERSHIP = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VEHICLE' and A2.[COLUMNNAME] = 'S_CNRE_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TRANSF_AS = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VEHICLE' and A3.[COLUMNNAME] = 'S_TRANSF_AS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TRANSF_TO = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VEHICLE' and A4.[COLUMNNAME] = 'S_TRANSF_TO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DAMAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VEHICLE' and A5.[COLUMNNAME] = 'S_DAMAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COLOR = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VEHICLE' and A6.[COLUMNNAME] = 'S_COLOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_GV_WEIGHT_RATING = A7.DBSYMBOL AND A7.[TableName] = 'WG_ASSET_VEHICLE' and A7.[COLUMNNAME] = 'S_GV_WEIGHT_RATING'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -20008,8 +20690,12 @@ AS
       x.[SERIES],
       x.[STYLE],
       x.[S_MTRCYCLESTYLE],
-      x.[S_GENERIC_BODY_STYLE]
+      A0.Descript AS [S_MTRCYCLESTYLE_Description],
+      x.[S_GENERIC_BODY_STYLE],
+      A1.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_AUTO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MTRCYCLESTYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_AUTO' and A0.[COLUMNNAME] = 'S_MTRCYCLESTYLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GENERIC_BODY_STYLE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_AUTO' and A1.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -20033,9 +20719,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_MARINE_TYPE],
+      A0.Descript AS [S_MARINE_TYPE_Description],
       x.[BOAT_NAME],
       x.[NET_WEIGHT],
       x.[S_PROPULSION_TYPE],
+      A1.Descript AS [S_PROPULSION_TYPE_Description],
       x.[HAILING_PORT],
       x.[MOORING_ADDR1],
       x.[MOORING_ADDR2],
@@ -20044,14 +20732,19 @@ AS
       x.[MOORING_ZIP],
       x.[TRAILER_ASSETID],
       x.[S_FUEL_TYPE],
+      A2.Descript AS [S_FUEL_TYPE_Description],
       x.[BEAM],
       x.[MARINE_LENGTH],
       x.[S_HULL_MATERIAL],
+      A3.Descript AS [S_HULL_MATERIAL_Description],
       x.[S_PRIMARY_USE],
+      A4.Descript AS [S_PRIMARY_USE_Description],
       x.[S_ENGINE_DRIVE],
+      A5.Descript AS [S_ENGINE_DRIVE_Description],
       x.[IS_DOCUMENTED_VESSEL],
       x.[USCG_OFFICIAL_NUMBER],
       x.[S_MANUF_TYPE],
+      A6.Descript AS [S_MANUF_TYPE_Description],
       x.[TOILETATTACHED],
       x.[MATLOTHDESC],
       x.[FUELOTHDESC],
@@ -20060,6 +20753,13 @@ AS
       x.[MOORING_FACILITY],
       x.[MOORING_MRENT]
    FROM [clt_NetO].[WG_ASSET_VHCL_MARINE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARINE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_MARINE' and A0.[COLUMNNAME] = 'S_MARINE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPULSION_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_MARINE' and A1.[COLUMNNAME] = 'S_PROPULSION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FUEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_MARINE' and A2.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_HULL_MATERIAL = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VHCL_MARINE' and A3.[COLUMNNAME] = 'S_HULL_MATERIAL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRIMARY_USE = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VHCL_MARINE' and A4.[COLUMNNAME] = 'S_PRIMARY_USE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_ENGINE_DRIVE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VHCL_MARINE' and A5.[COLUMNNAME] = 'S_ENGINE_DRIVE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_MANUF_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VHCL_MARINE' and A6.[COLUMNNAME] = 'S_MANUF_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -20083,14 +20783,16 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
-      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
+      A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
+      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OPTION_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_OPTIONS' and A0.[COLUMNNAME] = 'S_OPTION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -20114,14 +20816,20 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_RV_TYPE],
+      A0.Descript AS [S_RV_TYPE_Description],
       x.[MILEAGE],
       x.[NBR_AXLES],
       x.[NBR_SLIDES],
       x.[RV_LENGTH],
       x.[SELF_CONTAINED_YN],
       x.[S_CATEGORY],
-      x.[S_MODEL_TYPE]
+      A1.Descript AS [S_CATEGORY_Description],
+      x.[S_MODEL_TYPE],
+      A2.Descript AS [S_MODEL_TYPE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_RV] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RV_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_RV' and A0.[COLUMNNAME] = 'S_RV_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CATEGORY = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_RV' and A1.[COLUMNNAME] = 'S_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_MODEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_RV' and A2.[COLUMNNAME] = 'S_MODEL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -20145,9 +20853,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_AXLE_TYPE],
+      A0.Descript AS [S_AXLE_TYPE_Description],
       x.[BRAKES_YN],
       x.[TRAILER_LENGTH]
    FROM [clt_NetO].[WG_ASSET_VHCL_TRAILER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AXLE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_TRAILER' and A0.[COLUMNNAME] = 'S_AXLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -20172,6 +20882,7 @@ AS
       x.[ASSETID],
       x.[VALUATION_CNTR],
       x.[S_VALUATION_SOURCE],
+      A0.Descript AS [S_VALUATION_SOURCE_Description],
       x.[VALUATION_RESPONSE_ID],
       x.[ACTIVE_YN],
       x.[ELECTRONIC_YN],
@@ -20181,7 +20892,9 @@ AS
       x.[BOOK_EDITION],
       x.[REGION],
       x.[S_CLEAN_LEVEL],
+      A1.Descript AS [S_CLEAN_LEVEL_Description],
       x.[S_USE_FOR_LOAN_VAL],
+      A2.Descript AS [S_USE_FOR_LOAN_VAL_Description],
       x.[COLL_TRADE_BAM_VALUE],
       x.[COLL_LOAN_BAM_VALUE],
       x.[COLL_RETAIL_BAM_VALUE],
@@ -20198,6 +20911,9 @@ AS
       x.[INVOICE_PRC],
       x.[TOTL_ADJSTD_VAL_OVRD]
    FROM [clt_NetO].[WG_ASSET_VHCL_VALUATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_VALUATION_SOURCE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A0.[COLUMNNAME] = 'S_VALUATION_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CLEAN_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A1.[COLUMNNAME] = 'S_CLEAN_LEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USE_FOR_LOAN_VAL = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A2.[COLUMNNAME] = 'S_USE_FOR_LOAN_VAL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -20221,6 +20937,7 @@ AS
       x.[LNUM],
       x.[AD_FLAG],
       x.[S_AD_ACCT_TYPE],
+      A0.Descript AS [S_AD_ACCT_TYPE_Description],
       x.[AD_INST_NAME],
       x.[AD_ACCT_NUMB],
       x.[AD_RT_NUMB],
@@ -20228,6 +20945,7 @@ AS
       x.[AD_ADDL_PRINC],
       x.[AD_ACCT_TYP_OTH]
    FROM [clt_NetO].[WG_AUTO_DEBIT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AD_ACCT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_AUTO_DEBIT' and A0.[COLUMNNAME] = 'S_AD_ACCT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -20250,16 +20968,28 @@ AS
    SELECT
       x.[FIELDID],
       x.[S_FIELD_STATUS],
+      A0.Descript AS [S_FIELD_STATUS_Description],
       x.[FIELD_NAME],
       x.[FIELD_TEXT],
       x.[S_FIELD_CONTROL_TYPE],
+      A1.Descript AS [S_FIELD_CONTROL_TYPE_Description],
       x.[S_FIELD_OPERATOR],
+      A2.Descript AS [S_FIELD_OPERATOR_Description],
       x.[S_FIELD_LIST_SOURCE],
+      A3.Descript AS [S_FIELD_LIST_SOURCE_Description],
       x.[S_FIELD_FORMAT],
+      A4.Descript AS [S_FIELD_FORMAT_Description],
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID],
-      x.[S_USAGE_TYPE]
+      x.[S_USAGE_TYPE],
+      A5.Descript AS [S_USAGE_TYPE_Description]
    FROM [clt_NetO].[WG_BRM_DEFN_FIELDS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIELD_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_FIELDS' and A0.[COLUMNNAME] = 'S_FIELD_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FIELD_CONTROL_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_FIELDS' and A1.[COLUMNNAME] = 'S_FIELD_CONTROL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FIELD_OPERATOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_FIELDS' and A2.[COLUMNNAME] = 'S_FIELD_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FIELD_LIST_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_DEFN_FIELDS' and A3.[COLUMNNAME] = 'S_FIELD_LIST_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FIELD_FORMAT = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_DEFN_FIELDS' and A4.[COLUMNNAME] = 'S_FIELD_FORMAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20281,8 +21011,11 @@ AS
    SELECT
       x.[GRIDID],
       x.[S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[S_GRID_STATUS],
+      A1.Descript AS [S_GRID_STATUS_Description],
       x.[S_GRID_CATEGORY],
+      A2.Descript AS [S_GRID_CATEGORY_Description],
       x.[GRID_NAME],
       x.[GRID_NBR_DIMS],
       x.[RSLT_START_ROW],
@@ -20294,6 +21027,9 @@ AS
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID' and A1.[COLUMNNAME] = 'S_GRID_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20316,7 +21052,9 @@ AS
       x.[GRIDID],
       x.[DIM_OCC],
       x.[S_GRID_VERT_HORIZ],
+      A0.Descript AS [S_GRID_VERT_HORIZ_Description],
       x.[S_GRID_OPERATOR],
+      A1.Descript AS [S_GRID_OPERATOR_Description],
       x.[GRID_FIELD_NAME],
       x.[GRID_LABEL_TEXT],
       x.[GRID_LABEL_OCCS],
@@ -20328,8 +21066,12 @@ AS
       x.[GRID_TGT_VAL_START_COL],
       x.[GRID_TGT_VAL_START_ROW],
       x.[S_GRID_TGT_VAL_SPAN_TYPE],
+      A2.Descript AS [S_GRID_TGT_VAL_SPAN_TYPE_Description],
       x.[FIELDID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GRID_VERT_HORIZ = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A0.[COLUMNNAME] = 'S_GRID_VERT_HORIZ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_OPERATOR = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A1.[COLUMNNAME] = 'S_GRID_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20355,18 +21097,22 @@ AS
       x.[EXP_FILE_NAME],
       x.[EXP_FILE_PATH],
       x.[S_EXP_STATUS],
+      A0.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID],
       x.[EXP_BRM_IDENT],
       x.[EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS],
+      A1.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[EXP_NOTES],
       x.[DBID],
       x.[EXP_INCL_FIELDS],
       x.[EXP_INCL_CATS],
       x.[EXP_INCL_GRIDS]
    FROM [clt_NetO].[WG_BRM_EXPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EXP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_EXPORT' and A0.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20389,9 +21135,11 @@ AS
       x.[BRM_IDENT_FIELD],
       x.[BRM_IDENT_CODE],
       x.[S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[BRM_IDENT_NAME],
       x.[BRM_IDENT_DESCRIPTION]
    FROM [clt_NetO].[WG_BRM_IDENTIFIERS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20417,18 +21165,21 @@ AS
       x.[IMP_FILE_NAME],
       x.[IMP_FILE_PATH],
       x.[S_IMP_STATUS],
+      A0.Descript AS [S_IMP_STATUS_Description],
       x.[EXPORTID],
       x.[EXP_USER_NAME],
       x.[EXP_DATE_TIME],
       x.[EXP_FILE_NAME],
       x.[EXP_FILE_PATH],
       x.[S_EXP_STATUS],
+      A1.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID],
       x.[EXP_BRM_IDENT],
       x.[EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS],
+      A2.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[IMP_NOTES],
       x.[EXP_NOTES],
       x.[SYS_FINDINGS],
@@ -20440,6 +21191,9 @@ AS
       x.[IMP_IMP_CATS],
       x.[IMP_IMP_GRIDS]
    FROM [clt_NetO].[WG_BRM_IMPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IMP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IMPORT' and A0.[COLUMNNAME] = 'S_IMP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_IMPORT' and A1.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20461,15 +21215,20 @@ AS
    SELECT
       x.[BRMID],
       x.[S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[LU_BRM_IDENTIFIER],
       x.[S_BRM_STATUS],
+      A1.Descript AS [S_BRM_STATUS_Description],
       x.[S_BRM_TYPE],
+      A2.Descript AS [S_BRM_TYPE_Description],
       x.[BRM_NAME],
       x.[BRM_DESCRIPTION],
       x.[BRM_START_DATE],
       x.[BRM_END_DATE],
       x.[S_CAP_CATEGORY],
+      A3.Descript AS [S_CAP_CATEGORY_Description],
       x.[S_EFFECTIVITY_RULE],
+      A4.Descript AS [S_EFFECTIVITY_RULE_Description],
       x.[CHANGE_EFF_DATE],
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID],
@@ -20479,8 +21238,15 @@ AS
       x.[LAST_CHANGE_USER_ID],
       x.[MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL],
+      A5.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[BRM_CATEGORY]
    FROM [clt_NetO].[WG_BRM_LKUP_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_BASE' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_BASE' and A1.[COLUMNNAME] = 'S_BRM_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BRM_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_LKUP_BASE' and A2.[COLUMNNAME] = 'S_BRM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_CAP_CATEGORY = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_LKUP_BASE' and A3.[COLUMNNAME] = 'S_CAP_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EFFECTIVITY_RULE = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_LKUP_BASE' and A4.[COLUMNNAME] = 'S_EFFECTIVITY_RULE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20505,8 +21271,10 @@ AS
       x.[RULE_DESCRIPTION],
       x.[PRIORITY],
       x.[MESSAGE_TEXT],
-      x.[S_OVERRIDE_LEVEL]
+      x.[S_OVERRIDE_LEVEL],
+      A0.Descript AS [S_OVERRIDE_LEVEL_Description]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20566,8 +21334,10 @@ AS
       x.[RULE_ITEM_GRID_RSLT_COL],
       x.[RULE_ITEM_FIELD_NAME],
       x.[S_RULE_ITEM_OPERATOR],
+      A0.Descript AS [S_RULE_ITEM_OPERATOR_Description],
       x.[RULE_ITEM_FIELDID]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_FIELD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20591,12 +21361,16 @@ AS
       x.[RULE_OCC],
       x.[RULE_ITEM_OCC],
       x.[S_RULE_ITEM_TYPE],
+      A0.Descript AS [S_RULE_ITEM_TYPE_Description],
       x.[RULE_ITEM_NAME],
       x.[PRIORITY],
       x.[MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL],
+      A1.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[MESSAGE_TEXT_2]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_ITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A0.[COLUMNNAME] = 'S_RULE_ITEM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -20773,10 +21547,15 @@ AS
       x.[LNUM],
       x.[CID_BRANCH],
       x.[S_BUSINESS_CHANNEL],
+      A0.Descript AS [S_BUSINESS_CHANNEL_Description],
       x.[S_LOAN_TYPE],
+      A1.Descript AS [S_LOAN_TYPE_Description],
       x.[S_LOAN_CATEGORY],
+      A2.Descript AS [S_LOAN_CATEGORY_Description],
       x.[S_REFERRAL_SOURCE],
+      A3.Descript AS [S_REFERRAL_SOURCE_Description],
       x.[S_LOAN_PURPOSE],
+      A4.Descript AS [S_LOAN_PURPOSE_Description],
       x.[EMP_LOAN_YN],
       x.[REG_O_LOAN_YN],
       x.[TSWE_EXPECTED_YN],
@@ -20787,6 +21566,7 @@ AS
       x.[MBA_YN],
       x.[IS_PERSONALUSE_YN],
       x.[S_PRIMARY_COLLATERAL_TYPE],
+      A5.Descript AS [S_PRIMARY_COLLATERAL_TYPE_Description],
       x.[COLLATERAL_STATE],
       x.[VENDOR_VAL_METHOD],
       x.[VALUATION_SOURCE],
@@ -20795,8 +21575,18 @@ AS
       x.[CURRENTMODELYR],
       x.[COLLAGEYRS],
       x.[S_TITLE_TRANSFER],
-      x.[S_SECONDARY_COLLATERAL_TYPE]
+      A6.Descript AS [S_TITLE_TRANSFER_Description],
+      x.[S_SECONDARY_COLLATERAL_TYPE],
+      A7.Descript AS [S_SECONDARY_COLLATERAL_TYPE_Description]
    FROM [clt_NetO].[WG_CNS_LOAN_APPLICATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BUSINESS_CHANNEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A0.[COLUMNNAME] = 'S_BUSINESS_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A1.[COLUMNNAME] = 'S_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOAN_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A2.[COLUMNNAME] = 'S_LOAN_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REFERRAL_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A3.[COLUMNNAME] = 'S_REFERRAL_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOAN_PURPOSE = A4.DBSYMBOL AND A4.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A4.[COLUMNNAME] = 'S_LOAN_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PRIMARY_COLLATERAL_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A5.[COLUMNNAME] = 'S_PRIMARY_COLLATERAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TITLE_TRANSFER = A6.DBSYMBOL AND A6.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A6.[COLUMNNAME] = 'S_TITLE_TRANSFER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SECONDARY_COLLATERAL_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A7.[COLUMNNAME] = 'S_SECONDARY_COLLATERAL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -20885,7 +21675,6 @@ CREATE VIEW [NetO].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
-      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -20898,7 +21687,8 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT]
+      x.[MNTHPAYMENT],
+      x.[TRDINCNTR]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -21374,8 +22164,10 @@ AS
       x.[INC_SRC_CTR],
       x.[RECORD_CREATED],
       x.[S_INCOME_SOURCE_TYPE],
+      A0.Descript AS [S_INCOME_SOURCE_TYPE_Description],
       x.[OTHER_INCOME_SRC_DESC],
       x.[S_BUSINESS_TYPE],
+      A1.Descript AS [S_BUSINESS_TYPE_Description],
       x.[SOURCE_NAME],
       x.[SOURCE_CONTACT],
       x.[ADDRESS_LN_1],
@@ -21389,6 +22181,7 @@ AS
       x.[FAX_NBR],
       x.[TITLE],
       x.[S_SPECIAL_BOR_EMP_REL_TYPE],
+      A2.Descript AS [S_SPECIAL_BOR_EMP_REL_TYPE_Description],
       x.[SPEC_BOR_EMP_REL_TYPE_DESC],
       x.[OCCUPATION],
       x.[EMPLOYED_FROM],
@@ -21399,6 +22192,7 @@ AS
       x.[SELF_EMPLOYED_FLAG],
       x.[PCT_BUSINESS_OWNED],
       x.[S_SELF_EMPL_TYPE],
+      A3.Descript AS [S_SELF_EMPL_TYPE_Description],
       x.[PROF_MONTHS],
       x.[PROF_YEARS],
       x.[BASE_INCOME],
@@ -21410,6 +22204,7 @@ AS
       HASHBYTES('SHA2_256', CAST(x.[TOTAL_INCOME] AS NVARCHAR(50))) AS [TOTAL_INCOME],
       x.[LIABCTR],
       x.[S_EMP_UNIT_TYPE],
+      A4.Descript AS [S_EMP_UNIT_TYPE_Description],
       x.[EMP_UNIT_NUMBER],
       x.[INCOME_STATE_FOREIN],
       x.[INCOME_POSTCODE],
@@ -21422,6 +22217,11 @@ AS
       x.[INC_DBA_NAME],
       x.[INC_EIN]
    FROM [clt_NetO].[WG_INCOME_SOURCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME_SOURCE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_INCOME_SOURCE' and A0.[COLUMNNAME] = 'S_INCOME_SOURCE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BUSINESS_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_INCOME_SOURCE' and A1.[COLUMNNAME] = 'S_BUSINESS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPECIAL_BOR_EMP_REL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_INCOME_SOURCE' and A2.[COLUMNNAME] = 'S_SPECIAL_BOR_EMP_REL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SELF_EMPL_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'WG_INCOME_SOURCE' and A3.[COLUMNNAME] = 'S_SELF_EMPL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EMP_UNIT_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'WG_INCOME_SOURCE' and A4.[COLUMNNAME] = 'S_EMP_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -21468,8 +22268,10 @@ AS
       x.[CC],
       x.[STROKE],
       x.[CATEGORY],
-      x.[S_GENERIC_BODY_STYLE]
+      x.[S_GENERIC_BODY_STYLE],
+      A0.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_KELLEYBLUEBOOK_RESPONSE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GENERIC_BODY_STYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_KELLEYBLUEBOOK_RESPONSE' and A0.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -21493,9 +22295,11 @@ AS
       x.[ROWCNTR],
       x.[LNUM],
       x.[S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[LOAN_STATUS],
       x.[STATUS_DATE]
    FROM [clt_NetO].[WG_RPT_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_RPT_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -21758,12 +22562,16 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[START_DATE],
       x.[END_DATE],
       x.[S_OFF_OR_ENLISTED],
+      A1.Descript AS [S_OFF_OR_ENLISTED_Description],
       x.[SERVICE_NUMBER],
       x.[ACTIVESERVYN]
    FROM [clt_NetO].[WG_TLBR_VET_MILT_SERVICE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OFF_OR_ENLISTED = A1.DBSYMBOL AND A1.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A1.[COLUMNNAME] = 'S_OFF_OR_ENLISTED'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -22080,8 +22888,12 @@ AS
       x.[MIN_1ST_ADJ_RATE],
       x.[FIR_MAX_MONTHLY_AMT],
       x.[S_FRE_INDEX_TYPE],
-      x.[S_FNM_INDEX_TYPE]
+      A0.Descript AS [S_FRE_INDEX_TYPE_Description],
+      x.[S_FNM_INDEX_TYPE],
+      A1.Descript AS [S_FNM_INDEX_TYPE_Description]
    FROM [clt_NetO].[ARMINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FRE_INDEX_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'ARMINFO' and A0.[COLUMNNAME] = 'S_FRE_INDEX_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FNM_INDEX_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'ARMINFO' and A1.[COLUMNNAME] = 'S_FNM_INDEX_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -22107,6 +22919,7 @@ AS
       x.[DBID],
       x.[ASSETCTR],
       x.[S_ASSET],
+      A0.Descript AS [S_ASSET_Description],
       x.[ASSETDSC],
       x.[ACCTNUM],
       x.[HOLDER],
@@ -22142,10 +22955,15 @@ AS
       x.[BUILDER_EARNEST],
       x.[ASSET_INDICATOR],
       x.[S_ACCOUNT_OWNERSHIP],
+      A1.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[S_GIFT_PRVDR_TYPE],
+      A2.Descript AS [S_GIFT_PRVDR_TYPE_Description],
       x.[GIFT_PRVDR_OTH_DESC],
       x.[GIFT_DEPOSIT_STATUS]
    FROM [clt_NetO].[ASSETS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET = A0.DBSYMBOL AND A0.[TableName] = 'ASSETS' and A0.[COLUMNNAME] = 'S_ASSET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACCOUNT_OWNERSHIP = A1.DBSYMBOL AND A1.[TableName] = 'ASSETS' and A1.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GIFT_PRVDR_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'ASSETS' and A2.[COLUMNNAME] = 'S_GIFT_PRVDR_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -22212,6 +23030,7 @@ AS
       x.[AGE],
       x.[YRSSCHL],
       x.[S_MARITL],
+      A0.Descript AS [S_MARITL_Description],
       x.[FRNINFO],
       x.[GENDER],
       x.[NUMDEP],
@@ -22227,6 +23046,7 @@ AS
       x.[APPNUMB],
       x.[FIRSTBUY],
       x.[S_OWNSHP],
+      A1.Descript AS [S_OWNSHP_Description],
       x.[VOR_ACCT],
       x.[VOR_NAME],
       x.[OTHINCM],
@@ -22234,8 +23054,10 @@ AS
       x.[JOINTLY],
       x.[DOB],
       x.[S_BORTYP],
+      A2.Descript AS [S_BORTYP_Description],
       x.[ALIASES],
       x.[S_VESTNG],
+      A3.Descript AS [S_VESTNG_Description],
       x.[PRTENTTL],
       x.[PARTNOTE],
       x.[COUNTY],
@@ -22300,6 +23122,7 @@ AS
       x.[ELEC_DISC_CONSENT],
       x.[ELEC_DISC_WITHDRAW],
       x.[S_IVMETH],
+      A4.Descript AS [S_IVMETH_Description],
       x.[ATALLLIQUIDTOTAL],
       x.[ATGIFTTOTAL],
       x.[ATREONETPROCEEDSTOTAL],
@@ -22307,6 +23130,7 @@ AS
       x.[LTNONSUBJDEBTMOTOTAL],
       x.[LTNONSUBJPAYOFFTOTAL],
       x.[S_CBSOURCE],
+      A5.Descript AS [S_CBSOURCE_Description],
       x.[VETERAN],
       x.[ENTITLEMENT],
       x.[LDP_NUMBER],
@@ -22330,7 +23154,9 @@ AS
       x.[DISPLAY_NAME],
       x.[NON_INDIV_BORR_NAME],
       x.[S_LEGAL_ENTITY_TYPE],
+      A6.Descript AS [S_LEGAL_ENTITY_TYPE_Description],
       x.[S_LEGAL_ENTITY_TYP_OTH],
+      A7.Descript AS [S_LEGAL_ENTITY_TYP_OTH_Description],
       x.[ULDD_TAXPAYER_ID],
       x.[INCLUDE_IN_PROFORMA],
       x.[FADDR_INDICATOR],
@@ -22346,9 +23172,11 @@ AS
       x.[MNTHS_AT_PRSNT],
       x.[BORR_COVERED],
       x.[S_COV_BORR_STATUS],
+      A8.Descript AS [S_COV_BORR_STATUS_Description],
       x.[BORR_VERBDISC],
       x.[MLACERTID],
       x.[S_BOR_UNIT_TYPE],
+      A9.Descript AS [S_BOR_UNIT_TYPE_Description],
       x.[BOR_UNIT_NUM],
       x.[BOR_COUNTRY],
       x.[BOR_COUNTRY_CODE],
@@ -22365,8 +23193,11 @@ AS
       x.[COPIED_MAIL_ADDRESS],
       x.[CHECK_ALIAS],
       x.[S_PARTY_TYPE],
+      A10.Descript AS [S_PARTY_TYPE_Description],
       x.[S_CITIZENSHIP],
+      A11.Descript AS [S_CITIZENSHIP_Description],
       x.[S_UNMARRIED],
+      A12.Descript AS [S_UNMARRIED_Description],
       x.[ATTR_PORTAL_REG],
       x.[ATTR_COUNSELING_REQUIRED],
       x.[ATTR_CHILD_CARE],
@@ -22374,6 +23205,7 @@ AS
       x.[ATTR_GUARDIANSHIP],
       x.[ATTR_SOLE_PROPRIETOR],
       x.[S_UNMARRIED_RLTNSHIP],
+      A13.Descript AS [S_UNMARRIED_RLTNSHIP_Description],
       x.[UNMARRIED_RLTNSHIP_STATE],
       x.[UNMARRIED_RLTNSHIP_OTHERDESC],
       x.[RETIRED_BORROWER],
@@ -22386,6 +23218,20 @@ AS
       x.[IS_DEALER_EMPLOYEE],
       x.[LIVE_RENT_FREE_ENUMS]
    FROM [clt_NetO].[BORROWER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARITL = A0.DBSYMBOL AND A0.[TableName] = 'BORROWER' and A0.[COLUMNNAME] = 'S_MARITL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OWNSHP = A1.DBSYMBOL AND A1.[TableName] = 'BORROWER' and A1.[COLUMNNAME] = 'S_OWNSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BORTYP = A2.DBSYMBOL AND A2.[TableName] = 'BORROWER' and A2.[COLUMNNAME] = 'S_BORTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_VESTNG = A3.DBSYMBOL AND A3.[TableName] = 'BORROWER' and A3.[COLUMNNAME] = 'S_VESTNG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_IVMETH = A4.DBSYMBOL AND A4.[TableName] = 'BORROWER' and A4.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CBSOURCE = A5.DBSYMBOL AND A5.[TableName] = 'BORROWER' and A5.[COLUMNNAME] = 'S_CBSOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LEGAL_ENTITY_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'BORROWER' and A6.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LEGAL_ENTITY_TYP_OTH = A7.DBSYMBOL AND A7.[TableName] = 'BORROWER' and A7.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYP_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COV_BORR_STATUS = A8.DBSYMBOL AND A8.[TableName] = 'BORROWER' and A8.[COLUMNNAME] = 'S_COV_BORR_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BOR_UNIT_TYPE = A9.DBSYMBOL AND A9.[TableName] = 'BORROWER' and A9.[COLUMNNAME] = 'S_BOR_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_PARTY_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'BORROWER' and A10.[COLUMNNAME] = 'S_PARTY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_CITIZENSHIP = A11.DBSYMBOL AND A11.[TableName] = 'BORROWER' and A11.[COLUMNNAME] = 'S_CITIZENSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_UNMARRIED = A12.DBSYMBOL AND A12.[TableName] = 'BORROWER' and A12.[COLUMNNAME] = 'S_UNMARRIED'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_UNMARRIED_RLTNSHIP = A13.DBSYMBOL AND A13.[TableName] = 'BORROWER' and A13.[COLUMNNAME] = 'S_UNMARRIED_RLTNSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -22413,15 +23259,19 @@ AS
       x.[CSTIMPRO],
       x.[IMPDESC],
       x.[S_REFPRP],
+      A0.Descript AS [S_REFPRP_Description],
       x.[IMPMADE],
       x.[LOTACQUR],
       x.[REFIIMP],
       x.[CASHAMT],
       x.[S_GSE_REFINANCE_PURPOSE],
+      A1.Descript AS [S_GSE_REFINANCE_PURPOSE_Description],
       x.[S_CONST_PERM_CLOSING],
+      A2.Descript AS [S_CONST_PERM_CLOSING_Description],
       x.[INTERNREFI],
       HASHBYTES('SHA2_256', x.[ORIG_INVESTOR_LOAN_NBR]) AS [ORIG_INVESTOR_LOAN_NBR],
       x.[S_ORIG_INVESTOR],
+      A3.Descript AS [S_ORIG_INVESTOR_Description],
       x.[OTHER_INVESTOR_DESC],
       x.[OTHERGSEREFIPURPTYPEDESC],
       x.[REPLACE_EXIST_CONSTR_LOAN],
@@ -22429,11 +23279,21 @@ AS
       x.[PREVIOUS_REFI_MONTHS],
       x.[CO_REFI_PURCH_CONST],
       x.[S_CONST_PERM_FEATURE],
+      A4.Descript AS [S_CONST_PERM_FEATURE_Description],
       x.[S_FNM_REFI_PGM],
+      A5.Descript AS [S_FNM_REFI_PGM_Description],
       x.[S_FRE_REFI_PGM],
+      A6.Descript AS [S_FRE_REFI_PGM_Description],
       x.[LIMIT_DESC],
       x.[REFI_LOAN_ACCT_NBR]
    FROM [clt_NetO].[CONSREFI] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFPRP = A0.DBSYMBOL AND A0.[TableName] = 'CONSREFI' and A0.[COLUMNNAME] = 'S_REFPRP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GSE_REFINANCE_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'CONSREFI' and A1.[COLUMNNAME] = 'S_GSE_REFINANCE_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CONST_PERM_CLOSING = A2.DBSYMBOL AND A2.[TableName] = 'CONSREFI' and A2.[COLUMNNAME] = 'S_CONST_PERM_CLOSING'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ORIG_INVESTOR = A3.DBSYMBOL AND A3.[TableName] = 'CONSREFI' and A3.[COLUMNNAME] = 'S_ORIG_INVESTOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_CONST_PERM_FEATURE = A4.DBSYMBOL AND A4.[TableName] = 'CONSREFI' and A4.[COLUMNNAME] = 'S_CONST_PERM_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_FNM_REFI_PGM = A5.DBSYMBOL AND A5.[TableName] = 'CONSREFI' and A5.[COLUMNNAME] = 'S_FNM_REFI_PGM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_FRE_REFI_PGM = A6.DBSYMBOL AND A6.[TableName] = 'CONSREFI' and A6.[COLUMNNAME] = 'S_FRE_REFI_PGM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -22607,7 +23467,9 @@ AS
       x.[M_DBID],
       x.[M_SERIAL],
       x.[S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[BNKRPT_DISCHARGE_MOS],
       x.[FORECLOSURE_MOS],
       x.[NON_PERMANENT_RESIDENT_ALIEN],
@@ -22632,6 +23494,7 @@ AS
       x.[SHORT_SALE],
       x.[PROPFORECLOSE],
       x.[S_BANKRUPTCY_TYPE],
+      A2.Descript AS [S_BANKRUPTCY_TYPE_Description],
       x.[PREFORECLOS_NOTES],
       x.[PROPFORECL_NOTES],
       x.[PRIMRESID_NOTES],
@@ -22658,6 +23521,9 @@ AS
       x.[DECBANKRUPTCY_INCINFORM],
       x.[FHA_SECOND_RESID_IND]
    FROM [clt_NetO].[DECLRTN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'DECLRTN' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'DECLRTN' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BANKRUPTCY_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DECLRTN' and A2.[COLUMNNAME] = 'S_BANKRUPTCY_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -22692,35 +23558,55 @@ AS
       x.[RENTS3],
       x.[RENTS4],
       x.[S_SPF1],
+      A0.Descript AS [S_SPF1_Description],
       x.[S_SPF2],
+      A1.Descript AS [S_SPF2_Description],
       x.[S_SPF3],
+      A2.Descript AS [S_SPF3_Description],
       x.[S_SPF4],
+      A3.Descript AS [S_SPF4_Description],
       x.[S_SPF5],
+      A4.Descript AS [S_SPF5_Description],
       x.[S_SPF6],
+      A5.Descript AS [S_SPF6_Description],
       x.[ASSUM],
       x.[RDF],
       x.[INTPD],
       x.[MATDATE],
       x.[S_SFSRC1],
+      A6.Descript AS [S_SFSRC1_Description],
       x.[S_SFSRC2],
+      A7.Descript AS [S_SFSRC2_Description],
       x.[SFAMT1],
       x.[SFAMT2],
       x.[S_BECA1],
+      A8.Descript AS [S_BECA1_Description],
       x.[S_BECA2],
+      A9.Descript AS [S_BECA2_Description],
       x.[S_BECF1],
+      A10.Descript AS [S_BECF1_Description],
       x.[S_BECF2],
+      A11.Descript AS [S_BECF2_Description],
       x.[S_DPSRC1],
+      A12.Descript AS [S_DPSRC1_Description],
       x.[S_DPSRC2],
+      A13.Descript AS [S_DPSRC2_Description],
       x.[S_DPSRC3],
+      A14.Descript AS [S_DPSRC3_Description],
       x.[S_DPSRC4],
+      A15.Descript AS [S_DPSRC4_Description],
       x.[DPAMT1],
       x.[DPAMT2],
       x.[DPAMT3],
       x.[DPAMT4],
       x.[S_CCSRC1],
+      A16.Descript AS [S_CCSRC1_Description],
       x.[S_CCSRC2],
+      A17.Descript AS [S_CCSRC2_Description],
       x.[S_CCSRC3],
+      A18.Descript AS [S_CCSRC3_Description],
       x.[S_CCSRC4],
+      A19.Descript AS [S_CCSRC4_Description],
       x.[CCAMT1],
       x.[CCAMT2],
       x.[CCAMT3],
@@ -22728,12 +23614,14 @@ AS
       x.[MICOV],
       x.[UPB],
       x.[S_LFC],
+      A20.Descript AS [S_LFC_Description],
       x.[INTEND],
       x.[LPID],
       x.[INTONLY],
       x.[LOOKBACK],
       x.[NETNEGAM],
       x.[S_RFC],
+      A21.Descript AS [S_RFC_Description],
       x.[UWNAME],
       x.[INVLNUM],
       x.[MTGORIG],
@@ -22743,9 +23631,13 @@ AS
       x.[SELLER],
       x.[CID_SELLER_AGENT],
       x.[S_SPF7],
+      A22.Descript AS [S_SPF7_Description],
       x.[S_SPF8],
+      A23.Descript AS [S_SPF8_Description],
       x.[S_SPF9],
+      A24.Descript AS [S_SPF9_Description],
       x.[S_SPF10],
+      A25.Descript AS [S_SPF10_Description],
       x.[UPBO],
       x.[ESCROW_ACCT_BALANCE],
       x.[ESCROW_PYMT_AMT],
@@ -22753,21 +23645,59 @@ AS
       x.[APPR_DOC_ID],
       x.[READY_FOR_DELIVERY],
       x.[S_INT_ACCRUAL_TYPE],
+      A26.Descript AS [S_INT_ACCRUAL_TYPE_Description],
       x.[S_INT_CALC_BASIS_TYPE],
+      A27.Descript AS [S_INT_CALC_BASIS_TYPE_Description],
       x.[INT_CALC_EFF_MONTHS],
       x.[S_INT_CALC_PERIOD],
+      A28.Descript AS [S_INT_CALC_PERIOD_Description],
       x.[S_INT_CALC_METHOD],
+      A29.Descript AS [S_INT_CALC_METHOD_Description],
       x.[LOAN_DELIV_GSE],
       x.[LTV_RATIO_PCT],
       x.[S_FNM_HOME_IMP_PROD],
+      A30.Descript AS [S_FNM_HOME_IMP_PROD_Description],
       x.[ADJ_LOAN_AMT],
       x.[ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE],
       x.[S_SIGNDOCPUSHBACK],
+      A31.Descript AS [S_SIGNDOCPUSHBACK_Description],
       x.[MI_CANCELLED],
       x.[HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SPF1 = A0.DBSYMBOL AND A0.[TableName] = 'DELIVERY' and A0.[COLUMNNAME] = 'S_SPF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPF2 = A1.DBSYMBOL AND A1.[TableName] = 'DELIVERY' and A1.[COLUMNNAME] = 'S_SPF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPF3 = A2.DBSYMBOL AND A2.[TableName] = 'DELIVERY' and A2.[COLUMNNAME] = 'S_SPF3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPF4 = A3.DBSYMBOL AND A3.[TableName] = 'DELIVERY' and A3.[COLUMNNAME] = 'S_SPF4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_SPF5 = A4.DBSYMBOL AND A4.[TableName] = 'DELIVERY' and A4.[COLUMNNAME] = 'S_SPF5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SPF6 = A5.DBSYMBOL AND A5.[TableName] = 'DELIVERY' and A5.[COLUMNNAME] = 'S_SPF6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SFSRC1 = A6.DBSYMBOL AND A6.[TableName] = 'DELIVERY' and A6.[COLUMNNAME] = 'S_SFSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SFSRC2 = A7.DBSYMBOL AND A7.[TableName] = 'DELIVERY' and A7.[COLUMNNAME] = 'S_SFSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_BECA1 = A8.DBSYMBOL AND A8.[TableName] = 'DELIVERY' and A8.[COLUMNNAME] = 'S_BECA1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BECA2 = A9.DBSYMBOL AND A9.[TableName] = 'DELIVERY' and A9.[COLUMNNAME] = 'S_BECA2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_BECF1 = A10.DBSYMBOL AND A10.[TableName] = 'DELIVERY' and A10.[COLUMNNAME] = 'S_BECF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BECF2 = A11.DBSYMBOL AND A11.[TableName] = 'DELIVERY' and A11.[COLUMNNAME] = 'S_BECF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_DPSRC1 = A12.DBSYMBOL AND A12.[TableName] = 'DELIVERY' and A12.[COLUMNNAME] = 'S_DPSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_DPSRC2 = A13.DBSYMBOL AND A13.[TableName] = 'DELIVERY' and A13.[COLUMNNAME] = 'S_DPSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DPSRC3 = A14.DBSYMBOL AND A14.[TableName] = 'DELIVERY' and A14.[COLUMNNAME] = 'S_DPSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_DPSRC4 = A15.DBSYMBOL AND A15.[TableName] = 'DELIVERY' and A15.[COLUMNNAME] = 'S_DPSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_CCSRC1 = A16.DBSYMBOL AND A16.[TableName] = 'DELIVERY' and A16.[COLUMNNAME] = 'S_CCSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CCSRC2 = A17.DBSYMBOL AND A17.[TableName] = 'DELIVERY' and A17.[COLUMNNAME] = 'S_CCSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CCSRC3 = A18.DBSYMBOL AND A18.[TableName] = 'DELIVERY' and A18.[COLUMNNAME] = 'S_CCSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_CCSRC4 = A19.DBSYMBOL AND A19.[TableName] = 'DELIVERY' and A19.[COLUMNNAME] = 'S_CCSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_LFC = A20.DBSYMBOL AND A20.[TableName] = 'DELIVERY' and A20.[COLUMNNAME] = 'S_LFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_RFC = A21.DBSYMBOL AND A21.[TableName] = 'DELIVERY' and A21.[COLUMNNAME] = 'S_RFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_SPF7 = A22.DBSYMBOL AND A22.[TableName] = 'DELIVERY' and A22.[COLUMNNAME] = 'S_SPF7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_SPF8 = A23.DBSYMBOL AND A23.[TableName] = 'DELIVERY' and A23.[COLUMNNAME] = 'S_SPF8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_SPF9 = A24.DBSYMBOL AND A24.[TableName] = 'DELIVERY' and A24.[COLUMNNAME] = 'S_SPF9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_SPF10 = A25.DBSYMBOL AND A25.[TableName] = 'DELIVERY' and A25.[COLUMNNAME] = 'S_SPF10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_INT_ACCRUAL_TYPE = A26.DBSYMBOL AND A26.[TableName] = 'DELIVERY' and A26.[COLUMNNAME] = 'S_INT_ACCRUAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_INT_CALC_BASIS_TYPE = A27.DBSYMBOL AND A27.[TableName] = 'DELIVERY' and A27.[COLUMNNAME] = 'S_INT_CALC_BASIS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_INT_CALC_PERIOD = A28.DBSYMBOL AND A28.[TableName] = 'DELIVERY' and A28.[COLUMNNAME] = 'S_INT_CALC_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_INT_CALC_METHOD = A29.DBSYMBOL AND A29.[TableName] = 'DELIVERY' and A29.[COLUMNNAME] = 'S_INT_CALC_METHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A30 on x.S_FNM_HOME_IMP_PROD = A30.DBSYMBOL AND A30.[TableName] = 'DELIVERY' and A30.[COLUMNNAME] = 'S_FNM_HOME_IMP_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A31 on x.S_SIGNDOCPUSHBACK = A31.DBSYMBOL AND A31.[TableName] = 'DELIVERY' and A31.[COLUMNNAME] = 'S_SIGNDOCPUSHBACK'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -22850,6 +23780,7 @@ AS
       x.[DBID],
       x.[DPYMTCTR],
       x.[S_TYPE],
+      A0.Descript AS [S_TYPE_Description],
       x.[AMOUNT],
       HASHBYTES('SHA2_256', x.[NAME]) AS [NAME],
       x.[ADDR1],
@@ -22874,18 +23805,31 @@ AS
       x.[VERIFYFND],
       x.[OTHERDOWNPAYTYPEDESC],
       x.[S_DOWN_PMT_SRC_TYP],
+      A1.Descript AS [S_DOWN_PMT_SRC_TYP_Description],
       x.[S_DOWN_PMT_SRC_OTH],
+      A2.Descript AS [S_DOWN_PMT_SRC_OTH_Description],
       x.[S_DOWN_PMT_TYP],
+      A3.Descript AS [S_DOWN_PMT_TYP_Description],
       x.[S_TYPE_OTH],
+      A4.Descript AS [S_TYPE_OTH_Description],
       x.[PRIMARY_SRC],
       x.[DOWNPAYMENTPERCENT],
       x.[S_DOWN_PMT_SRC],
+      A5.Descript AS [S_DOWN_PMT_SRC_Description],
       x.[S_TYPENM],
+      A6.Descript AS [S_TYPENM_Description],
       x.[DOWNPAYTYPENMOTHERDESC],
       x.[RECORD_CREATED],
       x.[TOTAL_GIFT_FUNDS],
       x.[ASSETCTR]
    FROM [clt_NetO].[DOWNPYMT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_DOWN_PMT_SRC_TYP = A1.DBSYMBOL AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOWN_PMT_SRC_OTH = A2.DBSYMBOL AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_DOWN_PMT_TYP = A3.DBSYMBOL AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TYPE_OTH = A4.DBSYMBOL AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DOWN_PMT_SRC = A5.DBSYMBOL AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TYPENM = A6.DBSYMBOL AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -22910,11 +23854,14 @@ AS
       x.[DBID],
       x.[TRANCTR],
       x.[S_TRAN],
+      A0.Descript AS [S_TRAN_Description],
       x.[TRANDESC],
       x.[TRANAMT],
       x.[OTHERAMT],
       x.[S_PURCH_CREDIT_TYPE],
+      A1.Descript AS [S_PURCH_CREDIT_TYPE_Description],
       x.[S_PURCH_SOURCE_TYPE],
+      A2.Descript AS [S_PURCH_SOURCE_TYPE_Description],
       x.[OTHERPURCHCREDTYPEDESC],
       x.[OTHERPURCHSRCTYPEDESC],
       x.[MANUALAMT],
@@ -22925,6 +23872,9 @@ AS
       x.[EXCLOTHCREDPREP],
       x.[POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRAN = A0.DBSYMBOL AND A0.[TableName] = 'DTLTRAN' and A0.[COLUMNNAME] = 'S_TRAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PURCH_CREDIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'DTLTRAN' and A1.[COLUMNNAME] = 'S_PURCH_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PURCH_SOURCE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DTLTRAN' and A2.[COLUMNNAME] = 'S_PURCH_SOURCE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -22979,6 +23929,7 @@ AS
       x.[WAIVED],
       x.[CSHMONTH],
       x.[S_PERIOD],
+      A0.Descript AS [S_PERIOD_Description],
       x.[TOTALATC],
       x.[INCGFE],
       x.[SPOVERRIDE],
@@ -22989,6 +23940,7 @@ AS
       x.[INCHCL],
       x.[CID_FEE_SRVC_PRVDR_CO],
       x.[S_MISC_DESC],
+      A1.Descript AS [S_MISC_DESC_Description],
       x.[LOCKEDYN],
       x.[LOCKEDTOTAL],
       x.[ISSUE_CHECK],
@@ -22998,22 +23950,38 @@ AS
       x.[SUBFEE],
       x.[FEECODE],
       x.[S_AGGTYPE],
+      A2.Descript AS [S_AGGTYPE_Description],
       x.[S_RESP_PARTY],
+      A3.Descript AS [S_RESP_PARTY_Description],
       x.[S_PAIDBY],
+      A4.Descript AS [S_PAIDBY_Description],
       x.[S_PAIDTO],
+      A5.Descript AS [S_PAIDTO_Description],
       x.[SUBCODE],
       x.[IS_NOCOST],
       x.[MANAGED_OVR],
       x.[TO_AFFILIATE],
       x.[S_SECTION_TYPE],
+      A6.Descript AS [S_SECTION_TYPE_Description],
       x.[ID_SECTION_SUBTYPE],
       x.[PREPAID_MONTH],
       x.[S_TOLERANCE_CATEGORY],
+      A7.Descript AS [S_TOLERANCE_CATEGORY_Description],
       x.[S_CHANGE_TYPE],
+      A8.Descript AS [S_CHANGE_TYPE_Description],
       x.[CHANGE_REASON],
       x.[BOROPT],
       x.[EXC_MAPR]
    FROM [clt_NetO].[FEEVALS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PERIOD = A0.DBSYMBOL AND A0.[TableName] = 'FEEVALS' and A0.[COLUMNNAME] = 'S_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MISC_DESC = A1.DBSYMBOL AND A1.[TableName] = 'FEEVALS' and A1.[COLUMNNAME] = 'S_MISC_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AGGTYPE = A2.DBSYMBOL AND A2.[TableName] = 'FEEVALS' and A2.[COLUMNNAME] = 'S_AGGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESP_PARTY = A3.DBSYMBOL AND A3.[TableName] = 'FEEVALS' and A3.[COLUMNNAME] = 'S_RESP_PARTY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PAIDBY = A4.DBSYMBOL AND A4.[TableName] = 'FEEVALS' and A4.[COLUMNNAME] = 'S_PAIDBY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PAIDTO = A5.DBSYMBOL AND A5.[TableName] = 'FEEVALS' and A5.[COLUMNNAME] = 'S_PAIDTO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SECTION_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'FEEVALS' and A6.[COLUMNNAME] = 'S_SECTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TOLERANCE_CATEGORY = A7.DBSYMBOL AND A7.[TableName] = 'FEEVALS' and A7.[COLUMNNAME] = 'S_TOLERANCE_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CHANGE_TYPE = A8.DBSYMBOL AND A8.[TableName] = 'FEEVALS' and A8.[COLUMNNAME] = 'S_CHANGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -23035,12 +24003,12 @@ CREATE VIEW [NetO_restricted].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
-      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE]
+      x.[P_TEXT_VALUE],
+      x.[PKFIX]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -23069,7 +24037,9 @@ AS
       x.[DETMNNUM],
       x.[DETMNDAT],
       x.[S_FIRM],
+      A0.Descript AS [S_FIRM_Description],
       x.[S_FLDZON],
+      A1.Descript AS [S_FLDZON_Description],
       x.[FLDMAPDT],
       x.[COMMNUMB],
       x.[SFHAREA],
@@ -23080,6 +24050,8 @@ AS
       x.[NFIP_MAP_PANEL_DATE],
       x.[COMMNAME]
    FROM [clt_NetO].[FLOOD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRM = A0.DBSYMBOL AND A0.[TableName] = 'FLOOD' and A0.[COLUMNNAME] = 'S_FIRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FLDZON = A1.DBSYMBOL AND A1.[TableName] = 'FLOOD' and A1.[COLUMNNAME] = 'S_FLDZON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -23720,7 +24692,9 @@ AS
       x.[CUR_HOUSING_PMT],
       x.[OTHERINDEXTYPEDESC],
       x.[S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[S_PAYEETYPE],
+      A1.Descript AS [S_PAYEETYPE_Description],
       x.[PAYEETYPEOTHERDESC],
       x.[CLNUM_COUNTER],
       x.[LEAD_COUNTER],
@@ -23731,18 +24705,22 @@ AS
       x.[DMI_OWN_RIGHTS],
       x.[DMI_BILLING_MODE],
       x.[S_AUSUWTYPE],
+      A2.Descript AS [S_AUSUWTYPE_Description],
       x.[MSP_INVESTOR_ID],
       x.[MSP_INVESTOR_ID_OVERRIDE],
       x.[MSP_INVESTOR_CATEGORY],
       x.[MSP_INVESTOR_CATEGORY_OVERRIDE],
       x.[FIRST_DISB_REC_AMT],
       x.[S_INTPRD_COMM_MET],
+      A3.Descript AS [S_INTPRD_COMM_MET_Description],
       x.[EXCLUDE_FROM_QRM],
       x.[READY_REDISCLSR],
       x.[S_WELCOME_CALL],
+      A4.Descript AS [S_WELCOME_CALL_Description],
       x.[LOAN_AMOUNT_TOLER],
       x.[MAX_APPR_RATE],
       x.[S_AUS_RESULT],
+      A5.Descript AS [S_AUS_RESULT_Description],
       x.[P_ADMINOVR],
       x.[P_CB_ADMINOVR],
       x.[P_COMPOVR],
@@ -23751,8 +24729,10 @@ AS
       x.[HARP_MI_REQUIRED],
       x.[NET_NEW_DOLLARS],
       x.[S_INIT_DISC_DELIVERY_MTHD],
+      A6.Descript AS [S_INIT_DISC_DELIVERY_MTHD_Description],
       x.[CONFIDENCE_SCR_HLMAI],
       x.[S_BRANCH_TYPE],
+      A7.Descript AS [S_BRANCH_TYPE_Description],
       x.[BRANCH_ID],
       x.[BRANCH_BANK_CODE],
       x.[BRANCH_COST_CENTER],
@@ -23761,6 +24741,14 @@ AS
       x.[PROMOTION_CODE],
       x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_DATA' and A0.[COLUMNNAME] = 'S_INDEX'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYEETYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_DATA' and A1.[COLUMNNAME] = 'S_PAYEETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AUSUWTYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_DATA' and A2.[COLUMNNAME] = 'S_AUSUWTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_INTPRD_COMM_MET = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_LOAN_DATA' and A3.[COLUMNNAME] = 'S_INTPRD_COMM_MET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_WELCOME_CALL = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_LOAN_DATA' and A4.[COLUMNNAME] = 'S_WELCOME_CALL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_AUS_RESULT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_LOAN_DATA' and A5.[COLUMNNAME] = 'S_AUS_RESULT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_INIT_DISC_DELIVERY_MTHD = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_LOAN_DATA' and A6.[COLUMNNAME] = 'S_INIT_DISC_DELIVERY_MTHD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_BRANCH_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_LOAN_DATA' and A7.[COLUMNNAME] = 'S_BRANCH_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -23783,8 +24771,11 @@ AS
    SELECT
       x.[LNUM],
       x.[S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[S_UW_STATUS],
+      A1.Descript AS [S_UW_STATUS_Description],
       x.[S_LOCK_STATUS],
+      A2.Descript AS [S_LOCK_STATUS_Description],
       x.[LOCK_STATUS_DISPLAY],
       x.[SENT_TO_MIDANET],
       x.[AP_ADMIN_ONLY],
@@ -23792,6 +24783,9 @@ AS
       x.[EXT_LOAN_STATUS_VERSION_ID],
       x.[EXT_LOAN_STATUS_VERSION]
    FROM [clt_NetO].[GF_TL_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UW_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_STATUS' and A1.[COLUMNNAME] = 'S_UW_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOCK_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_STATUS' and A2.[COLUMNNAME] = 'S_LOCK_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -23900,9 +24894,13 @@ AS
       x.[PRICE_GROUP_CODE],
       x.[IPG_NAME],
       x.[S_SEC_MANAGE_TYPE],
+      A0.Descript AS [S_SEC_MANAGE_TYPE_Description],
       x.[S_SEC_LOAN_TYPE],
+      A1.Descript AS [S_SEC_LOAN_TYPE_Description],
       x.[S_SEC_POOL_TYPE],
+      A2.Descript AS [S_SEC_POOL_TYPE_Description],
       x.[S_PREPAY_PEN],
+      A3.Descript AS [S_PREPAY_PEN_Description],
       x.[OVER_ALLOW_PCT],
       x.[SHORT_ALLOW_PCT],
       x.[OVER_SPLIT_PCT],
@@ -23926,13 +24924,16 @@ AS
       x.[OLD_AGENCY_NUM_IND],
       x.[PRODUCT_IDENTIFIER],
       x.[S_AUS_IND],
+      A4.Descript AS [S_AUS_IND_Description],
       x.[S_SERVICE_TYPE],
+      A5.Descript AS [S_SERVICE_TYPE_Description],
       x.[SERVICING_INTERFACE_IND],
       x.[SERVICING_LOCATION],
       x.[SUB_PRIME_IND],
       x.[MI_REQUIRE],
       x.[INTEREST_ONLY_PRODUCT],
       x.[S_SPEC_PROG],
+      A6.Descript AS [S_SPEC_PROG_Description],
       x.[CRA_REPORT],
       x.[INV_CODE_OVR],
       x.[INV_PROD_CODE_OVR],
@@ -23951,8 +24952,17 @@ AS
       x.[EVAL_QM],
       x.[APPLY_MLA_RULES],
       x.[LNDR_PD_MI_ALLOWED],
-      x.[S_ASSUMABILITY_FEATURE]
+      x.[S_ASSUMABILITY_FEATURE],
+      A7.Descript AS [S_ASSUMABILITY_FEATURE_Description]
    FROM [clt_NetO].[GF_TL_PNP_IPG_DETAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SEC_MANAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A0.[COLUMNNAME] = 'S_SEC_MANAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEC_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A1.[COLUMNNAME] = 'S_SEC_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SEC_POOL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A2.[COLUMNNAME] = 'S_SEC_POOL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PREPAY_PEN = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A3.[COLUMNNAME] = 'S_PREPAY_PEN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_AUS_IND = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A4.[COLUMNNAME] = 'S_AUS_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SERVICE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A5.[COLUMNNAME] = 'S_SERVICE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SPEC_PROG = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A6.[COLUMNNAME] = 'S_SPEC_PROG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ASSUMABILITY_FEATURE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A7.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -23975,16 +24985,20 @@ AS
    SELECT
       x.[LNUM],
       x.[S_REFSC],
+      A0.Descript AS [S_REFSC_Description],
       x.[TBDADDR],
       x.[POSFHA],
       x.[S_PROPTYPE],
+      A1.Descript AS [S_PROPTYPE_Description],
       x.[PROJCLAS],
       x.[PROJNAME],
       x.[DPPERCT],
       x.[HELINE],
       x.[HECURBAL],
       x.[S_DOCLVL],
+      A2.Descript AS [S_DOCLVL_Description],
       x.[S_LNSTATUS],
+      A3.Descript AS [S_LNSTATUS_Description],
       x.[HLTVH],
       x.[TSWE_INC_EXPECTED],
       x.[QUAL_TSWE_LOAN],
@@ -24000,6 +25014,7 @@ AS
       x.[LO_NMLS_NUM_OVR],
       x.[LO_PHONE_OVR],
       x.[S_GFE_TIME_ZONE],
+      A4.Descript AS [S_GFE_TIME_ZONE_Description],
       x.[ALLOWWITHDRAWLOAN],
       x.[GFE_INT_RATE_LSC],
       x.[GFE_INT_RATE_LIR],
@@ -24046,6 +25061,11 @@ AS
       x.[LP2_RISK_CLASS_OVR],
       x.[DU_DISPLAY_OVR]
    FROM [clt_NetO].[GF_TL_POINT_OF_SALE_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFSC = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A0.[COLUMNNAME] = 'S_REFSC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_PROPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOCLVL = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_DOCLVL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LNSTATUS = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_LNSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_GFE_TIME_ZONE = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -24192,6 +25212,7 @@ AS
       x.[REPAIRAMOUNT],
       x.[REPLACEMENTAMOUNT],
       x.[S_FLOODMAPZONE],
+      A0.Descript AS [S_FLOODMAPZONE_Description],
       x.[APP_SENT_BORROWER],
       x.[APPRAISAL_DELIVERED],
       x.[APP_TIME_WAIVE],
@@ -24205,13 +25226,20 @@ AS
       x.[PERCENT_MULTI_FAM],
       x.[PERCENT_COMMERCIAL],
       x.[S_PROP_LOC_TYPE],
+      A1.Descript AS [S_PROP_LOC_TYPE_Description],
       x.[PROP_LTN_TYP_OTHDESC],
       x.[S_CAR_STORAGE_TYPE],
+      A2.Descript AS [S_CAR_STORAGE_TYPE_Description],
       x.[CARSTORAGE_TYPE_OTHR_DESC],
       x.[CARSTORAGE_NBR_CARS],
       x.[S_FOUNDATION_TYPE],
+      A3.Descript AS [S_FOUNDATION_TYPE_Description],
       x.[FNDN_TYPE_OTHER_DESC]
    FROM [clt_NetO].[GF_TL_UWAPPREXT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FLOODMAPZONE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_UWAPPREXT' and A0.[COLUMNNAME] = 'S_FLOODMAPZONE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROP_LOC_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_UWAPPREXT' and A1.[COLUMNNAME] = 'S_PROP_LOC_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CAR_STORAGE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_UWAPPREXT' and A2.[COLUMNNAME] = 'S_CAR_STORAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FOUNDATION_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_UWAPPREXT' and A3.[COLUMNNAME] = 'S_FOUNDATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -24359,11 +25387,13 @@ AS
       x.[MAILCOUNTRY],
       x.[MAIL_FADDR_INDICATOR],
       x.[S_MAIL_UNIT_TYPE],
+      A0.Descript AS [S_MAIL_UNIT_TYPE_Description],
       x.[MAIL_UNIT_NUM],
       x.[MAIL_COUNTRY_CODE],
       x.[BOR_MAIL_STATE_FOREIN],
       x.[MAIL_POST_CODE_FOREIN]
    FROM [clt_NetO].[GF_TLB_MAILING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MAIL_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLB_MAILING' and A0.[COLUMNNAME] = 'S_MAIL_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -24631,21 +25661,28 @@ AS
       x.[CELL_PHONE],
       x.[PRIM_CONTACT],
       x.[S_FIRSTTIMEHBCOUNSEL],
+      A0.Descript AS [S_FIRSTTIMEHBCOUNSEL_Description],
       x.[S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       HASHBYTES('SHA2_256', x.[CURRENT_CUSTOMER]) AS [CURRENT_CUSTOMER],
       x.[WORK_EXT],
       x.[CREDIT_AUTHORIZATION_YN],
       x.[NATIONALITY],
       x.[AFFILIATE],
       x.[S_COUNSEL_CONFIRM_TYP],
+      A2.Descript AS [S_COUNSEL_CONFIRM_TYP_Description],
       x.[S_COUNSEL_CONFIRM_OTH],
+      A3.Descript AS [S_COUNSEL_CONFIRM_OTH_Description],
       x.[S_COUNSEL_FORMAT_TYP],
+      A4.Descript AS [S_COUNSEL_FORMAT_TYP_Description],
       x.[CREDIT_AUTHORIZATION_DATE],
       x.[CUSTOMER_ID],
       x.[S_CRDTSCORE_MODEL_OVR],
+      A5.Descript AS [S_CRDTSCORE_MODEL_OVR_Description],
       x.[URLA_BESTCONTACT],
       x.[URLA_ALTCONTACT],
       x.[S_CREDIT_TYPE],
+      A6.Descript AS [S_CREDIT_TYPE_Description],
       x.[JOINT_CREDIT_BNUM],
       HASHBYTES('SHA2_256', x.[SPOUSE_FNAME]) AS [SPOUSE_FNAME],
       HASHBYTES('SHA2_256', x.[SPOUSE_MNAME]) AS [SPOUSE_MNAME],
@@ -24662,6 +25699,7 @@ AS
       x.[ATTR_CAIVRS],
       x.[ATTR_ESIGN],
       x.[S_LANGUAGEPREFERENCE],
+      A7.Descript AS [S_LANGUAGEPREFERENCE_Description],
       x.[OTHER_LANGUAGE],
       x.[CURRENTINCOTHERTOTAL],
       x.[CURRENTINCOMETOTAL],
@@ -24680,6 +25718,14 @@ AS
       x.[MOTHERS_MAIDEN],
       x.[APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRSTTIMEHBCOUNSEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_COUNSEL_CONFIRM_TYP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A2.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COUNSEL_CONFIRM_OTH = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A3.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COUNSEL_FORMAT_TYP = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A4.[COLUMNNAME] = 'S_COUNSEL_FORMAT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CRDTSCORE_MODEL_OVR = A5.DBSYMBOL AND A5.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A5.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_CREDIT_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LANGUAGEPREFERENCE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -24708,12 +25754,14 @@ AS
       x.[MID_NAME],
       HASHBYTES('SHA2_256', x.[LAST_NAME]) AS [LAST_NAME],
       x.[S_BORR_ALIAS],
+      A0.Descript AS [S_BORR_ALIAS_Description],
       HASHBYTES('SHA2_256', x.[NAME_SUFFIX]) AS [NAME_SUFFIX],
       x.[ALIAS_TYPE_OTH_DESC],
       x.[CREDITORNAME],
       x.[ALIASACCTNUM],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ALIAS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BORR_ALIAS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ALIAS' and A0.[COLUMNNAME] = 'S_BORR_ALIAS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -24743,6 +25791,7 @@ AS
       x.[GRANT_CRA_CODE],
       x.[PROGRAM_EXP],
       x.[S_ASSIST_TYPE],
+      A0.Descript AS [S_ASSIST_TYPE_Description],
       x.[REPAY_TERM],
       x.[REPAY_RATE],
       x.[REPAY_PMT],
@@ -24753,10 +25802,13 @@ AS
       x.[ALLOW_AP_EXCEPT],
       x.[PROVIDER_EIN],
       x.[S_ASSIST_PVDR_TYP],
+      A1.Descript AS [S_ASSIST_PVDR_TYP_Description],
       x.[AP_OTH_DESC],
       x.[RECORD_CREATED],
       x.[ASSETCTR]
    FROM [clt_NetO].[GF_TLBR_ASSIST_PROGRAMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSIST_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A0.[COLUMNNAME] = 'S_ASSIST_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSIST_PVDR_TYP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A1.[COLUMNNAME] = 'S_ASSIST_PVDR_TYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -24851,7 +25903,6 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
-      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -24859,6 +25910,7 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
+      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -24941,16 +25993,20 @@ AS
       x.[SELFEMPL],
       x.[PERCBUSOWN],
       x.[S_JOB_TYPE],
+      A0.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE],
+      A1.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC],
       x.[IS_EMPLOYED_ABROAD],
       x.[COUNTRY],
       x.[MONTHS_AT_JOB],
       x.[MONTHS_IN_PROFESSION]
    FROM [clt_NetO].[GF_TLBR_EMPLOYER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_JOB_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_EMPLOYER' and A0.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPECBOREMPRELTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_EMPLOYER' and A1.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -24976,9 +26032,11 @@ AS
       x.[DBID],
       x.[ETHNICITY_CTR],
       x.[S_ETHNICITY],
+      A0.Descript AS [S_ETHNICITY_Description],
       x.[FURNISH_INFO_YN],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ETHNICITY' and A0.[COLUMNNAME] = 'S_ETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -25032,9 +26090,11 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_RACE],
+      A0.Descript AS [S_RACE_Description],
       x.[OTHER_AMERICAN_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_RACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_RACE' and A0.[COLUMNNAME] = 'S_RACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -25094,9 +26154,11 @@ AS
       x.[DBID],
       x.[SUBETHNICITY_CTR],
       x.[S_SUBETHNICITY],
+      A0.Descript AS [S_SUBETHNICITY_Description],
       x.[OTHER_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBETHNICITY' and A0.[COLUMNNAME] = 'S_SUBETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -25122,10 +26184,12 @@ AS
       x.[DBID],
       x.[SUBRACE_CTR],
       x.[S_SUBRACE],
+      A0.Descript AS [S_SUBRACE_Description],
       x.[OTHER_ASIAN_DESC],
       x.[OTHER_PACISLDR_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBRACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBRACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBRACE' and A0.[COLUMNNAME] = 'S_SUBRACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -25151,8 +26215,11 @@ AS
       x.[ROWSERIALNO],
       x.[MODIFIED_USERID],
       x.[S_FMETHOD],
+      A0.Descript AS [S_FMETHOD_Description],
       x.[S_FSTATUS],
+      A1.Descript AS [S_FSTATUS_Description],
       x.[S_DMETHOD],
+      A2.Descript AS [S_DMETHOD_Description],
       x.[AMOUNT],
       HASHBYTES('SHA2_256', x.[PAYEE_NAME]) AS [PAYEE_NAME],
       HASHBYTES('SHA2_256', x.[PAYEE_ADDRESS]) AS [PAYEE_ADDRESS],
@@ -25162,7 +26229,9 @@ AS
       x.[ISSUEDATE],
       x.[REQDATE],
       x.[S_TYPE],
+      A3.Descript AS [S_TYPE_Description],
       x.[S_FUNDLOC],
+      A4.Descript AS [S_FUNDLOC_Description],
       x.[ROUTENUM],
       x.[ACCOUNTNUM],
       x.[TRANSNUM],
@@ -25217,6 +26286,11 @@ AS
       x.[W_APPRVDDT1],
       x.[W_APPRVDDT2]
    FROM [clt_NetO].[GF_TLR_DISBURSEMENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FMETHOD = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_DISBURSEMENTS' and A0.[COLUMNNAME] = 'S_FMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FSTATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_DISBURSEMENTS' and A1.[COLUMNNAME] = 'S_FSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DMETHOD = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_DMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FUNDLOC = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'S_FUNDLOC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -25376,6 +26450,7 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_INSTYPE],
+      A0.Descript AS [S_INSTYPE_Description],
       x.[COVAMNT],
       x.[MINCOVER],
       x.[PREMAMT],
@@ -25409,9 +26484,11 @@ AS
       x.[PMTOPTDBID],
       x.[PMTOPTSERNO],
       x.[S_OTH_INS_TYPE_DESC],
+      A1.Descript AS [S_OTH_INS_TYPE_DESC_Description],
       x.[HUDLINE],
       x.[POLICY_TERM],
       x.[S_ESCINS],
+      A2.Descript AS [S_ESCINS_Description],
       x.[ASSETID],
       x.[DT_ORDERED],
       x.[DT_EXPECTED],
@@ -25434,6 +26511,9 @@ AS
       x.[NFIP_MAX_COVERAGE],
       x.[MINIMUM_COVERAGE]
    FROM [clt_NetO].[GF_TLR_INSURANCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_INSURANCE' and A0.[COLUMNNAME] = 'S_INSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OTH_INS_TYPE_DESC = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_INSURANCE' and A1.[COLUMNNAME] = 'S_OTH_INS_TYPE_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ESCINS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_INSURANCE' and A2.[COLUMNNAME] = 'S_ESCINS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -25503,6 +26583,7 @@ AS
       x.[REG_O_BORROWER],
       HASHBYTES('SHA2_256', x.[EMPLOYEE_BORROWER]) AS [EMPLOYEE_BORROWER],
       x.[S_EMP_REGO_TYPE],
+      A0.Descript AS [S_EMP_REGO_TYPE_Description],
       x.[EXEC_EDUC],
       x.[EXEC_OFFIC_OTH],
       x.[EXEC_OFFIC_YN],
@@ -25510,6 +26591,7 @@ AS
       x.[BOD_APPROVAL_DATE],
       x.[COMMITTEE_APPROVAL]
    FROM [clt_NetO].[GF_TLR_REG_O] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMP_REGO_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_REG_O' and A0.[COLUMNNAME] = 'S_EMP_REGO_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -25688,9 +26770,11 @@ AS
       x.[INFILE_DATE],
       x.[BNUM],
       x.[S_RESULTSTATUSTYPE],
+      A0.Descript AS [S_RESULTSTATUSTYPE_Description],
       x.[RESULTSTATUSTTHERDESC],
       x.[CREDREPOSSRCTYPEOTHERDESC]
    FROM [clt_NetO].[GF_TLR_RES_CREDIT_FILE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RESULTSTATUSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RES_CREDIT_FILE' and A0.[COLUMNNAME] = 'S_RESULTSTATUSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -26116,6 +27200,7 @@ AS
       x.[ERRORRPTIMAGEID],
       x.[MERGEDCREDITCERTIMAGEID],
       x.[S_CRWELIGIBILITYTYPE],
+      A0.Descript AS [S_CRWELIGIBILITYTYPE_Description],
       x.[HVERPTIMAGEID],
       x.[MERGEDCREDITIMAGEID],
       x.[LPATTLASSETDEFICITAMT],
@@ -26144,6 +27229,7 @@ AS
       x.[LPATTLREQUIREDRESERVESAMT],
       x.[CREDIT_INFILE]
    FROM [clt_NetO].[GF_TLR_RSP_LP_LOANFDBCK] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CRWELIGIBILITYTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RSP_LP_LOANFDBCK' and A0.[COLUMNNAME] = 'S_CRWELIGIBILITYTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -26217,6 +27303,7 @@ AS
       x.[ROWSERIALNO],
       x.[HUDLINE],
       x.[S_TAXTYPE],
+      A0.Descript AS [S_TAXTYPE_Description],
       x.[ANN_AMT],
       x.[FIRST_DUE],
       x.[ESCROW],
@@ -26244,10 +27331,13 @@ AS
       x.[RATEPERTHOUSAND],
       x.[COLFIRSTYR],
       x.[S_ESCTAX],
+      A1.Descript AS [S_ESCTAX_Description],
       x.[ISMERGEDINT],
       x.[TAX_TYPE_DESC],
       x.[UPFRONT_TAX_AMOUNT]
    FROM [clt_NetO].[GF_TLR_TAXITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TAXTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_TAXITEMS' and A0.[COLUMNNAME] = 'S_TAXTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ESCTAX = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_TAXITEMS' and A1.[COLUMNNAME] = 'S_ESCTAX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -26331,8 +27421,8 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[USRID],
       x.[DELETED_CLNUM],
+      x.[USRID],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -26392,6 +27482,7 @@ AS
       x.[CID],
       x.[ROWSERIALNO],
       x.[S_ADDRTYPE],
+      A0.Descript AS [S_ADDRTYPE_Description],
       x.[ADDR1],
       x.[ADDR2],
       HASHBYTES('SHA2_256', x.[CITY]) AS [CITY],
@@ -26401,8 +27492,11 @@ AS
       HASHBYTES('SHA2_256', x.[ZIP]) AS [ZIP],
       x.[TIMEZONE],
       x.[S_CMSADR_UNIT_TYPE],
+      A1.Descript AS [S_CMSADR_UNIT_TYPE_Description],
       x.[CMSADR_UNIT_NUM]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_ADDRESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ADDRTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A0.[COLUMNNAME] = 'S_ADDRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26425,8 +27519,10 @@ AS
       x.[CID],
       x.[ROWSERIALNO],
       x.[S_EMAILTYPE],
+      A0.Descript AS [S_EMAILTYPE_Description],
       HASHBYTES('SHA2_256', x.[EMAILADDR]) AS [EMAILADDR]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_EMAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26449,10 +27545,12 @@ AS
       x.[CID],
       x.[ACTIVE],
       x.[S_CMSSTATUS],
+      A0.Descript AS [S_CMSSTATUS_Description],
       x.[FULLNAME],
       x.[SHORTNAME],
       HASHBYTES('SHA2_256', x.[SSNTIN]) AS [SSNTIN],
       x.[S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[REFCODE],
       x.[CREATED_BY_USER],
       x.[CREATED_DATE],
@@ -26467,6 +27565,8 @@ AS
       x.[SUFFIXNAME],
       x.[PORTAL_REFCODE]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSSTATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A0.[COLUMNNAME] = 'S_CMSSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26489,9 +27589,11 @@ AS
       x.[CID],
       x.[ROWSERIALNO],
       x.[S_PHONETYPE],
+      A0.Descript AS [S_PHONETYPE_Description],
       x.[PHONENBR],
       x.[PHONEEXT]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_PHONE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26512,8 +27614,10 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_TYPE]
 AS
    SELECT
       x.[CID],
-      x.[S_CMSTYPE]
+      x.[S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_TYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26535,12 +27639,15 @@ AS
    SELECT
       x.[CID],
       x.[S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description],
       x.[S_STATUS],
+      A1.Descript AS [S_STATUS_Description],
       x.[STATUS_START_DT],
       x.[STATUS_STOP_DT],
       x.[STATUS_CHGD_DT],
       x.[USEPARENT],
       x.[S_GRADE],
+      A2.Descript AS [S_GRADE_Description],
       x.[COMPLIANCE_MONITOR],
       x.[COMPLIANCE_EMAIL],
       x.[EMPLOYER_ID],
@@ -26552,9 +27659,14 @@ AS
       x.[SAR_ID],
       x.[PROVIDER_ID],
       x.[S_TYPE_OF_COMPANY],
+      A3.Descript AS [S_TYPE_OF_COMPANY_Description],
       x.[CMS_SHORT_DESC],
       x.[CMS_COMMENTS]
    FROM [clt_NetO].[GF_TS_CMS_INFOBYTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A1.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRADE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A2.[COLUMNNAME] = 'S_GRADE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26575,10 +27687,12 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_INDEX_VALUE]
 AS
    SELECT
       x.[S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[INDEX_ID],
       x.[EFFECTIVE_DATE],
       x.[INDEX_VALUE]
    FROM [clt_NetO].[GF_TS_INDEX_VALUE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26733,12 +27847,16 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_WF_GROUP_USER]
 AS
    SELECT
       x.[S_PROC_GROUP],
+      A0.Descript AS [S_PROC_GROUP_Description],
       x.[USERID],
       x.[S_USER_TYPE],
+      A1.Descript AS [S_USER_TYPE_Description],
       x.[IS_ACTIVE],
       x.[WEIGHT],
       x.[SUPERVISOR_ID]
    FROM [clt_NetO].[GF_TS_WF_GROUP_USER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROC_GROUP = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_GROUP_USER' and A0.[COLUMNNAME] = 'S_PROC_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26759,9 +27877,11 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_WF_PROCESS]
 AS
    SELECT
       x.[S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[IS_ACTIVE],
       x.[EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26782,9 +27902,11 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_WF_PROCESS_MODEL]
 AS
    SELECT
       x.[S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[IS_ACTIVE],
       x.[EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS_MODEL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26805,16 +27927,24 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_WF_WORKTYPE]
 AS
    SELECT
       x.[S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_WT_TYPE],
+      A1.Descript AS [S_WT_TYPE_Description],
       x.[WT_EXECUTABLE],
       x.[EST_TO_COMPLETE],
       x.[S_USERINTERFACE],
+      A2.Descript AS [S_USERINTERFACE_Description],
       x.[S_REASSIGN_RULE],
+      A3.Descript AS [S_REASSIGN_RULE_Description],
       x.[WEIGHT_TIER1],
       x.[WEIGHT_TIER2],
       x.[WEIGHT_TIER3],
       x.[DISPLAY_IDX]
    FROM [clt_NetO].[GF_TS_WF_WORKTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_WORKTYPE' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_WT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_WORKTYPE' and A1.[COLUMNNAME] = 'S_WT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USERINTERFACE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_WF_WORKTYPE' and A2.[COLUMNNAME] = 'S_USERINTERFACE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26868,7 +27998,9 @@ AS
       x.[OLD_AGENCY_NUM_REQUIRED],
       x.[PROD_IDENTIFIER],
       x.[S_AUS_INDICATOR],
+      A0.Descript AS [S_AUS_INDICATOR_Description],
       x.[S_SERVICE_TYPE_IND],
+      A1.Descript AS [S_SERVICE_TYPE_IND_Description],
       x.[SERVICE_INT_INDICATOR],
       x.[SERVICE_LOC_CID],
       x.[SUB_PRIME_INDICATOR],
@@ -26883,6 +28015,7 @@ AS
       x.[INTEREST_ONLY_PRODUCT],
       x.[ODDDEFER],
       x.[S_SPEC_PRG],
+      A2.Descript AS [S_SPEC_PRG_Description],
       x.[MI_REQUIRED],
       x.[CRA_REPORTABLE],
       x.[MIN_ALLOW_TERM],
@@ -26894,12 +28027,17 @@ AS
       x.[PREQUAL_ALLOWED_YN],
       x.[PREAPPROVAL_ALLOWED_YN],
       x.[S_LOANFIT_PURP_CAT],
+      A3.Descript AS [S_LOANFIT_PURP_CAT_Description],
       x.[S_LOANFIT_PROD_CAT],
+      A4.Descript AS [S_LOANFIT_PROD_CAT_Description],
       x.[S_LOANFIT_LIEN_CAT],
+      A5.Descript AS [S_LOANFIT_LIEN_CAT_Description],
       x.[LOANFIT_CATEGORY_POSN],
       x.[LOANFIT_DISPLAY_POSN],
       x.[S_LOANFIT_AMT_GROUP],
+      A6.Descript AS [S_LOANFIT_AMT_GROUP_Description],
       x.[S_LOANFIT_LTV_GROUP],
+      A7.Descript AS [S_LOANFIT_LTV_GROUP_Description],
       x.[LOANFIT_MIN_LOAN],
       x.[LOANFIT_MAX_LOAN],
       x.[LOANFIT_MIN_LTV],
@@ -26919,6 +28057,7 @@ AS
       x.[CREATE_DATE],
       x.[MODIFY_DATE],
       x.[S_CONST_PROGRAM],
+      A8.Descript AS [S_CONST_PROGRAM_Description],
       x.[CONST_MONTHS],
       x.[IPG_RENOVA_PROD],
       x.[DOCMAGIC_PLAN_CODE],
@@ -26927,9 +28066,24 @@ AS
       x.[DAYS_FINAL_FLOAT_ELIG],
       x.[IPG_FINAL_INVESTOR],
       x.[S_ASSUMABILITY_FEATURE],
+      A9.Descript AS [S_ASSUMABILITY_FEATURE_Description],
       x.[S_IPG_BUYDWN],
-      x.[S_BUYDWN_CNTRBTR]
+      A10.Descript AS [S_IPG_BUYDWN_Description],
+      x.[S_BUYDWN_CNTRBTR],
+      A11.Descript AS [S_BUYDWN_CNTRBTR_Description]
    FROM [clt_NetO].[GF_TSR_PNP_IPG_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AUS_INDICATOR = A0.DBSYMBOL AND A0.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A0.[COLUMNNAME] = 'S_AUS_INDICATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SERVICE_TYPE_IND = A1.DBSYMBOL AND A1.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A1.[COLUMNNAME] = 'S_SERVICE_TYPE_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPEC_PRG = A2.DBSYMBOL AND A2.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A2.[COLUMNNAME] = 'S_SPEC_PRG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LOANFIT_PURP_CAT = A3.DBSYMBOL AND A3.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A3.[COLUMNNAME] = 'S_LOANFIT_PURP_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOANFIT_PROD_CAT = A4.DBSYMBOL AND A4.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A4.[COLUMNNAME] = 'S_LOANFIT_PROD_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LOANFIT_LIEN_CAT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A5.[COLUMNNAME] = 'S_LOANFIT_LIEN_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LOANFIT_AMT_GROUP = A6.DBSYMBOL AND A6.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A6.[COLUMNNAME] = 'S_LOANFIT_AMT_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LOANFIT_LTV_GROUP = A7.DBSYMBOL AND A7.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A7.[COLUMNNAME] = 'S_LOANFIT_LTV_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CONST_PROGRAM = A8.DBSYMBOL AND A8.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A8.[COLUMNNAME] = 'S_CONST_PROGRAM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_ASSUMABILITY_FEATURE = A9.DBSYMBOL AND A9.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A9.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_IPG_BUYDWN = A10.DBSYMBOL AND A10.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A10.[COLUMNNAME] = 'S_IPG_BUYDWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26951,8 +28105,11 @@ AS
    SELECT
       x.[ACTION_ID],
       x.[S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_ACTION_RESOLUTION],
+      A1.Descript AS [S_ACTION_RESOLUTION_Description],
       x.[S_PROC_MDL_RESOLUTION],
+      A2.Descript AS [S_PROC_MDL_RESOLUTION_Description],
       x.[EXTERNAL_CODE],
       x.[INSERT_DATE],
       x.[EXP_DATE_TO_COMPLETE],
@@ -26963,11 +28120,16 @@ AS
       x.[ACTION_STATUS_FLAG],
       x.[RESERVED_BY],
       x.[S_PROC_GROUP],
+      A3.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MDL_MGR_ID],
       x.[RESERVE_DATE],
       x.[WF_SESSION_ID],
       x.[OPENED_DATE]
    FROM [clt_NetO].[GF_TW_WF_ACTION_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_ACTION_MGR' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACTION_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_ACTION_MGR' and A1.[COLUMNNAME] = 'S_ACTION_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_MDL_RESOLUTION = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_ACTION_MGR' and A2.[COLUMNNAME] = 'S_PROC_MDL_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -26989,7 +28151,9 @@ AS
    SELECT
       x.[PROC_MDL_MGR_ID],
       x.[S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[S_PROC_MDL_MGR_RESOLUTION],
+      A1.Descript AS [S_PROC_MDL_MGR_RESOLUTION_Description],
       x.[EXP_DATE_TO_COMPLETE],
       x.[START_DATE],
       x.[END_DATE],
@@ -26997,9 +28161,13 @@ AS
       x.[IS_COMPLETE],
       x.[RESERVED_BY],
       x.[S_PROC_GROUP],
+      A2.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MGR_ID],
       x.[PARENT_PROC_MDL_MGR_ID]
    FROM [clt_NetO].[GF_TW_WF_PROC_MODEL_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_MDL_MGR_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A1.[COLUMNNAME] = 'S_PROC_MDL_MGR_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -27021,6 +28189,7 @@ AS
    SELECT
       x.[PROC_MGR_ID],
       x.[S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[EXTERNAL_CODE],
       x.[EXT_CODE_DESC],
       x.[EXP_COMP_DATE],
@@ -27031,8 +28200,11 @@ AS
       x.[MODELS_COMPLETED],
       x.[IS_COMPLETE],
       x.[RESERVED_BY],
-      x.[S_PROC_GROUP]
+      x.[S_PROC_GROUP],
+      A1.Descript AS [S_PROC_GROUP_Description]
    FROM [clt_NetO].[GF_TW_WF_PROCESS_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A0.[COLUMNNAME] = 'S_PROCESS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -27175,18 +28347,24 @@ AS
       x.[CTAXLTV],
       x.[NUM_CARDS],
       x.[S_LOCTYPE],
+      A0.Descript AS [S_LOCTYPE_Description],
       x.[ANNUAL_FEE],
       x.[REPAY_MTHS],
       x.[TERMIN_FEE],
       x.[DRAWACCESS_FEE],
       x.[S_FUNDS_TO_BE_DRAWN],
+      A1.Descript AS [S_FUNDS_TO_BE_DRAWN_Description],
       x.[OVERDRAFT_PROTECTION],
       x.[ODP_ACCOUNT_NUMBER],
       x.[ODP_ROUTING_NUMBER],
       x.[ANNUAL_CALC_OVR],
       x.[TERM_CALC_OVR],
-      x.[S_REPAYMENT_METHOD]
+      x.[S_REPAYMENT_METHOD],
+      A2.Descript AS [S_REPAYMENT_METHOD_Description]
    FROM [clt_NetO].[HELOC] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOCTYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC' and A0.[COLUMNNAME] = 'S_LOCTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FUNDS_TO_BE_DRAWN = A1.DBSYMBOL AND A1.[TableName] = 'HELOC' and A1.[COLUMNNAME] = 'S_FUNDS_TO_BE_DRAWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_REPAYMENT_METHOD = A2.DBSYMBOL AND A2.[TableName] = 'HELOC' and A2.[COLUMNNAME] = 'S_REPAYMENT_METHOD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -27214,9 +28392,11 @@ AS
       x.[MIN_BALANCE],
       x.[OPENEND_CREDIT_IND],
       x.[S_RTC_TYPE],
+      A0.Descript AS [S_RTC_TYPE_Description],
       x.[WAIVE_ANNUAL_FEE],
       x.[ANNUAL_FEE_START_DT]
    FROM [clt_NetO].[HELOC2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RTC_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC2' and A0.[COLUMNNAME] = 'S_RTC_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -27352,9 +28532,11 @@ AS
       x.[RPTYEAR],
       x.[CFPNUM],
       x.[S_CUSTOMQRY],
+      A0.Descript AS [S_CUSTOMQRY_Description],
       x.[CEMAIL],
       x.[HMDA_LAR_LEI]
    FROM [clt_NetO].[HMDAXPRT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -27400,7 +28582,9 @@ AS
       x.[JEXPAMT],
       x.[PRIMINC],
       x.[S_INCOME],
+      A0.Descript AS [S_INCOME_Description],
       x.[S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[INCAMT],
       x.[INCDESC],
       x.[MNTEQUIV],
@@ -27420,10 +28604,12 @@ AS
       x.[TSWE_INCOME_IND],
       x.[EFFECTIVE_MO_INC],
       x.[S_JOB_TYPE],
+      A2.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE],
+      A3.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC],
       x.[RURALHOUSINGCALC],
       x.[COUNTRY],
@@ -27432,9 +28618,11 @@ AS
       x.[STATED_FLAG],
       x.[RECORD_CREATED],
       x.[S_INCOMECATEGORY],
+      A4.Descript AS [S_INCOMECATEGORY_Description],
       x.[OCCUPATION],
       x.[INCSTIND],
       x.[S_SELFEMPTYPE],
+      A5.Descript AS [S_SELFEMPTYPE_Description],
       x.[PRE_VERI_GROSS_INC],
       x.[USE_GROSS_INCOME],
       x.[YTD_AMOUNT],
@@ -27449,6 +28637,12 @@ AS
       x.[FROM_INCOME_CALC],
       x.[STATED_INC]
    FROM [clt_NetO].[INCOME] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME = A0.DBSYMBOL AND A0.[TableName] = 'INCOME' and A0.[COLUMNNAME] = 'S_INCOME'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'INCOME' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_JOB_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'INCOME' and A2.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPECBOREMPRELTYPE = A3.DBSYMBOL AND A3.[TableName] = 'INCOME' and A3.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_INCOMECATEGORY = A4.DBSYMBOL AND A4.[TableName] = 'INCOME' and A4.[COLUMNNAME] = 'S_INCOMECATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SELFEMPTYPE = A5.DBSYMBOL AND A5.[TableName] = 'INCOME' and A5.[COLUMNNAME] = 'S_SELFEMPTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -27553,6 +28747,7 @@ AS
       x.[DBID],
       x.[LIABCTR],
       x.[S_LIAB],
+      A0.Descript AS [S_LIAB_Description],
       x.[LIABDESC],
       x.[ACCTNUM],
       x.[HOLDER],
@@ -27568,6 +28763,7 @@ AS
       x.[ACCTBAL],
       x.[ACCTPYMT],
       x.[S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[MTHPYMT],
       x.[PYMTLEFT],
       x.[INCPYMT],
@@ -27582,6 +28778,7 @@ AS
       x.[PAYTYPE],
       x.[VERIFY],
       x.[S_LIENPS],
+      A2.Descript AS [S_LIENPS_Description],
       x.[ORIGDBTDT],
       x.[EXPDBTDT],
       x.[RESUBIND],
@@ -27589,7 +28786,9 @@ AS
       x.[MTG_TYPE_DESCRIPT],
       x.[PURCH_MONEY_IND],
       x.[S_EXCLUSION_REASON],
+      A3.Descript AS [S_EXCLUSION_REASON_Description],
       x.[S_MTG_TYPE],
+      A4.Descript AS [S_MTG_TYPE_Description],
       x.[SECURITY_INSTR_VOLUME],
       x.[DEBT_CCTIN_TITLE],
       x.[TRUSTEE_NAME],
@@ -27618,6 +28817,7 @@ AS
       x.[INVESTMENT_CREDIT_LINE],
       x.[CREDIT_TYPE_OTH],
       x.[S_CREDIT_CARD_TYPE],
+      A5.Descript AS [S_CREDIT_CARD_TYPE_Description],
       x.[INTERNAL_REFI],
       x.[HCOUNTRY],
       x.[SOURCE_CB_PMT],
@@ -27642,6 +28842,7 @@ AS
       x.[DEBT_REROUTING_NO],
       x.[REBEN_ACCT_NUM],
       x.[S_LIABILITYDISBTYPE],
+      A6.Descript AS [S_LIABILITYDISBTYPE_Description],
       x.[P_PYMTLEFT],
       x.[P_MNPAYLFT],
       x.[P_BALANCE],
@@ -27651,6 +28852,7 @@ AS
       x.[OWNERSHP_TYPE],
       x.[DEDUCT_FROM_INC],
       x.[S_ACCOUNT_OWNERSHIP],
+      A7.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[LATE_30_DAYS],
       x.[LATE_60_DAYS],
       x.[LATE_90_DAYS],
@@ -27658,6 +28860,14 @@ AS
       HASHBYTES('SHA2_256', CAST(x.[CREDIT_LIMIT_AMOUNT] AS NVARCHAR(50))) AS [CREDIT_LIMIT_AMOUNT],
       x.[INC_CREDIT_LINE]
    FROM [clt_NetO].[LIABLTY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LIAB = A0.DBSYMBOL AND A0.[TableName] = 'LIABLTY' and A0.[COLUMNNAME] = 'S_LIAB'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'LIABLTY' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIENPS = A2.DBSYMBOL AND A2.[TableName] = 'LIABLTY' and A2.[COLUMNNAME] = 'S_LIENPS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_EXCLUSION_REASON = A3.DBSYMBOL AND A3.[TableName] = 'LIABLTY' and A3.[COLUMNNAME] = 'S_EXCLUSION_REASON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_MTG_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'LIABLTY' and A4.[COLUMNNAME] = 'S_MTG_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CREDIT_CARD_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'LIABLTY' and A5.[COLUMNNAME] = 'S_CREDIT_CARD_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIABILITYDISBTYPE = A6.DBSYMBOL AND A6.[TableName] = 'LIABLTY' and A6.[COLUMNNAME] = 'S_LIABILITYDISBTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ACCOUNT_OWNERSHIP = A7.DBSYMBOL AND A7.[TableName] = 'LIABLTY' and A7.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -27781,6 +28991,7 @@ AS
       x.[RESST],
       x.[RESZIP],
       x.[S_OWNRNT],
+      A0.Descript AS [S_OWNRNT_Description],
       x.[RESNMYRS],
       x.[ACCTPREV],
       x.[ACCTHLDR],
@@ -27792,12 +29003,17 @@ AS
       x.[YRS_AT_PREV],
       x.[MNTHS_AT_PREV],
       x.[S_RES_UNIT_TYPE],
+      A1.Descript AS [S_RES_UNIT_TYPE_Description],
       x.[RES_UNIT_NUM],
       x.[RES_CNTRY_CODE],
       x.[PREV_STATE_FOREIN],
       x.[PREV_POSTCODE],
-      x.[S_LIVE_RENT_FREE_ENUMS]
+      x.[S_LIVE_RENT_FREE_ENUMS],
+      A2.Descript AS [S_LIVE_RENT_FREE_ENUMS_Description]
    FROM [clt_NetO].[PREVRES] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRNT = A0.DBSYMBOL AND A0.[TableName] = 'PREVRES' and A0.[COLUMNNAME] = 'S_OWNRNT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RES_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'PREVRES' and A1.[COLUMNNAME] = 'S_RES_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIVE_RENT_FREE_ENUMS = A2.DBSYMBOL AND A2.[TableName] = 'PREVRES' and A2.[COLUMNNAME] = 'S_LIVE_RENT_FREE_ENUMS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -27820,31 +29036,43 @@ AS
    SELECT
       x.[LNUM],
       x.[S_PROD],
+      A0.Descript AS [S_PROD_Description],
       x.[S_RATE],
+      A1.Descript AS [S_RATE_Description],
       x.[S_RTCODE],
+      A2.Descript AS [S_RTCODE_Description],
       x.[OLA],
       x.[LTV],
       x.[S_LCKTYP],
+      A3.Descript AS [S_LCKTYP_Description],
       x.[LOCKDATE],
       x.[LOCKEXP],
       x.[LOCKDAYS],
       x.[INTRATE],
       x.[LOANTERM],
       x.[S_LCKEXP],
+      A4.Descript AS [S_LCKEXP_Description],
       x.[S_RATIO],
+      A5.Descript AS [S_RATIO_Description],
       x.[S_BYDOWN],
+      A6.Descript AS [S_BYDOWN_Description],
       x.[S_MIPLAN],
+      A7.Descript AS [S_MIPLAN_Description],
       x.[FMIRFLAG],
       x.[FMIRFCTR],
       x.[BALLFLAG],
       x.[AMTERM],
       x.[PIPMT],
       x.[S_PMTSTR],
+      A8.Descript AS [S_PMTSTR_Description],
       x.[S_DISC],
+      A9.Descript AS [S_DISC_Description],
       x.[S_ORIG],
+      A10.Descript AS [S_ORIG_Description],
       x.[BASELA],
       x.[LOCKED],
       x.[S_QRATE],
+      A11.Descript AS [S_QRATE_Description],
       x.[BASERATE],
       x.[CNFIRM],
       x.[BASEMKTDISC],
@@ -27860,8 +29088,11 @@ AS
       x.[MKTDISCOVERRIDE],
       x.[INTRATEOVERRIDE],
       x.[S_RTCODEOVR],
+      A12.Descript AS [S_RTCODEOVR_Description],
       x.[S_LTYPE],
+      A13.Descript AS [S_LTYPE_Description],
       x.[S_PROGRM],
+      A14.Descript AS [S_PROGRM_Description],
       x.[FINMIPERC],
       x.[QUALRATE],
       x.[BASEQUAL],
@@ -27874,8 +29105,10 @@ AS
       x.[BASELAEDT],
       x.[ODDRATE],
       x.[S_AMTYPE],
+      A15.Descript AS [S_AMTYPE_Description],
       x.[SELRTCODE],
       x.[S_RCOMNUM],
+      A16.Descript AS [S_RCOMNUM_Description],
       x.[BYDNPMT4],
       x.[BYDNPMT5],
       x.[BYDNPMT6],
@@ -27900,11 +29133,13 @@ AS
       x.[LOCKEXPDT],
       x.[SELECTEDINVESTOR],
       x.[S_BALLOON_TYPE],
+      A17.Descript AS [S_BALLOON_TYPE_Description],
       x.[AMORT_OTHER],
       x.[CLIENTRATEINFO],
       x.[SELECTEDPROGRAM],
       x.[BUYDOWNOVERRIDES],
       x.[S_MORTGAGETYPE],
+      A18.Descript AS [S_MORTGAGETYPE_Description],
       x.[TOTALPMTNO],
       x.[MININTPMTRATE],
       x.[REFI_RESCISSION_EXEMPT],
@@ -27922,8 +29157,10 @@ AS
       x.[BASE_ADJ_DISC],
       x.[PMTRCODE],
       x.[S_AMORT_SUB_TYPE],
+      A19.Descript AS [S_AMORT_SUB_TYPE_Description],
       x.[QUALMETHOD],
       x.[S_QUALMETHODOVR],
+      A20.Descript AS [S_QUALMETHODOVR_Description],
       x.[YSP],
       x.[YSP_OVRD],
       x.[OVERAGE],
@@ -27950,10 +29187,13 @@ AS
       x.[BORR_RESCISSION_EXEMPT],
       x.[CORR_BOR_RATE_LOCKDATE],
       x.[S_203KTYPE],
+      A21.Descript AS [S_203KTYPE_Description],
       x.[PRODUCT_DENIAL],
       x.[REQ_RESCISSION],
       x.[S_PRICING_REGION],
+      A22.Descript AS [S_PRICING_REGION_Description],
       x.[S_PRICING_CHANNEL],
+      A23.Descript AS [S_PRICING_CHANNEL_Description],
       x.[ROE],
       x.[ROA],
       x.[ROEEXP],
@@ -27993,12 +29233,42 @@ AS
       x.[AUS_INDICATOR],
       x.[LOAN_TYPE_CHG_FLAG],
       x.[S_PROD_PRICE_ENGINE],
+      A24.Descript AS [S_PROD_PRICE_ENGINE_Description],
       x.[S_PROD_PRICE_ENGINE_OVR],
+      A25.Descript AS [S_PROD_PRICE_ENGINE_OVR_Description],
       x.[S_PPY_FILTER],
+      A26.Descript AS [S_PPY_FILTER_Description],
       x.[BUILDER_LOCK_ADJ],
       x.[REQLOANTERM],
       x.[DLR_PIPMT]
    FROM [clt_NetO].[PRODUCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROD = A0.DBSYMBOL AND A0.[TableName] = 'PRODUCT' and A0.[COLUMNNAME] = 'S_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RATE = A1.DBSYMBOL AND A1.[TableName] = 'PRODUCT' and A1.[COLUMNNAME] = 'S_RATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_RTCODE = A2.DBSYMBOL AND A2.[TableName] = 'PRODUCT' and A2.[COLUMNNAME] = 'S_RTCODE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LCKTYP = A3.DBSYMBOL AND A3.[TableName] = 'PRODUCT' and A3.[COLUMNNAME] = 'S_LCKTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LCKEXP = A4.DBSYMBOL AND A4.[TableName] = 'PRODUCT' and A4.[COLUMNNAME] = 'S_LCKEXP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_RATIO = A5.DBSYMBOL AND A5.[TableName] = 'PRODUCT' and A5.[COLUMNNAME] = 'S_RATIO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_BYDOWN = A6.DBSYMBOL AND A6.[TableName] = 'PRODUCT' and A6.[COLUMNNAME] = 'S_BYDOWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_MIPLAN = A7.DBSYMBOL AND A7.[TableName] = 'PRODUCT' and A7.[COLUMNNAME] = 'S_MIPLAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_PMTSTR = A8.DBSYMBOL AND A8.[TableName] = 'PRODUCT' and A8.[COLUMNNAME] = 'S_PMTSTR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_DISC = A9.DBSYMBOL AND A9.[TableName] = 'PRODUCT' and A9.[COLUMNNAME] = 'S_DISC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_ORIG = A10.DBSYMBOL AND A10.[TableName] = 'PRODUCT' and A10.[COLUMNNAME] = 'S_ORIG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_QRATE = A11.DBSYMBOL AND A11.[TableName] = 'PRODUCT' and A11.[COLUMNNAME] = 'S_QRATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_RTCODEOVR = A12.DBSYMBOL AND A12.[TableName] = 'PRODUCT' and A12.[COLUMNNAME] = 'S_RTCODEOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_LTYPE = A13.DBSYMBOL AND A13.[TableName] = 'PRODUCT' and A13.[COLUMNNAME] = 'S_LTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROGRM = A14.DBSYMBOL AND A14.[TableName] = 'PRODUCT' and A14.[COLUMNNAME] = 'S_PROGRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_AMTYPE = A15.DBSYMBOL AND A15.[TableName] = 'PRODUCT' and A15.[COLUMNNAME] = 'S_AMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_RCOMNUM = A16.DBSYMBOL AND A16.[TableName] = 'PRODUCT' and A16.[COLUMNNAME] = 'S_RCOMNUM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_BALLOON_TYPE = A17.DBSYMBOL AND A17.[TableName] = 'PRODUCT' and A17.[COLUMNNAME] = 'S_BALLOON_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_MORTGAGETYPE = A18.DBSYMBOL AND A18.[TableName] = 'PRODUCT' and A18.[COLUMNNAME] = 'S_MORTGAGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_AMORT_SUB_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'PRODUCT' and A19.[COLUMNNAME] = 'S_AMORT_SUB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_QUALMETHODOVR = A20.DBSYMBOL AND A20.[TableName] = 'PRODUCT' and A20.[COLUMNNAME] = 'S_QUALMETHODOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_203KTYPE = A21.DBSYMBOL AND A21.[TableName] = 'PRODUCT' and A21.[COLUMNNAME] = 'S_203KTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PRICING_REGION = A22.DBSYMBOL AND A22.[TableName] = 'PRODUCT' and A22.[COLUMNNAME] = 'S_PRICING_REGION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_PRICING_CHANNEL = A23.DBSYMBOL AND A23.[TableName] = 'PRODUCT' and A23.[COLUMNNAME] = 'S_PRICING_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_PROD_PRICE_ENGINE = A24.DBSYMBOL AND A24.[TableName] = 'PRODUCT' and A24.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_PROD_PRICE_ENGINE_OVR = A25.DBSYMBOL AND A25.[TableName] = 'PRODUCT' and A25.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_PPY_FILTER = A26.DBSYMBOL AND A26.[TableName] = 'PRODUCT' and A26.[COLUMNNAME] = 'S_PPY_FILTER'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -28098,7 +29368,9 @@ AS
       x.[REOSTATE],
       x.[REOZIP],
       x.[S_REOPST],
+      A0.Descript AS [S_REOPST_Description],
       x.[S_REOTYP],
+      A1.Descript AS [S_REOTYP_Description],
       x.[PRESVAL],
       x.[PRESMTG],
       x.[GROSRENT],
@@ -28108,6 +29380,7 @@ AS
       x.[PGROSINC],
       x.[AGROSINC],
       x.[S_ONRSHP],
+      A2.Descript AS [S_ONRSHP_Description],
       x.[REOCNTRY],
       x.[PRIM_RES],
       x.[SUBJECTP],
@@ -28149,15 +29422,24 @@ AS
       x.[UNITNUMREO],
       x.[UNITTYPEREO],
       x.[S_ACCOUNT_OWNERSHIP],
+      A3.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[XPROCEEDOVR],
       x.[S_REO_INTEND_OCCUPANCY],
+      A4.Descript AS [S_REO_INTEND_OCCUPANCY_Description],
       x.[REO_OTHROCCUP_DESC],
       x.[S_REO_CURR_PROP_USAGE],
+      A5.Descript AS [S_REO_CURR_PROP_USAGE_Description],
       x.[REO_STATE_FOREIN],
       x.[REO_POSTCODE],
       x.[REO_CNTRY_COD],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[REOWNED] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REOPST = A0.DBSYMBOL AND A0.[TableName] = 'REOWNED' and A0.[COLUMNNAME] = 'S_REOPST'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_REOTYP = A1.DBSYMBOL AND A1.[TableName] = 'REOWNED' and A1.[COLUMNNAME] = 'S_REOTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ONRSHP = A2.DBSYMBOL AND A2.[TableName] = 'REOWNED' and A2.[COLUMNNAME] = 'S_ONRSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ACCOUNT_OWNERSHIP = A3.DBSYMBOL AND A3.[TableName] = 'REOWNED' and A3.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_REO_INTEND_OCCUPANCY = A4.DBSYMBOL AND A4.[TableName] = 'REOWNED' and A4.[COLUMNNAME] = 'S_REO_INTEND_OCCUPANCY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_REO_CURR_PROP_USAGE = A5.DBSYMBOL AND A5.[TableName] = 'REOWNED' and A5.[COLUMNNAME] = 'S_REO_CURR_PROP_USAGE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -28183,8 +29465,6 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
-      x.[DBID],
-      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -28250,6 +29530,8 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
+      x.[DBID],
+      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -28355,19 +29637,25 @@ AS
       x.[POWER_OF_ATT_DESC],
       x.[ESTABLISHED_STATE],
       x.[S_BOR_SELLER_OPTION],
+      A0.Descript AS [S_BOR_SELLER_OPTION_Description],
       x.[S_SEL_UNIT_TYPE],
+      A1.Descript AS [S_SEL_UNIT_TYPE_Description],
       x.[SEL_UNIT_NUM],
       x.[SEL_COUNTRY_CODE],
       x.[SEL_STATE_FOREIN],
       x.[SEL_POSTCODE],
       x.[EMAIL],
       x.[S_IDENTIFICATION_TYPE],
+      A2.Descript AS [S_IDENTIFICATION_TYPE_Description],
       x.[IDENTIFICATION_NUMBER],
       x.[SELLER_LIENHOLDER],
       x.[SELLER_CODE],
       x.[SALES_TAX_ID],
       x.[REGION]
    FROM [clt_NetO].[SELLER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BOR_SELLER_OPTION = A0.DBSYMBOL AND A0.[TableName] = 'SELLER' and A0.[COLUMNNAME] = 'S_BOR_SELLER_OPTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEL_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'SELLER' and A1.[COLUMNNAME] = 'S_SEL_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_IDENTIFICATION_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'SELLER' and A2.[COLUMNNAME] = 'S_IDENTIFICATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -28429,8 +29717,10 @@ AS
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
       x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[S_SERVICING_STATUS],
+      A0.Descript AS [S_SERVICING_STATUS_Description]
    FROM [clt_NetO].[SERVICNG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SERVICING_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'SERVICNG' and A0.[COLUMNNAME] = 'S_SERVICING_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -28462,14 +29752,18 @@ AS
       x.[SUBJTHLD],
       x.[SUBJMHLD],
       x.[S_OWNRHT],
+      A0.Descript AS [S_OWNRHT_Description],
       x.[SUBJOREX],
       x.[SUBJLPRI],
       x.[SUBJAV],
       x.[SUBJSP],
       x.[S_PRPTYP],
+      A1.Descript AS [S_PRPTYP_Description],
       x.[SUBJSCFN],
       x.[S_DPAYMT],
+      A2.Descript AS [S_DPAYMT_Description],
       x.[S_RESTYP],
+      A3.Descript AS [S_RESTYP_Description],
       x.[SUBJESTE],
       x.[SUBJLEXP],
       x.[SUBJCNTY],
@@ -28477,11 +29771,14 @@ AS
       x.[BLOCKNUM],
       x.[SUBDIV],
       x.[S_PURP],
+      A4.Descript AS [S_PURP_Description],
       x.[STCODE],
       x.[CYCODE],
       x.[MSACODE],
       x.[S_LIENPO],
+      A5.Descript AS [S_LIENPO_Description],
       x.[S_LIENHO],
+      A6.Descript AS [S_LIENHO_Description],
       x.[BALOTHMT],
       x.[SUBJLTV],
       x.[COMBLTV],
@@ -28489,6 +29786,7 @@ AS
       x.[STRALIAS],
       x.[CITYFLAG],
       x.[S_PRJCLS],
+      A7.Descript AS [S_PRJCLS_Description],
       x.[PROJNAME],
       x.[DECLDBID],
       x.[DECLSERL],
@@ -28516,7 +29814,9 @@ AS
       x.[LIENPOSOTHER],
       x.[PROPTYPEOTHER],
       x.[S_FREPRJCLS],
+      A8.Descript AS [S_FREPRJCLS_Description],
       x.[S_FNMPRJCLS],
+      A9.Descript AS [S_FNMPRJCLS_Description],
       x.[HOTEL_INDICATOR],
       x.[NONWARRANTABLE],
       x.[NUMBSTORIES],
@@ -28528,39 +29828,54 @@ AS
       x.[OTHERPROPRITTYPEDESC],
       x.[OTHEROWNTYPEDESC],
       x.[S_UNIQUEDWELLINGTYPE],
+      A10.Descript AS [S_UNIQUEDWELLINGTYPE_Description],
       x.[OTHERUNIQDWELLINGTYPDSC],
       x.[S_NATIVEAMERICANLANDSTYPE],
+      A11.Descript AS [S_NATIVEAMERICANLANDSTYPE_Description],
       x.[OTHERNATAMERLANDSTYPEDESC],
       x.[COMMLANDTRUSTINDCTR],
       x.[INCLUSIONARYZONEINDCTR],
       x.[S_CATEGORYTYPE],
+      A12.Descript AS [S_CATEGORYTYPE_Description],
       x.[OTHERCATEGORYTYPEDESC],
       x.[S_PROJECTDESIGNTYPE],
+      A13.Descript AS [S_PROJECTDESIGNTYPE_Description],
       x.[OTHERPROJDESIGNTYPEDESC],
       x.[S_PROJECTCLASSTYPE],
+      A14.Descript AS [S_PROJECTCLASSTYPE_Description],
       x.[OTHERPROJCLASSTYPEDESC],
       x.[OTHERDOWNPAYTYPEDESC],
       x.[S_UNITOWNERSHIPTYPE],
+      A15.Descript AS [S_UNITOWNERSHIPTYPE_Description],
       x.[CONCURRENT_FIN_INPUT],
       x.[INCLUDE_ASSIST_PROGS],
       x.[S_DPAYMTNM],
+      A16.Descript AS [S_DPAYMTNM_Description],
       x.[DOWNPAYNMDESC],
       x.[SUBESTAV],
       x.[LTV_ROUNDED],
       x.[TLTV_ROUNDED],
       x.[S_CONDO_PROJECT_STATUS],
+      A17.Descript AS [S_CONDO_PROJECT_STATUS_Description],
       x.[S_PROJ_ATTACH_TYPE],
+      A18.Descript AS [S_PROJ_ATTACH_TYPE_Description],
       x.[S_PROJECT_DESIGN_TYPE],
+      A19.Descript AS [S_PROJECT_DESIGN_TYPE_Description],
       x.[S_ATTACHMENT_TYPE],
+      A20.Descript AS [S_ATTACHMENT_TYPE_Description],
       x.[S_PROJ_CLASS_ID_FNM],
+      A21.Descript AS [S_PROJ_CLASS_ID_FNM_Description],
       x.[S_PROJ_CLASS_ID_FRE],
+      A22.Descript AS [S_PROJ_CLASS_ID_FRE_Description],
       x.[PROJ_UNITS_TOTAL],
       x.[PROJ_UNITS_SOLD],
       x.[ISUSPSVALIDATED],
       x.[SUBJADD3],
       x.[CPMPROID],
       x.[S_FRPROJ],
+      A23.Descript AS [S_FRPROJ_Description],
       x.[S_FMPROJ],
+      A24.Descript AS [S_FMPROJ_Description],
       x.[PROPDESC],
       x.[RENTINC_VERIFIED],
       x.[RENTINC_VERIFY_TYPE],
@@ -28568,12 +29883,14 @@ AS
       x.[CONDO_UNITS_COV_HAZ],
       x.[CONDO_UNITS_COV_FLD],
       x.[S_STRUCTURETYPE],
+      A25.Descript AS [S_STRUCTURETYPE_Description],
       x.[CEMA],
       x.[FHAHUDAPPROVAL],
       x.[IMP_COST_PLUS_EEM],
       x.[MAX_LIMIT_LOAN_AMT],
       x.[TOTAL_MTG_PROPERTIES],
       x.[S_SUBJUNITTYPE],
+      A26.Descript AS [S_SUBJUNITTYPE_Description],
       x.[CRAEXEMPTION],
       x.[MDINDICATOR],
       x.[MSAINDICATOR],
@@ -28581,7 +29898,9 @@ AS
       x.[INCOME_RESTRICT],
       x.[PROPVALUE_RELIED_ON],
       x.[S_APPRMTHDREQ],
+      A27.Descript AS [S_APPRMTHDREQ_Description],
       x.[S_APPRMTHDREQOVR],
+      A28.Descript AS [S_APPRMTHDREQOVR_Description],
       x.[EXIST_EEM_AMT],
       x.[ISCONDOMINIUM],
       x.[ISCOOPERATIVE],
@@ -28592,6 +29911,7 @@ AS
       x.[MFHOME],
       x.[TX_50A6],
       x.[S_TRSTYP],
+      A29.Descript AS [S_TRSTYP_Description],
       x.[SHORT_LEGAL_DESC_OVR],
       x.[SUBJTHLCUR],
       x.[ADJLTV],
@@ -28601,6 +29921,36 @@ AS
       x.[TX_50F2],
       x.[RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRHT = A0.DBSYMBOL AND A0.[TableName] = 'SUBJPRP' and A0.[COLUMNNAME] = 'S_OWNRHT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PRPTYP = A1.DBSYMBOL AND A1.[TableName] = 'SUBJPRP' and A1.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DPAYMT = A2.DBSYMBOL AND A2.[TableName] = 'SUBJPRP' and A2.[COLUMNNAME] = 'S_DPAYMT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESTYP = A3.DBSYMBOL AND A3.[TableName] = 'SUBJPRP' and A3.[COLUMNNAME] = 'S_RESTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PURP = A4.DBSYMBOL AND A4.[TableName] = 'SUBJPRP' and A4.[COLUMNNAME] = 'S_PURP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LIENPO = A5.DBSYMBOL AND A5.[TableName] = 'SUBJPRP' and A5.[COLUMNNAME] = 'S_LIENPO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIENHO = A6.DBSYMBOL AND A6.[TableName] = 'SUBJPRP' and A6.[COLUMNNAME] = 'S_LIENHO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_PRJCLS = A7.DBSYMBOL AND A7.[TableName] = 'SUBJPRP' and A7.[COLUMNNAME] = 'S_PRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_FREPRJCLS = A8.DBSYMBOL AND A8.[TableName] = 'SUBJPRP' and A8.[COLUMNNAME] = 'S_FREPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_FNMPRJCLS = A9.DBSYMBOL AND A9.[TableName] = 'SUBJPRP' and A9.[COLUMNNAME] = 'S_FNMPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_UNIQUEDWELLINGTYPE = A10.DBSYMBOL AND A10.[TableName] = 'SUBJPRP' and A10.[COLUMNNAME] = 'S_UNIQUEDWELLINGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_NATIVEAMERICANLANDSTYPE = A11.DBSYMBOL AND A11.[TableName] = 'SUBJPRP' and A11.[COLUMNNAME] = 'S_NATIVEAMERICANLANDSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_CATEGORYTYPE = A12.DBSYMBOL AND A12.[TableName] = 'SUBJPRP' and A12.[COLUMNNAME] = 'S_CATEGORYTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_PROJECTDESIGNTYPE = A13.DBSYMBOL AND A13.[TableName] = 'SUBJPRP' and A13.[COLUMNNAME] = 'S_PROJECTDESIGNTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROJECTCLASSTYPE = A14.DBSYMBOL AND A14.[TableName] = 'SUBJPRP' and A14.[COLUMNNAME] = 'S_PROJECTCLASSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_UNITOWNERSHIPTYPE = A15.DBSYMBOL AND A15.[TableName] = 'SUBJPRP' and A15.[COLUMNNAME] = 'S_UNITOWNERSHIPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_DPAYMTNM = A16.DBSYMBOL AND A16.[TableName] = 'SUBJPRP' and A16.[COLUMNNAME] = 'S_DPAYMTNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CONDO_PROJECT_STATUS = A17.DBSYMBOL AND A17.[TableName] = 'SUBJPRP' and A17.[COLUMNNAME] = 'S_CONDO_PROJECT_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_PROJ_ATTACH_TYPE = A18.DBSYMBOL AND A18.[TableName] = 'SUBJPRP' and A18.[COLUMNNAME] = 'S_PROJ_ATTACH_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_PROJECT_DESIGN_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'SUBJPRP' and A19.[COLUMNNAME] = 'S_PROJECT_DESIGN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_ATTACHMENT_TYPE = A20.DBSYMBOL AND A20.[TableName] = 'SUBJPRP' and A20.[COLUMNNAME] = 'S_ATTACHMENT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_PROJ_CLASS_ID_FNM = A21.DBSYMBOL AND A21.[TableName] = 'SUBJPRP' and A21.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PROJ_CLASS_ID_FRE = A22.DBSYMBOL AND A22.[TableName] = 'SUBJPRP' and A22.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FRE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_FRPROJ = A23.DBSYMBOL AND A23.[TableName] = 'SUBJPRP' and A23.[COLUMNNAME] = 'S_FRPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_FMPROJ = A24.DBSYMBOL AND A24.[TableName] = 'SUBJPRP' and A24.[COLUMNNAME] = 'S_FMPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_STRUCTURETYPE = A25.DBSYMBOL AND A25.[TableName] = 'SUBJPRP' and A25.[COLUMNNAME] = 'S_STRUCTURETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_SUBJUNITTYPE = A26.DBSYMBOL AND A26.[TableName] = 'SUBJPRP' and A26.[COLUMNNAME] = 'S_SUBJUNITTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_APPRMTHDREQ = A27.DBSYMBOL AND A27.[TableName] = 'SUBJPRP' and A27.[COLUMNNAME] = 'S_APPRMTHDREQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_APPRMTHDREQOVR = A28.DBSYMBOL AND A28.[TableName] = 'SUBJPRP' and A28.[COLUMNNAME] = 'S_APPRMTHDREQOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_TRSTYP = A29.DBSYMBOL AND A29.[TableName] = 'SUBJPRP' and A29.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -28742,10 +30092,13 @@ AS
       x.[SECINTOWN],
       x.[SECINTOTH],
       x.[S_LATECHARGETYPE],
+      A0.Descript AS [S_LATECHARGETYPE_Description],
       x.[S_PPPOPT],
+      A1.Descript AS [S_PPPOPT_Description],
       x.[PMMS_RATE],
       x.[LOCK_REDISCLOSE_IND],
       x.[S_TIL2011_OVRD],
+      A2.Descript AS [S_TIL2011_OVRD_Description],
       x.[FLAT_AMT],
       x.[BPRESOTHPRGS],
       x.[DISCLOSE_APR],
@@ -28766,6 +30119,9 @@ AS
       x.[PRESENT_SHARES],
       x.[OTHER_COLLATERAL]
    FROM [clt_NetO].[TILINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LATECHARGETYPE = A0.DBSYMBOL AND A0.[TableName] = 'TILINFO' and A0.[COLUMNNAME] = 'S_LATECHARGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PPPOPT = A1.DBSYMBOL AND A1.[TableName] = 'TILINFO' and A1.[COLUMNNAME] = 'S_PPPOPT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_TIL2011_OVRD = A2.DBSYMBOL AND A2.[TableName] = 'TILINFO' and A2.[COLUMNNAME] = 'S_TIL2011_OVRD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -28791,18 +30147,26 @@ AS
       x.[TRLNDRCN],
       x.[CLNUM],
       x.[S_IVMETH],
+      A0.Descript AS [S_IVMETH_Description],
       x.[S_IVID],
+      A1.Descript AS [S_IVID_Description],
       x.[S_BUSCHL],
+      A2.Descript AS [S_BUSCHL_Description],
       x.[CLOSEDT],
       x.[DISBURDT],
       x.[FSTPMTDT],
       x.[ODDDAYS],
       x.[FEEFIRST],
       x.[S_COPT1],
+      A3.Descript AS [S_COPT1_Description],
       x.[S_COPT2],
+      A4.Descript AS [S_COPT2_Description],
       x.[S_COPT3],
+      A5.Descript AS [S_COPT3_Description],
       x.[S_COPT4],
+      A6.Descript AS [S_COPT4_Description],
       x.[S_COPT5],
+      A7.Descript AS [S_COPT5_Description],
       x.[CUSHION],
       x.[AGGEADJ],
       x.[DOWNPYMT],
@@ -28819,15 +30183,24 @@ AS
       x.[WHOMCFM],
       x.[PREQUAL],
       x.[S_COPT6],
+      A8.Descript AS [S_COPT6_Description],
       x.[S_COPT7],
+      A9.Descript AS [S_COPT7_Description],
       x.[S_COPT8],
+      A10.Descript AS [S_COPT8_Description],
       x.[S_COPT9],
+      A11.Descript AS [S_COPT9_Description],
       x.[S_COPT10],
+      A12.Descript AS [S_COPT10_Description],
       x.[S_CRDGRDRQ],
+      A13.Descript AS [S_CRDGRDRQ_Description],
       x.[S_DOCLEVEL],
+      A14.Descript AS [S_DOCLEVEL_Description],
       x.[GRADEDC],
       x.[S_CRDGRDAP],
+      A15.Descript AS [S_CRDGRDAP_Description],
       x.[S_QUALITY],
+      A16.Descript AS [S_QUALITY_Description],
       x.[DMSGRADE],
       x.[ESTCLOSD],
       x.[SRVCNUM],
@@ -28844,6 +30217,7 @@ AS
       x.[LRDATE],
       x.[TPBROKR],
       x.[S_DELTERMS],
+      A17.Descript AS [S_DELTERMS_Description],
       x.[SELLCL],
       x.[WLSTATUS],
       x.[CLTYPE],
@@ -28853,7 +30227,9 @@ AS
       x.[USERQUALIFIER],
       x.[PURPOSE_TYPE],
       x.[S_CASE_STATUS],
+      A18.Descript AS [S_CASE_STATUS_Description],
       x.[S_REPAY],
+      A19.Descript AS [S_REPAY_Description],
       x.[UNITPER],
       x.[UNITPEROVR],
       x.[LASTLOCKED],
@@ -28867,6 +30243,7 @@ AS
       x.[OBLIGATED_BORROWER_COUNT],
       x.[SECURITY_TOKEN],
       x.[S_CHANNEL_SOURCE_CODE],
+      A20.Descript AS [S_CHANNEL_SOURCE_CODE_Description],
       x.[RECORD_CREATED],
       x.[LOAN_CREATE_DATE],
       x.[CLIENT_TOLL_FREE_NUM],
@@ -28878,6 +30255,27 @@ AS
       x.[AUTO_CREDIT_PULLED],
       x.[SELLER_SERVICING_NUM]
    FROM [clt_NetO].[TRACKING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IVMETH = A0.DBSYMBOL AND A0.[TableName] = 'TRACKING' and A0.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_IVID = A1.DBSYMBOL AND A1.[TableName] = 'TRACKING' and A1.[COLUMNNAME] = 'S_IVID'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BUSCHL = A2.DBSYMBOL AND A2.[TableName] = 'TRACKING' and A2.[COLUMNNAME] = 'S_BUSCHL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COPT1 = A3.DBSYMBOL AND A3.[TableName] = 'TRACKING' and A3.[COLUMNNAME] = 'S_COPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COPT2 = A4.DBSYMBOL AND A4.[TableName] = 'TRACKING' and A4.[COLUMNNAME] = 'S_COPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_COPT3 = A5.DBSYMBOL AND A5.[TableName] = 'TRACKING' and A5.[COLUMNNAME] = 'S_COPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COPT4 = A6.DBSYMBOL AND A6.[TableName] = 'TRACKING' and A6.[COLUMNNAME] = 'S_COPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_COPT5 = A7.DBSYMBOL AND A7.[TableName] = 'TRACKING' and A7.[COLUMNNAME] = 'S_COPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COPT6 = A8.DBSYMBOL AND A8.[TableName] = 'TRACKING' and A8.[COLUMNNAME] = 'S_COPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_COPT7 = A9.DBSYMBOL AND A9.[TableName] = 'TRACKING' and A9.[COLUMNNAME] = 'S_COPT7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_COPT8 = A10.DBSYMBOL AND A10.[TableName] = 'TRACKING' and A10.[COLUMNNAME] = 'S_COPT8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_COPT9 = A11.DBSYMBOL AND A11.[TableName] = 'TRACKING' and A11.[COLUMNNAME] = 'S_COPT9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_COPT10 = A12.DBSYMBOL AND A12.[TableName] = 'TRACKING' and A12.[COLUMNNAME] = 'S_COPT10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_CRDGRDRQ = A13.DBSYMBOL AND A13.[TableName] = 'TRACKING' and A13.[COLUMNNAME] = 'S_CRDGRDRQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DOCLEVEL = A14.DBSYMBOL AND A14.[TableName] = 'TRACKING' and A14.[COLUMNNAME] = 'S_DOCLEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_CRDGRDAP = A15.DBSYMBOL AND A15.[TableName] = 'TRACKING' and A15.[COLUMNNAME] = 'S_CRDGRDAP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_QUALITY = A16.DBSYMBOL AND A16.[TableName] = 'TRACKING' and A16.[COLUMNNAME] = 'S_QUALITY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_DELTERMS = A17.DBSYMBOL AND A17.[TableName] = 'TRACKING' and A17.[COLUMNNAME] = 'S_DELTERMS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CASE_STATUS = A18.DBSYMBOL AND A18.[TableName] = 'TRACKING' and A18.[COLUMNNAME] = 'S_CASE_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_REPAY = A19.DBSYMBOL AND A19.[TableName] = 'TRACKING' and A19.[COLUMNNAME] = 'S_REPAY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_CHANNEL_SOURCE_CODE = A20.DBSYMBOL AND A20.[TableName] = 'TRACKING' and A20.[COLUMNNAME] = 'S_CHANNEL_SOURCE_CODE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -28959,12 +30357,14 @@ AS
       x.[TRUST_STREET_ADDR2],
       x.[EMAIL],
       x.[S_TRUST_UNIT_TYPE],
+      A0.Descript AS [S_TRUST_UNIT_TYPE_Description],
       x.[TRUST_UNIT_NUM],
       x.[TRUST_COUNTRY_CODE],
       x.[LIVING_TRUST_BNUM],
       x.[TRST_STATE_FOR],
       x.[TRST_POSTCODE]
    FROM [clt_NetO].[TRSTENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRUST_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'TRSTENTS' and A0.[COLUMNNAME] = 'S_TRUST_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -28996,6 +30396,7 @@ AS
       x.[TRSTADT2],
       x.[TRSTNUMB],
       x.[S_TRSTYP],
+      A0.Descript AS [S_TRSTYP_Description],
       x.[TRSTINST],
       x.[TRSTREV],
       x.[STATE],
@@ -29006,6 +30407,7 @@ AS
       x.[QPRT_BEN_WAIVER],
       x.[LIVTRST]
    FROM [clt_NetO].[TRUSTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRSTYP = A0.DBSYMBOL AND A0.[TableName] = 'TRUSTS' and A0.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29028,12 +30430,19 @@ AS
    SELECT
       x.[LNUM],
       x.[S_DISPOSITION],
+      A0.Descript AS [S_DISPOSITION_Description],
       x.[S_UWOPT1],
+      A1.Descript AS [S_UWOPT1_Description],
       x.[S_UWOPT2],
+      A2.Descript AS [S_UWOPT2_Description],
       x.[S_UWOPT3],
+      A3.Descript AS [S_UWOPT3_Description],
       x.[S_UWOPT4],
+      A4.Descript AS [S_UWOPT4_Description],
       x.[S_UWOPT5],
+      A5.Descript AS [S_UWOPT5_Description],
       x.[S_UWOPT6],
+      A6.Descript AS [S_UWOPT6_Description],
       x.[INV_APPRV_DATE],
       x.[UNDW_EXP_DATE],
       x.[DOC_EXP_DATE],
@@ -29045,6 +30454,7 @@ AS
       x.[AUSCOMDBID],
       x.[AUSCOMSN],
       x.[S_TRGTINV],
+      A7.Descript AS [S_TRGTINV_Description],
       x.[UWENTITY],
       x.[CREDSCOVRD],
       x.[DELEGATED_ENDORSEMENT],
@@ -29052,10 +30462,20 @@ AS
       x.[EST_CRED_SCORE],
       x.[CREDIT_REPORT_REF],
       x.[S_CREDSCORE_OVERRIDE_REASON],
+      A8.Descript AS [S_CREDSCORE_OVERRIDE_REASON_Description],
       x.[CS_OVR_REAS_OTHERDESC],
       x.[DECISIONTARGETDATE],
       x.[DISPOSITION_DATETIME]
    FROM [clt_NetO].[UNDCOND1] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_DISPOSITION = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND1' and A0.[COLUMNNAME] = 'S_DISPOSITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UWOPT1 = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND1' and A1.[COLUMNNAME] = 'S_UWOPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UWOPT2 = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND1' and A2.[COLUMNNAME] = 'S_UWOPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_UWOPT3 = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND1' and A3.[COLUMNNAME] = 'S_UWOPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_UWOPT4 = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND1' and A4.[COLUMNNAME] = 'S_UWOPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_UWOPT5 = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND1' and A5.[COLUMNNAME] = 'S_UWOPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_UWOPT6 = A6.DBSYMBOL AND A6.[TableName] = 'UNDCOND1' and A6.[COLUMNNAME] = 'S_UWOPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TRGTINV = A7.DBSYMBOL AND A7.[TableName] = 'UNDCOND1' and A7.[COLUMNNAME] = 'S_TRGTINV'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CREDSCORE_OVERRIDE_REASON = A8.DBSYMBOL AND A8.[TableName] = 'UNDCOND1' and A8.[COLUMNNAME] = 'S_CREDSCORE_OVERRIDE_REASON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29080,8 +30500,11 @@ AS
       x.[DBID],
       x.[CNTR],
       x.[S_SUNDCON],
+      A0.Descript AS [S_SUNDCON_Description],
       x.[S_UNDCAT],
+      A1.Descript AS [S_UNDCAT_Description],
       x.[S_UNDTYP],
+      A2.Descript AS [S_UNDTYP_Description],
       x.[CUUSRID],
       x.[CUUSGRP],
       x.[CUDATE],
@@ -29092,13 +30515,16 @@ AS
       x.[UWCKLIST],
       x.[ISACTIVE],
       x.[S_ASSOCDOC],
+      A3.Descript AS [S_ASSOCDOC_Description],
       x.[SHWWAIVE],
       x.[DISCLOSE],
       x.[S_COMFLG],
+      A4.Descript AS [S_COMFLG_Description],
       x.[RESPONSIBLE_P],
       x.[DUEDATE],
       x.[ERRORCAUSEBY],
       x.[S_CONDITION_SRC],
+      A5.Descript AS [S_CONDITION_SRC_Description],
       x.[CREATED_DATE],
       x.[CREATED_USER],
       x.[RECEIVED_DT],
@@ -29111,6 +30537,12 @@ AS
       x.[REJECTED_DT],
       x.[RESET_DT]
    FROM [clt_NetO].[UNDCOND2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND2' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UNDCAT = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND2' and A1.[COLUMNNAME] = 'S_UNDCAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UNDTYP = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND2' and A2.[COLUMNNAME] = 'S_UNDTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ASSOCDOC = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND2' and A3.[COLUMNNAME] = 'S_ASSOCDOC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COMFLG = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND2' and A4.[COLUMNNAME] = 'S_COMFLG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CONDITION_SRC = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND2' and A5.[COLUMNNAME] = 'S_CONDITION_SRC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29135,6 +30567,7 @@ AS
       x.[CNTR],
       x.[DBID],
       x.[S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[UNITNUM],
       x.[PROJNAME],
       x.[APPRAISAL],
@@ -29165,6 +30598,7 @@ AS
       x.[NET6],
       x.[GROSS6],
       x.[S_APPRTYPE],
+      A1.Descript AS [S_APPRTYPE_Description],
       x.[SUBMFLG],
       x.[LANDTOVALUE],
       x.[APPRVALUEINDICATOR],
@@ -29179,12 +30613,16 @@ AS
       x.[LESS750],
       x.[HVE_EFFECTIVE_DT],
       x.[S_APPRFORMTYPE],
+      A2.Descript AS [S_APPRFORMTYPE_Description],
       x.[APPRFORMTYPEOTHDESC],
       x.[S_PRPFORMTYPE],
+      A3.Descript AS [S_PRPFORMTYPE_Description],
       x.[PRPFORMTYPEOTHDESC],
       x.[S_PRPMETHODTYPE],
+      A4.Descript AS [S_PRPMETHODTYPE_Description],
       x.[PRPMETHODTYPEOTHDESC],
       x.[S_LVLPRPRVW],
+      A5.Descript AS [S_LVLPRPRVW_Description],
       x.[APPRLVLPRPRVWTYPEOTHDESC],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_LIC]) AS [APPR_SUPER_LIC],
       x.[DATEORDERED],
@@ -29194,6 +30632,7 @@ AS
       x.[ACTUALCOST],
       x.[DATERECEIVED],
       x.[S_STATUS],
+      A6.Descript AS [S_STATUS_Description],
       x.[REQUESTEDDATE],
       x.[REQUESTEDBY],
       x.[DATEREVIEWED],
@@ -29213,8 +30652,11 @@ AS
       x.[SITEVALUE],
       x.[SUBJECTTOREPAIRS],
       x.[S_APPRMETH],
+      A7.Descript AS [S_APPRMETH_Description],
       x.[S_AVM],
+      A8.Descript AS [S_AVM_Description],
       x.[S_AVMOTH],
+      A9.Descript AS [S_AVMOTH_Description],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_FNAME]) AS [APPR_SUPER_FNAME],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_LNAME]) AS [APPR_SUPER_LNAME],
       x.[APPRREINSPFEE],
@@ -29230,8 +30672,20 @@ AS
       x.[ADDR2],
       x.[INV_COLL_PROG_ID],
       x.[FORECAST_STD_DEV],
-      x.[S_HOA_FEES_PERIOD_TYPE]
+      x.[S_HOA_FEES_PERIOD_TYPE],
+      A10.Descript AS [S_HOA_FEES_PERIOD_TYPE_Description]
    FROM [clt_NetO].[UWAPPR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'UWAPPR' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_APPRTYPE = A1.DBSYMBOL AND A1.[TableName] = 'UWAPPR' and A1.[COLUMNNAME] = 'S_APPRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_APPRFORMTYPE = A2.DBSYMBOL AND A2.[TableName] = 'UWAPPR' and A2.[COLUMNNAME] = 'S_APPRFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PRPFORMTYPE = A3.DBSYMBOL AND A3.[TableName] = 'UWAPPR' and A3.[COLUMNNAME] = 'S_PRPFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRPMETHODTYPE = A4.DBSYMBOL AND A4.[TableName] = 'UWAPPR' and A4.[COLUMNNAME] = 'S_PRPMETHODTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LVLPRPRVW = A5.DBSYMBOL AND A5.[TableName] = 'UWAPPR' and A5.[COLUMNNAME] = 'S_LVLPRPRVW'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_STATUS = A6.DBSYMBOL AND A6.[TableName] = 'UWAPPR' and A6.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_APPRMETH = A7.DBSYMBOL AND A7.[TableName] = 'UWAPPR' and A7.[COLUMNNAME] = 'S_APPRMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_AVM = A8.DBSYMBOL AND A8.[TableName] = 'UWAPPR' and A8.[COLUMNNAME] = 'S_AVM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_AVMOTH = A9.DBSYMBOL AND A9.[TableName] = 'UWAPPR' and A9.[COLUMNNAME] = 'S_AVMOTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_HOA_FEES_PERIOD_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'UWAPPR' and A10.[COLUMNNAME] = 'S_HOA_FEES_PERIOD_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29279,10 +30733,9 @@ CREATE VIEW [NetO_restricted].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[STRTSERV],
       x.[ENDSERV],
       x.[EXEMPT],
@@ -29299,14 +30752,17 @@ AS
       x.[SERVPERD],
       x.[OSRVNUM1],
       x.[S_OBRCH1],
+      A1.Descript AS [S_OBRCH1_Description],
       x.[OSTRTDT1],
       x.[OENDDT1],
       x.[OSRVNUM2],
       x.[S_OBRCH2],
+      A2.Descript AS [S_OBRCH2_Description],
       x.[OSTRTDT2],
       x.[OENDDT2],
       x.[OSRVNUM3],
       x.[S_OBRCH3],
+      A3.Descript AS [S_OBRCH3_Description],
       x.[OSTRTDT3],
       x.[OENDDT3],
       x.[VETSTATUS],
@@ -29315,6 +30771,8 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
+      x.[BNUM],
+      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -29362,6 +30820,10 @@ AS
       x.[SURVIVING_SPOUSE],
       x.[SERVICE_EXPIRATION_DATE]
    FROM [clt_NetO].[VETINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OBRCH1 = A1.DBSYMBOL AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_OBRCH2 = A2.DBSYMBOL AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_OBRCH3 = A3.DBSYMBOL AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29385,7 +30847,9 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_ASSET_TYPE],
+      A0.Descript AS [S_ASSET_TYPE_Description],
       x.[S_ASSET_PURPOSE],
+      A1.Descript AS [S_ASSET_PURPOSE_Description],
       x.[ASSET_VERIFIED],
       x.[VERIFICATION_REQD],
       x.[OWNER_EST_VALUE],
@@ -29398,6 +30862,8 @@ AS
       x.[PRIMARY_COLLATERAL],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[WG_ASSET] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET' and A0.[COLUMNNAME] = 'S_ASSET_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSET_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET' and A1.[COLUMNNAME] = 'S_ASSET_PURPOSE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29432,6 +30898,7 @@ AS
       x.[ACCT_START_DT],
       x.[ACCT_MATUR_DT],
       x.[S_ACCT_OWNERSHIP],
+      A0.Descript AS [S_ACCT_OWNERSHIP_Description],
       x.[ASSET_ACCT_NO],
       x.[SHARE_VALUE],
       x.[ASSET_COLL_VALUE],
@@ -29440,6 +30907,7 @@ AS
       x.[EXCHANGE_INFO],
       x.[USE_CALC_LOAN_RT]
    FROM [clt_NetO].[WG_ASSET_ACCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ACCT_OWNERSHIP = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_ACCT' and A0.[COLUMNNAME] = 'S_ACCT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29476,9 +30944,15 @@ AS
       x.[ENGINE_TITLE_NUM],
       x.[ENGINE_MODEL_NUM],
       x.[S_ENGINE_MFG],
+      A0.Descript AS [S_ENGINE_MFG_Description],
       x.[S_MULTIENGINETYPE],
-      x.[S_ENGINE_COLOR]
+      A1.Descript AS [S_MULTIENGINETYPE_Description],
+      x.[S_ENGINE_COLOR],
+      A2.Descript AS [S_ENGINE_COLOR_Description]
    FROM [clt_NetO].[WG_ASSET_MARINE_ENG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ENGINE_MFG = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_MARINE_ENG' and A0.[COLUMNNAME] = 'S_ENGINE_MFG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MULTIENGINETYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_MARINE_ENG' and A1.[COLUMNNAME] = 'S_MULTIENGINETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ENGINE_COLOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_MARINE_ENG' and A2.[COLUMNNAME] = 'S_ENGINE_COLOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29509,23 +30983,31 @@ AS
       x.[NEW_YN],
       x.[SERIAL],
       x.[S_FUEL_TYPE],
+      A0.Descript AS [S_FUEL_TYPE_Description],
       x.[VEHICLE_REG_NUMBER],
       x.[BODY_TRIM],
       x.[S_VEHICLE_CONDITION],
+      A1.Descript AS [S_VEHICLE_CONDITION_Description],
       x.[COLL_TITLE_NUM],
       x.[S_CNRE_OWNERSHIP],
+      A2.Descript AS [S_CNRE_OWNERSHIP_Description],
       x.[LENGTH],
       x.[WIDTH],
       x.[PRIOR_TITLE_NUM],
       x.[S_TRANSF_AS],
+      A3.Descript AS [S_TRANSF_AS_Description],
       x.[S_TRANSF_TO],
+      A4.Descript AS [S_TRANSF_TO_Description],
       x.[S_DAMAGE_TYPE],
+      A5.Descript AS [S_DAMAGE_TYPE_Description],
       x.[IS_BONAFIDE_GIFT],
       x.[IS_REBUILDABLE],
       x.[IS_ENERGY_EFFICIENT],
       x.[PRIOR_STATE],
       x.[S_COLOR],
+      A6.Descript AS [S_COLOR_Description],
       x.[S_GV_WEIGHT_RATING],
+      A7.Descript AS [S_GV_WEIGHT_RATING_Description],
       x.[SCALE_WEIGHT],
       x.[PAYOFF_AMT],
       x.[MFG_REBATE],
@@ -29534,6 +31016,14 @@ AS
       x.[DLR_OPT_PRICE],
       x.[DLR_OPT_VALUE]
    FROM [clt_NetO].[WG_ASSET_VEHICLE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FUEL_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VEHICLE' and A0.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_VEHICLE_CONDITION = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VEHICLE' and A1.[COLUMNNAME] = 'S_VEHICLE_CONDITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CNRE_OWNERSHIP = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VEHICLE' and A2.[COLUMNNAME] = 'S_CNRE_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TRANSF_AS = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VEHICLE' and A3.[COLUMNNAME] = 'S_TRANSF_AS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TRANSF_TO = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VEHICLE' and A4.[COLUMNNAME] = 'S_TRANSF_TO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DAMAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VEHICLE' and A5.[COLUMNNAME] = 'S_DAMAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COLOR = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VEHICLE' and A6.[COLUMNNAME] = 'S_COLOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_GV_WEIGHT_RATING = A7.DBSYMBOL AND A7.[TableName] = 'WG_ASSET_VEHICLE' and A7.[COLUMNNAME] = 'S_GV_WEIGHT_RATING'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29560,8 +31050,12 @@ AS
       x.[SERIES],
       x.[STYLE],
       x.[S_MTRCYCLESTYLE],
-      x.[S_GENERIC_BODY_STYLE]
+      A0.Descript AS [S_MTRCYCLESTYLE_Description],
+      x.[S_GENERIC_BODY_STYLE],
+      A1.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_AUTO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MTRCYCLESTYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_AUTO' and A0.[COLUMNNAME] = 'S_MTRCYCLESTYLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GENERIC_BODY_STYLE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_AUTO' and A1.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29585,9 +31079,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_MARINE_TYPE],
+      A0.Descript AS [S_MARINE_TYPE_Description],
       x.[BOAT_NAME],
       x.[NET_WEIGHT],
       x.[S_PROPULSION_TYPE],
+      A1.Descript AS [S_PROPULSION_TYPE_Description],
       x.[HAILING_PORT],
       x.[MOORING_ADDR1],
       x.[MOORING_ADDR2],
@@ -29596,14 +31092,19 @@ AS
       x.[MOORING_ZIP],
       x.[TRAILER_ASSETID],
       x.[S_FUEL_TYPE],
+      A2.Descript AS [S_FUEL_TYPE_Description],
       x.[BEAM],
       x.[MARINE_LENGTH],
       x.[S_HULL_MATERIAL],
+      A3.Descript AS [S_HULL_MATERIAL_Description],
       x.[S_PRIMARY_USE],
+      A4.Descript AS [S_PRIMARY_USE_Description],
       x.[S_ENGINE_DRIVE],
+      A5.Descript AS [S_ENGINE_DRIVE_Description],
       x.[IS_DOCUMENTED_VESSEL],
       x.[USCG_OFFICIAL_NUMBER],
       x.[S_MANUF_TYPE],
+      A6.Descript AS [S_MANUF_TYPE_Description],
       x.[TOILETATTACHED],
       x.[MATLOTHDESC],
       x.[FUELOTHDESC],
@@ -29612,6 +31113,13 @@ AS
       x.[MOORING_FACILITY],
       x.[MOORING_MRENT]
    FROM [clt_NetO].[WG_ASSET_VHCL_MARINE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARINE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_MARINE' and A0.[COLUMNNAME] = 'S_MARINE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPULSION_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_MARINE' and A1.[COLUMNNAME] = 'S_PROPULSION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FUEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_MARINE' and A2.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_HULL_MATERIAL = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VHCL_MARINE' and A3.[COLUMNNAME] = 'S_HULL_MATERIAL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRIMARY_USE = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VHCL_MARINE' and A4.[COLUMNNAME] = 'S_PRIMARY_USE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_ENGINE_DRIVE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VHCL_MARINE' and A5.[COLUMNNAME] = 'S_ENGINE_DRIVE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_MANUF_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VHCL_MARINE' and A6.[COLUMNNAME] = 'S_MANUF_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29635,14 +31143,16 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
-      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
+      A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
+      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OPTION_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_OPTIONS' and A0.[COLUMNNAME] = 'S_OPTION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29666,14 +31176,20 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_RV_TYPE],
+      A0.Descript AS [S_RV_TYPE_Description],
       x.[MILEAGE],
       x.[NBR_AXLES],
       x.[NBR_SLIDES],
       x.[RV_LENGTH],
       x.[SELF_CONTAINED_YN],
       x.[S_CATEGORY],
-      x.[S_MODEL_TYPE]
+      A1.Descript AS [S_CATEGORY_Description],
+      x.[S_MODEL_TYPE],
+      A2.Descript AS [S_MODEL_TYPE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_RV] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RV_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_RV' and A0.[COLUMNNAME] = 'S_RV_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CATEGORY = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_RV' and A1.[COLUMNNAME] = 'S_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_MODEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_RV' and A2.[COLUMNNAME] = 'S_MODEL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29697,9 +31213,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_AXLE_TYPE],
+      A0.Descript AS [S_AXLE_TYPE_Description],
       x.[BRAKES_YN],
       x.[TRAILER_LENGTH]
    FROM [clt_NetO].[WG_ASSET_VHCL_TRAILER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AXLE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_TRAILER' and A0.[COLUMNNAME] = 'S_AXLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29724,6 +31242,7 @@ AS
       x.[ASSETID],
       x.[VALUATION_CNTR],
       x.[S_VALUATION_SOURCE],
+      A0.Descript AS [S_VALUATION_SOURCE_Description],
       x.[VALUATION_RESPONSE_ID],
       x.[ACTIVE_YN],
       x.[ELECTRONIC_YN],
@@ -29733,7 +31252,9 @@ AS
       x.[BOOK_EDITION],
       x.[REGION],
       x.[S_CLEAN_LEVEL],
+      A1.Descript AS [S_CLEAN_LEVEL_Description],
       x.[S_USE_FOR_LOAN_VAL],
+      A2.Descript AS [S_USE_FOR_LOAN_VAL_Description],
       x.[COLL_TRADE_BAM_VALUE],
       x.[COLL_LOAN_BAM_VALUE],
       x.[COLL_RETAIL_BAM_VALUE],
@@ -29750,6 +31271,9 @@ AS
       x.[INVOICE_PRC],
       x.[TOTL_ADJSTD_VAL_OVRD]
    FROM [clt_NetO].[WG_ASSET_VHCL_VALUATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_VALUATION_SOURCE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A0.[COLUMNNAME] = 'S_VALUATION_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CLEAN_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A1.[COLUMNNAME] = 'S_CLEAN_LEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USE_FOR_LOAN_VAL = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A2.[COLUMNNAME] = 'S_USE_FOR_LOAN_VAL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29773,6 +31297,7 @@ AS
       x.[LNUM],
       x.[AD_FLAG],
       x.[S_AD_ACCT_TYPE],
+      A0.Descript AS [S_AD_ACCT_TYPE_Description],
       x.[AD_INST_NAME],
       x.[AD_ACCT_NUMB],
       x.[AD_RT_NUMB],
@@ -29780,6 +31305,7 @@ AS
       x.[AD_ADDL_PRINC],
       x.[AD_ACCT_TYP_OTH]
    FROM [clt_NetO].[WG_AUTO_DEBIT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AD_ACCT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_AUTO_DEBIT' and A0.[COLUMNNAME] = 'S_AD_ACCT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -29802,16 +31328,28 @@ AS
    SELECT
       x.[FIELDID],
       x.[S_FIELD_STATUS],
+      A0.Descript AS [S_FIELD_STATUS_Description],
       x.[FIELD_NAME],
       x.[FIELD_TEXT],
       x.[S_FIELD_CONTROL_TYPE],
+      A1.Descript AS [S_FIELD_CONTROL_TYPE_Description],
       x.[S_FIELD_OPERATOR],
+      A2.Descript AS [S_FIELD_OPERATOR_Description],
       x.[S_FIELD_LIST_SOURCE],
+      A3.Descript AS [S_FIELD_LIST_SOURCE_Description],
       x.[S_FIELD_FORMAT],
+      A4.Descript AS [S_FIELD_FORMAT_Description],
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID],
-      x.[S_USAGE_TYPE]
+      x.[S_USAGE_TYPE],
+      A5.Descript AS [S_USAGE_TYPE_Description]
    FROM [clt_NetO].[WG_BRM_DEFN_FIELDS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIELD_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_FIELDS' and A0.[COLUMNNAME] = 'S_FIELD_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FIELD_CONTROL_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_FIELDS' and A1.[COLUMNNAME] = 'S_FIELD_CONTROL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FIELD_OPERATOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_FIELDS' and A2.[COLUMNNAME] = 'S_FIELD_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FIELD_LIST_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_DEFN_FIELDS' and A3.[COLUMNNAME] = 'S_FIELD_LIST_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FIELD_FORMAT = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_DEFN_FIELDS' and A4.[COLUMNNAME] = 'S_FIELD_FORMAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -29833,8 +31371,11 @@ AS
    SELECT
       x.[GRIDID],
       x.[S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[S_GRID_STATUS],
+      A1.Descript AS [S_GRID_STATUS_Description],
       x.[S_GRID_CATEGORY],
+      A2.Descript AS [S_GRID_CATEGORY_Description],
       x.[GRID_NAME],
       x.[GRID_NBR_DIMS],
       x.[RSLT_START_ROW],
@@ -29846,6 +31387,9 @@ AS
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID' and A1.[COLUMNNAME] = 'S_GRID_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -29868,7 +31412,9 @@ AS
       x.[GRIDID],
       x.[DIM_OCC],
       x.[S_GRID_VERT_HORIZ],
+      A0.Descript AS [S_GRID_VERT_HORIZ_Description],
       x.[S_GRID_OPERATOR],
+      A1.Descript AS [S_GRID_OPERATOR_Description],
       x.[GRID_FIELD_NAME],
       x.[GRID_LABEL_TEXT],
       x.[GRID_LABEL_OCCS],
@@ -29880,8 +31426,12 @@ AS
       x.[GRID_TGT_VAL_START_COL],
       x.[GRID_TGT_VAL_START_ROW],
       x.[S_GRID_TGT_VAL_SPAN_TYPE],
+      A2.Descript AS [S_GRID_TGT_VAL_SPAN_TYPE_Description],
       x.[FIELDID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GRID_VERT_HORIZ = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A0.[COLUMNNAME] = 'S_GRID_VERT_HORIZ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_OPERATOR = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A1.[COLUMNNAME] = 'S_GRID_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -29907,18 +31457,22 @@ AS
       x.[EXP_FILE_NAME],
       x.[EXP_FILE_PATH],
       x.[S_EXP_STATUS],
+      A0.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID],
       x.[EXP_BRM_IDENT],
       x.[EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS],
+      A1.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[EXP_NOTES],
       x.[DBID],
       x.[EXP_INCL_FIELDS],
       x.[EXP_INCL_CATS],
       x.[EXP_INCL_GRIDS]
    FROM [clt_NetO].[WG_BRM_EXPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EXP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_EXPORT' and A0.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -29941,9 +31495,11 @@ AS
       x.[BRM_IDENT_FIELD],
       x.[BRM_IDENT_CODE],
       x.[S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[BRM_IDENT_NAME],
       x.[BRM_IDENT_DESCRIPTION]
    FROM [clt_NetO].[WG_BRM_IDENTIFIERS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -29969,18 +31525,21 @@ AS
       x.[IMP_FILE_NAME],
       x.[IMP_FILE_PATH],
       x.[S_IMP_STATUS],
+      A0.Descript AS [S_IMP_STATUS_Description],
       x.[EXPORTID],
       x.[EXP_USER_NAME],
       x.[EXP_DATE_TIME],
       x.[EXP_FILE_NAME],
       x.[EXP_FILE_PATH],
       x.[S_EXP_STATUS],
+      A1.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID],
       x.[EXP_BRM_IDENT],
       x.[EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS],
+      A2.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[IMP_NOTES],
       x.[EXP_NOTES],
       x.[SYS_FINDINGS],
@@ -29992,6 +31551,9 @@ AS
       x.[IMP_IMP_CATS],
       x.[IMP_IMP_GRIDS]
    FROM [clt_NetO].[WG_BRM_IMPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IMP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IMPORT' and A0.[COLUMNNAME] = 'S_IMP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_IMPORT' and A1.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -30013,15 +31575,20 @@ AS
    SELECT
       x.[BRMID],
       x.[S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[LU_BRM_IDENTIFIER],
       x.[S_BRM_STATUS],
+      A1.Descript AS [S_BRM_STATUS_Description],
       x.[S_BRM_TYPE],
+      A2.Descript AS [S_BRM_TYPE_Description],
       x.[BRM_NAME],
       x.[BRM_DESCRIPTION],
       x.[BRM_START_DATE],
       x.[BRM_END_DATE],
       x.[S_CAP_CATEGORY],
+      A3.Descript AS [S_CAP_CATEGORY_Description],
       x.[S_EFFECTIVITY_RULE],
+      A4.Descript AS [S_EFFECTIVITY_RULE_Description],
       x.[CHANGE_EFF_DATE],
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID],
@@ -30031,8 +31598,15 @@ AS
       x.[LAST_CHANGE_USER_ID],
       x.[MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL],
+      A5.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[BRM_CATEGORY]
    FROM [clt_NetO].[WG_BRM_LKUP_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_BASE' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_BASE' and A1.[COLUMNNAME] = 'S_BRM_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BRM_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_LKUP_BASE' and A2.[COLUMNNAME] = 'S_BRM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_CAP_CATEGORY = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_LKUP_BASE' and A3.[COLUMNNAME] = 'S_CAP_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EFFECTIVITY_RULE = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_LKUP_BASE' and A4.[COLUMNNAME] = 'S_EFFECTIVITY_RULE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -30057,8 +31631,10 @@ AS
       x.[RULE_DESCRIPTION],
       x.[PRIORITY],
       x.[MESSAGE_TEXT],
-      x.[S_OVERRIDE_LEVEL]
+      x.[S_OVERRIDE_LEVEL],
+      A0.Descript AS [S_OVERRIDE_LEVEL_Description]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -30118,8 +31694,10 @@ AS
       x.[RULE_ITEM_GRID_RSLT_COL],
       x.[RULE_ITEM_FIELD_NAME],
       x.[S_RULE_ITEM_OPERATOR],
+      A0.Descript AS [S_RULE_ITEM_OPERATOR_Description],
       x.[RULE_ITEM_FIELDID]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_FIELD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -30143,12 +31721,16 @@ AS
       x.[RULE_OCC],
       x.[RULE_ITEM_OCC],
       x.[S_RULE_ITEM_TYPE],
+      A0.Descript AS [S_RULE_ITEM_TYPE_Description],
       x.[RULE_ITEM_NAME],
       x.[PRIORITY],
       x.[MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL],
+      A1.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[MESSAGE_TEXT_2]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_ITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A0.[COLUMNNAME] = 'S_RULE_ITEM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -30325,10 +31907,15 @@ AS
       x.[LNUM],
       x.[CID_BRANCH],
       x.[S_BUSINESS_CHANNEL],
+      A0.Descript AS [S_BUSINESS_CHANNEL_Description],
       x.[S_LOAN_TYPE],
+      A1.Descript AS [S_LOAN_TYPE_Description],
       x.[S_LOAN_CATEGORY],
+      A2.Descript AS [S_LOAN_CATEGORY_Description],
       x.[S_REFERRAL_SOURCE],
+      A3.Descript AS [S_REFERRAL_SOURCE_Description],
       x.[S_LOAN_PURPOSE],
+      A4.Descript AS [S_LOAN_PURPOSE_Description],
       x.[EMP_LOAN_YN],
       x.[REG_O_LOAN_YN],
       x.[TSWE_EXPECTED_YN],
@@ -30339,6 +31926,7 @@ AS
       x.[MBA_YN],
       x.[IS_PERSONALUSE_YN],
       x.[S_PRIMARY_COLLATERAL_TYPE],
+      A5.Descript AS [S_PRIMARY_COLLATERAL_TYPE_Description],
       x.[COLLATERAL_STATE],
       x.[VENDOR_VAL_METHOD],
       x.[VALUATION_SOURCE],
@@ -30347,8 +31935,18 @@ AS
       x.[CURRENTMODELYR],
       x.[COLLAGEYRS],
       x.[S_TITLE_TRANSFER],
-      x.[S_SECONDARY_COLLATERAL_TYPE]
+      A6.Descript AS [S_TITLE_TRANSFER_Description],
+      x.[S_SECONDARY_COLLATERAL_TYPE],
+      A7.Descript AS [S_SECONDARY_COLLATERAL_TYPE_Description]
    FROM [clt_NetO].[WG_CNS_LOAN_APPLICATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BUSINESS_CHANNEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A0.[COLUMNNAME] = 'S_BUSINESS_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A1.[COLUMNNAME] = 'S_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOAN_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A2.[COLUMNNAME] = 'S_LOAN_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REFERRAL_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A3.[COLUMNNAME] = 'S_REFERRAL_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOAN_PURPOSE = A4.DBSYMBOL AND A4.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A4.[COLUMNNAME] = 'S_LOAN_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PRIMARY_COLLATERAL_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A5.[COLUMNNAME] = 'S_PRIMARY_COLLATERAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TITLE_TRANSFER = A6.DBSYMBOL AND A6.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A6.[COLUMNNAME] = 'S_TITLE_TRANSFER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SECONDARY_COLLATERAL_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A7.[COLUMNNAME] = 'S_SECONDARY_COLLATERAL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -30437,7 +32035,6 @@ CREATE VIEW [NetO_restricted].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
-      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -30450,7 +32047,8 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT]
+      x.[MNTHPAYMENT],
+      x.[TRDINCNTR]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -30926,8 +32524,10 @@ AS
       x.[INC_SRC_CTR],
       x.[RECORD_CREATED],
       x.[S_INCOME_SOURCE_TYPE],
+      A0.Descript AS [S_INCOME_SOURCE_TYPE_Description],
       x.[OTHER_INCOME_SRC_DESC],
       x.[S_BUSINESS_TYPE],
+      A1.Descript AS [S_BUSINESS_TYPE_Description],
       x.[SOURCE_NAME],
       x.[SOURCE_CONTACT],
       x.[ADDRESS_LN_1],
@@ -30941,6 +32541,7 @@ AS
       x.[FAX_NBR],
       x.[TITLE],
       x.[S_SPECIAL_BOR_EMP_REL_TYPE],
+      A2.Descript AS [S_SPECIAL_BOR_EMP_REL_TYPE_Description],
       x.[SPEC_BOR_EMP_REL_TYPE_DESC],
       x.[OCCUPATION],
       x.[EMPLOYED_FROM],
@@ -30951,6 +32552,7 @@ AS
       x.[SELF_EMPLOYED_FLAG],
       x.[PCT_BUSINESS_OWNED],
       x.[S_SELF_EMPL_TYPE],
+      A3.Descript AS [S_SELF_EMPL_TYPE_Description],
       x.[PROF_MONTHS],
       x.[PROF_YEARS],
       x.[BASE_INCOME],
@@ -30962,6 +32564,7 @@ AS
       HASHBYTES('SHA2_256', CAST(x.[TOTAL_INCOME] AS NVARCHAR(50))) AS [TOTAL_INCOME],
       x.[LIABCTR],
       x.[S_EMP_UNIT_TYPE],
+      A4.Descript AS [S_EMP_UNIT_TYPE_Description],
       x.[EMP_UNIT_NUMBER],
       x.[INCOME_STATE_FOREIN],
       x.[INCOME_POSTCODE],
@@ -30974,6 +32577,11 @@ AS
       x.[INC_DBA_NAME],
       x.[INC_EIN]
    FROM [clt_NetO].[WG_INCOME_SOURCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME_SOURCE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_INCOME_SOURCE' and A0.[COLUMNNAME] = 'S_INCOME_SOURCE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BUSINESS_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_INCOME_SOURCE' and A1.[COLUMNNAME] = 'S_BUSINESS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPECIAL_BOR_EMP_REL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_INCOME_SOURCE' and A2.[COLUMNNAME] = 'S_SPECIAL_BOR_EMP_REL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SELF_EMPL_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'WG_INCOME_SOURCE' and A3.[COLUMNNAME] = 'S_SELF_EMPL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EMP_UNIT_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'WG_INCOME_SOURCE' and A4.[COLUMNNAME] = 'S_EMP_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -31020,8 +32628,10 @@ AS
       x.[CC],
       x.[STROKE],
       x.[CATEGORY],
-      x.[S_GENERIC_BODY_STYLE]
+      x.[S_GENERIC_BODY_STYLE],
+      A0.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_KELLEYBLUEBOOK_RESPONSE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GENERIC_BODY_STYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_KELLEYBLUEBOOK_RESPONSE' and A0.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -31045,9 +32655,11 @@ AS
       x.[ROWCNTR],
       x.[LNUM],
       x.[S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[LOAN_STATUS],
       x.[STATUS_DATE]
    FROM [clt_NetO].[WG_RPT_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_RPT_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -31310,12 +32922,16 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[START_DATE],
       x.[END_DATE],
       x.[S_OFF_OR_ENLISTED],
+      A1.Descript AS [S_OFF_OR_ENLISTED_Description],
       x.[SERVICE_NUMBER],
       x.[ACTIVESERVYN]
    FROM [clt_NetO].[WG_TLBR_VET_MILT_SERVICE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OFF_OR_ENLISTED = A1.DBSYMBOL AND A1.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A1.[COLUMNNAME] = 'S_OFF_OR_ENLISTED'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -31632,8 +33248,12 @@ AS
       x.[MIN_1ST_ADJ_RATE],
       x.[FIR_MAX_MONTHLY_AMT],
       x.[S_FRE_INDEX_TYPE],
-      x.[S_FNM_INDEX_TYPE]
+      A0.Descript AS [S_FRE_INDEX_TYPE_Description],
+      x.[S_FNM_INDEX_TYPE],
+      A1.Descript AS [S_FNM_INDEX_TYPE_Description]
    FROM [clt_NetO].[ARMINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FRE_INDEX_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'ARMINFO' and A0.[COLUMNNAME] = 'S_FRE_INDEX_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FNM_INDEX_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'ARMINFO' and A1.[COLUMNNAME] = 'S_FNM_INDEX_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -31659,6 +33279,7 @@ AS
       x.[DBID],
       x.[ASSETCTR],
       x.[S_ASSET],
+      A0.Descript AS [S_ASSET_Description],
       x.[ASSETDSC],
       x.[ACCTNUM],
       x.[HOLDER],
@@ -31694,10 +33315,15 @@ AS
       x.[BUILDER_EARNEST],
       x.[ASSET_INDICATOR],
       x.[S_ACCOUNT_OWNERSHIP],
+      A1.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[S_GIFT_PRVDR_TYPE],
+      A2.Descript AS [S_GIFT_PRVDR_TYPE_Description],
       x.[GIFT_PRVDR_OTH_DESC],
       x.[GIFT_DEPOSIT_STATUS]
    FROM [clt_NetO].[ASSETS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET = A0.DBSYMBOL AND A0.[TableName] = 'ASSETS' and A0.[COLUMNNAME] = 'S_ASSET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACCOUNT_OWNERSHIP = A1.DBSYMBOL AND A1.[TableName] = 'ASSETS' and A1.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GIFT_PRVDR_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'ASSETS' and A2.[COLUMNNAME] = 'S_GIFT_PRVDR_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -31764,6 +33390,7 @@ AS
       x.[AGE],
       x.[YRSSCHL],
       x.[S_MARITL],
+      A0.Descript AS [S_MARITL_Description],
       x.[FRNINFO],
       x.[GENDER],
       x.[NUMDEP],
@@ -31779,6 +33406,7 @@ AS
       x.[APPNUMB],
       x.[FIRSTBUY],
       x.[S_OWNSHP],
+      A1.Descript AS [S_OWNSHP_Description],
       x.[VOR_ACCT],
       x.[VOR_NAME],
       x.[OTHINCM],
@@ -31786,8 +33414,10 @@ AS
       x.[JOINTLY],
       x.[DOB],
       x.[S_BORTYP],
+      A2.Descript AS [S_BORTYP_Description],
       x.[ALIASES],
       x.[S_VESTNG],
+      A3.Descript AS [S_VESTNG_Description],
       x.[PRTENTTL],
       x.[PARTNOTE],
       x.[COUNTY],
@@ -31852,6 +33482,7 @@ AS
       x.[ELEC_DISC_CONSENT],
       x.[ELEC_DISC_WITHDRAW],
       x.[S_IVMETH],
+      A4.Descript AS [S_IVMETH_Description],
       x.[ATALLLIQUIDTOTAL],
       x.[ATGIFTTOTAL],
       x.[ATREONETPROCEEDSTOTAL],
@@ -31859,6 +33490,7 @@ AS
       x.[LTNONSUBJDEBTMOTOTAL],
       x.[LTNONSUBJPAYOFFTOTAL],
       x.[S_CBSOURCE],
+      A5.Descript AS [S_CBSOURCE_Description],
       x.[VETERAN],
       x.[ENTITLEMENT],
       x.[LDP_NUMBER],
@@ -31882,7 +33514,9 @@ AS
       x.[DISPLAY_NAME],
       x.[NON_INDIV_BORR_NAME],
       x.[S_LEGAL_ENTITY_TYPE],
+      A6.Descript AS [S_LEGAL_ENTITY_TYPE_Description],
       x.[S_LEGAL_ENTITY_TYP_OTH],
+      A7.Descript AS [S_LEGAL_ENTITY_TYP_OTH_Description],
       x.[ULDD_TAXPAYER_ID],
       x.[INCLUDE_IN_PROFORMA],
       x.[FADDR_INDICATOR],
@@ -31898,9 +33532,11 @@ AS
       x.[MNTHS_AT_PRSNT],
       x.[BORR_COVERED],
       x.[S_COV_BORR_STATUS],
+      A8.Descript AS [S_COV_BORR_STATUS_Description],
       x.[BORR_VERBDISC],
       x.[MLACERTID],
       x.[S_BOR_UNIT_TYPE],
+      A9.Descript AS [S_BOR_UNIT_TYPE_Description],
       x.[BOR_UNIT_NUM],
       x.[BOR_COUNTRY],
       x.[BOR_COUNTRY_CODE],
@@ -31917,8 +33553,11 @@ AS
       x.[COPIED_MAIL_ADDRESS],
       x.[CHECK_ALIAS],
       x.[S_PARTY_TYPE],
+      A10.Descript AS [S_PARTY_TYPE_Description],
       x.[S_CITIZENSHIP],
+      A11.Descript AS [S_CITIZENSHIP_Description],
       x.[S_UNMARRIED],
+      A12.Descript AS [S_UNMARRIED_Description],
       x.[ATTR_PORTAL_REG],
       x.[ATTR_COUNSELING_REQUIRED],
       x.[ATTR_CHILD_CARE],
@@ -31926,6 +33565,7 @@ AS
       x.[ATTR_GUARDIANSHIP],
       x.[ATTR_SOLE_PROPRIETOR],
       x.[S_UNMARRIED_RLTNSHIP],
+      A13.Descript AS [S_UNMARRIED_RLTNSHIP_Description],
       x.[UNMARRIED_RLTNSHIP_STATE],
       x.[UNMARRIED_RLTNSHIP_OTHERDESC],
       x.[RETIRED_BORROWER],
@@ -31938,6 +33578,20 @@ AS
       x.[IS_DEALER_EMPLOYEE],
       x.[LIVE_RENT_FREE_ENUMS]
    FROM [clt_NetO].[BORROWER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARITL = A0.DBSYMBOL AND A0.[TableName] = 'BORROWER' and A0.[COLUMNNAME] = 'S_MARITL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OWNSHP = A1.DBSYMBOL AND A1.[TableName] = 'BORROWER' and A1.[COLUMNNAME] = 'S_OWNSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BORTYP = A2.DBSYMBOL AND A2.[TableName] = 'BORROWER' and A2.[COLUMNNAME] = 'S_BORTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_VESTNG = A3.DBSYMBOL AND A3.[TableName] = 'BORROWER' and A3.[COLUMNNAME] = 'S_VESTNG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_IVMETH = A4.DBSYMBOL AND A4.[TableName] = 'BORROWER' and A4.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CBSOURCE = A5.DBSYMBOL AND A5.[TableName] = 'BORROWER' and A5.[COLUMNNAME] = 'S_CBSOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LEGAL_ENTITY_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'BORROWER' and A6.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LEGAL_ENTITY_TYP_OTH = A7.DBSYMBOL AND A7.[TableName] = 'BORROWER' and A7.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYP_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COV_BORR_STATUS = A8.DBSYMBOL AND A8.[TableName] = 'BORROWER' and A8.[COLUMNNAME] = 'S_COV_BORR_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BOR_UNIT_TYPE = A9.DBSYMBOL AND A9.[TableName] = 'BORROWER' and A9.[COLUMNNAME] = 'S_BOR_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_PARTY_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'BORROWER' and A10.[COLUMNNAME] = 'S_PARTY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_CITIZENSHIP = A11.DBSYMBOL AND A11.[TableName] = 'BORROWER' and A11.[COLUMNNAME] = 'S_CITIZENSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_UNMARRIED = A12.DBSYMBOL AND A12.[TableName] = 'BORROWER' and A12.[COLUMNNAME] = 'S_UNMARRIED'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_UNMARRIED_RLTNSHIP = A13.DBSYMBOL AND A13.[TableName] = 'BORROWER' and A13.[COLUMNNAME] = 'S_UNMARRIED_RLTNSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -31965,15 +33619,19 @@ AS
       x.[CSTIMPRO],
       x.[IMPDESC],
       x.[S_REFPRP],
+      A0.Descript AS [S_REFPRP_Description],
       x.[IMPMADE],
       x.[LOTACQUR],
       x.[REFIIMP],
       x.[CASHAMT],
       x.[S_GSE_REFINANCE_PURPOSE],
+      A1.Descript AS [S_GSE_REFINANCE_PURPOSE_Description],
       x.[S_CONST_PERM_CLOSING],
+      A2.Descript AS [S_CONST_PERM_CLOSING_Description],
       x.[INTERNREFI],
       x.[ORIG_INVESTOR_LOAN_NBR],
       x.[S_ORIG_INVESTOR],
+      A3.Descript AS [S_ORIG_INVESTOR_Description],
       x.[OTHER_INVESTOR_DESC],
       x.[OTHERGSEREFIPURPTYPEDESC],
       x.[REPLACE_EXIST_CONSTR_LOAN],
@@ -31981,11 +33639,21 @@ AS
       x.[PREVIOUS_REFI_MONTHS],
       x.[CO_REFI_PURCH_CONST],
       x.[S_CONST_PERM_FEATURE],
+      A4.Descript AS [S_CONST_PERM_FEATURE_Description],
       x.[S_FNM_REFI_PGM],
+      A5.Descript AS [S_FNM_REFI_PGM_Description],
       x.[S_FRE_REFI_PGM],
+      A6.Descript AS [S_FRE_REFI_PGM_Description],
       x.[LIMIT_DESC],
       x.[REFI_LOAN_ACCT_NBR]
    FROM [clt_NetO].[CONSREFI] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFPRP = A0.DBSYMBOL AND A0.[TableName] = 'CONSREFI' and A0.[COLUMNNAME] = 'S_REFPRP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GSE_REFINANCE_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'CONSREFI' and A1.[COLUMNNAME] = 'S_GSE_REFINANCE_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CONST_PERM_CLOSING = A2.DBSYMBOL AND A2.[TableName] = 'CONSREFI' and A2.[COLUMNNAME] = 'S_CONST_PERM_CLOSING'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ORIG_INVESTOR = A3.DBSYMBOL AND A3.[TableName] = 'CONSREFI' and A3.[COLUMNNAME] = 'S_ORIG_INVESTOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_CONST_PERM_FEATURE = A4.DBSYMBOL AND A4.[TableName] = 'CONSREFI' and A4.[COLUMNNAME] = 'S_CONST_PERM_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_FNM_REFI_PGM = A5.DBSYMBOL AND A5.[TableName] = 'CONSREFI' and A5.[COLUMNNAME] = 'S_FNM_REFI_PGM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_FRE_REFI_PGM = A6.DBSYMBOL AND A6.[TableName] = 'CONSREFI' and A6.[COLUMNNAME] = 'S_FRE_REFI_PGM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -32159,7 +33827,9 @@ AS
       x.[M_DBID],
       x.[M_SERIAL],
       x.[S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[BNKRPT_DISCHARGE_MOS],
       x.[FORECLOSURE_MOS],
       x.[NON_PERMANENT_RESIDENT_ALIEN],
@@ -32184,6 +33854,7 @@ AS
       x.[SHORT_SALE],
       x.[PROPFORECLOSE],
       x.[S_BANKRUPTCY_TYPE],
+      A2.Descript AS [S_BANKRUPTCY_TYPE_Description],
       x.[PREFORECLOS_NOTES],
       x.[PROPFORECL_NOTES],
       x.[PRIMRESID_NOTES],
@@ -32210,6 +33881,9 @@ AS
       x.[DECBANKRUPTCY_INCINFORM],
       x.[FHA_SECOND_RESID_IND]
    FROM [clt_NetO].[DECLRTN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'DECLRTN' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'DECLRTN' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BANKRUPTCY_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DECLRTN' and A2.[COLUMNNAME] = 'S_BANKRUPTCY_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -32244,35 +33918,55 @@ AS
       x.[RENTS3],
       x.[RENTS4],
       x.[S_SPF1],
+      A0.Descript AS [S_SPF1_Description],
       x.[S_SPF2],
+      A1.Descript AS [S_SPF2_Description],
       x.[S_SPF3],
+      A2.Descript AS [S_SPF3_Description],
       x.[S_SPF4],
+      A3.Descript AS [S_SPF4_Description],
       x.[S_SPF5],
+      A4.Descript AS [S_SPF5_Description],
       x.[S_SPF6],
+      A5.Descript AS [S_SPF6_Description],
       x.[ASSUM],
       x.[RDF],
       x.[INTPD],
       x.[MATDATE],
       x.[S_SFSRC1],
+      A6.Descript AS [S_SFSRC1_Description],
       x.[S_SFSRC2],
+      A7.Descript AS [S_SFSRC2_Description],
       x.[SFAMT1],
       x.[SFAMT2],
       x.[S_BECA1],
+      A8.Descript AS [S_BECA1_Description],
       x.[S_BECA2],
+      A9.Descript AS [S_BECA2_Description],
       x.[S_BECF1],
+      A10.Descript AS [S_BECF1_Description],
       x.[S_BECF2],
+      A11.Descript AS [S_BECF2_Description],
       x.[S_DPSRC1],
+      A12.Descript AS [S_DPSRC1_Description],
       x.[S_DPSRC2],
+      A13.Descript AS [S_DPSRC2_Description],
       x.[S_DPSRC3],
+      A14.Descript AS [S_DPSRC3_Description],
       x.[S_DPSRC4],
+      A15.Descript AS [S_DPSRC4_Description],
       x.[DPAMT1],
       x.[DPAMT2],
       x.[DPAMT3],
       x.[DPAMT4],
       x.[S_CCSRC1],
+      A16.Descript AS [S_CCSRC1_Description],
       x.[S_CCSRC2],
+      A17.Descript AS [S_CCSRC2_Description],
       x.[S_CCSRC3],
+      A18.Descript AS [S_CCSRC3_Description],
       x.[S_CCSRC4],
+      A19.Descript AS [S_CCSRC4_Description],
       x.[CCAMT1],
       x.[CCAMT2],
       x.[CCAMT3],
@@ -32280,12 +33974,14 @@ AS
       x.[MICOV],
       x.[UPB],
       x.[S_LFC],
+      A20.Descript AS [S_LFC_Description],
       x.[INTEND],
       x.[LPID],
       x.[INTONLY],
       x.[LOOKBACK],
       x.[NETNEGAM],
       x.[S_RFC],
+      A21.Descript AS [S_RFC_Description],
       x.[UWNAME],
       x.[INVLNUM],
       x.[MTGORIG],
@@ -32295,9 +33991,13 @@ AS
       x.[SELLER],
       x.[CID_SELLER_AGENT],
       x.[S_SPF7],
+      A22.Descript AS [S_SPF7_Description],
       x.[S_SPF8],
+      A23.Descript AS [S_SPF8_Description],
       x.[S_SPF9],
+      A24.Descript AS [S_SPF9_Description],
       x.[S_SPF10],
+      A25.Descript AS [S_SPF10_Description],
       x.[UPBO],
       x.[ESCROW_ACCT_BALANCE],
       x.[ESCROW_PYMT_AMT],
@@ -32305,21 +34005,59 @@ AS
       x.[APPR_DOC_ID],
       x.[READY_FOR_DELIVERY],
       x.[S_INT_ACCRUAL_TYPE],
+      A26.Descript AS [S_INT_ACCRUAL_TYPE_Description],
       x.[S_INT_CALC_BASIS_TYPE],
+      A27.Descript AS [S_INT_CALC_BASIS_TYPE_Description],
       x.[INT_CALC_EFF_MONTHS],
       x.[S_INT_CALC_PERIOD],
+      A28.Descript AS [S_INT_CALC_PERIOD_Description],
       x.[S_INT_CALC_METHOD],
+      A29.Descript AS [S_INT_CALC_METHOD_Description],
       x.[LOAN_DELIV_GSE],
       x.[LTV_RATIO_PCT],
       x.[S_FNM_HOME_IMP_PROD],
+      A30.Descript AS [S_FNM_HOME_IMP_PROD_Description],
       x.[ADJ_LOAN_AMT],
       x.[ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE],
       x.[S_SIGNDOCPUSHBACK],
+      A31.Descript AS [S_SIGNDOCPUSHBACK_Description],
       x.[MI_CANCELLED],
       x.[HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SPF1 = A0.DBSYMBOL AND A0.[TableName] = 'DELIVERY' and A0.[COLUMNNAME] = 'S_SPF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPF2 = A1.DBSYMBOL AND A1.[TableName] = 'DELIVERY' and A1.[COLUMNNAME] = 'S_SPF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPF3 = A2.DBSYMBOL AND A2.[TableName] = 'DELIVERY' and A2.[COLUMNNAME] = 'S_SPF3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPF4 = A3.DBSYMBOL AND A3.[TableName] = 'DELIVERY' and A3.[COLUMNNAME] = 'S_SPF4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_SPF5 = A4.DBSYMBOL AND A4.[TableName] = 'DELIVERY' and A4.[COLUMNNAME] = 'S_SPF5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SPF6 = A5.DBSYMBOL AND A5.[TableName] = 'DELIVERY' and A5.[COLUMNNAME] = 'S_SPF6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SFSRC1 = A6.DBSYMBOL AND A6.[TableName] = 'DELIVERY' and A6.[COLUMNNAME] = 'S_SFSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SFSRC2 = A7.DBSYMBOL AND A7.[TableName] = 'DELIVERY' and A7.[COLUMNNAME] = 'S_SFSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_BECA1 = A8.DBSYMBOL AND A8.[TableName] = 'DELIVERY' and A8.[COLUMNNAME] = 'S_BECA1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BECA2 = A9.DBSYMBOL AND A9.[TableName] = 'DELIVERY' and A9.[COLUMNNAME] = 'S_BECA2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_BECF1 = A10.DBSYMBOL AND A10.[TableName] = 'DELIVERY' and A10.[COLUMNNAME] = 'S_BECF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BECF2 = A11.DBSYMBOL AND A11.[TableName] = 'DELIVERY' and A11.[COLUMNNAME] = 'S_BECF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_DPSRC1 = A12.DBSYMBOL AND A12.[TableName] = 'DELIVERY' and A12.[COLUMNNAME] = 'S_DPSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_DPSRC2 = A13.DBSYMBOL AND A13.[TableName] = 'DELIVERY' and A13.[COLUMNNAME] = 'S_DPSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DPSRC3 = A14.DBSYMBOL AND A14.[TableName] = 'DELIVERY' and A14.[COLUMNNAME] = 'S_DPSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_DPSRC4 = A15.DBSYMBOL AND A15.[TableName] = 'DELIVERY' and A15.[COLUMNNAME] = 'S_DPSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_CCSRC1 = A16.DBSYMBOL AND A16.[TableName] = 'DELIVERY' and A16.[COLUMNNAME] = 'S_CCSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CCSRC2 = A17.DBSYMBOL AND A17.[TableName] = 'DELIVERY' and A17.[COLUMNNAME] = 'S_CCSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CCSRC3 = A18.DBSYMBOL AND A18.[TableName] = 'DELIVERY' and A18.[COLUMNNAME] = 'S_CCSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_CCSRC4 = A19.DBSYMBOL AND A19.[TableName] = 'DELIVERY' and A19.[COLUMNNAME] = 'S_CCSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_LFC = A20.DBSYMBOL AND A20.[TableName] = 'DELIVERY' and A20.[COLUMNNAME] = 'S_LFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_RFC = A21.DBSYMBOL AND A21.[TableName] = 'DELIVERY' and A21.[COLUMNNAME] = 'S_RFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_SPF7 = A22.DBSYMBOL AND A22.[TableName] = 'DELIVERY' and A22.[COLUMNNAME] = 'S_SPF7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_SPF8 = A23.DBSYMBOL AND A23.[TableName] = 'DELIVERY' and A23.[COLUMNNAME] = 'S_SPF8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_SPF9 = A24.DBSYMBOL AND A24.[TableName] = 'DELIVERY' and A24.[COLUMNNAME] = 'S_SPF9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_SPF10 = A25.DBSYMBOL AND A25.[TableName] = 'DELIVERY' and A25.[COLUMNNAME] = 'S_SPF10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_INT_ACCRUAL_TYPE = A26.DBSYMBOL AND A26.[TableName] = 'DELIVERY' and A26.[COLUMNNAME] = 'S_INT_ACCRUAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_INT_CALC_BASIS_TYPE = A27.DBSYMBOL AND A27.[TableName] = 'DELIVERY' and A27.[COLUMNNAME] = 'S_INT_CALC_BASIS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_INT_CALC_PERIOD = A28.DBSYMBOL AND A28.[TableName] = 'DELIVERY' and A28.[COLUMNNAME] = 'S_INT_CALC_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_INT_CALC_METHOD = A29.DBSYMBOL AND A29.[TableName] = 'DELIVERY' and A29.[COLUMNNAME] = 'S_INT_CALC_METHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A30 on x.S_FNM_HOME_IMP_PROD = A30.DBSYMBOL AND A30.[TableName] = 'DELIVERY' and A30.[COLUMNNAME] = 'S_FNM_HOME_IMP_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A31 on x.S_SIGNDOCPUSHBACK = A31.DBSYMBOL AND A31.[TableName] = 'DELIVERY' and A31.[COLUMNNAME] = 'S_SIGNDOCPUSHBACK'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -32402,6 +34140,7 @@ AS
       x.[DBID],
       x.[DPYMTCTR],
       x.[S_TYPE],
+      A0.Descript AS [S_TYPE_Description],
       x.[AMOUNT],
       x.[NAME],
       x.[ADDR1],
@@ -32426,18 +34165,31 @@ AS
       x.[VERIFYFND],
       x.[OTHERDOWNPAYTYPEDESC],
       x.[S_DOWN_PMT_SRC_TYP],
+      A1.Descript AS [S_DOWN_PMT_SRC_TYP_Description],
       x.[S_DOWN_PMT_SRC_OTH],
+      A2.Descript AS [S_DOWN_PMT_SRC_OTH_Description],
       x.[S_DOWN_PMT_TYP],
+      A3.Descript AS [S_DOWN_PMT_TYP_Description],
       x.[S_TYPE_OTH],
+      A4.Descript AS [S_TYPE_OTH_Description],
       x.[PRIMARY_SRC],
       x.[DOWNPAYMENTPERCENT],
       x.[S_DOWN_PMT_SRC],
+      A5.Descript AS [S_DOWN_PMT_SRC_Description],
       x.[S_TYPENM],
+      A6.Descript AS [S_TYPENM_Description],
       x.[DOWNPAYTYPENMOTHERDESC],
       x.[RECORD_CREATED],
       x.[TOTAL_GIFT_FUNDS],
       x.[ASSETCTR]
    FROM [clt_NetO].[DOWNPYMT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_DOWN_PMT_SRC_TYP = A1.DBSYMBOL AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOWN_PMT_SRC_OTH = A2.DBSYMBOL AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_DOWN_PMT_TYP = A3.DBSYMBOL AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TYPE_OTH = A4.DBSYMBOL AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DOWN_PMT_SRC = A5.DBSYMBOL AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TYPENM = A6.DBSYMBOL AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -32462,11 +34214,14 @@ AS
       x.[DBID],
       x.[TRANCTR],
       x.[S_TRAN],
+      A0.Descript AS [S_TRAN_Description],
       x.[TRANDESC],
       x.[TRANAMT],
       x.[OTHERAMT],
       x.[S_PURCH_CREDIT_TYPE],
+      A1.Descript AS [S_PURCH_CREDIT_TYPE_Description],
       x.[S_PURCH_SOURCE_TYPE],
+      A2.Descript AS [S_PURCH_SOURCE_TYPE_Description],
       x.[OTHERPURCHCREDTYPEDESC],
       x.[OTHERPURCHSRCTYPEDESC],
       x.[MANUALAMT],
@@ -32477,6 +34232,9 @@ AS
       x.[EXCLOTHCREDPREP],
       x.[POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRAN = A0.DBSYMBOL AND A0.[TableName] = 'DTLTRAN' and A0.[COLUMNNAME] = 'S_TRAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PURCH_CREDIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'DTLTRAN' and A1.[COLUMNNAME] = 'S_PURCH_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PURCH_SOURCE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DTLTRAN' and A2.[COLUMNNAME] = 'S_PURCH_SOURCE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -32531,6 +34289,7 @@ AS
       x.[WAIVED],
       x.[CSHMONTH],
       x.[S_PERIOD],
+      A0.Descript AS [S_PERIOD_Description],
       x.[TOTALATC],
       x.[INCGFE],
       x.[SPOVERRIDE],
@@ -32541,6 +34300,7 @@ AS
       x.[INCHCL],
       x.[CID_FEE_SRVC_PRVDR_CO],
       x.[S_MISC_DESC],
+      A1.Descript AS [S_MISC_DESC_Description],
       x.[LOCKEDYN],
       x.[LOCKEDTOTAL],
       x.[ISSUE_CHECK],
@@ -32550,22 +34310,38 @@ AS
       x.[SUBFEE],
       x.[FEECODE],
       x.[S_AGGTYPE],
+      A2.Descript AS [S_AGGTYPE_Description],
       x.[S_RESP_PARTY],
+      A3.Descript AS [S_RESP_PARTY_Description],
       x.[S_PAIDBY],
+      A4.Descript AS [S_PAIDBY_Description],
       x.[S_PAIDTO],
+      A5.Descript AS [S_PAIDTO_Description],
       x.[SUBCODE],
       x.[IS_NOCOST],
       x.[MANAGED_OVR],
       x.[TO_AFFILIATE],
       x.[S_SECTION_TYPE],
+      A6.Descript AS [S_SECTION_TYPE_Description],
       x.[ID_SECTION_SUBTYPE],
       x.[PREPAID_MONTH],
       x.[S_TOLERANCE_CATEGORY],
+      A7.Descript AS [S_TOLERANCE_CATEGORY_Description],
       x.[S_CHANGE_TYPE],
+      A8.Descript AS [S_CHANGE_TYPE_Description],
       x.[CHANGE_REASON],
       x.[BOROPT],
       x.[EXC_MAPR]
    FROM [clt_NetO].[FEEVALS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PERIOD = A0.DBSYMBOL AND A0.[TableName] = 'FEEVALS' and A0.[COLUMNNAME] = 'S_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MISC_DESC = A1.DBSYMBOL AND A1.[TableName] = 'FEEVALS' and A1.[COLUMNNAME] = 'S_MISC_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AGGTYPE = A2.DBSYMBOL AND A2.[TableName] = 'FEEVALS' and A2.[COLUMNNAME] = 'S_AGGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESP_PARTY = A3.DBSYMBOL AND A3.[TableName] = 'FEEVALS' and A3.[COLUMNNAME] = 'S_RESP_PARTY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PAIDBY = A4.DBSYMBOL AND A4.[TableName] = 'FEEVALS' and A4.[COLUMNNAME] = 'S_PAIDBY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PAIDTO = A5.DBSYMBOL AND A5.[TableName] = 'FEEVALS' and A5.[COLUMNNAME] = 'S_PAIDTO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SECTION_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'FEEVALS' and A6.[COLUMNNAME] = 'S_SECTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TOLERANCE_CATEGORY = A7.DBSYMBOL AND A7.[TableName] = 'FEEVALS' and A7.[COLUMNNAME] = 'S_TOLERANCE_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CHANGE_TYPE = A8.DBSYMBOL AND A8.[TableName] = 'FEEVALS' and A8.[COLUMNNAME] = 'S_CHANGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -32587,12 +34363,12 @@ CREATE VIEW [NetO_pii].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
-      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE]
+      x.[P_TEXT_VALUE],
+      x.[PKFIX]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -32621,7 +34397,9 @@ AS
       x.[DETMNNUM],
       x.[DETMNDAT],
       x.[S_FIRM],
+      A0.Descript AS [S_FIRM_Description],
       x.[S_FLDZON],
+      A1.Descript AS [S_FLDZON_Description],
       x.[FLDMAPDT],
       x.[COMMNUMB],
       x.[SFHAREA],
@@ -32632,6 +34410,8 @@ AS
       x.[NFIP_MAP_PANEL_DATE],
       x.[COMMNAME]
    FROM [clt_NetO].[FLOOD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRM = A0.DBSYMBOL AND A0.[TableName] = 'FLOOD' and A0.[COLUMNNAME] = 'S_FIRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FLDZON = A1.DBSYMBOL AND A1.[TableName] = 'FLOOD' and A1.[COLUMNNAME] = 'S_FLDZON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -33272,7 +35052,9 @@ AS
       x.[CUR_HOUSING_PMT],
       x.[OTHERINDEXTYPEDESC],
       x.[S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[S_PAYEETYPE],
+      A1.Descript AS [S_PAYEETYPE_Description],
       x.[PAYEETYPEOTHERDESC],
       x.[CLNUM_COUNTER],
       x.[LEAD_COUNTER],
@@ -33283,18 +35065,22 @@ AS
       x.[DMI_OWN_RIGHTS],
       x.[DMI_BILLING_MODE],
       x.[S_AUSUWTYPE],
+      A2.Descript AS [S_AUSUWTYPE_Description],
       x.[MSP_INVESTOR_ID],
       x.[MSP_INVESTOR_ID_OVERRIDE],
       x.[MSP_INVESTOR_CATEGORY],
       x.[MSP_INVESTOR_CATEGORY_OVERRIDE],
       x.[FIRST_DISB_REC_AMT],
       x.[S_INTPRD_COMM_MET],
+      A3.Descript AS [S_INTPRD_COMM_MET_Description],
       x.[EXCLUDE_FROM_QRM],
       x.[READY_REDISCLSR],
       x.[S_WELCOME_CALL],
+      A4.Descript AS [S_WELCOME_CALL_Description],
       x.[LOAN_AMOUNT_TOLER],
       x.[MAX_APPR_RATE],
       x.[S_AUS_RESULT],
+      A5.Descript AS [S_AUS_RESULT_Description],
       x.[P_ADMINOVR],
       x.[P_CB_ADMINOVR],
       x.[P_COMPOVR],
@@ -33303,8 +35089,10 @@ AS
       x.[HARP_MI_REQUIRED],
       x.[NET_NEW_DOLLARS],
       x.[S_INIT_DISC_DELIVERY_MTHD],
+      A6.Descript AS [S_INIT_DISC_DELIVERY_MTHD_Description],
       x.[CONFIDENCE_SCR_HLMAI],
       x.[S_BRANCH_TYPE],
+      A7.Descript AS [S_BRANCH_TYPE_Description],
       x.[BRANCH_ID],
       x.[BRANCH_BANK_CODE],
       x.[BRANCH_COST_CENTER],
@@ -33313,6 +35101,14 @@ AS
       x.[PROMOTION_CODE],
       x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_DATA' and A0.[COLUMNNAME] = 'S_INDEX'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYEETYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_DATA' and A1.[COLUMNNAME] = 'S_PAYEETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AUSUWTYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_DATA' and A2.[COLUMNNAME] = 'S_AUSUWTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_INTPRD_COMM_MET = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_LOAN_DATA' and A3.[COLUMNNAME] = 'S_INTPRD_COMM_MET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_WELCOME_CALL = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_LOAN_DATA' and A4.[COLUMNNAME] = 'S_WELCOME_CALL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_AUS_RESULT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_LOAN_DATA' and A5.[COLUMNNAME] = 'S_AUS_RESULT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_INIT_DISC_DELIVERY_MTHD = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_LOAN_DATA' and A6.[COLUMNNAME] = 'S_INIT_DISC_DELIVERY_MTHD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_BRANCH_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_LOAN_DATA' and A7.[COLUMNNAME] = 'S_BRANCH_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -33335,8 +35131,11 @@ AS
    SELECT
       x.[LNUM],
       x.[S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[S_UW_STATUS],
+      A1.Descript AS [S_UW_STATUS_Description],
       x.[S_LOCK_STATUS],
+      A2.Descript AS [S_LOCK_STATUS_Description],
       x.[LOCK_STATUS_DISPLAY],
       x.[SENT_TO_MIDANET],
       x.[AP_ADMIN_ONLY],
@@ -33344,6 +35143,9 @@ AS
       x.[EXT_LOAN_STATUS_VERSION_ID],
       x.[EXT_LOAN_STATUS_VERSION]
    FROM [clt_NetO].[GF_TL_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UW_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_STATUS' and A1.[COLUMNNAME] = 'S_UW_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOCK_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_STATUS' and A2.[COLUMNNAME] = 'S_LOCK_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -33452,9 +35254,13 @@ AS
       x.[PRICE_GROUP_CODE],
       x.[IPG_NAME],
       x.[S_SEC_MANAGE_TYPE],
+      A0.Descript AS [S_SEC_MANAGE_TYPE_Description],
       x.[S_SEC_LOAN_TYPE],
+      A1.Descript AS [S_SEC_LOAN_TYPE_Description],
       x.[S_SEC_POOL_TYPE],
+      A2.Descript AS [S_SEC_POOL_TYPE_Description],
       x.[S_PREPAY_PEN],
+      A3.Descript AS [S_PREPAY_PEN_Description],
       x.[OVER_ALLOW_PCT],
       x.[SHORT_ALLOW_PCT],
       x.[OVER_SPLIT_PCT],
@@ -33478,13 +35284,16 @@ AS
       x.[OLD_AGENCY_NUM_IND],
       x.[PRODUCT_IDENTIFIER],
       x.[S_AUS_IND],
+      A4.Descript AS [S_AUS_IND_Description],
       x.[S_SERVICE_TYPE],
+      A5.Descript AS [S_SERVICE_TYPE_Description],
       x.[SERVICING_INTERFACE_IND],
       x.[SERVICING_LOCATION],
       x.[SUB_PRIME_IND],
       x.[MI_REQUIRE],
       x.[INTEREST_ONLY_PRODUCT],
       x.[S_SPEC_PROG],
+      A6.Descript AS [S_SPEC_PROG_Description],
       x.[CRA_REPORT],
       x.[INV_CODE_OVR],
       x.[INV_PROD_CODE_OVR],
@@ -33503,8 +35312,17 @@ AS
       x.[EVAL_QM],
       x.[APPLY_MLA_RULES],
       x.[LNDR_PD_MI_ALLOWED],
-      x.[S_ASSUMABILITY_FEATURE]
+      x.[S_ASSUMABILITY_FEATURE],
+      A7.Descript AS [S_ASSUMABILITY_FEATURE_Description]
    FROM [clt_NetO].[GF_TL_PNP_IPG_DETAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SEC_MANAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A0.[COLUMNNAME] = 'S_SEC_MANAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEC_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A1.[COLUMNNAME] = 'S_SEC_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SEC_POOL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A2.[COLUMNNAME] = 'S_SEC_POOL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PREPAY_PEN = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A3.[COLUMNNAME] = 'S_PREPAY_PEN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_AUS_IND = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A4.[COLUMNNAME] = 'S_AUS_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SERVICE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A5.[COLUMNNAME] = 'S_SERVICE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SPEC_PROG = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A6.[COLUMNNAME] = 'S_SPEC_PROG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ASSUMABILITY_FEATURE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A7.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -33527,16 +35345,20 @@ AS
    SELECT
       x.[LNUM],
       x.[S_REFSC],
+      A0.Descript AS [S_REFSC_Description],
       x.[TBDADDR],
       x.[POSFHA],
       x.[S_PROPTYPE],
+      A1.Descript AS [S_PROPTYPE_Description],
       x.[PROJCLAS],
       x.[PROJNAME],
       x.[DPPERCT],
       x.[HELINE],
       x.[HECURBAL],
       x.[S_DOCLVL],
+      A2.Descript AS [S_DOCLVL_Description],
       x.[S_LNSTATUS],
+      A3.Descript AS [S_LNSTATUS_Description],
       x.[HLTVH],
       x.[TSWE_INC_EXPECTED],
       x.[QUAL_TSWE_LOAN],
@@ -33552,6 +35374,7 @@ AS
       x.[LO_NMLS_NUM_OVR],
       x.[LO_PHONE_OVR],
       x.[S_GFE_TIME_ZONE],
+      A4.Descript AS [S_GFE_TIME_ZONE_Description],
       x.[ALLOWWITHDRAWLOAN],
       x.[GFE_INT_RATE_LSC],
       x.[GFE_INT_RATE_LIR],
@@ -33598,6 +35421,11 @@ AS
       x.[LP2_RISK_CLASS_OVR],
       x.[DU_DISPLAY_OVR]
    FROM [clt_NetO].[GF_TL_POINT_OF_SALE_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFSC = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A0.[COLUMNNAME] = 'S_REFSC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_PROPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOCLVL = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_DOCLVL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LNSTATUS = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_LNSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_GFE_TIME_ZONE = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -33744,6 +35572,7 @@ AS
       x.[REPAIRAMOUNT],
       x.[REPLACEMENTAMOUNT],
       x.[S_FLOODMAPZONE],
+      A0.Descript AS [S_FLOODMAPZONE_Description],
       x.[APP_SENT_BORROWER],
       x.[APPRAISAL_DELIVERED],
       x.[APP_TIME_WAIVE],
@@ -33757,13 +35586,20 @@ AS
       x.[PERCENT_MULTI_FAM],
       x.[PERCENT_COMMERCIAL],
       x.[S_PROP_LOC_TYPE],
+      A1.Descript AS [S_PROP_LOC_TYPE_Description],
       x.[PROP_LTN_TYP_OTHDESC],
       x.[S_CAR_STORAGE_TYPE],
+      A2.Descript AS [S_CAR_STORAGE_TYPE_Description],
       x.[CARSTORAGE_TYPE_OTHR_DESC],
       x.[CARSTORAGE_NBR_CARS],
       x.[S_FOUNDATION_TYPE],
+      A3.Descript AS [S_FOUNDATION_TYPE_Description],
       x.[FNDN_TYPE_OTHER_DESC]
    FROM [clt_NetO].[GF_TL_UWAPPREXT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FLOODMAPZONE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_UWAPPREXT' and A0.[COLUMNNAME] = 'S_FLOODMAPZONE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROP_LOC_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_UWAPPREXT' and A1.[COLUMNNAME] = 'S_PROP_LOC_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CAR_STORAGE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_UWAPPREXT' and A2.[COLUMNNAME] = 'S_CAR_STORAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FOUNDATION_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_UWAPPREXT' and A3.[COLUMNNAME] = 'S_FOUNDATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -33911,11 +35747,13 @@ AS
       x.[MAILCOUNTRY],
       x.[MAIL_FADDR_INDICATOR],
       x.[S_MAIL_UNIT_TYPE],
+      A0.Descript AS [S_MAIL_UNIT_TYPE_Description],
       x.[MAIL_UNIT_NUM],
       x.[MAIL_COUNTRY_CODE],
       x.[BOR_MAIL_STATE_FOREIN],
       x.[MAIL_POST_CODE_FOREIN]
    FROM [clt_NetO].[GF_TLB_MAILING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MAIL_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLB_MAILING' and A0.[COLUMNNAME] = 'S_MAIL_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34183,21 +36021,28 @@ AS
       x.[CELL_PHONE],
       x.[PRIM_CONTACT],
       x.[S_FIRSTTIMEHBCOUNSEL],
+      A0.Descript AS [S_FIRSTTIMEHBCOUNSEL_Description],
       x.[S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[CURRENT_CUSTOMER],
       x.[WORK_EXT],
       x.[CREDIT_AUTHORIZATION_YN],
       x.[NATIONALITY],
       x.[AFFILIATE],
       x.[S_COUNSEL_CONFIRM_TYP],
+      A2.Descript AS [S_COUNSEL_CONFIRM_TYP_Description],
       x.[S_COUNSEL_CONFIRM_OTH],
+      A3.Descript AS [S_COUNSEL_CONFIRM_OTH_Description],
       x.[S_COUNSEL_FORMAT_TYP],
+      A4.Descript AS [S_COUNSEL_FORMAT_TYP_Description],
       x.[CREDIT_AUTHORIZATION_DATE],
       x.[CUSTOMER_ID],
       x.[S_CRDTSCORE_MODEL_OVR],
+      A5.Descript AS [S_CRDTSCORE_MODEL_OVR_Description],
       x.[URLA_BESTCONTACT],
       x.[URLA_ALTCONTACT],
       x.[S_CREDIT_TYPE],
+      A6.Descript AS [S_CREDIT_TYPE_Description],
       x.[JOINT_CREDIT_BNUM],
       x.[SPOUSE_FNAME],
       x.[SPOUSE_MNAME],
@@ -34214,6 +36059,7 @@ AS
       x.[ATTR_CAIVRS],
       x.[ATTR_ESIGN],
       x.[S_LANGUAGEPREFERENCE],
+      A7.Descript AS [S_LANGUAGEPREFERENCE_Description],
       x.[OTHER_LANGUAGE],
       x.[CURRENTINCOTHERTOTAL],
       x.[CURRENTINCOMETOTAL],
@@ -34232,6 +36078,14 @@ AS
       x.[MOTHERS_MAIDEN],
       x.[APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRSTTIMEHBCOUNSEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_COUNSEL_CONFIRM_TYP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A2.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COUNSEL_CONFIRM_OTH = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A3.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COUNSEL_FORMAT_TYP = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A4.[COLUMNNAME] = 'S_COUNSEL_FORMAT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CRDTSCORE_MODEL_OVR = A5.DBSYMBOL AND A5.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A5.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_CREDIT_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LANGUAGEPREFERENCE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34260,12 +36114,14 @@ AS
       x.[MID_NAME],
       x.[LAST_NAME],
       x.[S_BORR_ALIAS],
+      A0.Descript AS [S_BORR_ALIAS_Description],
       x.[NAME_SUFFIX],
       x.[ALIAS_TYPE_OTH_DESC],
       x.[CREDITORNAME],
       x.[ALIASACCTNUM],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ALIAS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BORR_ALIAS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ALIAS' and A0.[COLUMNNAME] = 'S_BORR_ALIAS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34295,6 +36151,7 @@ AS
       x.[GRANT_CRA_CODE],
       x.[PROGRAM_EXP],
       x.[S_ASSIST_TYPE],
+      A0.Descript AS [S_ASSIST_TYPE_Description],
       x.[REPAY_TERM],
       x.[REPAY_RATE],
       x.[REPAY_PMT],
@@ -34305,10 +36162,13 @@ AS
       x.[ALLOW_AP_EXCEPT],
       x.[PROVIDER_EIN],
       x.[S_ASSIST_PVDR_TYP],
+      A1.Descript AS [S_ASSIST_PVDR_TYP_Description],
       x.[AP_OTH_DESC],
       x.[RECORD_CREATED],
       x.[ASSETCTR]
    FROM [clt_NetO].[GF_TLBR_ASSIST_PROGRAMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSIST_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A0.[COLUMNNAME] = 'S_ASSIST_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSIST_PVDR_TYP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A1.[COLUMNNAME] = 'S_ASSIST_PVDR_TYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34403,7 +36263,6 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
-      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -34411,6 +36270,7 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
+      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -34493,16 +36353,20 @@ AS
       x.[SELFEMPL],
       x.[PERCBUSOWN],
       x.[S_JOB_TYPE],
+      A0.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE],
+      A1.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC],
       x.[IS_EMPLOYED_ABROAD],
       x.[COUNTRY],
       x.[MONTHS_AT_JOB],
       x.[MONTHS_IN_PROFESSION]
    FROM [clt_NetO].[GF_TLBR_EMPLOYER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_JOB_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_EMPLOYER' and A0.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPECBOREMPRELTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_EMPLOYER' and A1.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34528,9 +36392,11 @@ AS
       x.[DBID],
       x.[ETHNICITY_CTR],
       x.[S_ETHNICITY],
+      A0.Descript AS [S_ETHNICITY_Description],
       x.[FURNISH_INFO_YN],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ETHNICITY' and A0.[COLUMNNAME] = 'S_ETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34584,9 +36450,11 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_RACE],
+      A0.Descript AS [S_RACE_Description],
       x.[OTHER_AMERICAN_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_RACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_RACE' and A0.[COLUMNNAME] = 'S_RACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34646,9 +36514,11 @@ AS
       x.[DBID],
       x.[SUBETHNICITY_CTR],
       x.[S_SUBETHNICITY],
+      A0.Descript AS [S_SUBETHNICITY_Description],
       x.[OTHER_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBETHNICITY' and A0.[COLUMNNAME] = 'S_SUBETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34674,10 +36544,12 @@ AS
       x.[DBID],
       x.[SUBRACE_CTR],
       x.[S_SUBRACE],
+      A0.Descript AS [S_SUBRACE_Description],
       x.[OTHER_ASIAN_DESC],
       x.[OTHER_PACISLDR_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBRACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBRACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBRACE' and A0.[COLUMNNAME] = 'S_SUBRACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34703,8 +36575,11 @@ AS
       x.[ROWSERIALNO],
       x.[MODIFIED_USERID],
       x.[S_FMETHOD],
+      A0.Descript AS [S_FMETHOD_Description],
       x.[S_FSTATUS],
+      A1.Descript AS [S_FSTATUS_Description],
       x.[S_DMETHOD],
+      A2.Descript AS [S_DMETHOD_Description],
       x.[AMOUNT],
       x.[PAYEE_NAME],
       x.[PAYEE_ADDRESS],
@@ -34714,7 +36589,9 @@ AS
       x.[ISSUEDATE],
       x.[REQDATE],
       x.[S_TYPE],
+      A3.Descript AS [S_TYPE_Description],
       x.[S_FUNDLOC],
+      A4.Descript AS [S_FUNDLOC_Description],
       x.[ROUTENUM],
       x.[ACCOUNTNUM],
       x.[TRANSNUM],
@@ -34769,6 +36646,11 @@ AS
       x.[W_APPRVDDT1],
       x.[W_APPRVDDT2]
    FROM [clt_NetO].[GF_TLR_DISBURSEMENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FMETHOD = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_DISBURSEMENTS' and A0.[COLUMNNAME] = 'S_FMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FSTATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_DISBURSEMENTS' and A1.[COLUMNNAME] = 'S_FSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DMETHOD = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_DMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FUNDLOC = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'S_FUNDLOC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34928,6 +36810,7 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_INSTYPE],
+      A0.Descript AS [S_INSTYPE_Description],
       x.[COVAMNT],
       x.[MINCOVER],
       x.[PREMAMT],
@@ -34961,9 +36844,11 @@ AS
       x.[PMTOPTDBID],
       x.[PMTOPTSERNO],
       x.[S_OTH_INS_TYPE_DESC],
+      A1.Descript AS [S_OTH_INS_TYPE_DESC_Description],
       x.[HUDLINE],
       x.[POLICY_TERM],
       x.[S_ESCINS],
+      A2.Descript AS [S_ESCINS_Description],
       x.[ASSETID],
       x.[DT_ORDERED],
       x.[DT_EXPECTED],
@@ -34986,6 +36871,9 @@ AS
       x.[NFIP_MAX_COVERAGE],
       x.[MINIMUM_COVERAGE]
    FROM [clt_NetO].[GF_TLR_INSURANCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_INSURANCE' and A0.[COLUMNNAME] = 'S_INSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OTH_INS_TYPE_DESC = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_INSURANCE' and A1.[COLUMNNAME] = 'S_OTH_INS_TYPE_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ESCINS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_INSURANCE' and A2.[COLUMNNAME] = 'S_ESCINS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -35055,6 +36943,7 @@ AS
       x.[REG_O_BORROWER],
       x.[EMPLOYEE_BORROWER],
       x.[S_EMP_REGO_TYPE],
+      A0.Descript AS [S_EMP_REGO_TYPE_Description],
       x.[EXEC_EDUC],
       x.[EXEC_OFFIC_OTH],
       x.[EXEC_OFFIC_YN],
@@ -35062,6 +36951,7 @@ AS
       x.[BOD_APPROVAL_DATE],
       x.[COMMITTEE_APPROVAL]
    FROM [clt_NetO].[GF_TLR_REG_O] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMP_REGO_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_REG_O' and A0.[COLUMNNAME] = 'S_EMP_REGO_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -35240,9 +37130,11 @@ AS
       x.[INFILE_DATE],
       x.[BNUM],
       x.[S_RESULTSTATUSTYPE],
+      A0.Descript AS [S_RESULTSTATUSTYPE_Description],
       x.[RESULTSTATUSTTHERDESC],
       x.[CREDREPOSSRCTYPEOTHERDESC]
    FROM [clt_NetO].[GF_TLR_RES_CREDIT_FILE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RESULTSTATUSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RES_CREDIT_FILE' and A0.[COLUMNNAME] = 'S_RESULTSTATUSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -35668,6 +37560,7 @@ AS
       x.[ERRORRPTIMAGEID],
       x.[MERGEDCREDITCERTIMAGEID],
       x.[S_CRWELIGIBILITYTYPE],
+      A0.Descript AS [S_CRWELIGIBILITYTYPE_Description],
       x.[HVERPTIMAGEID],
       x.[MERGEDCREDITIMAGEID],
       x.[LPATTLASSETDEFICITAMT],
@@ -35696,6 +37589,7 @@ AS
       x.[LPATTLREQUIREDRESERVESAMT],
       x.[CREDIT_INFILE]
    FROM [clt_NetO].[GF_TLR_RSP_LP_LOANFDBCK] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CRWELIGIBILITYTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RSP_LP_LOANFDBCK' and A0.[COLUMNNAME] = 'S_CRWELIGIBILITYTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -35769,6 +37663,7 @@ AS
       x.[ROWSERIALNO],
       x.[HUDLINE],
       x.[S_TAXTYPE],
+      A0.Descript AS [S_TAXTYPE_Description],
       x.[ANN_AMT],
       x.[FIRST_DUE],
       x.[ESCROW],
@@ -35796,10 +37691,13 @@ AS
       x.[RATEPERTHOUSAND],
       x.[COLFIRSTYR],
       x.[S_ESCTAX],
+      A1.Descript AS [S_ESCTAX_Description],
       x.[ISMERGEDINT],
       x.[TAX_TYPE_DESC],
       x.[UPFRONT_TAX_AMOUNT]
    FROM [clt_NetO].[GF_TLR_TAXITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TAXTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_TAXITEMS' and A0.[COLUMNNAME] = 'S_TAXTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ESCTAX = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_TAXITEMS' and A1.[COLUMNNAME] = 'S_ESCTAX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -35883,8 +37781,8 @@ CREATE VIEW [NetO_pii].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[USRID],
       x.[DELETED_CLNUM],
+      x.[USRID],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -35944,6 +37842,7 @@ AS
       x.[CID],
       x.[ROWSERIALNO],
       x.[S_ADDRTYPE],
+      A0.Descript AS [S_ADDRTYPE_Description],
       x.[ADDR1],
       x.[ADDR2],
       x.[CITY],
@@ -35953,8 +37852,11 @@ AS
       x.[ZIP],
       x.[TIMEZONE],
       x.[S_CMSADR_UNIT_TYPE],
+      A1.Descript AS [S_CMSADR_UNIT_TYPE_Description],
       x.[CMSADR_UNIT_NUM]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_ADDRESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ADDRTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A0.[COLUMNNAME] = 'S_ADDRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -35977,8 +37879,10 @@ AS
       x.[CID],
       x.[ROWSERIALNO],
       x.[S_EMAILTYPE],
+      A0.Descript AS [S_EMAILTYPE_Description],
       x.[EMAILADDR]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_EMAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36001,10 +37905,12 @@ AS
       x.[CID],
       x.[ACTIVE],
       x.[S_CMSSTATUS],
+      A0.Descript AS [S_CMSSTATUS_Description],
       x.[FULLNAME],
       x.[SHORTNAME],
       x.[SSNTIN],
       x.[S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[REFCODE],
       x.[CREATED_BY_USER],
       x.[CREATED_DATE],
@@ -36019,6 +37925,8 @@ AS
       x.[SUFFIXNAME],
       x.[PORTAL_REFCODE]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSSTATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A0.[COLUMNNAME] = 'S_CMSSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36041,9 +37949,11 @@ AS
       x.[CID],
       x.[ROWSERIALNO],
       x.[S_PHONETYPE],
+      A0.Descript AS [S_PHONETYPE_Description],
       x.[PHONENBR],
       x.[PHONEEXT]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_PHONE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36064,8 +37974,10 @@ CREATE VIEW [NetO_pii].[VwGF_TS_CMS_CONTACT_TYPE]
 AS
    SELECT
       x.[CID],
-      x.[S_CMSTYPE]
+      x.[S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_TYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36087,12 +37999,15 @@ AS
    SELECT
       x.[CID],
       x.[S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description],
       x.[S_STATUS],
+      A1.Descript AS [S_STATUS_Description],
       x.[STATUS_START_DT],
       x.[STATUS_STOP_DT],
       x.[STATUS_CHGD_DT],
       x.[USEPARENT],
       x.[S_GRADE],
+      A2.Descript AS [S_GRADE_Description],
       x.[COMPLIANCE_MONITOR],
       x.[COMPLIANCE_EMAIL],
       x.[EMPLOYER_ID],
@@ -36104,9 +38019,14 @@ AS
       x.[SAR_ID],
       x.[PROVIDER_ID],
       x.[S_TYPE_OF_COMPANY],
+      A3.Descript AS [S_TYPE_OF_COMPANY_Description],
       x.[CMS_SHORT_DESC],
       x.[CMS_COMMENTS]
    FROM [clt_NetO].[GF_TS_CMS_INFOBYTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A1.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRADE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A2.[COLUMNNAME] = 'S_GRADE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36127,10 +38047,12 @@ CREATE VIEW [NetO_pii].[VwGF_TS_INDEX_VALUE]
 AS
    SELECT
       x.[S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[INDEX_ID],
       x.[EFFECTIVE_DATE],
       x.[INDEX_VALUE]
    FROM [clt_NetO].[GF_TS_INDEX_VALUE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36285,12 +38207,16 @@ CREATE VIEW [NetO_pii].[VwGF_TS_WF_GROUP_USER]
 AS
    SELECT
       x.[S_PROC_GROUP],
+      A0.Descript AS [S_PROC_GROUP_Description],
       x.[USERID],
       x.[S_USER_TYPE],
+      A1.Descript AS [S_USER_TYPE_Description],
       x.[IS_ACTIVE],
       x.[WEIGHT],
       x.[SUPERVISOR_ID]
    FROM [clt_NetO].[GF_TS_WF_GROUP_USER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROC_GROUP = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_GROUP_USER' and A0.[COLUMNNAME] = 'S_PROC_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36311,9 +38237,11 @@ CREATE VIEW [NetO_pii].[VwGF_TS_WF_PROCESS]
 AS
    SELECT
       x.[S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[IS_ACTIVE],
       x.[EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36334,9 +38262,11 @@ CREATE VIEW [NetO_pii].[VwGF_TS_WF_PROCESS_MODEL]
 AS
    SELECT
       x.[S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[IS_ACTIVE],
       x.[EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS_MODEL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36357,16 +38287,24 @@ CREATE VIEW [NetO_pii].[VwGF_TS_WF_WORKTYPE]
 AS
    SELECT
       x.[S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_WT_TYPE],
+      A1.Descript AS [S_WT_TYPE_Description],
       x.[WT_EXECUTABLE],
       x.[EST_TO_COMPLETE],
       x.[S_USERINTERFACE],
+      A2.Descript AS [S_USERINTERFACE_Description],
       x.[S_REASSIGN_RULE],
+      A3.Descript AS [S_REASSIGN_RULE_Description],
       x.[WEIGHT_TIER1],
       x.[WEIGHT_TIER2],
       x.[WEIGHT_TIER3],
       x.[DISPLAY_IDX]
    FROM [clt_NetO].[GF_TS_WF_WORKTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_WORKTYPE' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_WT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_WORKTYPE' and A1.[COLUMNNAME] = 'S_WT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USERINTERFACE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_WF_WORKTYPE' and A2.[COLUMNNAME] = 'S_USERINTERFACE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36420,7 +38358,9 @@ AS
       x.[OLD_AGENCY_NUM_REQUIRED],
       x.[PROD_IDENTIFIER],
       x.[S_AUS_INDICATOR],
+      A0.Descript AS [S_AUS_INDICATOR_Description],
       x.[S_SERVICE_TYPE_IND],
+      A1.Descript AS [S_SERVICE_TYPE_IND_Description],
       x.[SERVICE_INT_INDICATOR],
       x.[SERVICE_LOC_CID],
       x.[SUB_PRIME_INDICATOR],
@@ -36435,6 +38375,7 @@ AS
       x.[INTEREST_ONLY_PRODUCT],
       x.[ODDDEFER],
       x.[S_SPEC_PRG],
+      A2.Descript AS [S_SPEC_PRG_Description],
       x.[MI_REQUIRED],
       x.[CRA_REPORTABLE],
       x.[MIN_ALLOW_TERM],
@@ -36446,12 +38387,17 @@ AS
       x.[PREQUAL_ALLOWED_YN],
       x.[PREAPPROVAL_ALLOWED_YN],
       x.[S_LOANFIT_PURP_CAT],
+      A3.Descript AS [S_LOANFIT_PURP_CAT_Description],
       x.[S_LOANFIT_PROD_CAT],
+      A4.Descript AS [S_LOANFIT_PROD_CAT_Description],
       x.[S_LOANFIT_LIEN_CAT],
+      A5.Descript AS [S_LOANFIT_LIEN_CAT_Description],
       x.[LOANFIT_CATEGORY_POSN],
       x.[LOANFIT_DISPLAY_POSN],
       x.[S_LOANFIT_AMT_GROUP],
+      A6.Descript AS [S_LOANFIT_AMT_GROUP_Description],
       x.[S_LOANFIT_LTV_GROUP],
+      A7.Descript AS [S_LOANFIT_LTV_GROUP_Description],
       x.[LOANFIT_MIN_LOAN],
       x.[LOANFIT_MAX_LOAN],
       x.[LOANFIT_MIN_LTV],
@@ -36471,6 +38417,7 @@ AS
       x.[CREATE_DATE],
       x.[MODIFY_DATE],
       x.[S_CONST_PROGRAM],
+      A8.Descript AS [S_CONST_PROGRAM_Description],
       x.[CONST_MONTHS],
       x.[IPG_RENOVA_PROD],
       x.[DOCMAGIC_PLAN_CODE],
@@ -36479,9 +38426,24 @@ AS
       x.[DAYS_FINAL_FLOAT_ELIG],
       x.[IPG_FINAL_INVESTOR],
       x.[S_ASSUMABILITY_FEATURE],
+      A9.Descript AS [S_ASSUMABILITY_FEATURE_Description],
       x.[S_IPG_BUYDWN],
-      x.[S_BUYDWN_CNTRBTR]
+      A10.Descript AS [S_IPG_BUYDWN_Description],
+      x.[S_BUYDWN_CNTRBTR],
+      A11.Descript AS [S_BUYDWN_CNTRBTR_Description]
    FROM [clt_NetO].[GF_TSR_PNP_IPG_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AUS_INDICATOR = A0.DBSYMBOL AND A0.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A0.[COLUMNNAME] = 'S_AUS_INDICATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SERVICE_TYPE_IND = A1.DBSYMBOL AND A1.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A1.[COLUMNNAME] = 'S_SERVICE_TYPE_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPEC_PRG = A2.DBSYMBOL AND A2.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A2.[COLUMNNAME] = 'S_SPEC_PRG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LOANFIT_PURP_CAT = A3.DBSYMBOL AND A3.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A3.[COLUMNNAME] = 'S_LOANFIT_PURP_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOANFIT_PROD_CAT = A4.DBSYMBOL AND A4.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A4.[COLUMNNAME] = 'S_LOANFIT_PROD_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LOANFIT_LIEN_CAT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A5.[COLUMNNAME] = 'S_LOANFIT_LIEN_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LOANFIT_AMT_GROUP = A6.DBSYMBOL AND A6.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A6.[COLUMNNAME] = 'S_LOANFIT_AMT_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LOANFIT_LTV_GROUP = A7.DBSYMBOL AND A7.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A7.[COLUMNNAME] = 'S_LOANFIT_LTV_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CONST_PROGRAM = A8.DBSYMBOL AND A8.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A8.[COLUMNNAME] = 'S_CONST_PROGRAM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_ASSUMABILITY_FEATURE = A9.DBSYMBOL AND A9.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A9.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_IPG_BUYDWN = A10.DBSYMBOL AND A10.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A10.[COLUMNNAME] = 'S_IPG_BUYDWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36503,8 +38465,11 @@ AS
    SELECT
       x.[ACTION_ID],
       x.[S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_ACTION_RESOLUTION],
+      A1.Descript AS [S_ACTION_RESOLUTION_Description],
       x.[S_PROC_MDL_RESOLUTION],
+      A2.Descript AS [S_PROC_MDL_RESOLUTION_Description],
       x.[EXTERNAL_CODE],
       x.[INSERT_DATE],
       x.[EXP_DATE_TO_COMPLETE],
@@ -36515,11 +38480,16 @@ AS
       x.[ACTION_STATUS_FLAG],
       x.[RESERVED_BY],
       x.[S_PROC_GROUP],
+      A3.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MDL_MGR_ID],
       x.[RESERVE_DATE],
       x.[WF_SESSION_ID],
       x.[OPENED_DATE]
    FROM [clt_NetO].[GF_TW_WF_ACTION_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_ACTION_MGR' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACTION_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_ACTION_MGR' and A1.[COLUMNNAME] = 'S_ACTION_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_MDL_RESOLUTION = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_ACTION_MGR' and A2.[COLUMNNAME] = 'S_PROC_MDL_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36541,7 +38511,9 @@ AS
    SELECT
       x.[PROC_MDL_MGR_ID],
       x.[S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[S_PROC_MDL_MGR_RESOLUTION],
+      A1.Descript AS [S_PROC_MDL_MGR_RESOLUTION_Description],
       x.[EXP_DATE_TO_COMPLETE],
       x.[START_DATE],
       x.[END_DATE],
@@ -36549,9 +38521,13 @@ AS
       x.[IS_COMPLETE],
       x.[RESERVED_BY],
       x.[S_PROC_GROUP],
+      A2.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MGR_ID],
       x.[PARENT_PROC_MDL_MGR_ID]
    FROM [clt_NetO].[GF_TW_WF_PROC_MODEL_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_MDL_MGR_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A1.[COLUMNNAME] = 'S_PROC_MDL_MGR_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36573,6 +38549,7 @@ AS
    SELECT
       x.[PROC_MGR_ID],
       x.[S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[EXTERNAL_CODE],
       x.[EXT_CODE_DESC],
       x.[EXP_COMP_DATE],
@@ -36583,8 +38560,11 @@ AS
       x.[MODELS_COMPLETED],
       x.[IS_COMPLETE],
       x.[RESERVED_BY],
-      x.[S_PROC_GROUP]
+      x.[S_PROC_GROUP],
+      A1.Descript AS [S_PROC_GROUP_Description]
    FROM [clt_NetO].[GF_TW_WF_PROCESS_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A0.[COLUMNNAME] = 'S_PROCESS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36727,18 +38707,24 @@ AS
       x.[CTAXLTV],
       x.[NUM_CARDS],
       x.[S_LOCTYPE],
+      A0.Descript AS [S_LOCTYPE_Description],
       x.[ANNUAL_FEE],
       x.[REPAY_MTHS],
       x.[TERMIN_FEE],
       x.[DRAWACCESS_FEE],
       x.[S_FUNDS_TO_BE_DRAWN],
+      A1.Descript AS [S_FUNDS_TO_BE_DRAWN_Description],
       x.[OVERDRAFT_PROTECTION],
       x.[ODP_ACCOUNT_NUMBER],
       x.[ODP_ROUTING_NUMBER],
       x.[ANNUAL_CALC_OVR],
       x.[TERM_CALC_OVR],
-      x.[S_REPAYMENT_METHOD]
+      x.[S_REPAYMENT_METHOD],
+      A2.Descript AS [S_REPAYMENT_METHOD_Description]
    FROM [clt_NetO].[HELOC] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOCTYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC' and A0.[COLUMNNAME] = 'S_LOCTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FUNDS_TO_BE_DRAWN = A1.DBSYMBOL AND A1.[TableName] = 'HELOC' and A1.[COLUMNNAME] = 'S_FUNDS_TO_BE_DRAWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_REPAYMENT_METHOD = A2.DBSYMBOL AND A2.[TableName] = 'HELOC' and A2.[COLUMNNAME] = 'S_REPAYMENT_METHOD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -36766,9 +38752,11 @@ AS
       x.[MIN_BALANCE],
       x.[OPENEND_CREDIT_IND],
       x.[S_RTC_TYPE],
+      A0.Descript AS [S_RTC_TYPE_Description],
       x.[WAIVE_ANNUAL_FEE],
       x.[ANNUAL_FEE_START_DT]
    FROM [clt_NetO].[HELOC2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RTC_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC2' and A0.[COLUMNNAME] = 'S_RTC_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -36904,9 +38892,11 @@ AS
       x.[RPTYEAR],
       x.[CFPNUM],
       x.[S_CUSTOMQRY],
+      A0.Descript AS [S_CUSTOMQRY_Description],
       x.[CEMAIL],
       x.[HMDA_LAR_LEI]
    FROM [clt_NetO].[HMDAXPRT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -36952,7 +38942,9 @@ AS
       x.[JEXPAMT],
       x.[PRIMINC],
       x.[S_INCOME],
+      A0.Descript AS [S_INCOME_Description],
       x.[S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[INCAMT],
       x.[INCDESC],
       x.[MNTEQUIV],
@@ -36972,10 +38964,12 @@ AS
       x.[TSWE_INCOME_IND],
       x.[EFFECTIVE_MO_INC],
       x.[S_JOB_TYPE],
+      A2.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE],
+      A3.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC],
       x.[RURALHOUSINGCALC],
       x.[COUNTRY],
@@ -36984,9 +38978,11 @@ AS
       x.[STATED_FLAG],
       x.[RECORD_CREATED],
       x.[S_INCOMECATEGORY],
+      A4.Descript AS [S_INCOMECATEGORY_Description],
       x.[OCCUPATION],
       x.[INCSTIND],
       x.[S_SELFEMPTYPE],
+      A5.Descript AS [S_SELFEMPTYPE_Description],
       x.[PRE_VERI_GROSS_INC],
       x.[USE_GROSS_INCOME],
       x.[YTD_AMOUNT],
@@ -37001,6 +38997,12 @@ AS
       x.[FROM_INCOME_CALC],
       x.[STATED_INC]
    FROM [clt_NetO].[INCOME] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME = A0.DBSYMBOL AND A0.[TableName] = 'INCOME' and A0.[COLUMNNAME] = 'S_INCOME'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'INCOME' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_JOB_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'INCOME' and A2.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPECBOREMPRELTYPE = A3.DBSYMBOL AND A3.[TableName] = 'INCOME' and A3.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_INCOMECATEGORY = A4.DBSYMBOL AND A4.[TableName] = 'INCOME' and A4.[COLUMNNAME] = 'S_INCOMECATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SELFEMPTYPE = A5.DBSYMBOL AND A5.[TableName] = 'INCOME' and A5.[COLUMNNAME] = 'S_SELFEMPTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -37105,6 +39107,7 @@ AS
       x.[DBID],
       x.[LIABCTR],
       x.[S_LIAB],
+      A0.Descript AS [S_LIAB_Description],
       x.[LIABDESC],
       x.[ACCTNUM],
       x.[HOLDER],
@@ -37120,6 +39123,7 @@ AS
       x.[ACCTBAL],
       x.[ACCTPYMT],
       x.[S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[MTHPYMT],
       x.[PYMTLEFT],
       x.[INCPYMT],
@@ -37134,6 +39138,7 @@ AS
       x.[PAYTYPE],
       x.[VERIFY],
       x.[S_LIENPS],
+      A2.Descript AS [S_LIENPS_Description],
       x.[ORIGDBTDT],
       x.[EXPDBTDT],
       x.[RESUBIND],
@@ -37141,7 +39146,9 @@ AS
       x.[MTG_TYPE_DESCRIPT],
       x.[PURCH_MONEY_IND],
       x.[S_EXCLUSION_REASON],
+      A3.Descript AS [S_EXCLUSION_REASON_Description],
       x.[S_MTG_TYPE],
+      A4.Descript AS [S_MTG_TYPE_Description],
       x.[SECURITY_INSTR_VOLUME],
       x.[DEBT_CCTIN_TITLE],
       x.[TRUSTEE_NAME],
@@ -37170,6 +39177,7 @@ AS
       x.[INVESTMENT_CREDIT_LINE],
       x.[CREDIT_TYPE_OTH],
       x.[S_CREDIT_CARD_TYPE],
+      A5.Descript AS [S_CREDIT_CARD_TYPE_Description],
       x.[INTERNAL_REFI],
       x.[HCOUNTRY],
       x.[SOURCE_CB_PMT],
@@ -37194,6 +39202,7 @@ AS
       x.[DEBT_REROUTING_NO],
       x.[REBEN_ACCT_NUM],
       x.[S_LIABILITYDISBTYPE],
+      A6.Descript AS [S_LIABILITYDISBTYPE_Description],
       x.[P_PYMTLEFT],
       x.[P_MNPAYLFT],
       x.[P_BALANCE],
@@ -37203,6 +39212,7 @@ AS
       x.[OWNERSHP_TYPE],
       x.[DEDUCT_FROM_INC],
       x.[S_ACCOUNT_OWNERSHIP],
+      A7.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[LATE_30_DAYS],
       x.[LATE_60_DAYS],
       x.[LATE_90_DAYS],
@@ -37210,6 +39220,14 @@ AS
       x.[CREDIT_LIMIT_AMOUNT],
       x.[INC_CREDIT_LINE]
    FROM [clt_NetO].[LIABLTY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LIAB = A0.DBSYMBOL AND A0.[TableName] = 'LIABLTY' and A0.[COLUMNNAME] = 'S_LIAB'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'LIABLTY' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIENPS = A2.DBSYMBOL AND A2.[TableName] = 'LIABLTY' and A2.[COLUMNNAME] = 'S_LIENPS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_EXCLUSION_REASON = A3.DBSYMBOL AND A3.[TableName] = 'LIABLTY' and A3.[COLUMNNAME] = 'S_EXCLUSION_REASON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_MTG_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'LIABLTY' and A4.[COLUMNNAME] = 'S_MTG_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CREDIT_CARD_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'LIABLTY' and A5.[COLUMNNAME] = 'S_CREDIT_CARD_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIABILITYDISBTYPE = A6.DBSYMBOL AND A6.[TableName] = 'LIABLTY' and A6.[COLUMNNAME] = 'S_LIABILITYDISBTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ACCOUNT_OWNERSHIP = A7.DBSYMBOL AND A7.[TableName] = 'LIABLTY' and A7.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -37333,6 +39351,7 @@ AS
       x.[RESST],
       x.[RESZIP],
       x.[S_OWNRNT],
+      A0.Descript AS [S_OWNRNT_Description],
       x.[RESNMYRS],
       x.[ACCTPREV],
       x.[ACCTHLDR],
@@ -37344,12 +39363,17 @@ AS
       x.[YRS_AT_PREV],
       x.[MNTHS_AT_PREV],
       x.[S_RES_UNIT_TYPE],
+      A1.Descript AS [S_RES_UNIT_TYPE_Description],
       x.[RES_UNIT_NUM],
       x.[RES_CNTRY_CODE],
       x.[PREV_STATE_FOREIN],
       x.[PREV_POSTCODE],
-      x.[S_LIVE_RENT_FREE_ENUMS]
+      x.[S_LIVE_RENT_FREE_ENUMS],
+      A2.Descript AS [S_LIVE_RENT_FREE_ENUMS_Description]
    FROM [clt_NetO].[PREVRES] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRNT = A0.DBSYMBOL AND A0.[TableName] = 'PREVRES' and A0.[COLUMNNAME] = 'S_OWNRNT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RES_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'PREVRES' and A1.[COLUMNNAME] = 'S_RES_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIVE_RENT_FREE_ENUMS = A2.DBSYMBOL AND A2.[TableName] = 'PREVRES' and A2.[COLUMNNAME] = 'S_LIVE_RENT_FREE_ENUMS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -37372,31 +39396,43 @@ AS
    SELECT
       x.[LNUM],
       x.[S_PROD],
+      A0.Descript AS [S_PROD_Description],
       x.[S_RATE],
+      A1.Descript AS [S_RATE_Description],
       x.[S_RTCODE],
+      A2.Descript AS [S_RTCODE_Description],
       x.[OLA],
       x.[LTV],
       x.[S_LCKTYP],
+      A3.Descript AS [S_LCKTYP_Description],
       x.[LOCKDATE],
       x.[LOCKEXP],
       x.[LOCKDAYS],
       x.[INTRATE],
       x.[LOANTERM],
       x.[S_LCKEXP],
+      A4.Descript AS [S_LCKEXP_Description],
       x.[S_RATIO],
+      A5.Descript AS [S_RATIO_Description],
       x.[S_BYDOWN],
+      A6.Descript AS [S_BYDOWN_Description],
       x.[S_MIPLAN],
+      A7.Descript AS [S_MIPLAN_Description],
       x.[FMIRFLAG],
       x.[FMIRFCTR],
       x.[BALLFLAG],
       x.[AMTERM],
       x.[PIPMT],
       x.[S_PMTSTR],
+      A8.Descript AS [S_PMTSTR_Description],
       x.[S_DISC],
+      A9.Descript AS [S_DISC_Description],
       x.[S_ORIG],
+      A10.Descript AS [S_ORIG_Description],
       x.[BASELA],
       x.[LOCKED],
       x.[S_QRATE],
+      A11.Descript AS [S_QRATE_Description],
       x.[BASERATE],
       x.[CNFIRM],
       x.[BASEMKTDISC],
@@ -37412,8 +39448,11 @@ AS
       x.[MKTDISCOVERRIDE],
       x.[INTRATEOVERRIDE],
       x.[S_RTCODEOVR],
+      A12.Descript AS [S_RTCODEOVR_Description],
       x.[S_LTYPE],
+      A13.Descript AS [S_LTYPE_Description],
       x.[S_PROGRM],
+      A14.Descript AS [S_PROGRM_Description],
       x.[FINMIPERC],
       x.[QUALRATE],
       x.[BASEQUAL],
@@ -37426,8 +39465,10 @@ AS
       x.[BASELAEDT],
       x.[ODDRATE],
       x.[S_AMTYPE],
+      A15.Descript AS [S_AMTYPE_Description],
       x.[SELRTCODE],
       x.[S_RCOMNUM],
+      A16.Descript AS [S_RCOMNUM_Description],
       x.[BYDNPMT4],
       x.[BYDNPMT5],
       x.[BYDNPMT6],
@@ -37452,11 +39493,13 @@ AS
       x.[LOCKEXPDT],
       x.[SELECTEDINVESTOR],
       x.[S_BALLOON_TYPE],
+      A17.Descript AS [S_BALLOON_TYPE_Description],
       x.[AMORT_OTHER],
       x.[CLIENTRATEINFO],
       x.[SELECTEDPROGRAM],
       x.[BUYDOWNOVERRIDES],
       x.[S_MORTGAGETYPE],
+      A18.Descript AS [S_MORTGAGETYPE_Description],
       x.[TOTALPMTNO],
       x.[MININTPMTRATE],
       x.[REFI_RESCISSION_EXEMPT],
@@ -37474,8 +39517,10 @@ AS
       x.[BASE_ADJ_DISC],
       x.[PMTRCODE],
       x.[S_AMORT_SUB_TYPE],
+      A19.Descript AS [S_AMORT_SUB_TYPE_Description],
       x.[QUALMETHOD],
       x.[S_QUALMETHODOVR],
+      A20.Descript AS [S_QUALMETHODOVR_Description],
       x.[YSP],
       x.[YSP_OVRD],
       x.[OVERAGE],
@@ -37502,10 +39547,13 @@ AS
       x.[BORR_RESCISSION_EXEMPT],
       x.[CORR_BOR_RATE_LOCKDATE],
       x.[S_203KTYPE],
+      A21.Descript AS [S_203KTYPE_Description],
       x.[PRODUCT_DENIAL],
       x.[REQ_RESCISSION],
       x.[S_PRICING_REGION],
+      A22.Descript AS [S_PRICING_REGION_Description],
       x.[S_PRICING_CHANNEL],
+      A23.Descript AS [S_PRICING_CHANNEL_Description],
       x.[ROE],
       x.[ROA],
       x.[ROEEXP],
@@ -37545,12 +39593,42 @@ AS
       x.[AUS_INDICATOR],
       x.[LOAN_TYPE_CHG_FLAG],
       x.[S_PROD_PRICE_ENGINE],
+      A24.Descript AS [S_PROD_PRICE_ENGINE_Description],
       x.[S_PROD_PRICE_ENGINE_OVR],
+      A25.Descript AS [S_PROD_PRICE_ENGINE_OVR_Description],
       x.[S_PPY_FILTER],
+      A26.Descript AS [S_PPY_FILTER_Description],
       x.[BUILDER_LOCK_ADJ],
       x.[REQLOANTERM],
       x.[DLR_PIPMT]
    FROM [clt_NetO].[PRODUCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROD = A0.DBSYMBOL AND A0.[TableName] = 'PRODUCT' and A0.[COLUMNNAME] = 'S_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RATE = A1.DBSYMBOL AND A1.[TableName] = 'PRODUCT' and A1.[COLUMNNAME] = 'S_RATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_RTCODE = A2.DBSYMBOL AND A2.[TableName] = 'PRODUCT' and A2.[COLUMNNAME] = 'S_RTCODE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LCKTYP = A3.DBSYMBOL AND A3.[TableName] = 'PRODUCT' and A3.[COLUMNNAME] = 'S_LCKTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LCKEXP = A4.DBSYMBOL AND A4.[TableName] = 'PRODUCT' and A4.[COLUMNNAME] = 'S_LCKEXP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_RATIO = A5.DBSYMBOL AND A5.[TableName] = 'PRODUCT' and A5.[COLUMNNAME] = 'S_RATIO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_BYDOWN = A6.DBSYMBOL AND A6.[TableName] = 'PRODUCT' and A6.[COLUMNNAME] = 'S_BYDOWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_MIPLAN = A7.DBSYMBOL AND A7.[TableName] = 'PRODUCT' and A7.[COLUMNNAME] = 'S_MIPLAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_PMTSTR = A8.DBSYMBOL AND A8.[TableName] = 'PRODUCT' and A8.[COLUMNNAME] = 'S_PMTSTR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_DISC = A9.DBSYMBOL AND A9.[TableName] = 'PRODUCT' and A9.[COLUMNNAME] = 'S_DISC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_ORIG = A10.DBSYMBOL AND A10.[TableName] = 'PRODUCT' and A10.[COLUMNNAME] = 'S_ORIG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_QRATE = A11.DBSYMBOL AND A11.[TableName] = 'PRODUCT' and A11.[COLUMNNAME] = 'S_QRATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_RTCODEOVR = A12.DBSYMBOL AND A12.[TableName] = 'PRODUCT' and A12.[COLUMNNAME] = 'S_RTCODEOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_LTYPE = A13.DBSYMBOL AND A13.[TableName] = 'PRODUCT' and A13.[COLUMNNAME] = 'S_LTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROGRM = A14.DBSYMBOL AND A14.[TableName] = 'PRODUCT' and A14.[COLUMNNAME] = 'S_PROGRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_AMTYPE = A15.DBSYMBOL AND A15.[TableName] = 'PRODUCT' and A15.[COLUMNNAME] = 'S_AMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_RCOMNUM = A16.DBSYMBOL AND A16.[TableName] = 'PRODUCT' and A16.[COLUMNNAME] = 'S_RCOMNUM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_BALLOON_TYPE = A17.DBSYMBOL AND A17.[TableName] = 'PRODUCT' and A17.[COLUMNNAME] = 'S_BALLOON_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_MORTGAGETYPE = A18.DBSYMBOL AND A18.[TableName] = 'PRODUCT' and A18.[COLUMNNAME] = 'S_MORTGAGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_AMORT_SUB_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'PRODUCT' and A19.[COLUMNNAME] = 'S_AMORT_SUB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_QUALMETHODOVR = A20.DBSYMBOL AND A20.[TableName] = 'PRODUCT' and A20.[COLUMNNAME] = 'S_QUALMETHODOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_203KTYPE = A21.DBSYMBOL AND A21.[TableName] = 'PRODUCT' and A21.[COLUMNNAME] = 'S_203KTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PRICING_REGION = A22.DBSYMBOL AND A22.[TableName] = 'PRODUCT' and A22.[COLUMNNAME] = 'S_PRICING_REGION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_PRICING_CHANNEL = A23.DBSYMBOL AND A23.[TableName] = 'PRODUCT' and A23.[COLUMNNAME] = 'S_PRICING_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_PROD_PRICE_ENGINE = A24.DBSYMBOL AND A24.[TableName] = 'PRODUCT' and A24.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_PROD_PRICE_ENGINE_OVR = A25.DBSYMBOL AND A25.[TableName] = 'PRODUCT' and A25.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_PPY_FILTER = A26.DBSYMBOL AND A26.[TableName] = 'PRODUCT' and A26.[COLUMNNAME] = 'S_PPY_FILTER'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -37650,7 +39728,9 @@ AS
       x.[REOSTATE],
       x.[REOZIP],
       x.[S_REOPST],
+      A0.Descript AS [S_REOPST_Description],
       x.[S_REOTYP],
+      A1.Descript AS [S_REOTYP_Description],
       x.[PRESVAL],
       x.[PRESMTG],
       x.[GROSRENT],
@@ -37660,6 +39740,7 @@ AS
       x.[PGROSINC],
       x.[AGROSINC],
       x.[S_ONRSHP],
+      A2.Descript AS [S_ONRSHP_Description],
       x.[REOCNTRY],
       x.[PRIM_RES],
       x.[SUBJECTP],
@@ -37701,15 +39782,24 @@ AS
       x.[UNITNUMREO],
       x.[UNITTYPEREO],
       x.[S_ACCOUNT_OWNERSHIP],
+      A3.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[XPROCEEDOVR],
       x.[S_REO_INTEND_OCCUPANCY],
+      A4.Descript AS [S_REO_INTEND_OCCUPANCY_Description],
       x.[REO_OTHROCCUP_DESC],
       x.[S_REO_CURR_PROP_USAGE],
+      A5.Descript AS [S_REO_CURR_PROP_USAGE_Description],
       x.[REO_STATE_FOREIN],
       x.[REO_POSTCODE],
       x.[REO_CNTRY_COD],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[REOWNED] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REOPST = A0.DBSYMBOL AND A0.[TableName] = 'REOWNED' and A0.[COLUMNNAME] = 'S_REOPST'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_REOTYP = A1.DBSYMBOL AND A1.[TableName] = 'REOWNED' and A1.[COLUMNNAME] = 'S_REOTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ONRSHP = A2.DBSYMBOL AND A2.[TableName] = 'REOWNED' and A2.[COLUMNNAME] = 'S_ONRSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ACCOUNT_OWNERSHIP = A3.DBSYMBOL AND A3.[TableName] = 'REOWNED' and A3.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_REO_INTEND_OCCUPANCY = A4.DBSYMBOL AND A4.[TableName] = 'REOWNED' and A4.[COLUMNNAME] = 'S_REO_INTEND_OCCUPANCY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_REO_CURR_PROP_USAGE = A5.DBSYMBOL AND A5.[TableName] = 'REOWNED' and A5.[COLUMNNAME] = 'S_REO_CURR_PROP_USAGE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -37735,8 +39825,6 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
-      x.[DBID],
-      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -37802,6 +39890,8 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
+      x.[DBID],
+      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -37907,19 +39997,25 @@ AS
       x.[POWER_OF_ATT_DESC],
       x.[ESTABLISHED_STATE],
       x.[S_BOR_SELLER_OPTION],
+      A0.Descript AS [S_BOR_SELLER_OPTION_Description],
       x.[S_SEL_UNIT_TYPE],
+      A1.Descript AS [S_SEL_UNIT_TYPE_Description],
       x.[SEL_UNIT_NUM],
       x.[SEL_COUNTRY_CODE],
       x.[SEL_STATE_FOREIN],
       x.[SEL_POSTCODE],
       x.[EMAIL],
       x.[S_IDENTIFICATION_TYPE],
+      A2.Descript AS [S_IDENTIFICATION_TYPE_Description],
       x.[IDENTIFICATION_NUMBER],
       x.[SELLER_LIENHOLDER],
       x.[SELLER_CODE],
       x.[SALES_TAX_ID],
       x.[REGION]
    FROM [clt_NetO].[SELLER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BOR_SELLER_OPTION = A0.DBSYMBOL AND A0.[TableName] = 'SELLER' and A0.[COLUMNNAME] = 'S_BOR_SELLER_OPTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEL_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'SELLER' and A1.[COLUMNNAME] = 'S_SEL_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_IDENTIFICATION_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'SELLER' and A2.[COLUMNNAME] = 'S_IDENTIFICATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -37981,8 +40077,10 @@ AS
       x.[DOCS_SENT],
       x.[INDEMNF_AMT],
       x.[PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS]
+      x.[S_SERVICING_STATUS],
+      A0.Descript AS [S_SERVICING_STATUS_Description]
    FROM [clt_NetO].[SERVICNG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SERVICING_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'SERVICNG' and A0.[COLUMNNAME] = 'S_SERVICING_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38014,14 +40112,18 @@ AS
       x.[SUBJTHLD],
       x.[SUBJMHLD],
       x.[S_OWNRHT],
+      A0.Descript AS [S_OWNRHT_Description],
       x.[SUBJOREX],
       x.[SUBJLPRI],
       x.[SUBJAV],
       x.[SUBJSP],
       x.[S_PRPTYP],
+      A1.Descript AS [S_PRPTYP_Description],
       x.[SUBJSCFN],
       x.[S_DPAYMT],
+      A2.Descript AS [S_DPAYMT_Description],
       x.[S_RESTYP],
+      A3.Descript AS [S_RESTYP_Description],
       x.[SUBJESTE],
       x.[SUBJLEXP],
       x.[SUBJCNTY],
@@ -38029,11 +40131,14 @@ AS
       x.[BLOCKNUM],
       x.[SUBDIV],
       x.[S_PURP],
+      A4.Descript AS [S_PURP_Description],
       x.[STCODE],
       x.[CYCODE],
       x.[MSACODE],
       x.[S_LIENPO],
+      A5.Descript AS [S_LIENPO_Description],
       x.[S_LIENHO],
+      A6.Descript AS [S_LIENHO_Description],
       x.[BALOTHMT],
       x.[SUBJLTV],
       x.[COMBLTV],
@@ -38041,6 +40146,7 @@ AS
       x.[STRALIAS],
       x.[CITYFLAG],
       x.[S_PRJCLS],
+      A7.Descript AS [S_PRJCLS_Description],
       x.[PROJNAME],
       x.[DECLDBID],
       x.[DECLSERL],
@@ -38068,7 +40174,9 @@ AS
       x.[LIENPOSOTHER],
       x.[PROPTYPEOTHER],
       x.[S_FREPRJCLS],
+      A8.Descript AS [S_FREPRJCLS_Description],
       x.[S_FNMPRJCLS],
+      A9.Descript AS [S_FNMPRJCLS_Description],
       x.[HOTEL_INDICATOR],
       x.[NONWARRANTABLE],
       x.[NUMBSTORIES],
@@ -38080,39 +40188,54 @@ AS
       x.[OTHERPROPRITTYPEDESC],
       x.[OTHEROWNTYPEDESC],
       x.[S_UNIQUEDWELLINGTYPE],
+      A10.Descript AS [S_UNIQUEDWELLINGTYPE_Description],
       x.[OTHERUNIQDWELLINGTYPDSC],
       x.[S_NATIVEAMERICANLANDSTYPE],
+      A11.Descript AS [S_NATIVEAMERICANLANDSTYPE_Description],
       x.[OTHERNATAMERLANDSTYPEDESC],
       x.[COMMLANDTRUSTINDCTR],
       x.[INCLUSIONARYZONEINDCTR],
       x.[S_CATEGORYTYPE],
+      A12.Descript AS [S_CATEGORYTYPE_Description],
       x.[OTHERCATEGORYTYPEDESC],
       x.[S_PROJECTDESIGNTYPE],
+      A13.Descript AS [S_PROJECTDESIGNTYPE_Description],
       x.[OTHERPROJDESIGNTYPEDESC],
       x.[S_PROJECTCLASSTYPE],
+      A14.Descript AS [S_PROJECTCLASSTYPE_Description],
       x.[OTHERPROJCLASSTYPEDESC],
       x.[OTHERDOWNPAYTYPEDESC],
       x.[S_UNITOWNERSHIPTYPE],
+      A15.Descript AS [S_UNITOWNERSHIPTYPE_Description],
       x.[CONCURRENT_FIN_INPUT],
       x.[INCLUDE_ASSIST_PROGS],
       x.[S_DPAYMTNM],
+      A16.Descript AS [S_DPAYMTNM_Description],
       x.[DOWNPAYNMDESC],
       x.[SUBESTAV],
       x.[LTV_ROUNDED],
       x.[TLTV_ROUNDED],
       x.[S_CONDO_PROJECT_STATUS],
+      A17.Descript AS [S_CONDO_PROJECT_STATUS_Description],
       x.[S_PROJ_ATTACH_TYPE],
+      A18.Descript AS [S_PROJ_ATTACH_TYPE_Description],
       x.[S_PROJECT_DESIGN_TYPE],
+      A19.Descript AS [S_PROJECT_DESIGN_TYPE_Description],
       x.[S_ATTACHMENT_TYPE],
+      A20.Descript AS [S_ATTACHMENT_TYPE_Description],
       x.[S_PROJ_CLASS_ID_FNM],
+      A21.Descript AS [S_PROJ_CLASS_ID_FNM_Description],
       x.[S_PROJ_CLASS_ID_FRE],
+      A22.Descript AS [S_PROJ_CLASS_ID_FRE_Description],
       x.[PROJ_UNITS_TOTAL],
       x.[PROJ_UNITS_SOLD],
       x.[ISUSPSVALIDATED],
       x.[SUBJADD3],
       x.[CPMPROID],
       x.[S_FRPROJ],
+      A23.Descript AS [S_FRPROJ_Description],
       x.[S_FMPROJ],
+      A24.Descript AS [S_FMPROJ_Description],
       x.[PROPDESC],
       x.[RENTINC_VERIFIED],
       x.[RENTINC_VERIFY_TYPE],
@@ -38120,12 +40243,14 @@ AS
       x.[CONDO_UNITS_COV_HAZ],
       x.[CONDO_UNITS_COV_FLD],
       x.[S_STRUCTURETYPE],
+      A25.Descript AS [S_STRUCTURETYPE_Description],
       x.[CEMA],
       x.[FHAHUDAPPROVAL],
       x.[IMP_COST_PLUS_EEM],
       x.[MAX_LIMIT_LOAN_AMT],
       x.[TOTAL_MTG_PROPERTIES],
       x.[S_SUBJUNITTYPE],
+      A26.Descript AS [S_SUBJUNITTYPE_Description],
       x.[CRAEXEMPTION],
       x.[MDINDICATOR],
       x.[MSAINDICATOR],
@@ -38133,7 +40258,9 @@ AS
       x.[INCOME_RESTRICT],
       x.[PROPVALUE_RELIED_ON],
       x.[S_APPRMTHDREQ],
+      A27.Descript AS [S_APPRMTHDREQ_Description],
       x.[S_APPRMTHDREQOVR],
+      A28.Descript AS [S_APPRMTHDREQOVR_Description],
       x.[EXIST_EEM_AMT],
       x.[ISCONDOMINIUM],
       x.[ISCOOPERATIVE],
@@ -38144,6 +40271,7 @@ AS
       x.[MFHOME],
       x.[TX_50A6],
       x.[S_TRSTYP],
+      A29.Descript AS [S_TRSTYP_Description],
       x.[SHORT_LEGAL_DESC_OVR],
       x.[SUBJTHLCUR],
       x.[ADJLTV],
@@ -38153,6 +40281,36 @@ AS
       x.[TX_50F2],
       x.[RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRHT = A0.DBSYMBOL AND A0.[TableName] = 'SUBJPRP' and A0.[COLUMNNAME] = 'S_OWNRHT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PRPTYP = A1.DBSYMBOL AND A1.[TableName] = 'SUBJPRP' and A1.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DPAYMT = A2.DBSYMBOL AND A2.[TableName] = 'SUBJPRP' and A2.[COLUMNNAME] = 'S_DPAYMT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESTYP = A3.DBSYMBOL AND A3.[TableName] = 'SUBJPRP' and A3.[COLUMNNAME] = 'S_RESTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PURP = A4.DBSYMBOL AND A4.[TableName] = 'SUBJPRP' and A4.[COLUMNNAME] = 'S_PURP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LIENPO = A5.DBSYMBOL AND A5.[TableName] = 'SUBJPRP' and A5.[COLUMNNAME] = 'S_LIENPO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIENHO = A6.DBSYMBOL AND A6.[TableName] = 'SUBJPRP' and A6.[COLUMNNAME] = 'S_LIENHO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_PRJCLS = A7.DBSYMBOL AND A7.[TableName] = 'SUBJPRP' and A7.[COLUMNNAME] = 'S_PRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_FREPRJCLS = A8.DBSYMBOL AND A8.[TableName] = 'SUBJPRP' and A8.[COLUMNNAME] = 'S_FREPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_FNMPRJCLS = A9.DBSYMBOL AND A9.[TableName] = 'SUBJPRP' and A9.[COLUMNNAME] = 'S_FNMPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_UNIQUEDWELLINGTYPE = A10.DBSYMBOL AND A10.[TableName] = 'SUBJPRP' and A10.[COLUMNNAME] = 'S_UNIQUEDWELLINGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_NATIVEAMERICANLANDSTYPE = A11.DBSYMBOL AND A11.[TableName] = 'SUBJPRP' and A11.[COLUMNNAME] = 'S_NATIVEAMERICANLANDSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_CATEGORYTYPE = A12.DBSYMBOL AND A12.[TableName] = 'SUBJPRP' and A12.[COLUMNNAME] = 'S_CATEGORYTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_PROJECTDESIGNTYPE = A13.DBSYMBOL AND A13.[TableName] = 'SUBJPRP' and A13.[COLUMNNAME] = 'S_PROJECTDESIGNTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROJECTCLASSTYPE = A14.DBSYMBOL AND A14.[TableName] = 'SUBJPRP' and A14.[COLUMNNAME] = 'S_PROJECTCLASSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_UNITOWNERSHIPTYPE = A15.DBSYMBOL AND A15.[TableName] = 'SUBJPRP' and A15.[COLUMNNAME] = 'S_UNITOWNERSHIPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_DPAYMTNM = A16.DBSYMBOL AND A16.[TableName] = 'SUBJPRP' and A16.[COLUMNNAME] = 'S_DPAYMTNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CONDO_PROJECT_STATUS = A17.DBSYMBOL AND A17.[TableName] = 'SUBJPRP' and A17.[COLUMNNAME] = 'S_CONDO_PROJECT_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_PROJ_ATTACH_TYPE = A18.DBSYMBOL AND A18.[TableName] = 'SUBJPRP' and A18.[COLUMNNAME] = 'S_PROJ_ATTACH_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_PROJECT_DESIGN_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'SUBJPRP' and A19.[COLUMNNAME] = 'S_PROJECT_DESIGN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_ATTACHMENT_TYPE = A20.DBSYMBOL AND A20.[TableName] = 'SUBJPRP' and A20.[COLUMNNAME] = 'S_ATTACHMENT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_PROJ_CLASS_ID_FNM = A21.DBSYMBOL AND A21.[TableName] = 'SUBJPRP' and A21.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PROJ_CLASS_ID_FRE = A22.DBSYMBOL AND A22.[TableName] = 'SUBJPRP' and A22.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FRE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_FRPROJ = A23.DBSYMBOL AND A23.[TableName] = 'SUBJPRP' and A23.[COLUMNNAME] = 'S_FRPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_FMPROJ = A24.DBSYMBOL AND A24.[TableName] = 'SUBJPRP' and A24.[COLUMNNAME] = 'S_FMPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_STRUCTURETYPE = A25.DBSYMBOL AND A25.[TableName] = 'SUBJPRP' and A25.[COLUMNNAME] = 'S_STRUCTURETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_SUBJUNITTYPE = A26.DBSYMBOL AND A26.[TableName] = 'SUBJPRP' and A26.[COLUMNNAME] = 'S_SUBJUNITTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_APPRMTHDREQ = A27.DBSYMBOL AND A27.[TableName] = 'SUBJPRP' and A27.[COLUMNNAME] = 'S_APPRMTHDREQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_APPRMTHDREQOVR = A28.DBSYMBOL AND A28.[TableName] = 'SUBJPRP' and A28.[COLUMNNAME] = 'S_APPRMTHDREQOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_TRSTYP = A29.DBSYMBOL AND A29.[TableName] = 'SUBJPRP' and A29.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38294,10 +40452,13 @@ AS
       x.[SECINTOWN],
       x.[SECINTOTH],
       x.[S_LATECHARGETYPE],
+      A0.Descript AS [S_LATECHARGETYPE_Description],
       x.[S_PPPOPT],
+      A1.Descript AS [S_PPPOPT_Description],
       x.[PMMS_RATE],
       x.[LOCK_REDISCLOSE_IND],
       x.[S_TIL2011_OVRD],
+      A2.Descript AS [S_TIL2011_OVRD_Description],
       x.[FLAT_AMT],
       x.[BPRESOTHPRGS],
       x.[DISCLOSE_APR],
@@ -38318,6 +40479,9 @@ AS
       x.[PRESENT_SHARES],
       x.[OTHER_COLLATERAL]
    FROM [clt_NetO].[TILINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LATECHARGETYPE = A0.DBSYMBOL AND A0.[TableName] = 'TILINFO' and A0.[COLUMNNAME] = 'S_LATECHARGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PPPOPT = A1.DBSYMBOL AND A1.[TableName] = 'TILINFO' and A1.[COLUMNNAME] = 'S_PPPOPT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_TIL2011_OVRD = A2.DBSYMBOL AND A2.[TableName] = 'TILINFO' and A2.[COLUMNNAME] = 'S_TIL2011_OVRD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38343,18 +40507,26 @@ AS
       x.[TRLNDRCN],
       x.[CLNUM],
       x.[S_IVMETH],
+      A0.Descript AS [S_IVMETH_Description],
       x.[S_IVID],
+      A1.Descript AS [S_IVID_Description],
       x.[S_BUSCHL],
+      A2.Descript AS [S_BUSCHL_Description],
       x.[CLOSEDT],
       x.[DISBURDT],
       x.[FSTPMTDT],
       x.[ODDDAYS],
       x.[FEEFIRST],
       x.[S_COPT1],
+      A3.Descript AS [S_COPT1_Description],
       x.[S_COPT2],
+      A4.Descript AS [S_COPT2_Description],
       x.[S_COPT3],
+      A5.Descript AS [S_COPT3_Description],
       x.[S_COPT4],
+      A6.Descript AS [S_COPT4_Description],
       x.[S_COPT5],
+      A7.Descript AS [S_COPT5_Description],
       x.[CUSHION],
       x.[AGGEADJ],
       x.[DOWNPYMT],
@@ -38371,15 +40543,24 @@ AS
       x.[WHOMCFM],
       x.[PREQUAL],
       x.[S_COPT6],
+      A8.Descript AS [S_COPT6_Description],
       x.[S_COPT7],
+      A9.Descript AS [S_COPT7_Description],
       x.[S_COPT8],
+      A10.Descript AS [S_COPT8_Description],
       x.[S_COPT9],
+      A11.Descript AS [S_COPT9_Description],
       x.[S_COPT10],
+      A12.Descript AS [S_COPT10_Description],
       x.[S_CRDGRDRQ],
+      A13.Descript AS [S_CRDGRDRQ_Description],
       x.[S_DOCLEVEL],
+      A14.Descript AS [S_DOCLEVEL_Description],
       x.[GRADEDC],
       x.[S_CRDGRDAP],
+      A15.Descript AS [S_CRDGRDAP_Description],
       x.[S_QUALITY],
+      A16.Descript AS [S_QUALITY_Description],
       x.[DMSGRADE],
       x.[ESTCLOSD],
       x.[SRVCNUM],
@@ -38396,6 +40577,7 @@ AS
       x.[LRDATE],
       x.[TPBROKR],
       x.[S_DELTERMS],
+      A17.Descript AS [S_DELTERMS_Description],
       x.[SELLCL],
       x.[WLSTATUS],
       x.[CLTYPE],
@@ -38405,7 +40587,9 @@ AS
       x.[USERQUALIFIER],
       x.[PURPOSE_TYPE],
       x.[S_CASE_STATUS],
+      A18.Descript AS [S_CASE_STATUS_Description],
       x.[S_REPAY],
+      A19.Descript AS [S_REPAY_Description],
       x.[UNITPER],
       x.[UNITPEROVR],
       x.[LASTLOCKED],
@@ -38419,6 +40603,7 @@ AS
       x.[OBLIGATED_BORROWER_COUNT],
       x.[SECURITY_TOKEN],
       x.[S_CHANNEL_SOURCE_CODE],
+      A20.Descript AS [S_CHANNEL_SOURCE_CODE_Description],
       x.[RECORD_CREATED],
       x.[LOAN_CREATE_DATE],
       x.[CLIENT_TOLL_FREE_NUM],
@@ -38430,6 +40615,27 @@ AS
       x.[AUTO_CREDIT_PULLED],
       x.[SELLER_SERVICING_NUM]
    FROM [clt_NetO].[TRACKING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IVMETH = A0.DBSYMBOL AND A0.[TableName] = 'TRACKING' and A0.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_IVID = A1.DBSYMBOL AND A1.[TableName] = 'TRACKING' and A1.[COLUMNNAME] = 'S_IVID'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BUSCHL = A2.DBSYMBOL AND A2.[TableName] = 'TRACKING' and A2.[COLUMNNAME] = 'S_BUSCHL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COPT1 = A3.DBSYMBOL AND A3.[TableName] = 'TRACKING' and A3.[COLUMNNAME] = 'S_COPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COPT2 = A4.DBSYMBOL AND A4.[TableName] = 'TRACKING' and A4.[COLUMNNAME] = 'S_COPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_COPT3 = A5.DBSYMBOL AND A5.[TableName] = 'TRACKING' and A5.[COLUMNNAME] = 'S_COPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COPT4 = A6.DBSYMBOL AND A6.[TableName] = 'TRACKING' and A6.[COLUMNNAME] = 'S_COPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_COPT5 = A7.DBSYMBOL AND A7.[TableName] = 'TRACKING' and A7.[COLUMNNAME] = 'S_COPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COPT6 = A8.DBSYMBOL AND A8.[TableName] = 'TRACKING' and A8.[COLUMNNAME] = 'S_COPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_COPT7 = A9.DBSYMBOL AND A9.[TableName] = 'TRACKING' and A9.[COLUMNNAME] = 'S_COPT7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_COPT8 = A10.DBSYMBOL AND A10.[TableName] = 'TRACKING' and A10.[COLUMNNAME] = 'S_COPT8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_COPT9 = A11.DBSYMBOL AND A11.[TableName] = 'TRACKING' and A11.[COLUMNNAME] = 'S_COPT9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_COPT10 = A12.DBSYMBOL AND A12.[TableName] = 'TRACKING' and A12.[COLUMNNAME] = 'S_COPT10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_CRDGRDRQ = A13.DBSYMBOL AND A13.[TableName] = 'TRACKING' and A13.[COLUMNNAME] = 'S_CRDGRDRQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DOCLEVEL = A14.DBSYMBOL AND A14.[TableName] = 'TRACKING' and A14.[COLUMNNAME] = 'S_DOCLEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_CRDGRDAP = A15.DBSYMBOL AND A15.[TableName] = 'TRACKING' and A15.[COLUMNNAME] = 'S_CRDGRDAP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_QUALITY = A16.DBSYMBOL AND A16.[TableName] = 'TRACKING' and A16.[COLUMNNAME] = 'S_QUALITY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_DELTERMS = A17.DBSYMBOL AND A17.[TableName] = 'TRACKING' and A17.[COLUMNNAME] = 'S_DELTERMS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CASE_STATUS = A18.DBSYMBOL AND A18.[TableName] = 'TRACKING' and A18.[COLUMNNAME] = 'S_CASE_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_REPAY = A19.DBSYMBOL AND A19.[TableName] = 'TRACKING' and A19.[COLUMNNAME] = 'S_REPAY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_CHANNEL_SOURCE_CODE = A20.DBSYMBOL AND A20.[TableName] = 'TRACKING' and A20.[COLUMNNAME] = 'S_CHANNEL_SOURCE_CODE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38511,12 +40717,14 @@ AS
       x.[TRUST_STREET_ADDR2],
       x.[EMAIL],
       x.[S_TRUST_UNIT_TYPE],
+      A0.Descript AS [S_TRUST_UNIT_TYPE_Description],
       x.[TRUST_UNIT_NUM],
       x.[TRUST_COUNTRY_CODE],
       x.[LIVING_TRUST_BNUM],
       x.[TRST_STATE_FOR],
       x.[TRST_POSTCODE]
    FROM [clt_NetO].[TRSTENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRUST_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'TRSTENTS' and A0.[COLUMNNAME] = 'S_TRUST_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38548,6 +40756,7 @@ AS
       x.[TRSTADT2],
       x.[TRSTNUMB],
       x.[S_TRSTYP],
+      A0.Descript AS [S_TRSTYP_Description],
       x.[TRSTINST],
       x.[TRSTREV],
       x.[STATE],
@@ -38558,6 +40767,7 @@ AS
       x.[QPRT_BEN_WAIVER],
       x.[LIVTRST]
    FROM [clt_NetO].[TRUSTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRSTYP = A0.DBSYMBOL AND A0.[TableName] = 'TRUSTS' and A0.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38580,12 +40790,19 @@ AS
    SELECT
       x.[LNUM],
       x.[S_DISPOSITION],
+      A0.Descript AS [S_DISPOSITION_Description],
       x.[S_UWOPT1],
+      A1.Descript AS [S_UWOPT1_Description],
       x.[S_UWOPT2],
+      A2.Descript AS [S_UWOPT2_Description],
       x.[S_UWOPT3],
+      A3.Descript AS [S_UWOPT3_Description],
       x.[S_UWOPT4],
+      A4.Descript AS [S_UWOPT4_Description],
       x.[S_UWOPT5],
+      A5.Descript AS [S_UWOPT5_Description],
       x.[S_UWOPT6],
+      A6.Descript AS [S_UWOPT6_Description],
       x.[INV_APPRV_DATE],
       x.[UNDW_EXP_DATE],
       x.[DOC_EXP_DATE],
@@ -38597,6 +40814,7 @@ AS
       x.[AUSCOMDBID],
       x.[AUSCOMSN],
       x.[S_TRGTINV],
+      A7.Descript AS [S_TRGTINV_Description],
       x.[UWENTITY],
       x.[CREDSCOVRD],
       x.[DELEGATED_ENDORSEMENT],
@@ -38604,10 +40822,20 @@ AS
       x.[EST_CRED_SCORE],
       x.[CREDIT_REPORT_REF],
       x.[S_CREDSCORE_OVERRIDE_REASON],
+      A8.Descript AS [S_CREDSCORE_OVERRIDE_REASON_Description],
       x.[CS_OVR_REAS_OTHERDESC],
       x.[DECISIONTARGETDATE],
       x.[DISPOSITION_DATETIME]
    FROM [clt_NetO].[UNDCOND1] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_DISPOSITION = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND1' and A0.[COLUMNNAME] = 'S_DISPOSITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UWOPT1 = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND1' and A1.[COLUMNNAME] = 'S_UWOPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UWOPT2 = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND1' and A2.[COLUMNNAME] = 'S_UWOPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_UWOPT3 = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND1' and A3.[COLUMNNAME] = 'S_UWOPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_UWOPT4 = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND1' and A4.[COLUMNNAME] = 'S_UWOPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_UWOPT5 = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND1' and A5.[COLUMNNAME] = 'S_UWOPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_UWOPT6 = A6.DBSYMBOL AND A6.[TableName] = 'UNDCOND1' and A6.[COLUMNNAME] = 'S_UWOPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TRGTINV = A7.DBSYMBOL AND A7.[TableName] = 'UNDCOND1' and A7.[COLUMNNAME] = 'S_TRGTINV'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CREDSCORE_OVERRIDE_REASON = A8.DBSYMBOL AND A8.[TableName] = 'UNDCOND1' and A8.[COLUMNNAME] = 'S_CREDSCORE_OVERRIDE_REASON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38632,8 +40860,11 @@ AS
       x.[DBID],
       x.[CNTR],
       x.[S_SUNDCON],
+      A0.Descript AS [S_SUNDCON_Description],
       x.[S_UNDCAT],
+      A1.Descript AS [S_UNDCAT_Description],
       x.[S_UNDTYP],
+      A2.Descript AS [S_UNDTYP_Description],
       x.[CUUSRID],
       x.[CUUSGRP],
       x.[CUDATE],
@@ -38644,13 +40875,16 @@ AS
       x.[UWCKLIST],
       x.[ISACTIVE],
       x.[S_ASSOCDOC],
+      A3.Descript AS [S_ASSOCDOC_Description],
       x.[SHWWAIVE],
       x.[DISCLOSE],
       x.[S_COMFLG],
+      A4.Descript AS [S_COMFLG_Description],
       x.[RESPONSIBLE_P],
       x.[DUEDATE],
       x.[ERRORCAUSEBY],
       x.[S_CONDITION_SRC],
+      A5.Descript AS [S_CONDITION_SRC_Description],
       x.[CREATED_DATE],
       x.[CREATED_USER],
       x.[RECEIVED_DT],
@@ -38663,6 +40897,12 @@ AS
       x.[REJECTED_DT],
       x.[RESET_DT]
    FROM [clt_NetO].[UNDCOND2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND2' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UNDCAT = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND2' and A1.[COLUMNNAME] = 'S_UNDCAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UNDTYP = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND2' and A2.[COLUMNNAME] = 'S_UNDTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ASSOCDOC = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND2' and A3.[COLUMNNAME] = 'S_ASSOCDOC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COMFLG = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND2' and A4.[COLUMNNAME] = 'S_COMFLG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CONDITION_SRC = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND2' and A5.[COLUMNNAME] = 'S_CONDITION_SRC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38687,6 +40927,7 @@ AS
       x.[CNTR],
       x.[DBID],
       x.[S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[UNITNUM],
       x.[PROJNAME],
       x.[APPRAISAL],
@@ -38717,6 +40958,7 @@ AS
       x.[NET6],
       x.[GROSS6],
       x.[S_APPRTYPE],
+      A1.Descript AS [S_APPRTYPE_Description],
       x.[SUBMFLG],
       x.[LANDTOVALUE],
       x.[APPRVALUEINDICATOR],
@@ -38731,12 +40973,16 @@ AS
       x.[LESS750],
       x.[HVE_EFFECTIVE_DT],
       x.[S_APPRFORMTYPE],
+      A2.Descript AS [S_APPRFORMTYPE_Description],
       x.[APPRFORMTYPEOTHDESC],
       x.[S_PRPFORMTYPE],
+      A3.Descript AS [S_PRPFORMTYPE_Description],
       x.[PRPFORMTYPEOTHDESC],
       x.[S_PRPMETHODTYPE],
+      A4.Descript AS [S_PRPMETHODTYPE_Description],
       x.[PRPMETHODTYPEOTHDESC],
       x.[S_LVLPRPRVW],
+      A5.Descript AS [S_LVLPRPRVW_Description],
       x.[APPRLVLPRPRVWTYPEOTHDESC],
       x.[APPR_SUPER_LIC],
       x.[DATEORDERED],
@@ -38746,6 +40992,7 @@ AS
       x.[ACTUALCOST],
       x.[DATERECEIVED],
       x.[S_STATUS],
+      A6.Descript AS [S_STATUS_Description],
       x.[REQUESTEDDATE],
       x.[REQUESTEDBY],
       x.[DATEREVIEWED],
@@ -38765,8 +41012,11 @@ AS
       x.[SITEVALUE],
       x.[SUBJECTTOREPAIRS],
       x.[S_APPRMETH],
+      A7.Descript AS [S_APPRMETH_Description],
       x.[S_AVM],
+      A8.Descript AS [S_AVM_Description],
       x.[S_AVMOTH],
+      A9.Descript AS [S_AVMOTH_Description],
       x.[APPR_SUPER_FNAME],
       x.[APPR_SUPER_LNAME],
       x.[APPRREINSPFEE],
@@ -38782,8 +41032,20 @@ AS
       x.[ADDR2],
       x.[INV_COLL_PROG_ID],
       x.[FORECAST_STD_DEV],
-      x.[S_HOA_FEES_PERIOD_TYPE]
+      x.[S_HOA_FEES_PERIOD_TYPE],
+      A10.Descript AS [S_HOA_FEES_PERIOD_TYPE_Description]
    FROM [clt_NetO].[UWAPPR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'UWAPPR' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_APPRTYPE = A1.DBSYMBOL AND A1.[TableName] = 'UWAPPR' and A1.[COLUMNNAME] = 'S_APPRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_APPRFORMTYPE = A2.DBSYMBOL AND A2.[TableName] = 'UWAPPR' and A2.[COLUMNNAME] = 'S_APPRFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PRPFORMTYPE = A3.DBSYMBOL AND A3.[TableName] = 'UWAPPR' and A3.[COLUMNNAME] = 'S_PRPFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRPMETHODTYPE = A4.DBSYMBOL AND A4.[TableName] = 'UWAPPR' and A4.[COLUMNNAME] = 'S_PRPMETHODTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LVLPRPRVW = A5.DBSYMBOL AND A5.[TableName] = 'UWAPPR' and A5.[COLUMNNAME] = 'S_LVLPRPRVW'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_STATUS = A6.DBSYMBOL AND A6.[TableName] = 'UWAPPR' and A6.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_APPRMETH = A7.DBSYMBOL AND A7.[TableName] = 'UWAPPR' and A7.[COLUMNNAME] = 'S_APPRMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_AVM = A8.DBSYMBOL AND A8.[TableName] = 'UWAPPR' and A8.[COLUMNNAME] = 'S_AVM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_AVMOTH = A9.DBSYMBOL AND A9.[TableName] = 'UWAPPR' and A9.[COLUMNNAME] = 'S_AVMOTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_HOA_FEES_PERIOD_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'UWAPPR' and A10.[COLUMNNAME] = 'S_HOA_FEES_PERIOD_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38831,10 +41093,9 @@ CREATE VIEW [NetO_pii].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
-      x.[BNUM],
-      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[STRTSERV],
       x.[ENDSERV],
       x.[EXEMPT],
@@ -38851,14 +41112,17 @@ AS
       x.[SERVPERD],
       x.[OSRVNUM1],
       x.[S_OBRCH1],
+      A1.Descript AS [S_OBRCH1_Description],
       x.[OSTRTDT1],
       x.[OENDDT1],
       x.[OSRVNUM2],
       x.[S_OBRCH2],
+      A2.Descript AS [S_OBRCH2_Description],
       x.[OSTRTDT2],
       x.[OENDDT2],
       x.[OSRVNUM3],
       x.[S_OBRCH3],
+      A3.Descript AS [S_OBRCH3_Description],
       x.[OSTRTDT3],
       x.[OENDDT3],
       x.[VETSTATUS],
@@ -38867,6 +41131,8 @@ AS
       x.[DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
+      x.[BNUM],
+      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -38914,6 +41180,10 @@ AS
       x.[SURVIVING_SPOUSE],
       x.[SERVICE_EXPIRATION_DATE]
    FROM [clt_NetO].[VETINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OBRCH1 = A1.DBSYMBOL AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_OBRCH2 = A2.DBSYMBOL AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_OBRCH3 = A3.DBSYMBOL AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38937,7 +41207,9 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_ASSET_TYPE],
+      A0.Descript AS [S_ASSET_TYPE_Description],
       x.[S_ASSET_PURPOSE],
+      A1.Descript AS [S_ASSET_PURPOSE_Description],
       x.[ASSET_VERIFIED],
       x.[VERIFICATION_REQD],
       x.[OWNER_EST_VALUE],
@@ -38950,6 +41222,8 @@ AS
       x.[PRIMARY_COLLATERAL],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[WG_ASSET] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET' and A0.[COLUMNNAME] = 'S_ASSET_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSET_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET' and A1.[COLUMNNAME] = 'S_ASSET_PURPOSE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38984,6 +41258,7 @@ AS
       x.[ACCT_START_DT],
       x.[ACCT_MATUR_DT],
       x.[S_ACCT_OWNERSHIP],
+      A0.Descript AS [S_ACCT_OWNERSHIP_Description],
       x.[ASSET_ACCT_NO],
       x.[SHARE_VALUE],
       x.[ASSET_COLL_VALUE],
@@ -38992,6 +41267,7 @@ AS
       x.[EXCHANGE_INFO],
       x.[USE_CALC_LOAN_RT]
    FROM [clt_NetO].[WG_ASSET_ACCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ACCT_OWNERSHIP = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_ACCT' and A0.[COLUMNNAME] = 'S_ACCT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39028,9 +41304,15 @@ AS
       x.[ENGINE_TITLE_NUM],
       x.[ENGINE_MODEL_NUM],
       x.[S_ENGINE_MFG],
+      A0.Descript AS [S_ENGINE_MFG_Description],
       x.[S_MULTIENGINETYPE],
-      x.[S_ENGINE_COLOR]
+      A1.Descript AS [S_MULTIENGINETYPE_Description],
+      x.[S_ENGINE_COLOR],
+      A2.Descript AS [S_ENGINE_COLOR_Description]
    FROM [clt_NetO].[WG_ASSET_MARINE_ENG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ENGINE_MFG = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_MARINE_ENG' and A0.[COLUMNNAME] = 'S_ENGINE_MFG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MULTIENGINETYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_MARINE_ENG' and A1.[COLUMNNAME] = 'S_MULTIENGINETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ENGINE_COLOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_MARINE_ENG' and A2.[COLUMNNAME] = 'S_ENGINE_COLOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39061,23 +41343,31 @@ AS
       x.[NEW_YN],
       x.[SERIAL],
       x.[S_FUEL_TYPE],
+      A0.Descript AS [S_FUEL_TYPE_Description],
       x.[VEHICLE_REG_NUMBER],
       x.[BODY_TRIM],
       x.[S_VEHICLE_CONDITION],
+      A1.Descript AS [S_VEHICLE_CONDITION_Description],
       x.[COLL_TITLE_NUM],
       x.[S_CNRE_OWNERSHIP],
+      A2.Descript AS [S_CNRE_OWNERSHIP_Description],
       x.[LENGTH],
       x.[WIDTH],
       x.[PRIOR_TITLE_NUM],
       x.[S_TRANSF_AS],
+      A3.Descript AS [S_TRANSF_AS_Description],
       x.[S_TRANSF_TO],
+      A4.Descript AS [S_TRANSF_TO_Description],
       x.[S_DAMAGE_TYPE],
+      A5.Descript AS [S_DAMAGE_TYPE_Description],
       x.[IS_BONAFIDE_GIFT],
       x.[IS_REBUILDABLE],
       x.[IS_ENERGY_EFFICIENT],
       x.[PRIOR_STATE],
       x.[S_COLOR],
+      A6.Descript AS [S_COLOR_Description],
       x.[S_GV_WEIGHT_RATING],
+      A7.Descript AS [S_GV_WEIGHT_RATING_Description],
       x.[SCALE_WEIGHT],
       x.[PAYOFF_AMT],
       x.[MFG_REBATE],
@@ -39086,6 +41376,14 @@ AS
       x.[DLR_OPT_PRICE],
       x.[DLR_OPT_VALUE]
    FROM [clt_NetO].[WG_ASSET_VEHICLE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FUEL_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VEHICLE' and A0.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_VEHICLE_CONDITION = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VEHICLE' and A1.[COLUMNNAME] = 'S_VEHICLE_CONDITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CNRE_OWNERSHIP = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VEHICLE' and A2.[COLUMNNAME] = 'S_CNRE_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TRANSF_AS = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VEHICLE' and A3.[COLUMNNAME] = 'S_TRANSF_AS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TRANSF_TO = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VEHICLE' and A4.[COLUMNNAME] = 'S_TRANSF_TO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DAMAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VEHICLE' and A5.[COLUMNNAME] = 'S_DAMAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COLOR = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VEHICLE' and A6.[COLUMNNAME] = 'S_COLOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_GV_WEIGHT_RATING = A7.DBSYMBOL AND A7.[TableName] = 'WG_ASSET_VEHICLE' and A7.[COLUMNNAME] = 'S_GV_WEIGHT_RATING'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39112,8 +41410,12 @@ AS
       x.[SERIES],
       x.[STYLE],
       x.[S_MTRCYCLESTYLE],
-      x.[S_GENERIC_BODY_STYLE]
+      A0.Descript AS [S_MTRCYCLESTYLE_Description],
+      x.[S_GENERIC_BODY_STYLE],
+      A1.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_AUTO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MTRCYCLESTYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_AUTO' and A0.[COLUMNNAME] = 'S_MTRCYCLESTYLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GENERIC_BODY_STYLE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_AUTO' and A1.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39137,9 +41439,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_MARINE_TYPE],
+      A0.Descript AS [S_MARINE_TYPE_Description],
       x.[BOAT_NAME],
       x.[NET_WEIGHT],
       x.[S_PROPULSION_TYPE],
+      A1.Descript AS [S_PROPULSION_TYPE_Description],
       x.[HAILING_PORT],
       x.[MOORING_ADDR1],
       x.[MOORING_ADDR2],
@@ -39148,14 +41452,19 @@ AS
       x.[MOORING_ZIP],
       x.[TRAILER_ASSETID],
       x.[S_FUEL_TYPE],
+      A2.Descript AS [S_FUEL_TYPE_Description],
       x.[BEAM],
       x.[MARINE_LENGTH],
       x.[S_HULL_MATERIAL],
+      A3.Descript AS [S_HULL_MATERIAL_Description],
       x.[S_PRIMARY_USE],
+      A4.Descript AS [S_PRIMARY_USE_Description],
       x.[S_ENGINE_DRIVE],
+      A5.Descript AS [S_ENGINE_DRIVE_Description],
       x.[IS_DOCUMENTED_VESSEL],
       x.[USCG_OFFICIAL_NUMBER],
       x.[S_MANUF_TYPE],
+      A6.Descript AS [S_MANUF_TYPE_Description],
       x.[TOILETATTACHED],
       x.[MATLOTHDESC],
       x.[FUELOTHDESC],
@@ -39164,6 +41473,13 @@ AS
       x.[MOORING_FACILITY],
       x.[MOORING_MRENT]
    FROM [clt_NetO].[WG_ASSET_VHCL_MARINE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARINE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_MARINE' and A0.[COLUMNNAME] = 'S_MARINE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPULSION_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_MARINE' and A1.[COLUMNNAME] = 'S_PROPULSION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FUEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_MARINE' and A2.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_HULL_MATERIAL = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VHCL_MARINE' and A3.[COLUMNNAME] = 'S_HULL_MATERIAL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRIMARY_USE = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VHCL_MARINE' and A4.[COLUMNNAME] = 'S_PRIMARY_USE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_ENGINE_DRIVE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VHCL_MARINE' and A5.[COLUMNNAME] = 'S_ENGINE_DRIVE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_MANUF_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VHCL_MARINE' and A6.[COLUMNNAME] = 'S_MANUF_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39187,14 +41503,16 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
-      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
+      A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
+      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OPTION_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_OPTIONS' and A0.[COLUMNNAME] = 'S_OPTION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39218,14 +41536,20 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_RV_TYPE],
+      A0.Descript AS [S_RV_TYPE_Description],
       x.[MILEAGE],
       x.[NBR_AXLES],
       x.[NBR_SLIDES],
       x.[RV_LENGTH],
       x.[SELF_CONTAINED_YN],
       x.[S_CATEGORY],
-      x.[S_MODEL_TYPE]
+      A1.Descript AS [S_CATEGORY_Description],
+      x.[S_MODEL_TYPE],
+      A2.Descript AS [S_MODEL_TYPE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_RV] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RV_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_RV' and A0.[COLUMNNAME] = 'S_RV_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CATEGORY = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_RV' and A1.[COLUMNNAME] = 'S_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_MODEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_RV' and A2.[COLUMNNAME] = 'S_MODEL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39249,9 +41573,11 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_AXLE_TYPE],
+      A0.Descript AS [S_AXLE_TYPE_Description],
       x.[BRAKES_YN],
       x.[TRAILER_LENGTH]
    FROM [clt_NetO].[WG_ASSET_VHCL_TRAILER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AXLE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_TRAILER' and A0.[COLUMNNAME] = 'S_AXLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39276,6 +41602,7 @@ AS
       x.[ASSETID],
       x.[VALUATION_CNTR],
       x.[S_VALUATION_SOURCE],
+      A0.Descript AS [S_VALUATION_SOURCE_Description],
       x.[VALUATION_RESPONSE_ID],
       x.[ACTIVE_YN],
       x.[ELECTRONIC_YN],
@@ -39285,7 +41612,9 @@ AS
       x.[BOOK_EDITION],
       x.[REGION],
       x.[S_CLEAN_LEVEL],
+      A1.Descript AS [S_CLEAN_LEVEL_Description],
       x.[S_USE_FOR_LOAN_VAL],
+      A2.Descript AS [S_USE_FOR_LOAN_VAL_Description],
       x.[COLL_TRADE_BAM_VALUE],
       x.[COLL_LOAN_BAM_VALUE],
       x.[COLL_RETAIL_BAM_VALUE],
@@ -39302,6 +41631,9 @@ AS
       x.[INVOICE_PRC],
       x.[TOTL_ADJSTD_VAL_OVRD]
    FROM [clt_NetO].[WG_ASSET_VHCL_VALUATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_VALUATION_SOURCE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A0.[COLUMNNAME] = 'S_VALUATION_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CLEAN_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A1.[COLUMNNAME] = 'S_CLEAN_LEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USE_FOR_LOAN_VAL = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A2.[COLUMNNAME] = 'S_USE_FOR_LOAN_VAL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39325,6 +41657,7 @@ AS
       x.[LNUM],
       x.[AD_FLAG],
       x.[S_AD_ACCT_TYPE],
+      A0.Descript AS [S_AD_ACCT_TYPE_Description],
       x.[AD_INST_NAME],
       x.[AD_ACCT_NUMB],
       x.[AD_RT_NUMB],
@@ -39332,6 +41665,7 @@ AS
       x.[AD_ADDL_PRINC],
       x.[AD_ACCT_TYP_OTH]
    FROM [clt_NetO].[WG_AUTO_DEBIT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AD_ACCT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_AUTO_DEBIT' and A0.[COLUMNNAME] = 'S_AD_ACCT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39354,16 +41688,28 @@ AS
    SELECT
       x.[FIELDID],
       x.[S_FIELD_STATUS],
+      A0.Descript AS [S_FIELD_STATUS_Description],
       x.[FIELD_NAME],
       x.[FIELD_TEXT],
       x.[S_FIELD_CONTROL_TYPE],
+      A1.Descript AS [S_FIELD_CONTROL_TYPE_Description],
       x.[S_FIELD_OPERATOR],
+      A2.Descript AS [S_FIELD_OPERATOR_Description],
       x.[S_FIELD_LIST_SOURCE],
+      A3.Descript AS [S_FIELD_LIST_SOURCE_Description],
       x.[S_FIELD_FORMAT],
+      A4.Descript AS [S_FIELD_FORMAT_Description],
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID],
-      x.[S_USAGE_TYPE]
+      x.[S_USAGE_TYPE],
+      A5.Descript AS [S_USAGE_TYPE_Description]
    FROM [clt_NetO].[WG_BRM_DEFN_FIELDS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIELD_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_FIELDS' and A0.[COLUMNNAME] = 'S_FIELD_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FIELD_CONTROL_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_FIELDS' and A1.[COLUMNNAME] = 'S_FIELD_CONTROL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FIELD_OPERATOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_FIELDS' and A2.[COLUMNNAME] = 'S_FIELD_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FIELD_LIST_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_DEFN_FIELDS' and A3.[COLUMNNAME] = 'S_FIELD_LIST_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FIELD_FORMAT = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_DEFN_FIELDS' and A4.[COLUMNNAME] = 'S_FIELD_FORMAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39385,8 +41731,11 @@ AS
    SELECT
       x.[GRIDID],
       x.[S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[S_GRID_STATUS],
+      A1.Descript AS [S_GRID_STATUS_Description],
       x.[S_GRID_CATEGORY],
+      A2.Descript AS [S_GRID_CATEGORY_Description],
       x.[GRID_NAME],
       x.[GRID_NBR_DIMS],
       x.[RSLT_START_ROW],
@@ -39398,6 +41747,9 @@ AS
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID' and A1.[COLUMNNAME] = 'S_GRID_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39420,7 +41772,9 @@ AS
       x.[GRIDID],
       x.[DIM_OCC],
       x.[S_GRID_VERT_HORIZ],
+      A0.Descript AS [S_GRID_VERT_HORIZ_Description],
       x.[S_GRID_OPERATOR],
+      A1.Descript AS [S_GRID_OPERATOR_Description],
       x.[GRID_FIELD_NAME],
       x.[GRID_LABEL_TEXT],
       x.[GRID_LABEL_OCCS],
@@ -39432,8 +41786,12 @@ AS
       x.[GRID_TGT_VAL_START_COL],
       x.[GRID_TGT_VAL_START_ROW],
       x.[S_GRID_TGT_VAL_SPAN_TYPE],
+      A2.Descript AS [S_GRID_TGT_VAL_SPAN_TYPE_Description],
       x.[FIELDID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GRID_VERT_HORIZ = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A0.[COLUMNNAME] = 'S_GRID_VERT_HORIZ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_OPERATOR = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A1.[COLUMNNAME] = 'S_GRID_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39459,18 +41817,22 @@ AS
       x.[EXP_FILE_NAME],
       x.[EXP_FILE_PATH],
       x.[S_EXP_STATUS],
+      A0.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID],
       x.[EXP_BRM_IDENT],
       x.[EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS],
+      A1.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[EXP_NOTES],
       x.[DBID],
       x.[EXP_INCL_FIELDS],
       x.[EXP_INCL_CATS],
       x.[EXP_INCL_GRIDS]
    FROM [clt_NetO].[WG_BRM_EXPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EXP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_EXPORT' and A0.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39493,9 +41855,11 @@ AS
       x.[BRM_IDENT_FIELD],
       x.[BRM_IDENT_CODE],
       x.[S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[BRM_IDENT_NAME],
       x.[BRM_IDENT_DESCRIPTION]
    FROM [clt_NetO].[WG_BRM_IDENTIFIERS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39521,18 +41885,21 @@ AS
       x.[IMP_FILE_NAME],
       x.[IMP_FILE_PATH],
       x.[S_IMP_STATUS],
+      A0.Descript AS [S_IMP_STATUS_Description],
       x.[EXPORTID],
       x.[EXP_USER_NAME],
       x.[EXP_DATE_TIME],
       x.[EXP_FILE_NAME],
       x.[EXP_FILE_PATH],
       x.[S_EXP_STATUS],
+      A1.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID],
       x.[EXP_BRM_IDENT],
       x.[EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS],
+      A2.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[IMP_NOTES],
       x.[EXP_NOTES],
       x.[SYS_FINDINGS],
@@ -39544,6 +41911,9 @@ AS
       x.[IMP_IMP_CATS],
       x.[IMP_IMP_GRIDS]
    FROM [clt_NetO].[WG_BRM_IMPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IMP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IMPORT' and A0.[COLUMNNAME] = 'S_IMP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_IMPORT' and A1.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39565,15 +41935,20 @@ AS
    SELECT
       x.[BRMID],
       x.[S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[LU_BRM_IDENTIFIER],
       x.[S_BRM_STATUS],
+      A1.Descript AS [S_BRM_STATUS_Description],
       x.[S_BRM_TYPE],
+      A2.Descript AS [S_BRM_TYPE_Description],
       x.[BRM_NAME],
       x.[BRM_DESCRIPTION],
       x.[BRM_START_DATE],
       x.[BRM_END_DATE],
       x.[S_CAP_CATEGORY],
+      A3.Descript AS [S_CAP_CATEGORY_Description],
       x.[S_EFFECTIVITY_RULE],
+      A4.Descript AS [S_EFFECTIVITY_RULE_Description],
       x.[CHANGE_EFF_DATE],
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID],
@@ -39583,8 +41958,15 @@ AS
       x.[LAST_CHANGE_USER_ID],
       x.[MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL],
+      A5.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[BRM_CATEGORY]
    FROM [clt_NetO].[WG_BRM_LKUP_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_BASE' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_BASE' and A1.[COLUMNNAME] = 'S_BRM_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BRM_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_LKUP_BASE' and A2.[COLUMNNAME] = 'S_BRM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_CAP_CATEGORY = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_LKUP_BASE' and A3.[COLUMNNAME] = 'S_CAP_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EFFECTIVITY_RULE = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_LKUP_BASE' and A4.[COLUMNNAME] = 'S_EFFECTIVITY_RULE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39609,8 +41991,10 @@ AS
       x.[RULE_DESCRIPTION],
       x.[PRIORITY],
       x.[MESSAGE_TEXT],
-      x.[S_OVERRIDE_LEVEL]
+      x.[S_OVERRIDE_LEVEL],
+      A0.Descript AS [S_OVERRIDE_LEVEL_Description]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39670,8 +42054,10 @@ AS
       x.[RULE_ITEM_GRID_RSLT_COL],
       x.[RULE_ITEM_FIELD_NAME],
       x.[S_RULE_ITEM_OPERATOR],
+      A0.Descript AS [S_RULE_ITEM_OPERATOR_Description],
       x.[RULE_ITEM_FIELDID]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_FIELD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39695,12 +42081,16 @@ AS
       x.[RULE_OCC],
       x.[RULE_ITEM_OCC],
       x.[S_RULE_ITEM_TYPE],
+      A0.Descript AS [S_RULE_ITEM_TYPE_Description],
       x.[RULE_ITEM_NAME],
       x.[PRIORITY],
       x.[MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL],
+      A1.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[MESSAGE_TEXT_2]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_ITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A0.[COLUMNNAME] = 'S_RULE_ITEM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -39877,10 +42267,15 @@ AS
       x.[LNUM],
       x.[CID_BRANCH],
       x.[S_BUSINESS_CHANNEL],
+      A0.Descript AS [S_BUSINESS_CHANNEL_Description],
       x.[S_LOAN_TYPE],
+      A1.Descript AS [S_LOAN_TYPE_Description],
       x.[S_LOAN_CATEGORY],
+      A2.Descript AS [S_LOAN_CATEGORY_Description],
       x.[S_REFERRAL_SOURCE],
+      A3.Descript AS [S_REFERRAL_SOURCE_Description],
       x.[S_LOAN_PURPOSE],
+      A4.Descript AS [S_LOAN_PURPOSE_Description],
       x.[EMP_LOAN_YN],
       x.[REG_O_LOAN_YN],
       x.[TSWE_EXPECTED_YN],
@@ -39891,6 +42286,7 @@ AS
       x.[MBA_YN],
       x.[IS_PERSONALUSE_YN],
       x.[S_PRIMARY_COLLATERAL_TYPE],
+      A5.Descript AS [S_PRIMARY_COLLATERAL_TYPE_Description],
       x.[COLLATERAL_STATE],
       x.[VENDOR_VAL_METHOD],
       x.[VALUATION_SOURCE],
@@ -39899,8 +42295,18 @@ AS
       x.[CURRENTMODELYR],
       x.[COLLAGEYRS],
       x.[S_TITLE_TRANSFER],
-      x.[S_SECONDARY_COLLATERAL_TYPE]
+      A6.Descript AS [S_TITLE_TRANSFER_Description],
+      x.[S_SECONDARY_COLLATERAL_TYPE],
+      A7.Descript AS [S_SECONDARY_COLLATERAL_TYPE_Description]
    FROM [clt_NetO].[WG_CNS_LOAN_APPLICATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BUSINESS_CHANNEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A0.[COLUMNNAME] = 'S_BUSINESS_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A1.[COLUMNNAME] = 'S_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOAN_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A2.[COLUMNNAME] = 'S_LOAN_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REFERRAL_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A3.[COLUMNNAME] = 'S_REFERRAL_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOAN_PURPOSE = A4.DBSYMBOL AND A4.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A4.[COLUMNNAME] = 'S_LOAN_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PRIMARY_COLLATERAL_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A5.[COLUMNNAME] = 'S_PRIMARY_COLLATERAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TITLE_TRANSFER = A6.DBSYMBOL AND A6.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A6.[COLUMNNAME] = 'S_TITLE_TRANSFER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SECONDARY_COLLATERAL_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A7.[COLUMNNAME] = 'S_SECONDARY_COLLATERAL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39989,7 +42395,6 @@ CREATE VIEW [NetO_pii].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
-      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -40002,7 +42407,8 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT]
+      x.[MNTHPAYMENT],
+      x.[TRDINCNTR]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -40478,8 +42884,10 @@ AS
       x.[INC_SRC_CTR],
       x.[RECORD_CREATED],
       x.[S_INCOME_SOURCE_TYPE],
+      A0.Descript AS [S_INCOME_SOURCE_TYPE_Description],
       x.[OTHER_INCOME_SRC_DESC],
       x.[S_BUSINESS_TYPE],
+      A1.Descript AS [S_BUSINESS_TYPE_Description],
       x.[SOURCE_NAME],
       x.[SOURCE_CONTACT],
       x.[ADDRESS_LN_1],
@@ -40493,6 +42901,7 @@ AS
       x.[FAX_NBR],
       x.[TITLE],
       x.[S_SPECIAL_BOR_EMP_REL_TYPE],
+      A2.Descript AS [S_SPECIAL_BOR_EMP_REL_TYPE_Description],
       x.[SPEC_BOR_EMP_REL_TYPE_DESC],
       x.[OCCUPATION],
       x.[EMPLOYED_FROM],
@@ -40503,6 +42912,7 @@ AS
       x.[SELF_EMPLOYED_FLAG],
       x.[PCT_BUSINESS_OWNED],
       x.[S_SELF_EMPL_TYPE],
+      A3.Descript AS [S_SELF_EMPL_TYPE_Description],
       x.[PROF_MONTHS],
       x.[PROF_YEARS],
       x.[BASE_INCOME],
@@ -40514,6 +42924,7 @@ AS
       x.[TOTAL_INCOME],
       x.[LIABCTR],
       x.[S_EMP_UNIT_TYPE],
+      A4.Descript AS [S_EMP_UNIT_TYPE_Description],
       x.[EMP_UNIT_NUMBER],
       x.[INCOME_STATE_FOREIN],
       x.[INCOME_POSTCODE],
@@ -40526,6 +42937,11 @@ AS
       x.[INC_DBA_NAME],
       x.[INC_EIN]
    FROM [clt_NetO].[WG_INCOME_SOURCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME_SOURCE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_INCOME_SOURCE' and A0.[COLUMNNAME] = 'S_INCOME_SOURCE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BUSINESS_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_INCOME_SOURCE' and A1.[COLUMNNAME] = 'S_BUSINESS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPECIAL_BOR_EMP_REL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_INCOME_SOURCE' and A2.[COLUMNNAME] = 'S_SPECIAL_BOR_EMP_REL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SELF_EMPL_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'WG_INCOME_SOURCE' and A3.[COLUMNNAME] = 'S_SELF_EMPL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EMP_UNIT_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'WG_INCOME_SOURCE' and A4.[COLUMNNAME] = 'S_EMP_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -40572,8 +42988,10 @@ AS
       x.[CC],
       x.[STROKE],
       x.[CATEGORY],
-      x.[S_GENERIC_BODY_STYLE]
+      x.[S_GENERIC_BODY_STYLE],
+      A0.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_KELLEYBLUEBOOK_RESPONSE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GENERIC_BODY_STYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_KELLEYBLUEBOOK_RESPONSE' and A0.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -40597,9 +43015,11 @@ AS
       x.[ROWCNTR],
       x.[LNUM],
       x.[S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[LOAN_STATUS],
       x.[STATUS_DATE]
    FROM [clt_NetO].[WG_RPT_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_RPT_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -40862,12 +43282,16 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[START_DATE],
       x.[END_DATE],
       x.[S_OFF_OR_ENLISTED],
+      A1.Descript AS [S_OFF_OR_ENLISTED_Description],
       x.[SERVICE_NUMBER],
       x.[ACTIVESERVYN]
    FROM [clt_NetO].[WG_TLBR_VET_MILT_SERVICE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OFF_OR_ENLISTED = A1.DBSYMBOL AND A1.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A1.[COLUMNNAME] = 'S_OFF_OR_ENLISTED'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -41184,8 +43608,12 @@ AS
       x.[MIN_1ST_ADJ_RATE] AS [MIN_1ST_ADJ_RATE],
       x.[FIR_MAX_MONTHLY_AMT] AS [FIR_MAX_MONTHLY_AMT],
       x.[S_FRE_INDEX_TYPE] AS [S_FRE_INDEX_TYPE],
-      x.[S_FNM_INDEX_TYPE] AS [S_FNM_INDEX_TYPE]
+      A0.Descript AS [S_FRE_INDEX_TYPE_Description],
+      x.[S_FNM_INDEX_TYPE] AS [S_FNM_INDEX_TYPE],
+      A1.Descript AS [S_FNM_INDEX_TYPE_Description]
    FROM [clt_NetO].[ARMINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FRE_INDEX_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'ARMINFO' and A0.[COLUMNNAME] = 'S_FRE_INDEX_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FNM_INDEX_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'ARMINFO' and A1.[COLUMNNAME] = 'S_FNM_INDEX_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -41211,6 +43639,7 @@ AS
       x.[DBID] AS [DBID],
       x.[ASSETCTR] AS [ASSETCTR],
       x.[S_ASSET] AS [S_ASSET],
+      A0.Descript AS [S_ASSET_Description],
       x.[ASSETDSC] AS [ASSETDSC],
       x.[ACCTNUM] AS [ACCTNUM],
       x.[HOLDER] AS [HOLDER],
@@ -41246,10 +43675,15 @@ AS
       x.[BUILDER_EARNEST] AS [BUILDER_EARNEST],
       x.[ASSET_INDICATOR] AS [ASSET_INDICATOR],
       x.[S_ACCOUNT_OWNERSHIP] AS [S_ACCOUNT_OWNERSHIP],
+      A1.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[S_GIFT_PRVDR_TYPE] AS [S_GIFT_PRVDR_TYPE],
+      A2.Descript AS [S_GIFT_PRVDR_TYPE_Description],
       x.[GIFT_PRVDR_OTH_DESC] AS [GIFT_PRVDR_OTH_DESC],
       x.[GIFT_DEPOSIT_STATUS] AS [GIFT_DEPOSIT_STATUS]
    FROM [clt_NetO].[ASSETS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET = A0.DBSYMBOL AND A0.[TableName] = 'ASSETS' and A0.[COLUMNNAME] = 'S_ASSET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACCOUNT_OWNERSHIP = A1.DBSYMBOL AND A1.[TableName] = 'ASSETS' and A1.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GIFT_PRVDR_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'ASSETS' and A2.[COLUMNNAME] = 'S_GIFT_PRVDR_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -41316,6 +43750,7 @@ AS
       x.[AGE] AS [AGE],
       x.[YRSSCHL] AS [YRSSCHL],
       x.[S_MARITL] AS [S_MARITL],
+      A0.Descript AS [S_MARITL_Description],
       x.[FRNINFO] AS [FRNINFO],
       x.[GENDER] AS [GENDER],
       x.[NUMDEP] AS [NUMDEP],
@@ -41331,6 +43766,7 @@ AS
       x.[APPNUMB] AS [APPNUMB],
       x.[FIRSTBUY] AS [FIRSTBUY],
       x.[S_OWNSHP] AS [S_OWNSHP],
+      A1.Descript AS [S_OWNSHP_Description],
       x.[VOR_ACCT] AS [VOR_ACCT],
       x.[VOR_NAME] AS [VOR_NAME],
       x.[OTHINCM] AS [OTHINCM],
@@ -41338,8 +43774,10 @@ AS
       x.[JOINTLY] AS [JOINTLY],
       x.[DOB] AS [DOB],
       x.[S_BORTYP] AS [S_BORTYP],
+      A2.Descript AS [S_BORTYP_Description],
       x.[ALIASES] AS [ALIASES],
       x.[S_VESTNG] AS [S_VESTNG],
+      A3.Descript AS [S_VESTNG_Description],
       x.[PRTENTTL] AS [PRTENTTL],
       x.[PARTNOTE] AS [PARTNOTE],
       x.[COUNTY] AS [COUNTY],
@@ -41404,6 +43842,7 @@ AS
       x.[ELEC_DISC_CONSENT] AS [ELEC_DISC_CONSENT],
       x.[ELEC_DISC_WITHDRAW] AS [ELEC_DISC_WITHDRAW],
       x.[S_IVMETH] AS [S_IVMETH],
+      A4.Descript AS [S_IVMETH_Description],
       x.[ATALLLIQUIDTOTAL] AS [ATALLLIQUIDTOTAL],
       x.[ATGIFTTOTAL] AS [ATGIFTTOTAL],
       x.[ATREONETPROCEEDSTOTAL] AS [ATREONETPROCEEDSTOTAL],
@@ -41411,6 +43850,7 @@ AS
       x.[LTNONSUBJDEBTMOTOTAL] AS [LTNONSUBJDEBTMOTOTAL],
       x.[LTNONSUBJPAYOFFTOTAL] AS [LTNONSUBJPAYOFFTOTAL],
       x.[S_CBSOURCE] AS [S_CBSOURCE],
+      A5.Descript AS [S_CBSOURCE_Description],
       x.[VETERAN] AS [VETERAN],
       x.[ENTITLEMENT] AS [ENTITLEMENT],
       x.[LDP_NUMBER] AS [LDP_NUMBER],
@@ -41434,7 +43874,9 @@ AS
       x.[DISPLAY_NAME] AS [DISPLAY_NAME],
       x.[NON_INDIV_BORR_NAME] AS [NON_INDIV_BORR_NAME],
       x.[S_LEGAL_ENTITY_TYPE] AS [S_LEGAL_ENTITY_TYPE],
+      A6.Descript AS [S_LEGAL_ENTITY_TYPE_Description],
       x.[S_LEGAL_ENTITY_TYP_OTH] AS [S_LEGAL_ENTITY_TYP_OTH],
+      A7.Descript AS [S_LEGAL_ENTITY_TYP_OTH_Description],
       x.[ULDD_TAXPAYER_ID] AS [ULDD_TAXPAYER_ID],
       x.[INCLUDE_IN_PROFORMA] AS [INCLUDE_IN_PROFORMA],
       x.[FADDR_INDICATOR] AS [FADDR_INDICATOR],
@@ -41450,9 +43892,11 @@ AS
       x.[MNTHS_AT_PRSNT] AS [MNTHS_AT_PRSNT],
       x.[BORR_COVERED] AS [BORR_COVERED],
       x.[S_COV_BORR_STATUS] AS [S_COV_BORR_STATUS],
+      A8.Descript AS [S_COV_BORR_STATUS_Description],
       x.[BORR_VERBDISC] AS [BORR_VERBDISC],
       x.[MLACERTID] AS [MLACERTID],
       x.[S_BOR_UNIT_TYPE] AS [S_BOR_UNIT_TYPE],
+      A9.Descript AS [S_BOR_UNIT_TYPE_Description],
       x.[BOR_UNIT_NUM] AS [BOR_UNIT_NUM],
       x.[BOR_COUNTRY] AS [BOR_COUNTRY],
       x.[BOR_COUNTRY_CODE] AS [BOR_COUNTRY_CODE],
@@ -41469,8 +43913,11 @@ AS
       x.[COPIED_MAIL_ADDRESS] AS [COPIED_MAIL_ADDRESS],
       x.[CHECK_ALIAS] AS [CHECK_ALIAS],
       x.[S_PARTY_TYPE] AS [S_PARTY_TYPE],
+      A10.Descript AS [S_PARTY_TYPE_Description],
       x.[S_CITIZENSHIP] AS [S_CITIZENSHIP],
+      A11.Descript AS [S_CITIZENSHIP_Description],
       x.[S_UNMARRIED] AS [S_UNMARRIED],
+      A12.Descript AS [S_UNMARRIED_Description],
       x.[ATTR_PORTAL_REG] AS [ATTR_PORTAL_REG],
       x.[ATTR_COUNSELING_REQUIRED] AS [ATTR_COUNSELING_REQUIRED],
       x.[ATTR_CHILD_CARE] AS [ATTR_CHILD_CARE],
@@ -41478,6 +43925,7 @@ AS
       x.[ATTR_GUARDIANSHIP] AS [ATTR_GUARDIANSHIP],
       x.[ATTR_SOLE_PROPRIETOR] AS [ATTR_SOLE_PROPRIETOR],
       x.[S_UNMARRIED_RLTNSHIP] AS [S_UNMARRIED_RLTNSHIP],
+      A13.Descript AS [S_UNMARRIED_RLTNSHIP_Description],
       x.[UNMARRIED_RLTNSHIP_STATE] AS [UNMARRIED_RLTNSHIP_STATE],
       x.[UNMARRIED_RLTNSHIP_OTHERDESC] AS [UNMARRIED_RLTNSHIP_OTHERDESC],
       x.[RETIRED_BORROWER] AS [RETIRED_BORROWER],
@@ -41490,6 +43938,20 @@ AS
       x.[IS_DEALER_EMPLOYEE] AS [IS_DEALER_EMPLOYEE],
       x.[LIVE_RENT_FREE_ENUMS] AS [LIVE_RENT_FREE_ENUMS]
    FROM [clt_NetO].[BORROWER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARITL = A0.DBSYMBOL AND A0.[TableName] = 'BORROWER' and A0.[COLUMNNAME] = 'S_MARITL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OWNSHP = A1.DBSYMBOL AND A1.[TableName] = 'BORROWER' and A1.[COLUMNNAME] = 'S_OWNSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BORTYP = A2.DBSYMBOL AND A2.[TableName] = 'BORROWER' and A2.[COLUMNNAME] = 'S_BORTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_VESTNG = A3.DBSYMBOL AND A3.[TableName] = 'BORROWER' and A3.[COLUMNNAME] = 'S_VESTNG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_IVMETH = A4.DBSYMBOL AND A4.[TableName] = 'BORROWER' and A4.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CBSOURCE = A5.DBSYMBOL AND A5.[TableName] = 'BORROWER' and A5.[COLUMNNAME] = 'S_CBSOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LEGAL_ENTITY_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'BORROWER' and A6.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LEGAL_ENTITY_TYP_OTH = A7.DBSYMBOL AND A7.[TableName] = 'BORROWER' and A7.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYP_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COV_BORR_STATUS = A8.DBSYMBOL AND A8.[TableName] = 'BORROWER' and A8.[COLUMNNAME] = 'S_COV_BORR_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BOR_UNIT_TYPE = A9.DBSYMBOL AND A9.[TableName] = 'BORROWER' and A9.[COLUMNNAME] = 'S_BOR_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_PARTY_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'BORROWER' and A10.[COLUMNNAME] = 'S_PARTY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_CITIZENSHIP = A11.DBSYMBOL AND A11.[TableName] = 'BORROWER' and A11.[COLUMNNAME] = 'S_CITIZENSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_UNMARRIED = A12.DBSYMBOL AND A12.[TableName] = 'BORROWER' and A12.[COLUMNNAME] = 'S_UNMARRIED'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_UNMARRIED_RLTNSHIP = A13.DBSYMBOL AND A13.[TableName] = 'BORROWER' and A13.[COLUMNNAME] = 'S_UNMARRIED_RLTNSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -41517,15 +43979,19 @@ AS
       x.[CSTIMPRO] AS [CSTIMPRO],
       x.[IMPDESC] AS [IMPDESC],
       x.[S_REFPRP] AS [S_REFPRP],
+      A0.Descript AS [S_REFPRP_Description],
       x.[IMPMADE] AS [IMPMADE],
       x.[LOTACQUR] AS [LOTACQUR],
       x.[REFIIMP] AS [REFIIMP],
       x.[CASHAMT] AS [CASHAMT],
       x.[S_GSE_REFINANCE_PURPOSE] AS [S_GSE_REFINANCE_PURPOSE],
+      A1.Descript AS [S_GSE_REFINANCE_PURPOSE_Description],
       x.[S_CONST_PERM_CLOSING] AS [S_CONST_PERM_CLOSING],
+      A2.Descript AS [S_CONST_PERM_CLOSING_Description],
       x.[INTERNREFI] AS [INTERNREFI],
       HASHBYTES('SHA2_256', x.[ORIG_INVESTOR_LOAN_NBR]) AS [ORIG_INVESTOR_LOAN_NBR],
       x.[S_ORIG_INVESTOR] AS [S_ORIG_INVESTOR],
+      A3.Descript AS [S_ORIG_INVESTOR_Description],
       x.[OTHER_INVESTOR_DESC] AS [OTHER_INVESTOR_DESC],
       x.[OTHERGSEREFIPURPTYPEDESC] AS [OTHERGSEREFIPURPTYPEDESC],
       x.[REPLACE_EXIST_CONSTR_LOAN] AS [REPLACE_EXIST_CONSTR_LOAN],
@@ -41533,11 +43999,21 @@ AS
       x.[PREVIOUS_REFI_MONTHS] AS [PREVIOUS_REFI_MONTHS],
       x.[CO_REFI_PURCH_CONST] AS [CO_REFI_PURCH_CONST],
       x.[S_CONST_PERM_FEATURE] AS [S_CONST_PERM_FEATURE],
+      A4.Descript AS [S_CONST_PERM_FEATURE_Description],
       x.[S_FNM_REFI_PGM] AS [S_FNM_REFI_PGM],
+      A5.Descript AS [S_FNM_REFI_PGM_Description],
       x.[S_FRE_REFI_PGM] AS [S_FRE_REFI_PGM],
+      A6.Descript AS [S_FRE_REFI_PGM_Description],
       x.[LIMIT_DESC] AS [LIMIT_DESC],
       x.[REFI_LOAN_ACCT_NBR] AS [REFI_LOAN_ACCT_NBR]
    FROM [clt_NetO].[CONSREFI] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFPRP = A0.DBSYMBOL AND A0.[TableName] = 'CONSREFI' and A0.[COLUMNNAME] = 'S_REFPRP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GSE_REFINANCE_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'CONSREFI' and A1.[COLUMNNAME] = 'S_GSE_REFINANCE_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CONST_PERM_CLOSING = A2.DBSYMBOL AND A2.[TableName] = 'CONSREFI' and A2.[COLUMNNAME] = 'S_CONST_PERM_CLOSING'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ORIG_INVESTOR = A3.DBSYMBOL AND A3.[TableName] = 'CONSREFI' and A3.[COLUMNNAME] = 'S_ORIG_INVESTOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_CONST_PERM_FEATURE = A4.DBSYMBOL AND A4.[TableName] = 'CONSREFI' and A4.[COLUMNNAME] = 'S_CONST_PERM_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_FNM_REFI_PGM = A5.DBSYMBOL AND A5.[TableName] = 'CONSREFI' and A5.[COLUMNNAME] = 'S_FNM_REFI_PGM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_FRE_REFI_PGM = A6.DBSYMBOL AND A6.[TableName] = 'CONSREFI' and A6.[COLUMNNAME] = 'S_FRE_REFI_PGM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -41711,7 +44187,9 @@ AS
       x.[M_DBID] AS [M_DBID],
       x.[M_SERIAL] AS [M_SERIAL],
       x.[S_PRPTYP] AS [S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[S_TITLE] AS [S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[BNKRPT_DISCHARGE_MOS] AS [BNKRPT_DISCHARGE_MOS],
       x.[FORECLOSURE_MOS] AS [FORECLOSURE_MOS],
       x.[NON_PERMANENT_RESIDENT_ALIEN] AS [NON_PERMANENT_RESIDENT_ALIEN],
@@ -41736,6 +44214,7 @@ AS
       x.[SHORT_SALE] AS [SHORT_SALE],
       x.[PROPFORECLOSE] AS [PROPFORECLOSE],
       x.[S_BANKRUPTCY_TYPE] AS [S_BANKRUPTCY_TYPE],
+      A2.Descript AS [S_BANKRUPTCY_TYPE_Description],
       x.[PREFORECLOS_NOTES] AS [PREFORECLOS_NOTES],
       x.[PROPFORECL_NOTES] AS [PROPFORECL_NOTES],
       x.[PRIMRESID_NOTES] AS [PRIMRESID_NOTES],
@@ -41762,6 +44241,9 @@ AS
       x.[DECBANKRUPTCY_INCINFORM] AS [DECBANKRUPTCY_INCINFORM],
       x.[FHA_SECOND_RESID_IND] AS [FHA_SECOND_RESID_IND]
    FROM [clt_NetO].[DECLRTN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'DECLRTN' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'DECLRTN' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BANKRUPTCY_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DECLRTN' and A2.[COLUMNNAME] = 'S_BANKRUPTCY_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -41796,35 +44278,55 @@ AS
       x.[RENTS3] AS [RENTS3],
       x.[RENTS4] AS [RENTS4],
       x.[S_SPF1] AS [S_SPF1],
+      A0.Descript AS [S_SPF1_Description],
       x.[S_SPF2] AS [S_SPF2],
+      A1.Descript AS [S_SPF2_Description],
       x.[S_SPF3] AS [S_SPF3],
+      A2.Descript AS [S_SPF3_Description],
       x.[S_SPF4] AS [S_SPF4],
+      A3.Descript AS [S_SPF4_Description],
       x.[S_SPF5] AS [S_SPF5],
+      A4.Descript AS [S_SPF5_Description],
       x.[S_SPF6] AS [S_SPF6],
+      A5.Descript AS [S_SPF6_Description],
       x.[ASSUM] AS [ASSUM],
       x.[RDF] AS [RDF],
       x.[INTPD] AS [INTPD],
       x.[MATDATE] AS [MATDATE],
       x.[S_SFSRC1] AS [S_SFSRC1],
+      A6.Descript AS [S_SFSRC1_Description],
       x.[S_SFSRC2] AS [S_SFSRC2],
+      A7.Descript AS [S_SFSRC2_Description],
       x.[SFAMT1] AS [SFAMT1],
       x.[SFAMT2] AS [SFAMT2],
       x.[S_BECA1] AS [S_BECA1],
+      A8.Descript AS [S_BECA1_Description],
       x.[S_BECA2] AS [S_BECA2],
+      A9.Descript AS [S_BECA2_Description],
       x.[S_BECF1] AS [S_BECF1],
+      A10.Descript AS [S_BECF1_Description],
       x.[S_BECF2] AS [S_BECF2],
+      A11.Descript AS [S_BECF2_Description],
       x.[S_DPSRC1] AS [S_DPSRC1],
+      A12.Descript AS [S_DPSRC1_Description],
       x.[S_DPSRC2] AS [S_DPSRC2],
+      A13.Descript AS [S_DPSRC2_Description],
       x.[S_DPSRC3] AS [S_DPSRC3],
+      A14.Descript AS [S_DPSRC3_Description],
       x.[S_DPSRC4] AS [S_DPSRC4],
+      A15.Descript AS [S_DPSRC4_Description],
       x.[DPAMT1] AS [DPAMT1],
       x.[DPAMT2] AS [DPAMT2],
       x.[DPAMT3] AS [DPAMT3],
       x.[DPAMT4] AS [DPAMT4],
       x.[S_CCSRC1] AS [S_CCSRC1],
+      A16.Descript AS [S_CCSRC1_Description],
       x.[S_CCSRC2] AS [S_CCSRC2],
+      A17.Descript AS [S_CCSRC2_Description],
       x.[S_CCSRC3] AS [S_CCSRC3],
+      A18.Descript AS [S_CCSRC3_Description],
       x.[S_CCSRC4] AS [S_CCSRC4],
+      A19.Descript AS [S_CCSRC4_Description],
       x.[CCAMT1] AS [CCAMT1],
       x.[CCAMT2] AS [CCAMT2],
       x.[CCAMT3] AS [CCAMT3],
@@ -41832,12 +44334,14 @@ AS
       x.[MICOV] AS [MICOV],
       x.[UPB] AS [UPB],
       x.[S_LFC] AS [S_LFC],
+      A20.Descript AS [S_LFC_Description],
       x.[INTEND] AS [INTEND],
       x.[LPID] AS [LPID],
       x.[INTONLY] AS [INTONLY],
       x.[LOOKBACK] AS [LOOKBACK],
       x.[NETNEGAM] AS [NETNEGAM],
       x.[S_RFC] AS [S_RFC],
+      A21.Descript AS [S_RFC_Description],
       x.[UWNAME] AS [UWNAME],
       x.[INVLNUM] AS [INVLNUM],
       x.[MTGORIG] AS [MTGORIG],
@@ -41847,9 +44351,13 @@ AS
       x.[SELLER] AS [SELLER],
       x.[CID_SELLER_AGENT] AS [CID_SELLER_AGENT],
       x.[S_SPF7] AS [S_SPF7],
+      A22.Descript AS [S_SPF7_Description],
       x.[S_SPF8] AS [S_SPF8],
+      A23.Descript AS [S_SPF8_Description],
       x.[S_SPF9] AS [S_SPF9],
+      A24.Descript AS [S_SPF9_Description],
       x.[S_SPF10] AS [S_SPF10],
+      A25.Descript AS [S_SPF10_Description],
       x.[UPBO] AS [UPBO],
       x.[ESCROW_ACCT_BALANCE] AS [ESCROW_ACCT_BALANCE],
       x.[ESCROW_PYMT_AMT] AS [ESCROW_PYMT_AMT],
@@ -41857,21 +44365,59 @@ AS
       x.[APPR_DOC_ID] AS [APPR_DOC_ID],
       x.[READY_FOR_DELIVERY] AS [READY_FOR_DELIVERY],
       x.[S_INT_ACCRUAL_TYPE] AS [S_INT_ACCRUAL_TYPE],
+      A26.Descript AS [S_INT_ACCRUAL_TYPE_Description],
       x.[S_INT_CALC_BASIS_TYPE] AS [S_INT_CALC_BASIS_TYPE],
+      A27.Descript AS [S_INT_CALC_BASIS_TYPE_Description],
       x.[INT_CALC_EFF_MONTHS] AS [INT_CALC_EFF_MONTHS],
       x.[S_INT_CALC_PERIOD] AS [S_INT_CALC_PERIOD],
+      A28.Descript AS [S_INT_CALC_PERIOD_Description],
       x.[S_INT_CALC_METHOD] AS [S_INT_CALC_METHOD],
+      A29.Descript AS [S_INT_CALC_METHOD_Description],
       x.[LOAN_DELIV_GSE] AS [LOAN_DELIV_GSE],
       x.[LTV_RATIO_PCT] AS [LTV_RATIO_PCT],
       x.[S_FNM_HOME_IMP_PROD] AS [S_FNM_HOME_IMP_PROD],
+      A30.Descript AS [S_FNM_HOME_IMP_PROD_Description],
       x.[ADJ_LOAN_AMT] AS [ADJ_LOAN_AMT],
       x.[ADJ_LOAN_AMT_OVRD] AS [ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER] AS [APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE] AS [MLADISCCOMPLETE],
       x.[S_SIGNDOCPUSHBACK] AS [S_SIGNDOCPUSHBACK],
+      A31.Descript AS [S_SIGNDOCPUSHBACK_Description],
       x.[MI_CANCELLED] AS [MI_CANCELLED],
       x.[HFA_IDENTIFIER] AS [HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SPF1 = A0.DBSYMBOL AND A0.[TableName] = 'DELIVERY' and A0.[COLUMNNAME] = 'S_SPF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPF2 = A1.DBSYMBOL AND A1.[TableName] = 'DELIVERY' and A1.[COLUMNNAME] = 'S_SPF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPF3 = A2.DBSYMBOL AND A2.[TableName] = 'DELIVERY' and A2.[COLUMNNAME] = 'S_SPF3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPF4 = A3.DBSYMBOL AND A3.[TableName] = 'DELIVERY' and A3.[COLUMNNAME] = 'S_SPF4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_SPF5 = A4.DBSYMBOL AND A4.[TableName] = 'DELIVERY' and A4.[COLUMNNAME] = 'S_SPF5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SPF6 = A5.DBSYMBOL AND A5.[TableName] = 'DELIVERY' and A5.[COLUMNNAME] = 'S_SPF6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SFSRC1 = A6.DBSYMBOL AND A6.[TableName] = 'DELIVERY' and A6.[COLUMNNAME] = 'S_SFSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SFSRC2 = A7.DBSYMBOL AND A7.[TableName] = 'DELIVERY' and A7.[COLUMNNAME] = 'S_SFSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_BECA1 = A8.DBSYMBOL AND A8.[TableName] = 'DELIVERY' and A8.[COLUMNNAME] = 'S_BECA1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BECA2 = A9.DBSYMBOL AND A9.[TableName] = 'DELIVERY' and A9.[COLUMNNAME] = 'S_BECA2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_BECF1 = A10.DBSYMBOL AND A10.[TableName] = 'DELIVERY' and A10.[COLUMNNAME] = 'S_BECF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BECF2 = A11.DBSYMBOL AND A11.[TableName] = 'DELIVERY' and A11.[COLUMNNAME] = 'S_BECF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_DPSRC1 = A12.DBSYMBOL AND A12.[TableName] = 'DELIVERY' and A12.[COLUMNNAME] = 'S_DPSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_DPSRC2 = A13.DBSYMBOL AND A13.[TableName] = 'DELIVERY' and A13.[COLUMNNAME] = 'S_DPSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DPSRC3 = A14.DBSYMBOL AND A14.[TableName] = 'DELIVERY' and A14.[COLUMNNAME] = 'S_DPSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_DPSRC4 = A15.DBSYMBOL AND A15.[TableName] = 'DELIVERY' and A15.[COLUMNNAME] = 'S_DPSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_CCSRC1 = A16.DBSYMBOL AND A16.[TableName] = 'DELIVERY' and A16.[COLUMNNAME] = 'S_CCSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CCSRC2 = A17.DBSYMBOL AND A17.[TableName] = 'DELIVERY' and A17.[COLUMNNAME] = 'S_CCSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CCSRC3 = A18.DBSYMBOL AND A18.[TableName] = 'DELIVERY' and A18.[COLUMNNAME] = 'S_CCSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_CCSRC4 = A19.DBSYMBOL AND A19.[TableName] = 'DELIVERY' and A19.[COLUMNNAME] = 'S_CCSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_LFC = A20.DBSYMBOL AND A20.[TableName] = 'DELIVERY' and A20.[COLUMNNAME] = 'S_LFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_RFC = A21.DBSYMBOL AND A21.[TableName] = 'DELIVERY' and A21.[COLUMNNAME] = 'S_RFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_SPF7 = A22.DBSYMBOL AND A22.[TableName] = 'DELIVERY' and A22.[COLUMNNAME] = 'S_SPF7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_SPF8 = A23.DBSYMBOL AND A23.[TableName] = 'DELIVERY' and A23.[COLUMNNAME] = 'S_SPF8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_SPF9 = A24.DBSYMBOL AND A24.[TableName] = 'DELIVERY' and A24.[COLUMNNAME] = 'S_SPF9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_SPF10 = A25.DBSYMBOL AND A25.[TableName] = 'DELIVERY' and A25.[COLUMNNAME] = 'S_SPF10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_INT_ACCRUAL_TYPE = A26.DBSYMBOL AND A26.[TableName] = 'DELIVERY' and A26.[COLUMNNAME] = 'S_INT_ACCRUAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_INT_CALC_BASIS_TYPE = A27.DBSYMBOL AND A27.[TableName] = 'DELIVERY' and A27.[COLUMNNAME] = 'S_INT_CALC_BASIS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_INT_CALC_PERIOD = A28.DBSYMBOL AND A28.[TableName] = 'DELIVERY' and A28.[COLUMNNAME] = 'S_INT_CALC_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_INT_CALC_METHOD = A29.DBSYMBOL AND A29.[TableName] = 'DELIVERY' and A29.[COLUMNNAME] = 'S_INT_CALC_METHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A30 on x.S_FNM_HOME_IMP_PROD = A30.DBSYMBOL AND A30.[TableName] = 'DELIVERY' and A30.[COLUMNNAME] = 'S_FNM_HOME_IMP_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A31 on x.S_SIGNDOCPUSHBACK = A31.DBSYMBOL AND A31.[TableName] = 'DELIVERY' and A31.[COLUMNNAME] = 'S_SIGNDOCPUSHBACK'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -41954,6 +44500,7 @@ AS
       x.[DBID] AS [DBID],
       x.[DPYMTCTR] AS [DPYMTCTR],
       x.[S_TYPE] AS [S_TYPE],
+      A0.Descript AS [S_TYPE_Description],
       x.[AMOUNT] AS [AMOUNT],
       HASHBYTES('SHA2_256', x.[NAME]) AS [NAME],
       x.[ADDR1] AS [ADDR1],
@@ -41978,18 +44525,31 @@ AS
       x.[VERIFYFND] AS [VERIFYFND],
       x.[OTHERDOWNPAYTYPEDESC] AS [OTHERDOWNPAYTYPEDESC],
       x.[S_DOWN_PMT_SRC_TYP] AS [S_DOWN_PMT_SRC_TYP],
+      A1.Descript AS [S_DOWN_PMT_SRC_TYP_Description],
       x.[S_DOWN_PMT_SRC_OTH] AS [S_DOWN_PMT_SRC_OTH],
+      A2.Descript AS [S_DOWN_PMT_SRC_OTH_Description],
       x.[S_DOWN_PMT_TYP] AS [S_DOWN_PMT_TYP],
+      A3.Descript AS [S_DOWN_PMT_TYP_Description],
       x.[S_TYPE_OTH] AS [S_TYPE_OTH],
+      A4.Descript AS [S_TYPE_OTH_Description],
       x.[PRIMARY_SRC] AS [PRIMARY_SRC],
       x.[DOWNPAYMENTPERCENT] AS [DOWNPAYMENTPERCENT],
       x.[S_DOWN_PMT_SRC] AS [S_DOWN_PMT_SRC],
+      A5.Descript AS [S_DOWN_PMT_SRC_Description],
       x.[S_TYPENM] AS [S_TYPENM],
+      A6.Descript AS [S_TYPENM_Description],
       x.[DOWNPAYTYPENMOTHERDESC] AS [DOWNPAYTYPENMOTHERDESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[TOTAL_GIFT_FUNDS] AS [TOTAL_GIFT_FUNDS],
       x.[ASSETCTR] AS [ASSETCTR]
    FROM [clt_NetO].[DOWNPYMT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_DOWN_PMT_SRC_TYP = A1.DBSYMBOL AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOWN_PMT_SRC_OTH = A2.DBSYMBOL AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_DOWN_PMT_TYP = A3.DBSYMBOL AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TYPE_OTH = A4.DBSYMBOL AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DOWN_PMT_SRC = A5.DBSYMBOL AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TYPENM = A6.DBSYMBOL AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -42014,11 +44574,14 @@ AS
       x.[DBID] AS [DBID],
       x.[TRANCTR] AS [TRANCTR],
       x.[S_TRAN] AS [S_TRAN],
+      A0.Descript AS [S_TRAN_Description],
       x.[TRANDESC] AS [TRANDESC],
       x.[TRANAMT] AS [TRANAMT],
       x.[OTHERAMT] AS [OTHERAMT],
       x.[S_PURCH_CREDIT_TYPE] AS [S_PURCH_CREDIT_TYPE],
+      A1.Descript AS [S_PURCH_CREDIT_TYPE_Description],
       x.[S_PURCH_SOURCE_TYPE] AS [S_PURCH_SOURCE_TYPE],
+      A2.Descript AS [S_PURCH_SOURCE_TYPE_Description],
       x.[OTHERPURCHCREDTYPEDESC] AS [OTHERPURCHCREDTYPEDESC],
       x.[OTHERPURCHSRCTYPEDESC] AS [OTHERPURCHSRCTYPEDESC],
       x.[MANUALAMT] AS [MANUALAMT],
@@ -42029,6 +44592,9 @@ AS
       x.[EXCLOTHCREDPREP] AS [EXCLOTHCREDPREP],
       x.[POSTCLOSE_TOLERANCECURE] AS [POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRAN = A0.DBSYMBOL AND A0.[TableName] = 'DTLTRAN' and A0.[COLUMNNAME] = 'S_TRAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PURCH_CREDIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'DTLTRAN' and A1.[COLUMNNAME] = 'S_PURCH_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PURCH_SOURCE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DTLTRAN' and A2.[COLUMNNAME] = 'S_PURCH_SOURCE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -42083,6 +44649,7 @@ AS
       x.[WAIVED] AS [WAIVED],
       x.[CSHMONTH] AS [CSHMONTH],
       x.[S_PERIOD] AS [S_PERIOD],
+      A0.Descript AS [S_PERIOD_Description],
       x.[TOTALATC] AS [TOTALATC],
       x.[INCGFE] AS [INCGFE],
       x.[SPOVERRIDE] AS [SPOVERRIDE],
@@ -42093,6 +44660,7 @@ AS
       x.[INCHCL] AS [INCHCL],
       x.[CID_FEE_SRVC_PRVDR_CO] AS [CID_FEE_SRVC_PRVDR_CO],
       x.[S_MISC_DESC] AS [S_MISC_DESC],
+      A1.Descript AS [S_MISC_DESC_Description],
       x.[LOCKEDYN] AS [LOCKEDYN],
       x.[LOCKEDTOTAL] AS [LOCKEDTOTAL],
       x.[ISSUE_CHECK] AS [ISSUE_CHECK],
@@ -42102,22 +44670,38 @@ AS
       x.[SUBFEE] AS [SUBFEE],
       x.[FEECODE] AS [FEECODE],
       x.[S_AGGTYPE] AS [S_AGGTYPE],
+      A2.Descript AS [S_AGGTYPE_Description],
       x.[S_RESP_PARTY] AS [S_RESP_PARTY],
+      A3.Descript AS [S_RESP_PARTY_Description],
       x.[S_PAIDBY] AS [S_PAIDBY],
+      A4.Descript AS [S_PAIDBY_Description],
       x.[S_PAIDTO] AS [S_PAIDTO],
+      A5.Descript AS [S_PAIDTO_Description],
       x.[SUBCODE] AS [SUBCODE],
       x.[IS_NOCOST] AS [IS_NOCOST],
       x.[MANAGED_OVR] AS [MANAGED_OVR],
       x.[TO_AFFILIATE] AS [TO_AFFILIATE],
       x.[S_SECTION_TYPE] AS [S_SECTION_TYPE],
+      A6.Descript AS [S_SECTION_TYPE_Description],
       x.[ID_SECTION_SUBTYPE] AS [ID_SECTION_SUBTYPE],
       x.[PREPAID_MONTH] AS [PREPAID_MONTH],
       x.[S_TOLERANCE_CATEGORY] AS [S_TOLERANCE_CATEGORY],
+      A7.Descript AS [S_TOLERANCE_CATEGORY_Description],
       x.[S_CHANGE_TYPE] AS [S_CHANGE_TYPE],
+      A8.Descript AS [S_CHANGE_TYPE_Description],
       x.[CHANGE_REASON] AS [CHANGE_REASON],
       x.[BOROPT] AS [BOROPT],
       x.[EXC_MAPR] AS [EXC_MAPR]
    FROM [clt_NetO].[FEEVALS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PERIOD = A0.DBSYMBOL AND A0.[TableName] = 'FEEVALS' and A0.[COLUMNNAME] = 'S_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MISC_DESC = A1.DBSYMBOL AND A1.[TableName] = 'FEEVALS' and A1.[COLUMNNAME] = 'S_MISC_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AGGTYPE = A2.DBSYMBOL AND A2.[TableName] = 'FEEVALS' and A2.[COLUMNNAME] = 'S_AGGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESP_PARTY = A3.DBSYMBOL AND A3.[TableName] = 'FEEVALS' and A3.[COLUMNNAME] = 'S_RESP_PARTY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PAIDBY = A4.DBSYMBOL AND A4.[TableName] = 'FEEVALS' and A4.[COLUMNNAME] = 'S_PAIDBY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PAIDTO = A5.DBSYMBOL AND A5.[TableName] = 'FEEVALS' and A5.[COLUMNNAME] = 'S_PAIDTO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SECTION_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'FEEVALS' and A6.[COLUMNNAME] = 'S_SECTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TOLERANCE_CATEGORY = A7.DBSYMBOL AND A7.[TableName] = 'FEEVALS' and A7.[COLUMNNAME] = 'S_TOLERANCE_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CHANGE_TYPE = A8.DBSYMBOL AND A8.[TableName] = 'FEEVALS' and A8.[COLUMNNAME] = 'S_CHANGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -42139,12 +44723,12 @@ CREATE VIEW [NetO_sas].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[PKFIX] AS [PKFIX],
       x.[FLDNAME] AS [FLDNAME],
       x.[USRID] AS [USRID],
       x.[MODIFY_DATE] AS [MODIFY_DATE],
       x.[TEXT_VALUE] AS [TEXT_VALUE],
-      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE]
+      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE],
+      x.[PKFIX] AS [PKFIX]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -42173,7 +44757,9 @@ AS
       x.[DETMNNUM] AS [DETMNNUM],
       x.[DETMNDAT] AS [DETMNDAT],
       x.[S_FIRM] AS [S_FIRM],
+      A0.Descript AS [S_FIRM_Description],
       x.[S_FLDZON] AS [S_FLDZON],
+      A1.Descript AS [S_FLDZON_Description],
       x.[FLDMAPDT] AS [FLDMAPDT],
       x.[COMMNUMB] AS [COMMNUMB],
       x.[SFHAREA] AS [SFHAREA],
@@ -42184,6 +44770,8 @@ AS
       x.[NFIP_MAP_PANEL_DATE] AS [NFIP_MAP_PANEL_DATE],
       x.[COMMNAME] AS [COMMNAME]
    FROM [clt_NetO].[FLOOD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRM = A0.DBSYMBOL AND A0.[TableName] = 'FLOOD' and A0.[COLUMNNAME] = 'S_FIRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FLDZON = A1.DBSYMBOL AND A1.[TableName] = 'FLOOD' and A1.[COLUMNNAME] = 'S_FLDZON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -42824,7 +45412,9 @@ AS
       x.[CUR_HOUSING_PMT] AS [CUR_HOUSING_PMT],
       x.[OTHERINDEXTYPEDESC] AS [OTHERINDEXTYPEDESC],
       x.[S_INDEX] AS [S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[S_PAYEETYPE] AS [S_PAYEETYPE],
+      A1.Descript AS [S_PAYEETYPE_Description],
       x.[PAYEETYPEOTHERDESC] AS [PAYEETYPEOTHERDESC],
       x.[CLNUM_COUNTER] AS [CLNUM_COUNTER],
       x.[LEAD_COUNTER] AS [LEAD_COUNTER],
@@ -42835,18 +45425,22 @@ AS
       x.[DMI_OWN_RIGHTS] AS [DMI_OWN_RIGHTS],
       x.[DMI_BILLING_MODE] AS [DMI_BILLING_MODE],
       x.[S_AUSUWTYPE] AS [S_AUSUWTYPE],
+      A2.Descript AS [S_AUSUWTYPE_Description],
       x.[MSP_INVESTOR_ID] AS [MSP_INVESTOR_ID],
       x.[MSP_INVESTOR_ID_OVERRIDE] AS [MSP_INVESTOR_ID_OVERRIDE],
       x.[MSP_INVESTOR_CATEGORY] AS [MSP_INVESTOR_CATEGORY],
       x.[MSP_INVESTOR_CATEGORY_OVERRIDE] AS [MSP_INVESTOR_CATEGORY_OVERRIDE],
       x.[FIRST_DISB_REC_AMT] AS [FIRST_DISB_REC_AMT],
       x.[S_INTPRD_COMM_MET] AS [S_INTPRD_COMM_MET],
+      A3.Descript AS [S_INTPRD_COMM_MET_Description],
       x.[EXCLUDE_FROM_QRM] AS [EXCLUDE_FROM_QRM],
       x.[READY_REDISCLSR] AS [READY_REDISCLSR],
       x.[S_WELCOME_CALL] AS [S_WELCOME_CALL],
+      A4.Descript AS [S_WELCOME_CALL_Description],
       x.[LOAN_AMOUNT_TOLER] AS [LOAN_AMOUNT_TOLER],
       x.[MAX_APPR_RATE] AS [MAX_APPR_RATE],
       x.[S_AUS_RESULT] AS [S_AUS_RESULT],
+      A5.Descript AS [S_AUS_RESULT_Description],
       x.[P_ADMINOVR] AS [P_ADMINOVR],
       x.[P_CB_ADMINOVR] AS [P_CB_ADMINOVR],
       x.[P_COMPOVR] AS [P_COMPOVR],
@@ -42855,8 +45449,10 @@ AS
       x.[HARP_MI_REQUIRED] AS [HARP_MI_REQUIRED],
       x.[NET_NEW_DOLLARS] AS [NET_NEW_DOLLARS],
       x.[S_INIT_DISC_DELIVERY_MTHD] AS [S_INIT_DISC_DELIVERY_MTHD],
+      A6.Descript AS [S_INIT_DISC_DELIVERY_MTHD_Description],
       x.[CONFIDENCE_SCR_HLMAI] AS [CONFIDENCE_SCR_HLMAI],
       x.[S_BRANCH_TYPE] AS [S_BRANCH_TYPE],
+      A7.Descript AS [S_BRANCH_TYPE_Description],
       x.[BRANCH_ID] AS [BRANCH_ID],
       x.[BRANCH_BANK_CODE] AS [BRANCH_BANK_CODE],
       x.[BRANCH_COST_CENTER] AS [BRANCH_COST_CENTER],
@@ -42865,6 +45461,14 @@ AS
       x.[PROMOTION_CODE] AS [PROMOTION_CODE],
       x.[ONBOARD_DISB_STATUS] AS [ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_DATA' and A0.[COLUMNNAME] = 'S_INDEX'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYEETYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_DATA' and A1.[COLUMNNAME] = 'S_PAYEETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AUSUWTYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_DATA' and A2.[COLUMNNAME] = 'S_AUSUWTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_INTPRD_COMM_MET = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_LOAN_DATA' and A3.[COLUMNNAME] = 'S_INTPRD_COMM_MET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_WELCOME_CALL = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_LOAN_DATA' and A4.[COLUMNNAME] = 'S_WELCOME_CALL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_AUS_RESULT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_LOAN_DATA' and A5.[COLUMNNAME] = 'S_AUS_RESULT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_INIT_DISC_DELIVERY_MTHD = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_LOAN_DATA' and A6.[COLUMNNAME] = 'S_INIT_DISC_DELIVERY_MTHD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_BRANCH_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_LOAN_DATA' and A7.[COLUMNNAME] = 'S_BRANCH_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -42887,8 +45491,11 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_LOAN_STATUS] AS [S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[S_UW_STATUS] AS [S_UW_STATUS],
+      A1.Descript AS [S_UW_STATUS_Description],
       x.[S_LOCK_STATUS] AS [S_LOCK_STATUS],
+      A2.Descript AS [S_LOCK_STATUS_Description],
       x.[LOCK_STATUS_DISPLAY] AS [LOCK_STATUS_DISPLAY],
       x.[SENT_TO_MIDANET] AS [SENT_TO_MIDANET],
       x.[AP_ADMIN_ONLY] AS [AP_ADMIN_ONLY],
@@ -42896,6 +45503,9 @@ AS
       x.[EXT_LOAN_STATUS_VERSION_ID] AS [EXT_LOAN_STATUS_VERSION_ID],
       x.[EXT_LOAN_STATUS_VERSION] AS [EXT_LOAN_STATUS_VERSION]
    FROM [clt_NetO].[GF_TL_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UW_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_STATUS' and A1.[COLUMNNAME] = 'S_UW_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOCK_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_STATUS' and A2.[COLUMNNAME] = 'S_LOCK_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -43004,9 +45614,13 @@ AS
       x.[PRICE_GROUP_CODE] AS [PRICE_GROUP_CODE],
       x.[IPG_NAME] AS [IPG_NAME],
       x.[S_SEC_MANAGE_TYPE] AS [S_SEC_MANAGE_TYPE],
+      A0.Descript AS [S_SEC_MANAGE_TYPE_Description],
       x.[S_SEC_LOAN_TYPE] AS [S_SEC_LOAN_TYPE],
+      A1.Descript AS [S_SEC_LOAN_TYPE_Description],
       x.[S_SEC_POOL_TYPE] AS [S_SEC_POOL_TYPE],
+      A2.Descript AS [S_SEC_POOL_TYPE_Description],
       x.[S_PREPAY_PEN] AS [S_PREPAY_PEN],
+      A3.Descript AS [S_PREPAY_PEN_Description],
       x.[OVER_ALLOW_PCT] AS [OVER_ALLOW_PCT],
       x.[SHORT_ALLOW_PCT] AS [SHORT_ALLOW_PCT],
       x.[OVER_SPLIT_PCT] AS [OVER_SPLIT_PCT],
@@ -43030,13 +45644,16 @@ AS
       x.[OLD_AGENCY_NUM_IND] AS [OLD_AGENCY_NUM_IND],
       x.[PRODUCT_IDENTIFIER] AS [PRODUCT_IDENTIFIER],
       x.[S_AUS_IND] AS [S_AUS_IND],
+      A4.Descript AS [S_AUS_IND_Description],
       x.[S_SERVICE_TYPE] AS [S_SERVICE_TYPE],
+      A5.Descript AS [S_SERVICE_TYPE_Description],
       x.[SERVICING_INTERFACE_IND] AS [SERVICING_INTERFACE_IND],
       x.[SERVICING_LOCATION] AS [SERVICING_LOCATION],
       x.[SUB_PRIME_IND] AS [SUB_PRIME_IND],
       x.[MI_REQUIRE] AS [MI_REQUIRE],
       x.[INTEREST_ONLY_PRODUCT] AS [INTEREST_ONLY_PRODUCT],
       x.[S_SPEC_PROG] AS [S_SPEC_PROG],
+      A6.Descript AS [S_SPEC_PROG_Description],
       x.[CRA_REPORT] AS [CRA_REPORT],
       x.[INV_CODE_OVR] AS [INV_CODE_OVR],
       x.[INV_PROD_CODE_OVR] AS [INV_PROD_CODE_OVR],
@@ -43055,8 +45672,17 @@ AS
       x.[EVAL_QM] AS [EVAL_QM],
       x.[APPLY_MLA_RULES] AS [APPLY_MLA_RULES],
       x.[LNDR_PD_MI_ALLOWED] AS [LNDR_PD_MI_ALLOWED],
-      x.[S_ASSUMABILITY_FEATURE] AS [S_ASSUMABILITY_FEATURE]
+      x.[S_ASSUMABILITY_FEATURE] AS [S_ASSUMABILITY_FEATURE],
+      A7.Descript AS [S_ASSUMABILITY_FEATURE_Description]
    FROM [clt_NetO].[GF_TL_PNP_IPG_DETAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SEC_MANAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A0.[COLUMNNAME] = 'S_SEC_MANAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEC_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A1.[COLUMNNAME] = 'S_SEC_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SEC_POOL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A2.[COLUMNNAME] = 'S_SEC_POOL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PREPAY_PEN = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A3.[COLUMNNAME] = 'S_PREPAY_PEN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_AUS_IND = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A4.[COLUMNNAME] = 'S_AUS_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SERVICE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A5.[COLUMNNAME] = 'S_SERVICE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SPEC_PROG = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A6.[COLUMNNAME] = 'S_SPEC_PROG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ASSUMABILITY_FEATURE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A7.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -43079,16 +45705,20 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_REFSC] AS [S_REFSC],
+      A0.Descript AS [S_REFSC_Description],
       x.[TBDADDR] AS [TBDADDR],
       x.[POSFHA] AS [POSFHA],
       x.[S_PROPTYPE] AS [S_PROPTYPE],
+      A1.Descript AS [S_PROPTYPE_Description],
       x.[PROJCLAS] AS [PROJCLAS],
       x.[PROJNAME] AS [PROJNAME],
       x.[DPPERCT] AS [DPPERCT],
       x.[HELINE] AS [HELINE],
       x.[HECURBAL] AS [HECURBAL],
       x.[S_DOCLVL] AS [S_DOCLVL],
+      A2.Descript AS [S_DOCLVL_Description],
       x.[S_LNSTATUS] AS [S_LNSTATUS],
+      A3.Descript AS [S_LNSTATUS_Description],
       x.[HLTVH] AS [HLTVH],
       x.[TSWE_INC_EXPECTED] AS [TSWE_INC_EXPECTED],
       x.[QUAL_TSWE_LOAN] AS [QUAL_TSWE_LOAN],
@@ -43104,6 +45734,7 @@ AS
       x.[LO_NMLS_NUM_OVR] AS [LO_NMLS_NUM_OVR],
       x.[LO_PHONE_OVR] AS [LO_PHONE_OVR],
       x.[S_GFE_TIME_ZONE] AS [S_GFE_TIME_ZONE],
+      A4.Descript AS [S_GFE_TIME_ZONE_Description],
       x.[ALLOWWITHDRAWLOAN] AS [ALLOWWITHDRAWLOAN],
       x.[GFE_INT_RATE_LSC] AS [GFE_INT_RATE_LSC],
       x.[GFE_INT_RATE_LIR] AS [GFE_INT_RATE_LIR],
@@ -43150,6 +45781,11 @@ AS
       x.[LP2_RISK_CLASS_OVR] AS [LP2_RISK_CLASS_OVR],
       x.[DU_DISPLAY_OVR] AS [DU_DISPLAY_OVR]
    FROM [clt_NetO].[GF_TL_POINT_OF_SALE_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFSC = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A0.[COLUMNNAME] = 'S_REFSC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_PROPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOCLVL = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_DOCLVL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LNSTATUS = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_LNSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_GFE_TIME_ZONE = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -43296,6 +45932,7 @@ AS
       x.[REPAIRAMOUNT] AS [REPAIRAMOUNT],
       x.[REPLACEMENTAMOUNT] AS [REPLACEMENTAMOUNT],
       x.[S_FLOODMAPZONE] AS [S_FLOODMAPZONE],
+      A0.Descript AS [S_FLOODMAPZONE_Description],
       x.[APP_SENT_BORROWER] AS [APP_SENT_BORROWER],
       x.[APPRAISAL_DELIVERED] AS [APPRAISAL_DELIVERED],
       x.[APP_TIME_WAIVE] AS [APP_TIME_WAIVE],
@@ -43309,13 +45946,20 @@ AS
       x.[PERCENT_MULTI_FAM] AS [PERCENT_MULTI_FAM],
       x.[PERCENT_COMMERCIAL] AS [PERCENT_COMMERCIAL],
       x.[S_PROP_LOC_TYPE] AS [S_PROP_LOC_TYPE],
+      A1.Descript AS [S_PROP_LOC_TYPE_Description],
       x.[PROP_LTN_TYP_OTHDESC] AS [PROP_LTN_TYP_OTHDESC],
       x.[S_CAR_STORAGE_TYPE] AS [S_CAR_STORAGE_TYPE],
+      A2.Descript AS [S_CAR_STORAGE_TYPE_Description],
       x.[CARSTORAGE_TYPE_OTHR_DESC] AS [CARSTORAGE_TYPE_OTHR_DESC],
       x.[CARSTORAGE_NBR_CARS] AS [CARSTORAGE_NBR_CARS],
       x.[S_FOUNDATION_TYPE] AS [S_FOUNDATION_TYPE],
+      A3.Descript AS [S_FOUNDATION_TYPE_Description],
       x.[FNDN_TYPE_OTHER_DESC] AS [FNDN_TYPE_OTHER_DESC]
    FROM [clt_NetO].[GF_TL_UWAPPREXT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FLOODMAPZONE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_UWAPPREXT' and A0.[COLUMNNAME] = 'S_FLOODMAPZONE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROP_LOC_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_UWAPPREXT' and A1.[COLUMNNAME] = 'S_PROP_LOC_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CAR_STORAGE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_UWAPPREXT' and A2.[COLUMNNAME] = 'S_CAR_STORAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FOUNDATION_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_UWAPPREXT' and A3.[COLUMNNAME] = 'S_FOUNDATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -43463,11 +46107,13 @@ AS
       x.[MAILCOUNTRY] AS [MAILCOUNTRY],
       x.[MAIL_FADDR_INDICATOR] AS [MAIL_FADDR_INDICATOR],
       x.[S_MAIL_UNIT_TYPE] AS [S_MAIL_UNIT_TYPE],
+      A0.Descript AS [S_MAIL_UNIT_TYPE_Description],
       x.[MAIL_UNIT_NUM] AS [MAIL_UNIT_NUM],
       x.[MAIL_COUNTRY_CODE] AS [MAIL_COUNTRY_CODE],
       x.[BOR_MAIL_STATE_FOREIN] AS [BOR_MAIL_STATE_FOREIN],
       x.[MAIL_POST_CODE_FOREIN] AS [MAIL_POST_CODE_FOREIN]
    FROM [clt_NetO].[GF_TLB_MAILING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MAIL_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLB_MAILING' and A0.[COLUMNNAME] = 'S_MAIL_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -43735,21 +46381,28 @@ AS
       x.[CELL_PHONE] AS [CELL_PHONE],
       x.[PRIM_CONTACT] AS [PRIM_CONTACT],
       x.[S_FIRSTTIMEHBCOUNSEL] AS [S_FIRSTTIMEHBCOUNSEL],
+      A0.Descript AS [S_FIRSTTIMEHBCOUNSEL_Description],
       x.[S_TITLE] AS [S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       HASHBYTES('SHA2_256', x.[CURRENT_CUSTOMER]) AS [CURRENT_CUSTOMER],
       x.[WORK_EXT] AS [WORK_EXT],
       x.[CREDIT_AUTHORIZATION_YN] AS [CREDIT_AUTHORIZATION_YN],
       x.[NATIONALITY] AS [NATIONALITY],
       x.[AFFILIATE] AS [AFFILIATE],
       x.[S_COUNSEL_CONFIRM_TYP] AS [S_COUNSEL_CONFIRM_TYP],
+      A2.Descript AS [S_COUNSEL_CONFIRM_TYP_Description],
       x.[S_COUNSEL_CONFIRM_OTH] AS [S_COUNSEL_CONFIRM_OTH],
+      A3.Descript AS [S_COUNSEL_CONFIRM_OTH_Description],
       x.[S_COUNSEL_FORMAT_TYP] AS [S_COUNSEL_FORMAT_TYP],
+      A4.Descript AS [S_COUNSEL_FORMAT_TYP_Description],
       x.[CREDIT_AUTHORIZATION_DATE] AS [CREDIT_AUTHORIZATION_DATE],
       x.[CUSTOMER_ID] AS [CUSTOMER_ID],
       x.[S_CRDTSCORE_MODEL_OVR] AS [S_CRDTSCORE_MODEL_OVR],
+      A5.Descript AS [S_CRDTSCORE_MODEL_OVR_Description],
       x.[URLA_BESTCONTACT] AS [URLA_BESTCONTACT],
       x.[URLA_ALTCONTACT] AS [URLA_ALTCONTACT],
       x.[S_CREDIT_TYPE] AS [S_CREDIT_TYPE],
+      A6.Descript AS [S_CREDIT_TYPE_Description],
       x.[JOINT_CREDIT_BNUM] AS [JOINT_CREDIT_BNUM],
       HASHBYTES('SHA2_256', x.[SPOUSE_FNAME]) AS [SPOUSE_FNAME],
       HASHBYTES('SHA2_256', x.[SPOUSE_MNAME]) AS [SPOUSE_MNAME],
@@ -43766,6 +46419,7 @@ AS
       x.[ATTR_CAIVRS] AS [ATTR_CAIVRS],
       x.[ATTR_ESIGN] AS [ATTR_ESIGN],
       x.[S_LANGUAGEPREFERENCE] AS [S_LANGUAGEPREFERENCE],
+      A7.Descript AS [S_LANGUAGEPREFERENCE_Description],
       x.[OTHER_LANGUAGE] AS [OTHER_LANGUAGE],
       x.[CURRENTINCOTHERTOTAL] AS [CURRENTINCOTHERTOTAL],
       x.[CURRENTINCOMETOTAL] AS [CURRENTINCOMETOTAL],
@@ -43784,6 +46438,14 @@ AS
       x.[MOTHERS_MAIDEN] AS [MOTHERS_MAIDEN],
       x.[APP_DISCL_READ] AS [APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRSTTIMEHBCOUNSEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_COUNSEL_CONFIRM_TYP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A2.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COUNSEL_CONFIRM_OTH = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A3.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COUNSEL_FORMAT_TYP = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A4.[COLUMNNAME] = 'S_COUNSEL_FORMAT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CRDTSCORE_MODEL_OVR = A5.DBSYMBOL AND A5.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A5.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_CREDIT_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LANGUAGEPREFERENCE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -43812,12 +46474,14 @@ AS
       x.[MID_NAME] AS [MID_NAME],
       HASHBYTES('SHA2_256', x.[LAST_NAME]) AS [LAST_NAME],
       x.[S_BORR_ALIAS] AS [S_BORR_ALIAS],
+      A0.Descript AS [S_BORR_ALIAS_Description],
       HASHBYTES('SHA2_256', x.[NAME_SUFFIX]) AS [NAME_SUFFIX],
       x.[ALIAS_TYPE_OTH_DESC] AS [ALIAS_TYPE_OTH_DESC],
       x.[CREDITORNAME] AS [CREDITORNAME],
       x.[ALIASACCTNUM] AS [ALIASACCTNUM],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ALIAS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BORR_ALIAS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ALIAS' and A0.[COLUMNNAME] = 'S_BORR_ALIAS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -43847,6 +46511,7 @@ AS
       x.[GRANT_CRA_CODE] AS [GRANT_CRA_CODE],
       x.[PROGRAM_EXP] AS [PROGRAM_EXP],
       x.[S_ASSIST_TYPE] AS [S_ASSIST_TYPE],
+      A0.Descript AS [S_ASSIST_TYPE_Description],
       x.[REPAY_TERM] AS [REPAY_TERM],
       x.[REPAY_RATE] AS [REPAY_RATE],
       x.[REPAY_PMT] AS [REPAY_PMT],
@@ -43857,10 +46522,13 @@ AS
       x.[ALLOW_AP_EXCEPT] AS [ALLOW_AP_EXCEPT],
       x.[PROVIDER_EIN] AS [PROVIDER_EIN],
       x.[S_ASSIST_PVDR_TYP] AS [S_ASSIST_PVDR_TYP],
+      A1.Descript AS [S_ASSIST_PVDR_TYP_Description],
       x.[AP_OTH_DESC] AS [AP_OTH_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[ASSETCTR] AS [ASSETCTR]
    FROM [clt_NetO].[GF_TLBR_ASSIST_PROGRAMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSIST_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A0.[COLUMNNAME] = 'S_ASSIST_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSIST_PVDR_TYP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A1.[COLUMNNAME] = 'S_ASSIST_PVDR_TYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -43955,7 +46623,6 @@ AS
       x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
       x.[SCOREID] AS [SCOREID],
       x.[DBID] AS [DBID],
-      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[BNUM] AS [BNUM],
       x.[SOURCE_TYPE] AS [SOURCE_TYPE],
       x.[SCORE_DATE] AS [SCORE_DATE],
@@ -43963,6 +46630,7 @@ AS
       x.[MODEL_TYPE] AS [MODEL_TYPE],
       x.[OTHER_DESCRIPTION] AS [OTHER_DESCRIPTION],
       x.[SCORE_VALUE] AS [SCORE_VALUE],
+      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC] AS [CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR] AS [FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE] AS [RANK_PERCENTILE]
@@ -44045,16 +46713,20 @@ AS
       x.[SELFEMPL] AS [SELFEMPL],
       x.[PERCBUSOWN] AS [PERCBUSOWN],
       x.[S_JOB_TYPE] AS [S_JOB_TYPE],
+      A0.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT] AS [OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY] AS [PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC] AS [OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE] AS [S_SPECBOREMPRELTYPE],
+      A1.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC] AS [OTHERSPECBOREMPRELTYPEDSC],
       x.[IS_EMPLOYED_ABROAD] AS [IS_EMPLOYED_ABROAD],
       x.[COUNTRY] AS [COUNTRY],
       x.[MONTHS_AT_JOB] AS [MONTHS_AT_JOB],
       x.[MONTHS_IN_PROFESSION] AS [MONTHS_IN_PROFESSION]
    FROM [clt_NetO].[GF_TLBR_EMPLOYER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_JOB_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_EMPLOYER' and A0.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPECBOREMPRELTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_EMPLOYER' and A1.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -44080,9 +46752,11 @@ AS
       x.[DBID] AS [DBID],
       x.[ETHNICITY_CTR] AS [ETHNICITY_CTR],
       x.[S_ETHNICITY] AS [S_ETHNICITY],
+      A0.Descript AS [S_ETHNICITY_Description],
       x.[FURNISH_INFO_YN] AS [FURNISH_INFO_YN],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ETHNICITY' and A0.[COLUMNNAME] = 'S_ETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -44136,9 +46810,11 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_RACE] AS [S_RACE],
+      A0.Descript AS [S_RACE_Description],
       x.[OTHER_AMERICAN_DESC] AS [OTHER_AMERICAN_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_RACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_RACE' and A0.[COLUMNNAME] = 'S_RACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -44198,9 +46874,11 @@ AS
       x.[DBID] AS [DBID],
       x.[SUBETHNICITY_CTR] AS [SUBETHNICITY_CTR],
       x.[S_SUBETHNICITY] AS [S_SUBETHNICITY],
+      A0.Descript AS [S_SUBETHNICITY_Description],
       x.[OTHER_DESC] AS [OTHER_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBETHNICITY' and A0.[COLUMNNAME] = 'S_SUBETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -44226,10 +46904,12 @@ AS
       x.[DBID] AS [DBID],
       x.[SUBRACE_CTR] AS [SUBRACE_CTR],
       x.[S_SUBRACE] AS [S_SUBRACE],
+      A0.Descript AS [S_SUBRACE_Description],
       x.[OTHER_ASIAN_DESC] AS [OTHER_ASIAN_DESC],
       x.[OTHER_PACISLDR_DESC] AS [OTHER_PACISLDR_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBRACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBRACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBRACE' and A0.[COLUMNNAME] = 'S_SUBRACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -44255,8 +46935,11 @@ AS
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[MODIFIED_USERID] AS [MODIFIED_USERID],
       x.[S_FMETHOD] AS [S_FMETHOD],
+      A0.Descript AS [S_FMETHOD_Description],
       x.[S_FSTATUS] AS [S_FSTATUS],
+      A1.Descript AS [S_FSTATUS_Description],
       x.[S_DMETHOD] AS [S_DMETHOD],
+      A2.Descript AS [S_DMETHOD_Description],
       x.[AMOUNT] AS [AMOUNT],
       HASHBYTES('SHA2_256', x.[PAYEE_NAME]) AS [PAYEE_NAME],
       HASHBYTES('SHA2_256', x.[PAYEE_ADDRESS]) AS [PAYEE_ADDRESS],
@@ -44266,7 +46949,9 @@ AS
       x.[ISSUEDATE] AS [ISSUEDATE],
       x.[REQDATE] AS [REQDATE],
       x.[S_TYPE] AS [S_TYPE],
+      A3.Descript AS [S_TYPE_Description],
       x.[S_FUNDLOC] AS [S_FUNDLOC],
+      A4.Descript AS [S_FUNDLOC_Description],
       x.[ROUTENUM] AS [ROUTENUM],
       x.[ACCOUNTNUM] AS [ACCOUNTNUM],
       x.[TRANSNUM] AS [TRANSNUM],
@@ -44321,6 +47006,11 @@ AS
       x.[W_APPRVDDT1] AS [W_APPRVDDT1],
       x.[W_APPRVDDT2] AS [W_APPRVDDT2]
    FROM [clt_NetO].[GF_TLR_DISBURSEMENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FMETHOD = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_DISBURSEMENTS' and A0.[COLUMNNAME] = 'S_FMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FSTATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_DISBURSEMENTS' and A1.[COLUMNNAME] = 'S_FSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DMETHOD = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_DMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FUNDLOC = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'S_FUNDLOC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -44480,6 +47170,7 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_INSTYPE] AS [S_INSTYPE],
+      A0.Descript AS [S_INSTYPE_Description],
       x.[COVAMNT] AS [COVAMNT],
       x.[MINCOVER] AS [MINCOVER],
       x.[PREMAMT] AS [PREMAMT],
@@ -44513,9 +47204,11 @@ AS
       x.[PMTOPTDBID] AS [PMTOPTDBID],
       x.[PMTOPTSERNO] AS [PMTOPTSERNO],
       x.[S_OTH_INS_TYPE_DESC] AS [S_OTH_INS_TYPE_DESC],
+      A1.Descript AS [S_OTH_INS_TYPE_DESC_Description],
       x.[HUDLINE] AS [HUDLINE],
       x.[POLICY_TERM] AS [POLICY_TERM],
       x.[S_ESCINS] AS [S_ESCINS],
+      A2.Descript AS [S_ESCINS_Description],
       x.[ASSETID] AS [ASSETID],
       x.[DT_ORDERED] AS [DT_ORDERED],
       x.[DT_EXPECTED] AS [DT_EXPECTED],
@@ -44538,6 +47231,9 @@ AS
       x.[NFIP_MAX_COVERAGE] AS [NFIP_MAX_COVERAGE],
       x.[MINIMUM_COVERAGE] AS [MINIMUM_COVERAGE]
    FROM [clt_NetO].[GF_TLR_INSURANCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_INSURANCE' and A0.[COLUMNNAME] = 'S_INSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OTH_INS_TYPE_DESC = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_INSURANCE' and A1.[COLUMNNAME] = 'S_OTH_INS_TYPE_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ESCINS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_INSURANCE' and A2.[COLUMNNAME] = 'S_ESCINS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -44607,6 +47303,7 @@ AS
       x.[REG_O_BORROWER] AS [REG_O_BORROWER],
       HASHBYTES('SHA2_256', x.[EMPLOYEE_BORROWER]) AS [EMPLOYEE_BORROWER],
       x.[S_EMP_REGO_TYPE] AS [S_EMP_REGO_TYPE],
+      A0.Descript AS [S_EMP_REGO_TYPE_Description],
       x.[EXEC_EDUC] AS [EXEC_EDUC],
       x.[EXEC_OFFIC_OTH] AS [EXEC_OFFIC_OTH],
       x.[EXEC_OFFIC_YN] AS [EXEC_OFFIC_YN],
@@ -44614,6 +47311,7 @@ AS
       x.[BOD_APPROVAL_DATE] AS [BOD_APPROVAL_DATE],
       x.[COMMITTEE_APPROVAL] AS [COMMITTEE_APPROVAL]
    FROM [clt_NetO].[GF_TLR_REG_O] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMP_REGO_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_REG_O' and A0.[COLUMNNAME] = 'S_EMP_REGO_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -44792,9 +47490,11 @@ AS
       x.[INFILE_DATE] AS [INFILE_DATE],
       x.[BNUM] AS [BNUM],
       x.[S_RESULTSTATUSTYPE] AS [S_RESULTSTATUSTYPE],
+      A0.Descript AS [S_RESULTSTATUSTYPE_Description],
       x.[RESULTSTATUSTTHERDESC] AS [RESULTSTATUSTTHERDESC],
       x.[CREDREPOSSRCTYPEOTHERDESC] AS [CREDREPOSSRCTYPEOTHERDESC]
    FROM [clt_NetO].[GF_TLR_RES_CREDIT_FILE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RESULTSTATUSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RES_CREDIT_FILE' and A0.[COLUMNNAME] = 'S_RESULTSTATUSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -45220,6 +47920,7 @@ AS
       x.[ERRORRPTIMAGEID] AS [ERRORRPTIMAGEID],
       x.[MERGEDCREDITCERTIMAGEID] AS [MERGEDCREDITCERTIMAGEID],
       x.[S_CRWELIGIBILITYTYPE] AS [S_CRWELIGIBILITYTYPE],
+      A0.Descript AS [S_CRWELIGIBILITYTYPE_Description],
       x.[HVERPTIMAGEID] AS [HVERPTIMAGEID],
       x.[MERGEDCREDITIMAGEID] AS [MERGEDCREDITIMAGEID],
       x.[LPATTLASSETDEFICITAMT] AS [LPATTLASSETDEFICITAMT],
@@ -45248,6 +47949,7 @@ AS
       x.[LPATTLREQUIREDRESERVESAMT] AS [LPATTLREQUIREDRESERVESAMT],
       x.[CREDIT_INFILE] AS [CREDIT_INFILE]
    FROM [clt_NetO].[GF_TLR_RSP_LP_LOANFDBCK] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CRWELIGIBILITYTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RSP_LP_LOANFDBCK' and A0.[COLUMNNAME] = 'S_CRWELIGIBILITYTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -45321,6 +48023,7 @@ AS
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[HUDLINE] AS [HUDLINE],
       x.[S_TAXTYPE] AS [S_TAXTYPE],
+      A0.Descript AS [S_TAXTYPE_Description],
       x.[ANN_AMT] AS [ANN_AMT],
       x.[FIRST_DUE] AS [FIRST_DUE],
       x.[ESCROW] AS [ESCROW],
@@ -45348,10 +48051,13 @@ AS
       x.[RATEPERTHOUSAND] AS [RATEPERTHOUSAND],
       x.[COLFIRSTYR] AS [COLFIRSTYR],
       x.[S_ESCTAX] AS [S_ESCTAX],
+      A1.Descript AS [S_ESCTAX_Description],
       x.[ISMERGEDINT] AS [ISMERGEDINT],
       x.[TAX_TYPE_DESC] AS [TAX_TYPE_DESC],
       x.[UPFRONT_TAX_AMOUNT] AS [UPFRONT_TAX_AMOUNT]
    FROM [clt_NetO].[GF_TLR_TAXITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TAXTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_TAXITEMS' and A0.[COLUMNNAME] = 'S_TAXTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ESCTAX = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_TAXITEMS' and A1.[COLUMNNAME] = 'S_ESCTAX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -45435,8 +48141,8 @@ CREATE VIEW [NetO_sas].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM] AS [DELETED_LNUM],
-      x.[USRID] AS [USRID],
       x.[DELETED_CLNUM] AS [DELETED_CLNUM],
+      x.[USRID] AS [USRID],
       x.[ACTIVITY] AS [ACTIVITY],
       x.[TERMINAL] AS [TERMINAL],
       x.[OS_USER] AS [OS_USER],
@@ -45496,6 +48202,7 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_ADDRTYPE] AS [S_ADDRTYPE],
+      A0.Descript AS [S_ADDRTYPE_Description],
       x.[ADDR1] AS [ADDR1],
       x.[ADDR2] AS [ADDR2],
       HASHBYTES('SHA2_256', x.[CITY]) AS [CITY],
@@ -45505,8 +48212,11 @@ AS
       HASHBYTES('SHA2_256', x.[ZIP]) AS [ZIP],
       x.[TIMEZONE] AS [TIMEZONE],
       x.[S_CMSADR_UNIT_TYPE] AS [S_CMSADR_UNIT_TYPE],
+      A1.Descript AS [S_CMSADR_UNIT_TYPE_Description],
       x.[CMSADR_UNIT_NUM] AS [CMSADR_UNIT_NUM]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_ADDRESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ADDRTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A0.[COLUMNNAME] = 'S_ADDRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45529,8 +48239,10 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_EMAILTYPE] AS [S_EMAILTYPE],
+      A0.Descript AS [S_EMAILTYPE_Description],
       HASHBYTES('SHA2_256', x.[EMAILADDR]) AS [EMAILADDR]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_EMAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45553,10 +48265,12 @@ AS
       x.[CID] AS [CID],
       x.[ACTIVE] AS [ACTIVE],
       x.[S_CMSSTATUS] AS [S_CMSSTATUS],
+      A0.Descript AS [S_CMSSTATUS_Description],
       x.[FULLNAME] AS [FULLNAME],
       x.[SHORTNAME] AS [SHORTNAME],
       HASHBYTES('SHA2_256', x.[SSNTIN]) AS [SSNTIN],
       x.[S_TITLE] AS [S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[REFCODE] AS [REFCODE],
       x.[CREATED_BY_USER] AS [CREATED_BY_USER],
       x.[CREATED_DATE] AS [CREATED_DATE],
@@ -45571,6 +48285,8 @@ AS
       x.[SUFFIXNAME] AS [SUFFIXNAME],
       x.[PORTAL_REFCODE] AS [PORTAL_REFCODE]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSSTATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A0.[COLUMNNAME] = 'S_CMSSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45593,9 +48309,11 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_PHONETYPE] AS [S_PHONETYPE],
+      A0.Descript AS [S_PHONETYPE_Description],
       x.[PHONENBR] AS [PHONENBR],
       x.[PHONEEXT] AS [PHONEEXT]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_PHONE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45616,8 +48334,10 @@ CREATE VIEW [NetO_sas].[VwGF_TS_CMS_CONTACT_TYPE]
 AS
    SELECT
       x.[CID] AS [CID],
-      x.[S_CMSTYPE] AS [S_CMSTYPE]
+      x.[S_CMSTYPE] AS [S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_TYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45639,12 +48359,15 @@ AS
    SELECT
       x.[CID] AS [CID],
       x.[S_CMSTYPE] AS [S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description],
       x.[S_STATUS] AS [S_STATUS],
+      A1.Descript AS [S_STATUS_Description],
       x.[STATUS_START_DT] AS [STATUS_START_DT],
       x.[STATUS_STOP_DT] AS [STATUS_STOP_DT],
       x.[STATUS_CHGD_DT] AS [STATUS_CHGD_DT],
       x.[USEPARENT] AS [USEPARENT],
       x.[S_GRADE] AS [S_GRADE],
+      A2.Descript AS [S_GRADE_Description],
       x.[COMPLIANCE_MONITOR] AS [COMPLIANCE_MONITOR],
       x.[COMPLIANCE_EMAIL] AS [COMPLIANCE_EMAIL],
       x.[EMPLOYER_ID] AS [EMPLOYER_ID],
@@ -45656,9 +48379,14 @@ AS
       x.[SAR_ID] AS [SAR_ID],
       x.[PROVIDER_ID] AS [PROVIDER_ID],
       x.[S_TYPE_OF_COMPANY] AS [S_TYPE_OF_COMPANY],
+      A3.Descript AS [S_TYPE_OF_COMPANY_Description],
       x.[CMS_SHORT_DESC] AS [CMS_SHORT_DESC],
       x.[CMS_COMMENTS] AS [CMS_COMMENTS]
    FROM [clt_NetO].[GF_TS_CMS_INFOBYTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A1.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRADE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A2.[COLUMNNAME] = 'S_GRADE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45679,10 +48407,12 @@ CREATE VIEW [NetO_sas].[VwGF_TS_INDEX_VALUE]
 AS
    SELECT
       x.[S_INDEX] AS [S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[INDEX_ID] AS [INDEX_ID],
       x.[EFFECTIVE_DATE] AS [EFFECTIVE_DATE],
       x.[INDEX_VALUE] AS [INDEX_VALUE]
    FROM [clt_NetO].[GF_TS_INDEX_VALUE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45837,12 +48567,16 @@ CREATE VIEW [NetO_sas].[VwGF_TS_WF_GROUP_USER]
 AS
    SELECT
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A0.Descript AS [S_PROC_GROUP_Description],
       x.[USERID] AS [USERID],
       x.[S_USER_TYPE] AS [S_USER_TYPE],
+      A1.Descript AS [S_USER_TYPE_Description],
       x.[IS_ACTIVE] AS [IS_ACTIVE],
       x.[WEIGHT] AS [WEIGHT],
       x.[SUPERVISOR_ID] AS [SUPERVISOR_ID]
    FROM [clt_NetO].[GF_TS_WF_GROUP_USER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROC_GROUP = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_GROUP_USER' and A0.[COLUMNNAME] = 'S_PROC_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45863,9 +48597,11 @@ CREATE VIEW [NetO_sas].[VwGF_TS_WF_PROCESS]
 AS
    SELECT
       x.[S_PROCESS] AS [S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[IS_ACTIVE] AS [IS_ACTIVE],
       x.[EST_TO_COMPLETE] AS [EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45886,9 +48622,11 @@ CREATE VIEW [NetO_sas].[VwGF_TS_WF_PROCESS_MODEL]
 AS
    SELECT
       x.[S_PROCESS_MODEL] AS [S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[IS_ACTIVE] AS [IS_ACTIVE],
       x.[EST_TO_COMPLETE] AS [EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS_MODEL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45909,16 +48647,24 @@ CREATE VIEW [NetO_sas].[VwGF_TS_WF_WORKTYPE]
 AS
    SELECT
       x.[S_WORKTYPE] AS [S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_WT_TYPE] AS [S_WT_TYPE],
+      A1.Descript AS [S_WT_TYPE_Description],
       x.[WT_EXECUTABLE] AS [WT_EXECUTABLE],
       x.[EST_TO_COMPLETE] AS [EST_TO_COMPLETE],
       x.[S_USERINTERFACE] AS [S_USERINTERFACE],
+      A2.Descript AS [S_USERINTERFACE_Description],
       x.[S_REASSIGN_RULE] AS [S_REASSIGN_RULE],
+      A3.Descript AS [S_REASSIGN_RULE_Description],
       x.[WEIGHT_TIER1] AS [WEIGHT_TIER1],
       x.[WEIGHT_TIER2] AS [WEIGHT_TIER2],
       x.[WEIGHT_TIER3] AS [WEIGHT_TIER3],
       x.[DISPLAY_IDX] AS [DISPLAY_IDX]
    FROM [clt_NetO].[GF_TS_WF_WORKTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_WORKTYPE' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_WT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_WORKTYPE' and A1.[COLUMNNAME] = 'S_WT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USERINTERFACE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_WF_WORKTYPE' and A2.[COLUMNNAME] = 'S_USERINTERFACE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -45972,7 +48718,9 @@ AS
       x.[OLD_AGENCY_NUM_REQUIRED] AS [OLD_AGENCY_NUM_REQUIRED],
       x.[PROD_IDENTIFIER] AS [PROD_IDENTIFIER],
       x.[S_AUS_INDICATOR] AS [S_AUS_INDICATOR],
+      A0.Descript AS [S_AUS_INDICATOR_Description],
       x.[S_SERVICE_TYPE_IND] AS [S_SERVICE_TYPE_IND],
+      A1.Descript AS [S_SERVICE_TYPE_IND_Description],
       x.[SERVICE_INT_INDICATOR] AS [SERVICE_INT_INDICATOR],
       x.[SERVICE_LOC_CID] AS [SERVICE_LOC_CID],
       x.[SUB_PRIME_INDICATOR] AS [SUB_PRIME_INDICATOR],
@@ -45987,6 +48735,7 @@ AS
       x.[INTEREST_ONLY_PRODUCT] AS [INTEREST_ONLY_PRODUCT],
       x.[ODDDEFER] AS [ODDDEFER],
       x.[S_SPEC_PRG] AS [S_SPEC_PRG],
+      A2.Descript AS [S_SPEC_PRG_Description],
       x.[MI_REQUIRED] AS [MI_REQUIRED],
       x.[CRA_REPORTABLE] AS [CRA_REPORTABLE],
       x.[MIN_ALLOW_TERM] AS [MIN_ALLOW_TERM],
@@ -45998,12 +48747,17 @@ AS
       x.[PREQUAL_ALLOWED_YN] AS [PREQUAL_ALLOWED_YN],
       x.[PREAPPROVAL_ALLOWED_YN] AS [PREAPPROVAL_ALLOWED_YN],
       x.[S_LOANFIT_PURP_CAT] AS [S_LOANFIT_PURP_CAT],
+      A3.Descript AS [S_LOANFIT_PURP_CAT_Description],
       x.[S_LOANFIT_PROD_CAT] AS [S_LOANFIT_PROD_CAT],
+      A4.Descript AS [S_LOANFIT_PROD_CAT_Description],
       x.[S_LOANFIT_LIEN_CAT] AS [S_LOANFIT_LIEN_CAT],
+      A5.Descript AS [S_LOANFIT_LIEN_CAT_Description],
       x.[LOANFIT_CATEGORY_POSN] AS [LOANFIT_CATEGORY_POSN],
       x.[LOANFIT_DISPLAY_POSN] AS [LOANFIT_DISPLAY_POSN],
       x.[S_LOANFIT_AMT_GROUP] AS [S_LOANFIT_AMT_GROUP],
+      A6.Descript AS [S_LOANFIT_AMT_GROUP_Description],
       x.[S_LOANFIT_LTV_GROUP] AS [S_LOANFIT_LTV_GROUP],
+      A7.Descript AS [S_LOANFIT_LTV_GROUP_Description],
       x.[LOANFIT_MIN_LOAN] AS [LOANFIT_MIN_LOAN],
       x.[LOANFIT_MAX_LOAN] AS [LOANFIT_MAX_LOAN],
       x.[LOANFIT_MIN_LTV] AS [LOANFIT_MIN_LTV],
@@ -46023,6 +48777,7 @@ AS
       x.[CREATE_DATE] AS [CREATE_DATE],
       x.[MODIFY_DATE] AS [MODIFY_DATE],
       x.[S_CONST_PROGRAM] AS [S_CONST_PROGRAM],
+      A8.Descript AS [S_CONST_PROGRAM_Description],
       x.[CONST_MONTHS] AS [CONST_MONTHS],
       x.[IPG_RENOVA_PROD] AS [IPG_RENOVA_PROD],
       x.[DOCMAGIC_PLAN_CODE] AS [DOCMAGIC_PLAN_CODE],
@@ -46031,9 +48786,24 @@ AS
       x.[DAYS_FINAL_FLOAT_ELIG] AS [DAYS_FINAL_FLOAT_ELIG],
       x.[IPG_FINAL_INVESTOR] AS [IPG_FINAL_INVESTOR],
       x.[S_ASSUMABILITY_FEATURE] AS [S_ASSUMABILITY_FEATURE],
+      A9.Descript AS [S_ASSUMABILITY_FEATURE_Description],
       x.[S_IPG_BUYDWN] AS [S_IPG_BUYDWN],
-      x.[S_BUYDWN_CNTRBTR] AS [S_BUYDWN_CNTRBTR]
+      A10.Descript AS [S_IPG_BUYDWN_Description],
+      x.[S_BUYDWN_CNTRBTR] AS [S_BUYDWN_CNTRBTR],
+      A11.Descript AS [S_BUYDWN_CNTRBTR_Description]
    FROM [clt_NetO].[GF_TSR_PNP_IPG_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AUS_INDICATOR = A0.DBSYMBOL AND A0.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A0.[COLUMNNAME] = 'S_AUS_INDICATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SERVICE_TYPE_IND = A1.DBSYMBOL AND A1.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A1.[COLUMNNAME] = 'S_SERVICE_TYPE_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPEC_PRG = A2.DBSYMBOL AND A2.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A2.[COLUMNNAME] = 'S_SPEC_PRG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LOANFIT_PURP_CAT = A3.DBSYMBOL AND A3.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A3.[COLUMNNAME] = 'S_LOANFIT_PURP_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOANFIT_PROD_CAT = A4.DBSYMBOL AND A4.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A4.[COLUMNNAME] = 'S_LOANFIT_PROD_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LOANFIT_LIEN_CAT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A5.[COLUMNNAME] = 'S_LOANFIT_LIEN_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LOANFIT_AMT_GROUP = A6.DBSYMBOL AND A6.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A6.[COLUMNNAME] = 'S_LOANFIT_AMT_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LOANFIT_LTV_GROUP = A7.DBSYMBOL AND A7.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A7.[COLUMNNAME] = 'S_LOANFIT_LTV_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CONST_PROGRAM = A8.DBSYMBOL AND A8.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A8.[COLUMNNAME] = 'S_CONST_PROGRAM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_ASSUMABILITY_FEATURE = A9.DBSYMBOL AND A9.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A9.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_IPG_BUYDWN = A10.DBSYMBOL AND A10.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A10.[COLUMNNAME] = 'S_IPG_BUYDWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -46055,8 +48825,11 @@ AS
    SELECT
       x.[ACTION_ID] AS [ACTION_ID],
       x.[S_WORKTYPE] AS [S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_ACTION_RESOLUTION] AS [S_ACTION_RESOLUTION],
+      A1.Descript AS [S_ACTION_RESOLUTION_Description],
       x.[S_PROC_MDL_RESOLUTION] AS [S_PROC_MDL_RESOLUTION],
+      A2.Descript AS [S_PROC_MDL_RESOLUTION_Description],
       x.[EXTERNAL_CODE] AS [EXTERNAL_CODE],
       x.[INSERT_DATE] AS [INSERT_DATE],
       x.[EXP_DATE_TO_COMPLETE] AS [EXP_DATE_TO_COMPLETE],
@@ -46067,11 +48840,16 @@ AS
       x.[ACTION_STATUS_FLAG] AS [ACTION_STATUS_FLAG],
       x.[RESERVED_BY] AS [RESERVED_BY],
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A3.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MDL_MGR_ID] AS [PROC_MDL_MGR_ID],
       x.[RESERVE_DATE] AS [RESERVE_DATE],
       x.[WF_SESSION_ID] AS [WF_SESSION_ID],
       x.[OPENED_DATE] AS [OPENED_DATE]
    FROM [clt_NetO].[GF_TW_WF_ACTION_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_ACTION_MGR' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACTION_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_ACTION_MGR' and A1.[COLUMNNAME] = 'S_ACTION_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_MDL_RESOLUTION = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_ACTION_MGR' and A2.[COLUMNNAME] = 'S_PROC_MDL_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -46093,7 +48871,9 @@ AS
    SELECT
       x.[PROC_MDL_MGR_ID] AS [PROC_MDL_MGR_ID],
       x.[S_PROCESS_MODEL] AS [S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[S_PROC_MDL_MGR_RESOLUTION] AS [S_PROC_MDL_MGR_RESOLUTION],
+      A1.Descript AS [S_PROC_MDL_MGR_RESOLUTION_Description],
       x.[EXP_DATE_TO_COMPLETE] AS [EXP_DATE_TO_COMPLETE],
       x.[START_DATE] AS [START_DATE],
       x.[END_DATE] AS [END_DATE],
@@ -46101,9 +48881,13 @@ AS
       x.[IS_COMPLETE] AS [IS_COMPLETE],
       x.[RESERVED_BY] AS [RESERVED_BY],
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A2.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MGR_ID] AS [PROC_MGR_ID],
       x.[PARENT_PROC_MDL_MGR_ID] AS [PARENT_PROC_MDL_MGR_ID]
    FROM [clt_NetO].[GF_TW_WF_PROC_MODEL_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_MDL_MGR_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A1.[COLUMNNAME] = 'S_PROC_MDL_MGR_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -46125,6 +48909,7 @@ AS
    SELECT
       x.[PROC_MGR_ID] AS [PROC_MGR_ID],
       x.[S_PROCESS] AS [S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[EXTERNAL_CODE] AS [EXTERNAL_CODE],
       x.[EXT_CODE_DESC] AS [EXT_CODE_DESC],
       x.[EXP_COMP_DATE] AS [EXP_COMP_DATE],
@@ -46135,8 +48920,11 @@ AS
       x.[MODELS_COMPLETED] AS [MODELS_COMPLETED],
       x.[IS_COMPLETE] AS [IS_COMPLETE],
       x.[RESERVED_BY] AS [RESERVED_BY],
-      x.[S_PROC_GROUP] AS [S_PROC_GROUP]
+      x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A1.Descript AS [S_PROC_GROUP_Description]
    FROM [clt_NetO].[GF_TW_WF_PROCESS_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A0.[COLUMNNAME] = 'S_PROCESS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -46279,18 +49067,24 @@ AS
       x.[CTAXLTV] AS [CTAXLTV],
       x.[NUM_CARDS] AS [NUM_CARDS],
       x.[S_LOCTYPE] AS [S_LOCTYPE],
+      A0.Descript AS [S_LOCTYPE_Description],
       x.[ANNUAL_FEE] AS [ANNUAL_FEE],
       x.[REPAY_MTHS] AS [REPAY_MTHS],
       x.[TERMIN_FEE] AS [TERMIN_FEE],
       x.[DRAWACCESS_FEE] AS [DRAWACCESS_FEE],
       x.[S_FUNDS_TO_BE_DRAWN] AS [S_FUNDS_TO_BE_DRAWN],
+      A1.Descript AS [S_FUNDS_TO_BE_DRAWN_Description],
       x.[OVERDRAFT_PROTECTION] AS [OVERDRAFT_PROTECTION],
       x.[ODP_ACCOUNT_NUMBER] AS [ODP_ACCOUNT_NUMBER],
       x.[ODP_ROUTING_NUMBER] AS [ODP_ROUTING_NUMBER],
       x.[ANNUAL_CALC_OVR] AS [ANNUAL_CALC_OVR],
       x.[TERM_CALC_OVR] AS [TERM_CALC_OVR],
-      x.[S_REPAYMENT_METHOD] AS [S_REPAYMENT_METHOD]
+      x.[S_REPAYMENT_METHOD] AS [S_REPAYMENT_METHOD],
+      A2.Descript AS [S_REPAYMENT_METHOD_Description]
    FROM [clt_NetO].[HELOC] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOCTYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC' and A0.[COLUMNNAME] = 'S_LOCTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FUNDS_TO_BE_DRAWN = A1.DBSYMBOL AND A1.[TableName] = 'HELOC' and A1.[COLUMNNAME] = 'S_FUNDS_TO_BE_DRAWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_REPAYMENT_METHOD = A2.DBSYMBOL AND A2.[TableName] = 'HELOC' and A2.[COLUMNNAME] = 'S_REPAYMENT_METHOD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -46318,9 +49112,11 @@ AS
       x.[MIN_BALANCE] AS [MIN_BALANCE],
       x.[OPENEND_CREDIT_IND] AS [OPENEND_CREDIT_IND],
       x.[S_RTC_TYPE] AS [S_RTC_TYPE],
+      A0.Descript AS [S_RTC_TYPE_Description],
       x.[WAIVE_ANNUAL_FEE] AS [WAIVE_ANNUAL_FEE],
       x.[ANNUAL_FEE_START_DT] AS [ANNUAL_FEE_START_DT]
    FROM [clt_NetO].[HELOC2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RTC_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC2' and A0.[COLUMNNAME] = 'S_RTC_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -46456,9 +49252,11 @@ AS
       x.[RPTYEAR] AS [RPTYEAR],
       x.[CFPNUM] AS [CFPNUM],
       x.[S_CUSTOMQRY] AS [S_CUSTOMQRY],
+      A0.Descript AS [S_CUSTOMQRY_Description],
       x.[CEMAIL] AS [CEMAIL],
       x.[HMDA_LAR_LEI] AS [HMDA_LAR_LEI]
    FROM [clt_NetO].[HMDAXPRT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -46504,7 +49302,9 @@ AS
       x.[JEXPAMT] AS [JEXPAMT],
       x.[PRIMINC] AS [PRIMINC],
       x.[S_INCOME] AS [S_INCOME],
+      A0.Descript AS [S_INCOME_Description],
       x.[S_PAYPER] AS [S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[INCAMT] AS [INCAMT],
       x.[INCDESC] AS [INCDESC],
       x.[MNTEQUIV] AS [MNTEQUIV],
@@ -46524,10 +49324,12 @@ AS
       x.[TSWE_INCOME_IND] AS [TSWE_INCOME_IND],
       x.[EFFECTIVE_MO_INC] AS [EFFECTIVE_MO_INC],
       x.[S_JOB_TYPE] AS [S_JOB_TYPE],
+      A2.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT] AS [OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY] AS [PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC] AS [OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE] AS [S_SPECBOREMPRELTYPE],
+      A3.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC] AS [OTHERSPECBOREMPRELTYPEDSC],
       x.[RURALHOUSINGCALC] AS [RURALHOUSINGCALC],
       x.[COUNTRY] AS [COUNTRY],
@@ -46536,9 +49338,11 @@ AS
       x.[STATED_FLAG] AS [STATED_FLAG],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[S_INCOMECATEGORY] AS [S_INCOMECATEGORY],
+      A4.Descript AS [S_INCOMECATEGORY_Description],
       x.[OCCUPATION] AS [OCCUPATION],
       x.[INCSTIND] AS [INCSTIND],
       x.[S_SELFEMPTYPE] AS [S_SELFEMPTYPE],
+      A5.Descript AS [S_SELFEMPTYPE_Description],
       x.[PRE_VERI_GROSS_INC] AS [PRE_VERI_GROSS_INC],
       x.[USE_GROSS_INCOME] AS [USE_GROSS_INCOME],
       x.[YTD_AMOUNT] AS [YTD_AMOUNT],
@@ -46553,6 +49357,12 @@ AS
       x.[FROM_INCOME_CALC] AS [FROM_INCOME_CALC],
       x.[STATED_INC] AS [STATED_INC]
    FROM [clt_NetO].[INCOME] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME = A0.DBSYMBOL AND A0.[TableName] = 'INCOME' and A0.[COLUMNNAME] = 'S_INCOME'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'INCOME' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_JOB_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'INCOME' and A2.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPECBOREMPRELTYPE = A3.DBSYMBOL AND A3.[TableName] = 'INCOME' and A3.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_INCOMECATEGORY = A4.DBSYMBOL AND A4.[TableName] = 'INCOME' and A4.[COLUMNNAME] = 'S_INCOMECATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SELFEMPTYPE = A5.DBSYMBOL AND A5.[TableName] = 'INCOME' and A5.[COLUMNNAME] = 'S_SELFEMPTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -46657,6 +49467,7 @@ AS
       x.[DBID] AS [DBID],
       x.[LIABCTR] AS [LIABCTR],
       x.[S_LIAB] AS [S_LIAB],
+      A0.Descript AS [S_LIAB_Description],
       x.[LIABDESC] AS [LIABDESC],
       x.[ACCTNUM] AS [ACCTNUM],
       x.[HOLDER] AS [HOLDER],
@@ -46672,6 +49483,7 @@ AS
       x.[ACCTBAL] AS [ACCTBAL],
       x.[ACCTPYMT] AS [ACCTPYMT],
       x.[S_PAYPER] AS [S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[MTHPYMT] AS [MTHPYMT],
       x.[PYMTLEFT] AS [PYMTLEFT],
       x.[INCPYMT] AS [INCPYMT],
@@ -46686,6 +49498,7 @@ AS
       x.[PAYTYPE] AS [PAYTYPE],
       x.[VERIFY] AS [VERIFY],
       x.[S_LIENPS] AS [S_LIENPS],
+      A2.Descript AS [S_LIENPS_Description],
       x.[ORIGDBTDT] AS [ORIGDBTDT],
       x.[EXPDBTDT] AS [EXPDBTDT],
       x.[RESUBIND] AS [RESUBIND],
@@ -46693,7 +49506,9 @@ AS
       x.[MTG_TYPE_DESCRIPT] AS [MTG_TYPE_DESCRIPT],
       x.[PURCH_MONEY_IND] AS [PURCH_MONEY_IND],
       x.[S_EXCLUSION_REASON] AS [S_EXCLUSION_REASON],
+      A3.Descript AS [S_EXCLUSION_REASON_Description],
       x.[S_MTG_TYPE] AS [S_MTG_TYPE],
+      A4.Descript AS [S_MTG_TYPE_Description],
       x.[SECURITY_INSTR_VOLUME] AS [SECURITY_INSTR_VOLUME],
       x.[DEBT_CCTIN_TITLE] AS [DEBT_CCTIN_TITLE],
       x.[TRUSTEE_NAME] AS [TRUSTEE_NAME],
@@ -46722,6 +49537,7 @@ AS
       x.[INVESTMENT_CREDIT_LINE] AS [INVESTMENT_CREDIT_LINE],
       x.[CREDIT_TYPE_OTH] AS [CREDIT_TYPE_OTH],
       x.[S_CREDIT_CARD_TYPE] AS [S_CREDIT_CARD_TYPE],
+      A5.Descript AS [S_CREDIT_CARD_TYPE_Description],
       x.[INTERNAL_REFI] AS [INTERNAL_REFI],
       x.[HCOUNTRY] AS [HCOUNTRY],
       x.[SOURCE_CB_PMT] AS [SOURCE_CB_PMT],
@@ -46746,6 +49562,7 @@ AS
       x.[DEBT_REROUTING_NO] AS [DEBT_REROUTING_NO],
       x.[REBEN_ACCT_NUM] AS [REBEN_ACCT_NUM],
       x.[S_LIABILITYDISBTYPE] AS [S_LIABILITYDISBTYPE],
+      A6.Descript AS [S_LIABILITYDISBTYPE_Description],
       x.[P_PYMTLEFT] AS [P_PYMTLEFT],
       x.[P_MNPAYLFT] AS [P_MNPAYLFT],
       x.[P_BALANCE] AS [P_BALANCE],
@@ -46755,6 +49572,7 @@ AS
       x.[OWNERSHP_TYPE] AS [OWNERSHP_TYPE],
       x.[DEDUCT_FROM_INC] AS [DEDUCT_FROM_INC],
       x.[S_ACCOUNT_OWNERSHIP] AS [S_ACCOUNT_OWNERSHIP],
+      A7.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[LATE_30_DAYS] AS [LATE_30_DAYS],
       x.[LATE_60_DAYS] AS [LATE_60_DAYS],
       x.[LATE_90_DAYS] AS [LATE_90_DAYS],
@@ -46762,6 +49580,14 @@ AS
       HASHBYTES('SHA2_256', CAST(x.[CREDIT_LIMIT_AMOUNT] AS NVARCHAR(50))) AS [CREDIT_LIMIT_AMOUNT],
       x.[INC_CREDIT_LINE] AS [INC_CREDIT_LINE]
    FROM [clt_NetO].[LIABLTY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LIAB = A0.DBSYMBOL AND A0.[TableName] = 'LIABLTY' and A0.[COLUMNNAME] = 'S_LIAB'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'LIABLTY' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIENPS = A2.DBSYMBOL AND A2.[TableName] = 'LIABLTY' and A2.[COLUMNNAME] = 'S_LIENPS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_EXCLUSION_REASON = A3.DBSYMBOL AND A3.[TableName] = 'LIABLTY' and A3.[COLUMNNAME] = 'S_EXCLUSION_REASON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_MTG_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'LIABLTY' and A4.[COLUMNNAME] = 'S_MTG_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CREDIT_CARD_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'LIABLTY' and A5.[COLUMNNAME] = 'S_CREDIT_CARD_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIABILITYDISBTYPE = A6.DBSYMBOL AND A6.[TableName] = 'LIABLTY' and A6.[COLUMNNAME] = 'S_LIABILITYDISBTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ACCOUNT_OWNERSHIP = A7.DBSYMBOL AND A7.[TableName] = 'LIABLTY' and A7.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -46885,6 +49711,7 @@ AS
       x.[RESST] AS [RESST],
       x.[RESZIP] AS [RESZIP],
       x.[S_OWNRNT] AS [S_OWNRNT],
+      A0.Descript AS [S_OWNRNT_Description],
       x.[RESNMYRS] AS [RESNMYRS],
       x.[ACCTPREV] AS [ACCTPREV],
       x.[ACCTHLDR] AS [ACCTHLDR],
@@ -46896,12 +49723,17 @@ AS
       x.[YRS_AT_PREV] AS [YRS_AT_PREV],
       x.[MNTHS_AT_PREV] AS [MNTHS_AT_PREV],
       x.[S_RES_UNIT_TYPE] AS [S_RES_UNIT_TYPE],
+      A1.Descript AS [S_RES_UNIT_TYPE_Description],
       x.[RES_UNIT_NUM] AS [RES_UNIT_NUM],
       x.[RES_CNTRY_CODE] AS [RES_CNTRY_CODE],
       x.[PREV_STATE_FOREIN] AS [PREV_STATE_FOREIN],
       x.[PREV_POSTCODE] AS [PREV_POSTCODE],
-      x.[S_LIVE_RENT_FREE_ENUMS] AS [S_LIVE_RENT_FREE_ENUMS]
+      x.[S_LIVE_RENT_FREE_ENUMS] AS [S_LIVE_RENT_FREE_ENUMS],
+      A2.Descript AS [S_LIVE_RENT_FREE_ENUMS_Description]
    FROM [clt_NetO].[PREVRES] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRNT = A0.DBSYMBOL AND A0.[TableName] = 'PREVRES' and A0.[COLUMNNAME] = 'S_OWNRNT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RES_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'PREVRES' and A1.[COLUMNNAME] = 'S_RES_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIVE_RENT_FREE_ENUMS = A2.DBSYMBOL AND A2.[TableName] = 'PREVRES' and A2.[COLUMNNAME] = 'S_LIVE_RENT_FREE_ENUMS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -46924,31 +49756,43 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_PROD] AS [S_PROD],
+      A0.Descript AS [S_PROD_Description],
       x.[S_RATE] AS [S_RATE],
+      A1.Descript AS [S_RATE_Description],
       x.[S_RTCODE] AS [S_RTCODE],
+      A2.Descript AS [S_RTCODE_Description],
       x.[OLA] AS [OLA],
       x.[LTV] AS [LTV],
       x.[S_LCKTYP] AS [S_LCKTYP],
+      A3.Descript AS [S_LCKTYP_Description],
       x.[LOCKDATE] AS [LOCKDATE],
       x.[LOCKEXP] AS [LOCKEXP],
       x.[LOCKDAYS] AS [LOCKDAYS],
       x.[INTRATE] AS [INTRATE],
       x.[LOANTERM] AS [LOANTERM],
       x.[S_LCKEXP] AS [S_LCKEXP],
+      A4.Descript AS [S_LCKEXP_Description],
       x.[S_RATIO] AS [S_RATIO],
+      A5.Descript AS [S_RATIO_Description],
       x.[S_BYDOWN] AS [S_BYDOWN],
+      A6.Descript AS [S_BYDOWN_Description],
       x.[S_MIPLAN] AS [S_MIPLAN],
+      A7.Descript AS [S_MIPLAN_Description],
       x.[FMIRFLAG] AS [FMIRFLAG],
       x.[FMIRFCTR] AS [FMIRFCTR],
       x.[BALLFLAG] AS [BALLFLAG],
       x.[AMTERM] AS [AMTERM],
       x.[PIPMT] AS [PIPMT],
       x.[S_PMTSTR] AS [S_PMTSTR],
+      A8.Descript AS [S_PMTSTR_Description],
       x.[S_DISC] AS [S_DISC],
+      A9.Descript AS [S_DISC_Description],
       x.[S_ORIG] AS [S_ORIG],
+      A10.Descript AS [S_ORIG_Description],
       x.[BASELA] AS [BASELA],
       x.[LOCKED] AS [LOCKED],
       x.[S_QRATE] AS [S_QRATE],
+      A11.Descript AS [S_QRATE_Description],
       x.[BASERATE] AS [BASERATE],
       x.[CNFIRM] AS [CNFIRM],
       x.[BASEMKTDISC] AS [BASEMKTDISC],
@@ -46964,8 +49808,11 @@ AS
       x.[MKTDISCOVERRIDE] AS [MKTDISCOVERRIDE],
       x.[INTRATEOVERRIDE] AS [INTRATEOVERRIDE],
       x.[S_RTCODEOVR] AS [S_RTCODEOVR],
+      A12.Descript AS [S_RTCODEOVR_Description],
       x.[S_LTYPE] AS [S_LTYPE],
+      A13.Descript AS [S_LTYPE_Description],
       x.[S_PROGRM] AS [S_PROGRM],
+      A14.Descript AS [S_PROGRM_Description],
       x.[FINMIPERC] AS [FINMIPERC],
       x.[QUALRATE] AS [QUALRATE],
       x.[BASEQUAL] AS [BASEQUAL],
@@ -46978,8 +49825,10 @@ AS
       x.[BASELAEDT] AS [BASELAEDT],
       x.[ODDRATE] AS [ODDRATE],
       x.[S_AMTYPE] AS [S_AMTYPE],
+      A15.Descript AS [S_AMTYPE_Description],
       x.[SELRTCODE] AS [SELRTCODE],
       x.[S_RCOMNUM] AS [S_RCOMNUM],
+      A16.Descript AS [S_RCOMNUM_Description],
       x.[BYDNPMT4] AS [BYDNPMT4],
       x.[BYDNPMT5] AS [BYDNPMT5],
       x.[BYDNPMT6] AS [BYDNPMT6],
@@ -47004,11 +49853,13 @@ AS
       x.[LOCKEXPDT] AS [LOCKEXPDT],
       x.[SELECTEDINVESTOR] AS [SELECTEDINVESTOR],
       x.[S_BALLOON_TYPE] AS [S_BALLOON_TYPE],
+      A17.Descript AS [S_BALLOON_TYPE_Description],
       x.[AMORT_OTHER] AS [AMORT_OTHER],
       x.[CLIENTRATEINFO] AS [CLIENTRATEINFO],
       x.[SELECTEDPROGRAM] AS [SELECTEDPROGRAM],
       x.[BUYDOWNOVERRIDES] AS [BUYDOWNOVERRIDES],
       x.[S_MORTGAGETYPE] AS [S_MORTGAGETYPE],
+      A18.Descript AS [S_MORTGAGETYPE_Description],
       x.[TOTALPMTNO] AS [TOTALPMTNO],
       x.[MININTPMTRATE] AS [MININTPMTRATE],
       x.[REFI_RESCISSION_EXEMPT] AS [REFI_RESCISSION_EXEMPT],
@@ -47026,8 +49877,10 @@ AS
       x.[BASE_ADJ_DISC] AS [BASE_ADJ_DISC],
       x.[PMTRCODE] AS [PMTRCODE],
       x.[S_AMORT_SUB_TYPE] AS [S_AMORT_SUB_TYPE],
+      A19.Descript AS [S_AMORT_SUB_TYPE_Description],
       x.[QUALMETHOD] AS [QUALMETHOD],
       x.[S_QUALMETHODOVR] AS [S_QUALMETHODOVR],
+      A20.Descript AS [S_QUALMETHODOVR_Description],
       x.[YSP] AS [YSP],
       x.[YSP_OVRD] AS [YSP_OVRD],
       x.[OVERAGE] AS [OVERAGE],
@@ -47054,10 +49907,13 @@ AS
       x.[BORR_RESCISSION_EXEMPT] AS [BORR_RESCISSION_EXEMPT],
       x.[CORR_BOR_RATE_LOCKDATE] AS [CORR_BOR_RATE_LOCKDATE],
       x.[S_203KTYPE] AS [S_203KTYPE],
+      A21.Descript AS [S_203KTYPE_Description],
       x.[PRODUCT_DENIAL] AS [PRODUCT_DENIAL],
       x.[REQ_RESCISSION] AS [REQ_RESCISSION],
       x.[S_PRICING_REGION] AS [S_PRICING_REGION],
+      A22.Descript AS [S_PRICING_REGION_Description],
       x.[S_PRICING_CHANNEL] AS [S_PRICING_CHANNEL],
+      A23.Descript AS [S_PRICING_CHANNEL_Description],
       x.[ROE] AS [ROE],
       x.[ROA] AS [ROA],
       x.[ROEEXP] AS [ROEEXP],
@@ -47097,12 +49953,42 @@ AS
       x.[AUS_INDICATOR] AS [AUS_INDICATOR],
       x.[LOAN_TYPE_CHG_FLAG] AS [LOAN_TYPE_CHG_FLAG],
       x.[S_PROD_PRICE_ENGINE] AS [S_PROD_PRICE_ENGINE],
+      A24.Descript AS [S_PROD_PRICE_ENGINE_Description],
       x.[S_PROD_PRICE_ENGINE_OVR] AS [S_PROD_PRICE_ENGINE_OVR],
+      A25.Descript AS [S_PROD_PRICE_ENGINE_OVR_Description],
       x.[S_PPY_FILTER] AS [S_PPY_FILTER],
+      A26.Descript AS [S_PPY_FILTER_Description],
       x.[BUILDER_LOCK_ADJ] AS [BUILDER_LOCK_ADJ],
       x.[REQLOANTERM] AS [REQLOANTERM],
       x.[DLR_PIPMT] AS [DLR_PIPMT]
    FROM [clt_NetO].[PRODUCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROD = A0.DBSYMBOL AND A0.[TableName] = 'PRODUCT' and A0.[COLUMNNAME] = 'S_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RATE = A1.DBSYMBOL AND A1.[TableName] = 'PRODUCT' and A1.[COLUMNNAME] = 'S_RATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_RTCODE = A2.DBSYMBOL AND A2.[TableName] = 'PRODUCT' and A2.[COLUMNNAME] = 'S_RTCODE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LCKTYP = A3.DBSYMBOL AND A3.[TableName] = 'PRODUCT' and A3.[COLUMNNAME] = 'S_LCKTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LCKEXP = A4.DBSYMBOL AND A4.[TableName] = 'PRODUCT' and A4.[COLUMNNAME] = 'S_LCKEXP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_RATIO = A5.DBSYMBOL AND A5.[TableName] = 'PRODUCT' and A5.[COLUMNNAME] = 'S_RATIO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_BYDOWN = A6.DBSYMBOL AND A6.[TableName] = 'PRODUCT' and A6.[COLUMNNAME] = 'S_BYDOWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_MIPLAN = A7.DBSYMBOL AND A7.[TableName] = 'PRODUCT' and A7.[COLUMNNAME] = 'S_MIPLAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_PMTSTR = A8.DBSYMBOL AND A8.[TableName] = 'PRODUCT' and A8.[COLUMNNAME] = 'S_PMTSTR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_DISC = A9.DBSYMBOL AND A9.[TableName] = 'PRODUCT' and A9.[COLUMNNAME] = 'S_DISC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_ORIG = A10.DBSYMBOL AND A10.[TableName] = 'PRODUCT' and A10.[COLUMNNAME] = 'S_ORIG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_QRATE = A11.DBSYMBOL AND A11.[TableName] = 'PRODUCT' and A11.[COLUMNNAME] = 'S_QRATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_RTCODEOVR = A12.DBSYMBOL AND A12.[TableName] = 'PRODUCT' and A12.[COLUMNNAME] = 'S_RTCODEOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_LTYPE = A13.DBSYMBOL AND A13.[TableName] = 'PRODUCT' and A13.[COLUMNNAME] = 'S_LTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROGRM = A14.DBSYMBOL AND A14.[TableName] = 'PRODUCT' and A14.[COLUMNNAME] = 'S_PROGRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_AMTYPE = A15.DBSYMBOL AND A15.[TableName] = 'PRODUCT' and A15.[COLUMNNAME] = 'S_AMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_RCOMNUM = A16.DBSYMBOL AND A16.[TableName] = 'PRODUCT' and A16.[COLUMNNAME] = 'S_RCOMNUM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_BALLOON_TYPE = A17.DBSYMBOL AND A17.[TableName] = 'PRODUCT' and A17.[COLUMNNAME] = 'S_BALLOON_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_MORTGAGETYPE = A18.DBSYMBOL AND A18.[TableName] = 'PRODUCT' and A18.[COLUMNNAME] = 'S_MORTGAGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_AMORT_SUB_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'PRODUCT' and A19.[COLUMNNAME] = 'S_AMORT_SUB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_QUALMETHODOVR = A20.DBSYMBOL AND A20.[TableName] = 'PRODUCT' and A20.[COLUMNNAME] = 'S_QUALMETHODOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_203KTYPE = A21.DBSYMBOL AND A21.[TableName] = 'PRODUCT' and A21.[COLUMNNAME] = 'S_203KTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PRICING_REGION = A22.DBSYMBOL AND A22.[TableName] = 'PRODUCT' and A22.[COLUMNNAME] = 'S_PRICING_REGION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_PRICING_CHANNEL = A23.DBSYMBOL AND A23.[TableName] = 'PRODUCT' and A23.[COLUMNNAME] = 'S_PRICING_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_PROD_PRICE_ENGINE = A24.DBSYMBOL AND A24.[TableName] = 'PRODUCT' and A24.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_PROD_PRICE_ENGINE_OVR = A25.DBSYMBOL AND A25.[TableName] = 'PRODUCT' and A25.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_PPY_FILTER = A26.DBSYMBOL AND A26.[TableName] = 'PRODUCT' and A26.[COLUMNNAME] = 'S_PPY_FILTER'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -47202,7 +50088,9 @@ AS
       x.[REOSTATE] AS [REOSTATE],
       x.[REOZIP] AS [REOZIP],
       x.[S_REOPST] AS [S_REOPST],
+      A0.Descript AS [S_REOPST_Description],
       x.[S_REOTYP] AS [S_REOTYP],
+      A1.Descript AS [S_REOTYP_Description],
       x.[PRESVAL] AS [PRESVAL],
       x.[PRESMTG] AS [PRESMTG],
       x.[GROSRENT] AS [GROSRENT],
@@ -47212,6 +50100,7 @@ AS
       x.[PGROSINC] AS [PGROSINC],
       x.[AGROSINC] AS [AGROSINC],
       x.[S_ONRSHP] AS [S_ONRSHP],
+      A2.Descript AS [S_ONRSHP_Description],
       x.[REOCNTRY] AS [REOCNTRY],
       x.[PRIM_RES] AS [PRIM_RES],
       x.[SUBJECTP] AS [SUBJECTP],
@@ -47253,15 +50142,24 @@ AS
       x.[UNITNUMREO] AS [UNITNUMREO],
       x.[UNITTYPEREO] AS [UNITTYPEREO],
       x.[S_ACCOUNT_OWNERSHIP] AS [S_ACCOUNT_OWNERSHIP],
+      A3.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[XPROCEEDOVR] AS [XPROCEEDOVR],
       x.[S_REO_INTEND_OCCUPANCY] AS [S_REO_INTEND_OCCUPANCY],
+      A4.Descript AS [S_REO_INTEND_OCCUPANCY_Description],
       x.[REO_OTHROCCUP_DESC] AS [REO_OTHROCCUP_DESC],
       x.[S_REO_CURR_PROP_USAGE] AS [S_REO_CURR_PROP_USAGE],
+      A5.Descript AS [S_REO_CURR_PROP_USAGE_Description],
       x.[REO_STATE_FOREIN] AS [REO_STATE_FOREIN],
       x.[REO_POSTCODE] AS [REO_POSTCODE],
       x.[REO_CNTRY_COD] AS [REO_CNTRY_COD],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[REOWNED] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REOPST = A0.DBSYMBOL AND A0.[TableName] = 'REOWNED' and A0.[COLUMNNAME] = 'S_REOPST'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_REOTYP = A1.DBSYMBOL AND A1.[TableName] = 'REOWNED' and A1.[COLUMNNAME] = 'S_REOTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ONRSHP = A2.DBSYMBOL AND A2.[TableName] = 'REOWNED' and A2.[COLUMNNAME] = 'S_ONRSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ACCOUNT_OWNERSHIP = A3.DBSYMBOL AND A3.[TableName] = 'REOWNED' and A3.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_REO_INTEND_OCCUPANCY = A4.DBSYMBOL AND A4.[TableName] = 'REOWNED' and A4.[COLUMNNAME] = 'S_REO_INTEND_OCCUPANCY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_REO_CURR_PROP_USAGE = A5.DBSYMBOL AND A5.[TableName] = 'REOWNED' and A5.[COLUMNNAME] = 'S_REO_CURR_PROP_USAGE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -47287,8 +50185,6 @@ AS
       x.[TAXYEAR] AS [TAXYEAR],
       x.[METHOD] AS [METHOD],
       x.[CNTR] AS [CNTR],
-      x.[DBID] AS [DBID],
-      x.[CTR] AS [CTR],
       x.[SCHCPRFT] AS [SCHCPRFT],
       x.[SCHCDEPL] AS [SCHCDEPL],
       x.[SCHCDEPR] AS [SCHCDEPR],
@@ -47354,6 +50250,8 @@ AS
       x.[D_TOTAL] AS [D_TOTAL],
       x.[NOMONTHS] AS [NOMONTHS],
       x.[MNTHAVRG] AS [MNTHAVRG],
+      x.[DBID] AS [DBID],
+      x.[CTR] AS [CTR],
       x.[TOTINC] AS [TOTINC],
       x.[DEPR2106] AS [DEPR2106],
       x.[SCHCOTHI] AS [SCHCOTHI],
@@ -47459,19 +50357,25 @@ AS
       x.[POWER_OF_ATT_DESC] AS [POWER_OF_ATT_DESC],
       x.[ESTABLISHED_STATE] AS [ESTABLISHED_STATE],
       x.[S_BOR_SELLER_OPTION] AS [S_BOR_SELLER_OPTION],
+      A0.Descript AS [S_BOR_SELLER_OPTION_Description],
       x.[S_SEL_UNIT_TYPE] AS [S_SEL_UNIT_TYPE],
+      A1.Descript AS [S_SEL_UNIT_TYPE_Description],
       x.[SEL_UNIT_NUM] AS [SEL_UNIT_NUM],
       x.[SEL_COUNTRY_CODE] AS [SEL_COUNTRY_CODE],
       x.[SEL_STATE_FOREIN] AS [SEL_STATE_FOREIN],
       x.[SEL_POSTCODE] AS [SEL_POSTCODE],
       x.[EMAIL] AS [EMAIL],
       x.[S_IDENTIFICATION_TYPE] AS [S_IDENTIFICATION_TYPE],
+      A2.Descript AS [S_IDENTIFICATION_TYPE_Description],
       x.[IDENTIFICATION_NUMBER] AS [IDENTIFICATION_NUMBER],
       x.[SELLER_LIENHOLDER] AS [SELLER_LIENHOLDER],
       x.[SELLER_CODE] AS [SELLER_CODE],
       x.[SALES_TAX_ID] AS [SALES_TAX_ID],
       x.[REGION] AS [REGION]
    FROM [clt_NetO].[SELLER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BOR_SELLER_OPTION = A0.DBSYMBOL AND A0.[TableName] = 'SELLER' and A0.[COLUMNNAME] = 'S_BOR_SELLER_OPTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEL_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'SELLER' and A1.[COLUMNNAME] = 'S_SEL_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_IDENTIFICATION_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'SELLER' and A2.[COLUMNNAME] = 'S_IDENTIFICATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -47533,8 +50437,10 @@ AS
       x.[DOCS_SENT] AS [DOCS_SENT],
       x.[INDEMNF_AMT] AS [INDEMNF_AMT],
       x.[PC_FEDEX_NUM] AS [PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS] AS [S_SERVICING_STATUS]
+      x.[S_SERVICING_STATUS] AS [S_SERVICING_STATUS],
+      A0.Descript AS [S_SERVICING_STATUS_Description]
    FROM [clt_NetO].[SERVICNG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SERVICING_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'SERVICNG' and A0.[COLUMNNAME] = 'S_SERVICING_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -47566,14 +50472,18 @@ AS
       x.[SUBJTHLD] AS [SUBJTHLD],
       x.[SUBJMHLD] AS [SUBJMHLD],
       x.[S_OWNRHT] AS [S_OWNRHT],
+      A0.Descript AS [S_OWNRHT_Description],
       x.[SUBJOREX] AS [SUBJOREX],
       x.[SUBJLPRI] AS [SUBJLPRI],
       x.[SUBJAV] AS [SUBJAV],
       x.[SUBJSP] AS [SUBJSP],
       x.[S_PRPTYP] AS [S_PRPTYP],
+      A1.Descript AS [S_PRPTYP_Description],
       x.[SUBJSCFN] AS [SUBJSCFN],
       x.[S_DPAYMT] AS [S_DPAYMT],
+      A2.Descript AS [S_DPAYMT_Description],
       x.[S_RESTYP] AS [S_RESTYP],
+      A3.Descript AS [S_RESTYP_Description],
       x.[SUBJESTE] AS [SUBJESTE],
       x.[SUBJLEXP] AS [SUBJLEXP],
       x.[SUBJCNTY] AS [SUBJCNTY],
@@ -47581,11 +50491,14 @@ AS
       x.[BLOCKNUM] AS [BLOCKNUM],
       x.[SUBDIV] AS [SUBDIV],
       x.[S_PURP] AS [S_PURP],
+      A4.Descript AS [S_PURP_Description],
       x.[STCODE] AS [STCODE],
       x.[CYCODE] AS [CYCODE],
       x.[MSACODE] AS [MSACODE],
       x.[S_LIENPO] AS [S_LIENPO],
+      A5.Descript AS [S_LIENPO_Description],
       x.[S_LIENHO] AS [S_LIENHO],
+      A6.Descript AS [S_LIENHO_Description],
       x.[BALOTHMT] AS [BALOTHMT],
       x.[SUBJLTV] AS [SUBJLTV],
       x.[COMBLTV] AS [COMBLTV],
@@ -47593,6 +50506,7 @@ AS
       x.[STRALIAS] AS [STRALIAS],
       x.[CITYFLAG] AS [CITYFLAG],
       x.[S_PRJCLS] AS [S_PRJCLS],
+      A7.Descript AS [S_PRJCLS_Description],
       x.[PROJNAME] AS [PROJNAME],
       x.[DECLDBID] AS [DECLDBID],
       x.[DECLSERL] AS [DECLSERL],
@@ -47620,7 +50534,9 @@ AS
       x.[LIENPOSOTHER] AS [LIENPOSOTHER],
       x.[PROPTYPEOTHER] AS [PROPTYPEOTHER],
       x.[S_FREPRJCLS] AS [S_FREPRJCLS],
+      A8.Descript AS [S_FREPRJCLS_Description],
       x.[S_FNMPRJCLS] AS [S_FNMPRJCLS],
+      A9.Descript AS [S_FNMPRJCLS_Description],
       x.[HOTEL_INDICATOR] AS [HOTEL_INDICATOR],
       x.[NONWARRANTABLE] AS [NONWARRANTABLE],
       x.[NUMBSTORIES] AS [NUMBSTORIES],
@@ -47632,39 +50548,54 @@ AS
       x.[OTHERPROPRITTYPEDESC] AS [OTHERPROPRITTYPEDESC],
       x.[OTHEROWNTYPEDESC] AS [OTHEROWNTYPEDESC],
       x.[S_UNIQUEDWELLINGTYPE] AS [S_UNIQUEDWELLINGTYPE],
+      A10.Descript AS [S_UNIQUEDWELLINGTYPE_Description],
       x.[OTHERUNIQDWELLINGTYPDSC] AS [OTHERUNIQDWELLINGTYPDSC],
       x.[S_NATIVEAMERICANLANDSTYPE] AS [S_NATIVEAMERICANLANDSTYPE],
+      A11.Descript AS [S_NATIVEAMERICANLANDSTYPE_Description],
       x.[OTHERNATAMERLANDSTYPEDESC] AS [OTHERNATAMERLANDSTYPEDESC],
       x.[COMMLANDTRUSTINDCTR] AS [COMMLANDTRUSTINDCTR],
       x.[INCLUSIONARYZONEINDCTR] AS [INCLUSIONARYZONEINDCTR],
       x.[S_CATEGORYTYPE] AS [S_CATEGORYTYPE],
+      A12.Descript AS [S_CATEGORYTYPE_Description],
       x.[OTHERCATEGORYTYPEDESC] AS [OTHERCATEGORYTYPEDESC],
       x.[S_PROJECTDESIGNTYPE] AS [S_PROJECTDESIGNTYPE],
+      A13.Descript AS [S_PROJECTDESIGNTYPE_Description],
       x.[OTHERPROJDESIGNTYPEDESC] AS [OTHERPROJDESIGNTYPEDESC],
       x.[S_PROJECTCLASSTYPE] AS [S_PROJECTCLASSTYPE],
+      A14.Descript AS [S_PROJECTCLASSTYPE_Description],
       x.[OTHERPROJCLASSTYPEDESC] AS [OTHERPROJCLASSTYPEDESC],
       x.[OTHERDOWNPAYTYPEDESC] AS [OTHERDOWNPAYTYPEDESC],
       x.[S_UNITOWNERSHIPTYPE] AS [S_UNITOWNERSHIPTYPE],
+      A15.Descript AS [S_UNITOWNERSHIPTYPE_Description],
       x.[CONCURRENT_FIN_INPUT] AS [CONCURRENT_FIN_INPUT],
       x.[INCLUDE_ASSIST_PROGS] AS [INCLUDE_ASSIST_PROGS],
       x.[S_DPAYMTNM] AS [S_DPAYMTNM],
+      A16.Descript AS [S_DPAYMTNM_Description],
       x.[DOWNPAYNMDESC] AS [DOWNPAYNMDESC],
       x.[SUBESTAV] AS [SUBESTAV],
       x.[LTV_ROUNDED] AS [LTV_ROUNDED],
       x.[TLTV_ROUNDED] AS [TLTV_ROUNDED],
       x.[S_CONDO_PROJECT_STATUS] AS [S_CONDO_PROJECT_STATUS],
+      A17.Descript AS [S_CONDO_PROJECT_STATUS_Description],
       x.[S_PROJ_ATTACH_TYPE] AS [S_PROJ_ATTACH_TYPE],
+      A18.Descript AS [S_PROJ_ATTACH_TYPE_Description],
       x.[S_PROJECT_DESIGN_TYPE] AS [S_PROJECT_DESIGN_TYPE],
+      A19.Descript AS [S_PROJECT_DESIGN_TYPE_Description],
       x.[S_ATTACHMENT_TYPE] AS [S_ATTACHMENT_TYPE],
+      A20.Descript AS [S_ATTACHMENT_TYPE_Description],
       x.[S_PROJ_CLASS_ID_FNM] AS [S_PROJ_CLASS_ID_FNM],
+      A21.Descript AS [S_PROJ_CLASS_ID_FNM_Description],
       x.[S_PROJ_CLASS_ID_FRE] AS [S_PROJ_CLASS_ID_FRE],
+      A22.Descript AS [S_PROJ_CLASS_ID_FRE_Description],
       x.[PROJ_UNITS_TOTAL] AS [PROJ_UNITS_TOTAL],
       x.[PROJ_UNITS_SOLD] AS [PROJ_UNITS_SOLD],
       x.[ISUSPSVALIDATED] AS [ISUSPSVALIDATED],
       x.[SUBJADD3] AS [SUBJADD3],
       x.[CPMPROID] AS [CPMPROID],
       x.[S_FRPROJ] AS [S_FRPROJ],
+      A23.Descript AS [S_FRPROJ_Description],
       x.[S_FMPROJ] AS [S_FMPROJ],
+      A24.Descript AS [S_FMPROJ_Description],
       x.[PROPDESC] AS [PROPDESC],
       x.[RENTINC_VERIFIED] AS [RENTINC_VERIFIED],
       x.[RENTINC_VERIFY_TYPE] AS [RENTINC_VERIFY_TYPE],
@@ -47672,12 +50603,14 @@ AS
       x.[CONDO_UNITS_COV_HAZ] AS [CONDO_UNITS_COV_HAZ],
       x.[CONDO_UNITS_COV_FLD] AS [CONDO_UNITS_COV_FLD],
       x.[S_STRUCTURETYPE] AS [S_STRUCTURETYPE],
+      A25.Descript AS [S_STRUCTURETYPE_Description],
       x.[CEMA] AS [CEMA],
       x.[FHAHUDAPPROVAL] AS [FHAHUDAPPROVAL],
       x.[IMP_COST_PLUS_EEM] AS [IMP_COST_PLUS_EEM],
       x.[MAX_LIMIT_LOAN_AMT] AS [MAX_LIMIT_LOAN_AMT],
       x.[TOTAL_MTG_PROPERTIES] AS [TOTAL_MTG_PROPERTIES],
       x.[S_SUBJUNITTYPE] AS [S_SUBJUNITTYPE],
+      A26.Descript AS [S_SUBJUNITTYPE_Description],
       x.[CRAEXEMPTION] AS [CRAEXEMPTION],
       x.[MDINDICATOR] AS [MDINDICATOR],
       x.[MSAINDICATOR] AS [MSAINDICATOR],
@@ -47685,7 +50618,9 @@ AS
       x.[INCOME_RESTRICT] AS [INCOME_RESTRICT],
       x.[PROPVALUE_RELIED_ON] AS [PROPVALUE_RELIED_ON],
       x.[S_APPRMTHDREQ] AS [S_APPRMTHDREQ],
+      A27.Descript AS [S_APPRMTHDREQ_Description],
       x.[S_APPRMTHDREQOVR] AS [S_APPRMTHDREQOVR],
+      A28.Descript AS [S_APPRMTHDREQOVR_Description],
       x.[EXIST_EEM_AMT] AS [EXIST_EEM_AMT],
       x.[ISCONDOMINIUM] AS [ISCONDOMINIUM],
       x.[ISCOOPERATIVE] AS [ISCOOPERATIVE],
@@ -47696,6 +50631,7 @@ AS
       x.[MFHOME] AS [MFHOME],
       x.[TX_50A6] AS [TX_50A6],
       x.[S_TRSTYP] AS [S_TRSTYP],
+      A29.Descript AS [S_TRSTYP_Description],
       x.[SHORT_LEGAL_DESC_OVR] AS [SHORT_LEGAL_DESC_OVR],
       x.[SUBJTHLCUR] AS [SUBJTHLCUR],
       x.[ADJLTV] AS [ADJLTV],
@@ -47705,6 +50641,36 @@ AS
       x.[TX_50F2] AS [TX_50F2],
       x.[RESALE_RESTRICTION] AS [RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRHT = A0.DBSYMBOL AND A0.[TableName] = 'SUBJPRP' and A0.[COLUMNNAME] = 'S_OWNRHT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PRPTYP = A1.DBSYMBOL AND A1.[TableName] = 'SUBJPRP' and A1.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DPAYMT = A2.DBSYMBOL AND A2.[TableName] = 'SUBJPRP' and A2.[COLUMNNAME] = 'S_DPAYMT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESTYP = A3.DBSYMBOL AND A3.[TableName] = 'SUBJPRP' and A3.[COLUMNNAME] = 'S_RESTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PURP = A4.DBSYMBOL AND A4.[TableName] = 'SUBJPRP' and A4.[COLUMNNAME] = 'S_PURP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LIENPO = A5.DBSYMBOL AND A5.[TableName] = 'SUBJPRP' and A5.[COLUMNNAME] = 'S_LIENPO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIENHO = A6.DBSYMBOL AND A6.[TableName] = 'SUBJPRP' and A6.[COLUMNNAME] = 'S_LIENHO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_PRJCLS = A7.DBSYMBOL AND A7.[TableName] = 'SUBJPRP' and A7.[COLUMNNAME] = 'S_PRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_FREPRJCLS = A8.DBSYMBOL AND A8.[TableName] = 'SUBJPRP' and A8.[COLUMNNAME] = 'S_FREPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_FNMPRJCLS = A9.DBSYMBOL AND A9.[TableName] = 'SUBJPRP' and A9.[COLUMNNAME] = 'S_FNMPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_UNIQUEDWELLINGTYPE = A10.DBSYMBOL AND A10.[TableName] = 'SUBJPRP' and A10.[COLUMNNAME] = 'S_UNIQUEDWELLINGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_NATIVEAMERICANLANDSTYPE = A11.DBSYMBOL AND A11.[TableName] = 'SUBJPRP' and A11.[COLUMNNAME] = 'S_NATIVEAMERICANLANDSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_CATEGORYTYPE = A12.DBSYMBOL AND A12.[TableName] = 'SUBJPRP' and A12.[COLUMNNAME] = 'S_CATEGORYTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_PROJECTDESIGNTYPE = A13.DBSYMBOL AND A13.[TableName] = 'SUBJPRP' and A13.[COLUMNNAME] = 'S_PROJECTDESIGNTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROJECTCLASSTYPE = A14.DBSYMBOL AND A14.[TableName] = 'SUBJPRP' and A14.[COLUMNNAME] = 'S_PROJECTCLASSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_UNITOWNERSHIPTYPE = A15.DBSYMBOL AND A15.[TableName] = 'SUBJPRP' and A15.[COLUMNNAME] = 'S_UNITOWNERSHIPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_DPAYMTNM = A16.DBSYMBOL AND A16.[TableName] = 'SUBJPRP' and A16.[COLUMNNAME] = 'S_DPAYMTNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CONDO_PROJECT_STATUS = A17.DBSYMBOL AND A17.[TableName] = 'SUBJPRP' and A17.[COLUMNNAME] = 'S_CONDO_PROJECT_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_PROJ_ATTACH_TYPE = A18.DBSYMBOL AND A18.[TableName] = 'SUBJPRP' and A18.[COLUMNNAME] = 'S_PROJ_ATTACH_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_PROJECT_DESIGN_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'SUBJPRP' and A19.[COLUMNNAME] = 'S_PROJECT_DESIGN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_ATTACHMENT_TYPE = A20.DBSYMBOL AND A20.[TableName] = 'SUBJPRP' and A20.[COLUMNNAME] = 'S_ATTACHMENT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_PROJ_CLASS_ID_FNM = A21.DBSYMBOL AND A21.[TableName] = 'SUBJPRP' and A21.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PROJ_CLASS_ID_FRE = A22.DBSYMBOL AND A22.[TableName] = 'SUBJPRP' and A22.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FRE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_FRPROJ = A23.DBSYMBOL AND A23.[TableName] = 'SUBJPRP' and A23.[COLUMNNAME] = 'S_FRPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_FMPROJ = A24.DBSYMBOL AND A24.[TableName] = 'SUBJPRP' and A24.[COLUMNNAME] = 'S_FMPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_STRUCTURETYPE = A25.DBSYMBOL AND A25.[TableName] = 'SUBJPRP' and A25.[COLUMNNAME] = 'S_STRUCTURETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_SUBJUNITTYPE = A26.DBSYMBOL AND A26.[TableName] = 'SUBJPRP' and A26.[COLUMNNAME] = 'S_SUBJUNITTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_APPRMTHDREQ = A27.DBSYMBOL AND A27.[TableName] = 'SUBJPRP' and A27.[COLUMNNAME] = 'S_APPRMTHDREQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_APPRMTHDREQOVR = A28.DBSYMBOL AND A28.[TableName] = 'SUBJPRP' and A28.[COLUMNNAME] = 'S_APPRMTHDREQOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_TRSTYP = A29.DBSYMBOL AND A29.[TableName] = 'SUBJPRP' and A29.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -47846,10 +50812,13 @@ AS
       x.[SECINTOWN] AS [SECINTOWN],
       x.[SECINTOTH] AS [SECINTOTH],
       x.[S_LATECHARGETYPE] AS [S_LATECHARGETYPE],
+      A0.Descript AS [S_LATECHARGETYPE_Description],
       x.[S_PPPOPT] AS [S_PPPOPT],
+      A1.Descript AS [S_PPPOPT_Description],
       x.[PMMS_RATE] AS [PMMS_RATE],
       x.[LOCK_REDISCLOSE_IND] AS [LOCK_REDISCLOSE_IND],
       x.[S_TIL2011_OVRD] AS [S_TIL2011_OVRD],
+      A2.Descript AS [S_TIL2011_OVRD_Description],
       x.[FLAT_AMT] AS [FLAT_AMT],
       x.[BPRESOTHPRGS] AS [BPRESOTHPRGS],
       x.[DISCLOSE_APR] AS [DISCLOSE_APR],
@@ -47870,6 +50839,9 @@ AS
       x.[PRESENT_SHARES] AS [PRESENT_SHARES],
       x.[OTHER_COLLATERAL] AS [OTHER_COLLATERAL]
    FROM [clt_NetO].[TILINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LATECHARGETYPE = A0.DBSYMBOL AND A0.[TableName] = 'TILINFO' and A0.[COLUMNNAME] = 'S_LATECHARGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PPPOPT = A1.DBSYMBOL AND A1.[TableName] = 'TILINFO' and A1.[COLUMNNAME] = 'S_PPPOPT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_TIL2011_OVRD = A2.DBSYMBOL AND A2.[TableName] = 'TILINFO' and A2.[COLUMNNAME] = 'S_TIL2011_OVRD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -47895,18 +50867,26 @@ AS
       x.[TRLNDRCN] AS [TRLNDRCN],
       x.[CLNUM] AS [CLNUM],
       x.[S_IVMETH] AS [S_IVMETH],
+      A0.Descript AS [S_IVMETH_Description],
       x.[S_IVID] AS [S_IVID],
+      A1.Descript AS [S_IVID_Description],
       x.[S_BUSCHL] AS [S_BUSCHL],
+      A2.Descript AS [S_BUSCHL_Description],
       x.[CLOSEDT] AS [CLOSEDT],
       x.[DISBURDT] AS [DISBURDT],
       x.[FSTPMTDT] AS [FSTPMTDT],
       x.[ODDDAYS] AS [ODDDAYS],
       x.[FEEFIRST] AS [FEEFIRST],
       x.[S_COPT1] AS [S_COPT1],
+      A3.Descript AS [S_COPT1_Description],
       x.[S_COPT2] AS [S_COPT2],
+      A4.Descript AS [S_COPT2_Description],
       x.[S_COPT3] AS [S_COPT3],
+      A5.Descript AS [S_COPT3_Description],
       x.[S_COPT4] AS [S_COPT4],
+      A6.Descript AS [S_COPT4_Description],
       x.[S_COPT5] AS [S_COPT5],
+      A7.Descript AS [S_COPT5_Description],
       x.[CUSHION] AS [CUSHION],
       x.[AGGEADJ] AS [AGGEADJ],
       x.[DOWNPYMT] AS [DOWNPYMT],
@@ -47923,15 +50903,24 @@ AS
       x.[WHOMCFM] AS [WHOMCFM],
       x.[PREQUAL] AS [PREQUAL],
       x.[S_COPT6] AS [S_COPT6],
+      A8.Descript AS [S_COPT6_Description],
       x.[S_COPT7] AS [S_COPT7],
+      A9.Descript AS [S_COPT7_Description],
       x.[S_COPT8] AS [S_COPT8],
+      A10.Descript AS [S_COPT8_Description],
       x.[S_COPT9] AS [S_COPT9],
+      A11.Descript AS [S_COPT9_Description],
       x.[S_COPT10] AS [S_COPT10],
+      A12.Descript AS [S_COPT10_Description],
       x.[S_CRDGRDRQ] AS [S_CRDGRDRQ],
+      A13.Descript AS [S_CRDGRDRQ_Description],
       x.[S_DOCLEVEL] AS [S_DOCLEVEL],
+      A14.Descript AS [S_DOCLEVEL_Description],
       x.[GRADEDC] AS [GRADEDC],
       x.[S_CRDGRDAP] AS [S_CRDGRDAP],
+      A15.Descript AS [S_CRDGRDAP_Description],
       x.[S_QUALITY] AS [S_QUALITY],
+      A16.Descript AS [S_QUALITY_Description],
       x.[DMSGRADE] AS [DMSGRADE],
       x.[ESTCLOSD] AS [ESTCLOSD],
       x.[SRVCNUM] AS [SRVCNUM],
@@ -47948,6 +50937,7 @@ AS
       x.[LRDATE] AS [LRDATE],
       x.[TPBROKR] AS [TPBROKR],
       x.[S_DELTERMS] AS [S_DELTERMS],
+      A17.Descript AS [S_DELTERMS_Description],
       x.[SELLCL] AS [SELLCL],
       x.[WLSTATUS] AS [WLSTATUS],
       x.[CLTYPE] AS [CLTYPE],
@@ -47957,7 +50947,9 @@ AS
       x.[USERQUALIFIER] AS [USERQUALIFIER],
       x.[PURPOSE_TYPE] AS [PURPOSE_TYPE],
       x.[S_CASE_STATUS] AS [S_CASE_STATUS],
+      A18.Descript AS [S_CASE_STATUS_Description],
       x.[S_REPAY] AS [S_REPAY],
+      A19.Descript AS [S_REPAY_Description],
       x.[UNITPER] AS [UNITPER],
       x.[UNITPEROVR] AS [UNITPEROVR],
       x.[LASTLOCKED] AS [LASTLOCKED],
@@ -47971,6 +50963,7 @@ AS
       x.[OBLIGATED_BORROWER_COUNT] AS [OBLIGATED_BORROWER_COUNT],
       x.[SECURITY_TOKEN] AS [SECURITY_TOKEN],
       x.[S_CHANNEL_SOURCE_CODE] AS [S_CHANNEL_SOURCE_CODE],
+      A20.Descript AS [S_CHANNEL_SOURCE_CODE_Description],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[LOAN_CREATE_DATE] AS [LOAN_CREATE_DATE],
       x.[CLIENT_TOLL_FREE_NUM] AS [CLIENT_TOLL_FREE_NUM],
@@ -47982,6 +50975,27 @@ AS
       x.[AUTO_CREDIT_PULLED] AS [AUTO_CREDIT_PULLED],
       x.[SELLER_SERVICING_NUM] AS [SELLER_SERVICING_NUM]
    FROM [clt_NetO].[TRACKING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IVMETH = A0.DBSYMBOL AND A0.[TableName] = 'TRACKING' and A0.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_IVID = A1.DBSYMBOL AND A1.[TableName] = 'TRACKING' and A1.[COLUMNNAME] = 'S_IVID'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BUSCHL = A2.DBSYMBOL AND A2.[TableName] = 'TRACKING' and A2.[COLUMNNAME] = 'S_BUSCHL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COPT1 = A3.DBSYMBOL AND A3.[TableName] = 'TRACKING' and A3.[COLUMNNAME] = 'S_COPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COPT2 = A4.DBSYMBOL AND A4.[TableName] = 'TRACKING' and A4.[COLUMNNAME] = 'S_COPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_COPT3 = A5.DBSYMBOL AND A5.[TableName] = 'TRACKING' and A5.[COLUMNNAME] = 'S_COPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COPT4 = A6.DBSYMBOL AND A6.[TableName] = 'TRACKING' and A6.[COLUMNNAME] = 'S_COPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_COPT5 = A7.DBSYMBOL AND A7.[TableName] = 'TRACKING' and A7.[COLUMNNAME] = 'S_COPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COPT6 = A8.DBSYMBOL AND A8.[TableName] = 'TRACKING' and A8.[COLUMNNAME] = 'S_COPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_COPT7 = A9.DBSYMBOL AND A9.[TableName] = 'TRACKING' and A9.[COLUMNNAME] = 'S_COPT7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_COPT8 = A10.DBSYMBOL AND A10.[TableName] = 'TRACKING' and A10.[COLUMNNAME] = 'S_COPT8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_COPT9 = A11.DBSYMBOL AND A11.[TableName] = 'TRACKING' and A11.[COLUMNNAME] = 'S_COPT9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_COPT10 = A12.DBSYMBOL AND A12.[TableName] = 'TRACKING' and A12.[COLUMNNAME] = 'S_COPT10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_CRDGRDRQ = A13.DBSYMBOL AND A13.[TableName] = 'TRACKING' and A13.[COLUMNNAME] = 'S_CRDGRDRQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DOCLEVEL = A14.DBSYMBOL AND A14.[TableName] = 'TRACKING' and A14.[COLUMNNAME] = 'S_DOCLEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_CRDGRDAP = A15.DBSYMBOL AND A15.[TableName] = 'TRACKING' and A15.[COLUMNNAME] = 'S_CRDGRDAP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_QUALITY = A16.DBSYMBOL AND A16.[TableName] = 'TRACKING' and A16.[COLUMNNAME] = 'S_QUALITY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_DELTERMS = A17.DBSYMBOL AND A17.[TableName] = 'TRACKING' and A17.[COLUMNNAME] = 'S_DELTERMS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CASE_STATUS = A18.DBSYMBOL AND A18.[TableName] = 'TRACKING' and A18.[COLUMNNAME] = 'S_CASE_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_REPAY = A19.DBSYMBOL AND A19.[TableName] = 'TRACKING' and A19.[COLUMNNAME] = 'S_REPAY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_CHANNEL_SOURCE_CODE = A20.DBSYMBOL AND A20.[TableName] = 'TRACKING' and A20.[COLUMNNAME] = 'S_CHANNEL_SOURCE_CODE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48063,12 +51077,14 @@ AS
       x.[TRUST_STREET_ADDR2] AS [TRUST_STREET_ADDR2],
       x.[EMAIL] AS [EMAIL],
       x.[S_TRUST_UNIT_TYPE] AS [S_TRUST_UNIT_TYPE],
+      A0.Descript AS [S_TRUST_UNIT_TYPE_Description],
       x.[TRUST_UNIT_NUM] AS [TRUST_UNIT_NUM],
       x.[TRUST_COUNTRY_CODE] AS [TRUST_COUNTRY_CODE],
       x.[LIVING_TRUST_BNUM] AS [LIVING_TRUST_BNUM],
       x.[TRST_STATE_FOR] AS [TRST_STATE_FOR],
       x.[TRST_POSTCODE] AS [TRST_POSTCODE]
    FROM [clt_NetO].[TRSTENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRUST_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'TRSTENTS' and A0.[COLUMNNAME] = 'S_TRUST_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48100,6 +51116,7 @@ AS
       x.[TRSTADT2] AS [TRSTADT2],
       x.[TRSTNUMB] AS [TRSTNUMB],
       x.[S_TRSTYP] AS [S_TRSTYP],
+      A0.Descript AS [S_TRSTYP_Description],
       x.[TRSTINST] AS [TRSTINST],
       x.[TRSTREV] AS [TRSTREV],
       x.[STATE] AS [STATE],
@@ -48110,6 +51127,7 @@ AS
       x.[QPRT_BEN_WAIVER] AS [QPRT_BEN_WAIVER],
       x.[LIVTRST] AS [LIVTRST]
    FROM [clt_NetO].[TRUSTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRSTYP = A0.DBSYMBOL AND A0.[TableName] = 'TRUSTS' and A0.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48132,12 +51150,19 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_DISPOSITION] AS [S_DISPOSITION],
+      A0.Descript AS [S_DISPOSITION_Description],
       x.[S_UWOPT1] AS [S_UWOPT1],
+      A1.Descript AS [S_UWOPT1_Description],
       x.[S_UWOPT2] AS [S_UWOPT2],
+      A2.Descript AS [S_UWOPT2_Description],
       x.[S_UWOPT3] AS [S_UWOPT3],
+      A3.Descript AS [S_UWOPT3_Description],
       x.[S_UWOPT4] AS [S_UWOPT4],
+      A4.Descript AS [S_UWOPT4_Description],
       x.[S_UWOPT5] AS [S_UWOPT5],
+      A5.Descript AS [S_UWOPT5_Description],
       x.[S_UWOPT6] AS [S_UWOPT6],
+      A6.Descript AS [S_UWOPT6_Description],
       x.[INV_APPRV_DATE] AS [INV_APPRV_DATE],
       x.[UNDW_EXP_DATE] AS [UNDW_EXP_DATE],
       x.[DOC_EXP_DATE] AS [DOC_EXP_DATE],
@@ -48149,6 +51174,7 @@ AS
       x.[AUSCOMDBID] AS [AUSCOMDBID],
       x.[AUSCOMSN] AS [AUSCOMSN],
       x.[S_TRGTINV] AS [S_TRGTINV],
+      A7.Descript AS [S_TRGTINV_Description],
       x.[UWENTITY] AS [UWENTITY],
       x.[CREDSCOVRD] AS [CREDSCOVRD],
       x.[DELEGATED_ENDORSEMENT] AS [DELEGATED_ENDORSEMENT],
@@ -48156,10 +51182,20 @@ AS
       x.[EST_CRED_SCORE] AS [EST_CRED_SCORE],
       x.[CREDIT_REPORT_REF] AS [CREDIT_REPORT_REF],
       x.[S_CREDSCORE_OVERRIDE_REASON] AS [S_CREDSCORE_OVERRIDE_REASON],
+      A8.Descript AS [S_CREDSCORE_OVERRIDE_REASON_Description],
       x.[CS_OVR_REAS_OTHERDESC] AS [CS_OVR_REAS_OTHERDESC],
       x.[DECISIONTARGETDATE] AS [DECISIONTARGETDATE],
       x.[DISPOSITION_DATETIME] AS [DISPOSITION_DATETIME]
    FROM [clt_NetO].[UNDCOND1] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_DISPOSITION = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND1' and A0.[COLUMNNAME] = 'S_DISPOSITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UWOPT1 = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND1' and A1.[COLUMNNAME] = 'S_UWOPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UWOPT2 = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND1' and A2.[COLUMNNAME] = 'S_UWOPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_UWOPT3 = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND1' and A3.[COLUMNNAME] = 'S_UWOPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_UWOPT4 = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND1' and A4.[COLUMNNAME] = 'S_UWOPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_UWOPT5 = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND1' and A5.[COLUMNNAME] = 'S_UWOPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_UWOPT6 = A6.DBSYMBOL AND A6.[TableName] = 'UNDCOND1' and A6.[COLUMNNAME] = 'S_UWOPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TRGTINV = A7.DBSYMBOL AND A7.[TableName] = 'UNDCOND1' and A7.[COLUMNNAME] = 'S_TRGTINV'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CREDSCORE_OVERRIDE_REASON = A8.DBSYMBOL AND A8.[TableName] = 'UNDCOND1' and A8.[COLUMNNAME] = 'S_CREDSCORE_OVERRIDE_REASON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48184,8 +51220,11 @@ AS
       x.[DBID] AS [DBID],
       x.[CNTR] AS [CNTR],
       x.[S_SUNDCON] AS [S_SUNDCON],
+      A0.Descript AS [S_SUNDCON_Description],
       x.[S_UNDCAT] AS [S_UNDCAT],
+      A1.Descript AS [S_UNDCAT_Description],
       x.[S_UNDTYP] AS [S_UNDTYP],
+      A2.Descript AS [S_UNDTYP_Description],
       x.[CUUSRID] AS [CUUSRID],
       x.[CUUSGRP] AS [CUUSGRP],
       x.[CUDATE] AS [CUDATE],
@@ -48196,13 +51235,16 @@ AS
       x.[UWCKLIST] AS [UWCKLIST],
       x.[ISACTIVE] AS [ISACTIVE],
       x.[S_ASSOCDOC] AS [S_ASSOCDOC],
+      A3.Descript AS [S_ASSOCDOC_Description],
       x.[SHWWAIVE] AS [SHWWAIVE],
       x.[DISCLOSE] AS [DISCLOSE],
       x.[S_COMFLG] AS [S_COMFLG],
+      A4.Descript AS [S_COMFLG_Description],
       x.[RESPONSIBLE_P] AS [RESPONSIBLE_P],
       x.[DUEDATE] AS [DUEDATE],
       x.[ERRORCAUSEBY] AS [ERRORCAUSEBY],
       x.[S_CONDITION_SRC] AS [S_CONDITION_SRC],
+      A5.Descript AS [S_CONDITION_SRC_Description],
       x.[CREATED_DATE] AS [CREATED_DATE],
       x.[CREATED_USER] AS [CREATED_USER],
       x.[RECEIVED_DT] AS [RECEIVED_DT],
@@ -48215,6 +51257,12 @@ AS
       x.[REJECTED_DT] AS [REJECTED_DT],
       x.[RESET_DT] AS [RESET_DT]
    FROM [clt_NetO].[UNDCOND2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND2' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UNDCAT = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND2' and A1.[COLUMNNAME] = 'S_UNDCAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UNDTYP = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND2' and A2.[COLUMNNAME] = 'S_UNDTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ASSOCDOC = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND2' and A3.[COLUMNNAME] = 'S_ASSOCDOC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COMFLG = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND2' and A4.[COLUMNNAME] = 'S_COMFLG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CONDITION_SRC = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND2' and A5.[COLUMNNAME] = 'S_CONDITION_SRC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48239,6 +51287,7 @@ AS
       x.[CNTR] AS [CNTR],
       x.[DBID] AS [DBID],
       x.[S_PRPTYP] AS [S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[UNITNUM] AS [UNITNUM],
       x.[PROJNAME] AS [PROJNAME],
       x.[APPRAISAL] AS [APPRAISAL],
@@ -48269,6 +51318,7 @@ AS
       x.[NET6] AS [NET6],
       x.[GROSS6] AS [GROSS6],
       x.[S_APPRTYPE] AS [S_APPRTYPE],
+      A1.Descript AS [S_APPRTYPE_Description],
       x.[SUBMFLG] AS [SUBMFLG],
       x.[LANDTOVALUE] AS [LANDTOVALUE],
       x.[APPRVALUEINDICATOR] AS [APPRVALUEINDICATOR],
@@ -48283,12 +51333,16 @@ AS
       x.[LESS750] AS [LESS750],
       x.[HVE_EFFECTIVE_DT] AS [HVE_EFFECTIVE_DT],
       x.[S_APPRFORMTYPE] AS [S_APPRFORMTYPE],
+      A2.Descript AS [S_APPRFORMTYPE_Description],
       x.[APPRFORMTYPEOTHDESC] AS [APPRFORMTYPEOTHDESC],
       x.[S_PRPFORMTYPE] AS [S_PRPFORMTYPE],
+      A3.Descript AS [S_PRPFORMTYPE_Description],
       x.[PRPFORMTYPEOTHDESC] AS [PRPFORMTYPEOTHDESC],
       x.[S_PRPMETHODTYPE] AS [S_PRPMETHODTYPE],
+      A4.Descript AS [S_PRPMETHODTYPE_Description],
       x.[PRPMETHODTYPEOTHDESC] AS [PRPMETHODTYPEOTHDESC],
       x.[S_LVLPRPRVW] AS [S_LVLPRPRVW],
+      A5.Descript AS [S_LVLPRPRVW_Description],
       x.[APPRLVLPRPRVWTYPEOTHDESC] AS [APPRLVLPRPRVWTYPEOTHDESC],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_LIC]) AS [APPR_SUPER_LIC],
       x.[DATEORDERED] AS [DATEORDERED],
@@ -48298,6 +51352,7 @@ AS
       x.[ACTUALCOST] AS [ACTUALCOST],
       x.[DATERECEIVED] AS [DATERECEIVED],
       x.[S_STATUS] AS [S_STATUS],
+      A6.Descript AS [S_STATUS_Description],
       x.[REQUESTEDDATE] AS [REQUESTEDDATE],
       x.[REQUESTEDBY] AS [REQUESTEDBY],
       x.[DATEREVIEWED] AS [DATEREVIEWED],
@@ -48317,8 +51372,11 @@ AS
       x.[SITEVALUE] AS [SITEVALUE],
       x.[SUBJECTTOREPAIRS] AS [SUBJECTTOREPAIRS],
       x.[S_APPRMETH] AS [S_APPRMETH],
+      A7.Descript AS [S_APPRMETH_Description],
       x.[S_AVM] AS [S_AVM],
+      A8.Descript AS [S_AVM_Description],
       x.[S_AVMOTH] AS [S_AVMOTH],
+      A9.Descript AS [S_AVMOTH_Description],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_FNAME]) AS [APPR_SUPER_FNAME],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_LNAME]) AS [APPR_SUPER_LNAME],
       x.[APPRREINSPFEE] AS [APPRREINSPFEE],
@@ -48334,8 +51392,20 @@ AS
       x.[ADDR2] AS [ADDR2],
       x.[INV_COLL_PROG_ID] AS [INV_COLL_PROG_ID],
       x.[FORECAST_STD_DEV] AS [FORECAST_STD_DEV],
-      x.[S_HOA_FEES_PERIOD_TYPE] AS [S_HOA_FEES_PERIOD_TYPE]
+      x.[S_HOA_FEES_PERIOD_TYPE] AS [S_HOA_FEES_PERIOD_TYPE],
+      A10.Descript AS [S_HOA_FEES_PERIOD_TYPE_Description]
    FROM [clt_NetO].[UWAPPR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'UWAPPR' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_APPRTYPE = A1.DBSYMBOL AND A1.[TableName] = 'UWAPPR' and A1.[COLUMNNAME] = 'S_APPRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_APPRFORMTYPE = A2.DBSYMBOL AND A2.[TableName] = 'UWAPPR' and A2.[COLUMNNAME] = 'S_APPRFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PRPFORMTYPE = A3.DBSYMBOL AND A3.[TableName] = 'UWAPPR' and A3.[COLUMNNAME] = 'S_PRPFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRPMETHODTYPE = A4.DBSYMBOL AND A4.[TableName] = 'UWAPPR' and A4.[COLUMNNAME] = 'S_PRPMETHODTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LVLPRPRVW = A5.DBSYMBOL AND A5.[TableName] = 'UWAPPR' and A5.[COLUMNNAME] = 'S_LVLPRPRVW'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_STATUS = A6.DBSYMBOL AND A6.[TableName] = 'UWAPPR' and A6.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_APPRMETH = A7.DBSYMBOL AND A7.[TableName] = 'UWAPPR' and A7.[COLUMNNAME] = 'S_APPRMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_AVM = A8.DBSYMBOL AND A8.[TableName] = 'UWAPPR' and A8.[COLUMNNAME] = 'S_AVM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_AVMOTH = A9.DBSYMBOL AND A9.[TableName] = 'UWAPPR' and A9.[COLUMNNAME] = 'S_AVMOTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_HOA_FEES_PERIOD_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'UWAPPR' and A10.[COLUMNNAME] = 'S_HOA_FEES_PERIOD_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48383,10 +51453,9 @@ CREATE VIEW [NetO_sas].[VwVETINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[BNUM] AS [BNUM],
-      x.[DBID] AS [DBID],
       x.[SERVNUM] AS [SERVNUM],
       x.[S_BRANCH] AS [S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[STRTSERV] AS [STRTSERV],
       x.[ENDSERV] AS [ENDSERV],
       x.[EXEMPT] AS [EXEMPT],
@@ -48403,14 +51472,17 @@ AS
       x.[SERVPERD] AS [SERVPERD],
       x.[OSRVNUM1] AS [OSRVNUM1],
       x.[S_OBRCH1] AS [S_OBRCH1],
+      A1.Descript AS [S_OBRCH1_Description],
       x.[OSTRTDT1] AS [OSTRTDT1],
       x.[OENDDT1] AS [OENDDT1],
       x.[OSRVNUM2] AS [OSRVNUM2],
       x.[S_OBRCH2] AS [S_OBRCH2],
+      A2.Descript AS [S_OBRCH2_Description],
       x.[OSTRTDT2] AS [OSTRTDT2],
       x.[OENDDT2] AS [OENDDT2],
       x.[OSRVNUM3] AS [OSRVNUM3],
       x.[S_OBRCH3] AS [S_OBRCH3],
+      A3.Descript AS [S_OBRCH3_Description],
       x.[OSTRTDT3] AS [OSTRTDT3],
       x.[OENDDT3] AS [OENDDT3],
       x.[VETSTATUS] AS [VETSTATUS],
@@ -48419,6 +51491,8 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR] AS [DVETCAIVR],
       x.[STATASCR] AS [STATASCR],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
       x.[AWAREVAL] AS [AWAREVAL],
       x.[CERTENCS] AS [CERTENCS],
       x.[CERTLOST] AS [CERTLOST],
@@ -48466,6 +51540,10 @@ AS
       x.[SURVIVING_SPOUSE] AS [SURVIVING_SPOUSE],
       x.[SERVICE_EXPIRATION_DATE] AS [SERVICE_EXPIRATION_DATE]
    FROM [clt_NetO].[VETINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OBRCH1 = A1.DBSYMBOL AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_OBRCH2 = A2.DBSYMBOL AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_OBRCH3 = A3.DBSYMBOL AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48489,7 +51567,9 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_ASSET_TYPE] AS [S_ASSET_TYPE],
+      A0.Descript AS [S_ASSET_TYPE_Description],
       x.[S_ASSET_PURPOSE] AS [S_ASSET_PURPOSE],
+      A1.Descript AS [S_ASSET_PURPOSE_Description],
       x.[ASSET_VERIFIED] AS [ASSET_VERIFIED],
       x.[VERIFICATION_REQD] AS [VERIFICATION_REQD],
       x.[OWNER_EST_VALUE] AS [OWNER_EST_VALUE],
@@ -48502,6 +51582,8 @@ AS
       x.[PRIMARY_COLLATERAL] AS [PRIMARY_COLLATERAL],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[WG_ASSET] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET' and A0.[COLUMNNAME] = 'S_ASSET_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSET_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET' and A1.[COLUMNNAME] = 'S_ASSET_PURPOSE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48536,6 +51618,7 @@ AS
       x.[ACCT_START_DT] AS [ACCT_START_DT],
       x.[ACCT_MATUR_DT] AS [ACCT_MATUR_DT],
       x.[S_ACCT_OWNERSHIP] AS [S_ACCT_OWNERSHIP],
+      A0.Descript AS [S_ACCT_OWNERSHIP_Description],
       x.[ASSET_ACCT_NO] AS [ASSET_ACCT_NO],
       x.[SHARE_VALUE] AS [SHARE_VALUE],
       x.[ASSET_COLL_VALUE] AS [ASSET_COLL_VALUE],
@@ -48544,6 +51627,7 @@ AS
       x.[EXCHANGE_INFO] AS [EXCHANGE_INFO],
       x.[USE_CALC_LOAN_RT] AS [USE_CALC_LOAN_RT]
    FROM [clt_NetO].[WG_ASSET_ACCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ACCT_OWNERSHIP = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_ACCT' and A0.[COLUMNNAME] = 'S_ACCT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48580,9 +51664,15 @@ AS
       x.[ENGINE_TITLE_NUM] AS [ENGINE_TITLE_NUM],
       x.[ENGINE_MODEL_NUM] AS [ENGINE_MODEL_NUM],
       x.[S_ENGINE_MFG] AS [S_ENGINE_MFG],
+      A0.Descript AS [S_ENGINE_MFG_Description],
       x.[S_MULTIENGINETYPE] AS [S_MULTIENGINETYPE],
-      x.[S_ENGINE_COLOR] AS [S_ENGINE_COLOR]
+      A1.Descript AS [S_MULTIENGINETYPE_Description],
+      x.[S_ENGINE_COLOR] AS [S_ENGINE_COLOR],
+      A2.Descript AS [S_ENGINE_COLOR_Description]
    FROM [clt_NetO].[WG_ASSET_MARINE_ENG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ENGINE_MFG = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_MARINE_ENG' and A0.[COLUMNNAME] = 'S_ENGINE_MFG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MULTIENGINETYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_MARINE_ENG' and A1.[COLUMNNAME] = 'S_MULTIENGINETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ENGINE_COLOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_MARINE_ENG' and A2.[COLUMNNAME] = 'S_ENGINE_COLOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48613,23 +51703,31 @@ AS
       x.[NEW_YN] AS [NEW_YN],
       x.[SERIAL] AS [SERIAL],
       x.[S_FUEL_TYPE] AS [S_FUEL_TYPE],
+      A0.Descript AS [S_FUEL_TYPE_Description],
       x.[VEHICLE_REG_NUMBER] AS [VEHICLE_REG_NUMBER],
       x.[BODY_TRIM] AS [BODY_TRIM],
       x.[S_VEHICLE_CONDITION] AS [S_VEHICLE_CONDITION],
+      A1.Descript AS [S_VEHICLE_CONDITION_Description],
       x.[COLL_TITLE_NUM] AS [COLL_TITLE_NUM],
       x.[S_CNRE_OWNERSHIP] AS [S_CNRE_OWNERSHIP],
+      A2.Descript AS [S_CNRE_OWNERSHIP_Description],
       x.[LENGTH] AS [LENGTH],
       x.[WIDTH] AS [WIDTH],
       x.[PRIOR_TITLE_NUM] AS [PRIOR_TITLE_NUM],
       x.[S_TRANSF_AS] AS [S_TRANSF_AS],
+      A3.Descript AS [S_TRANSF_AS_Description],
       x.[S_TRANSF_TO] AS [S_TRANSF_TO],
+      A4.Descript AS [S_TRANSF_TO_Description],
       x.[S_DAMAGE_TYPE] AS [S_DAMAGE_TYPE],
+      A5.Descript AS [S_DAMAGE_TYPE_Description],
       x.[IS_BONAFIDE_GIFT] AS [IS_BONAFIDE_GIFT],
       x.[IS_REBUILDABLE] AS [IS_REBUILDABLE],
       x.[IS_ENERGY_EFFICIENT] AS [IS_ENERGY_EFFICIENT],
       x.[PRIOR_STATE] AS [PRIOR_STATE],
       x.[S_COLOR] AS [S_COLOR],
+      A6.Descript AS [S_COLOR_Description],
       x.[S_GV_WEIGHT_RATING] AS [S_GV_WEIGHT_RATING],
+      A7.Descript AS [S_GV_WEIGHT_RATING_Description],
       x.[SCALE_WEIGHT] AS [SCALE_WEIGHT],
       x.[PAYOFF_AMT] AS [PAYOFF_AMT],
       x.[MFG_REBATE] AS [MFG_REBATE],
@@ -48638,6 +51736,14 @@ AS
       x.[DLR_OPT_PRICE] AS [DLR_OPT_PRICE],
       x.[DLR_OPT_VALUE] AS [DLR_OPT_VALUE]
    FROM [clt_NetO].[WG_ASSET_VEHICLE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FUEL_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VEHICLE' and A0.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_VEHICLE_CONDITION = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VEHICLE' and A1.[COLUMNNAME] = 'S_VEHICLE_CONDITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CNRE_OWNERSHIP = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VEHICLE' and A2.[COLUMNNAME] = 'S_CNRE_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TRANSF_AS = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VEHICLE' and A3.[COLUMNNAME] = 'S_TRANSF_AS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TRANSF_TO = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VEHICLE' and A4.[COLUMNNAME] = 'S_TRANSF_TO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DAMAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VEHICLE' and A5.[COLUMNNAME] = 'S_DAMAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COLOR = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VEHICLE' and A6.[COLUMNNAME] = 'S_COLOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_GV_WEIGHT_RATING = A7.DBSYMBOL AND A7.[TableName] = 'WG_ASSET_VEHICLE' and A7.[COLUMNNAME] = 'S_GV_WEIGHT_RATING'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48664,8 +51770,12 @@ AS
       x.[SERIES] AS [SERIES],
       x.[STYLE] AS [STYLE],
       x.[S_MTRCYCLESTYLE] AS [S_MTRCYCLESTYLE],
-      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE]
+      A0.Descript AS [S_MTRCYCLESTYLE_Description],
+      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE],
+      A1.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_AUTO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MTRCYCLESTYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_AUTO' and A0.[COLUMNNAME] = 'S_MTRCYCLESTYLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GENERIC_BODY_STYLE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_AUTO' and A1.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48689,9 +51799,11 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_MARINE_TYPE] AS [S_MARINE_TYPE],
+      A0.Descript AS [S_MARINE_TYPE_Description],
       x.[BOAT_NAME] AS [BOAT_NAME],
       x.[NET_WEIGHT] AS [NET_WEIGHT],
       x.[S_PROPULSION_TYPE] AS [S_PROPULSION_TYPE],
+      A1.Descript AS [S_PROPULSION_TYPE_Description],
       x.[HAILING_PORT] AS [HAILING_PORT],
       x.[MOORING_ADDR1] AS [MOORING_ADDR1],
       x.[MOORING_ADDR2] AS [MOORING_ADDR2],
@@ -48700,14 +51812,19 @@ AS
       x.[MOORING_ZIP] AS [MOORING_ZIP],
       x.[TRAILER_ASSETID] AS [TRAILER_ASSETID],
       x.[S_FUEL_TYPE] AS [S_FUEL_TYPE],
+      A2.Descript AS [S_FUEL_TYPE_Description],
       x.[BEAM] AS [BEAM],
       x.[MARINE_LENGTH] AS [MARINE_LENGTH],
       x.[S_HULL_MATERIAL] AS [S_HULL_MATERIAL],
+      A3.Descript AS [S_HULL_MATERIAL_Description],
       x.[S_PRIMARY_USE] AS [S_PRIMARY_USE],
+      A4.Descript AS [S_PRIMARY_USE_Description],
       x.[S_ENGINE_DRIVE] AS [S_ENGINE_DRIVE],
+      A5.Descript AS [S_ENGINE_DRIVE_Description],
       x.[IS_DOCUMENTED_VESSEL] AS [IS_DOCUMENTED_VESSEL],
       x.[USCG_OFFICIAL_NUMBER] AS [USCG_OFFICIAL_NUMBER],
       x.[S_MANUF_TYPE] AS [S_MANUF_TYPE],
+      A6.Descript AS [S_MANUF_TYPE_Description],
       x.[TOILETATTACHED] AS [TOILETATTACHED],
       x.[MATLOTHDESC] AS [MATLOTHDESC],
       x.[FUELOTHDESC] AS [FUELOTHDESC],
@@ -48716,6 +51833,13 @@ AS
       x.[MOORING_FACILITY] AS [MOORING_FACILITY],
       x.[MOORING_MRENT] AS [MOORING_MRENT]
    FROM [clt_NetO].[WG_ASSET_VHCL_MARINE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARINE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_MARINE' and A0.[COLUMNNAME] = 'S_MARINE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPULSION_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_MARINE' and A1.[COLUMNNAME] = 'S_PROPULSION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FUEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_MARINE' and A2.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_HULL_MATERIAL = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VHCL_MARINE' and A3.[COLUMNNAME] = 'S_HULL_MATERIAL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRIMARY_USE = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VHCL_MARINE' and A4.[COLUMNNAME] = 'S_PRIMARY_USE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_ENGINE_DRIVE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VHCL_MARINE' and A5.[COLUMNNAME] = 'S_ENGINE_DRIVE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_MANUF_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VHCL_MARINE' and A6.[COLUMNNAME] = 'S_MANUF_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48739,14 +51863,16 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[ROWCOUNTER] AS [ROWCOUNTER],
-      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[S_OPTION_TYPE] AS [S_OPTION_TYPE],
+      A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE] AS [VHCL_OPTION_VALUE],
       x.[SELECTED_YN] AS [SELECTED_YN],
       x.[VHCL_OPTION] AS [VHCL_OPTION],
+      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE] AS [OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE] AS [VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OPTION_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_OPTIONS' and A0.[COLUMNNAME] = 'S_OPTION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48770,14 +51896,20 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_RV_TYPE] AS [S_RV_TYPE],
+      A0.Descript AS [S_RV_TYPE_Description],
       x.[MILEAGE] AS [MILEAGE],
       x.[NBR_AXLES] AS [NBR_AXLES],
       x.[NBR_SLIDES] AS [NBR_SLIDES],
       x.[RV_LENGTH] AS [RV_LENGTH],
       x.[SELF_CONTAINED_YN] AS [SELF_CONTAINED_YN],
       x.[S_CATEGORY] AS [S_CATEGORY],
-      x.[S_MODEL_TYPE] AS [S_MODEL_TYPE]
+      A1.Descript AS [S_CATEGORY_Description],
+      x.[S_MODEL_TYPE] AS [S_MODEL_TYPE],
+      A2.Descript AS [S_MODEL_TYPE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_RV] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RV_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_RV' and A0.[COLUMNNAME] = 'S_RV_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CATEGORY = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_RV' and A1.[COLUMNNAME] = 'S_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_MODEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_RV' and A2.[COLUMNNAME] = 'S_MODEL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48801,9 +51933,11 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_AXLE_TYPE] AS [S_AXLE_TYPE],
+      A0.Descript AS [S_AXLE_TYPE_Description],
       x.[BRAKES_YN] AS [BRAKES_YN],
       x.[TRAILER_LENGTH] AS [TRAILER_LENGTH]
    FROM [clt_NetO].[WG_ASSET_VHCL_TRAILER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AXLE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_TRAILER' and A0.[COLUMNNAME] = 'S_AXLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48828,6 +51962,7 @@ AS
       x.[ASSETID] AS [ASSETID],
       x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[S_VALUATION_SOURCE] AS [S_VALUATION_SOURCE],
+      A0.Descript AS [S_VALUATION_SOURCE_Description],
       x.[VALUATION_RESPONSE_ID] AS [VALUATION_RESPONSE_ID],
       x.[ACTIVE_YN] AS [ACTIVE_YN],
       x.[ELECTRONIC_YN] AS [ELECTRONIC_YN],
@@ -48837,7 +51972,9 @@ AS
       x.[BOOK_EDITION] AS [BOOK_EDITION],
       x.[REGION] AS [REGION],
       x.[S_CLEAN_LEVEL] AS [S_CLEAN_LEVEL],
+      A1.Descript AS [S_CLEAN_LEVEL_Description],
       x.[S_USE_FOR_LOAN_VAL] AS [S_USE_FOR_LOAN_VAL],
+      A2.Descript AS [S_USE_FOR_LOAN_VAL_Description],
       x.[COLL_TRADE_BAM_VALUE] AS [COLL_TRADE_BAM_VALUE],
       x.[COLL_LOAN_BAM_VALUE] AS [COLL_LOAN_BAM_VALUE],
       x.[COLL_RETAIL_BAM_VALUE] AS [COLL_RETAIL_BAM_VALUE],
@@ -48854,6 +51991,9 @@ AS
       x.[INVOICE_PRC] AS [INVOICE_PRC],
       x.[TOTL_ADJSTD_VAL_OVRD] AS [TOTL_ADJSTD_VAL_OVRD]
    FROM [clt_NetO].[WG_ASSET_VHCL_VALUATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_VALUATION_SOURCE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A0.[COLUMNNAME] = 'S_VALUATION_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CLEAN_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A1.[COLUMNNAME] = 'S_CLEAN_LEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USE_FOR_LOAN_VAL = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A2.[COLUMNNAME] = 'S_USE_FOR_LOAN_VAL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48877,6 +52017,7 @@ AS
       x.[LNUM] AS [LNUM],
       x.[AD_FLAG] AS [AD_FLAG],
       x.[S_AD_ACCT_TYPE] AS [S_AD_ACCT_TYPE],
+      A0.Descript AS [S_AD_ACCT_TYPE_Description],
       x.[AD_INST_NAME] AS [AD_INST_NAME],
       x.[AD_ACCT_NUMB] AS [AD_ACCT_NUMB],
       x.[AD_RT_NUMB] AS [AD_RT_NUMB],
@@ -48884,6 +52025,7 @@ AS
       x.[AD_ADDL_PRINC] AS [AD_ADDL_PRINC],
       x.[AD_ACCT_TYP_OTH] AS [AD_ACCT_TYP_OTH]
    FROM [clt_NetO].[WG_AUTO_DEBIT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AD_ACCT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_AUTO_DEBIT' and A0.[COLUMNNAME] = 'S_AD_ACCT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -48906,16 +52048,28 @@ AS
    SELECT
       x.[FIELDID] AS [FIELDID],
       x.[S_FIELD_STATUS] AS [S_FIELD_STATUS],
+      A0.Descript AS [S_FIELD_STATUS_Description],
       x.[FIELD_NAME] AS [FIELD_NAME],
       x.[FIELD_TEXT] AS [FIELD_TEXT],
       x.[S_FIELD_CONTROL_TYPE] AS [S_FIELD_CONTROL_TYPE],
+      A1.Descript AS [S_FIELD_CONTROL_TYPE_Description],
       x.[S_FIELD_OPERATOR] AS [S_FIELD_OPERATOR],
+      A2.Descript AS [S_FIELD_OPERATOR_Description],
       x.[S_FIELD_LIST_SOURCE] AS [S_FIELD_LIST_SOURCE],
+      A3.Descript AS [S_FIELD_LIST_SOURCE_Description],
       x.[S_FIELD_FORMAT] AS [S_FIELD_FORMAT],
+      A4.Descript AS [S_FIELD_FORMAT_Description],
       x.[CURRENT_USER_DATETIME] AS [CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID] AS [CURRENT_USER_ID],
-      x.[S_USAGE_TYPE] AS [S_USAGE_TYPE]
+      x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A5.Descript AS [S_USAGE_TYPE_Description]
    FROM [clt_NetO].[WG_BRM_DEFN_FIELDS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIELD_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_FIELDS' and A0.[COLUMNNAME] = 'S_FIELD_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FIELD_CONTROL_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_FIELDS' and A1.[COLUMNNAME] = 'S_FIELD_CONTROL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FIELD_OPERATOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_FIELDS' and A2.[COLUMNNAME] = 'S_FIELD_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FIELD_LIST_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_DEFN_FIELDS' and A3.[COLUMNNAME] = 'S_FIELD_LIST_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FIELD_FORMAT = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_DEFN_FIELDS' and A4.[COLUMNNAME] = 'S_FIELD_FORMAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -48937,8 +52091,11 @@ AS
    SELECT
       x.[GRIDID] AS [GRIDID],
       x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[S_GRID_STATUS] AS [S_GRID_STATUS],
+      A1.Descript AS [S_GRID_STATUS_Description],
       x.[S_GRID_CATEGORY] AS [S_GRID_CATEGORY],
+      A2.Descript AS [S_GRID_CATEGORY_Description],
       x.[GRID_NAME] AS [GRID_NAME],
       x.[GRID_NBR_DIMS] AS [GRID_NBR_DIMS],
       x.[RSLT_START_ROW] AS [RSLT_START_ROW],
@@ -48950,6 +52107,9 @@ AS
       x.[CURRENT_USER_DATETIME] AS [CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID] AS [CURRENT_USER_ID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID' and A1.[COLUMNNAME] = 'S_GRID_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -48972,7 +52132,9 @@ AS
       x.[GRIDID] AS [GRIDID],
       x.[DIM_OCC] AS [DIM_OCC],
       x.[S_GRID_VERT_HORIZ] AS [S_GRID_VERT_HORIZ],
+      A0.Descript AS [S_GRID_VERT_HORIZ_Description],
       x.[S_GRID_OPERATOR] AS [S_GRID_OPERATOR],
+      A1.Descript AS [S_GRID_OPERATOR_Description],
       x.[GRID_FIELD_NAME] AS [GRID_FIELD_NAME],
       x.[GRID_LABEL_TEXT] AS [GRID_LABEL_TEXT],
       x.[GRID_LABEL_OCCS] AS [GRID_LABEL_OCCS],
@@ -48984,8 +52146,12 @@ AS
       x.[GRID_TGT_VAL_START_COL] AS [GRID_TGT_VAL_START_COL],
       x.[GRID_TGT_VAL_START_ROW] AS [GRID_TGT_VAL_START_ROW],
       x.[S_GRID_TGT_VAL_SPAN_TYPE] AS [S_GRID_TGT_VAL_SPAN_TYPE],
+      A2.Descript AS [S_GRID_TGT_VAL_SPAN_TYPE_Description],
       x.[FIELDID] AS [FIELDID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GRID_VERT_HORIZ = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A0.[COLUMNNAME] = 'S_GRID_VERT_HORIZ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_OPERATOR = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A1.[COLUMNNAME] = 'S_GRID_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -49011,18 +52177,22 @@ AS
       x.[EXP_FILE_NAME] AS [EXP_FILE_NAME],
       x.[EXP_FILE_PATH] AS [EXP_FILE_PATH],
       x.[S_EXP_STATUS] AS [S_EXP_STATUS],
+      A0.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID] AS [EXP_RULESET_ID],
       x.[EXP_BRM_IDENT] AS [EXP_BRM_IDENT],
       x.[EXP_BRM_NAME] AS [EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT] AS [EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT] AS [EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS] AS [S_EXP_BRM_STATUS],
+      A1.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[EXP_NOTES] AS [EXP_NOTES],
       x.[DBID] AS [DBID],
       x.[EXP_INCL_FIELDS] AS [EXP_INCL_FIELDS],
       x.[EXP_INCL_CATS] AS [EXP_INCL_CATS],
       x.[EXP_INCL_GRIDS] AS [EXP_INCL_GRIDS]
    FROM [clt_NetO].[WG_BRM_EXPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EXP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_EXPORT' and A0.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -49045,9 +52215,11 @@ AS
       x.[BRM_IDENT_FIELD] AS [BRM_IDENT_FIELD],
       x.[BRM_IDENT_CODE] AS [BRM_IDENT_CODE],
       x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[BRM_IDENT_NAME] AS [BRM_IDENT_NAME],
       x.[BRM_IDENT_DESCRIPTION] AS [BRM_IDENT_DESCRIPTION]
    FROM [clt_NetO].[WG_BRM_IDENTIFIERS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -49073,18 +52245,21 @@ AS
       x.[IMP_FILE_NAME] AS [IMP_FILE_NAME],
       x.[IMP_FILE_PATH] AS [IMP_FILE_PATH],
       x.[S_IMP_STATUS] AS [S_IMP_STATUS],
+      A0.Descript AS [S_IMP_STATUS_Description],
       x.[EXPORTID] AS [EXPORTID],
       x.[EXP_USER_NAME] AS [EXP_USER_NAME],
       x.[EXP_DATE_TIME] AS [EXP_DATE_TIME],
       x.[EXP_FILE_NAME] AS [EXP_FILE_NAME],
       x.[EXP_FILE_PATH] AS [EXP_FILE_PATH],
       x.[S_EXP_STATUS] AS [S_EXP_STATUS],
+      A1.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID] AS [EXP_RULESET_ID],
       x.[EXP_BRM_IDENT] AS [EXP_BRM_IDENT],
       x.[EXP_BRM_NAME] AS [EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT] AS [EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT] AS [EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS] AS [S_EXP_BRM_STATUS],
+      A2.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[IMP_NOTES] AS [IMP_NOTES],
       x.[EXP_NOTES] AS [EXP_NOTES],
       x.[SYS_FINDINGS] AS [SYS_FINDINGS],
@@ -49096,6 +52271,9 @@ AS
       x.[IMP_IMP_CATS] AS [IMP_IMP_CATS],
       x.[IMP_IMP_GRIDS] AS [IMP_IMP_GRIDS]
    FROM [clt_NetO].[WG_BRM_IMPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IMP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IMPORT' and A0.[COLUMNNAME] = 'S_IMP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_IMPORT' and A1.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -49117,15 +52295,20 @@ AS
    SELECT
       x.[BRMID] AS [BRMID],
       x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[LU_BRM_IDENTIFIER] AS [LU_BRM_IDENTIFIER],
       x.[S_BRM_STATUS] AS [S_BRM_STATUS],
+      A1.Descript AS [S_BRM_STATUS_Description],
       x.[S_BRM_TYPE] AS [S_BRM_TYPE],
+      A2.Descript AS [S_BRM_TYPE_Description],
       x.[BRM_NAME] AS [BRM_NAME],
       x.[BRM_DESCRIPTION] AS [BRM_DESCRIPTION],
       x.[BRM_START_DATE] AS [BRM_START_DATE],
       x.[BRM_END_DATE] AS [BRM_END_DATE],
       x.[S_CAP_CATEGORY] AS [S_CAP_CATEGORY],
+      A3.Descript AS [S_CAP_CATEGORY_Description],
       x.[S_EFFECTIVITY_RULE] AS [S_EFFECTIVITY_RULE],
+      A4.Descript AS [S_EFFECTIVITY_RULE_Description],
       x.[CHANGE_EFF_DATE] AS [CHANGE_EFF_DATE],
       x.[CURRENT_USER_DATETIME] AS [CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID] AS [CURRENT_USER_ID],
@@ -49135,8 +52318,15 @@ AS
       x.[LAST_CHANGE_USER_ID] AS [LAST_CHANGE_USER_ID],
       x.[MESSAGE_TEXT] AS [MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL],
+      A5.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[BRM_CATEGORY] AS [BRM_CATEGORY]
    FROM [clt_NetO].[WG_BRM_LKUP_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_BASE' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_BASE' and A1.[COLUMNNAME] = 'S_BRM_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BRM_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_LKUP_BASE' and A2.[COLUMNNAME] = 'S_BRM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_CAP_CATEGORY = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_LKUP_BASE' and A3.[COLUMNNAME] = 'S_CAP_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EFFECTIVITY_RULE = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_LKUP_BASE' and A4.[COLUMNNAME] = 'S_EFFECTIVITY_RULE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -49161,8 +52351,10 @@ AS
       x.[RULE_DESCRIPTION] AS [RULE_DESCRIPTION],
       x.[PRIORITY] AS [PRIORITY],
       x.[MESSAGE_TEXT] AS [MESSAGE_TEXT],
-      x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL]
+      x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL],
+      A0.Descript AS [S_OVERRIDE_LEVEL_Description]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -49222,8 +52414,10 @@ AS
       x.[RULE_ITEM_GRID_RSLT_COL] AS [RULE_ITEM_GRID_RSLT_COL],
       x.[RULE_ITEM_FIELD_NAME] AS [RULE_ITEM_FIELD_NAME],
       x.[S_RULE_ITEM_OPERATOR] AS [S_RULE_ITEM_OPERATOR],
+      A0.Descript AS [S_RULE_ITEM_OPERATOR_Description],
       x.[RULE_ITEM_FIELDID] AS [RULE_ITEM_FIELDID]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_FIELD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -49247,12 +52441,16 @@ AS
       x.[RULE_OCC] AS [RULE_OCC],
       x.[RULE_ITEM_OCC] AS [RULE_ITEM_OCC],
       x.[S_RULE_ITEM_TYPE] AS [S_RULE_ITEM_TYPE],
+      A0.Descript AS [S_RULE_ITEM_TYPE_Description],
       x.[RULE_ITEM_NAME] AS [RULE_ITEM_NAME],
       x.[PRIORITY] AS [PRIORITY],
       x.[MESSAGE_TEXT] AS [MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL],
+      A1.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[MESSAGE_TEXT_2] AS [MESSAGE_TEXT_2]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_ITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A0.[COLUMNNAME] = 'S_RULE_ITEM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -49429,10 +52627,15 @@ AS
       x.[LNUM] AS [LNUM],
       x.[CID_BRANCH] AS [CID_BRANCH],
       x.[S_BUSINESS_CHANNEL] AS [S_BUSINESS_CHANNEL],
+      A0.Descript AS [S_BUSINESS_CHANNEL_Description],
       x.[S_LOAN_TYPE] AS [S_LOAN_TYPE],
+      A1.Descript AS [S_LOAN_TYPE_Description],
       x.[S_LOAN_CATEGORY] AS [S_LOAN_CATEGORY],
+      A2.Descript AS [S_LOAN_CATEGORY_Description],
       x.[S_REFERRAL_SOURCE] AS [S_REFERRAL_SOURCE],
+      A3.Descript AS [S_REFERRAL_SOURCE_Description],
       x.[S_LOAN_PURPOSE] AS [S_LOAN_PURPOSE],
+      A4.Descript AS [S_LOAN_PURPOSE_Description],
       x.[EMP_LOAN_YN] AS [EMP_LOAN_YN],
       x.[REG_O_LOAN_YN] AS [REG_O_LOAN_YN],
       x.[TSWE_EXPECTED_YN] AS [TSWE_EXPECTED_YN],
@@ -49443,6 +52646,7 @@ AS
       x.[MBA_YN] AS [MBA_YN],
       x.[IS_PERSONALUSE_YN] AS [IS_PERSONALUSE_YN],
       x.[S_PRIMARY_COLLATERAL_TYPE] AS [S_PRIMARY_COLLATERAL_TYPE],
+      A5.Descript AS [S_PRIMARY_COLLATERAL_TYPE_Description],
       x.[COLLATERAL_STATE] AS [COLLATERAL_STATE],
       x.[VENDOR_VAL_METHOD] AS [VENDOR_VAL_METHOD],
       x.[VALUATION_SOURCE] AS [VALUATION_SOURCE],
@@ -49451,8 +52655,18 @@ AS
       x.[CURRENTMODELYR] AS [CURRENTMODELYR],
       x.[COLLAGEYRS] AS [COLLAGEYRS],
       x.[S_TITLE_TRANSFER] AS [S_TITLE_TRANSFER],
-      x.[S_SECONDARY_COLLATERAL_TYPE] AS [S_SECONDARY_COLLATERAL_TYPE]
+      A6.Descript AS [S_TITLE_TRANSFER_Description],
+      x.[S_SECONDARY_COLLATERAL_TYPE] AS [S_SECONDARY_COLLATERAL_TYPE],
+      A7.Descript AS [S_SECONDARY_COLLATERAL_TYPE_Description]
    FROM [clt_NetO].[WG_CNS_LOAN_APPLICATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BUSINESS_CHANNEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A0.[COLUMNNAME] = 'S_BUSINESS_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A1.[COLUMNNAME] = 'S_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOAN_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A2.[COLUMNNAME] = 'S_LOAN_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REFERRAL_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A3.[COLUMNNAME] = 'S_REFERRAL_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOAN_PURPOSE = A4.DBSYMBOL AND A4.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A4.[COLUMNNAME] = 'S_LOAN_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PRIMARY_COLLATERAL_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A5.[COLUMNNAME] = 'S_PRIMARY_COLLATERAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TITLE_TRANSFER = A6.DBSYMBOL AND A6.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A6.[COLUMNNAME] = 'S_TITLE_TRANSFER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SECONDARY_COLLATERAL_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A7.[COLUMNNAME] = 'S_SECONDARY_COLLATERAL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -49541,7 +52755,6 @@ CREATE VIEW [NetO_sas].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[TRDINCNTR] AS [TRDINCNTR],
       x.[YEAR] AS [YEAR],
       x.[MAKE] AS [MAKE],
       x.[VIN] AS [VIN],
@@ -49554,7 +52767,8 @@ AS
       x.[NET_TRDIN_VALUE] AS [NET_TRDIN_VALUE],
       x.[ISFINANCED] AS [ISFINANCED],
       x.[FININSTITUTE] AS [FININSTITUTE],
-      x.[MNTHPAYMENT] AS [MNTHPAYMENT]
+      x.[MNTHPAYMENT] AS [MNTHPAYMENT],
+      x.[TRDINCNTR] AS [TRDINCNTR]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -50030,8 +53244,10 @@ AS
       x.[INC_SRC_CTR] AS [INC_SRC_CTR],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[S_INCOME_SOURCE_TYPE] AS [S_INCOME_SOURCE_TYPE],
+      A0.Descript AS [S_INCOME_SOURCE_TYPE_Description],
       x.[OTHER_INCOME_SRC_DESC] AS [OTHER_INCOME_SRC_DESC],
       x.[S_BUSINESS_TYPE] AS [S_BUSINESS_TYPE],
+      A1.Descript AS [S_BUSINESS_TYPE_Description],
       x.[SOURCE_NAME] AS [SOURCE_NAME],
       x.[SOURCE_CONTACT] AS [SOURCE_CONTACT],
       x.[ADDRESS_LN_1] AS [ADDRESS_LN_1],
@@ -50045,6 +53261,7 @@ AS
       x.[FAX_NBR] AS [FAX_NBR],
       x.[TITLE] AS [TITLE],
       x.[S_SPECIAL_BOR_EMP_REL_TYPE] AS [S_SPECIAL_BOR_EMP_REL_TYPE],
+      A2.Descript AS [S_SPECIAL_BOR_EMP_REL_TYPE_Description],
       x.[SPEC_BOR_EMP_REL_TYPE_DESC] AS [SPEC_BOR_EMP_REL_TYPE_DESC],
       x.[OCCUPATION] AS [OCCUPATION],
       x.[EMPLOYED_FROM] AS [EMPLOYED_FROM],
@@ -50055,6 +53272,7 @@ AS
       x.[SELF_EMPLOYED_FLAG] AS [SELF_EMPLOYED_FLAG],
       x.[PCT_BUSINESS_OWNED] AS [PCT_BUSINESS_OWNED],
       x.[S_SELF_EMPL_TYPE] AS [S_SELF_EMPL_TYPE],
+      A3.Descript AS [S_SELF_EMPL_TYPE_Description],
       x.[PROF_MONTHS] AS [PROF_MONTHS],
       x.[PROF_YEARS] AS [PROF_YEARS],
       x.[BASE_INCOME] AS [BASE_INCOME],
@@ -50066,6 +53284,7 @@ AS
       HASHBYTES('SHA2_256', CAST(x.[TOTAL_INCOME] AS NVARCHAR(50))) AS [TOTAL_INCOME],
       x.[LIABCTR] AS [LIABCTR],
       x.[S_EMP_UNIT_TYPE] AS [S_EMP_UNIT_TYPE],
+      A4.Descript AS [S_EMP_UNIT_TYPE_Description],
       x.[EMP_UNIT_NUMBER] AS [EMP_UNIT_NUMBER],
       x.[INCOME_STATE_FOREIN] AS [INCOME_STATE_FOREIN],
       x.[INCOME_POSTCODE] AS [INCOME_POSTCODE],
@@ -50078,6 +53297,11 @@ AS
       x.[INC_DBA_NAME] AS [INC_DBA_NAME],
       x.[INC_EIN] AS [INC_EIN]
    FROM [clt_NetO].[WG_INCOME_SOURCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME_SOURCE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_INCOME_SOURCE' and A0.[COLUMNNAME] = 'S_INCOME_SOURCE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BUSINESS_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_INCOME_SOURCE' and A1.[COLUMNNAME] = 'S_BUSINESS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPECIAL_BOR_EMP_REL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_INCOME_SOURCE' and A2.[COLUMNNAME] = 'S_SPECIAL_BOR_EMP_REL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SELF_EMPL_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'WG_INCOME_SOURCE' and A3.[COLUMNNAME] = 'S_SELF_EMPL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EMP_UNIT_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'WG_INCOME_SOURCE' and A4.[COLUMNNAME] = 'S_EMP_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -50124,8 +53348,10 @@ AS
       x.[CC] AS [CC],
       x.[STROKE] AS [STROKE],
       x.[CATEGORY] AS [CATEGORY],
-      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE]
+      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE],
+      A0.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_KELLEYBLUEBOOK_RESPONSE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GENERIC_BODY_STYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_KELLEYBLUEBOOK_RESPONSE' and A0.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -50149,9 +53375,11 @@ AS
       x.[ROWCNTR] AS [ROWCNTR],
       x.[LNUM] AS [LNUM],
       x.[S_LOAN_STATUS] AS [S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[LOAN_STATUS] AS [LOAN_STATUS],
       x.[STATUS_DATE] AS [STATUS_DATE]
    FROM [clt_NetO].[WG_RPT_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_RPT_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -50414,12 +53642,16 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_BRANCH] AS [S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[START_DATE] AS [START_DATE],
       x.[END_DATE] AS [END_DATE],
       x.[S_OFF_OR_ENLISTED] AS [S_OFF_OR_ENLISTED],
+      A1.Descript AS [S_OFF_OR_ENLISTED_Description],
       x.[SERVICE_NUMBER] AS [SERVICE_NUMBER],
       x.[ACTIVESERVYN] AS [ACTIVESERVYN]
    FROM [clt_NetO].[WG_TLBR_VET_MILT_SERVICE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OFF_OR_ENLISTED = A1.DBSYMBOL AND A1.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A1.[COLUMNNAME] = 'S_OFF_OR_ENLISTED'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -50736,8 +53968,12 @@ AS
       x.[MIN_1ST_ADJ_RATE] AS [MIN_1ST_ADJ_RATE],
       x.[FIR_MAX_MONTHLY_AMT] AS [FIR_MAX_MONTHLY_AMT],
       x.[S_FRE_INDEX_TYPE] AS [S_FRE_INDEX_TYPE],
-      x.[S_FNM_INDEX_TYPE] AS [S_FNM_INDEX_TYPE]
+      A0.Descript AS [S_FRE_INDEX_TYPE_Description],
+      x.[S_FNM_INDEX_TYPE] AS [S_FNM_INDEX_TYPE],
+      A1.Descript AS [S_FNM_INDEX_TYPE_Description]
    FROM [clt_NetO].[ARMINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FRE_INDEX_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'ARMINFO' and A0.[COLUMNNAME] = 'S_FRE_INDEX_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FNM_INDEX_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'ARMINFO' and A1.[COLUMNNAME] = 'S_FNM_INDEX_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -50763,6 +53999,7 @@ AS
       x.[DBID] AS [DBID],
       x.[ASSETCTR] AS [ASSETCTR],
       x.[S_ASSET] AS [S_ASSET],
+      A0.Descript AS [S_ASSET_Description],
       x.[ASSETDSC] AS [ASSETDSC],
       x.[ACCTNUM] AS [ACCTNUM],
       x.[HOLDER] AS [HOLDER],
@@ -50798,10 +54035,15 @@ AS
       x.[BUILDER_EARNEST] AS [BUILDER_EARNEST],
       x.[ASSET_INDICATOR] AS [ASSET_INDICATOR],
       x.[S_ACCOUNT_OWNERSHIP] AS [S_ACCOUNT_OWNERSHIP],
+      A1.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[S_GIFT_PRVDR_TYPE] AS [S_GIFT_PRVDR_TYPE],
+      A2.Descript AS [S_GIFT_PRVDR_TYPE_Description],
       x.[GIFT_PRVDR_OTH_DESC] AS [GIFT_PRVDR_OTH_DESC],
       x.[GIFT_DEPOSIT_STATUS] AS [GIFT_DEPOSIT_STATUS]
    FROM [clt_NetO].[ASSETS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET = A0.DBSYMBOL AND A0.[TableName] = 'ASSETS' and A0.[COLUMNNAME] = 'S_ASSET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACCOUNT_OWNERSHIP = A1.DBSYMBOL AND A1.[TableName] = 'ASSETS' and A1.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GIFT_PRVDR_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'ASSETS' and A2.[COLUMNNAME] = 'S_GIFT_PRVDR_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -50868,6 +54110,7 @@ AS
       x.[AGE] AS [AGE],
       x.[YRSSCHL] AS [YRSSCHL],
       x.[S_MARITL] AS [S_MARITL],
+      A0.Descript AS [S_MARITL_Description],
       x.[FRNINFO] AS [FRNINFO],
       x.[GENDER] AS [GENDER],
       x.[NUMDEP] AS [NUMDEP],
@@ -50883,6 +54126,7 @@ AS
       x.[APPNUMB] AS [APPNUMB],
       x.[FIRSTBUY] AS [FIRSTBUY],
       x.[S_OWNSHP] AS [S_OWNSHP],
+      A1.Descript AS [S_OWNSHP_Description],
       x.[VOR_ACCT] AS [VOR_ACCT],
       x.[VOR_NAME] AS [VOR_NAME],
       x.[OTHINCM] AS [OTHINCM],
@@ -50890,8 +54134,10 @@ AS
       x.[JOINTLY] AS [JOINTLY],
       x.[DOB] AS [DOB],
       x.[S_BORTYP] AS [S_BORTYP],
+      A2.Descript AS [S_BORTYP_Description],
       x.[ALIASES] AS [ALIASES],
       x.[S_VESTNG] AS [S_VESTNG],
+      A3.Descript AS [S_VESTNG_Description],
       x.[PRTENTTL] AS [PRTENTTL],
       x.[PARTNOTE] AS [PARTNOTE],
       x.[COUNTY] AS [COUNTY],
@@ -50956,6 +54202,7 @@ AS
       x.[ELEC_DISC_CONSENT] AS [ELEC_DISC_CONSENT],
       x.[ELEC_DISC_WITHDRAW] AS [ELEC_DISC_WITHDRAW],
       x.[S_IVMETH] AS [S_IVMETH],
+      A4.Descript AS [S_IVMETH_Description],
       x.[ATALLLIQUIDTOTAL] AS [ATALLLIQUIDTOTAL],
       x.[ATGIFTTOTAL] AS [ATGIFTTOTAL],
       x.[ATREONETPROCEEDSTOTAL] AS [ATREONETPROCEEDSTOTAL],
@@ -50963,6 +54210,7 @@ AS
       x.[LTNONSUBJDEBTMOTOTAL] AS [LTNONSUBJDEBTMOTOTAL],
       x.[LTNONSUBJPAYOFFTOTAL] AS [LTNONSUBJPAYOFFTOTAL],
       x.[S_CBSOURCE] AS [S_CBSOURCE],
+      A5.Descript AS [S_CBSOURCE_Description],
       x.[VETERAN] AS [VETERAN],
       x.[ENTITLEMENT] AS [ENTITLEMENT],
       x.[LDP_NUMBER] AS [LDP_NUMBER],
@@ -50986,7 +54234,9 @@ AS
       x.[DISPLAY_NAME] AS [DISPLAY_NAME],
       x.[NON_INDIV_BORR_NAME] AS [NON_INDIV_BORR_NAME],
       x.[S_LEGAL_ENTITY_TYPE] AS [S_LEGAL_ENTITY_TYPE],
+      A6.Descript AS [S_LEGAL_ENTITY_TYPE_Description],
       x.[S_LEGAL_ENTITY_TYP_OTH] AS [S_LEGAL_ENTITY_TYP_OTH],
+      A7.Descript AS [S_LEGAL_ENTITY_TYP_OTH_Description],
       x.[ULDD_TAXPAYER_ID] AS [ULDD_TAXPAYER_ID],
       x.[INCLUDE_IN_PROFORMA] AS [INCLUDE_IN_PROFORMA],
       x.[FADDR_INDICATOR] AS [FADDR_INDICATOR],
@@ -51002,9 +54252,11 @@ AS
       x.[MNTHS_AT_PRSNT] AS [MNTHS_AT_PRSNT],
       x.[BORR_COVERED] AS [BORR_COVERED],
       x.[S_COV_BORR_STATUS] AS [S_COV_BORR_STATUS],
+      A8.Descript AS [S_COV_BORR_STATUS_Description],
       x.[BORR_VERBDISC] AS [BORR_VERBDISC],
       x.[MLACERTID] AS [MLACERTID],
       x.[S_BOR_UNIT_TYPE] AS [S_BOR_UNIT_TYPE],
+      A9.Descript AS [S_BOR_UNIT_TYPE_Description],
       x.[BOR_UNIT_NUM] AS [BOR_UNIT_NUM],
       x.[BOR_COUNTRY] AS [BOR_COUNTRY],
       x.[BOR_COUNTRY_CODE] AS [BOR_COUNTRY_CODE],
@@ -51021,8 +54273,11 @@ AS
       x.[COPIED_MAIL_ADDRESS] AS [COPIED_MAIL_ADDRESS],
       x.[CHECK_ALIAS] AS [CHECK_ALIAS],
       x.[S_PARTY_TYPE] AS [S_PARTY_TYPE],
+      A10.Descript AS [S_PARTY_TYPE_Description],
       x.[S_CITIZENSHIP] AS [S_CITIZENSHIP],
+      A11.Descript AS [S_CITIZENSHIP_Description],
       x.[S_UNMARRIED] AS [S_UNMARRIED],
+      A12.Descript AS [S_UNMARRIED_Description],
       x.[ATTR_PORTAL_REG] AS [ATTR_PORTAL_REG],
       x.[ATTR_COUNSELING_REQUIRED] AS [ATTR_COUNSELING_REQUIRED],
       x.[ATTR_CHILD_CARE] AS [ATTR_CHILD_CARE],
@@ -51030,6 +54285,7 @@ AS
       x.[ATTR_GUARDIANSHIP] AS [ATTR_GUARDIANSHIP],
       x.[ATTR_SOLE_PROPRIETOR] AS [ATTR_SOLE_PROPRIETOR],
       x.[S_UNMARRIED_RLTNSHIP] AS [S_UNMARRIED_RLTNSHIP],
+      A13.Descript AS [S_UNMARRIED_RLTNSHIP_Description],
       x.[UNMARRIED_RLTNSHIP_STATE] AS [UNMARRIED_RLTNSHIP_STATE],
       x.[UNMARRIED_RLTNSHIP_OTHERDESC] AS [UNMARRIED_RLTNSHIP_OTHERDESC],
       x.[RETIRED_BORROWER] AS [RETIRED_BORROWER],
@@ -51042,6 +54298,20 @@ AS
       x.[IS_DEALER_EMPLOYEE] AS [IS_DEALER_EMPLOYEE],
       x.[LIVE_RENT_FREE_ENUMS] AS [LIVE_RENT_FREE_ENUMS]
    FROM [clt_NetO].[BORROWER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARITL = A0.DBSYMBOL AND A0.[TableName] = 'BORROWER' and A0.[COLUMNNAME] = 'S_MARITL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OWNSHP = A1.DBSYMBOL AND A1.[TableName] = 'BORROWER' and A1.[COLUMNNAME] = 'S_OWNSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BORTYP = A2.DBSYMBOL AND A2.[TableName] = 'BORROWER' and A2.[COLUMNNAME] = 'S_BORTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_VESTNG = A3.DBSYMBOL AND A3.[TableName] = 'BORROWER' and A3.[COLUMNNAME] = 'S_VESTNG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_IVMETH = A4.DBSYMBOL AND A4.[TableName] = 'BORROWER' and A4.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CBSOURCE = A5.DBSYMBOL AND A5.[TableName] = 'BORROWER' and A5.[COLUMNNAME] = 'S_CBSOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LEGAL_ENTITY_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'BORROWER' and A6.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LEGAL_ENTITY_TYP_OTH = A7.DBSYMBOL AND A7.[TableName] = 'BORROWER' and A7.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYP_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COV_BORR_STATUS = A8.DBSYMBOL AND A8.[TableName] = 'BORROWER' and A8.[COLUMNNAME] = 'S_COV_BORR_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BOR_UNIT_TYPE = A9.DBSYMBOL AND A9.[TableName] = 'BORROWER' and A9.[COLUMNNAME] = 'S_BOR_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_PARTY_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'BORROWER' and A10.[COLUMNNAME] = 'S_PARTY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_CITIZENSHIP = A11.DBSYMBOL AND A11.[TableName] = 'BORROWER' and A11.[COLUMNNAME] = 'S_CITIZENSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_UNMARRIED = A12.DBSYMBOL AND A12.[TableName] = 'BORROWER' and A12.[COLUMNNAME] = 'S_UNMARRIED'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_UNMARRIED_RLTNSHIP = A13.DBSYMBOL AND A13.[TableName] = 'BORROWER' and A13.[COLUMNNAME] = 'S_UNMARRIED_RLTNSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -51069,15 +54339,19 @@ AS
       x.[CSTIMPRO] AS [CSTIMPRO],
       x.[IMPDESC] AS [IMPDESC],
       x.[S_REFPRP] AS [S_REFPRP],
+      A0.Descript AS [S_REFPRP_Description],
       x.[IMPMADE] AS [IMPMADE],
       x.[LOTACQUR] AS [LOTACQUR],
       x.[REFIIMP] AS [REFIIMP],
       x.[CASHAMT] AS [CASHAMT],
       x.[S_GSE_REFINANCE_PURPOSE] AS [S_GSE_REFINANCE_PURPOSE],
+      A1.Descript AS [S_GSE_REFINANCE_PURPOSE_Description],
       x.[S_CONST_PERM_CLOSING] AS [S_CONST_PERM_CLOSING],
+      A2.Descript AS [S_CONST_PERM_CLOSING_Description],
       x.[INTERNREFI] AS [INTERNREFI],
       HASHBYTES('SHA2_256', x.[ORIG_INVESTOR_LOAN_NBR]) AS [ORIG_INVESTOR_LOAN_NBR],
       x.[S_ORIG_INVESTOR] AS [S_ORIG_INVESTOR],
+      A3.Descript AS [S_ORIG_INVESTOR_Description],
       x.[OTHER_INVESTOR_DESC] AS [OTHER_INVESTOR_DESC],
       x.[OTHERGSEREFIPURPTYPEDESC] AS [OTHERGSEREFIPURPTYPEDESC],
       x.[REPLACE_EXIST_CONSTR_LOAN] AS [REPLACE_EXIST_CONSTR_LOAN],
@@ -51085,11 +54359,21 @@ AS
       x.[PREVIOUS_REFI_MONTHS] AS [PREVIOUS_REFI_MONTHS],
       x.[CO_REFI_PURCH_CONST] AS [CO_REFI_PURCH_CONST],
       x.[S_CONST_PERM_FEATURE] AS [S_CONST_PERM_FEATURE],
+      A4.Descript AS [S_CONST_PERM_FEATURE_Description],
       x.[S_FNM_REFI_PGM] AS [S_FNM_REFI_PGM],
+      A5.Descript AS [S_FNM_REFI_PGM_Description],
       x.[S_FRE_REFI_PGM] AS [S_FRE_REFI_PGM],
+      A6.Descript AS [S_FRE_REFI_PGM_Description],
       x.[LIMIT_DESC] AS [LIMIT_DESC],
       x.[REFI_LOAN_ACCT_NBR] AS [REFI_LOAN_ACCT_NBR]
    FROM [clt_NetO].[CONSREFI] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFPRP = A0.DBSYMBOL AND A0.[TableName] = 'CONSREFI' and A0.[COLUMNNAME] = 'S_REFPRP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GSE_REFINANCE_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'CONSREFI' and A1.[COLUMNNAME] = 'S_GSE_REFINANCE_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CONST_PERM_CLOSING = A2.DBSYMBOL AND A2.[TableName] = 'CONSREFI' and A2.[COLUMNNAME] = 'S_CONST_PERM_CLOSING'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ORIG_INVESTOR = A3.DBSYMBOL AND A3.[TableName] = 'CONSREFI' and A3.[COLUMNNAME] = 'S_ORIG_INVESTOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_CONST_PERM_FEATURE = A4.DBSYMBOL AND A4.[TableName] = 'CONSREFI' and A4.[COLUMNNAME] = 'S_CONST_PERM_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_FNM_REFI_PGM = A5.DBSYMBOL AND A5.[TableName] = 'CONSREFI' and A5.[COLUMNNAME] = 'S_FNM_REFI_PGM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_FRE_REFI_PGM = A6.DBSYMBOL AND A6.[TableName] = 'CONSREFI' and A6.[COLUMNNAME] = 'S_FRE_REFI_PGM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -51263,7 +54547,9 @@ AS
       x.[M_DBID] AS [M_DBID],
       x.[M_SERIAL] AS [M_SERIAL],
       x.[S_PRPTYP] AS [S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[S_TITLE] AS [S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[BNKRPT_DISCHARGE_MOS] AS [BNKRPT_DISCHARGE_MOS],
       x.[FORECLOSURE_MOS] AS [FORECLOSURE_MOS],
       x.[NON_PERMANENT_RESIDENT_ALIEN] AS [NON_PERMANENT_RESIDENT_ALIEN],
@@ -51288,6 +54574,7 @@ AS
       x.[SHORT_SALE] AS [SHORT_SALE],
       x.[PROPFORECLOSE] AS [PROPFORECLOSE],
       x.[S_BANKRUPTCY_TYPE] AS [S_BANKRUPTCY_TYPE],
+      A2.Descript AS [S_BANKRUPTCY_TYPE_Description],
       x.[PREFORECLOS_NOTES] AS [PREFORECLOS_NOTES],
       x.[PROPFORECL_NOTES] AS [PROPFORECL_NOTES],
       x.[PRIMRESID_NOTES] AS [PRIMRESID_NOTES],
@@ -51314,6 +54601,9 @@ AS
       x.[DECBANKRUPTCY_INCINFORM] AS [DECBANKRUPTCY_INCINFORM],
       x.[FHA_SECOND_RESID_IND] AS [FHA_SECOND_RESID_IND]
    FROM [clt_NetO].[DECLRTN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'DECLRTN' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'DECLRTN' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BANKRUPTCY_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DECLRTN' and A2.[COLUMNNAME] = 'S_BANKRUPTCY_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -51348,35 +54638,55 @@ AS
       x.[RENTS3] AS [RENTS3],
       x.[RENTS4] AS [RENTS4],
       x.[S_SPF1] AS [S_SPF1],
+      A0.Descript AS [S_SPF1_Description],
       x.[S_SPF2] AS [S_SPF2],
+      A1.Descript AS [S_SPF2_Description],
       x.[S_SPF3] AS [S_SPF3],
+      A2.Descript AS [S_SPF3_Description],
       x.[S_SPF4] AS [S_SPF4],
+      A3.Descript AS [S_SPF4_Description],
       x.[S_SPF5] AS [S_SPF5],
+      A4.Descript AS [S_SPF5_Description],
       x.[S_SPF6] AS [S_SPF6],
+      A5.Descript AS [S_SPF6_Description],
       x.[ASSUM] AS [ASSUM],
       x.[RDF] AS [RDF],
       x.[INTPD] AS [INTPD],
       x.[MATDATE] AS [MATDATE],
       x.[S_SFSRC1] AS [S_SFSRC1],
+      A6.Descript AS [S_SFSRC1_Description],
       x.[S_SFSRC2] AS [S_SFSRC2],
+      A7.Descript AS [S_SFSRC2_Description],
       x.[SFAMT1] AS [SFAMT1],
       x.[SFAMT2] AS [SFAMT2],
       x.[S_BECA1] AS [S_BECA1],
+      A8.Descript AS [S_BECA1_Description],
       x.[S_BECA2] AS [S_BECA2],
+      A9.Descript AS [S_BECA2_Description],
       x.[S_BECF1] AS [S_BECF1],
+      A10.Descript AS [S_BECF1_Description],
       x.[S_BECF2] AS [S_BECF2],
+      A11.Descript AS [S_BECF2_Description],
       x.[S_DPSRC1] AS [S_DPSRC1],
+      A12.Descript AS [S_DPSRC1_Description],
       x.[S_DPSRC2] AS [S_DPSRC2],
+      A13.Descript AS [S_DPSRC2_Description],
       x.[S_DPSRC3] AS [S_DPSRC3],
+      A14.Descript AS [S_DPSRC3_Description],
       x.[S_DPSRC4] AS [S_DPSRC4],
+      A15.Descript AS [S_DPSRC4_Description],
       x.[DPAMT1] AS [DPAMT1],
       x.[DPAMT2] AS [DPAMT2],
       x.[DPAMT3] AS [DPAMT3],
       x.[DPAMT4] AS [DPAMT4],
       x.[S_CCSRC1] AS [S_CCSRC1],
+      A16.Descript AS [S_CCSRC1_Description],
       x.[S_CCSRC2] AS [S_CCSRC2],
+      A17.Descript AS [S_CCSRC2_Description],
       x.[S_CCSRC3] AS [S_CCSRC3],
+      A18.Descript AS [S_CCSRC3_Description],
       x.[S_CCSRC4] AS [S_CCSRC4],
+      A19.Descript AS [S_CCSRC4_Description],
       x.[CCAMT1] AS [CCAMT1],
       x.[CCAMT2] AS [CCAMT2],
       x.[CCAMT3] AS [CCAMT3],
@@ -51384,12 +54694,14 @@ AS
       x.[MICOV] AS [MICOV],
       x.[UPB] AS [UPB],
       x.[S_LFC] AS [S_LFC],
+      A20.Descript AS [S_LFC_Description],
       x.[INTEND] AS [INTEND],
       x.[LPID] AS [LPID],
       x.[INTONLY] AS [INTONLY],
       x.[LOOKBACK] AS [LOOKBACK],
       x.[NETNEGAM] AS [NETNEGAM],
       x.[S_RFC] AS [S_RFC],
+      A21.Descript AS [S_RFC_Description],
       x.[UWNAME] AS [UWNAME],
       x.[INVLNUM] AS [INVLNUM],
       x.[MTGORIG] AS [MTGORIG],
@@ -51399,9 +54711,13 @@ AS
       x.[SELLER] AS [SELLER],
       x.[CID_SELLER_AGENT] AS [CID_SELLER_AGENT],
       x.[S_SPF7] AS [S_SPF7],
+      A22.Descript AS [S_SPF7_Description],
       x.[S_SPF8] AS [S_SPF8],
+      A23.Descript AS [S_SPF8_Description],
       x.[S_SPF9] AS [S_SPF9],
+      A24.Descript AS [S_SPF9_Description],
       x.[S_SPF10] AS [S_SPF10],
+      A25.Descript AS [S_SPF10_Description],
       x.[UPBO] AS [UPBO],
       x.[ESCROW_ACCT_BALANCE] AS [ESCROW_ACCT_BALANCE],
       x.[ESCROW_PYMT_AMT] AS [ESCROW_PYMT_AMT],
@@ -51409,21 +54725,59 @@ AS
       x.[APPR_DOC_ID] AS [APPR_DOC_ID],
       x.[READY_FOR_DELIVERY] AS [READY_FOR_DELIVERY],
       x.[S_INT_ACCRUAL_TYPE] AS [S_INT_ACCRUAL_TYPE],
+      A26.Descript AS [S_INT_ACCRUAL_TYPE_Description],
       x.[S_INT_CALC_BASIS_TYPE] AS [S_INT_CALC_BASIS_TYPE],
+      A27.Descript AS [S_INT_CALC_BASIS_TYPE_Description],
       x.[INT_CALC_EFF_MONTHS] AS [INT_CALC_EFF_MONTHS],
       x.[S_INT_CALC_PERIOD] AS [S_INT_CALC_PERIOD],
+      A28.Descript AS [S_INT_CALC_PERIOD_Description],
       x.[S_INT_CALC_METHOD] AS [S_INT_CALC_METHOD],
+      A29.Descript AS [S_INT_CALC_METHOD_Description],
       x.[LOAN_DELIV_GSE] AS [LOAN_DELIV_GSE],
       x.[LTV_RATIO_PCT] AS [LTV_RATIO_PCT],
       x.[S_FNM_HOME_IMP_PROD] AS [S_FNM_HOME_IMP_PROD],
+      A30.Descript AS [S_FNM_HOME_IMP_PROD_Description],
       x.[ADJ_LOAN_AMT] AS [ADJ_LOAN_AMT],
       x.[ADJ_LOAN_AMT_OVRD] AS [ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER] AS [APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE] AS [MLADISCCOMPLETE],
       x.[S_SIGNDOCPUSHBACK] AS [S_SIGNDOCPUSHBACK],
+      A31.Descript AS [S_SIGNDOCPUSHBACK_Description],
       x.[MI_CANCELLED] AS [MI_CANCELLED],
       x.[HFA_IDENTIFIER] AS [HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SPF1 = A0.DBSYMBOL AND A0.[TableName] = 'DELIVERY' and A0.[COLUMNNAME] = 'S_SPF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPF2 = A1.DBSYMBOL AND A1.[TableName] = 'DELIVERY' and A1.[COLUMNNAME] = 'S_SPF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPF3 = A2.DBSYMBOL AND A2.[TableName] = 'DELIVERY' and A2.[COLUMNNAME] = 'S_SPF3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPF4 = A3.DBSYMBOL AND A3.[TableName] = 'DELIVERY' and A3.[COLUMNNAME] = 'S_SPF4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_SPF5 = A4.DBSYMBOL AND A4.[TableName] = 'DELIVERY' and A4.[COLUMNNAME] = 'S_SPF5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SPF6 = A5.DBSYMBOL AND A5.[TableName] = 'DELIVERY' and A5.[COLUMNNAME] = 'S_SPF6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SFSRC1 = A6.DBSYMBOL AND A6.[TableName] = 'DELIVERY' and A6.[COLUMNNAME] = 'S_SFSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SFSRC2 = A7.DBSYMBOL AND A7.[TableName] = 'DELIVERY' and A7.[COLUMNNAME] = 'S_SFSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_BECA1 = A8.DBSYMBOL AND A8.[TableName] = 'DELIVERY' and A8.[COLUMNNAME] = 'S_BECA1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BECA2 = A9.DBSYMBOL AND A9.[TableName] = 'DELIVERY' and A9.[COLUMNNAME] = 'S_BECA2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_BECF1 = A10.DBSYMBOL AND A10.[TableName] = 'DELIVERY' and A10.[COLUMNNAME] = 'S_BECF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BECF2 = A11.DBSYMBOL AND A11.[TableName] = 'DELIVERY' and A11.[COLUMNNAME] = 'S_BECF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_DPSRC1 = A12.DBSYMBOL AND A12.[TableName] = 'DELIVERY' and A12.[COLUMNNAME] = 'S_DPSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_DPSRC2 = A13.DBSYMBOL AND A13.[TableName] = 'DELIVERY' and A13.[COLUMNNAME] = 'S_DPSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DPSRC3 = A14.DBSYMBOL AND A14.[TableName] = 'DELIVERY' and A14.[COLUMNNAME] = 'S_DPSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_DPSRC4 = A15.DBSYMBOL AND A15.[TableName] = 'DELIVERY' and A15.[COLUMNNAME] = 'S_DPSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_CCSRC1 = A16.DBSYMBOL AND A16.[TableName] = 'DELIVERY' and A16.[COLUMNNAME] = 'S_CCSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CCSRC2 = A17.DBSYMBOL AND A17.[TableName] = 'DELIVERY' and A17.[COLUMNNAME] = 'S_CCSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CCSRC3 = A18.DBSYMBOL AND A18.[TableName] = 'DELIVERY' and A18.[COLUMNNAME] = 'S_CCSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_CCSRC4 = A19.DBSYMBOL AND A19.[TableName] = 'DELIVERY' and A19.[COLUMNNAME] = 'S_CCSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_LFC = A20.DBSYMBOL AND A20.[TableName] = 'DELIVERY' and A20.[COLUMNNAME] = 'S_LFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_RFC = A21.DBSYMBOL AND A21.[TableName] = 'DELIVERY' and A21.[COLUMNNAME] = 'S_RFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_SPF7 = A22.DBSYMBOL AND A22.[TableName] = 'DELIVERY' and A22.[COLUMNNAME] = 'S_SPF7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_SPF8 = A23.DBSYMBOL AND A23.[TableName] = 'DELIVERY' and A23.[COLUMNNAME] = 'S_SPF8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_SPF9 = A24.DBSYMBOL AND A24.[TableName] = 'DELIVERY' and A24.[COLUMNNAME] = 'S_SPF9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_SPF10 = A25.DBSYMBOL AND A25.[TableName] = 'DELIVERY' and A25.[COLUMNNAME] = 'S_SPF10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_INT_ACCRUAL_TYPE = A26.DBSYMBOL AND A26.[TableName] = 'DELIVERY' and A26.[COLUMNNAME] = 'S_INT_ACCRUAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_INT_CALC_BASIS_TYPE = A27.DBSYMBOL AND A27.[TableName] = 'DELIVERY' and A27.[COLUMNNAME] = 'S_INT_CALC_BASIS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_INT_CALC_PERIOD = A28.DBSYMBOL AND A28.[TableName] = 'DELIVERY' and A28.[COLUMNNAME] = 'S_INT_CALC_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_INT_CALC_METHOD = A29.DBSYMBOL AND A29.[TableName] = 'DELIVERY' and A29.[COLUMNNAME] = 'S_INT_CALC_METHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A30 on x.S_FNM_HOME_IMP_PROD = A30.DBSYMBOL AND A30.[TableName] = 'DELIVERY' and A30.[COLUMNNAME] = 'S_FNM_HOME_IMP_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A31 on x.S_SIGNDOCPUSHBACK = A31.DBSYMBOL AND A31.[TableName] = 'DELIVERY' and A31.[COLUMNNAME] = 'S_SIGNDOCPUSHBACK'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -51506,6 +54860,7 @@ AS
       x.[DBID] AS [DBID],
       x.[DPYMTCTR] AS [DPYMTCTR],
       x.[S_TYPE] AS [S_TYPE],
+      A0.Descript AS [S_TYPE_Description],
       x.[AMOUNT] AS [AMOUNT],
       HASHBYTES('SHA2_256', x.[NAME]) AS [NAME],
       x.[ADDR1] AS [ADDR1],
@@ -51530,18 +54885,31 @@ AS
       x.[VERIFYFND] AS [VERIFYFND],
       x.[OTHERDOWNPAYTYPEDESC] AS [OTHERDOWNPAYTYPEDESC],
       x.[S_DOWN_PMT_SRC_TYP] AS [S_DOWN_PMT_SRC_TYP],
+      A1.Descript AS [S_DOWN_PMT_SRC_TYP_Description],
       x.[S_DOWN_PMT_SRC_OTH] AS [S_DOWN_PMT_SRC_OTH],
+      A2.Descript AS [S_DOWN_PMT_SRC_OTH_Description],
       x.[S_DOWN_PMT_TYP] AS [S_DOWN_PMT_TYP],
+      A3.Descript AS [S_DOWN_PMT_TYP_Description],
       x.[S_TYPE_OTH] AS [S_TYPE_OTH],
+      A4.Descript AS [S_TYPE_OTH_Description],
       x.[PRIMARY_SRC] AS [PRIMARY_SRC],
       x.[DOWNPAYMENTPERCENT] AS [DOWNPAYMENTPERCENT],
       x.[S_DOWN_PMT_SRC] AS [S_DOWN_PMT_SRC],
+      A5.Descript AS [S_DOWN_PMT_SRC_Description],
       x.[S_TYPENM] AS [S_TYPENM],
+      A6.Descript AS [S_TYPENM_Description],
       x.[DOWNPAYTYPENMOTHERDESC] AS [DOWNPAYTYPENMOTHERDESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[TOTAL_GIFT_FUNDS] AS [TOTAL_GIFT_FUNDS],
       x.[ASSETCTR] AS [ASSETCTR]
    FROM [clt_NetO].[DOWNPYMT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_DOWN_PMT_SRC_TYP = A1.DBSYMBOL AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOWN_PMT_SRC_OTH = A2.DBSYMBOL AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_DOWN_PMT_TYP = A3.DBSYMBOL AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TYPE_OTH = A4.DBSYMBOL AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DOWN_PMT_SRC = A5.DBSYMBOL AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TYPENM = A6.DBSYMBOL AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -51566,11 +54934,14 @@ AS
       x.[DBID] AS [DBID],
       x.[TRANCTR] AS [TRANCTR],
       x.[S_TRAN] AS [S_TRAN],
+      A0.Descript AS [S_TRAN_Description],
       x.[TRANDESC] AS [TRANDESC],
       x.[TRANAMT] AS [TRANAMT],
       x.[OTHERAMT] AS [OTHERAMT],
       x.[S_PURCH_CREDIT_TYPE] AS [S_PURCH_CREDIT_TYPE],
+      A1.Descript AS [S_PURCH_CREDIT_TYPE_Description],
       x.[S_PURCH_SOURCE_TYPE] AS [S_PURCH_SOURCE_TYPE],
+      A2.Descript AS [S_PURCH_SOURCE_TYPE_Description],
       x.[OTHERPURCHCREDTYPEDESC] AS [OTHERPURCHCREDTYPEDESC],
       x.[OTHERPURCHSRCTYPEDESC] AS [OTHERPURCHSRCTYPEDESC],
       x.[MANUALAMT] AS [MANUALAMT],
@@ -51581,6 +54952,9 @@ AS
       x.[EXCLOTHCREDPREP] AS [EXCLOTHCREDPREP],
       x.[POSTCLOSE_TOLERANCECURE] AS [POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRAN = A0.DBSYMBOL AND A0.[TableName] = 'DTLTRAN' and A0.[COLUMNNAME] = 'S_TRAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PURCH_CREDIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'DTLTRAN' and A1.[COLUMNNAME] = 'S_PURCH_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PURCH_SOURCE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DTLTRAN' and A2.[COLUMNNAME] = 'S_PURCH_SOURCE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -51635,6 +55009,7 @@ AS
       x.[WAIVED] AS [WAIVED],
       x.[CSHMONTH] AS [CSHMONTH],
       x.[S_PERIOD] AS [S_PERIOD],
+      A0.Descript AS [S_PERIOD_Description],
       x.[TOTALATC] AS [TOTALATC],
       x.[INCGFE] AS [INCGFE],
       x.[SPOVERRIDE] AS [SPOVERRIDE],
@@ -51645,6 +55020,7 @@ AS
       x.[INCHCL] AS [INCHCL],
       x.[CID_FEE_SRVC_PRVDR_CO] AS [CID_FEE_SRVC_PRVDR_CO],
       x.[S_MISC_DESC] AS [S_MISC_DESC],
+      A1.Descript AS [S_MISC_DESC_Description],
       x.[LOCKEDYN] AS [LOCKEDYN],
       x.[LOCKEDTOTAL] AS [LOCKEDTOTAL],
       x.[ISSUE_CHECK] AS [ISSUE_CHECK],
@@ -51654,22 +55030,38 @@ AS
       x.[SUBFEE] AS [SUBFEE],
       x.[FEECODE] AS [FEECODE],
       x.[S_AGGTYPE] AS [S_AGGTYPE],
+      A2.Descript AS [S_AGGTYPE_Description],
       x.[S_RESP_PARTY] AS [S_RESP_PARTY],
+      A3.Descript AS [S_RESP_PARTY_Description],
       x.[S_PAIDBY] AS [S_PAIDBY],
+      A4.Descript AS [S_PAIDBY_Description],
       x.[S_PAIDTO] AS [S_PAIDTO],
+      A5.Descript AS [S_PAIDTO_Description],
       x.[SUBCODE] AS [SUBCODE],
       x.[IS_NOCOST] AS [IS_NOCOST],
       x.[MANAGED_OVR] AS [MANAGED_OVR],
       x.[TO_AFFILIATE] AS [TO_AFFILIATE],
       x.[S_SECTION_TYPE] AS [S_SECTION_TYPE],
+      A6.Descript AS [S_SECTION_TYPE_Description],
       x.[ID_SECTION_SUBTYPE] AS [ID_SECTION_SUBTYPE],
       x.[PREPAID_MONTH] AS [PREPAID_MONTH],
       x.[S_TOLERANCE_CATEGORY] AS [S_TOLERANCE_CATEGORY],
+      A7.Descript AS [S_TOLERANCE_CATEGORY_Description],
       x.[S_CHANGE_TYPE] AS [S_CHANGE_TYPE],
+      A8.Descript AS [S_CHANGE_TYPE_Description],
       x.[CHANGE_REASON] AS [CHANGE_REASON],
       x.[BOROPT] AS [BOROPT],
       x.[EXC_MAPR] AS [EXC_MAPR]
    FROM [clt_NetO].[FEEVALS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PERIOD = A0.DBSYMBOL AND A0.[TableName] = 'FEEVALS' and A0.[COLUMNNAME] = 'S_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MISC_DESC = A1.DBSYMBOL AND A1.[TableName] = 'FEEVALS' and A1.[COLUMNNAME] = 'S_MISC_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AGGTYPE = A2.DBSYMBOL AND A2.[TableName] = 'FEEVALS' and A2.[COLUMNNAME] = 'S_AGGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESP_PARTY = A3.DBSYMBOL AND A3.[TableName] = 'FEEVALS' and A3.[COLUMNNAME] = 'S_RESP_PARTY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PAIDBY = A4.DBSYMBOL AND A4.[TableName] = 'FEEVALS' and A4.[COLUMNNAME] = 'S_PAIDBY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PAIDTO = A5.DBSYMBOL AND A5.[TableName] = 'FEEVALS' and A5.[COLUMNNAME] = 'S_PAIDTO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SECTION_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'FEEVALS' and A6.[COLUMNNAME] = 'S_SECTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TOLERANCE_CATEGORY = A7.DBSYMBOL AND A7.[TableName] = 'FEEVALS' and A7.[COLUMNNAME] = 'S_TOLERANCE_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CHANGE_TYPE = A8.DBSYMBOL AND A8.[TableName] = 'FEEVALS' and A8.[COLUMNNAME] = 'S_CHANGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -51691,12 +55083,12 @@ CREATE VIEW [NetO_sas_restricted].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[PKFIX] AS [PKFIX],
       x.[FLDNAME] AS [FLDNAME],
       x.[USRID] AS [USRID],
       x.[MODIFY_DATE] AS [MODIFY_DATE],
       x.[TEXT_VALUE] AS [TEXT_VALUE],
-      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE]
+      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE],
+      x.[PKFIX] AS [PKFIX]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -51725,7 +55117,9 @@ AS
       x.[DETMNNUM] AS [DETMNNUM],
       x.[DETMNDAT] AS [DETMNDAT],
       x.[S_FIRM] AS [S_FIRM],
+      A0.Descript AS [S_FIRM_Description],
       x.[S_FLDZON] AS [S_FLDZON],
+      A1.Descript AS [S_FLDZON_Description],
       x.[FLDMAPDT] AS [FLDMAPDT],
       x.[COMMNUMB] AS [COMMNUMB],
       x.[SFHAREA] AS [SFHAREA],
@@ -51736,6 +55130,8 @@ AS
       x.[NFIP_MAP_PANEL_DATE] AS [NFIP_MAP_PANEL_DATE],
       x.[COMMNAME] AS [COMMNAME]
    FROM [clt_NetO].[FLOOD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRM = A0.DBSYMBOL AND A0.[TableName] = 'FLOOD' and A0.[COLUMNNAME] = 'S_FIRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FLDZON = A1.DBSYMBOL AND A1.[TableName] = 'FLOOD' and A1.[COLUMNNAME] = 'S_FLDZON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -52376,7 +55772,9 @@ AS
       x.[CUR_HOUSING_PMT] AS [CUR_HOUSING_PMT],
       x.[OTHERINDEXTYPEDESC] AS [OTHERINDEXTYPEDESC],
       x.[S_INDEX] AS [S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[S_PAYEETYPE] AS [S_PAYEETYPE],
+      A1.Descript AS [S_PAYEETYPE_Description],
       x.[PAYEETYPEOTHERDESC] AS [PAYEETYPEOTHERDESC],
       x.[CLNUM_COUNTER] AS [CLNUM_COUNTER],
       x.[LEAD_COUNTER] AS [LEAD_COUNTER],
@@ -52387,18 +55785,22 @@ AS
       x.[DMI_OWN_RIGHTS] AS [DMI_OWN_RIGHTS],
       x.[DMI_BILLING_MODE] AS [DMI_BILLING_MODE],
       x.[S_AUSUWTYPE] AS [S_AUSUWTYPE],
+      A2.Descript AS [S_AUSUWTYPE_Description],
       x.[MSP_INVESTOR_ID] AS [MSP_INVESTOR_ID],
       x.[MSP_INVESTOR_ID_OVERRIDE] AS [MSP_INVESTOR_ID_OVERRIDE],
       x.[MSP_INVESTOR_CATEGORY] AS [MSP_INVESTOR_CATEGORY],
       x.[MSP_INVESTOR_CATEGORY_OVERRIDE] AS [MSP_INVESTOR_CATEGORY_OVERRIDE],
       x.[FIRST_DISB_REC_AMT] AS [FIRST_DISB_REC_AMT],
       x.[S_INTPRD_COMM_MET] AS [S_INTPRD_COMM_MET],
+      A3.Descript AS [S_INTPRD_COMM_MET_Description],
       x.[EXCLUDE_FROM_QRM] AS [EXCLUDE_FROM_QRM],
       x.[READY_REDISCLSR] AS [READY_REDISCLSR],
       x.[S_WELCOME_CALL] AS [S_WELCOME_CALL],
+      A4.Descript AS [S_WELCOME_CALL_Description],
       x.[LOAN_AMOUNT_TOLER] AS [LOAN_AMOUNT_TOLER],
       x.[MAX_APPR_RATE] AS [MAX_APPR_RATE],
       x.[S_AUS_RESULT] AS [S_AUS_RESULT],
+      A5.Descript AS [S_AUS_RESULT_Description],
       x.[P_ADMINOVR] AS [P_ADMINOVR],
       x.[P_CB_ADMINOVR] AS [P_CB_ADMINOVR],
       x.[P_COMPOVR] AS [P_COMPOVR],
@@ -52407,8 +55809,10 @@ AS
       x.[HARP_MI_REQUIRED] AS [HARP_MI_REQUIRED],
       x.[NET_NEW_DOLLARS] AS [NET_NEW_DOLLARS],
       x.[S_INIT_DISC_DELIVERY_MTHD] AS [S_INIT_DISC_DELIVERY_MTHD],
+      A6.Descript AS [S_INIT_DISC_DELIVERY_MTHD_Description],
       x.[CONFIDENCE_SCR_HLMAI] AS [CONFIDENCE_SCR_HLMAI],
       x.[S_BRANCH_TYPE] AS [S_BRANCH_TYPE],
+      A7.Descript AS [S_BRANCH_TYPE_Description],
       x.[BRANCH_ID] AS [BRANCH_ID],
       x.[BRANCH_BANK_CODE] AS [BRANCH_BANK_CODE],
       x.[BRANCH_COST_CENTER] AS [BRANCH_COST_CENTER],
@@ -52417,6 +55821,14 @@ AS
       x.[PROMOTION_CODE] AS [PROMOTION_CODE],
       x.[ONBOARD_DISB_STATUS] AS [ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_DATA' and A0.[COLUMNNAME] = 'S_INDEX'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYEETYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_DATA' and A1.[COLUMNNAME] = 'S_PAYEETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AUSUWTYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_DATA' and A2.[COLUMNNAME] = 'S_AUSUWTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_INTPRD_COMM_MET = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_LOAN_DATA' and A3.[COLUMNNAME] = 'S_INTPRD_COMM_MET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_WELCOME_CALL = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_LOAN_DATA' and A4.[COLUMNNAME] = 'S_WELCOME_CALL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_AUS_RESULT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_LOAN_DATA' and A5.[COLUMNNAME] = 'S_AUS_RESULT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_INIT_DISC_DELIVERY_MTHD = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_LOAN_DATA' and A6.[COLUMNNAME] = 'S_INIT_DISC_DELIVERY_MTHD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_BRANCH_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_LOAN_DATA' and A7.[COLUMNNAME] = 'S_BRANCH_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -52439,8 +55851,11 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_LOAN_STATUS] AS [S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[S_UW_STATUS] AS [S_UW_STATUS],
+      A1.Descript AS [S_UW_STATUS_Description],
       x.[S_LOCK_STATUS] AS [S_LOCK_STATUS],
+      A2.Descript AS [S_LOCK_STATUS_Description],
       x.[LOCK_STATUS_DISPLAY] AS [LOCK_STATUS_DISPLAY],
       x.[SENT_TO_MIDANET] AS [SENT_TO_MIDANET],
       x.[AP_ADMIN_ONLY] AS [AP_ADMIN_ONLY],
@@ -52448,6 +55863,9 @@ AS
       x.[EXT_LOAN_STATUS_VERSION_ID] AS [EXT_LOAN_STATUS_VERSION_ID],
       x.[EXT_LOAN_STATUS_VERSION] AS [EXT_LOAN_STATUS_VERSION]
    FROM [clt_NetO].[GF_TL_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UW_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_STATUS' and A1.[COLUMNNAME] = 'S_UW_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOCK_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_STATUS' and A2.[COLUMNNAME] = 'S_LOCK_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -52556,9 +55974,13 @@ AS
       x.[PRICE_GROUP_CODE] AS [PRICE_GROUP_CODE],
       x.[IPG_NAME] AS [IPG_NAME],
       x.[S_SEC_MANAGE_TYPE] AS [S_SEC_MANAGE_TYPE],
+      A0.Descript AS [S_SEC_MANAGE_TYPE_Description],
       x.[S_SEC_LOAN_TYPE] AS [S_SEC_LOAN_TYPE],
+      A1.Descript AS [S_SEC_LOAN_TYPE_Description],
       x.[S_SEC_POOL_TYPE] AS [S_SEC_POOL_TYPE],
+      A2.Descript AS [S_SEC_POOL_TYPE_Description],
       x.[S_PREPAY_PEN] AS [S_PREPAY_PEN],
+      A3.Descript AS [S_PREPAY_PEN_Description],
       x.[OVER_ALLOW_PCT] AS [OVER_ALLOW_PCT],
       x.[SHORT_ALLOW_PCT] AS [SHORT_ALLOW_PCT],
       x.[OVER_SPLIT_PCT] AS [OVER_SPLIT_PCT],
@@ -52582,13 +56004,16 @@ AS
       x.[OLD_AGENCY_NUM_IND] AS [OLD_AGENCY_NUM_IND],
       x.[PRODUCT_IDENTIFIER] AS [PRODUCT_IDENTIFIER],
       x.[S_AUS_IND] AS [S_AUS_IND],
+      A4.Descript AS [S_AUS_IND_Description],
       x.[S_SERVICE_TYPE] AS [S_SERVICE_TYPE],
+      A5.Descript AS [S_SERVICE_TYPE_Description],
       x.[SERVICING_INTERFACE_IND] AS [SERVICING_INTERFACE_IND],
       x.[SERVICING_LOCATION] AS [SERVICING_LOCATION],
       x.[SUB_PRIME_IND] AS [SUB_PRIME_IND],
       x.[MI_REQUIRE] AS [MI_REQUIRE],
       x.[INTEREST_ONLY_PRODUCT] AS [INTEREST_ONLY_PRODUCT],
       x.[S_SPEC_PROG] AS [S_SPEC_PROG],
+      A6.Descript AS [S_SPEC_PROG_Description],
       x.[CRA_REPORT] AS [CRA_REPORT],
       x.[INV_CODE_OVR] AS [INV_CODE_OVR],
       x.[INV_PROD_CODE_OVR] AS [INV_PROD_CODE_OVR],
@@ -52607,8 +56032,17 @@ AS
       x.[EVAL_QM] AS [EVAL_QM],
       x.[APPLY_MLA_RULES] AS [APPLY_MLA_RULES],
       x.[LNDR_PD_MI_ALLOWED] AS [LNDR_PD_MI_ALLOWED],
-      x.[S_ASSUMABILITY_FEATURE] AS [S_ASSUMABILITY_FEATURE]
+      x.[S_ASSUMABILITY_FEATURE] AS [S_ASSUMABILITY_FEATURE],
+      A7.Descript AS [S_ASSUMABILITY_FEATURE_Description]
    FROM [clt_NetO].[GF_TL_PNP_IPG_DETAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SEC_MANAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A0.[COLUMNNAME] = 'S_SEC_MANAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEC_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A1.[COLUMNNAME] = 'S_SEC_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SEC_POOL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A2.[COLUMNNAME] = 'S_SEC_POOL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PREPAY_PEN = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A3.[COLUMNNAME] = 'S_PREPAY_PEN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_AUS_IND = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A4.[COLUMNNAME] = 'S_AUS_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SERVICE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A5.[COLUMNNAME] = 'S_SERVICE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SPEC_PROG = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A6.[COLUMNNAME] = 'S_SPEC_PROG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ASSUMABILITY_FEATURE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A7.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -52631,16 +56065,20 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_REFSC] AS [S_REFSC],
+      A0.Descript AS [S_REFSC_Description],
       x.[TBDADDR] AS [TBDADDR],
       x.[POSFHA] AS [POSFHA],
       x.[S_PROPTYPE] AS [S_PROPTYPE],
+      A1.Descript AS [S_PROPTYPE_Description],
       x.[PROJCLAS] AS [PROJCLAS],
       x.[PROJNAME] AS [PROJNAME],
       x.[DPPERCT] AS [DPPERCT],
       x.[HELINE] AS [HELINE],
       x.[HECURBAL] AS [HECURBAL],
       x.[S_DOCLVL] AS [S_DOCLVL],
+      A2.Descript AS [S_DOCLVL_Description],
       x.[S_LNSTATUS] AS [S_LNSTATUS],
+      A3.Descript AS [S_LNSTATUS_Description],
       x.[HLTVH] AS [HLTVH],
       x.[TSWE_INC_EXPECTED] AS [TSWE_INC_EXPECTED],
       x.[QUAL_TSWE_LOAN] AS [QUAL_TSWE_LOAN],
@@ -52656,6 +56094,7 @@ AS
       x.[LO_NMLS_NUM_OVR] AS [LO_NMLS_NUM_OVR],
       x.[LO_PHONE_OVR] AS [LO_PHONE_OVR],
       x.[S_GFE_TIME_ZONE] AS [S_GFE_TIME_ZONE],
+      A4.Descript AS [S_GFE_TIME_ZONE_Description],
       x.[ALLOWWITHDRAWLOAN] AS [ALLOWWITHDRAWLOAN],
       x.[GFE_INT_RATE_LSC] AS [GFE_INT_RATE_LSC],
       x.[GFE_INT_RATE_LIR] AS [GFE_INT_RATE_LIR],
@@ -52702,6 +56141,11 @@ AS
       x.[LP2_RISK_CLASS_OVR] AS [LP2_RISK_CLASS_OVR],
       x.[DU_DISPLAY_OVR] AS [DU_DISPLAY_OVR]
    FROM [clt_NetO].[GF_TL_POINT_OF_SALE_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFSC = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A0.[COLUMNNAME] = 'S_REFSC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_PROPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOCLVL = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_DOCLVL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LNSTATUS = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_LNSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_GFE_TIME_ZONE = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -52848,6 +56292,7 @@ AS
       x.[REPAIRAMOUNT] AS [REPAIRAMOUNT],
       x.[REPLACEMENTAMOUNT] AS [REPLACEMENTAMOUNT],
       x.[S_FLOODMAPZONE] AS [S_FLOODMAPZONE],
+      A0.Descript AS [S_FLOODMAPZONE_Description],
       x.[APP_SENT_BORROWER] AS [APP_SENT_BORROWER],
       x.[APPRAISAL_DELIVERED] AS [APPRAISAL_DELIVERED],
       x.[APP_TIME_WAIVE] AS [APP_TIME_WAIVE],
@@ -52861,13 +56306,20 @@ AS
       x.[PERCENT_MULTI_FAM] AS [PERCENT_MULTI_FAM],
       x.[PERCENT_COMMERCIAL] AS [PERCENT_COMMERCIAL],
       x.[S_PROP_LOC_TYPE] AS [S_PROP_LOC_TYPE],
+      A1.Descript AS [S_PROP_LOC_TYPE_Description],
       x.[PROP_LTN_TYP_OTHDESC] AS [PROP_LTN_TYP_OTHDESC],
       x.[S_CAR_STORAGE_TYPE] AS [S_CAR_STORAGE_TYPE],
+      A2.Descript AS [S_CAR_STORAGE_TYPE_Description],
       x.[CARSTORAGE_TYPE_OTHR_DESC] AS [CARSTORAGE_TYPE_OTHR_DESC],
       x.[CARSTORAGE_NBR_CARS] AS [CARSTORAGE_NBR_CARS],
       x.[S_FOUNDATION_TYPE] AS [S_FOUNDATION_TYPE],
+      A3.Descript AS [S_FOUNDATION_TYPE_Description],
       x.[FNDN_TYPE_OTHER_DESC] AS [FNDN_TYPE_OTHER_DESC]
    FROM [clt_NetO].[GF_TL_UWAPPREXT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FLOODMAPZONE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_UWAPPREXT' and A0.[COLUMNNAME] = 'S_FLOODMAPZONE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROP_LOC_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_UWAPPREXT' and A1.[COLUMNNAME] = 'S_PROP_LOC_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CAR_STORAGE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_UWAPPREXT' and A2.[COLUMNNAME] = 'S_CAR_STORAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FOUNDATION_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_UWAPPREXT' and A3.[COLUMNNAME] = 'S_FOUNDATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53015,11 +56467,13 @@ AS
       x.[MAILCOUNTRY] AS [MAILCOUNTRY],
       x.[MAIL_FADDR_INDICATOR] AS [MAIL_FADDR_INDICATOR],
       x.[S_MAIL_UNIT_TYPE] AS [S_MAIL_UNIT_TYPE],
+      A0.Descript AS [S_MAIL_UNIT_TYPE_Description],
       x.[MAIL_UNIT_NUM] AS [MAIL_UNIT_NUM],
       x.[MAIL_COUNTRY_CODE] AS [MAIL_COUNTRY_CODE],
       x.[BOR_MAIL_STATE_FOREIN] AS [BOR_MAIL_STATE_FOREIN],
       x.[MAIL_POST_CODE_FOREIN] AS [MAIL_POST_CODE_FOREIN]
    FROM [clt_NetO].[GF_TLB_MAILING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MAIL_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLB_MAILING' and A0.[COLUMNNAME] = 'S_MAIL_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53287,21 +56741,28 @@ AS
       x.[CELL_PHONE] AS [CELL_PHONE],
       x.[PRIM_CONTACT] AS [PRIM_CONTACT],
       x.[S_FIRSTTIMEHBCOUNSEL] AS [S_FIRSTTIMEHBCOUNSEL],
+      A0.Descript AS [S_FIRSTTIMEHBCOUNSEL_Description],
       x.[S_TITLE] AS [S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       HASHBYTES('SHA2_256', x.[CURRENT_CUSTOMER]) AS [CURRENT_CUSTOMER],
       x.[WORK_EXT] AS [WORK_EXT],
       x.[CREDIT_AUTHORIZATION_YN] AS [CREDIT_AUTHORIZATION_YN],
       x.[NATIONALITY] AS [NATIONALITY],
       x.[AFFILIATE] AS [AFFILIATE],
       x.[S_COUNSEL_CONFIRM_TYP] AS [S_COUNSEL_CONFIRM_TYP],
+      A2.Descript AS [S_COUNSEL_CONFIRM_TYP_Description],
       x.[S_COUNSEL_CONFIRM_OTH] AS [S_COUNSEL_CONFIRM_OTH],
+      A3.Descript AS [S_COUNSEL_CONFIRM_OTH_Description],
       x.[S_COUNSEL_FORMAT_TYP] AS [S_COUNSEL_FORMAT_TYP],
+      A4.Descript AS [S_COUNSEL_FORMAT_TYP_Description],
       x.[CREDIT_AUTHORIZATION_DATE] AS [CREDIT_AUTHORIZATION_DATE],
       x.[CUSTOMER_ID] AS [CUSTOMER_ID],
       x.[S_CRDTSCORE_MODEL_OVR] AS [S_CRDTSCORE_MODEL_OVR],
+      A5.Descript AS [S_CRDTSCORE_MODEL_OVR_Description],
       x.[URLA_BESTCONTACT] AS [URLA_BESTCONTACT],
       x.[URLA_ALTCONTACT] AS [URLA_ALTCONTACT],
       x.[S_CREDIT_TYPE] AS [S_CREDIT_TYPE],
+      A6.Descript AS [S_CREDIT_TYPE_Description],
       x.[JOINT_CREDIT_BNUM] AS [JOINT_CREDIT_BNUM],
       HASHBYTES('SHA2_256', x.[SPOUSE_FNAME]) AS [SPOUSE_FNAME],
       HASHBYTES('SHA2_256', x.[SPOUSE_MNAME]) AS [SPOUSE_MNAME],
@@ -53318,6 +56779,7 @@ AS
       x.[ATTR_CAIVRS] AS [ATTR_CAIVRS],
       x.[ATTR_ESIGN] AS [ATTR_ESIGN],
       x.[S_LANGUAGEPREFERENCE] AS [S_LANGUAGEPREFERENCE],
+      A7.Descript AS [S_LANGUAGEPREFERENCE_Description],
       x.[OTHER_LANGUAGE] AS [OTHER_LANGUAGE],
       x.[CURRENTINCOTHERTOTAL] AS [CURRENTINCOTHERTOTAL],
       x.[CURRENTINCOMETOTAL] AS [CURRENTINCOMETOTAL],
@@ -53336,6 +56798,14 @@ AS
       x.[MOTHERS_MAIDEN] AS [MOTHERS_MAIDEN],
       x.[APP_DISCL_READ] AS [APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRSTTIMEHBCOUNSEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_COUNSEL_CONFIRM_TYP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A2.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COUNSEL_CONFIRM_OTH = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A3.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COUNSEL_FORMAT_TYP = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A4.[COLUMNNAME] = 'S_COUNSEL_FORMAT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CRDTSCORE_MODEL_OVR = A5.DBSYMBOL AND A5.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A5.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_CREDIT_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LANGUAGEPREFERENCE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53364,12 +56834,14 @@ AS
       x.[MID_NAME] AS [MID_NAME],
       HASHBYTES('SHA2_256', x.[LAST_NAME]) AS [LAST_NAME],
       x.[S_BORR_ALIAS] AS [S_BORR_ALIAS],
+      A0.Descript AS [S_BORR_ALIAS_Description],
       HASHBYTES('SHA2_256', x.[NAME_SUFFIX]) AS [NAME_SUFFIX],
       x.[ALIAS_TYPE_OTH_DESC] AS [ALIAS_TYPE_OTH_DESC],
       x.[CREDITORNAME] AS [CREDITORNAME],
       x.[ALIASACCTNUM] AS [ALIASACCTNUM],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ALIAS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BORR_ALIAS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ALIAS' and A0.[COLUMNNAME] = 'S_BORR_ALIAS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53399,6 +56871,7 @@ AS
       x.[GRANT_CRA_CODE] AS [GRANT_CRA_CODE],
       x.[PROGRAM_EXP] AS [PROGRAM_EXP],
       x.[S_ASSIST_TYPE] AS [S_ASSIST_TYPE],
+      A0.Descript AS [S_ASSIST_TYPE_Description],
       x.[REPAY_TERM] AS [REPAY_TERM],
       x.[REPAY_RATE] AS [REPAY_RATE],
       x.[REPAY_PMT] AS [REPAY_PMT],
@@ -53409,10 +56882,13 @@ AS
       x.[ALLOW_AP_EXCEPT] AS [ALLOW_AP_EXCEPT],
       x.[PROVIDER_EIN] AS [PROVIDER_EIN],
       x.[S_ASSIST_PVDR_TYP] AS [S_ASSIST_PVDR_TYP],
+      A1.Descript AS [S_ASSIST_PVDR_TYP_Description],
       x.[AP_OTH_DESC] AS [AP_OTH_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[ASSETCTR] AS [ASSETCTR]
    FROM [clt_NetO].[GF_TLBR_ASSIST_PROGRAMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSIST_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A0.[COLUMNNAME] = 'S_ASSIST_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSIST_PVDR_TYP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A1.[COLUMNNAME] = 'S_ASSIST_PVDR_TYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53507,7 +56983,6 @@ AS
       x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
       x.[SCOREID] AS [SCOREID],
       x.[DBID] AS [DBID],
-      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[BNUM] AS [BNUM],
       x.[SOURCE_TYPE] AS [SOURCE_TYPE],
       x.[SCORE_DATE] AS [SCORE_DATE],
@@ -53515,6 +56990,7 @@ AS
       x.[MODEL_TYPE] AS [MODEL_TYPE],
       x.[OTHER_DESCRIPTION] AS [OTHER_DESCRIPTION],
       x.[SCORE_VALUE] AS [SCORE_VALUE],
+      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC] AS [CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR] AS [FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE] AS [RANK_PERCENTILE]
@@ -53597,16 +57073,20 @@ AS
       x.[SELFEMPL] AS [SELFEMPL],
       x.[PERCBUSOWN] AS [PERCBUSOWN],
       x.[S_JOB_TYPE] AS [S_JOB_TYPE],
+      A0.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT] AS [OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY] AS [PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC] AS [OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE] AS [S_SPECBOREMPRELTYPE],
+      A1.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC] AS [OTHERSPECBOREMPRELTYPEDSC],
       x.[IS_EMPLOYED_ABROAD] AS [IS_EMPLOYED_ABROAD],
       x.[COUNTRY] AS [COUNTRY],
       x.[MONTHS_AT_JOB] AS [MONTHS_AT_JOB],
       x.[MONTHS_IN_PROFESSION] AS [MONTHS_IN_PROFESSION]
    FROM [clt_NetO].[GF_TLBR_EMPLOYER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_JOB_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_EMPLOYER' and A0.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPECBOREMPRELTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_EMPLOYER' and A1.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53632,9 +57112,11 @@ AS
       x.[DBID] AS [DBID],
       x.[ETHNICITY_CTR] AS [ETHNICITY_CTR],
       x.[S_ETHNICITY] AS [S_ETHNICITY],
+      A0.Descript AS [S_ETHNICITY_Description],
       x.[FURNISH_INFO_YN] AS [FURNISH_INFO_YN],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ETHNICITY' and A0.[COLUMNNAME] = 'S_ETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53688,9 +57170,11 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_RACE] AS [S_RACE],
+      A0.Descript AS [S_RACE_Description],
       x.[OTHER_AMERICAN_DESC] AS [OTHER_AMERICAN_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_RACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_RACE' and A0.[COLUMNNAME] = 'S_RACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53750,9 +57234,11 @@ AS
       x.[DBID] AS [DBID],
       x.[SUBETHNICITY_CTR] AS [SUBETHNICITY_CTR],
       x.[S_SUBETHNICITY] AS [S_SUBETHNICITY],
+      A0.Descript AS [S_SUBETHNICITY_Description],
       x.[OTHER_DESC] AS [OTHER_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBETHNICITY' and A0.[COLUMNNAME] = 'S_SUBETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53778,10 +57264,12 @@ AS
       x.[DBID] AS [DBID],
       x.[SUBRACE_CTR] AS [SUBRACE_CTR],
       x.[S_SUBRACE] AS [S_SUBRACE],
+      A0.Descript AS [S_SUBRACE_Description],
       x.[OTHER_ASIAN_DESC] AS [OTHER_ASIAN_DESC],
       x.[OTHER_PACISLDR_DESC] AS [OTHER_PACISLDR_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBRACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBRACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBRACE' and A0.[COLUMNNAME] = 'S_SUBRACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -53807,8 +57295,11 @@ AS
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[MODIFIED_USERID] AS [MODIFIED_USERID],
       x.[S_FMETHOD] AS [S_FMETHOD],
+      A0.Descript AS [S_FMETHOD_Description],
       x.[S_FSTATUS] AS [S_FSTATUS],
+      A1.Descript AS [S_FSTATUS_Description],
       x.[S_DMETHOD] AS [S_DMETHOD],
+      A2.Descript AS [S_DMETHOD_Description],
       x.[AMOUNT] AS [AMOUNT],
       HASHBYTES('SHA2_256', x.[PAYEE_NAME]) AS [PAYEE_NAME],
       HASHBYTES('SHA2_256', x.[PAYEE_ADDRESS]) AS [PAYEE_ADDRESS],
@@ -53818,7 +57309,9 @@ AS
       x.[ISSUEDATE] AS [ISSUEDATE],
       x.[REQDATE] AS [REQDATE],
       x.[S_TYPE] AS [S_TYPE],
+      A3.Descript AS [S_TYPE_Description],
       x.[S_FUNDLOC] AS [S_FUNDLOC],
+      A4.Descript AS [S_FUNDLOC_Description],
       x.[ROUTENUM] AS [ROUTENUM],
       x.[ACCOUNTNUM] AS [ACCOUNTNUM],
       x.[TRANSNUM] AS [TRANSNUM],
@@ -53873,6 +57366,11 @@ AS
       x.[W_APPRVDDT1] AS [W_APPRVDDT1],
       x.[W_APPRVDDT2] AS [W_APPRVDDT2]
    FROM [clt_NetO].[GF_TLR_DISBURSEMENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FMETHOD = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_DISBURSEMENTS' and A0.[COLUMNNAME] = 'S_FMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FSTATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_DISBURSEMENTS' and A1.[COLUMNNAME] = 'S_FSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DMETHOD = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_DMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FUNDLOC = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'S_FUNDLOC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -54032,6 +57530,7 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_INSTYPE] AS [S_INSTYPE],
+      A0.Descript AS [S_INSTYPE_Description],
       x.[COVAMNT] AS [COVAMNT],
       x.[MINCOVER] AS [MINCOVER],
       x.[PREMAMT] AS [PREMAMT],
@@ -54065,9 +57564,11 @@ AS
       x.[PMTOPTDBID] AS [PMTOPTDBID],
       x.[PMTOPTSERNO] AS [PMTOPTSERNO],
       x.[S_OTH_INS_TYPE_DESC] AS [S_OTH_INS_TYPE_DESC],
+      A1.Descript AS [S_OTH_INS_TYPE_DESC_Description],
       x.[HUDLINE] AS [HUDLINE],
       x.[POLICY_TERM] AS [POLICY_TERM],
       x.[S_ESCINS] AS [S_ESCINS],
+      A2.Descript AS [S_ESCINS_Description],
       x.[ASSETID] AS [ASSETID],
       x.[DT_ORDERED] AS [DT_ORDERED],
       x.[DT_EXPECTED] AS [DT_EXPECTED],
@@ -54090,6 +57591,9 @@ AS
       x.[NFIP_MAX_COVERAGE] AS [NFIP_MAX_COVERAGE],
       x.[MINIMUM_COVERAGE] AS [MINIMUM_COVERAGE]
    FROM [clt_NetO].[GF_TLR_INSURANCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_INSURANCE' and A0.[COLUMNNAME] = 'S_INSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OTH_INS_TYPE_DESC = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_INSURANCE' and A1.[COLUMNNAME] = 'S_OTH_INS_TYPE_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ESCINS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_INSURANCE' and A2.[COLUMNNAME] = 'S_ESCINS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -54159,6 +57663,7 @@ AS
       x.[REG_O_BORROWER] AS [REG_O_BORROWER],
       HASHBYTES('SHA2_256', x.[EMPLOYEE_BORROWER]) AS [EMPLOYEE_BORROWER],
       x.[S_EMP_REGO_TYPE] AS [S_EMP_REGO_TYPE],
+      A0.Descript AS [S_EMP_REGO_TYPE_Description],
       x.[EXEC_EDUC] AS [EXEC_EDUC],
       x.[EXEC_OFFIC_OTH] AS [EXEC_OFFIC_OTH],
       x.[EXEC_OFFIC_YN] AS [EXEC_OFFIC_YN],
@@ -54166,6 +57671,7 @@ AS
       x.[BOD_APPROVAL_DATE] AS [BOD_APPROVAL_DATE],
       x.[COMMITTEE_APPROVAL] AS [COMMITTEE_APPROVAL]
    FROM [clt_NetO].[GF_TLR_REG_O] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMP_REGO_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_REG_O' and A0.[COLUMNNAME] = 'S_EMP_REGO_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -54344,9 +57850,11 @@ AS
       x.[INFILE_DATE] AS [INFILE_DATE],
       x.[BNUM] AS [BNUM],
       x.[S_RESULTSTATUSTYPE] AS [S_RESULTSTATUSTYPE],
+      A0.Descript AS [S_RESULTSTATUSTYPE_Description],
       x.[RESULTSTATUSTTHERDESC] AS [RESULTSTATUSTTHERDESC],
       x.[CREDREPOSSRCTYPEOTHERDESC] AS [CREDREPOSSRCTYPEOTHERDESC]
    FROM [clt_NetO].[GF_TLR_RES_CREDIT_FILE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RESULTSTATUSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RES_CREDIT_FILE' and A0.[COLUMNNAME] = 'S_RESULTSTATUSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -54772,6 +58280,7 @@ AS
       x.[ERRORRPTIMAGEID] AS [ERRORRPTIMAGEID],
       x.[MERGEDCREDITCERTIMAGEID] AS [MERGEDCREDITCERTIMAGEID],
       x.[S_CRWELIGIBILITYTYPE] AS [S_CRWELIGIBILITYTYPE],
+      A0.Descript AS [S_CRWELIGIBILITYTYPE_Description],
       x.[HVERPTIMAGEID] AS [HVERPTIMAGEID],
       x.[MERGEDCREDITIMAGEID] AS [MERGEDCREDITIMAGEID],
       x.[LPATTLASSETDEFICITAMT] AS [LPATTLASSETDEFICITAMT],
@@ -54800,6 +58309,7 @@ AS
       x.[LPATTLREQUIREDRESERVESAMT] AS [LPATTLREQUIREDRESERVESAMT],
       x.[CREDIT_INFILE] AS [CREDIT_INFILE]
    FROM [clt_NetO].[GF_TLR_RSP_LP_LOANFDBCK] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CRWELIGIBILITYTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RSP_LP_LOANFDBCK' and A0.[COLUMNNAME] = 'S_CRWELIGIBILITYTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -54873,6 +58383,7 @@ AS
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[HUDLINE] AS [HUDLINE],
       x.[S_TAXTYPE] AS [S_TAXTYPE],
+      A0.Descript AS [S_TAXTYPE_Description],
       x.[ANN_AMT] AS [ANN_AMT],
       x.[FIRST_DUE] AS [FIRST_DUE],
       x.[ESCROW] AS [ESCROW],
@@ -54900,10 +58411,13 @@ AS
       x.[RATEPERTHOUSAND] AS [RATEPERTHOUSAND],
       x.[COLFIRSTYR] AS [COLFIRSTYR],
       x.[S_ESCTAX] AS [S_ESCTAX],
+      A1.Descript AS [S_ESCTAX_Description],
       x.[ISMERGEDINT] AS [ISMERGEDINT],
       x.[TAX_TYPE_DESC] AS [TAX_TYPE_DESC],
       x.[UPFRONT_TAX_AMOUNT] AS [UPFRONT_TAX_AMOUNT]
    FROM [clt_NetO].[GF_TLR_TAXITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TAXTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_TAXITEMS' and A0.[COLUMNNAME] = 'S_TAXTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ESCTAX = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_TAXITEMS' and A1.[COLUMNNAME] = 'S_ESCTAX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -54987,8 +58501,8 @@ CREATE VIEW [NetO_sas_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM] AS [DELETED_LNUM],
-      x.[USRID] AS [USRID],
       x.[DELETED_CLNUM] AS [DELETED_CLNUM],
+      x.[USRID] AS [USRID],
       x.[ACTIVITY] AS [ACTIVITY],
       x.[TERMINAL] AS [TERMINAL],
       x.[OS_USER] AS [OS_USER],
@@ -55048,6 +58562,7 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_ADDRTYPE] AS [S_ADDRTYPE],
+      A0.Descript AS [S_ADDRTYPE_Description],
       x.[ADDR1] AS [ADDR1],
       x.[ADDR2] AS [ADDR2],
       HASHBYTES('SHA2_256', x.[CITY]) AS [CITY],
@@ -55057,8 +58572,11 @@ AS
       HASHBYTES('SHA2_256', x.[ZIP]) AS [ZIP],
       x.[TIMEZONE] AS [TIMEZONE],
       x.[S_CMSADR_UNIT_TYPE] AS [S_CMSADR_UNIT_TYPE],
+      A1.Descript AS [S_CMSADR_UNIT_TYPE_Description],
       x.[CMSADR_UNIT_NUM] AS [CMSADR_UNIT_NUM]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_ADDRESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ADDRTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A0.[COLUMNNAME] = 'S_ADDRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55081,8 +58599,10 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_EMAILTYPE] AS [S_EMAILTYPE],
+      A0.Descript AS [S_EMAILTYPE_Description],
       HASHBYTES('SHA2_256', x.[EMAILADDR]) AS [EMAILADDR]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_EMAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55105,10 +58625,12 @@ AS
       x.[CID] AS [CID],
       x.[ACTIVE] AS [ACTIVE],
       x.[S_CMSSTATUS] AS [S_CMSSTATUS],
+      A0.Descript AS [S_CMSSTATUS_Description],
       x.[FULLNAME] AS [FULLNAME],
       x.[SHORTNAME] AS [SHORTNAME],
       HASHBYTES('SHA2_256', x.[SSNTIN]) AS [SSNTIN],
       x.[S_TITLE] AS [S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[REFCODE] AS [REFCODE],
       x.[CREATED_BY_USER] AS [CREATED_BY_USER],
       x.[CREATED_DATE] AS [CREATED_DATE],
@@ -55123,6 +58645,8 @@ AS
       x.[SUFFIXNAME] AS [SUFFIXNAME],
       x.[PORTAL_REFCODE] AS [PORTAL_REFCODE]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSSTATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A0.[COLUMNNAME] = 'S_CMSSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55145,9 +58669,11 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_PHONETYPE] AS [S_PHONETYPE],
+      A0.Descript AS [S_PHONETYPE_Description],
       x.[PHONENBR] AS [PHONENBR],
       x.[PHONEEXT] AS [PHONEEXT]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_PHONE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55168,8 +58694,10 @@ CREATE VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_TYPE]
 AS
    SELECT
       x.[CID] AS [CID],
-      x.[S_CMSTYPE] AS [S_CMSTYPE]
+      x.[S_CMSTYPE] AS [S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_TYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55191,12 +58719,15 @@ AS
    SELECT
       x.[CID] AS [CID],
       x.[S_CMSTYPE] AS [S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description],
       x.[S_STATUS] AS [S_STATUS],
+      A1.Descript AS [S_STATUS_Description],
       x.[STATUS_START_DT] AS [STATUS_START_DT],
       x.[STATUS_STOP_DT] AS [STATUS_STOP_DT],
       x.[STATUS_CHGD_DT] AS [STATUS_CHGD_DT],
       x.[USEPARENT] AS [USEPARENT],
       x.[S_GRADE] AS [S_GRADE],
+      A2.Descript AS [S_GRADE_Description],
       x.[COMPLIANCE_MONITOR] AS [COMPLIANCE_MONITOR],
       x.[COMPLIANCE_EMAIL] AS [COMPLIANCE_EMAIL],
       x.[EMPLOYER_ID] AS [EMPLOYER_ID],
@@ -55208,9 +58739,14 @@ AS
       x.[SAR_ID] AS [SAR_ID],
       x.[PROVIDER_ID] AS [PROVIDER_ID],
       x.[S_TYPE_OF_COMPANY] AS [S_TYPE_OF_COMPANY],
+      A3.Descript AS [S_TYPE_OF_COMPANY_Description],
       x.[CMS_SHORT_DESC] AS [CMS_SHORT_DESC],
       x.[CMS_COMMENTS] AS [CMS_COMMENTS]
    FROM [clt_NetO].[GF_TS_CMS_INFOBYTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A1.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRADE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A2.[COLUMNNAME] = 'S_GRADE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55231,10 +58767,12 @@ CREATE VIEW [NetO_sas_restricted].[VwGF_TS_INDEX_VALUE]
 AS
    SELECT
       x.[S_INDEX] AS [S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[INDEX_ID] AS [INDEX_ID],
       x.[EFFECTIVE_DATE] AS [EFFECTIVE_DATE],
       x.[INDEX_VALUE] AS [INDEX_VALUE]
    FROM [clt_NetO].[GF_TS_INDEX_VALUE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55389,12 +58927,16 @@ CREATE VIEW [NetO_sas_restricted].[VwGF_TS_WF_GROUP_USER]
 AS
    SELECT
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A0.Descript AS [S_PROC_GROUP_Description],
       x.[USERID] AS [USERID],
       x.[S_USER_TYPE] AS [S_USER_TYPE],
+      A1.Descript AS [S_USER_TYPE_Description],
       x.[IS_ACTIVE] AS [IS_ACTIVE],
       x.[WEIGHT] AS [WEIGHT],
       x.[SUPERVISOR_ID] AS [SUPERVISOR_ID]
    FROM [clt_NetO].[GF_TS_WF_GROUP_USER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROC_GROUP = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_GROUP_USER' and A0.[COLUMNNAME] = 'S_PROC_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55415,9 +58957,11 @@ CREATE VIEW [NetO_sas_restricted].[VwGF_TS_WF_PROCESS]
 AS
    SELECT
       x.[S_PROCESS] AS [S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[IS_ACTIVE] AS [IS_ACTIVE],
       x.[EST_TO_COMPLETE] AS [EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55438,9 +58982,11 @@ CREATE VIEW [NetO_sas_restricted].[VwGF_TS_WF_PROCESS_MODEL]
 AS
    SELECT
       x.[S_PROCESS_MODEL] AS [S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[IS_ACTIVE] AS [IS_ACTIVE],
       x.[EST_TO_COMPLETE] AS [EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS_MODEL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55461,16 +59007,24 @@ CREATE VIEW [NetO_sas_restricted].[VwGF_TS_WF_WORKTYPE]
 AS
    SELECT
       x.[S_WORKTYPE] AS [S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_WT_TYPE] AS [S_WT_TYPE],
+      A1.Descript AS [S_WT_TYPE_Description],
       x.[WT_EXECUTABLE] AS [WT_EXECUTABLE],
       x.[EST_TO_COMPLETE] AS [EST_TO_COMPLETE],
       x.[S_USERINTERFACE] AS [S_USERINTERFACE],
+      A2.Descript AS [S_USERINTERFACE_Description],
       x.[S_REASSIGN_RULE] AS [S_REASSIGN_RULE],
+      A3.Descript AS [S_REASSIGN_RULE_Description],
       x.[WEIGHT_TIER1] AS [WEIGHT_TIER1],
       x.[WEIGHT_TIER2] AS [WEIGHT_TIER2],
       x.[WEIGHT_TIER3] AS [WEIGHT_TIER3],
       x.[DISPLAY_IDX] AS [DISPLAY_IDX]
    FROM [clt_NetO].[GF_TS_WF_WORKTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_WORKTYPE' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_WT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_WORKTYPE' and A1.[COLUMNNAME] = 'S_WT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USERINTERFACE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_WF_WORKTYPE' and A2.[COLUMNNAME] = 'S_USERINTERFACE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55524,7 +59078,9 @@ AS
       x.[OLD_AGENCY_NUM_REQUIRED] AS [OLD_AGENCY_NUM_REQUIRED],
       x.[PROD_IDENTIFIER] AS [PROD_IDENTIFIER],
       x.[S_AUS_INDICATOR] AS [S_AUS_INDICATOR],
+      A0.Descript AS [S_AUS_INDICATOR_Description],
       x.[S_SERVICE_TYPE_IND] AS [S_SERVICE_TYPE_IND],
+      A1.Descript AS [S_SERVICE_TYPE_IND_Description],
       x.[SERVICE_INT_INDICATOR] AS [SERVICE_INT_INDICATOR],
       x.[SERVICE_LOC_CID] AS [SERVICE_LOC_CID],
       x.[SUB_PRIME_INDICATOR] AS [SUB_PRIME_INDICATOR],
@@ -55539,6 +59095,7 @@ AS
       x.[INTEREST_ONLY_PRODUCT] AS [INTEREST_ONLY_PRODUCT],
       x.[ODDDEFER] AS [ODDDEFER],
       x.[S_SPEC_PRG] AS [S_SPEC_PRG],
+      A2.Descript AS [S_SPEC_PRG_Description],
       x.[MI_REQUIRED] AS [MI_REQUIRED],
       x.[CRA_REPORTABLE] AS [CRA_REPORTABLE],
       x.[MIN_ALLOW_TERM] AS [MIN_ALLOW_TERM],
@@ -55550,12 +59107,17 @@ AS
       x.[PREQUAL_ALLOWED_YN] AS [PREQUAL_ALLOWED_YN],
       x.[PREAPPROVAL_ALLOWED_YN] AS [PREAPPROVAL_ALLOWED_YN],
       x.[S_LOANFIT_PURP_CAT] AS [S_LOANFIT_PURP_CAT],
+      A3.Descript AS [S_LOANFIT_PURP_CAT_Description],
       x.[S_LOANFIT_PROD_CAT] AS [S_LOANFIT_PROD_CAT],
+      A4.Descript AS [S_LOANFIT_PROD_CAT_Description],
       x.[S_LOANFIT_LIEN_CAT] AS [S_LOANFIT_LIEN_CAT],
+      A5.Descript AS [S_LOANFIT_LIEN_CAT_Description],
       x.[LOANFIT_CATEGORY_POSN] AS [LOANFIT_CATEGORY_POSN],
       x.[LOANFIT_DISPLAY_POSN] AS [LOANFIT_DISPLAY_POSN],
       x.[S_LOANFIT_AMT_GROUP] AS [S_LOANFIT_AMT_GROUP],
+      A6.Descript AS [S_LOANFIT_AMT_GROUP_Description],
       x.[S_LOANFIT_LTV_GROUP] AS [S_LOANFIT_LTV_GROUP],
+      A7.Descript AS [S_LOANFIT_LTV_GROUP_Description],
       x.[LOANFIT_MIN_LOAN] AS [LOANFIT_MIN_LOAN],
       x.[LOANFIT_MAX_LOAN] AS [LOANFIT_MAX_LOAN],
       x.[LOANFIT_MIN_LTV] AS [LOANFIT_MIN_LTV],
@@ -55575,6 +59137,7 @@ AS
       x.[CREATE_DATE] AS [CREATE_DATE],
       x.[MODIFY_DATE] AS [MODIFY_DATE],
       x.[S_CONST_PROGRAM] AS [S_CONST_PROGRAM],
+      A8.Descript AS [S_CONST_PROGRAM_Description],
       x.[CONST_MONTHS] AS [CONST_MONTHS],
       x.[IPG_RENOVA_PROD] AS [IPG_RENOVA_PROD],
       x.[DOCMAGIC_PLAN_CODE] AS [DOCMAGIC_PLAN_CODE],
@@ -55583,9 +59146,24 @@ AS
       x.[DAYS_FINAL_FLOAT_ELIG] AS [DAYS_FINAL_FLOAT_ELIG],
       x.[IPG_FINAL_INVESTOR] AS [IPG_FINAL_INVESTOR],
       x.[S_ASSUMABILITY_FEATURE] AS [S_ASSUMABILITY_FEATURE],
+      A9.Descript AS [S_ASSUMABILITY_FEATURE_Description],
       x.[S_IPG_BUYDWN] AS [S_IPG_BUYDWN],
-      x.[S_BUYDWN_CNTRBTR] AS [S_BUYDWN_CNTRBTR]
+      A10.Descript AS [S_IPG_BUYDWN_Description],
+      x.[S_BUYDWN_CNTRBTR] AS [S_BUYDWN_CNTRBTR],
+      A11.Descript AS [S_BUYDWN_CNTRBTR_Description]
    FROM [clt_NetO].[GF_TSR_PNP_IPG_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AUS_INDICATOR = A0.DBSYMBOL AND A0.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A0.[COLUMNNAME] = 'S_AUS_INDICATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SERVICE_TYPE_IND = A1.DBSYMBOL AND A1.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A1.[COLUMNNAME] = 'S_SERVICE_TYPE_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPEC_PRG = A2.DBSYMBOL AND A2.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A2.[COLUMNNAME] = 'S_SPEC_PRG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LOANFIT_PURP_CAT = A3.DBSYMBOL AND A3.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A3.[COLUMNNAME] = 'S_LOANFIT_PURP_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOANFIT_PROD_CAT = A4.DBSYMBOL AND A4.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A4.[COLUMNNAME] = 'S_LOANFIT_PROD_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LOANFIT_LIEN_CAT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A5.[COLUMNNAME] = 'S_LOANFIT_LIEN_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LOANFIT_AMT_GROUP = A6.DBSYMBOL AND A6.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A6.[COLUMNNAME] = 'S_LOANFIT_AMT_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LOANFIT_LTV_GROUP = A7.DBSYMBOL AND A7.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A7.[COLUMNNAME] = 'S_LOANFIT_LTV_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CONST_PROGRAM = A8.DBSYMBOL AND A8.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A8.[COLUMNNAME] = 'S_CONST_PROGRAM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_ASSUMABILITY_FEATURE = A9.DBSYMBOL AND A9.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A9.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_IPG_BUYDWN = A10.DBSYMBOL AND A10.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A10.[COLUMNNAME] = 'S_IPG_BUYDWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55607,8 +59185,11 @@ AS
    SELECT
       x.[ACTION_ID] AS [ACTION_ID],
       x.[S_WORKTYPE] AS [S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_ACTION_RESOLUTION] AS [S_ACTION_RESOLUTION],
+      A1.Descript AS [S_ACTION_RESOLUTION_Description],
       x.[S_PROC_MDL_RESOLUTION] AS [S_PROC_MDL_RESOLUTION],
+      A2.Descript AS [S_PROC_MDL_RESOLUTION_Description],
       x.[EXTERNAL_CODE] AS [EXTERNAL_CODE],
       x.[INSERT_DATE] AS [INSERT_DATE],
       x.[EXP_DATE_TO_COMPLETE] AS [EXP_DATE_TO_COMPLETE],
@@ -55619,11 +59200,16 @@ AS
       x.[ACTION_STATUS_FLAG] AS [ACTION_STATUS_FLAG],
       x.[RESERVED_BY] AS [RESERVED_BY],
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A3.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MDL_MGR_ID] AS [PROC_MDL_MGR_ID],
       x.[RESERVE_DATE] AS [RESERVE_DATE],
       x.[WF_SESSION_ID] AS [WF_SESSION_ID],
       x.[OPENED_DATE] AS [OPENED_DATE]
    FROM [clt_NetO].[GF_TW_WF_ACTION_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_ACTION_MGR' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACTION_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_ACTION_MGR' and A1.[COLUMNNAME] = 'S_ACTION_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_MDL_RESOLUTION = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_ACTION_MGR' and A2.[COLUMNNAME] = 'S_PROC_MDL_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55645,7 +59231,9 @@ AS
    SELECT
       x.[PROC_MDL_MGR_ID] AS [PROC_MDL_MGR_ID],
       x.[S_PROCESS_MODEL] AS [S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[S_PROC_MDL_MGR_RESOLUTION] AS [S_PROC_MDL_MGR_RESOLUTION],
+      A1.Descript AS [S_PROC_MDL_MGR_RESOLUTION_Description],
       x.[EXP_DATE_TO_COMPLETE] AS [EXP_DATE_TO_COMPLETE],
       x.[START_DATE] AS [START_DATE],
       x.[END_DATE] AS [END_DATE],
@@ -55653,9 +59241,13 @@ AS
       x.[IS_COMPLETE] AS [IS_COMPLETE],
       x.[RESERVED_BY] AS [RESERVED_BY],
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A2.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MGR_ID] AS [PROC_MGR_ID],
       x.[PARENT_PROC_MDL_MGR_ID] AS [PARENT_PROC_MDL_MGR_ID]
    FROM [clt_NetO].[GF_TW_WF_PROC_MODEL_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_MDL_MGR_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A1.[COLUMNNAME] = 'S_PROC_MDL_MGR_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55677,6 +59269,7 @@ AS
    SELECT
       x.[PROC_MGR_ID] AS [PROC_MGR_ID],
       x.[S_PROCESS] AS [S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[EXTERNAL_CODE] AS [EXTERNAL_CODE],
       x.[EXT_CODE_DESC] AS [EXT_CODE_DESC],
       x.[EXP_COMP_DATE] AS [EXP_COMP_DATE],
@@ -55687,8 +59280,11 @@ AS
       x.[MODELS_COMPLETED] AS [MODELS_COMPLETED],
       x.[IS_COMPLETE] AS [IS_COMPLETE],
       x.[RESERVED_BY] AS [RESERVED_BY],
-      x.[S_PROC_GROUP] AS [S_PROC_GROUP]
+      x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A1.Descript AS [S_PROC_GROUP_Description]
    FROM [clt_NetO].[GF_TW_WF_PROCESS_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A0.[COLUMNNAME] = 'S_PROCESS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -55831,18 +59427,24 @@ AS
       x.[CTAXLTV] AS [CTAXLTV],
       x.[NUM_CARDS] AS [NUM_CARDS],
       x.[S_LOCTYPE] AS [S_LOCTYPE],
+      A0.Descript AS [S_LOCTYPE_Description],
       x.[ANNUAL_FEE] AS [ANNUAL_FEE],
       x.[REPAY_MTHS] AS [REPAY_MTHS],
       x.[TERMIN_FEE] AS [TERMIN_FEE],
       x.[DRAWACCESS_FEE] AS [DRAWACCESS_FEE],
       x.[S_FUNDS_TO_BE_DRAWN] AS [S_FUNDS_TO_BE_DRAWN],
+      A1.Descript AS [S_FUNDS_TO_BE_DRAWN_Description],
       x.[OVERDRAFT_PROTECTION] AS [OVERDRAFT_PROTECTION],
       x.[ODP_ACCOUNT_NUMBER] AS [ODP_ACCOUNT_NUMBER],
       x.[ODP_ROUTING_NUMBER] AS [ODP_ROUTING_NUMBER],
       x.[ANNUAL_CALC_OVR] AS [ANNUAL_CALC_OVR],
       x.[TERM_CALC_OVR] AS [TERM_CALC_OVR],
-      x.[S_REPAYMENT_METHOD] AS [S_REPAYMENT_METHOD]
+      x.[S_REPAYMENT_METHOD] AS [S_REPAYMENT_METHOD],
+      A2.Descript AS [S_REPAYMENT_METHOD_Description]
    FROM [clt_NetO].[HELOC] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOCTYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC' and A0.[COLUMNNAME] = 'S_LOCTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FUNDS_TO_BE_DRAWN = A1.DBSYMBOL AND A1.[TableName] = 'HELOC' and A1.[COLUMNNAME] = 'S_FUNDS_TO_BE_DRAWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_REPAYMENT_METHOD = A2.DBSYMBOL AND A2.[TableName] = 'HELOC' and A2.[COLUMNNAME] = 'S_REPAYMENT_METHOD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -55870,9 +59472,11 @@ AS
       x.[MIN_BALANCE] AS [MIN_BALANCE],
       x.[OPENEND_CREDIT_IND] AS [OPENEND_CREDIT_IND],
       x.[S_RTC_TYPE] AS [S_RTC_TYPE],
+      A0.Descript AS [S_RTC_TYPE_Description],
       x.[WAIVE_ANNUAL_FEE] AS [WAIVE_ANNUAL_FEE],
       x.[ANNUAL_FEE_START_DT] AS [ANNUAL_FEE_START_DT]
    FROM [clt_NetO].[HELOC2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RTC_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC2' and A0.[COLUMNNAME] = 'S_RTC_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -56008,9 +59612,11 @@ AS
       x.[RPTYEAR] AS [RPTYEAR],
       x.[CFPNUM] AS [CFPNUM],
       x.[S_CUSTOMQRY] AS [S_CUSTOMQRY],
+      A0.Descript AS [S_CUSTOMQRY_Description],
       x.[CEMAIL] AS [CEMAIL],
       x.[HMDA_LAR_LEI] AS [HMDA_LAR_LEI]
    FROM [clt_NetO].[HMDAXPRT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -56056,7 +59662,9 @@ AS
       x.[JEXPAMT] AS [JEXPAMT],
       x.[PRIMINC] AS [PRIMINC],
       x.[S_INCOME] AS [S_INCOME],
+      A0.Descript AS [S_INCOME_Description],
       x.[S_PAYPER] AS [S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[INCAMT] AS [INCAMT],
       x.[INCDESC] AS [INCDESC],
       x.[MNTEQUIV] AS [MNTEQUIV],
@@ -56076,10 +59684,12 @@ AS
       x.[TSWE_INCOME_IND] AS [TSWE_INCOME_IND],
       x.[EFFECTIVE_MO_INC] AS [EFFECTIVE_MO_INC],
       x.[S_JOB_TYPE] AS [S_JOB_TYPE],
+      A2.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT] AS [OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY] AS [PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC] AS [OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE] AS [S_SPECBOREMPRELTYPE],
+      A3.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC] AS [OTHERSPECBOREMPRELTYPEDSC],
       x.[RURALHOUSINGCALC] AS [RURALHOUSINGCALC],
       x.[COUNTRY] AS [COUNTRY],
@@ -56088,9 +59698,11 @@ AS
       x.[STATED_FLAG] AS [STATED_FLAG],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[S_INCOMECATEGORY] AS [S_INCOMECATEGORY],
+      A4.Descript AS [S_INCOMECATEGORY_Description],
       x.[OCCUPATION] AS [OCCUPATION],
       x.[INCSTIND] AS [INCSTIND],
       x.[S_SELFEMPTYPE] AS [S_SELFEMPTYPE],
+      A5.Descript AS [S_SELFEMPTYPE_Description],
       x.[PRE_VERI_GROSS_INC] AS [PRE_VERI_GROSS_INC],
       x.[USE_GROSS_INCOME] AS [USE_GROSS_INCOME],
       x.[YTD_AMOUNT] AS [YTD_AMOUNT],
@@ -56105,6 +59717,12 @@ AS
       x.[FROM_INCOME_CALC] AS [FROM_INCOME_CALC],
       x.[STATED_INC] AS [STATED_INC]
    FROM [clt_NetO].[INCOME] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME = A0.DBSYMBOL AND A0.[TableName] = 'INCOME' and A0.[COLUMNNAME] = 'S_INCOME'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'INCOME' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_JOB_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'INCOME' and A2.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPECBOREMPRELTYPE = A3.DBSYMBOL AND A3.[TableName] = 'INCOME' and A3.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_INCOMECATEGORY = A4.DBSYMBOL AND A4.[TableName] = 'INCOME' and A4.[COLUMNNAME] = 'S_INCOMECATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SELFEMPTYPE = A5.DBSYMBOL AND A5.[TableName] = 'INCOME' and A5.[COLUMNNAME] = 'S_SELFEMPTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -56209,6 +59827,7 @@ AS
       x.[DBID] AS [DBID],
       x.[LIABCTR] AS [LIABCTR],
       x.[S_LIAB] AS [S_LIAB],
+      A0.Descript AS [S_LIAB_Description],
       x.[LIABDESC] AS [LIABDESC],
       x.[ACCTNUM] AS [ACCTNUM],
       x.[HOLDER] AS [HOLDER],
@@ -56224,6 +59843,7 @@ AS
       x.[ACCTBAL] AS [ACCTBAL],
       x.[ACCTPYMT] AS [ACCTPYMT],
       x.[S_PAYPER] AS [S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[MTHPYMT] AS [MTHPYMT],
       x.[PYMTLEFT] AS [PYMTLEFT],
       x.[INCPYMT] AS [INCPYMT],
@@ -56238,6 +59858,7 @@ AS
       x.[PAYTYPE] AS [PAYTYPE],
       x.[VERIFY] AS [VERIFY],
       x.[S_LIENPS] AS [S_LIENPS],
+      A2.Descript AS [S_LIENPS_Description],
       x.[ORIGDBTDT] AS [ORIGDBTDT],
       x.[EXPDBTDT] AS [EXPDBTDT],
       x.[RESUBIND] AS [RESUBIND],
@@ -56245,7 +59866,9 @@ AS
       x.[MTG_TYPE_DESCRIPT] AS [MTG_TYPE_DESCRIPT],
       x.[PURCH_MONEY_IND] AS [PURCH_MONEY_IND],
       x.[S_EXCLUSION_REASON] AS [S_EXCLUSION_REASON],
+      A3.Descript AS [S_EXCLUSION_REASON_Description],
       x.[S_MTG_TYPE] AS [S_MTG_TYPE],
+      A4.Descript AS [S_MTG_TYPE_Description],
       x.[SECURITY_INSTR_VOLUME] AS [SECURITY_INSTR_VOLUME],
       x.[DEBT_CCTIN_TITLE] AS [DEBT_CCTIN_TITLE],
       x.[TRUSTEE_NAME] AS [TRUSTEE_NAME],
@@ -56274,6 +59897,7 @@ AS
       x.[INVESTMENT_CREDIT_LINE] AS [INVESTMENT_CREDIT_LINE],
       x.[CREDIT_TYPE_OTH] AS [CREDIT_TYPE_OTH],
       x.[S_CREDIT_CARD_TYPE] AS [S_CREDIT_CARD_TYPE],
+      A5.Descript AS [S_CREDIT_CARD_TYPE_Description],
       x.[INTERNAL_REFI] AS [INTERNAL_REFI],
       x.[HCOUNTRY] AS [HCOUNTRY],
       x.[SOURCE_CB_PMT] AS [SOURCE_CB_PMT],
@@ -56298,6 +59922,7 @@ AS
       x.[DEBT_REROUTING_NO] AS [DEBT_REROUTING_NO],
       x.[REBEN_ACCT_NUM] AS [REBEN_ACCT_NUM],
       x.[S_LIABILITYDISBTYPE] AS [S_LIABILITYDISBTYPE],
+      A6.Descript AS [S_LIABILITYDISBTYPE_Description],
       x.[P_PYMTLEFT] AS [P_PYMTLEFT],
       x.[P_MNPAYLFT] AS [P_MNPAYLFT],
       x.[P_BALANCE] AS [P_BALANCE],
@@ -56307,6 +59932,7 @@ AS
       x.[OWNERSHP_TYPE] AS [OWNERSHP_TYPE],
       x.[DEDUCT_FROM_INC] AS [DEDUCT_FROM_INC],
       x.[S_ACCOUNT_OWNERSHIP] AS [S_ACCOUNT_OWNERSHIP],
+      A7.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[LATE_30_DAYS] AS [LATE_30_DAYS],
       x.[LATE_60_DAYS] AS [LATE_60_DAYS],
       x.[LATE_90_DAYS] AS [LATE_90_DAYS],
@@ -56314,6 +59940,14 @@ AS
       HASHBYTES('SHA2_256', CAST(x.[CREDIT_LIMIT_AMOUNT] AS NVARCHAR(50))) AS [CREDIT_LIMIT_AMOUNT],
       x.[INC_CREDIT_LINE] AS [INC_CREDIT_LINE]
    FROM [clt_NetO].[LIABLTY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LIAB = A0.DBSYMBOL AND A0.[TableName] = 'LIABLTY' and A0.[COLUMNNAME] = 'S_LIAB'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'LIABLTY' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIENPS = A2.DBSYMBOL AND A2.[TableName] = 'LIABLTY' and A2.[COLUMNNAME] = 'S_LIENPS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_EXCLUSION_REASON = A3.DBSYMBOL AND A3.[TableName] = 'LIABLTY' and A3.[COLUMNNAME] = 'S_EXCLUSION_REASON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_MTG_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'LIABLTY' and A4.[COLUMNNAME] = 'S_MTG_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CREDIT_CARD_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'LIABLTY' and A5.[COLUMNNAME] = 'S_CREDIT_CARD_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIABILITYDISBTYPE = A6.DBSYMBOL AND A6.[TableName] = 'LIABLTY' and A6.[COLUMNNAME] = 'S_LIABILITYDISBTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ACCOUNT_OWNERSHIP = A7.DBSYMBOL AND A7.[TableName] = 'LIABLTY' and A7.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -56437,6 +60071,7 @@ AS
       x.[RESST] AS [RESST],
       x.[RESZIP] AS [RESZIP],
       x.[S_OWNRNT] AS [S_OWNRNT],
+      A0.Descript AS [S_OWNRNT_Description],
       x.[RESNMYRS] AS [RESNMYRS],
       x.[ACCTPREV] AS [ACCTPREV],
       x.[ACCTHLDR] AS [ACCTHLDR],
@@ -56448,12 +60083,17 @@ AS
       x.[YRS_AT_PREV] AS [YRS_AT_PREV],
       x.[MNTHS_AT_PREV] AS [MNTHS_AT_PREV],
       x.[S_RES_UNIT_TYPE] AS [S_RES_UNIT_TYPE],
+      A1.Descript AS [S_RES_UNIT_TYPE_Description],
       x.[RES_UNIT_NUM] AS [RES_UNIT_NUM],
       x.[RES_CNTRY_CODE] AS [RES_CNTRY_CODE],
       x.[PREV_STATE_FOREIN] AS [PREV_STATE_FOREIN],
       x.[PREV_POSTCODE] AS [PREV_POSTCODE],
-      x.[S_LIVE_RENT_FREE_ENUMS] AS [S_LIVE_RENT_FREE_ENUMS]
+      x.[S_LIVE_RENT_FREE_ENUMS] AS [S_LIVE_RENT_FREE_ENUMS],
+      A2.Descript AS [S_LIVE_RENT_FREE_ENUMS_Description]
    FROM [clt_NetO].[PREVRES] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRNT = A0.DBSYMBOL AND A0.[TableName] = 'PREVRES' and A0.[COLUMNNAME] = 'S_OWNRNT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RES_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'PREVRES' and A1.[COLUMNNAME] = 'S_RES_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIVE_RENT_FREE_ENUMS = A2.DBSYMBOL AND A2.[TableName] = 'PREVRES' and A2.[COLUMNNAME] = 'S_LIVE_RENT_FREE_ENUMS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -56476,31 +60116,43 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_PROD] AS [S_PROD],
+      A0.Descript AS [S_PROD_Description],
       x.[S_RATE] AS [S_RATE],
+      A1.Descript AS [S_RATE_Description],
       x.[S_RTCODE] AS [S_RTCODE],
+      A2.Descript AS [S_RTCODE_Description],
       x.[OLA] AS [OLA],
       x.[LTV] AS [LTV],
       x.[S_LCKTYP] AS [S_LCKTYP],
+      A3.Descript AS [S_LCKTYP_Description],
       x.[LOCKDATE] AS [LOCKDATE],
       x.[LOCKEXP] AS [LOCKEXP],
       x.[LOCKDAYS] AS [LOCKDAYS],
       x.[INTRATE] AS [INTRATE],
       x.[LOANTERM] AS [LOANTERM],
       x.[S_LCKEXP] AS [S_LCKEXP],
+      A4.Descript AS [S_LCKEXP_Description],
       x.[S_RATIO] AS [S_RATIO],
+      A5.Descript AS [S_RATIO_Description],
       x.[S_BYDOWN] AS [S_BYDOWN],
+      A6.Descript AS [S_BYDOWN_Description],
       x.[S_MIPLAN] AS [S_MIPLAN],
+      A7.Descript AS [S_MIPLAN_Description],
       x.[FMIRFLAG] AS [FMIRFLAG],
       x.[FMIRFCTR] AS [FMIRFCTR],
       x.[BALLFLAG] AS [BALLFLAG],
       x.[AMTERM] AS [AMTERM],
       x.[PIPMT] AS [PIPMT],
       x.[S_PMTSTR] AS [S_PMTSTR],
+      A8.Descript AS [S_PMTSTR_Description],
       x.[S_DISC] AS [S_DISC],
+      A9.Descript AS [S_DISC_Description],
       x.[S_ORIG] AS [S_ORIG],
+      A10.Descript AS [S_ORIG_Description],
       x.[BASELA] AS [BASELA],
       x.[LOCKED] AS [LOCKED],
       x.[S_QRATE] AS [S_QRATE],
+      A11.Descript AS [S_QRATE_Description],
       x.[BASERATE] AS [BASERATE],
       x.[CNFIRM] AS [CNFIRM],
       x.[BASEMKTDISC] AS [BASEMKTDISC],
@@ -56516,8 +60168,11 @@ AS
       x.[MKTDISCOVERRIDE] AS [MKTDISCOVERRIDE],
       x.[INTRATEOVERRIDE] AS [INTRATEOVERRIDE],
       x.[S_RTCODEOVR] AS [S_RTCODEOVR],
+      A12.Descript AS [S_RTCODEOVR_Description],
       x.[S_LTYPE] AS [S_LTYPE],
+      A13.Descript AS [S_LTYPE_Description],
       x.[S_PROGRM] AS [S_PROGRM],
+      A14.Descript AS [S_PROGRM_Description],
       x.[FINMIPERC] AS [FINMIPERC],
       x.[QUALRATE] AS [QUALRATE],
       x.[BASEQUAL] AS [BASEQUAL],
@@ -56530,8 +60185,10 @@ AS
       x.[BASELAEDT] AS [BASELAEDT],
       x.[ODDRATE] AS [ODDRATE],
       x.[S_AMTYPE] AS [S_AMTYPE],
+      A15.Descript AS [S_AMTYPE_Description],
       x.[SELRTCODE] AS [SELRTCODE],
       x.[S_RCOMNUM] AS [S_RCOMNUM],
+      A16.Descript AS [S_RCOMNUM_Description],
       x.[BYDNPMT4] AS [BYDNPMT4],
       x.[BYDNPMT5] AS [BYDNPMT5],
       x.[BYDNPMT6] AS [BYDNPMT6],
@@ -56556,11 +60213,13 @@ AS
       x.[LOCKEXPDT] AS [LOCKEXPDT],
       x.[SELECTEDINVESTOR] AS [SELECTEDINVESTOR],
       x.[S_BALLOON_TYPE] AS [S_BALLOON_TYPE],
+      A17.Descript AS [S_BALLOON_TYPE_Description],
       x.[AMORT_OTHER] AS [AMORT_OTHER],
       x.[CLIENTRATEINFO] AS [CLIENTRATEINFO],
       x.[SELECTEDPROGRAM] AS [SELECTEDPROGRAM],
       x.[BUYDOWNOVERRIDES] AS [BUYDOWNOVERRIDES],
       x.[S_MORTGAGETYPE] AS [S_MORTGAGETYPE],
+      A18.Descript AS [S_MORTGAGETYPE_Description],
       x.[TOTALPMTNO] AS [TOTALPMTNO],
       x.[MININTPMTRATE] AS [MININTPMTRATE],
       x.[REFI_RESCISSION_EXEMPT] AS [REFI_RESCISSION_EXEMPT],
@@ -56578,8 +60237,10 @@ AS
       x.[BASE_ADJ_DISC] AS [BASE_ADJ_DISC],
       x.[PMTRCODE] AS [PMTRCODE],
       x.[S_AMORT_SUB_TYPE] AS [S_AMORT_SUB_TYPE],
+      A19.Descript AS [S_AMORT_SUB_TYPE_Description],
       x.[QUALMETHOD] AS [QUALMETHOD],
       x.[S_QUALMETHODOVR] AS [S_QUALMETHODOVR],
+      A20.Descript AS [S_QUALMETHODOVR_Description],
       x.[YSP] AS [YSP],
       x.[YSP_OVRD] AS [YSP_OVRD],
       x.[OVERAGE] AS [OVERAGE],
@@ -56606,10 +60267,13 @@ AS
       x.[BORR_RESCISSION_EXEMPT] AS [BORR_RESCISSION_EXEMPT],
       x.[CORR_BOR_RATE_LOCKDATE] AS [CORR_BOR_RATE_LOCKDATE],
       x.[S_203KTYPE] AS [S_203KTYPE],
+      A21.Descript AS [S_203KTYPE_Description],
       x.[PRODUCT_DENIAL] AS [PRODUCT_DENIAL],
       x.[REQ_RESCISSION] AS [REQ_RESCISSION],
       x.[S_PRICING_REGION] AS [S_PRICING_REGION],
+      A22.Descript AS [S_PRICING_REGION_Description],
       x.[S_PRICING_CHANNEL] AS [S_PRICING_CHANNEL],
+      A23.Descript AS [S_PRICING_CHANNEL_Description],
       x.[ROE] AS [ROE],
       x.[ROA] AS [ROA],
       x.[ROEEXP] AS [ROEEXP],
@@ -56649,12 +60313,42 @@ AS
       x.[AUS_INDICATOR] AS [AUS_INDICATOR],
       x.[LOAN_TYPE_CHG_FLAG] AS [LOAN_TYPE_CHG_FLAG],
       x.[S_PROD_PRICE_ENGINE] AS [S_PROD_PRICE_ENGINE],
+      A24.Descript AS [S_PROD_PRICE_ENGINE_Description],
       x.[S_PROD_PRICE_ENGINE_OVR] AS [S_PROD_PRICE_ENGINE_OVR],
+      A25.Descript AS [S_PROD_PRICE_ENGINE_OVR_Description],
       x.[S_PPY_FILTER] AS [S_PPY_FILTER],
+      A26.Descript AS [S_PPY_FILTER_Description],
       x.[BUILDER_LOCK_ADJ] AS [BUILDER_LOCK_ADJ],
       x.[REQLOANTERM] AS [REQLOANTERM],
       x.[DLR_PIPMT] AS [DLR_PIPMT]
    FROM [clt_NetO].[PRODUCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROD = A0.DBSYMBOL AND A0.[TableName] = 'PRODUCT' and A0.[COLUMNNAME] = 'S_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RATE = A1.DBSYMBOL AND A1.[TableName] = 'PRODUCT' and A1.[COLUMNNAME] = 'S_RATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_RTCODE = A2.DBSYMBOL AND A2.[TableName] = 'PRODUCT' and A2.[COLUMNNAME] = 'S_RTCODE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LCKTYP = A3.DBSYMBOL AND A3.[TableName] = 'PRODUCT' and A3.[COLUMNNAME] = 'S_LCKTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LCKEXP = A4.DBSYMBOL AND A4.[TableName] = 'PRODUCT' and A4.[COLUMNNAME] = 'S_LCKEXP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_RATIO = A5.DBSYMBOL AND A5.[TableName] = 'PRODUCT' and A5.[COLUMNNAME] = 'S_RATIO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_BYDOWN = A6.DBSYMBOL AND A6.[TableName] = 'PRODUCT' and A6.[COLUMNNAME] = 'S_BYDOWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_MIPLAN = A7.DBSYMBOL AND A7.[TableName] = 'PRODUCT' and A7.[COLUMNNAME] = 'S_MIPLAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_PMTSTR = A8.DBSYMBOL AND A8.[TableName] = 'PRODUCT' and A8.[COLUMNNAME] = 'S_PMTSTR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_DISC = A9.DBSYMBOL AND A9.[TableName] = 'PRODUCT' and A9.[COLUMNNAME] = 'S_DISC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_ORIG = A10.DBSYMBOL AND A10.[TableName] = 'PRODUCT' and A10.[COLUMNNAME] = 'S_ORIG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_QRATE = A11.DBSYMBOL AND A11.[TableName] = 'PRODUCT' and A11.[COLUMNNAME] = 'S_QRATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_RTCODEOVR = A12.DBSYMBOL AND A12.[TableName] = 'PRODUCT' and A12.[COLUMNNAME] = 'S_RTCODEOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_LTYPE = A13.DBSYMBOL AND A13.[TableName] = 'PRODUCT' and A13.[COLUMNNAME] = 'S_LTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROGRM = A14.DBSYMBOL AND A14.[TableName] = 'PRODUCT' and A14.[COLUMNNAME] = 'S_PROGRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_AMTYPE = A15.DBSYMBOL AND A15.[TableName] = 'PRODUCT' and A15.[COLUMNNAME] = 'S_AMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_RCOMNUM = A16.DBSYMBOL AND A16.[TableName] = 'PRODUCT' and A16.[COLUMNNAME] = 'S_RCOMNUM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_BALLOON_TYPE = A17.DBSYMBOL AND A17.[TableName] = 'PRODUCT' and A17.[COLUMNNAME] = 'S_BALLOON_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_MORTGAGETYPE = A18.DBSYMBOL AND A18.[TableName] = 'PRODUCT' and A18.[COLUMNNAME] = 'S_MORTGAGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_AMORT_SUB_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'PRODUCT' and A19.[COLUMNNAME] = 'S_AMORT_SUB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_QUALMETHODOVR = A20.DBSYMBOL AND A20.[TableName] = 'PRODUCT' and A20.[COLUMNNAME] = 'S_QUALMETHODOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_203KTYPE = A21.DBSYMBOL AND A21.[TableName] = 'PRODUCT' and A21.[COLUMNNAME] = 'S_203KTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PRICING_REGION = A22.DBSYMBOL AND A22.[TableName] = 'PRODUCT' and A22.[COLUMNNAME] = 'S_PRICING_REGION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_PRICING_CHANNEL = A23.DBSYMBOL AND A23.[TableName] = 'PRODUCT' and A23.[COLUMNNAME] = 'S_PRICING_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_PROD_PRICE_ENGINE = A24.DBSYMBOL AND A24.[TableName] = 'PRODUCT' and A24.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_PROD_PRICE_ENGINE_OVR = A25.DBSYMBOL AND A25.[TableName] = 'PRODUCT' and A25.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_PPY_FILTER = A26.DBSYMBOL AND A26.[TableName] = 'PRODUCT' and A26.[COLUMNNAME] = 'S_PPY_FILTER'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -56754,7 +60448,9 @@ AS
       x.[REOSTATE] AS [REOSTATE],
       x.[REOZIP] AS [REOZIP],
       x.[S_REOPST] AS [S_REOPST],
+      A0.Descript AS [S_REOPST_Description],
       x.[S_REOTYP] AS [S_REOTYP],
+      A1.Descript AS [S_REOTYP_Description],
       x.[PRESVAL] AS [PRESVAL],
       x.[PRESMTG] AS [PRESMTG],
       x.[GROSRENT] AS [GROSRENT],
@@ -56764,6 +60460,7 @@ AS
       x.[PGROSINC] AS [PGROSINC],
       x.[AGROSINC] AS [AGROSINC],
       x.[S_ONRSHP] AS [S_ONRSHP],
+      A2.Descript AS [S_ONRSHP_Description],
       x.[REOCNTRY] AS [REOCNTRY],
       x.[PRIM_RES] AS [PRIM_RES],
       x.[SUBJECTP] AS [SUBJECTP],
@@ -56805,15 +60502,24 @@ AS
       x.[UNITNUMREO] AS [UNITNUMREO],
       x.[UNITTYPEREO] AS [UNITTYPEREO],
       x.[S_ACCOUNT_OWNERSHIP] AS [S_ACCOUNT_OWNERSHIP],
+      A3.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[XPROCEEDOVR] AS [XPROCEEDOVR],
       x.[S_REO_INTEND_OCCUPANCY] AS [S_REO_INTEND_OCCUPANCY],
+      A4.Descript AS [S_REO_INTEND_OCCUPANCY_Description],
       x.[REO_OTHROCCUP_DESC] AS [REO_OTHROCCUP_DESC],
       x.[S_REO_CURR_PROP_USAGE] AS [S_REO_CURR_PROP_USAGE],
+      A5.Descript AS [S_REO_CURR_PROP_USAGE_Description],
       x.[REO_STATE_FOREIN] AS [REO_STATE_FOREIN],
       x.[REO_POSTCODE] AS [REO_POSTCODE],
       x.[REO_CNTRY_COD] AS [REO_CNTRY_COD],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[REOWNED] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REOPST = A0.DBSYMBOL AND A0.[TableName] = 'REOWNED' and A0.[COLUMNNAME] = 'S_REOPST'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_REOTYP = A1.DBSYMBOL AND A1.[TableName] = 'REOWNED' and A1.[COLUMNNAME] = 'S_REOTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ONRSHP = A2.DBSYMBOL AND A2.[TableName] = 'REOWNED' and A2.[COLUMNNAME] = 'S_ONRSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ACCOUNT_OWNERSHIP = A3.DBSYMBOL AND A3.[TableName] = 'REOWNED' and A3.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_REO_INTEND_OCCUPANCY = A4.DBSYMBOL AND A4.[TableName] = 'REOWNED' and A4.[COLUMNNAME] = 'S_REO_INTEND_OCCUPANCY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_REO_CURR_PROP_USAGE = A5.DBSYMBOL AND A5.[TableName] = 'REOWNED' and A5.[COLUMNNAME] = 'S_REO_CURR_PROP_USAGE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -56839,8 +60545,6 @@ AS
       x.[TAXYEAR] AS [TAXYEAR],
       x.[METHOD] AS [METHOD],
       x.[CNTR] AS [CNTR],
-      x.[DBID] AS [DBID],
-      x.[CTR] AS [CTR],
       x.[SCHCPRFT] AS [SCHCPRFT],
       x.[SCHCDEPL] AS [SCHCDEPL],
       x.[SCHCDEPR] AS [SCHCDEPR],
@@ -56906,6 +60610,8 @@ AS
       x.[D_TOTAL] AS [D_TOTAL],
       x.[NOMONTHS] AS [NOMONTHS],
       x.[MNTHAVRG] AS [MNTHAVRG],
+      x.[DBID] AS [DBID],
+      x.[CTR] AS [CTR],
       x.[TOTINC] AS [TOTINC],
       x.[DEPR2106] AS [DEPR2106],
       x.[SCHCOTHI] AS [SCHCOTHI],
@@ -57011,19 +60717,25 @@ AS
       x.[POWER_OF_ATT_DESC] AS [POWER_OF_ATT_DESC],
       x.[ESTABLISHED_STATE] AS [ESTABLISHED_STATE],
       x.[S_BOR_SELLER_OPTION] AS [S_BOR_SELLER_OPTION],
+      A0.Descript AS [S_BOR_SELLER_OPTION_Description],
       x.[S_SEL_UNIT_TYPE] AS [S_SEL_UNIT_TYPE],
+      A1.Descript AS [S_SEL_UNIT_TYPE_Description],
       x.[SEL_UNIT_NUM] AS [SEL_UNIT_NUM],
       x.[SEL_COUNTRY_CODE] AS [SEL_COUNTRY_CODE],
       x.[SEL_STATE_FOREIN] AS [SEL_STATE_FOREIN],
       x.[SEL_POSTCODE] AS [SEL_POSTCODE],
       x.[EMAIL] AS [EMAIL],
       x.[S_IDENTIFICATION_TYPE] AS [S_IDENTIFICATION_TYPE],
+      A2.Descript AS [S_IDENTIFICATION_TYPE_Description],
       x.[IDENTIFICATION_NUMBER] AS [IDENTIFICATION_NUMBER],
       x.[SELLER_LIENHOLDER] AS [SELLER_LIENHOLDER],
       x.[SELLER_CODE] AS [SELLER_CODE],
       x.[SALES_TAX_ID] AS [SALES_TAX_ID],
       x.[REGION] AS [REGION]
    FROM [clt_NetO].[SELLER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BOR_SELLER_OPTION = A0.DBSYMBOL AND A0.[TableName] = 'SELLER' and A0.[COLUMNNAME] = 'S_BOR_SELLER_OPTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEL_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'SELLER' and A1.[COLUMNNAME] = 'S_SEL_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_IDENTIFICATION_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'SELLER' and A2.[COLUMNNAME] = 'S_IDENTIFICATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57085,8 +60797,10 @@ AS
       x.[DOCS_SENT] AS [DOCS_SENT],
       x.[INDEMNF_AMT] AS [INDEMNF_AMT],
       x.[PC_FEDEX_NUM] AS [PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS] AS [S_SERVICING_STATUS]
+      x.[S_SERVICING_STATUS] AS [S_SERVICING_STATUS],
+      A0.Descript AS [S_SERVICING_STATUS_Description]
    FROM [clt_NetO].[SERVICNG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SERVICING_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'SERVICNG' and A0.[COLUMNNAME] = 'S_SERVICING_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57118,14 +60832,18 @@ AS
       x.[SUBJTHLD] AS [SUBJTHLD],
       x.[SUBJMHLD] AS [SUBJMHLD],
       x.[S_OWNRHT] AS [S_OWNRHT],
+      A0.Descript AS [S_OWNRHT_Description],
       x.[SUBJOREX] AS [SUBJOREX],
       x.[SUBJLPRI] AS [SUBJLPRI],
       x.[SUBJAV] AS [SUBJAV],
       x.[SUBJSP] AS [SUBJSP],
       x.[S_PRPTYP] AS [S_PRPTYP],
+      A1.Descript AS [S_PRPTYP_Description],
       x.[SUBJSCFN] AS [SUBJSCFN],
       x.[S_DPAYMT] AS [S_DPAYMT],
+      A2.Descript AS [S_DPAYMT_Description],
       x.[S_RESTYP] AS [S_RESTYP],
+      A3.Descript AS [S_RESTYP_Description],
       x.[SUBJESTE] AS [SUBJESTE],
       x.[SUBJLEXP] AS [SUBJLEXP],
       x.[SUBJCNTY] AS [SUBJCNTY],
@@ -57133,11 +60851,14 @@ AS
       x.[BLOCKNUM] AS [BLOCKNUM],
       x.[SUBDIV] AS [SUBDIV],
       x.[S_PURP] AS [S_PURP],
+      A4.Descript AS [S_PURP_Description],
       x.[STCODE] AS [STCODE],
       x.[CYCODE] AS [CYCODE],
       x.[MSACODE] AS [MSACODE],
       x.[S_LIENPO] AS [S_LIENPO],
+      A5.Descript AS [S_LIENPO_Description],
       x.[S_LIENHO] AS [S_LIENHO],
+      A6.Descript AS [S_LIENHO_Description],
       x.[BALOTHMT] AS [BALOTHMT],
       x.[SUBJLTV] AS [SUBJLTV],
       x.[COMBLTV] AS [COMBLTV],
@@ -57145,6 +60866,7 @@ AS
       x.[STRALIAS] AS [STRALIAS],
       x.[CITYFLAG] AS [CITYFLAG],
       x.[S_PRJCLS] AS [S_PRJCLS],
+      A7.Descript AS [S_PRJCLS_Description],
       x.[PROJNAME] AS [PROJNAME],
       x.[DECLDBID] AS [DECLDBID],
       x.[DECLSERL] AS [DECLSERL],
@@ -57172,7 +60894,9 @@ AS
       x.[LIENPOSOTHER] AS [LIENPOSOTHER],
       x.[PROPTYPEOTHER] AS [PROPTYPEOTHER],
       x.[S_FREPRJCLS] AS [S_FREPRJCLS],
+      A8.Descript AS [S_FREPRJCLS_Description],
       x.[S_FNMPRJCLS] AS [S_FNMPRJCLS],
+      A9.Descript AS [S_FNMPRJCLS_Description],
       x.[HOTEL_INDICATOR] AS [HOTEL_INDICATOR],
       x.[NONWARRANTABLE] AS [NONWARRANTABLE],
       x.[NUMBSTORIES] AS [NUMBSTORIES],
@@ -57184,39 +60908,54 @@ AS
       x.[OTHERPROPRITTYPEDESC] AS [OTHERPROPRITTYPEDESC],
       x.[OTHEROWNTYPEDESC] AS [OTHEROWNTYPEDESC],
       x.[S_UNIQUEDWELLINGTYPE] AS [S_UNIQUEDWELLINGTYPE],
+      A10.Descript AS [S_UNIQUEDWELLINGTYPE_Description],
       x.[OTHERUNIQDWELLINGTYPDSC] AS [OTHERUNIQDWELLINGTYPDSC],
       x.[S_NATIVEAMERICANLANDSTYPE] AS [S_NATIVEAMERICANLANDSTYPE],
+      A11.Descript AS [S_NATIVEAMERICANLANDSTYPE_Description],
       x.[OTHERNATAMERLANDSTYPEDESC] AS [OTHERNATAMERLANDSTYPEDESC],
       x.[COMMLANDTRUSTINDCTR] AS [COMMLANDTRUSTINDCTR],
       x.[INCLUSIONARYZONEINDCTR] AS [INCLUSIONARYZONEINDCTR],
       x.[S_CATEGORYTYPE] AS [S_CATEGORYTYPE],
+      A12.Descript AS [S_CATEGORYTYPE_Description],
       x.[OTHERCATEGORYTYPEDESC] AS [OTHERCATEGORYTYPEDESC],
       x.[S_PROJECTDESIGNTYPE] AS [S_PROJECTDESIGNTYPE],
+      A13.Descript AS [S_PROJECTDESIGNTYPE_Description],
       x.[OTHERPROJDESIGNTYPEDESC] AS [OTHERPROJDESIGNTYPEDESC],
       x.[S_PROJECTCLASSTYPE] AS [S_PROJECTCLASSTYPE],
+      A14.Descript AS [S_PROJECTCLASSTYPE_Description],
       x.[OTHERPROJCLASSTYPEDESC] AS [OTHERPROJCLASSTYPEDESC],
       x.[OTHERDOWNPAYTYPEDESC] AS [OTHERDOWNPAYTYPEDESC],
       x.[S_UNITOWNERSHIPTYPE] AS [S_UNITOWNERSHIPTYPE],
+      A15.Descript AS [S_UNITOWNERSHIPTYPE_Description],
       x.[CONCURRENT_FIN_INPUT] AS [CONCURRENT_FIN_INPUT],
       x.[INCLUDE_ASSIST_PROGS] AS [INCLUDE_ASSIST_PROGS],
       x.[S_DPAYMTNM] AS [S_DPAYMTNM],
+      A16.Descript AS [S_DPAYMTNM_Description],
       x.[DOWNPAYNMDESC] AS [DOWNPAYNMDESC],
       x.[SUBESTAV] AS [SUBESTAV],
       x.[LTV_ROUNDED] AS [LTV_ROUNDED],
       x.[TLTV_ROUNDED] AS [TLTV_ROUNDED],
       x.[S_CONDO_PROJECT_STATUS] AS [S_CONDO_PROJECT_STATUS],
+      A17.Descript AS [S_CONDO_PROJECT_STATUS_Description],
       x.[S_PROJ_ATTACH_TYPE] AS [S_PROJ_ATTACH_TYPE],
+      A18.Descript AS [S_PROJ_ATTACH_TYPE_Description],
       x.[S_PROJECT_DESIGN_TYPE] AS [S_PROJECT_DESIGN_TYPE],
+      A19.Descript AS [S_PROJECT_DESIGN_TYPE_Description],
       x.[S_ATTACHMENT_TYPE] AS [S_ATTACHMENT_TYPE],
+      A20.Descript AS [S_ATTACHMENT_TYPE_Description],
       x.[S_PROJ_CLASS_ID_FNM] AS [S_PROJ_CLASS_ID_FNM],
+      A21.Descript AS [S_PROJ_CLASS_ID_FNM_Description],
       x.[S_PROJ_CLASS_ID_FRE] AS [S_PROJ_CLASS_ID_FRE],
+      A22.Descript AS [S_PROJ_CLASS_ID_FRE_Description],
       x.[PROJ_UNITS_TOTAL] AS [PROJ_UNITS_TOTAL],
       x.[PROJ_UNITS_SOLD] AS [PROJ_UNITS_SOLD],
       x.[ISUSPSVALIDATED] AS [ISUSPSVALIDATED],
       x.[SUBJADD3] AS [SUBJADD3],
       x.[CPMPROID] AS [CPMPROID],
       x.[S_FRPROJ] AS [S_FRPROJ],
+      A23.Descript AS [S_FRPROJ_Description],
       x.[S_FMPROJ] AS [S_FMPROJ],
+      A24.Descript AS [S_FMPROJ_Description],
       x.[PROPDESC] AS [PROPDESC],
       x.[RENTINC_VERIFIED] AS [RENTINC_VERIFIED],
       x.[RENTINC_VERIFY_TYPE] AS [RENTINC_VERIFY_TYPE],
@@ -57224,12 +60963,14 @@ AS
       x.[CONDO_UNITS_COV_HAZ] AS [CONDO_UNITS_COV_HAZ],
       x.[CONDO_UNITS_COV_FLD] AS [CONDO_UNITS_COV_FLD],
       x.[S_STRUCTURETYPE] AS [S_STRUCTURETYPE],
+      A25.Descript AS [S_STRUCTURETYPE_Description],
       x.[CEMA] AS [CEMA],
       x.[FHAHUDAPPROVAL] AS [FHAHUDAPPROVAL],
       x.[IMP_COST_PLUS_EEM] AS [IMP_COST_PLUS_EEM],
       x.[MAX_LIMIT_LOAN_AMT] AS [MAX_LIMIT_LOAN_AMT],
       x.[TOTAL_MTG_PROPERTIES] AS [TOTAL_MTG_PROPERTIES],
       x.[S_SUBJUNITTYPE] AS [S_SUBJUNITTYPE],
+      A26.Descript AS [S_SUBJUNITTYPE_Description],
       x.[CRAEXEMPTION] AS [CRAEXEMPTION],
       x.[MDINDICATOR] AS [MDINDICATOR],
       x.[MSAINDICATOR] AS [MSAINDICATOR],
@@ -57237,7 +60978,9 @@ AS
       x.[INCOME_RESTRICT] AS [INCOME_RESTRICT],
       x.[PROPVALUE_RELIED_ON] AS [PROPVALUE_RELIED_ON],
       x.[S_APPRMTHDREQ] AS [S_APPRMTHDREQ],
+      A27.Descript AS [S_APPRMTHDREQ_Description],
       x.[S_APPRMTHDREQOVR] AS [S_APPRMTHDREQOVR],
+      A28.Descript AS [S_APPRMTHDREQOVR_Description],
       x.[EXIST_EEM_AMT] AS [EXIST_EEM_AMT],
       x.[ISCONDOMINIUM] AS [ISCONDOMINIUM],
       x.[ISCOOPERATIVE] AS [ISCOOPERATIVE],
@@ -57248,6 +60991,7 @@ AS
       x.[MFHOME] AS [MFHOME],
       x.[TX_50A6] AS [TX_50A6],
       x.[S_TRSTYP] AS [S_TRSTYP],
+      A29.Descript AS [S_TRSTYP_Description],
       x.[SHORT_LEGAL_DESC_OVR] AS [SHORT_LEGAL_DESC_OVR],
       x.[SUBJTHLCUR] AS [SUBJTHLCUR],
       x.[ADJLTV] AS [ADJLTV],
@@ -57257,6 +61001,36 @@ AS
       x.[TX_50F2] AS [TX_50F2],
       x.[RESALE_RESTRICTION] AS [RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRHT = A0.DBSYMBOL AND A0.[TableName] = 'SUBJPRP' and A0.[COLUMNNAME] = 'S_OWNRHT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PRPTYP = A1.DBSYMBOL AND A1.[TableName] = 'SUBJPRP' and A1.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DPAYMT = A2.DBSYMBOL AND A2.[TableName] = 'SUBJPRP' and A2.[COLUMNNAME] = 'S_DPAYMT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESTYP = A3.DBSYMBOL AND A3.[TableName] = 'SUBJPRP' and A3.[COLUMNNAME] = 'S_RESTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PURP = A4.DBSYMBOL AND A4.[TableName] = 'SUBJPRP' and A4.[COLUMNNAME] = 'S_PURP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LIENPO = A5.DBSYMBOL AND A5.[TableName] = 'SUBJPRP' and A5.[COLUMNNAME] = 'S_LIENPO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIENHO = A6.DBSYMBOL AND A6.[TableName] = 'SUBJPRP' and A6.[COLUMNNAME] = 'S_LIENHO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_PRJCLS = A7.DBSYMBOL AND A7.[TableName] = 'SUBJPRP' and A7.[COLUMNNAME] = 'S_PRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_FREPRJCLS = A8.DBSYMBOL AND A8.[TableName] = 'SUBJPRP' and A8.[COLUMNNAME] = 'S_FREPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_FNMPRJCLS = A9.DBSYMBOL AND A9.[TableName] = 'SUBJPRP' and A9.[COLUMNNAME] = 'S_FNMPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_UNIQUEDWELLINGTYPE = A10.DBSYMBOL AND A10.[TableName] = 'SUBJPRP' and A10.[COLUMNNAME] = 'S_UNIQUEDWELLINGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_NATIVEAMERICANLANDSTYPE = A11.DBSYMBOL AND A11.[TableName] = 'SUBJPRP' and A11.[COLUMNNAME] = 'S_NATIVEAMERICANLANDSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_CATEGORYTYPE = A12.DBSYMBOL AND A12.[TableName] = 'SUBJPRP' and A12.[COLUMNNAME] = 'S_CATEGORYTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_PROJECTDESIGNTYPE = A13.DBSYMBOL AND A13.[TableName] = 'SUBJPRP' and A13.[COLUMNNAME] = 'S_PROJECTDESIGNTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROJECTCLASSTYPE = A14.DBSYMBOL AND A14.[TableName] = 'SUBJPRP' and A14.[COLUMNNAME] = 'S_PROJECTCLASSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_UNITOWNERSHIPTYPE = A15.DBSYMBOL AND A15.[TableName] = 'SUBJPRP' and A15.[COLUMNNAME] = 'S_UNITOWNERSHIPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_DPAYMTNM = A16.DBSYMBOL AND A16.[TableName] = 'SUBJPRP' and A16.[COLUMNNAME] = 'S_DPAYMTNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CONDO_PROJECT_STATUS = A17.DBSYMBOL AND A17.[TableName] = 'SUBJPRP' and A17.[COLUMNNAME] = 'S_CONDO_PROJECT_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_PROJ_ATTACH_TYPE = A18.DBSYMBOL AND A18.[TableName] = 'SUBJPRP' and A18.[COLUMNNAME] = 'S_PROJ_ATTACH_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_PROJECT_DESIGN_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'SUBJPRP' and A19.[COLUMNNAME] = 'S_PROJECT_DESIGN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_ATTACHMENT_TYPE = A20.DBSYMBOL AND A20.[TableName] = 'SUBJPRP' and A20.[COLUMNNAME] = 'S_ATTACHMENT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_PROJ_CLASS_ID_FNM = A21.DBSYMBOL AND A21.[TableName] = 'SUBJPRP' and A21.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PROJ_CLASS_ID_FRE = A22.DBSYMBOL AND A22.[TableName] = 'SUBJPRP' and A22.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FRE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_FRPROJ = A23.DBSYMBOL AND A23.[TableName] = 'SUBJPRP' and A23.[COLUMNNAME] = 'S_FRPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_FMPROJ = A24.DBSYMBOL AND A24.[TableName] = 'SUBJPRP' and A24.[COLUMNNAME] = 'S_FMPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_STRUCTURETYPE = A25.DBSYMBOL AND A25.[TableName] = 'SUBJPRP' and A25.[COLUMNNAME] = 'S_STRUCTURETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_SUBJUNITTYPE = A26.DBSYMBOL AND A26.[TableName] = 'SUBJPRP' and A26.[COLUMNNAME] = 'S_SUBJUNITTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_APPRMTHDREQ = A27.DBSYMBOL AND A27.[TableName] = 'SUBJPRP' and A27.[COLUMNNAME] = 'S_APPRMTHDREQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_APPRMTHDREQOVR = A28.DBSYMBOL AND A28.[TableName] = 'SUBJPRP' and A28.[COLUMNNAME] = 'S_APPRMTHDREQOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_TRSTYP = A29.DBSYMBOL AND A29.[TableName] = 'SUBJPRP' and A29.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57398,10 +61172,13 @@ AS
       x.[SECINTOWN] AS [SECINTOWN],
       x.[SECINTOTH] AS [SECINTOTH],
       x.[S_LATECHARGETYPE] AS [S_LATECHARGETYPE],
+      A0.Descript AS [S_LATECHARGETYPE_Description],
       x.[S_PPPOPT] AS [S_PPPOPT],
+      A1.Descript AS [S_PPPOPT_Description],
       x.[PMMS_RATE] AS [PMMS_RATE],
       x.[LOCK_REDISCLOSE_IND] AS [LOCK_REDISCLOSE_IND],
       x.[S_TIL2011_OVRD] AS [S_TIL2011_OVRD],
+      A2.Descript AS [S_TIL2011_OVRD_Description],
       x.[FLAT_AMT] AS [FLAT_AMT],
       x.[BPRESOTHPRGS] AS [BPRESOTHPRGS],
       x.[DISCLOSE_APR] AS [DISCLOSE_APR],
@@ -57422,6 +61199,9 @@ AS
       x.[PRESENT_SHARES] AS [PRESENT_SHARES],
       x.[OTHER_COLLATERAL] AS [OTHER_COLLATERAL]
    FROM [clt_NetO].[TILINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LATECHARGETYPE = A0.DBSYMBOL AND A0.[TableName] = 'TILINFO' and A0.[COLUMNNAME] = 'S_LATECHARGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PPPOPT = A1.DBSYMBOL AND A1.[TableName] = 'TILINFO' and A1.[COLUMNNAME] = 'S_PPPOPT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_TIL2011_OVRD = A2.DBSYMBOL AND A2.[TableName] = 'TILINFO' and A2.[COLUMNNAME] = 'S_TIL2011_OVRD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57447,18 +61227,26 @@ AS
       x.[TRLNDRCN] AS [TRLNDRCN],
       x.[CLNUM] AS [CLNUM],
       x.[S_IVMETH] AS [S_IVMETH],
+      A0.Descript AS [S_IVMETH_Description],
       x.[S_IVID] AS [S_IVID],
+      A1.Descript AS [S_IVID_Description],
       x.[S_BUSCHL] AS [S_BUSCHL],
+      A2.Descript AS [S_BUSCHL_Description],
       x.[CLOSEDT] AS [CLOSEDT],
       x.[DISBURDT] AS [DISBURDT],
       x.[FSTPMTDT] AS [FSTPMTDT],
       x.[ODDDAYS] AS [ODDDAYS],
       x.[FEEFIRST] AS [FEEFIRST],
       x.[S_COPT1] AS [S_COPT1],
+      A3.Descript AS [S_COPT1_Description],
       x.[S_COPT2] AS [S_COPT2],
+      A4.Descript AS [S_COPT2_Description],
       x.[S_COPT3] AS [S_COPT3],
+      A5.Descript AS [S_COPT3_Description],
       x.[S_COPT4] AS [S_COPT4],
+      A6.Descript AS [S_COPT4_Description],
       x.[S_COPT5] AS [S_COPT5],
+      A7.Descript AS [S_COPT5_Description],
       x.[CUSHION] AS [CUSHION],
       x.[AGGEADJ] AS [AGGEADJ],
       x.[DOWNPYMT] AS [DOWNPYMT],
@@ -57475,15 +61263,24 @@ AS
       x.[WHOMCFM] AS [WHOMCFM],
       x.[PREQUAL] AS [PREQUAL],
       x.[S_COPT6] AS [S_COPT6],
+      A8.Descript AS [S_COPT6_Description],
       x.[S_COPT7] AS [S_COPT7],
+      A9.Descript AS [S_COPT7_Description],
       x.[S_COPT8] AS [S_COPT8],
+      A10.Descript AS [S_COPT8_Description],
       x.[S_COPT9] AS [S_COPT9],
+      A11.Descript AS [S_COPT9_Description],
       x.[S_COPT10] AS [S_COPT10],
+      A12.Descript AS [S_COPT10_Description],
       x.[S_CRDGRDRQ] AS [S_CRDGRDRQ],
+      A13.Descript AS [S_CRDGRDRQ_Description],
       x.[S_DOCLEVEL] AS [S_DOCLEVEL],
+      A14.Descript AS [S_DOCLEVEL_Description],
       x.[GRADEDC] AS [GRADEDC],
       x.[S_CRDGRDAP] AS [S_CRDGRDAP],
+      A15.Descript AS [S_CRDGRDAP_Description],
       x.[S_QUALITY] AS [S_QUALITY],
+      A16.Descript AS [S_QUALITY_Description],
       x.[DMSGRADE] AS [DMSGRADE],
       x.[ESTCLOSD] AS [ESTCLOSD],
       x.[SRVCNUM] AS [SRVCNUM],
@@ -57500,6 +61297,7 @@ AS
       x.[LRDATE] AS [LRDATE],
       x.[TPBROKR] AS [TPBROKR],
       x.[S_DELTERMS] AS [S_DELTERMS],
+      A17.Descript AS [S_DELTERMS_Description],
       x.[SELLCL] AS [SELLCL],
       x.[WLSTATUS] AS [WLSTATUS],
       x.[CLTYPE] AS [CLTYPE],
@@ -57509,7 +61307,9 @@ AS
       x.[USERQUALIFIER] AS [USERQUALIFIER],
       x.[PURPOSE_TYPE] AS [PURPOSE_TYPE],
       x.[S_CASE_STATUS] AS [S_CASE_STATUS],
+      A18.Descript AS [S_CASE_STATUS_Description],
       x.[S_REPAY] AS [S_REPAY],
+      A19.Descript AS [S_REPAY_Description],
       x.[UNITPER] AS [UNITPER],
       x.[UNITPEROVR] AS [UNITPEROVR],
       x.[LASTLOCKED] AS [LASTLOCKED],
@@ -57523,6 +61323,7 @@ AS
       x.[OBLIGATED_BORROWER_COUNT] AS [OBLIGATED_BORROWER_COUNT],
       x.[SECURITY_TOKEN] AS [SECURITY_TOKEN],
       x.[S_CHANNEL_SOURCE_CODE] AS [S_CHANNEL_SOURCE_CODE],
+      A20.Descript AS [S_CHANNEL_SOURCE_CODE_Description],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[LOAN_CREATE_DATE] AS [LOAN_CREATE_DATE],
       x.[CLIENT_TOLL_FREE_NUM] AS [CLIENT_TOLL_FREE_NUM],
@@ -57534,6 +61335,27 @@ AS
       x.[AUTO_CREDIT_PULLED] AS [AUTO_CREDIT_PULLED],
       x.[SELLER_SERVICING_NUM] AS [SELLER_SERVICING_NUM]
    FROM [clt_NetO].[TRACKING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IVMETH = A0.DBSYMBOL AND A0.[TableName] = 'TRACKING' and A0.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_IVID = A1.DBSYMBOL AND A1.[TableName] = 'TRACKING' and A1.[COLUMNNAME] = 'S_IVID'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BUSCHL = A2.DBSYMBOL AND A2.[TableName] = 'TRACKING' and A2.[COLUMNNAME] = 'S_BUSCHL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COPT1 = A3.DBSYMBOL AND A3.[TableName] = 'TRACKING' and A3.[COLUMNNAME] = 'S_COPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COPT2 = A4.DBSYMBOL AND A4.[TableName] = 'TRACKING' and A4.[COLUMNNAME] = 'S_COPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_COPT3 = A5.DBSYMBOL AND A5.[TableName] = 'TRACKING' and A5.[COLUMNNAME] = 'S_COPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COPT4 = A6.DBSYMBOL AND A6.[TableName] = 'TRACKING' and A6.[COLUMNNAME] = 'S_COPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_COPT5 = A7.DBSYMBOL AND A7.[TableName] = 'TRACKING' and A7.[COLUMNNAME] = 'S_COPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COPT6 = A8.DBSYMBOL AND A8.[TableName] = 'TRACKING' and A8.[COLUMNNAME] = 'S_COPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_COPT7 = A9.DBSYMBOL AND A9.[TableName] = 'TRACKING' and A9.[COLUMNNAME] = 'S_COPT7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_COPT8 = A10.DBSYMBOL AND A10.[TableName] = 'TRACKING' and A10.[COLUMNNAME] = 'S_COPT8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_COPT9 = A11.DBSYMBOL AND A11.[TableName] = 'TRACKING' and A11.[COLUMNNAME] = 'S_COPT9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_COPT10 = A12.DBSYMBOL AND A12.[TableName] = 'TRACKING' and A12.[COLUMNNAME] = 'S_COPT10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_CRDGRDRQ = A13.DBSYMBOL AND A13.[TableName] = 'TRACKING' and A13.[COLUMNNAME] = 'S_CRDGRDRQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DOCLEVEL = A14.DBSYMBOL AND A14.[TableName] = 'TRACKING' and A14.[COLUMNNAME] = 'S_DOCLEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_CRDGRDAP = A15.DBSYMBOL AND A15.[TableName] = 'TRACKING' and A15.[COLUMNNAME] = 'S_CRDGRDAP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_QUALITY = A16.DBSYMBOL AND A16.[TableName] = 'TRACKING' and A16.[COLUMNNAME] = 'S_QUALITY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_DELTERMS = A17.DBSYMBOL AND A17.[TableName] = 'TRACKING' and A17.[COLUMNNAME] = 'S_DELTERMS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CASE_STATUS = A18.DBSYMBOL AND A18.[TableName] = 'TRACKING' and A18.[COLUMNNAME] = 'S_CASE_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_REPAY = A19.DBSYMBOL AND A19.[TableName] = 'TRACKING' and A19.[COLUMNNAME] = 'S_REPAY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_CHANNEL_SOURCE_CODE = A20.DBSYMBOL AND A20.[TableName] = 'TRACKING' and A20.[COLUMNNAME] = 'S_CHANNEL_SOURCE_CODE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57615,12 +61437,14 @@ AS
       x.[TRUST_STREET_ADDR2] AS [TRUST_STREET_ADDR2],
       x.[EMAIL] AS [EMAIL],
       x.[S_TRUST_UNIT_TYPE] AS [S_TRUST_UNIT_TYPE],
+      A0.Descript AS [S_TRUST_UNIT_TYPE_Description],
       x.[TRUST_UNIT_NUM] AS [TRUST_UNIT_NUM],
       x.[TRUST_COUNTRY_CODE] AS [TRUST_COUNTRY_CODE],
       x.[LIVING_TRUST_BNUM] AS [LIVING_TRUST_BNUM],
       x.[TRST_STATE_FOR] AS [TRST_STATE_FOR],
       x.[TRST_POSTCODE] AS [TRST_POSTCODE]
    FROM [clt_NetO].[TRSTENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRUST_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'TRSTENTS' and A0.[COLUMNNAME] = 'S_TRUST_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57652,6 +61476,7 @@ AS
       x.[TRSTADT2] AS [TRSTADT2],
       x.[TRSTNUMB] AS [TRSTNUMB],
       x.[S_TRSTYP] AS [S_TRSTYP],
+      A0.Descript AS [S_TRSTYP_Description],
       x.[TRSTINST] AS [TRSTINST],
       x.[TRSTREV] AS [TRSTREV],
       x.[STATE] AS [STATE],
@@ -57662,6 +61487,7 @@ AS
       x.[QPRT_BEN_WAIVER] AS [QPRT_BEN_WAIVER],
       x.[LIVTRST] AS [LIVTRST]
    FROM [clt_NetO].[TRUSTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRSTYP = A0.DBSYMBOL AND A0.[TableName] = 'TRUSTS' and A0.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57684,12 +61510,19 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_DISPOSITION] AS [S_DISPOSITION],
+      A0.Descript AS [S_DISPOSITION_Description],
       x.[S_UWOPT1] AS [S_UWOPT1],
+      A1.Descript AS [S_UWOPT1_Description],
       x.[S_UWOPT2] AS [S_UWOPT2],
+      A2.Descript AS [S_UWOPT2_Description],
       x.[S_UWOPT3] AS [S_UWOPT3],
+      A3.Descript AS [S_UWOPT3_Description],
       x.[S_UWOPT4] AS [S_UWOPT4],
+      A4.Descript AS [S_UWOPT4_Description],
       x.[S_UWOPT5] AS [S_UWOPT5],
+      A5.Descript AS [S_UWOPT5_Description],
       x.[S_UWOPT6] AS [S_UWOPT6],
+      A6.Descript AS [S_UWOPT6_Description],
       x.[INV_APPRV_DATE] AS [INV_APPRV_DATE],
       x.[UNDW_EXP_DATE] AS [UNDW_EXP_DATE],
       x.[DOC_EXP_DATE] AS [DOC_EXP_DATE],
@@ -57701,6 +61534,7 @@ AS
       x.[AUSCOMDBID] AS [AUSCOMDBID],
       x.[AUSCOMSN] AS [AUSCOMSN],
       x.[S_TRGTINV] AS [S_TRGTINV],
+      A7.Descript AS [S_TRGTINV_Description],
       x.[UWENTITY] AS [UWENTITY],
       x.[CREDSCOVRD] AS [CREDSCOVRD],
       x.[DELEGATED_ENDORSEMENT] AS [DELEGATED_ENDORSEMENT],
@@ -57708,10 +61542,20 @@ AS
       x.[EST_CRED_SCORE] AS [EST_CRED_SCORE],
       x.[CREDIT_REPORT_REF] AS [CREDIT_REPORT_REF],
       x.[S_CREDSCORE_OVERRIDE_REASON] AS [S_CREDSCORE_OVERRIDE_REASON],
+      A8.Descript AS [S_CREDSCORE_OVERRIDE_REASON_Description],
       x.[CS_OVR_REAS_OTHERDESC] AS [CS_OVR_REAS_OTHERDESC],
       x.[DECISIONTARGETDATE] AS [DECISIONTARGETDATE],
       x.[DISPOSITION_DATETIME] AS [DISPOSITION_DATETIME]
    FROM [clt_NetO].[UNDCOND1] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_DISPOSITION = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND1' and A0.[COLUMNNAME] = 'S_DISPOSITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UWOPT1 = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND1' and A1.[COLUMNNAME] = 'S_UWOPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UWOPT2 = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND1' and A2.[COLUMNNAME] = 'S_UWOPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_UWOPT3 = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND1' and A3.[COLUMNNAME] = 'S_UWOPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_UWOPT4 = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND1' and A4.[COLUMNNAME] = 'S_UWOPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_UWOPT5 = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND1' and A5.[COLUMNNAME] = 'S_UWOPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_UWOPT6 = A6.DBSYMBOL AND A6.[TableName] = 'UNDCOND1' and A6.[COLUMNNAME] = 'S_UWOPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TRGTINV = A7.DBSYMBOL AND A7.[TableName] = 'UNDCOND1' and A7.[COLUMNNAME] = 'S_TRGTINV'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CREDSCORE_OVERRIDE_REASON = A8.DBSYMBOL AND A8.[TableName] = 'UNDCOND1' and A8.[COLUMNNAME] = 'S_CREDSCORE_OVERRIDE_REASON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57736,8 +61580,11 @@ AS
       x.[DBID] AS [DBID],
       x.[CNTR] AS [CNTR],
       x.[S_SUNDCON] AS [S_SUNDCON],
+      A0.Descript AS [S_SUNDCON_Description],
       x.[S_UNDCAT] AS [S_UNDCAT],
+      A1.Descript AS [S_UNDCAT_Description],
       x.[S_UNDTYP] AS [S_UNDTYP],
+      A2.Descript AS [S_UNDTYP_Description],
       x.[CUUSRID] AS [CUUSRID],
       x.[CUUSGRP] AS [CUUSGRP],
       x.[CUDATE] AS [CUDATE],
@@ -57748,13 +61595,16 @@ AS
       x.[UWCKLIST] AS [UWCKLIST],
       x.[ISACTIVE] AS [ISACTIVE],
       x.[S_ASSOCDOC] AS [S_ASSOCDOC],
+      A3.Descript AS [S_ASSOCDOC_Description],
       x.[SHWWAIVE] AS [SHWWAIVE],
       x.[DISCLOSE] AS [DISCLOSE],
       x.[S_COMFLG] AS [S_COMFLG],
+      A4.Descript AS [S_COMFLG_Description],
       x.[RESPONSIBLE_P] AS [RESPONSIBLE_P],
       x.[DUEDATE] AS [DUEDATE],
       x.[ERRORCAUSEBY] AS [ERRORCAUSEBY],
       x.[S_CONDITION_SRC] AS [S_CONDITION_SRC],
+      A5.Descript AS [S_CONDITION_SRC_Description],
       x.[CREATED_DATE] AS [CREATED_DATE],
       x.[CREATED_USER] AS [CREATED_USER],
       x.[RECEIVED_DT] AS [RECEIVED_DT],
@@ -57767,6 +61617,12 @@ AS
       x.[REJECTED_DT] AS [REJECTED_DT],
       x.[RESET_DT] AS [RESET_DT]
    FROM [clt_NetO].[UNDCOND2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND2' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UNDCAT = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND2' and A1.[COLUMNNAME] = 'S_UNDCAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UNDTYP = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND2' and A2.[COLUMNNAME] = 'S_UNDTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ASSOCDOC = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND2' and A3.[COLUMNNAME] = 'S_ASSOCDOC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COMFLG = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND2' and A4.[COLUMNNAME] = 'S_COMFLG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CONDITION_SRC = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND2' and A5.[COLUMNNAME] = 'S_CONDITION_SRC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57791,6 +61647,7 @@ AS
       x.[CNTR] AS [CNTR],
       x.[DBID] AS [DBID],
       x.[S_PRPTYP] AS [S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[UNITNUM] AS [UNITNUM],
       x.[PROJNAME] AS [PROJNAME],
       x.[APPRAISAL] AS [APPRAISAL],
@@ -57821,6 +61678,7 @@ AS
       x.[NET6] AS [NET6],
       x.[GROSS6] AS [GROSS6],
       x.[S_APPRTYPE] AS [S_APPRTYPE],
+      A1.Descript AS [S_APPRTYPE_Description],
       x.[SUBMFLG] AS [SUBMFLG],
       x.[LANDTOVALUE] AS [LANDTOVALUE],
       x.[APPRVALUEINDICATOR] AS [APPRVALUEINDICATOR],
@@ -57835,12 +61693,16 @@ AS
       x.[LESS750] AS [LESS750],
       x.[HVE_EFFECTIVE_DT] AS [HVE_EFFECTIVE_DT],
       x.[S_APPRFORMTYPE] AS [S_APPRFORMTYPE],
+      A2.Descript AS [S_APPRFORMTYPE_Description],
       x.[APPRFORMTYPEOTHDESC] AS [APPRFORMTYPEOTHDESC],
       x.[S_PRPFORMTYPE] AS [S_PRPFORMTYPE],
+      A3.Descript AS [S_PRPFORMTYPE_Description],
       x.[PRPFORMTYPEOTHDESC] AS [PRPFORMTYPEOTHDESC],
       x.[S_PRPMETHODTYPE] AS [S_PRPMETHODTYPE],
+      A4.Descript AS [S_PRPMETHODTYPE_Description],
       x.[PRPMETHODTYPEOTHDESC] AS [PRPMETHODTYPEOTHDESC],
       x.[S_LVLPRPRVW] AS [S_LVLPRPRVW],
+      A5.Descript AS [S_LVLPRPRVW_Description],
       x.[APPRLVLPRPRVWTYPEOTHDESC] AS [APPRLVLPRPRVWTYPEOTHDESC],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_LIC]) AS [APPR_SUPER_LIC],
       x.[DATEORDERED] AS [DATEORDERED],
@@ -57850,6 +61712,7 @@ AS
       x.[ACTUALCOST] AS [ACTUALCOST],
       x.[DATERECEIVED] AS [DATERECEIVED],
       x.[S_STATUS] AS [S_STATUS],
+      A6.Descript AS [S_STATUS_Description],
       x.[REQUESTEDDATE] AS [REQUESTEDDATE],
       x.[REQUESTEDBY] AS [REQUESTEDBY],
       x.[DATEREVIEWED] AS [DATEREVIEWED],
@@ -57869,8 +61732,11 @@ AS
       x.[SITEVALUE] AS [SITEVALUE],
       x.[SUBJECTTOREPAIRS] AS [SUBJECTTOREPAIRS],
       x.[S_APPRMETH] AS [S_APPRMETH],
+      A7.Descript AS [S_APPRMETH_Description],
       x.[S_AVM] AS [S_AVM],
+      A8.Descript AS [S_AVM_Description],
       x.[S_AVMOTH] AS [S_AVMOTH],
+      A9.Descript AS [S_AVMOTH_Description],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_FNAME]) AS [APPR_SUPER_FNAME],
       HASHBYTES('SHA2_256', x.[APPR_SUPER_LNAME]) AS [APPR_SUPER_LNAME],
       x.[APPRREINSPFEE] AS [APPRREINSPFEE],
@@ -57886,8 +61752,20 @@ AS
       x.[ADDR2] AS [ADDR2],
       x.[INV_COLL_PROG_ID] AS [INV_COLL_PROG_ID],
       x.[FORECAST_STD_DEV] AS [FORECAST_STD_DEV],
-      x.[S_HOA_FEES_PERIOD_TYPE] AS [S_HOA_FEES_PERIOD_TYPE]
+      x.[S_HOA_FEES_PERIOD_TYPE] AS [S_HOA_FEES_PERIOD_TYPE],
+      A10.Descript AS [S_HOA_FEES_PERIOD_TYPE_Description]
    FROM [clt_NetO].[UWAPPR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'UWAPPR' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_APPRTYPE = A1.DBSYMBOL AND A1.[TableName] = 'UWAPPR' and A1.[COLUMNNAME] = 'S_APPRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_APPRFORMTYPE = A2.DBSYMBOL AND A2.[TableName] = 'UWAPPR' and A2.[COLUMNNAME] = 'S_APPRFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PRPFORMTYPE = A3.DBSYMBOL AND A3.[TableName] = 'UWAPPR' and A3.[COLUMNNAME] = 'S_PRPFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRPMETHODTYPE = A4.DBSYMBOL AND A4.[TableName] = 'UWAPPR' and A4.[COLUMNNAME] = 'S_PRPMETHODTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LVLPRPRVW = A5.DBSYMBOL AND A5.[TableName] = 'UWAPPR' and A5.[COLUMNNAME] = 'S_LVLPRPRVW'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_STATUS = A6.DBSYMBOL AND A6.[TableName] = 'UWAPPR' and A6.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_APPRMETH = A7.DBSYMBOL AND A7.[TableName] = 'UWAPPR' and A7.[COLUMNNAME] = 'S_APPRMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_AVM = A8.DBSYMBOL AND A8.[TableName] = 'UWAPPR' and A8.[COLUMNNAME] = 'S_AVM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_AVMOTH = A9.DBSYMBOL AND A9.[TableName] = 'UWAPPR' and A9.[COLUMNNAME] = 'S_AVMOTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_HOA_FEES_PERIOD_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'UWAPPR' and A10.[COLUMNNAME] = 'S_HOA_FEES_PERIOD_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -57935,10 +61813,9 @@ CREATE VIEW [NetO_sas_restricted].[VwVETINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[BNUM] AS [BNUM],
-      x.[DBID] AS [DBID],
       x.[SERVNUM] AS [SERVNUM],
       x.[S_BRANCH] AS [S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[STRTSERV] AS [STRTSERV],
       x.[ENDSERV] AS [ENDSERV],
       x.[EXEMPT] AS [EXEMPT],
@@ -57955,14 +61832,17 @@ AS
       x.[SERVPERD] AS [SERVPERD],
       x.[OSRVNUM1] AS [OSRVNUM1],
       x.[S_OBRCH1] AS [S_OBRCH1],
+      A1.Descript AS [S_OBRCH1_Description],
       x.[OSTRTDT1] AS [OSTRTDT1],
       x.[OENDDT1] AS [OENDDT1],
       x.[OSRVNUM2] AS [OSRVNUM2],
       x.[S_OBRCH2] AS [S_OBRCH2],
+      A2.Descript AS [S_OBRCH2_Description],
       x.[OSTRTDT2] AS [OSTRTDT2],
       x.[OENDDT2] AS [OENDDT2],
       x.[OSRVNUM3] AS [OSRVNUM3],
       x.[S_OBRCH3] AS [S_OBRCH3],
+      A3.Descript AS [S_OBRCH3_Description],
       x.[OSTRTDT3] AS [OSTRTDT3],
       x.[OENDDT3] AS [OENDDT3],
       x.[VETSTATUS] AS [VETSTATUS],
@@ -57971,6 +61851,8 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR] AS [DVETCAIVR],
       x.[STATASCR] AS [STATASCR],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
       x.[AWAREVAL] AS [AWAREVAL],
       x.[CERTENCS] AS [CERTENCS],
       x.[CERTLOST] AS [CERTLOST],
@@ -58018,6 +61900,10 @@ AS
       x.[SURVIVING_SPOUSE] AS [SURVIVING_SPOUSE],
       x.[SERVICE_EXPIRATION_DATE] AS [SERVICE_EXPIRATION_DATE]
    FROM [clt_NetO].[VETINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OBRCH1 = A1.DBSYMBOL AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_OBRCH2 = A2.DBSYMBOL AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_OBRCH3 = A3.DBSYMBOL AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58041,7 +61927,9 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_ASSET_TYPE] AS [S_ASSET_TYPE],
+      A0.Descript AS [S_ASSET_TYPE_Description],
       x.[S_ASSET_PURPOSE] AS [S_ASSET_PURPOSE],
+      A1.Descript AS [S_ASSET_PURPOSE_Description],
       x.[ASSET_VERIFIED] AS [ASSET_VERIFIED],
       x.[VERIFICATION_REQD] AS [VERIFICATION_REQD],
       x.[OWNER_EST_VALUE] AS [OWNER_EST_VALUE],
@@ -58054,6 +61942,8 @@ AS
       x.[PRIMARY_COLLATERAL] AS [PRIMARY_COLLATERAL],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[WG_ASSET] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET' and A0.[COLUMNNAME] = 'S_ASSET_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSET_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET' and A1.[COLUMNNAME] = 'S_ASSET_PURPOSE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58088,6 +61978,7 @@ AS
       x.[ACCT_START_DT] AS [ACCT_START_DT],
       x.[ACCT_MATUR_DT] AS [ACCT_MATUR_DT],
       x.[S_ACCT_OWNERSHIP] AS [S_ACCT_OWNERSHIP],
+      A0.Descript AS [S_ACCT_OWNERSHIP_Description],
       x.[ASSET_ACCT_NO] AS [ASSET_ACCT_NO],
       x.[SHARE_VALUE] AS [SHARE_VALUE],
       x.[ASSET_COLL_VALUE] AS [ASSET_COLL_VALUE],
@@ -58096,6 +61987,7 @@ AS
       x.[EXCHANGE_INFO] AS [EXCHANGE_INFO],
       x.[USE_CALC_LOAN_RT] AS [USE_CALC_LOAN_RT]
    FROM [clt_NetO].[WG_ASSET_ACCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ACCT_OWNERSHIP = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_ACCT' and A0.[COLUMNNAME] = 'S_ACCT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58132,9 +62024,15 @@ AS
       x.[ENGINE_TITLE_NUM] AS [ENGINE_TITLE_NUM],
       x.[ENGINE_MODEL_NUM] AS [ENGINE_MODEL_NUM],
       x.[S_ENGINE_MFG] AS [S_ENGINE_MFG],
+      A0.Descript AS [S_ENGINE_MFG_Description],
       x.[S_MULTIENGINETYPE] AS [S_MULTIENGINETYPE],
-      x.[S_ENGINE_COLOR] AS [S_ENGINE_COLOR]
+      A1.Descript AS [S_MULTIENGINETYPE_Description],
+      x.[S_ENGINE_COLOR] AS [S_ENGINE_COLOR],
+      A2.Descript AS [S_ENGINE_COLOR_Description]
    FROM [clt_NetO].[WG_ASSET_MARINE_ENG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ENGINE_MFG = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_MARINE_ENG' and A0.[COLUMNNAME] = 'S_ENGINE_MFG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MULTIENGINETYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_MARINE_ENG' and A1.[COLUMNNAME] = 'S_MULTIENGINETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ENGINE_COLOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_MARINE_ENG' and A2.[COLUMNNAME] = 'S_ENGINE_COLOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58165,23 +62063,31 @@ AS
       x.[NEW_YN] AS [NEW_YN],
       x.[SERIAL] AS [SERIAL],
       x.[S_FUEL_TYPE] AS [S_FUEL_TYPE],
+      A0.Descript AS [S_FUEL_TYPE_Description],
       x.[VEHICLE_REG_NUMBER] AS [VEHICLE_REG_NUMBER],
       x.[BODY_TRIM] AS [BODY_TRIM],
       x.[S_VEHICLE_CONDITION] AS [S_VEHICLE_CONDITION],
+      A1.Descript AS [S_VEHICLE_CONDITION_Description],
       x.[COLL_TITLE_NUM] AS [COLL_TITLE_NUM],
       x.[S_CNRE_OWNERSHIP] AS [S_CNRE_OWNERSHIP],
+      A2.Descript AS [S_CNRE_OWNERSHIP_Description],
       x.[LENGTH] AS [LENGTH],
       x.[WIDTH] AS [WIDTH],
       x.[PRIOR_TITLE_NUM] AS [PRIOR_TITLE_NUM],
       x.[S_TRANSF_AS] AS [S_TRANSF_AS],
+      A3.Descript AS [S_TRANSF_AS_Description],
       x.[S_TRANSF_TO] AS [S_TRANSF_TO],
+      A4.Descript AS [S_TRANSF_TO_Description],
       x.[S_DAMAGE_TYPE] AS [S_DAMAGE_TYPE],
+      A5.Descript AS [S_DAMAGE_TYPE_Description],
       x.[IS_BONAFIDE_GIFT] AS [IS_BONAFIDE_GIFT],
       x.[IS_REBUILDABLE] AS [IS_REBUILDABLE],
       x.[IS_ENERGY_EFFICIENT] AS [IS_ENERGY_EFFICIENT],
       x.[PRIOR_STATE] AS [PRIOR_STATE],
       x.[S_COLOR] AS [S_COLOR],
+      A6.Descript AS [S_COLOR_Description],
       x.[S_GV_WEIGHT_RATING] AS [S_GV_WEIGHT_RATING],
+      A7.Descript AS [S_GV_WEIGHT_RATING_Description],
       x.[SCALE_WEIGHT] AS [SCALE_WEIGHT],
       x.[PAYOFF_AMT] AS [PAYOFF_AMT],
       x.[MFG_REBATE] AS [MFG_REBATE],
@@ -58190,6 +62096,14 @@ AS
       x.[DLR_OPT_PRICE] AS [DLR_OPT_PRICE],
       x.[DLR_OPT_VALUE] AS [DLR_OPT_VALUE]
    FROM [clt_NetO].[WG_ASSET_VEHICLE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FUEL_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VEHICLE' and A0.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_VEHICLE_CONDITION = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VEHICLE' and A1.[COLUMNNAME] = 'S_VEHICLE_CONDITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CNRE_OWNERSHIP = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VEHICLE' and A2.[COLUMNNAME] = 'S_CNRE_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TRANSF_AS = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VEHICLE' and A3.[COLUMNNAME] = 'S_TRANSF_AS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TRANSF_TO = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VEHICLE' and A4.[COLUMNNAME] = 'S_TRANSF_TO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DAMAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VEHICLE' and A5.[COLUMNNAME] = 'S_DAMAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COLOR = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VEHICLE' and A6.[COLUMNNAME] = 'S_COLOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_GV_WEIGHT_RATING = A7.DBSYMBOL AND A7.[TableName] = 'WG_ASSET_VEHICLE' and A7.[COLUMNNAME] = 'S_GV_WEIGHT_RATING'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58216,8 +62130,12 @@ AS
       x.[SERIES] AS [SERIES],
       x.[STYLE] AS [STYLE],
       x.[S_MTRCYCLESTYLE] AS [S_MTRCYCLESTYLE],
-      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE]
+      A0.Descript AS [S_MTRCYCLESTYLE_Description],
+      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE],
+      A1.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_AUTO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MTRCYCLESTYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_AUTO' and A0.[COLUMNNAME] = 'S_MTRCYCLESTYLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GENERIC_BODY_STYLE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_AUTO' and A1.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58241,9 +62159,11 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_MARINE_TYPE] AS [S_MARINE_TYPE],
+      A0.Descript AS [S_MARINE_TYPE_Description],
       x.[BOAT_NAME] AS [BOAT_NAME],
       x.[NET_WEIGHT] AS [NET_WEIGHT],
       x.[S_PROPULSION_TYPE] AS [S_PROPULSION_TYPE],
+      A1.Descript AS [S_PROPULSION_TYPE_Description],
       x.[HAILING_PORT] AS [HAILING_PORT],
       x.[MOORING_ADDR1] AS [MOORING_ADDR1],
       x.[MOORING_ADDR2] AS [MOORING_ADDR2],
@@ -58252,14 +62172,19 @@ AS
       x.[MOORING_ZIP] AS [MOORING_ZIP],
       x.[TRAILER_ASSETID] AS [TRAILER_ASSETID],
       x.[S_FUEL_TYPE] AS [S_FUEL_TYPE],
+      A2.Descript AS [S_FUEL_TYPE_Description],
       x.[BEAM] AS [BEAM],
       x.[MARINE_LENGTH] AS [MARINE_LENGTH],
       x.[S_HULL_MATERIAL] AS [S_HULL_MATERIAL],
+      A3.Descript AS [S_HULL_MATERIAL_Description],
       x.[S_PRIMARY_USE] AS [S_PRIMARY_USE],
+      A4.Descript AS [S_PRIMARY_USE_Description],
       x.[S_ENGINE_DRIVE] AS [S_ENGINE_DRIVE],
+      A5.Descript AS [S_ENGINE_DRIVE_Description],
       x.[IS_DOCUMENTED_VESSEL] AS [IS_DOCUMENTED_VESSEL],
       x.[USCG_OFFICIAL_NUMBER] AS [USCG_OFFICIAL_NUMBER],
       x.[S_MANUF_TYPE] AS [S_MANUF_TYPE],
+      A6.Descript AS [S_MANUF_TYPE_Description],
       x.[TOILETATTACHED] AS [TOILETATTACHED],
       x.[MATLOTHDESC] AS [MATLOTHDESC],
       x.[FUELOTHDESC] AS [FUELOTHDESC],
@@ -58268,6 +62193,13 @@ AS
       x.[MOORING_FACILITY] AS [MOORING_FACILITY],
       x.[MOORING_MRENT] AS [MOORING_MRENT]
    FROM [clt_NetO].[WG_ASSET_VHCL_MARINE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARINE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_MARINE' and A0.[COLUMNNAME] = 'S_MARINE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPULSION_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_MARINE' and A1.[COLUMNNAME] = 'S_PROPULSION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FUEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_MARINE' and A2.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_HULL_MATERIAL = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VHCL_MARINE' and A3.[COLUMNNAME] = 'S_HULL_MATERIAL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRIMARY_USE = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VHCL_MARINE' and A4.[COLUMNNAME] = 'S_PRIMARY_USE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_ENGINE_DRIVE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VHCL_MARINE' and A5.[COLUMNNAME] = 'S_ENGINE_DRIVE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_MANUF_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VHCL_MARINE' and A6.[COLUMNNAME] = 'S_MANUF_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58291,14 +62223,16 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[ROWCOUNTER] AS [ROWCOUNTER],
-      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[S_OPTION_TYPE] AS [S_OPTION_TYPE],
+      A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE] AS [VHCL_OPTION_VALUE],
       x.[SELECTED_YN] AS [SELECTED_YN],
       x.[VHCL_OPTION] AS [VHCL_OPTION],
+      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE] AS [OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE] AS [VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OPTION_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_OPTIONS' and A0.[COLUMNNAME] = 'S_OPTION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58322,14 +62256,20 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_RV_TYPE] AS [S_RV_TYPE],
+      A0.Descript AS [S_RV_TYPE_Description],
       x.[MILEAGE] AS [MILEAGE],
       x.[NBR_AXLES] AS [NBR_AXLES],
       x.[NBR_SLIDES] AS [NBR_SLIDES],
       x.[RV_LENGTH] AS [RV_LENGTH],
       x.[SELF_CONTAINED_YN] AS [SELF_CONTAINED_YN],
       x.[S_CATEGORY] AS [S_CATEGORY],
-      x.[S_MODEL_TYPE] AS [S_MODEL_TYPE]
+      A1.Descript AS [S_CATEGORY_Description],
+      x.[S_MODEL_TYPE] AS [S_MODEL_TYPE],
+      A2.Descript AS [S_MODEL_TYPE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_RV] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RV_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_RV' and A0.[COLUMNNAME] = 'S_RV_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CATEGORY = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_RV' and A1.[COLUMNNAME] = 'S_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_MODEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_RV' and A2.[COLUMNNAME] = 'S_MODEL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58353,9 +62293,11 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_AXLE_TYPE] AS [S_AXLE_TYPE],
+      A0.Descript AS [S_AXLE_TYPE_Description],
       x.[BRAKES_YN] AS [BRAKES_YN],
       x.[TRAILER_LENGTH] AS [TRAILER_LENGTH]
    FROM [clt_NetO].[WG_ASSET_VHCL_TRAILER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AXLE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_TRAILER' and A0.[COLUMNNAME] = 'S_AXLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58380,6 +62322,7 @@ AS
       x.[ASSETID] AS [ASSETID],
       x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[S_VALUATION_SOURCE] AS [S_VALUATION_SOURCE],
+      A0.Descript AS [S_VALUATION_SOURCE_Description],
       x.[VALUATION_RESPONSE_ID] AS [VALUATION_RESPONSE_ID],
       x.[ACTIVE_YN] AS [ACTIVE_YN],
       x.[ELECTRONIC_YN] AS [ELECTRONIC_YN],
@@ -58389,7 +62332,9 @@ AS
       x.[BOOK_EDITION] AS [BOOK_EDITION],
       x.[REGION] AS [REGION],
       x.[S_CLEAN_LEVEL] AS [S_CLEAN_LEVEL],
+      A1.Descript AS [S_CLEAN_LEVEL_Description],
       x.[S_USE_FOR_LOAN_VAL] AS [S_USE_FOR_LOAN_VAL],
+      A2.Descript AS [S_USE_FOR_LOAN_VAL_Description],
       x.[COLL_TRADE_BAM_VALUE] AS [COLL_TRADE_BAM_VALUE],
       x.[COLL_LOAN_BAM_VALUE] AS [COLL_LOAN_BAM_VALUE],
       x.[COLL_RETAIL_BAM_VALUE] AS [COLL_RETAIL_BAM_VALUE],
@@ -58406,6 +62351,9 @@ AS
       x.[INVOICE_PRC] AS [INVOICE_PRC],
       x.[TOTL_ADJSTD_VAL_OVRD] AS [TOTL_ADJSTD_VAL_OVRD]
    FROM [clt_NetO].[WG_ASSET_VHCL_VALUATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_VALUATION_SOURCE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A0.[COLUMNNAME] = 'S_VALUATION_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CLEAN_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A1.[COLUMNNAME] = 'S_CLEAN_LEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USE_FOR_LOAN_VAL = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A2.[COLUMNNAME] = 'S_USE_FOR_LOAN_VAL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58429,6 +62377,7 @@ AS
       x.[LNUM] AS [LNUM],
       x.[AD_FLAG] AS [AD_FLAG],
       x.[S_AD_ACCT_TYPE] AS [S_AD_ACCT_TYPE],
+      A0.Descript AS [S_AD_ACCT_TYPE_Description],
       x.[AD_INST_NAME] AS [AD_INST_NAME],
       x.[AD_ACCT_NUMB] AS [AD_ACCT_NUMB],
       x.[AD_RT_NUMB] AS [AD_RT_NUMB],
@@ -58436,6 +62385,7 @@ AS
       x.[AD_ADDL_PRINC] AS [AD_ADDL_PRINC],
       x.[AD_ACCT_TYP_OTH] AS [AD_ACCT_TYP_OTH]
    FROM [clt_NetO].[WG_AUTO_DEBIT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AD_ACCT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_AUTO_DEBIT' and A0.[COLUMNNAME] = 'S_AD_ACCT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -58458,16 +62408,28 @@ AS
    SELECT
       x.[FIELDID] AS [FIELDID],
       x.[S_FIELD_STATUS] AS [S_FIELD_STATUS],
+      A0.Descript AS [S_FIELD_STATUS_Description],
       x.[FIELD_NAME] AS [FIELD_NAME],
       x.[FIELD_TEXT] AS [FIELD_TEXT],
       x.[S_FIELD_CONTROL_TYPE] AS [S_FIELD_CONTROL_TYPE],
+      A1.Descript AS [S_FIELD_CONTROL_TYPE_Description],
       x.[S_FIELD_OPERATOR] AS [S_FIELD_OPERATOR],
+      A2.Descript AS [S_FIELD_OPERATOR_Description],
       x.[S_FIELD_LIST_SOURCE] AS [S_FIELD_LIST_SOURCE],
+      A3.Descript AS [S_FIELD_LIST_SOURCE_Description],
       x.[S_FIELD_FORMAT] AS [S_FIELD_FORMAT],
+      A4.Descript AS [S_FIELD_FORMAT_Description],
       x.[CURRENT_USER_DATETIME] AS [CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID] AS [CURRENT_USER_ID],
-      x.[S_USAGE_TYPE] AS [S_USAGE_TYPE]
+      x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A5.Descript AS [S_USAGE_TYPE_Description]
    FROM [clt_NetO].[WG_BRM_DEFN_FIELDS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIELD_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_FIELDS' and A0.[COLUMNNAME] = 'S_FIELD_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FIELD_CONTROL_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_FIELDS' and A1.[COLUMNNAME] = 'S_FIELD_CONTROL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FIELD_OPERATOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_FIELDS' and A2.[COLUMNNAME] = 'S_FIELD_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FIELD_LIST_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_DEFN_FIELDS' and A3.[COLUMNNAME] = 'S_FIELD_LIST_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FIELD_FORMAT = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_DEFN_FIELDS' and A4.[COLUMNNAME] = 'S_FIELD_FORMAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58489,8 +62451,11 @@ AS
    SELECT
       x.[GRIDID] AS [GRIDID],
       x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[S_GRID_STATUS] AS [S_GRID_STATUS],
+      A1.Descript AS [S_GRID_STATUS_Description],
       x.[S_GRID_CATEGORY] AS [S_GRID_CATEGORY],
+      A2.Descript AS [S_GRID_CATEGORY_Description],
       x.[GRID_NAME] AS [GRID_NAME],
       x.[GRID_NBR_DIMS] AS [GRID_NBR_DIMS],
       x.[RSLT_START_ROW] AS [RSLT_START_ROW],
@@ -58502,6 +62467,9 @@ AS
       x.[CURRENT_USER_DATETIME] AS [CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID] AS [CURRENT_USER_ID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID' and A1.[COLUMNNAME] = 'S_GRID_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58524,7 +62492,9 @@ AS
       x.[GRIDID] AS [GRIDID],
       x.[DIM_OCC] AS [DIM_OCC],
       x.[S_GRID_VERT_HORIZ] AS [S_GRID_VERT_HORIZ],
+      A0.Descript AS [S_GRID_VERT_HORIZ_Description],
       x.[S_GRID_OPERATOR] AS [S_GRID_OPERATOR],
+      A1.Descript AS [S_GRID_OPERATOR_Description],
       x.[GRID_FIELD_NAME] AS [GRID_FIELD_NAME],
       x.[GRID_LABEL_TEXT] AS [GRID_LABEL_TEXT],
       x.[GRID_LABEL_OCCS] AS [GRID_LABEL_OCCS],
@@ -58536,8 +62506,12 @@ AS
       x.[GRID_TGT_VAL_START_COL] AS [GRID_TGT_VAL_START_COL],
       x.[GRID_TGT_VAL_START_ROW] AS [GRID_TGT_VAL_START_ROW],
       x.[S_GRID_TGT_VAL_SPAN_TYPE] AS [S_GRID_TGT_VAL_SPAN_TYPE],
+      A2.Descript AS [S_GRID_TGT_VAL_SPAN_TYPE_Description],
       x.[FIELDID] AS [FIELDID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GRID_VERT_HORIZ = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A0.[COLUMNNAME] = 'S_GRID_VERT_HORIZ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_OPERATOR = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A1.[COLUMNNAME] = 'S_GRID_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58563,18 +62537,22 @@ AS
       x.[EXP_FILE_NAME] AS [EXP_FILE_NAME],
       x.[EXP_FILE_PATH] AS [EXP_FILE_PATH],
       x.[S_EXP_STATUS] AS [S_EXP_STATUS],
+      A0.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID] AS [EXP_RULESET_ID],
       x.[EXP_BRM_IDENT] AS [EXP_BRM_IDENT],
       x.[EXP_BRM_NAME] AS [EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT] AS [EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT] AS [EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS] AS [S_EXP_BRM_STATUS],
+      A1.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[EXP_NOTES] AS [EXP_NOTES],
       x.[DBID] AS [DBID],
       x.[EXP_INCL_FIELDS] AS [EXP_INCL_FIELDS],
       x.[EXP_INCL_CATS] AS [EXP_INCL_CATS],
       x.[EXP_INCL_GRIDS] AS [EXP_INCL_GRIDS]
    FROM [clt_NetO].[WG_BRM_EXPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EXP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_EXPORT' and A0.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58597,9 +62575,11 @@ AS
       x.[BRM_IDENT_FIELD] AS [BRM_IDENT_FIELD],
       x.[BRM_IDENT_CODE] AS [BRM_IDENT_CODE],
       x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[BRM_IDENT_NAME] AS [BRM_IDENT_NAME],
       x.[BRM_IDENT_DESCRIPTION] AS [BRM_IDENT_DESCRIPTION]
    FROM [clt_NetO].[WG_BRM_IDENTIFIERS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58625,18 +62605,21 @@ AS
       x.[IMP_FILE_NAME] AS [IMP_FILE_NAME],
       x.[IMP_FILE_PATH] AS [IMP_FILE_PATH],
       x.[S_IMP_STATUS] AS [S_IMP_STATUS],
+      A0.Descript AS [S_IMP_STATUS_Description],
       x.[EXPORTID] AS [EXPORTID],
       x.[EXP_USER_NAME] AS [EXP_USER_NAME],
       x.[EXP_DATE_TIME] AS [EXP_DATE_TIME],
       x.[EXP_FILE_NAME] AS [EXP_FILE_NAME],
       x.[EXP_FILE_PATH] AS [EXP_FILE_PATH],
       x.[S_EXP_STATUS] AS [S_EXP_STATUS],
+      A1.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID] AS [EXP_RULESET_ID],
       x.[EXP_BRM_IDENT] AS [EXP_BRM_IDENT],
       x.[EXP_BRM_NAME] AS [EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT] AS [EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT] AS [EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS] AS [S_EXP_BRM_STATUS],
+      A2.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[IMP_NOTES] AS [IMP_NOTES],
       x.[EXP_NOTES] AS [EXP_NOTES],
       x.[SYS_FINDINGS] AS [SYS_FINDINGS],
@@ -58648,6 +62631,9 @@ AS
       x.[IMP_IMP_CATS] AS [IMP_IMP_CATS],
       x.[IMP_IMP_GRIDS] AS [IMP_IMP_GRIDS]
    FROM [clt_NetO].[WG_BRM_IMPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IMP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IMPORT' and A0.[COLUMNNAME] = 'S_IMP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_IMPORT' and A1.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58669,15 +62655,20 @@ AS
    SELECT
       x.[BRMID] AS [BRMID],
       x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[LU_BRM_IDENTIFIER] AS [LU_BRM_IDENTIFIER],
       x.[S_BRM_STATUS] AS [S_BRM_STATUS],
+      A1.Descript AS [S_BRM_STATUS_Description],
       x.[S_BRM_TYPE] AS [S_BRM_TYPE],
+      A2.Descript AS [S_BRM_TYPE_Description],
       x.[BRM_NAME] AS [BRM_NAME],
       x.[BRM_DESCRIPTION] AS [BRM_DESCRIPTION],
       x.[BRM_START_DATE] AS [BRM_START_DATE],
       x.[BRM_END_DATE] AS [BRM_END_DATE],
       x.[S_CAP_CATEGORY] AS [S_CAP_CATEGORY],
+      A3.Descript AS [S_CAP_CATEGORY_Description],
       x.[S_EFFECTIVITY_RULE] AS [S_EFFECTIVITY_RULE],
+      A4.Descript AS [S_EFFECTIVITY_RULE_Description],
       x.[CHANGE_EFF_DATE] AS [CHANGE_EFF_DATE],
       x.[CURRENT_USER_DATETIME] AS [CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID] AS [CURRENT_USER_ID],
@@ -58687,8 +62678,15 @@ AS
       x.[LAST_CHANGE_USER_ID] AS [LAST_CHANGE_USER_ID],
       x.[MESSAGE_TEXT] AS [MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL],
+      A5.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[BRM_CATEGORY] AS [BRM_CATEGORY]
    FROM [clt_NetO].[WG_BRM_LKUP_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_BASE' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_BASE' and A1.[COLUMNNAME] = 'S_BRM_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BRM_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_LKUP_BASE' and A2.[COLUMNNAME] = 'S_BRM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_CAP_CATEGORY = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_LKUP_BASE' and A3.[COLUMNNAME] = 'S_CAP_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EFFECTIVITY_RULE = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_LKUP_BASE' and A4.[COLUMNNAME] = 'S_EFFECTIVITY_RULE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58713,8 +62711,10 @@ AS
       x.[RULE_DESCRIPTION] AS [RULE_DESCRIPTION],
       x.[PRIORITY] AS [PRIORITY],
       x.[MESSAGE_TEXT] AS [MESSAGE_TEXT],
-      x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL]
+      x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL],
+      A0.Descript AS [S_OVERRIDE_LEVEL_Description]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58774,8 +62774,10 @@ AS
       x.[RULE_ITEM_GRID_RSLT_COL] AS [RULE_ITEM_GRID_RSLT_COL],
       x.[RULE_ITEM_FIELD_NAME] AS [RULE_ITEM_FIELD_NAME],
       x.[S_RULE_ITEM_OPERATOR] AS [S_RULE_ITEM_OPERATOR],
+      A0.Descript AS [S_RULE_ITEM_OPERATOR_Description],
       x.[RULE_ITEM_FIELDID] AS [RULE_ITEM_FIELDID]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_FIELD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58799,12 +62801,16 @@ AS
       x.[RULE_OCC] AS [RULE_OCC],
       x.[RULE_ITEM_OCC] AS [RULE_ITEM_OCC],
       x.[S_RULE_ITEM_TYPE] AS [S_RULE_ITEM_TYPE],
+      A0.Descript AS [S_RULE_ITEM_TYPE_Description],
       x.[RULE_ITEM_NAME] AS [RULE_ITEM_NAME],
       x.[PRIORITY] AS [PRIORITY],
       x.[MESSAGE_TEXT] AS [MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL],
+      A1.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[MESSAGE_TEXT_2] AS [MESSAGE_TEXT_2]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_ITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A0.[COLUMNNAME] = 'S_RULE_ITEM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -58981,10 +62987,15 @@ AS
       x.[LNUM] AS [LNUM],
       x.[CID_BRANCH] AS [CID_BRANCH],
       x.[S_BUSINESS_CHANNEL] AS [S_BUSINESS_CHANNEL],
+      A0.Descript AS [S_BUSINESS_CHANNEL_Description],
       x.[S_LOAN_TYPE] AS [S_LOAN_TYPE],
+      A1.Descript AS [S_LOAN_TYPE_Description],
       x.[S_LOAN_CATEGORY] AS [S_LOAN_CATEGORY],
+      A2.Descript AS [S_LOAN_CATEGORY_Description],
       x.[S_REFERRAL_SOURCE] AS [S_REFERRAL_SOURCE],
+      A3.Descript AS [S_REFERRAL_SOURCE_Description],
       x.[S_LOAN_PURPOSE] AS [S_LOAN_PURPOSE],
+      A4.Descript AS [S_LOAN_PURPOSE_Description],
       x.[EMP_LOAN_YN] AS [EMP_LOAN_YN],
       x.[REG_O_LOAN_YN] AS [REG_O_LOAN_YN],
       x.[TSWE_EXPECTED_YN] AS [TSWE_EXPECTED_YN],
@@ -58995,6 +63006,7 @@ AS
       x.[MBA_YN] AS [MBA_YN],
       x.[IS_PERSONALUSE_YN] AS [IS_PERSONALUSE_YN],
       x.[S_PRIMARY_COLLATERAL_TYPE] AS [S_PRIMARY_COLLATERAL_TYPE],
+      A5.Descript AS [S_PRIMARY_COLLATERAL_TYPE_Description],
       x.[COLLATERAL_STATE] AS [COLLATERAL_STATE],
       x.[VENDOR_VAL_METHOD] AS [VENDOR_VAL_METHOD],
       x.[VALUATION_SOURCE] AS [VALUATION_SOURCE],
@@ -59003,8 +63015,18 @@ AS
       x.[CURRENTMODELYR] AS [CURRENTMODELYR],
       x.[COLLAGEYRS] AS [COLLAGEYRS],
       x.[S_TITLE_TRANSFER] AS [S_TITLE_TRANSFER],
-      x.[S_SECONDARY_COLLATERAL_TYPE] AS [S_SECONDARY_COLLATERAL_TYPE]
+      A6.Descript AS [S_TITLE_TRANSFER_Description],
+      x.[S_SECONDARY_COLLATERAL_TYPE] AS [S_SECONDARY_COLLATERAL_TYPE],
+      A7.Descript AS [S_SECONDARY_COLLATERAL_TYPE_Description]
    FROM [clt_NetO].[WG_CNS_LOAN_APPLICATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BUSINESS_CHANNEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A0.[COLUMNNAME] = 'S_BUSINESS_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A1.[COLUMNNAME] = 'S_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOAN_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A2.[COLUMNNAME] = 'S_LOAN_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REFERRAL_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A3.[COLUMNNAME] = 'S_REFERRAL_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOAN_PURPOSE = A4.DBSYMBOL AND A4.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A4.[COLUMNNAME] = 'S_LOAN_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PRIMARY_COLLATERAL_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A5.[COLUMNNAME] = 'S_PRIMARY_COLLATERAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TITLE_TRANSFER = A6.DBSYMBOL AND A6.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A6.[COLUMNNAME] = 'S_TITLE_TRANSFER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SECONDARY_COLLATERAL_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A7.[COLUMNNAME] = 'S_SECONDARY_COLLATERAL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -59093,7 +63115,6 @@ CREATE VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[TRDINCNTR] AS [TRDINCNTR],
       x.[YEAR] AS [YEAR],
       x.[MAKE] AS [MAKE],
       x.[VIN] AS [VIN],
@@ -59106,7 +63127,8 @@ AS
       x.[NET_TRDIN_VALUE] AS [NET_TRDIN_VALUE],
       x.[ISFINANCED] AS [ISFINANCED],
       x.[FININSTITUTE] AS [FININSTITUTE],
-      x.[MNTHPAYMENT] AS [MNTHPAYMENT]
+      x.[MNTHPAYMENT] AS [MNTHPAYMENT],
+      x.[TRDINCNTR] AS [TRDINCNTR]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -59582,8 +63604,10 @@ AS
       x.[INC_SRC_CTR] AS [INC_SRC_CTR],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[S_INCOME_SOURCE_TYPE] AS [S_INCOME_SOURCE_TYPE],
+      A0.Descript AS [S_INCOME_SOURCE_TYPE_Description],
       x.[OTHER_INCOME_SRC_DESC] AS [OTHER_INCOME_SRC_DESC],
       x.[S_BUSINESS_TYPE] AS [S_BUSINESS_TYPE],
+      A1.Descript AS [S_BUSINESS_TYPE_Description],
       x.[SOURCE_NAME] AS [SOURCE_NAME],
       x.[SOURCE_CONTACT] AS [SOURCE_CONTACT],
       x.[ADDRESS_LN_1] AS [ADDRESS_LN_1],
@@ -59597,6 +63621,7 @@ AS
       x.[FAX_NBR] AS [FAX_NBR],
       x.[TITLE] AS [TITLE],
       x.[S_SPECIAL_BOR_EMP_REL_TYPE] AS [S_SPECIAL_BOR_EMP_REL_TYPE],
+      A2.Descript AS [S_SPECIAL_BOR_EMP_REL_TYPE_Description],
       x.[SPEC_BOR_EMP_REL_TYPE_DESC] AS [SPEC_BOR_EMP_REL_TYPE_DESC],
       x.[OCCUPATION] AS [OCCUPATION],
       x.[EMPLOYED_FROM] AS [EMPLOYED_FROM],
@@ -59607,6 +63632,7 @@ AS
       x.[SELF_EMPLOYED_FLAG] AS [SELF_EMPLOYED_FLAG],
       x.[PCT_BUSINESS_OWNED] AS [PCT_BUSINESS_OWNED],
       x.[S_SELF_EMPL_TYPE] AS [S_SELF_EMPL_TYPE],
+      A3.Descript AS [S_SELF_EMPL_TYPE_Description],
       x.[PROF_MONTHS] AS [PROF_MONTHS],
       x.[PROF_YEARS] AS [PROF_YEARS],
       x.[BASE_INCOME] AS [BASE_INCOME],
@@ -59618,6 +63644,7 @@ AS
       HASHBYTES('SHA2_256', CAST(x.[TOTAL_INCOME] AS NVARCHAR(50))) AS [TOTAL_INCOME],
       x.[LIABCTR] AS [LIABCTR],
       x.[S_EMP_UNIT_TYPE] AS [S_EMP_UNIT_TYPE],
+      A4.Descript AS [S_EMP_UNIT_TYPE_Description],
       x.[EMP_UNIT_NUMBER] AS [EMP_UNIT_NUMBER],
       x.[INCOME_STATE_FOREIN] AS [INCOME_STATE_FOREIN],
       x.[INCOME_POSTCODE] AS [INCOME_POSTCODE],
@@ -59630,6 +63657,11 @@ AS
       x.[INC_DBA_NAME] AS [INC_DBA_NAME],
       x.[INC_EIN] AS [INC_EIN]
    FROM [clt_NetO].[WG_INCOME_SOURCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME_SOURCE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_INCOME_SOURCE' and A0.[COLUMNNAME] = 'S_INCOME_SOURCE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BUSINESS_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_INCOME_SOURCE' and A1.[COLUMNNAME] = 'S_BUSINESS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPECIAL_BOR_EMP_REL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_INCOME_SOURCE' and A2.[COLUMNNAME] = 'S_SPECIAL_BOR_EMP_REL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SELF_EMPL_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'WG_INCOME_SOURCE' and A3.[COLUMNNAME] = 'S_SELF_EMPL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EMP_UNIT_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'WG_INCOME_SOURCE' and A4.[COLUMNNAME] = 'S_EMP_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -59676,8 +63708,10 @@ AS
       x.[CC] AS [CC],
       x.[STROKE] AS [STROKE],
       x.[CATEGORY] AS [CATEGORY],
-      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE]
+      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE],
+      A0.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_KELLEYBLUEBOOK_RESPONSE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GENERIC_BODY_STYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_KELLEYBLUEBOOK_RESPONSE' and A0.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -59701,9 +63735,11 @@ AS
       x.[ROWCNTR] AS [ROWCNTR],
       x.[LNUM] AS [LNUM],
       x.[S_LOAN_STATUS] AS [S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[LOAN_STATUS] AS [LOAN_STATUS],
       x.[STATUS_DATE] AS [STATUS_DATE]
    FROM [clt_NetO].[WG_RPT_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_RPT_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -59966,12 +64002,16 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_BRANCH] AS [S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[START_DATE] AS [START_DATE],
       x.[END_DATE] AS [END_DATE],
       x.[S_OFF_OR_ENLISTED] AS [S_OFF_OR_ENLISTED],
+      A1.Descript AS [S_OFF_OR_ENLISTED_Description],
       x.[SERVICE_NUMBER] AS [SERVICE_NUMBER],
       x.[ACTIVESERVYN] AS [ACTIVESERVYN]
    FROM [clt_NetO].[WG_TLBR_VET_MILT_SERVICE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OFF_OR_ENLISTED = A1.DBSYMBOL AND A1.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A1.[COLUMNNAME] = 'S_OFF_OR_ENLISTED'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -60288,8 +64328,12 @@ AS
       x.[MIN_1ST_ADJ_RATE] AS [MIN_1ST_ADJ_RATE],
       x.[FIR_MAX_MONTHLY_AMT] AS [FIR_MAX_MONTHLY_AMT],
       x.[S_FRE_INDEX_TYPE] AS [S_FRE_INDEX_TYPE],
-      x.[S_FNM_INDEX_TYPE] AS [S_FNM_INDEX_TYPE]
+      A0.Descript AS [S_FRE_INDEX_TYPE_Description],
+      x.[S_FNM_INDEX_TYPE] AS [S_FNM_INDEX_TYPE],
+      A1.Descript AS [S_FNM_INDEX_TYPE_Description]
    FROM [clt_NetO].[ARMINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FRE_INDEX_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'ARMINFO' and A0.[COLUMNNAME] = 'S_FRE_INDEX_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FNM_INDEX_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'ARMINFO' and A1.[COLUMNNAME] = 'S_FNM_INDEX_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -60315,6 +64359,7 @@ AS
       x.[DBID] AS [DBID],
       x.[ASSETCTR] AS [ASSETCTR],
       x.[S_ASSET] AS [S_ASSET],
+      A0.Descript AS [S_ASSET_Description],
       x.[ASSETDSC] AS [ASSETDSC],
       x.[ACCTNUM] AS [ACCTNUM],
       x.[HOLDER] AS [HOLDER],
@@ -60350,10 +64395,15 @@ AS
       x.[BUILDER_EARNEST] AS [BUILDER_EARNEST],
       x.[ASSET_INDICATOR] AS [ASSET_INDICATOR],
       x.[S_ACCOUNT_OWNERSHIP] AS [S_ACCOUNT_OWNERSHIP],
+      A1.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[S_GIFT_PRVDR_TYPE] AS [S_GIFT_PRVDR_TYPE],
+      A2.Descript AS [S_GIFT_PRVDR_TYPE_Description],
       x.[GIFT_PRVDR_OTH_DESC] AS [GIFT_PRVDR_OTH_DESC],
       x.[GIFT_DEPOSIT_STATUS] AS [GIFT_DEPOSIT_STATUS]
    FROM [clt_NetO].[ASSETS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET = A0.DBSYMBOL AND A0.[TableName] = 'ASSETS' and A0.[COLUMNNAME] = 'S_ASSET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACCOUNT_OWNERSHIP = A1.DBSYMBOL AND A1.[TableName] = 'ASSETS' and A1.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GIFT_PRVDR_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'ASSETS' and A2.[COLUMNNAME] = 'S_GIFT_PRVDR_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -60420,6 +64470,7 @@ AS
       x.[AGE] AS [AGE],
       x.[YRSSCHL] AS [YRSSCHL],
       x.[S_MARITL] AS [S_MARITL],
+      A0.Descript AS [S_MARITL_Description],
       x.[FRNINFO] AS [FRNINFO],
       x.[GENDER] AS [GENDER],
       x.[NUMDEP] AS [NUMDEP],
@@ -60435,6 +64486,7 @@ AS
       x.[APPNUMB] AS [APPNUMB],
       x.[FIRSTBUY] AS [FIRSTBUY],
       x.[S_OWNSHP] AS [S_OWNSHP],
+      A1.Descript AS [S_OWNSHP_Description],
       x.[VOR_ACCT] AS [VOR_ACCT],
       x.[VOR_NAME] AS [VOR_NAME],
       x.[OTHINCM] AS [OTHINCM],
@@ -60442,8 +64494,10 @@ AS
       x.[JOINTLY] AS [JOINTLY],
       x.[DOB] AS [DOB],
       x.[S_BORTYP] AS [S_BORTYP],
+      A2.Descript AS [S_BORTYP_Description],
       x.[ALIASES] AS [ALIASES],
       x.[S_VESTNG] AS [S_VESTNG],
+      A3.Descript AS [S_VESTNG_Description],
       x.[PRTENTTL] AS [PRTENTTL],
       x.[PARTNOTE] AS [PARTNOTE],
       x.[COUNTY] AS [COUNTY],
@@ -60508,6 +64562,7 @@ AS
       x.[ELEC_DISC_CONSENT] AS [ELEC_DISC_CONSENT],
       x.[ELEC_DISC_WITHDRAW] AS [ELEC_DISC_WITHDRAW],
       x.[S_IVMETH] AS [S_IVMETH],
+      A4.Descript AS [S_IVMETH_Description],
       x.[ATALLLIQUIDTOTAL] AS [ATALLLIQUIDTOTAL],
       x.[ATGIFTTOTAL] AS [ATGIFTTOTAL],
       x.[ATREONETPROCEEDSTOTAL] AS [ATREONETPROCEEDSTOTAL],
@@ -60515,6 +64570,7 @@ AS
       x.[LTNONSUBJDEBTMOTOTAL] AS [LTNONSUBJDEBTMOTOTAL],
       x.[LTNONSUBJPAYOFFTOTAL] AS [LTNONSUBJPAYOFFTOTAL],
       x.[S_CBSOURCE] AS [S_CBSOURCE],
+      A5.Descript AS [S_CBSOURCE_Description],
       x.[VETERAN] AS [VETERAN],
       x.[ENTITLEMENT] AS [ENTITLEMENT],
       x.[LDP_NUMBER] AS [LDP_NUMBER],
@@ -60538,7 +64594,9 @@ AS
       x.[DISPLAY_NAME] AS [DISPLAY_NAME],
       x.[NON_INDIV_BORR_NAME] AS [NON_INDIV_BORR_NAME],
       x.[S_LEGAL_ENTITY_TYPE] AS [S_LEGAL_ENTITY_TYPE],
+      A6.Descript AS [S_LEGAL_ENTITY_TYPE_Description],
       x.[S_LEGAL_ENTITY_TYP_OTH] AS [S_LEGAL_ENTITY_TYP_OTH],
+      A7.Descript AS [S_LEGAL_ENTITY_TYP_OTH_Description],
       x.[ULDD_TAXPAYER_ID] AS [ULDD_TAXPAYER_ID],
       x.[INCLUDE_IN_PROFORMA] AS [INCLUDE_IN_PROFORMA],
       x.[FADDR_INDICATOR] AS [FADDR_INDICATOR],
@@ -60554,9 +64612,11 @@ AS
       x.[MNTHS_AT_PRSNT] AS [MNTHS_AT_PRSNT],
       x.[BORR_COVERED] AS [BORR_COVERED],
       x.[S_COV_BORR_STATUS] AS [S_COV_BORR_STATUS],
+      A8.Descript AS [S_COV_BORR_STATUS_Description],
       x.[BORR_VERBDISC] AS [BORR_VERBDISC],
       x.[MLACERTID] AS [MLACERTID],
       x.[S_BOR_UNIT_TYPE] AS [S_BOR_UNIT_TYPE],
+      A9.Descript AS [S_BOR_UNIT_TYPE_Description],
       x.[BOR_UNIT_NUM] AS [BOR_UNIT_NUM],
       x.[BOR_COUNTRY] AS [BOR_COUNTRY],
       x.[BOR_COUNTRY_CODE] AS [BOR_COUNTRY_CODE],
@@ -60573,8 +64633,11 @@ AS
       x.[COPIED_MAIL_ADDRESS] AS [COPIED_MAIL_ADDRESS],
       x.[CHECK_ALIAS] AS [CHECK_ALIAS],
       x.[S_PARTY_TYPE] AS [S_PARTY_TYPE],
+      A10.Descript AS [S_PARTY_TYPE_Description],
       x.[S_CITIZENSHIP] AS [S_CITIZENSHIP],
+      A11.Descript AS [S_CITIZENSHIP_Description],
       x.[S_UNMARRIED] AS [S_UNMARRIED],
+      A12.Descript AS [S_UNMARRIED_Description],
       x.[ATTR_PORTAL_REG] AS [ATTR_PORTAL_REG],
       x.[ATTR_COUNSELING_REQUIRED] AS [ATTR_COUNSELING_REQUIRED],
       x.[ATTR_CHILD_CARE] AS [ATTR_CHILD_CARE],
@@ -60582,6 +64645,7 @@ AS
       x.[ATTR_GUARDIANSHIP] AS [ATTR_GUARDIANSHIP],
       x.[ATTR_SOLE_PROPRIETOR] AS [ATTR_SOLE_PROPRIETOR],
       x.[S_UNMARRIED_RLTNSHIP] AS [S_UNMARRIED_RLTNSHIP],
+      A13.Descript AS [S_UNMARRIED_RLTNSHIP_Description],
       x.[UNMARRIED_RLTNSHIP_STATE] AS [UNMARRIED_RLTNSHIP_STATE],
       x.[UNMARRIED_RLTNSHIP_OTHERDESC] AS [UNMARRIED_RLTNSHIP_OTHERDESC],
       x.[RETIRED_BORROWER] AS [RETIRED_BORROWER],
@@ -60594,6 +64658,20 @@ AS
       x.[IS_DEALER_EMPLOYEE] AS [IS_DEALER_EMPLOYEE],
       x.[LIVE_RENT_FREE_ENUMS] AS [LIVE_RENT_FREE_ENUMS]
    FROM [clt_NetO].[BORROWER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARITL = A0.DBSYMBOL AND A0.[TableName] = 'BORROWER' and A0.[COLUMNNAME] = 'S_MARITL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OWNSHP = A1.DBSYMBOL AND A1.[TableName] = 'BORROWER' and A1.[COLUMNNAME] = 'S_OWNSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BORTYP = A2.DBSYMBOL AND A2.[TableName] = 'BORROWER' and A2.[COLUMNNAME] = 'S_BORTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_VESTNG = A3.DBSYMBOL AND A3.[TableName] = 'BORROWER' and A3.[COLUMNNAME] = 'S_VESTNG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_IVMETH = A4.DBSYMBOL AND A4.[TableName] = 'BORROWER' and A4.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CBSOURCE = A5.DBSYMBOL AND A5.[TableName] = 'BORROWER' and A5.[COLUMNNAME] = 'S_CBSOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LEGAL_ENTITY_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'BORROWER' and A6.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LEGAL_ENTITY_TYP_OTH = A7.DBSYMBOL AND A7.[TableName] = 'BORROWER' and A7.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYP_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COV_BORR_STATUS = A8.DBSYMBOL AND A8.[TableName] = 'BORROWER' and A8.[COLUMNNAME] = 'S_COV_BORR_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BOR_UNIT_TYPE = A9.DBSYMBOL AND A9.[TableName] = 'BORROWER' and A9.[COLUMNNAME] = 'S_BOR_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_PARTY_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'BORROWER' and A10.[COLUMNNAME] = 'S_PARTY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_CITIZENSHIP = A11.DBSYMBOL AND A11.[TableName] = 'BORROWER' and A11.[COLUMNNAME] = 'S_CITIZENSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_UNMARRIED = A12.DBSYMBOL AND A12.[TableName] = 'BORROWER' and A12.[COLUMNNAME] = 'S_UNMARRIED'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_UNMARRIED_RLTNSHIP = A13.DBSYMBOL AND A13.[TableName] = 'BORROWER' and A13.[COLUMNNAME] = 'S_UNMARRIED_RLTNSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -60621,15 +64699,19 @@ AS
       x.[CSTIMPRO] AS [CSTIMPRO],
       x.[IMPDESC] AS [IMPDESC],
       x.[S_REFPRP] AS [S_REFPRP],
+      A0.Descript AS [S_REFPRP_Description],
       x.[IMPMADE] AS [IMPMADE],
       x.[LOTACQUR] AS [LOTACQUR],
       x.[REFIIMP] AS [REFIIMP],
       x.[CASHAMT] AS [CASHAMT],
       x.[S_GSE_REFINANCE_PURPOSE] AS [S_GSE_REFINANCE_PURPOSE],
+      A1.Descript AS [S_GSE_REFINANCE_PURPOSE_Description],
       x.[S_CONST_PERM_CLOSING] AS [S_CONST_PERM_CLOSING],
+      A2.Descript AS [S_CONST_PERM_CLOSING_Description],
       x.[INTERNREFI] AS [INTERNREFI],
       x.[ORIG_INVESTOR_LOAN_NBR] AS [ORIG_INVESTOR_LOAN_NBR],
       x.[S_ORIG_INVESTOR] AS [S_ORIG_INVESTOR],
+      A3.Descript AS [S_ORIG_INVESTOR_Description],
       x.[OTHER_INVESTOR_DESC] AS [OTHER_INVESTOR_DESC],
       x.[OTHERGSEREFIPURPTYPEDESC] AS [OTHERGSEREFIPURPTYPEDESC],
       x.[REPLACE_EXIST_CONSTR_LOAN] AS [REPLACE_EXIST_CONSTR_LOAN],
@@ -60637,11 +64719,21 @@ AS
       x.[PREVIOUS_REFI_MONTHS] AS [PREVIOUS_REFI_MONTHS],
       x.[CO_REFI_PURCH_CONST] AS [CO_REFI_PURCH_CONST],
       x.[S_CONST_PERM_FEATURE] AS [S_CONST_PERM_FEATURE],
+      A4.Descript AS [S_CONST_PERM_FEATURE_Description],
       x.[S_FNM_REFI_PGM] AS [S_FNM_REFI_PGM],
+      A5.Descript AS [S_FNM_REFI_PGM_Description],
       x.[S_FRE_REFI_PGM] AS [S_FRE_REFI_PGM],
+      A6.Descript AS [S_FRE_REFI_PGM_Description],
       x.[LIMIT_DESC] AS [LIMIT_DESC],
       x.[REFI_LOAN_ACCT_NBR] AS [REFI_LOAN_ACCT_NBR]
    FROM [clt_NetO].[CONSREFI] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFPRP = A0.DBSYMBOL AND A0.[TableName] = 'CONSREFI' and A0.[COLUMNNAME] = 'S_REFPRP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GSE_REFINANCE_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'CONSREFI' and A1.[COLUMNNAME] = 'S_GSE_REFINANCE_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CONST_PERM_CLOSING = A2.DBSYMBOL AND A2.[TableName] = 'CONSREFI' and A2.[COLUMNNAME] = 'S_CONST_PERM_CLOSING'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ORIG_INVESTOR = A3.DBSYMBOL AND A3.[TableName] = 'CONSREFI' and A3.[COLUMNNAME] = 'S_ORIG_INVESTOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_CONST_PERM_FEATURE = A4.DBSYMBOL AND A4.[TableName] = 'CONSREFI' and A4.[COLUMNNAME] = 'S_CONST_PERM_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_FNM_REFI_PGM = A5.DBSYMBOL AND A5.[TableName] = 'CONSREFI' and A5.[COLUMNNAME] = 'S_FNM_REFI_PGM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_FRE_REFI_PGM = A6.DBSYMBOL AND A6.[TableName] = 'CONSREFI' and A6.[COLUMNNAME] = 'S_FRE_REFI_PGM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -60815,7 +64907,9 @@ AS
       x.[M_DBID] AS [M_DBID],
       x.[M_SERIAL] AS [M_SERIAL],
       x.[S_PRPTYP] AS [S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[S_TITLE] AS [S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[BNKRPT_DISCHARGE_MOS] AS [BNKRPT_DISCHARGE_MOS],
       x.[FORECLOSURE_MOS] AS [FORECLOSURE_MOS],
       x.[NON_PERMANENT_RESIDENT_ALIEN] AS [NON_PERMANENT_RESIDENT_ALIEN],
@@ -60840,6 +64934,7 @@ AS
       x.[SHORT_SALE] AS [SHORT_SALE],
       x.[PROPFORECLOSE] AS [PROPFORECLOSE],
       x.[S_BANKRUPTCY_TYPE] AS [S_BANKRUPTCY_TYPE],
+      A2.Descript AS [S_BANKRUPTCY_TYPE_Description],
       x.[PREFORECLOS_NOTES] AS [PREFORECLOS_NOTES],
       x.[PROPFORECL_NOTES] AS [PROPFORECL_NOTES],
       x.[PRIMRESID_NOTES] AS [PRIMRESID_NOTES],
@@ -60866,6 +64961,9 @@ AS
       x.[DECBANKRUPTCY_INCINFORM] AS [DECBANKRUPTCY_INCINFORM],
       x.[FHA_SECOND_RESID_IND] AS [FHA_SECOND_RESID_IND]
    FROM [clt_NetO].[DECLRTN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'DECLRTN' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'DECLRTN' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BANKRUPTCY_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DECLRTN' and A2.[COLUMNNAME] = 'S_BANKRUPTCY_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -60900,35 +64998,55 @@ AS
       x.[RENTS3] AS [RENTS3],
       x.[RENTS4] AS [RENTS4],
       x.[S_SPF1] AS [S_SPF1],
+      A0.Descript AS [S_SPF1_Description],
       x.[S_SPF2] AS [S_SPF2],
+      A1.Descript AS [S_SPF2_Description],
       x.[S_SPF3] AS [S_SPF3],
+      A2.Descript AS [S_SPF3_Description],
       x.[S_SPF4] AS [S_SPF4],
+      A3.Descript AS [S_SPF4_Description],
       x.[S_SPF5] AS [S_SPF5],
+      A4.Descript AS [S_SPF5_Description],
       x.[S_SPF6] AS [S_SPF6],
+      A5.Descript AS [S_SPF6_Description],
       x.[ASSUM] AS [ASSUM],
       x.[RDF] AS [RDF],
       x.[INTPD] AS [INTPD],
       x.[MATDATE] AS [MATDATE],
       x.[S_SFSRC1] AS [S_SFSRC1],
+      A6.Descript AS [S_SFSRC1_Description],
       x.[S_SFSRC2] AS [S_SFSRC2],
+      A7.Descript AS [S_SFSRC2_Description],
       x.[SFAMT1] AS [SFAMT1],
       x.[SFAMT2] AS [SFAMT2],
       x.[S_BECA1] AS [S_BECA1],
+      A8.Descript AS [S_BECA1_Description],
       x.[S_BECA2] AS [S_BECA2],
+      A9.Descript AS [S_BECA2_Description],
       x.[S_BECF1] AS [S_BECF1],
+      A10.Descript AS [S_BECF1_Description],
       x.[S_BECF2] AS [S_BECF2],
+      A11.Descript AS [S_BECF2_Description],
       x.[S_DPSRC1] AS [S_DPSRC1],
+      A12.Descript AS [S_DPSRC1_Description],
       x.[S_DPSRC2] AS [S_DPSRC2],
+      A13.Descript AS [S_DPSRC2_Description],
       x.[S_DPSRC3] AS [S_DPSRC3],
+      A14.Descript AS [S_DPSRC3_Description],
       x.[S_DPSRC4] AS [S_DPSRC4],
+      A15.Descript AS [S_DPSRC4_Description],
       x.[DPAMT1] AS [DPAMT1],
       x.[DPAMT2] AS [DPAMT2],
       x.[DPAMT3] AS [DPAMT3],
       x.[DPAMT4] AS [DPAMT4],
       x.[S_CCSRC1] AS [S_CCSRC1],
+      A16.Descript AS [S_CCSRC1_Description],
       x.[S_CCSRC2] AS [S_CCSRC2],
+      A17.Descript AS [S_CCSRC2_Description],
       x.[S_CCSRC3] AS [S_CCSRC3],
+      A18.Descript AS [S_CCSRC3_Description],
       x.[S_CCSRC4] AS [S_CCSRC4],
+      A19.Descript AS [S_CCSRC4_Description],
       x.[CCAMT1] AS [CCAMT1],
       x.[CCAMT2] AS [CCAMT2],
       x.[CCAMT3] AS [CCAMT3],
@@ -60936,12 +65054,14 @@ AS
       x.[MICOV] AS [MICOV],
       x.[UPB] AS [UPB],
       x.[S_LFC] AS [S_LFC],
+      A20.Descript AS [S_LFC_Description],
       x.[INTEND] AS [INTEND],
       x.[LPID] AS [LPID],
       x.[INTONLY] AS [INTONLY],
       x.[LOOKBACK] AS [LOOKBACK],
       x.[NETNEGAM] AS [NETNEGAM],
       x.[S_RFC] AS [S_RFC],
+      A21.Descript AS [S_RFC_Description],
       x.[UWNAME] AS [UWNAME],
       x.[INVLNUM] AS [INVLNUM],
       x.[MTGORIG] AS [MTGORIG],
@@ -60951,9 +65071,13 @@ AS
       x.[SELLER] AS [SELLER],
       x.[CID_SELLER_AGENT] AS [CID_SELLER_AGENT],
       x.[S_SPF7] AS [S_SPF7],
+      A22.Descript AS [S_SPF7_Description],
       x.[S_SPF8] AS [S_SPF8],
+      A23.Descript AS [S_SPF8_Description],
       x.[S_SPF9] AS [S_SPF9],
+      A24.Descript AS [S_SPF9_Description],
       x.[S_SPF10] AS [S_SPF10],
+      A25.Descript AS [S_SPF10_Description],
       x.[UPBO] AS [UPBO],
       x.[ESCROW_ACCT_BALANCE] AS [ESCROW_ACCT_BALANCE],
       x.[ESCROW_PYMT_AMT] AS [ESCROW_PYMT_AMT],
@@ -60961,21 +65085,59 @@ AS
       x.[APPR_DOC_ID] AS [APPR_DOC_ID],
       x.[READY_FOR_DELIVERY] AS [READY_FOR_DELIVERY],
       x.[S_INT_ACCRUAL_TYPE] AS [S_INT_ACCRUAL_TYPE],
+      A26.Descript AS [S_INT_ACCRUAL_TYPE_Description],
       x.[S_INT_CALC_BASIS_TYPE] AS [S_INT_CALC_BASIS_TYPE],
+      A27.Descript AS [S_INT_CALC_BASIS_TYPE_Description],
       x.[INT_CALC_EFF_MONTHS] AS [INT_CALC_EFF_MONTHS],
       x.[S_INT_CALC_PERIOD] AS [S_INT_CALC_PERIOD],
+      A28.Descript AS [S_INT_CALC_PERIOD_Description],
       x.[S_INT_CALC_METHOD] AS [S_INT_CALC_METHOD],
+      A29.Descript AS [S_INT_CALC_METHOD_Description],
       x.[LOAN_DELIV_GSE] AS [LOAN_DELIV_GSE],
       x.[LTV_RATIO_PCT] AS [LTV_RATIO_PCT],
       x.[S_FNM_HOME_IMP_PROD] AS [S_FNM_HOME_IMP_PROD],
+      A30.Descript AS [S_FNM_HOME_IMP_PROD_Description],
       x.[ADJ_LOAN_AMT] AS [ADJ_LOAN_AMT],
       x.[ADJ_LOAN_AMT_OVRD] AS [ADJ_LOAN_AMT_OVRD],
       x.[APPR_DOC_ID_OVER] AS [APPR_DOC_ID_OVER],
       x.[MLADISCCOMPLETE] AS [MLADISCCOMPLETE],
       x.[S_SIGNDOCPUSHBACK] AS [S_SIGNDOCPUSHBACK],
+      A31.Descript AS [S_SIGNDOCPUSHBACK_Description],
       x.[MI_CANCELLED] AS [MI_CANCELLED],
       x.[HFA_IDENTIFIER] AS [HFA_IDENTIFIER]
    FROM [clt_NetO].[DELIVERY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SPF1 = A0.DBSYMBOL AND A0.[TableName] = 'DELIVERY' and A0.[COLUMNNAME] = 'S_SPF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPF2 = A1.DBSYMBOL AND A1.[TableName] = 'DELIVERY' and A1.[COLUMNNAME] = 'S_SPF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPF3 = A2.DBSYMBOL AND A2.[TableName] = 'DELIVERY' and A2.[COLUMNNAME] = 'S_SPF3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPF4 = A3.DBSYMBOL AND A3.[TableName] = 'DELIVERY' and A3.[COLUMNNAME] = 'S_SPF4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_SPF5 = A4.DBSYMBOL AND A4.[TableName] = 'DELIVERY' and A4.[COLUMNNAME] = 'S_SPF5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SPF6 = A5.DBSYMBOL AND A5.[TableName] = 'DELIVERY' and A5.[COLUMNNAME] = 'S_SPF6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SFSRC1 = A6.DBSYMBOL AND A6.[TableName] = 'DELIVERY' and A6.[COLUMNNAME] = 'S_SFSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SFSRC2 = A7.DBSYMBOL AND A7.[TableName] = 'DELIVERY' and A7.[COLUMNNAME] = 'S_SFSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_BECA1 = A8.DBSYMBOL AND A8.[TableName] = 'DELIVERY' and A8.[COLUMNNAME] = 'S_BECA1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BECA2 = A9.DBSYMBOL AND A9.[TableName] = 'DELIVERY' and A9.[COLUMNNAME] = 'S_BECA2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_BECF1 = A10.DBSYMBOL AND A10.[TableName] = 'DELIVERY' and A10.[COLUMNNAME] = 'S_BECF1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BECF2 = A11.DBSYMBOL AND A11.[TableName] = 'DELIVERY' and A11.[COLUMNNAME] = 'S_BECF2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_DPSRC1 = A12.DBSYMBOL AND A12.[TableName] = 'DELIVERY' and A12.[COLUMNNAME] = 'S_DPSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_DPSRC2 = A13.DBSYMBOL AND A13.[TableName] = 'DELIVERY' and A13.[COLUMNNAME] = 'S_DPSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DPSRC3 = A14.DBSYMBOL AND A14.[TableName] = 'DELIVERY' and A14.[COLUMNNAME] = 'S_DPSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_DPSRC4 = A15.DBSYMBOL AND A15.[TableName] = 'DELIVERY' and A15.[COLUMNNAME] = 'S_DPSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_CCSRC1 = A16.DBSYMBOL AND A16.[TableName] = 'DELIVERY' and A16.[COLUMNNAME] = 'S_CCSRC1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CCSRC2 = A17.DBSYMBOL AND A17.[TableName] = 'DELIVERY' and A17.[COLUMNNAME] = 'S_CCSRC2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CCSRC3 = A18.DBSYMBOL AND A18.[TableName] = 'DELIVERY' and A18.[COLUMNNAME] = 'S_CCSRC3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_CCSRC4 = A19.DBSYMBOL AND A19.[TableName] = 'DELIVERY' and A19.[COLUMNNAME] = 'S_CCSRC4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_LFC = A20.DBSYMBOL AND A20.[TableName] = 'DELIVERY' and A20.[COLUMNNAME] = 'S_LFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_RFC = A21.DBSYMBOL AND A21.[TableName] = 'DELIVERY' and A21.[COLUMNNAME] = 'S_RFC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_SPF7 = A22.DBSYMBOL AND A22.[TableName] = 'DELIVERY' and A22.[COLUMNNAME] = 'S_SPF7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_SPF8 = A23.DBSYMBOL AND A23.[TableName] = 'DELIVERY' and A23.[COLUMNNAME] = 'S_SPF8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_SPF9 = A24.DBSYMBOL AND A24.[TableName] = 'DELIVERY' and A24.[COLUMNNAME] = 'S_SPF9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_SPF10 = A25.DBSYMBOL AND A25.[TableName] = 'DELIVERY' and A25.[COLUMNNAME] = 'S_SPF10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_INT_ACCRUAL_TYPE = A26.DBSYMBOL AND A26.[TableName] = 'DELIVERY' and A26.[COLUMNNAME] = 'S_INT_ACCRUAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_INT_CALC_BASIS_TYPE = A27.DBSYMBOL AND A27.[TableName] = 'DELIVERY' and A27.[COLUMNNAME] = 'S_INT_CALC_BASIS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_INT_CALC_PERIOD = A28.DBSYMBOL AND A28.[TableName] = 'DELIVERY' and A28.[COLUMNNAME] = 'S_INT_CALC_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_INT_CALC_METHOD = A29.DBSYMBOL AND A29.[TableName] = 'DELIVERY' and A29.[COLUMNNAME] = 'S_INT_CALC_METHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A30 on x.S_FNM_HOME_IMP_PROD = A30.DBSYMBOL AND A30.[TableName] = 'DELIVERY' and A30.[COLUMNNAME] = 'S_FNM_HOME_IMP_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A31 on x.S_SIGNDOCPUSHBACK = A31.DBSYMBOL AND A31.[TableName] = 'DELIVERY' and A31.[COLUMNNAME] = 'S_SIGNDOCPUSHBACK'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -61058,6 +65220,7 @@ AS
       x.[DBID] AS [DBID],
       x.[DPYMTCTR] AS [DPYMTCTR],
       x.[S_TYPE] AS [S_TYPE],
+      A0.Descript AS [S_TYPE_Description],
       x.[AMOUNT] AS [AMOUNT],
       x.[NAME] AS [NAME],
       x.[ADDR1] AS [ADDR1],
@@ -61082,18 +65245,31 @@ AS
       x.[VERIFYFND] AS [VERIFYFND],
       x.[OTHERDOWNPAYTYPEDESC] AS [OTHERDOWNPAYTYPEDESC],
       x.[S_DOWN_PMT_SRC_TYP] AS [S_DOWN_PMT_SRC_TYP],
+      A1.Descript AS [S_DOWN_PMT_SRC_TYP_Description],
       x.[S_DOWN_PMT_SRC_OTH] AS [S_DOWN_PMT_SRC_OTH],
+      A2.Descript AS [S_DOWN_PMT_SRC_OTH_Description],
       x.[S_DOWN_PMT_TYP] AS [S_DOWN_PMT_TYP],
+      A3.Descript AS [S_DOWN_PMT_TYP_Description],
       x.[S_TYPE_OTH] AS [S_TYPE_OTH],
+      A4.Descript AS [S_TYPE_OTH_Description],
       x.[PRIMARY_SRC] AS [PRIMARY_SRC],
       x.[DOWNPAYMENTPERCENT] AS [DOWNPAYMENTPERCENT],
       x.[S_DOWN_PMT_SRC] AS [S_DOWN_PMT_SRC],
+      A5.Descript AS [S_DOWN_PMT_SRC_Description],
       x.[S_TYPENM] AS [S_TYPENM],
+      A6.Descript AS [S_TYPENM_Description],
       x.[DOWNPAYTYPENMOTHERDESC] AS [DOWNPAYTYPENMOTHERDESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[TOTAL_GIFT_FUNDS] AS [TOTAL_GIFT_FUNDS],
       x.[ASSETCTR] AS [ASSETCTR]
    FROM [clt_NetO].[DOWNPYMT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_DOWN_PMT_SRC_TYP = A1.DBSYMBOL AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOWN_PMT_SRC_OTH = A2.DBSYMBOL AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_DOWN_PMT_TYP = A3.DBSYMBOL AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TYPE_OTH = A4.DBSYMBOL AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DOWN_PMT_SRC = A5.DBSYMBOL AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TYPENM = A6.DBSYMBOL AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -61118,11 +65294,14 @@ AS
       x.[DBID] AS [DBID],
       x.[TRANCTR] AS [TRANCTR],
       x.[S_TRAN] AS [S_TRAN],
+      A0.Descript AS [S_TRAN_Description],
       x.[TRANDESC] AS [TRANDESC],
       x.[TRANAMT] AS [TRANAMT],
       x.[OTHERAMT] AS [OTHERAMT],
       x.[S_PURCH_CREDIT_TYPE] AS [S_PURCH_CREDIT_TYPE],
+      A1.Descript AS [S_PURCH_CREDIT_TYPE_Description],
       x.[S_PURCH_SOURCE_TYPE] AS [S_PURCH_SOURCE_TYPE],
+      A2.Descript AS [S_PURCH_SOURCE_TYPE_Description],
       x.[OTHERPURCHCREDTYPEDESC] AS [OTHERPURCHCREDTYPEDESC],
       x.[OTHERPURCHSRCTYPEDESC] AS [OTHERPURCHSRCTYPEDESC],
       x.[MANUALAMT] AS [MANUALAMT],
@@ -61133,6 +65312,9 @@ AS
       x.[EXCLOTHCREDPREP] AS [EXCLOTHCREDPREP],
       x.[POSTCLOSE_TOLERANCECURE] AS [POSTCLOSE_TOLERANCECURE]
    FROM [clt_NetO].[DTLTRAN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRAN = A0.DBSYMBOL AND A0.[TableName] = 'DTLTRAN' and A0.[COLUMNNAME] = 'S_TRAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PURCH_CREDIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'DTLTRAN' and A1.[COLUMNNAME] = 'S_PURCH_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PURCH_SOURCE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DTLTRAN' and A2.[COLUMNNAME] = 'S_PURCH_SOURCE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -61187,6 +65369,7 @@ AS
       x.[WAIVED] AS [WAIVED],
       x.[CSHMONTH] AS [CSHMONTH],
       x.[S_PERIOD] AS [S_PERIOD],
+      A0.Descript AS [S_PERIOD_Description],
       x.[TOTALATC] AS [TOTALATC],
       x.[INCGFE] AS [INCGFE],
       x.[SPOVERRIDE] AS [SPOVERRIDE],
@@ -61197,6 +65380,7 @@ AS
       x.[INCHCL] AS [INCHCL],
       x.[CID_FEE_SRVC_PRVDR_CO] AS [CID_FEE_SRVC_PRVDR_CO],
       x.[S_MISC_DESC] AS [S_MISC_DESC],
+      A1.Descript AS [S_MISC_DESC_Description],
       x.[LOCKEDYN] AS [LOCKEDYN],
       x.[LOCKEDTOTAL] AS [LOCKEDTOTAL],
       x.[ISSUE_CHECK] AS [ISSUE_CHECK],
@@ -61206,22 +65390,38 @@ AS
       x.[SUBFEE] AS [SUBFEE],
       x.[FEECODE] AS [FEECODE],
       x.[S_AGGTYPE] AS [S_AGGTYPE],
+      A2.Descript AS [S_AGGTYPE_Description],
       x.[S_RESP_PARTY] AS [S_RESP_PARTY],
+      A3.Descript AS [S_RESP_PARTY_Description],
       x.[S_PAIDBY] AS [S_PAIDBY],
+      A4.Descript AS [S_PAIDBY_Description],
       x.[S_PAIDTO] AS [S_PAIDTO],
+      A5.Descript AS [S_PAIDTO_Description],
       x.[SUBCODE] AS [SUBCODE],
       x.[IS_NOCOST] AS [IS_NOCOST],
       x.[MANAGED_OVR] AS [MANAGED_OVR],
       x.[TO_AFFILIATE] AS [TO_AFFILIATE],
       x.[S_SECTION_TYPE] AS [S_SECTION_TYPE],
+      A6.Descript AS [S_SECTION_TYPE_Description],
       x.[ID_SECTION_SUBTYPE] AS [ID_SECTION_SUBTYPE],
       x.[PREPAID_MONTH] AS [PREPAID_MONTH],
       x.[S_TOLERANCE_CATEGORY] AS [S_TOLERANCE_CATEGORY],
+      A7.Descript AS [S_TOLERANCE_CATEGORY_Description],
       x.[S_CHANGE_TYPE] AS [S_CHANGE_TYPE],
+      A8.Descript AS [S_CHANGE_TYPE_Description],
       x.[CHANGE_REASON] AS [CHANGE_REASON],
       x.[BOROPT] AS [BOROPT],
       x.[EXC_MAPR] AS [EXC_MAPR]
    FROM [clt_NetO].[FEEVALS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PERIOD = A0.DBSYMBOL AND A0.[TableName] = 'FEEVALS' and A0.[COLUMNNAME] = 'S_PERIOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MISC_DESC = A1.DBSYMBOL AND A1.[TableName] = 'FEEVALS' and A1.[COLUMNNAME] = 'S_MISC_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AGGTYPE = A2.DBSYMBOL AND A2.[TableName] = 'FEEVALS' and A2.[COLUMNNAME] = 'S_AGGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESP_PARTY = A3.DBSYMBOL AND A3.[TableName] = 'FEEVALS' and A3.[COLUMNNAME] = 'S_RESP_PARTY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PAIDBY = A4.DBSYMBOL AND A4.[TableName] = 'FEEVALS' and A4.[COLUMNNAME] = 'S_PAIDBY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PAIDTO = A5.DBSYMBOL AND A5.[TableName] = 'FEEVALS' and A5.[COLUMNNAME] = 'S_PAIDTO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SECTION_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'FEEVALS' and A6.[COLUMNNAME] = 'S_SECTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TOLERANCE_CATEGORY = A7.DBSYMBOL AND A7.[TableName] = 'FEEVALS' and A7.[COLUMNNAME] = 'S_TOLERANCE_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CHANGE_TYPE = A8.DBSYMBOL AND A8.[TableName] = 'FEEVALS' and A8.[COLUMNNAME] = 'S_CHANGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -61243,12 +65443,12 @@ CREATE VIEW [NetO_sas_pii].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[PKFIX] AS [PKFIX],
       x.[FLDNAME] AS [FLDNAME],
       x.[USRID] AS [USRID],
       x.[MODIFY_DATE] AS [MODIFY_DATE],
       x.[TEXT_VALUE] AS [TEXT_VALUE],
-      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE]
+      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE],
+      x.[PKFIX] AS [PKFIX]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -61277,7 +65477,9 @@ AS
       x.[DETMNNUM] AS [DETMNNUM],
       x.[DETMNDAT] AS [DETMNDAT],
       x.[S_FIRM] AS [S_FIRM],
+      A0.Descript AS [S_FIRM_Description],
       x.[S_FLDZON] AS [S_FLDZON],
+      A1.Descript AS [S_FLDZON_Description],
       x.[FLDMAPDT] AS [FLDMAPDT],
       x.[COMMNUMB] AS [COMMNUMB],
       x.[SFHAREA] AS [SFHAREA],
@@ -61288,6 +65490,8 @@ AS
       x.[NFIP_MAP_PANEL_DATE] AS [NFIP_MAP_PANEL_DATE],
       x.[COMMNAME] AS [COMMNAME]
    FROM [clt_NetO].[FLOOD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRM = A0.DBSYMBOL AND A0.[TableName] = 'FLOOD' and A0.[COLUMNNAME] = 'S_FIRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FLDZON = A1.DBSYMBOL AND A1.[TableName] = 'FLOOD' and A1.[COLUMNNAME] = 'S_FLDZON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -61928,7 +66132,9 @@ AS
       x.[CUR_HOUSING_PMT] AS [CUR_HOUSING_PMT],
       x.[OTHERINDEXTYPEDESC] AS [OTHERINDEXTYPEDESC],
       x.[S_INDEX] AS [S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[S_PAYEETYPE] AS [S_PAYEETYPE],
+      A1.Descript AS [S_PAYEETYPE_Description],
       x.[PAYEETYPEOTHERDESC] AS [PAYEETYPEOTHERDESC],
       x.[CLNUM_COUNTER] AS [CLNUM_COUNTER],
       x.[LEAD_COUNTER] AS [LEAD_COUNTER],
@@ -61939,18 +66145,22 @@ AS
       x.[DMI_OWN_RIGHTS] AS [DMI_OWN_RIGHTS],
       x.[DMI_BILLING_MODE] AS [DMI_BILLING_MODE],
       x.[S_AUSUWTYPE] AS [S_AUSUWTYPE],
+      A2.Descript AS [S_AUSUWTYPE_Description],
       x.[MSP_INVESTOR_ID] AS [MSP_INVESTOR_ID],
       x.[MSP_INVESTOR_ID_OVERRIDE] AS [MSP_INVESTOR_ID_OVERRIDE],
       x.[MSP_INVESTOR_CATEGORY] AS [MSP_INVESTOR_CATEGORY],
       x.[MSP_INVESTOR_CATEGORY_OVERRIDE] AS [MSP_INVESTOR_CATEGORY_OVERRIDE],
       x.[FIRST_DISB_REC_AMT] AS [FIRST_DISB_REC_AMT],
       x.[S_INTPRD_COMM_MET] AS [S_INTPRD_COMM_MET],
+      A3.Descript AS [S_INTPRD_COMM_MET_Description],
       x.[EXCLUDE_FROM_QRM] AS [EXCLUDE_FROM_QRM],
       x.[READY_REDISCLSR] AS [READY_REDISCLSR],
       x.[S_WELCOME_CALL] AS [S_WELCOME_CALL],
+      A4.Descript AS [S_WELCOME_CALL_Description],
       x.[LOAN_AMOUNT_TOLER] AS [LOAN_AMOUNT_TOLER],
       x.[MAX_APPR_RATE] AS [MAX_APPR_RATE],
       x.[S_AUS_RESULT] AS [S_AUS_RESULT],
+      A5.Descript AS [S_AUS_RESULT_Description],
       x.[P_ADMINOVR] AS [P_ADMINOVR],
       x.[P_CB_ADMINOVR] AS [P_CB_ADMINOVR],
       x.[P_COMPOVR] AS [P_COMPOVR],
@@ -61959,8 +66169,10 @@ AS
       x.[HARP_MI_REQUIRED] AS [HARP_MI_REQUIRED],
       x.[NET_NEW_DOLLARS] AS [NET_NEW_DOLLARS],
       x.[S_INIT_DISC_DELIVERY_MTHD] AS [S_INIT_DISC_DELIVERY_MTHD],
+      A6.Descript AS [S_INIT_DISC_DELIVERY_MTHD_Description],
       x.[CONFIDENCE_SCR_HLMAI] AS [CONFIDENCE_SCR_HLMAI],
       x.[S_BRANCH_TYPE] AS [S_BRANCH_TYPE],
+      A7.Descript AS [S_BRANCH_TYPE_Description],
       x.[BRANCH_ID] AS [BRANCH_ID],
       x.[BRANCH_BANK_CODE] AS [BRANCH_BANK_CODE],
       x.[BRANCH_COST_CENTER] AS [BRANCH_COST_CENTER],
@@ -61969,6 +66181,14 @@ AS
       x.[PROMOTION_CODE] AS [PROMOTION_CODE],
       x.[ONBOARD_DISB_STATUS] AS [ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_DATA' and A0.[COLUMNNAME] = 'S_INDEX'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYEETYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_DATA' and A1.[COLUMNNAME] = 'S_PAYEETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AUSUWTYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_DATA' and A2.[COLUMNNAME] = 'S_AUSUWTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_INTPRD_COMM_MET = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_LOAN_DATA' and A3.[COLUMNNAME] = 'S_INTPRD_COMM_MET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_WELCOME_CALL = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_LOAN_DATA' and A4.[COLUMNNAME] = 'S_WELCOME_CALL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_AUS_RESULT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_LOAN_DATA' and A5.[COLUMNNAME] = 'S_AUS_RESULT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_INIT_DISC_DELIVERY_MTHD = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_LOAN_DATA' and A6.[COLUMNNAME] = 'S_INIT_DISC_DELIVERY_MTHD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_BRANCH_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_LOAN_DATA' and A7.[COLUMNNAME] = 'S_BRANCH_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -61991,8 +66211,11 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_LOAN_STATUS] AS [S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[S_UW_STATUS] AS [S_UW_STATUS],
+      A1.Descript AS [S_UW_STATUS_Description],
       x.[S_LOCK_STATUS] AS [S_LOCK_STATUS],
+      A2.Descript AS [S_LOCK_STATUS_Description],
       x.[LOCK_STATUS_DISPLAY] AS [LOCK_STATUS_DISPLAY],
       x.[SENT_TO_MIDANET] AS [SENT_TO_MIDANET],
       x.[AP_ADMIN_ONLY] AS [AP_ADMIN_ONLY],
@@ -62000,6 +66223,9 @@ AS
       x.[EXT_LOAN_STATUS_VERSION_ID] AS [EXT_LOAN_STATUS_VERSION_ID],
       x.[EXT_LOAN_STATUS_VERSION] AS [EXT_LOAN_STATUS_VERSION]
    FROM [clt_NetO].[GF_TL_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UW_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_STATUS' and A1.[COLUMNNAME] = 'S_UW_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOCK_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_STATUS' and A2.[COLUMNNAME] = 'S_LOCK_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -62108,9 +66334,13 @@ AS
       x.[PRICE_GROUP_CODE] AS [PRICE_GROUP_CODE],
       x.[IPG_NAME] AS [IPG_NAME],
       x.[S_SEC_MANAGE_TYPE] AS [S_SEC_MANAGE_TYPE],
+      A0.Descript AS [S_SEC_MANAGE_TYPE_Description],
       x.[S_SEC_LOAN_TYPE] AS [S_SEC_LOAN_TYPE],
+      A1.Descript AS [S_SEC_LOAN_TYPE_Description],
       x.[S_SEC_POOL_TYPE] AS [S_SEC_POOL_TYPE],
+      A2.Descript AS [S_SEC_POOL_TYPE_Description],
       x.[S_PREPAY_PEN] AS [S_PREPAY_PEN],
+      A3.Descript AS [S_PREPAY_PEN_Description],
       x.[OVER_ALLOW_PCT] AS [OVER_ALLOW_PCT],
       x.[SHORT_ALLOW_PCT] AS [SHORT_ALLOW_PCT],
       x.[OVER_SPLIT_PCT] AS [OVER_SPLIT_PCT],
@@ -62134,13 +66364,16 @@ AS
       x.[OLD_AGENCY_NUM_IND] AS [OLD_AGENCY_NUM_IND],
       x.[PRODUCT_IDENTIFIER] AS [PRODUCT_IDENTIFIER],
       x.[S_AUS_IND] AS [S_AUS_IND],
+      A4.Descript AS [S_AUS_IND_Description],
       x.[S_SERVICE_TYPE] AS [S_SERVICE_TYPE],
+      A5.Descript AS [S_SERVICE_TYPE_Description],
       x.[SERVICING_INTERFACE_IND] AS [SERVICING_INTERFACE_IND],
       x.[SERVICING_LOCATION] AS [SERVICING_LOCATION],
       x.[SUB_PRIME_IND] AS [SUB_PRIME_IND],
       x.[MI_REQUIRE] AS [MI_REQUIRE],
       x.[INTEREST_ONLY_PRODUCT] AS [INTEREST_ONLY_PRODUCT],
       x.[S_SPEC_PROG] AS [S_SPEC_PROG],
+      A6.Descript AS [S_SPEC_PROG_Description],
       x.[CRA_REPORT] AS [CRA_REPORT],
       x.[INV_CODE_OVR] AS [INV_CODE_OVR],
       x.[INV_PROD_CODE_OVR] AS [INV_PROD_CODE_OVR],
@@ -62159,8 +66392,17 @@ AS
       x.[EVAL_QM] AS [EVAL_QM],
       x.[APPLY_MLA_RULES] AS [APPLY_MLA_RULES],
       x.[LNDR_PD_MI_ALLOWED] AS [LNDR_PD_MI_ALLOWED],
-      x.[S_ASSUMABILITY_FEATURE] AS [S_ASSUMABILITY_FEATURE]
+      x.[S_ASSUMABILITY_FEATURE] AS [S_ASSUMABILITY_FEATURE],
+      A7.Descript AS [S_ASSUMABILITY_FEATURE_Description]
    FROM [clt_NetO].[GF_TL_PNP_IPG_DETAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SEC_MANAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A0.[COLUMNNAME] = 'S_SEC_MANAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEC_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A1.[COLUMNNAME] = 'S_SEC_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SEC_POOL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A2.[COLUMNNAME] = 'S_SEC_POOL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PREPAY_PEN = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A3.[COLUMNNAME] = 'S_PREPAY_PEN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_AUS_IND = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A4.[COLUMNNAME] = 'S_AUS_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SERVICE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A5.[COLUMNNAME] = 'S_SERVICE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_SPEC_PROG = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A6.[COLUMNNAME] = 'S_SPEC_PROG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ASSUMABILITY_FEATURE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_PNP_IPG_DETAIL' and A7.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -62183,16 +66425,20 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_REFSC] AS [S_REFSC],
+      A0.Descript AS [S_REFSC_Description],
       x.[TBDADDR] AS [TBDADDR],
       x.[POSFHA] AS [POSFHA],
       x.[S_PROPTYPE] AS [S_PROPTYPE],
+      A1.Descript AS [S_PROPTYPE_Description],
       x.[PROJCLAS] AS [PROJCLAS],
       x.[PROJNAME] AS [PROJNAME],
       x.[DPPERCT] AS [DPPERCT],
       x.[HELINE] AS [HELINE],
       x.[HECURBAL] AS [HECURBAL],
       x.[S_DOCLVL] AS [S_DOCLVL],
+      A2.Descript AS [S_DOCLVL_Description],
       x.[S_LNSTATUS] AS [S_LNSTATUS],
+      A3.Descript AS [S_LNSTATUS_Description],
       x.[HLTVH] AS [HLTVH],
       x.[TSWE_INC_EXPECTED] AS [TSWE_INC_EXPECTED],
       x.[QUAL_TSWE_LOAN] AS [QUAL_TSWE_LOAN],
@@ -62208,6 +66454,7 @@ AS
       x.[LO_NMLS_NUM_OVR] AS [LO_NMLS_NUM_OVR],
       x.[LO_PHONE_OVR] AS [LO_PHONE_OVR],
       x.[S_GFE_TIME_ZONE] AS [S_GFE_TIME_ZONE],
+      A4.Descript AS [S_GFE_TIME_ZONE_Description],
       x.[ALLOWWITHDRAWLOAN] AS [ALLOWWITHDRAWLOAN],
       x.[GFE_INT_RATE_LSC] AS [GFE_INT_RATE_LSC],
       x.[GFE_INT_RATE_LIR] AS [GFE_INT_RATE_LIR],
@@ -62254,6 +66501,11 @@ AS
       x.[LP2_RISK_CLASS_OVR] AS [LP2_RISK_CLASS_OVR],
       x.[DU_DISPLAY_OVR] AS [DU_DISPLAY_OVR]
    FROM [clt_NetO].[GF_TL_POINT_OF_SALE_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFSC = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A0.[COLUMNNAME] = 'S_REFSC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_PROPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOCLVL = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_DOCLVL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LNSTATUS = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_LNSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_GFE_TIME_ZONE = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -62400,6 +66652,7 @@ AS
       x.[REPAIRAMOUNT] AS [REPAIRAMOUNT],
       x.[REPLACEMENTAMOUNT] AS [REPLACEMENTAMOUNT],
       x.[S_FLOODMAPZONE] AS [S_FLOODMAPZONE],
+      A0.Descript AS [S_FLOODMAPZONE_Description],
       x.[APP_SENT_BORROWER] AS [APP_SENT_BORROWER],
       x.[APPRAISAL_DELIVERED] AS [APPRAISAL_DELIVERED],
       x.[APP_TIME_WAIVE] AS [APP_TIME_WAIVE],
@@ -62413,13 +66666,20 @@ AS
       x.[PERCENT_MULTI_FAM] AS [PERCENT_MULTI_FAM],
       x.[PERCENT_COMMERCIAL] AS [PERCENT_COMMERCIAL],
       x.[S_PROP_LOC_TYPE] AS [S_PROP_LOC_TYPE],
+      A1.Descript AS [S_PROP_LOC_TYPE_Description],
       x.[PROP_LTN_TYP_OTHDESC] AS [PROP_LTN_TYP_OTHDESC],
       x.[S_CAR_STORAGE_TYPE] AS [S_CAR_STORAGE_TYPE],
+      A2.Descript AS [S_CAR_STORAGE_TYPE_Description],
       x.[CARSTORAGE_TYPE_OTHR_DESC] AS [CARSTORAGE_TYPE_OTHR_DESC],
       x.[CARSTORAGE_NBR_CARS] AS [CARSTORAGE_NBR_CARS],
       x.[S_FOUNDATION_TYPE] AS [S_FOUNDATION_TYPE],
+      A3.Descript AS [S_FOUNDATION_TYPE_Description],
       x.[FNDN_TYPE_OTHER_DESC] AS [FNDN_TYPE_OTHER_DESC]
    FROM [clt_NetO].[GF_TL_UWAPPREXT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FLOODMAPZONE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_UWAPPREXT' and A0.[COLUMNNAME] = 'S_FLOODMAPZONE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROP_LOC_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_UWAPPREXT' and A1.[COLUMNNAME] = 'S_PROP_LOC_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CAR_STORAGE_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_UWAPPREXT' and A2.[COLUMNNAME] = 'S_CAR_STORAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FOUNDATION_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_UWAPPREXT' and A3.[COLUMNNAME] = 'S_FOUNDATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -62567,11 +66827,13 @@ AS
       x.[MAILCOUNTRY] AS [MAILCOUNTRY],
       x.[MAIL_FADDR_INDICATOR] AS [MAIL_FADDR_INDICATOR],
       x.[S_MAIL_UNIT_TYPE] AS [S_MAIL_UNIT_TYPE],
+      A0.Descript AS [S_MAIL_UNIT_TYPE_Description],
       x.[MAIL_UNIT_NUM] AS [MAIL_UNIT_NUM],
       x.[MAIL_COUNTRY_CODE] AS [MAIL_COUNTRY_CODE],
       x.[BOR_MAIL_STATE_FOREIN] AS [BOR_MAIL_STATE_FOREIN],
       x.[MAIL_POST_CODE_FOREIN] AS [MAIL_POST_CODE_FOREIN]
    FROM [clt_NetO].[GF_TLB_MAILING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MAIL_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLB_MAILING' and A0.[COLUMNNAME] = 'S_MAIL_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -62839,21 +67101,28 @@ AS
       x.[CELL_PHONE] AS [CELL_PHONE],
       x.[PRIM_CONTACT] AS [PRIM_CONTACT],
       x.[S_FIRSTTIMEHBCOUNSEL] AS [S_FIRSTTIMEHBCOUNSEL],
+      A0.Descript AS [S_FIRSTTIMEHBCOUNSEL_Description],
       x.[S_TITLE] AS [S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[CURRENT_CUSTOMER] AS [CURRENT_CUSTOMER],
       x.[WORK_EXT] AS [WORK_EXT],
       x.[CREDIT_AUTHORIZATION_YN] AS [CREDIT_AUTHORIZATION_YN],
       x.[NATIONALITY] AS [NATIONALITY],
       x.[AFFILIATE] AS [AFFILIATE],
       x.[S_COUNSEL_CONFIRM_TYP] AS [S_COUNSEL_CONFIRM_TYP],
+      A2.Descript AS [S_COUNSEL_CONFIRM_TYP_Description],
       x.[S_COUNSEL_CONFIRM_OTH] AS [S_COUNSEL_CONFIRM_OTH],
+      A3.Descript AS [S_COUNSEL_CONFIRM_OTH_Description],
       x.[S_COUNSEL_FORMAT_TYP] AS [S_COUNSEL_FORMAT_TYP],
+      A4.Descript AS [S_COUNSEL_FORMAT_TYP_Description],
       x.[CREDIT_AUTHORIZATION_DATE] AS [CREDIT_AUTHORIZATION_DATE],
       x.[CUSTOMER_ID] AS [CUSTOMER_ID],
       x.[S_CRDTSCORE_MODEL_OVR] AS [S_CRDTSCORE_MODEL_OVR],
+      A5.Descript AS [S_CRDTSCORE_MODEL_OVR_Description],
       x.[URLA_BESTCONTACT] AS [URLA_BESTCONTACT],
       x.[URLA_ALTCONTACT] AS [URLA_ALTCONTACT],
       x.[S_CREDIT_TYPE] AS [S_CREDIT_TYPE],
+      A6.Descript AS [S_CREDIT_TYPE_Description],
       x.[JOINT_CREDIT_BNUM] AS [JOINT_CREDIT_BNUM],
       x.[SPOUSE_FNAME] AS [SPOUSE_FNAME],
       x.[SPOUSE_MNAME] AS [SPOUSE_MNAME],
@@ -62870,6 +67139,7 @@ AS
       x.[ATTR_CAIVRS] AS [ATTR_CAIVRS],
       x.[ATTR_ESIGN] AS [ATTR_ESIGN],
       x.[S_LANGUAGEPREFERENCE] AS [S_LANGUAGEPREFERENCE],
+      A7.Descript AS [S_LANGUAGEPREFERENCE_Description],
       x.[OTHER_LANGUAGE] AS [OTHER_LANGUAGE],
       x.[CURRENTINCOTHERTOTAL] AS [CURRENTINCOTHERTOTAL],
       x.[CURRENTINCOMETOTAL] AS [CURRENTINCOMETOTAL],
@@ -62888,6 +67158,14 @@ AS
       x.[MOTHERS_MAIDEN] AS [MOTHERS_MAIDEN],
       x.[APP_DISCL_READ] AS [APP_DISCL_READ]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIRSTTIMEHBCOUNSEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_COUNSEL_CONFIRM_TYP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A2.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COUNSEL_CONFIRM_OTH = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A3.[COLUMNNAME] = 'S_COUNSEL_CONFIRM_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COUNSEL_FORMAT_TYP = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A4.[COLUMNNAME] = 'S_COUNSEL_FORMAT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CRDTSCORE_MODEL_OVR = A5.DBSYMBOL AND A5.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A5.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_CREDIT_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CREDIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LANGUAGEPREFERENCE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -62916,12 +67194,14 @@ AS
       x.[MID_NAME] AS [MID_NAME],
       x.[LAST_NAME] AS [LAST_NAME],
       x.[S_BORR_ALIAS] AS [S_BORR_ALIAS],
+      A0.Descript AS [S_BORR_ALIAS_Description],
       x.[NAME_SUFFIX] AS [NAME_SUFFIX],
       x.[ALIAS_TYPE_OTH_DESC] AS [ALIAS_TYPE_OTH_DESC],
       x.[CREDITORNAME] AS [CREDITORNAME],
       x.[ALIASACCTNUM] AS [ALIASACCTNUM],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ALIAS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BORR_ALIAS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ALIAS' and A0.[COLUMNNAME] = 'S_BORR_ALIAS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -62951,6 +67231,7 @@ AS
       x.[GRANT_CRA_CODE] AS [GRANT_CRA_CODE],
       x.[PROGRAM_EXP] AS [PROGRAM_EXP],
       x.[S_ASSIST_TYPE] AS [S_ASSIST_TYPE],
+      A0.Descript AS [S_ASSIST_TYPE_Description],
       x.[REPAY_TERM] AS [REPAY_TERM],
       x.[REPAY_RATE] AS [REPAY_RATE],
       x.[REPAY_PMT] AS [REPAY_PMT],
@@ -62961,10 +67242,13 @@ AS
       x.[ALLOW_AP_EXCEPT] AS [ALLOW_AP_EXCEPT],
       x.[PROVIDER_EIN] AS [PROVIDER_EIN],
       x.[S_ASSIST_PVDR_TYP] AS [S_ASSIST_PVDR_TYP],
+      A1.Descript AS [S_ASSIST_PVDR_TYP_Description],
       x.[AP_OTH_DESC] AS [AP_OTH_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[ASSETCTR] AS [ASSETCTR]
    FROM [clt_NetO].[GF_TLBR_ASSIST_PROGRAMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSIST_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A0.[COLUMNNAME] = 'S_ASSIST_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSIST_PVDR_TYP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_ASSIST_PROGRAMS' and A1.[COLUMNNAME] = 'S_ASSIST_PVDR_TYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -63059,7 +67343,6 @@ AS
       x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
       x.[SCOREID] AS [SCOREID],
       x.[DBID] AS [DBID],
-      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[BNUM] AS [BNUM],
       x.[SOURCE_TYPE] AS [SOURCE_TYPE],
       x.[SCORE_DATE] AS [SCORE_DATE],
@@ -63067,6 +67350,7 @@ AS
       x.[MODEL_TYPE] AS [MODEL_TYPE],
       x.[OTHER_DESCRIPTION] AS [OTHER_DESCRIPTION],
       x.[SCORE_VALUE] AS [SCORE_VALUE],
+      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC] AS [CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR] AS [FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE] AS [RANK_PERCENTILE]
@@ -63149,16 +67433,20 @@ AS
       x.[SELFEMPL] AS [SELFEMPL],
       x.[PERCBUSOWN] AS [PERCBUSOWN],
       x.[S_JOB_TYPE] AS [S_JOB_TYPE],
+      A0.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT] AS [OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY] AS [PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC] AS [OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE] AS [S_SPECBOREMPRELTYPE],
+      A1.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC] AS [OTHERSPECBOREMPRELTYPEDSC],
       x.[IS_EMPLOYED_ABROAD] AS [IS_EMPLOYED_ABROAD],
       x.[COUNTRY] AS [COUNTRY],
       x.[MONTHS_AT_JOB] AS [MONTHS_AT_JOB],
       x.[MONTHS_IN_PROFESSION] AS [MONTHS_IN_PROFESSION]
    FROM [clt_NetO].[GF_TLBR_EMPLOYER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_JOB_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_EMPLOYER' and A0.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SPECBOREMPRELTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLBR_EMPLOYER' and A1.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -63184,9 +67472,11 @@ AS
       x.[DBID] AS [DBID],
       x.[ETHNICITY_CTR] AS [ETHNICITY_CTR],
       x.[S_ETHNICITY] AS [S_ETHNICITY],
+      A0.Descript AS [S_ETHNICITY_Description],
       x.[FURNISH_INFO_YN] AS [FURNISH_INFO_YN],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_ETHNICITY' and A0.[COLUMNNAME] = 'S_ETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -63240,9 +67530,11 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_RACE] AS [S_RACE],
+      A0.Descript AS [S_RACE_Description],
       x.[OTHER_AMERICAN_DESC] AS [OTHER_AMERICAN_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_RACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_RACE' and A0.[COLUMNNAME] = 'S_RACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -63302,9 +67594,11 @@ AS
       x.[DBID] AS [DBID],
       x.[SUBETHNICITY_CTR] AS [SUBETHNICITY_CTR],
       x.[S_SUBETHNICITY] AS [S_SUBETHNICITY],
+      A0.Descript AS [S_SUBETHNICITY_Description],
       x.[OTHER_DESC] AS [OTHER_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBETHNICITY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBETHNICITY = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBETHNICITY' and A0.[COLUMNNAME] = 'S_SUBETHNICITY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -63330,10 +67624,12 @@ AS
       x.[DBID] AS [DBID],
       x.[SUBRACE_CTR] AS [SUBRACE_CTR],
       x.[S_SUBRACE] AS [S_SUBRACE],
+      A0.Descript AS [S_SUBRACE_Description],
       x.[OTHER_ASIAN_DESC] AS [OTHER_ASIAN_DESC],
       x.[OTHER_PACISLDR_DESC] AS [OTHER_PACISLDR_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBRACE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUBRACE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLBR_SUBRACE' and A0.[COLUMNNAME] = 'S_SUBRACE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -63359,8 +67655,11 @@ AS
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[MODIFIED_USERID] AS [MODIFIED_USERID],
       x.[S_FMETHOD] AS [S_FMETHOD],
+      A0.Descript AS [S_FMETHOD_Description],
       x.[S_FSTATUS] AS [S_FSTATUS],
+      A1.Descript AS [S_FSTATUS_Description],
       x.[S_DMETHOD] AS [S_DMETHOD],
+      A2.Descript AS [S_DMETHOD_Description],
       x.[AMOUNT] AS [AMOUNT],
       x.[PAYEE_NAME] AS [PAYEE_NAME],
       x.[PAYEE_ADDRESS] AS [PAYEE_ADDRESS],
@@ -63370,7 +67669,9 @@ AS
       x.[ISSUEDATE] AS [ISSUEDATE],
       x.[REQDATE] AS [REQDATE],
       x.[S_TYPE] AS [S_TYPE],
+      A3.Descript AS [S_TYPE_Description],
       x.[S_FUNDLOC] AS [S_FUNDLOC],
+      A4.Descript AS [S_FUNDLOC_Description],
       x.[ROUTENUM] AS [ROUTENUM],
       x.[ACCOUNTNUM] AS [ACCOUNTNUM],
       x.[TRANSNUM] AS [TRANSNUM],
@@ -63425,6 +67726,11 @@ AS
       x.[W_APPRVDDT1] AS [W_APPRVDDT1],
       x.[W_APPRVDDT2] AS [W_APPRVDDT2]
    FROM [clt_NetO].[GF_TLR_DISBURSEMENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FMETHOD = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_DISBURSEMENTS' and A0.[COLUMNNAME] = 'S_FMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FSTATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_DISBURSEMENTS' and A1.[COLUMNNAME] = 'S_FSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DMETHOD = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_DMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FUNDLOC = A4.DBSYMBOL AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'S_FUNDLOC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -63584,6 +67890,7 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_INSTYPE] AS [S_INSTYPE],
+      A0.Descript AS [S_INSTYPE_Description],
       x.[COVAMNT] AS [COVAMNT],
       x.[MINCOVER] AS [MINCOVER],
       x.[PREMAMT] AS [PREMAMT],
@@ -63617,9 +67924,11 @@ AS
       x.[PMTOPTDBID] AS [PMTOPTDBID],
       x.[PMTOPTSERNO] AS [PMTOPTSERNO],
       x.[S_OTH_INS_TYPE_DESC] AS [S_OTH_INS_TYPE_DESC],
+      A1.Descript AS [S_OTH_INS_TYPE_DESC_Description],
       x.[HUDLINE] AS [HUDLINE],
       x.[POLICY_TERM] AS [POLICY_TERM],
       x.[S_ESCINS] AS [S_ESCINS],
+      A2.Descript AS [S_ESCINS_Description],
       x.[ASSETID] AS [ASSETID],
       x.[DT_ORDERED] AS [DT_ORDERED],
       x.[DT_EXPECTED] AS [DT_EXPECTED],
@@ -63642,6 +67951,9 @@ AS
       x.[NFIP_MAX_COVERAGE] AS [NFIP_MAX_COVERAGE],
       x.[MINIMUM_COVERAGE] AS [MINIMUM_COVERAGE]
    FROM [clt_NetO].[GF_TLR_INSURANCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_INSURANCE' and A0.[COLUMNNAME] = 'S_INSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OTH_INS_TYPE_DESC = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_INSURANCE' and A1.[COLUMNNAME] = 'S_OTH_INS_TYPE_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ESCINS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_INSURANCE' and A2.[COLUMNNAME] = 'S_ESCINS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -63711,6 +68023,7 @@ AS
       x.[REG_O_BORROWER] AS [REG_O_BORROWER],
       x.[EMPLOYEE_BORROWER] AS [EMPLOYEE_BORROWER],
       x.[S_EMP_REGO_TYPE] AS [S_EMP_REGO_TYPE],
+      A0.Descript AS [S_EMP_REGO_TYPE_Description],
       x.[EXEC_EDUC] AS [EXEC_EDUC],
       x.[EXEC_OFFIC_OTH] AS [EXEC_OFFIC_OTH],
       x.[EXEC_OFFIC_YN] AS [EXEC_OFFIC_YN],
@@ -63718,6 +68031,7 @@ AS
       x.[BOD_APPROVAL_DATE] AS [BOD_APPROVAL_DATE],
       x.[COMMITTEE_APPROVAL] AS [COMMITTEE_APPROVAL]
    FROM [clt_NetO].[GF_TLR_REG_O] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMP_REGO_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_REG_O' and A0.[COLUMNNAME] = 'S_EMP_REGO_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -63896,9 +68210,11 @@ AS
       x.[INFILE_DATE] AS [INFILE_DATE],
       x.[BNUM] AS [BNUM],
       x.[S_RESULTSTATUSTYPE] AS [S_RESULTSTATUSTYPE],
+      A0.Descript AS [S_RESULTSTATUSTYPE_Description],
       x.[RESULTSTATUSTTHERDESC] AS [RESULTSTATUSTTHERDESC],
       x.[CREDREPOSSRCTYPEOTHERDESC] AS [CREDREPOSSRCTYPEOTHERDESC]
    FROM [clt_NetO].[GF_TLR_RES_CREDIT_FILE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RESULTSTATUSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RES_CREDIT_FILE' and A0.[COLUMNNAME] = 'S_RESULTSTATUSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -64324,6 +68640,7 @@ AS
       x.[ERRORRPTIMAGEID] AS [ERRORRPTIMAGEID],
       x.[MERGEDCREDITCERTIMAGEID] AS [MERGEDCREDITCERTIMAGEID],
       x.[S_CRWELIGIBILITYTYPE] AS [S_CRWELIGIBILITYTYPE],
+      A0.Descript AS [S_CRWELIGIBILITYTYPE_Description],
       x.[HVERPTIMAGEID] AS [HVERPTIMAGEID],
       x.[MERGEDCREDITIMAGEID] AS [MERGEDCREDITIMAGEID],
       x.[LPATTLASSETDEFICITAMT] AS [LPATTLASSETDEFICITAMT],
@@ -64352,6 +68669,7 @@ AS
       x.[LPATTLREQUIREDRESERVESAMT] AS [LPATTLREQUIREDRESERVESAMT],
       x.[CREDIT_INFILE] AS [CREDIT_INFILE]
    FROM [clt_NetO].[GF_TLR_RSP_LP_LOANFDBCK] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CRWELIGIBILITYTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_RSP_LP_LOANFDBCK' and A0.[COLUMNNAME] = 'S_CRWELIGIBILITYTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -64425,6 +68743,7 @@ AS
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[HUDLINE] AS [HUDLINE],
       x.[S_TAXTYPE] AS [S_TAXTYPE],
+      A0.Descript AS [S_TAXTYPE_Description],
       x.[ANN_AMT] AS [ANN_AMT],
       x.[FIRST_DUE] AS [FIRST_DUE],
       x.[ESCROW] AS [ESCROW],
@@ -64452,10 +68771,13 @@ AS
       x.[RATEPERTHOUSAND] AS [RATEPERTHOUSAND],
       x.[COLFIRSTYR] AS [COLFIRSTYR],
       x.[S_ESCTAX] AS [S_ESCTAX],
+      A1.Descript AS [S_ESCTAX_Description],
       x.[ISMERGEDINT] AS [ISMERGEDINT],
       x.[TAX_TYPE_DESC] AS [TAX_TYPE_DESC],
       x.[UPFRONT_TAX_AMOUNT] AS [UPFRONT_TAX_AMOUNT]
    FROM [clt_NetO].[GF_TLR_TAXITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TAXTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_TAXITEMS' and A0.[COLUMNNAME] = 'S_TAXTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ESCTAX = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_TAXITEMS' and A1.[COLUMNNAME] = 'S_ESCTAX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -64539,8 +68861,8 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM] AS [DELETED_LNUM],
-      x.[USRID] AS [USRID],
       x.[DELETED_CLNUM] AS [DELETED_CLNUM],
+      x.[USRID] AS [USRID],
       x.[ACTIVITY] AS [ACTIVITY],
       x.[TERMINAL] AS [TERMINAL],
       x.[OS_USER] AS [OS_USER],
@@ -64600,6 +68922,7 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_ADDRTYPE] AS [S_ADDRTYPE],
+      A0.Descript AS [S_ADDRTYPE_Description],
       x.[ADDR1] AS [ADDR1],
       x.[ADDR2] AS [ADDR2],
       x.[CITY] AS [CITY],
@@ -64609,8 +68932,11 @@ AS
       x.[ZIP] AS [ZIP],
       x.[TIMEZONE] AS [TIMEZONE],
       x.[S_CMSADR_UNIT_TYPE] AS [S_CMSADR_UNIT_TYPE],
+      A1.Descript AS [S_CMSADR_UNIT_TYPE_Description],
       x.[CMSADR_UNIT_NUM] AS [CMSADR_UNIT_NUM]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_ADDRESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ADDRTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A0.[COLUMNNAME] = 'S_ADDRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -64633,8 +68959,10 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_EMAILTYPE] AS [S_EMAILTYPE],
+      A0.Descript AS [S_EMAILTYPE_Description],
       x.[EMAILADDR] AS [EMAILADDR]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_EMAIL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -64657,10 +68985,12 @@ AS
       x.[CID] AS [CID],
       x.[ACTIVE] AS [ACTIVE],
       x.[S_CMSSTATUS] AS [S_CMSSTATUS],
+      A0.Descript AS [S_CMSSTATUS_Description],
       x.[FULLNAME] AS [FULLNAME],
       x.[SHORTNAME] AS [SHORTNAME],
       x.[SSNTIN] AS [SSNTIN],
       x.[S_TITLE] AS [S_TITLE],
+      A1.Descript AS [S_TITLE_Description],
       x.[REFCODE] AS [REFCODE],
       x.[CREATED_BY_USER] AS [CREATED_BY_USER],
       x.[CREATED_DATE] AS [CREATED_DATE],
@@ -64675,6 +69005,8 @@ AS
       x.[SUFFIXNAME] AS [SUFFIXNAME],
       x.[PORTAL_REFCODE] AS [PORTAL_REFCODE]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSSTATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A0.[COLUMNNAME] = 'S_CMSSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -64697,9 +69029,11 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_PHONETYPE] AS [S_PHONETYPE],
+      A0.Descript AS [S_PHONETYPE_Description],
       x.[PHONENBR] AS [PHONENBR],
       x.[PHONEEXT] AS [PHONEEXT]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_PHONE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -64720,8 +69054,10 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_CMS_CONTACT_TYPE]
 AS
    SELECT
       x.[CID] AS [CID],
-      x.[S_CMSTYPE] AS [S_CMSTYPE]
+      x.[S_CMSTYPE] AS [S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_TYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -64743,12 +69079,15 @@ AS
    SELECT
       x.[CID] AS [CID],
       x.[S_CMSTYPE] AS [S_CMSTYPE],
+      A0.Descript AS [S_CMSTYPE_Description],
       x.[S_STATUS] AS [S_STATUS],
+      A1.Descript AS [S_STATUS_Description],
       x.[STATUS_START_DT] AS [STATUS_START_DT],
       x.[STATUS_STOP_DT] AS [STATUS_STOP_DT],
       x.[STATUS_CHGD_DT] AS [STATUS_CHGD_DT],
       x.[USEPARENT] AS [USEPARENT],
       x.[S_GRADE] AS [S_GRADE],
+      A2.Descript AS [S_GRADE_Description],
       x.[COMPLIANCE_MONITOR] AS [COMPLIANCE_MONITOR],
       x.[COMPLIANCE_EMAIL] AS [COMPLIANCE_EMAIL],
       x.[EMPLOYER_ID] AS [EMPLOYER_ID],
@@ -64760,9 +69099,14 @@ AS
       x.[SAR_ID] AS [SAR_ID],
       x.[PROVIDER_ID] AS [PROVIDER_ID],
       x.[S_TYPE_OF_COMPANY] AS [S_TYPE_OF_COMPANY],
+      A3.Descript AS [S_TYPE_OF_COMPANY_Description],
       x.[CMS_SHORT_DESC] AS [CMS_SHORT_DESC],
       x.[CMS_COMMENTS] AS [CMS_COMMENTS]
    FROM [clt_NetO].[GF_TS_CMS_INFOBYTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A1.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRADE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A2.[COLUMNNAME] = 'S_GRADE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -64783,10 +69127,12 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_INDEX_VALUE]
 AS
    SELECT
       x.[S_INDEX] AS [S_INDEX],
+      A0.Descript AS [S_INDEX_Description],
       x.[INDEX_ID] AS [INDEX_ID],
       x.[EFFECTIVE_DATE] AS [EFFECTIVE_DATE],
       x.[INDEX_VALUE] AS [INDEX_VALUE]
    FROM [clt_NetO].[GF_TS_INDEX_VALUE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -64941,12 +69287,16 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_WF_GROUP_USER]
 AS
    SELECT
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A0.Descript AS [S_PROC_GROUP_Description],
       x.[USERID] AS [USERID],
       x.[S_USER_TYPE] AS [S_USER_TYPE],
+      A1.Descript AS [S_USER_TYPE_Description],
       x.[IS_ACTIVE] AS [IS_ACTIVE],
       x.[WEIGHT] AS [WEIGHT],
       x.[SUPERVISOR_ID] AS [SUPERVISOR_ID]
    FROM [clt_NetO].[GF_TS_WF_GROUP_USER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROC_GROUP = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_GROUP_USER' and A0.[COLUMNNAME] = 'S_PROC_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -64967,9 +69317,11 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_WF_PROCESS]
 AS
    SELECT
       x.[S_PROCESS] AS [S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[IS_ACTIVE] AS [IS_ACTIVE],
       x.[EST_TO_COMPLETE] AS [EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -64990,9 +69342,11 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_WF_PROCESS_MODEL]
 AS
    SELECT
       x.[S_PROCESS_MODEL] AS [S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[IS_ACTIVE] AS [IS_ACTIVE],
       x.[EST_TO_COMPLETE] AS [EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS_MODEL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -65013,16 +69367,24 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_WF_WORKTYPE]
 AS
    SELECT
       x.[S_WORKTYPE] AS [S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_WT_TYPE] AS [S_WT_TYPE],
+      A1.Descript AS [S_WT_TYPE_Description],
       x.[WT_EXECUTABLE] AS [WT_EXECUTABLE],
       x.[EST_TO_COMPLETE] AS [EST_TO_COMPLETE],
       x.[S_USERINTERFACE] AS [S_USERINTERFACE],
+      A2.Descript AS [S_USERINTERFACE_Description],
       x.[S_REASSIGN_RULE] AS [S_REASSIGN_RULE],
+      A3.Descript AS [S_REASSIGN_RULE_Description],
       x.[WEIGHT_TIER1] AS [WEIGHT_TIER1],
       x.[WEIGHT_TIER2] AS [WEIGHT_TIER2],
       x.[WEIGHT_TIER3] AS [WEIGHT_TIER3],
       x.[DISPLAY_IDX] AS [DISPLAY_IDX]
    FROM [clt_NetO].[GF_TS_WF_WORKTYPE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_WORKTYPE' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_WT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_WORKTYPE' and A1.[COLUMNNAME] = 'S_WT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USERINTERFACE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TS_WF_WORKTYPE' and A2.[COLUMNNAME] = 'S_USERINTERFACE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -65076,7 +69438,9 @@ AS
       x.[OLD_AGENCY_NUM_REQUIRED] AS [OLD_AGENCY_NUM_REQUIRED],
       x.[PROD_IDENTIFIER] AS [PROD_IDENTIFIER],
       x.[S_AUS_INDICATOR] AS [S_AUS_INDICATOR],
+      A0.Descript AS [S_AUS_INDICATOR_Description],
       x.[S_SERVICE_TYPE_IND] AS [S_SERVICE_TYPE_IND],
+      A1.Descript AS [S_SERVICE_TYPE_IND_Description],
       x.[SERVICE_INT_INDICATOR] AS [SERVICE_INT_INDICATOR],
       x.[SERVICE_LOC_CID] AS [SERVICE_LOC_CID],
       x.[SUB_PRIME_INDICATOR] AS [SUB_PRIME_INDICATOR],
@@ -65091,6 +69455,7 @@ AS
       x.[INTEREST_ONLY_PRODUCT] AS [INTEREST_ONLY_PRODUCT],
       x.[ODDDEFER] AS [ODDDEFER],
       x.[S_SPEC_PRG] AS [S_SPEC_PRG],
+      A2.Descript AS [S_SPEC_PRG_Description],
       x.[MI_REQUIRED] AS [MI_REQUIRED],
       x.[CRA_REPORTABLE] AS [CRA_REPORTABLE],
       x.[MIN_ALLOW_TERM] AS [MIN_ALLOW_TERM],
@@ -65102,12 +69467,17 @@ AS
       x.[PREQUAL_ALLOWED_YN] AS [PREQUAL_ALLOWED_YN],
       x.[PREAPPROVAL_ALLOWED_YN] AS [PREAPPROVAL_ALLOWED_YN],
       x.[S_LOANFIT_PURP_CAT] AS [S_LOANFIT_PURP_CAT],
+      A3.Descript AS [S_LOANFIT_PURP_CAT_Description],
       x.[S_LOANFIT_PROD_CAT] AS [S_LOANFIT_PROD_CAT],
+      A4.Descript AS [S_LOANFIT_PROD_CAT_Description],
       x.[S_LOANFIT_LIEN_CAT] AS [S_LOANFIT_LIEN_CAT],
+      A5.Descript AS [S_LOANFIT_LIEN_CAT_Description],
       x.[LOANFIT_CATEGORY_POSN] AS [LOANFIT_CATEGORY_POSN],
       x.[LOANFIT_DISPLAY_POSN] AS [LOANFIT_DISPLAY_POSN],
       x.[S_LOANFIT_AMT_GROUP] AS [S_LOANFIT_AMT_GROUP],
+      A6.Descript AS [S_LOANFIT_AMT_GROUP_Description],
       x.[S_LOANFIT_LTV_GROUP] AS [S_LOANFIT_LTV_GROUP],
+      A7.Descript AS [S_LOANFIT_LTV_GROUP_Description],
       x.[LOANFIT_MIN_LOAN] AS [LOANFIT_MIN_LOAN],
       x.[LOANFIT_MAX_LOAN] AS [LOANFIT_MAX_LOAN],
       x.[LOANFIT_MIN_LTV] AS [LOANFIT_MIN_LTV],
@@ -65127,6 +69497,7 @@ AS
       x.[CREATE_DATE] AS [CREATE_DATE],
       x.[MODIFY_DATE] AS [MODIFY_DATE],
       x.[S_CONST_PROGRAM] AS [S_CONST_PROGRAM],
+      A8.Descript AS [S_CONST_PROGRAM_Description],
       x.[CONST_MONTHS] AS [CONST_MONTHS],
       x.[IPG_RENOVA_PROD] AS [IPG_RENOVA_PROD],
       x.[DOCMAGIC_PLAN_CODE] AS [DOCMAGIC_PLAN_CODE],
@@ -65135,9 +69506,24 @@ AS
       x.[DAYS_FINAL_FLOAT_ELIG] AS [DAYS_FINAL_FLOAT_ELIG],
       x.[IPG_FINAL_INVESTOR] AS [IPG_FINAL_INVESTOR],
       x.[S_ASSUMABILITY_FEATURE] AS [S_ASSUMABILITY_FEATURE],
+      A9.Descript AS [S_ASSUMABILITY_FEATURE_Description],
       x.[S_IPG_BUYDWN] AS [S_IPG_BUYDWN],
-      x.[S_BUYDWN_CNTRBTR] AS [S_BUYDWN_CNTRBTR]
+      A10.Descript AS [S_IPG_BUYDWN_Description],
+      x.[S_BUYDWN_CNTRBTR] AS [S_BUYDWN_CNTRBTR],
+      A11.Descript AS [S_BUYDWN_CNTRBTR_Description]
    FROM [clt_NetO].[GF_TSR_PNP_IPG_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AUS_INDICATOR = A0.DBSYMBOL AND A0.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A0.[COLUMNNAME] = 'S_AUS_INDICATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SERVICE_TYPE_IND = A1.DBSYMBOL AND A1.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A1.[COLUMNNAME] = 'S_SERVICE_TYPE_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPEC_PRG = A2.DBSYMBOL AND A2.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A2.[COLUMNNAME] = 'S_SPEC_PRG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LOANFIT_PURP_CAT = A3.DBSYMBOL AND A3.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A3.[COLUMNNAME] = 'S_LOANFIT_PURP_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOANFIT_PROD_CAT = A4.DBSYMBOL AND A4.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A4.[COLUMNNAME] = 'S_LOANFIT_PROD_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LOANFIT_LIEN_CAT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A5.[COLUMNNAME] = 'S_LOANFIT_LIEN_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LOANFIT_AMT_GROUP = A6.DBSYMBOL AND A6.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A6.[COLUMNNAME] = 'S_LOANFIT_AMT_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LOANFIT_LTV_GROUP = A7.DBSYMBOL AND A7.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A7.[COLUMNNAME] = 'S_LOANFIT_LTV_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CONST_PROGRAM = A8.DBSYMBOL AND A8.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A8.[COLUMNNAME] = 'S_CONST_PROGRAM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_ASSUMABILITY_FEATURE = A9.DBSYMBOL AND A9.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A9.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_IPG_BUYDWN = A10.DBSYMBOL AND A10.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A10.[COLUMNNAME] = 'S_IPG_BUYDWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -65159,8 +69545,11 @@ AS
    SELECT
       x.[ACTION_ID] AS [ACTION_ID],
       x.[S_WORKTYPE] AS [S_WORKTYPE],
+      A0.Descript AS [S_WORKTYPE_Description],
       x.[S_ACTION_RESOLUTION] AS [S_ACTION_RESOLUTION],
+      A1.Descript AS [S_ACTION_RESOLUTION_Description],
       x.[S_PROC_MDL_RESOLUTION] AS [S_PROC_MDL_RESOLUTION],
+      A2.Descript AS [S_PROC_MDL_RESOLUTION_Description],
       x.[EXTERNAL_CODE] AS [EXTERNAL_CODE],
       x.[INSERT_DATE] AS [INSERT_DATE],
       x.[EXP_DATE_TO_COMPLETE] AS [EXP_DATE_TO_COMPLETE],
@@ -65171,11 +69560,16 @@ AS
       x.[ACTION_STATUS_FLAG] AS [ACTION_STATUS_FLAG],
       x.[RESERVED_BY] AS [RESERVED_BY],
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A3.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MDL_MGR_ID] AS [PROC_MDL_MGR_ID],
       x.[RESERVE_DATE] AS [RESERVE_DATE],
       x.[WF_SESSION_ID] AS [WF_SESSION_ID],
       x.[OPENED_DATE] AS [OPENED_DATE]
    FROM [clt_NetO].[GF_TW_WF_ACTION_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_WORKTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_ACTION_MGR' and A0.[COLUMNNAME] = 'S_WORKTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACTION_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_ACTION_MGR' and A1.[COLUMNNAME] = 'S_ACTION_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_MDL_RESOLUTION = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_ACTION_MGR' and A2.[COLUMNNAME] = 'S_PROC_MDL_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -65197,7 +69591,9 @@ AS
    SELECT
       x.[PROC_MDL_MGR_ID] AS [PROC_MDL_MGR_ID],
       x.[S_PROCESS_MODEL] AS [S_PROCESS_MODEL],
+      A0.Descript AS [S_PROCESS_MODEL_Description],
       x.[S_PROC_MDL_MGR_RESOLUTION] AS [S_PROC_MDL_MGR_RESOLUTION],
+      A1.Descript AS [S_PROC_MDL_MGR_RESOLUTION_Description],
       x.[EXP_DATE_TO_COMPLETE] AS [EXP_DATE_TO_COMPLETE],
       x.[START_DATE] AS [START_DATE],
       x.[END_DATE] AS [END_DATE],
@@ -65205,9 +69601,13 @@ AS
       x.[IS_COMPLETE] AS [IS_COMPLETE],
       x.[RESERVED_BY] AS [RESERVED_BY],
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A2.Descript AS [S_PROC_GROUP_Description],
       x.[PROC_MGR_ID] AS [PROC_MGR_ID],
       x.[PARENT_PROC_MDL_MGR_ID] AS [PARENT_PROC_MDL_MGR_ID]
    FROM [clt_NetO].[GF_TW_WF_PROC_MODEL_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_MDL_MGR_RESOLUTION = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A1.[COLUMNNAME] = 'S_PROC_MDL_MGR_RESOLUTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -65229,6 +69629,7 @@ AS
    SELECT
       x.[PROC_MGR_ID] AS [PROC_MGR_ID],
       x.[S_PROCESS] AS [S_PROCESS],
+      A0.Descript AS [S_PROCESS_Description],
       x.[EXTERNAL_CODE] AS [EXTERNAL_CODE],
       x.[EXT_CODE_DESC] AS [EXT_CODE_DESC],
       x.[EXP_COMP_DATE] AS [EXP_COMP_DATE],
@@ -65239,8 +69640,11 @@ AS
       x.[MODELS_COMPLETED] AS [MODELS_COMPLETED],
       x.[IS_COMPLETE] AS [IS_COMPLETE],
       x.[RESERVED_BY] AS [RESERVED_BY],
-      x.[S_PROC_GROUP] AS [S_PROC_GROUP]
+      x.[S_PROC_GROUP] AS [S_PROC_GROUP],
+      A1.Descript AS [S_PROC_GROUP_Description]
    FROM [clt_NetO].[GF_TW_WF_PROCESS_MGR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A0.[COLUMNNAME] = 'S_PROCESS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -65383,18 +69787,24 @@ AS
       x.[CTAXLTV] AS [CTAXLTV],
       x.[NUM_CARDS] AS [NUM_CARDS],
       x.[S_LOCTYPE] AS [S_LOCTYPE],
+      A0.Descript AS [S_LOCTYPE_Description],
       x.[ANNUAL_FEE] AS [ANNUAL_FEE],
       x.[REPAY_MTHS] AS [REPAY_MTHS],
       x.[TERMIN_FEE] AS [TERMIN_FEE],
       x.[DRAWACCESS_FEE] AS [DRAWACCESS_FEE],
       x.[S_FUNDS_TO_BE_DRAWN] AS [S_FUNDS_TO_BE_DRAWN],
+      A1.Descript AS [S_FUNDS_TO_BE_DRAWN_Description],
       x.[OVERDRAFT_PROTECTION] AS [OVERDRAFT_PROTECTION],
       x.[ODP_ACCOUNT_NUMBER] AS [ODP_ACCOUNT_NUMBER],
       x.[ODP_ROUTING_NUMBER] AS [ODP_ROUTING_NUMBER],
       x.[ANNUAL_CALC_OVR] AS [ANNUAL_CALC_OVR],
       x.[TERM_CALC_OVR] AS [TERM_CALC_OVR],
-      x.[S_REPAYMENT_METHOD] AS [S_REPAYMENT_METHOD]
+      x.[S_REPAYMENT_METHOD] AS [S_REPAYMENT_METHOD],
+      A2.Descript AS [S_REPAYMENT_METHOD_Description]
    FROM [clt_NetO].[HELOC] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOCTYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC' and A0.[COLUMNNAME] = 'S_LOCTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FUNDS_TO_BE_DRAWN = A1.DBSYMBOL AND A1.[TableName] = 'HELOC' and A1.[COLUMNNAME] = 'S_FUNDS_TO_BE_DRAWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_REPAYMENT_METHOD = A2.DBSYMBOL AND A2.[TableName] = 'HELOC' and A2.[COLUMNNAME] = 'S_REPAYMENT_METHOD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -65422,9 +69832,11 @@ AS
       x.[MIN_BALANCE] AS [MIN_BALANCE],
       x.[OPENEND_CREDIT_IND] AS [OPENEND_CREDIT_IND],
       x.[S_RTC_TYPE] AS [S_RTC_TYPE],
+      A0.Descript AS [S_RTC_TYPE_Description],
       x.[WAIVE_ANNUAL_FEE] AS [WAIVE_ANNUAL_FEE],
       x.[ANNUAL_FEE_START_DT] AS [ANNUAL_FEE_START_DT]
    FROM [clt_NetO].[HELOC2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RTC_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'HELOC2' and A0.[COLUMNNAME] = 'S_RTC_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -65560,9 +69972,11 @@ AS
       x.[RPTYEAR] AS [RPTYEAR],
       x.[CFPNUM] AS [CFPNUM],
       x.[S_CUSTOMQRY] AS [S_CUSTOMQRY],
+      A0.Descript AS [S_CUSTOMQRY_Description],
       x.[CEMAIL] AS [CEMAIL],
       x.[HMDA_LAR_LEI] AS [HMDA_LAR_LEI]
    FROM [clt_NetO].[HMDAXPRT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -65608,7 +70022,9 @@ AS
       x.[JEXPAMT] AS [JEXPAMT],
       x.[PRIMINC] AS [PRIMINC],
       x.[S_INCOME] AS [S_INCOME],
+      A0.Descript AS [S_INCOME_Description],
       x.[S_PAYPER] AS [S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[INCAMT] AS [INCAMT],
       x.[INCDESC] AS [INCDESC],
       x.[MNTEQUIV] AS [MNTEQUIV],
@@ -65628,10 +70044,12 @@ AS
       x.[TSWE_INCOME_IND] AS [TSWE_INCOME_IND],
       x.[EFFECTIVE_MO_INC] AS [EFFECTIVE_MO_INC],
       x.[S_JOB_TYPE] AS [S_JOB_TYPE],
+      A2.Descript AS [S_JOB_TYPE_Description],
       x.[OVRTIME_CONT] AS [OVRTIME_CONT],
       x.[PROB_CONT_EMPLOY] AS [PROB_CONT_EMPLOY],
       x.[OTHERINCTYPEDESC] AS [OTHERINCTYPEDESC],
       x.[S_SPECBOREMPRELTYPE] AS [S_SPECBOREMPRELTYPE],
+      A3.Descript AS [S_SPECBOREMPRELTYPE_Description],
       x.[OTHERSPECBOREMPRELTYPEDSC] AS [OTHERSPECBOREMPRELTYPEDSC],
       x.[RURALHOUSINGCALC] AS [RURALHOUSINGCALC],
       x.[COUNTRY] AS [COUNTRY],
@@ -65640,9 +70058,11 @@ AS
       x.[STATED_FLAG] AS [STATED_FLAG],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[S_INCOMECATEGORY] AS [S_INCOMECATEGORY],
+      A4.Descript AS [S_INCOMECATEGORY_Description],
       x.[OCCUPATION] AS [OCCUPATION],
       x.[INCSTIND] AS [INCSTIND],
       x.[S_SELFEMPTYPE] AS [S_SELFEMPTYPE],
+      A5.Descript AS [S_SELFEMPTYPE_Description],
       x.[PRE_VERI_GROSS_INC] AS [PRE_VERI_GROSS_INC],
       x.[USE_GROSS_INCOME] AS [USE_GROSS_INCOME],
       x.[YTD_AMOUNT] AS [YTD_AMOUNT],
@@ -65657,6 +70077,12 @@ AS
       x.[FROM_INCOME_CALC] AS [FROM_INCOME_CALC],
       x.[STATED_INC] AS [STATED_INC]
    FROM [clt_NetO].[INCOME] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME = A0.DBSYMBOL AND A0.[TableName] = 'INCOME' and A0.[COLUMNNAME] = 'S_INCOME'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'INCOME' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_JOB_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'INCOME' and A2.[COLUMNNAME] = 'S_JOB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SPECBOREMPRELTYPE = A3.DBSYMBOL AND A3.[TableName] = 'INCOME' and A3.[COLUMNNAME] = 'S_SPECBOREMPRELTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_INCOMECATEGORY = A4.DBSYMBOL AND A4.[TableName] = 'INCOME' and A4.[COLUMNNAME] = 'S_INCOMECATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_SELFEMPTYPE = A5.DBSYMBOL AND A5.[TableName] = 'INCOME' and A5.[COLUMNNAME] = 'S_SELFEMPTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -65761,6 +70187,7 @@ AS
       x.[DBID] AS [DBID],
       x.[LIABCTR] AS [LIABCTR],
       x.[S_LIAB] AS [S_LIAB],
+      A0.Descript AS [S_LIAB_Description],
       x.[LIABDESC] AS [LIABDESC],
       x.[ACCTNUM] AS [ACCTNUM],
       x.[HOLDER] AS [HOLDER],
@@ -65776,6 +70203,7 @@ AS
       x.[ACCTBAL] AS [ACCTBAL],
       x.[ACCTPYMT] AS [ACCTPYMT],
       x.[S_PAYPER] AS [S_PAYPER],
+      A1.Descript AS [S_PAYPER_Description],
       x.[MTHPYMT] AS [MTHPYMT],
       x.[PYMTLEFT] AS [PYMTLEFT],
       x.[INCPYMT] AS [INCPYMT],
@@ -65790,6 +70218,7 @@ AS
       x.[PAYTYPE] AS [PAYTYPE],
       x.[VERIFY] AS [VERIFY],
       x.[S_LIENPS] AS [S_LIENPS],
+      A2.Descript AS [S_LIENPS_Description],
       x.[ORIGDBTDT] AS [ORIGDBTDT],
       x.[EXPDBTDT] AS [EXPDBTDT],
       x.[RESUBIND] AS [RESUBIND],
@@ -65797,7 +70226,9 @@ AS
       x.[MTG_TYPE_DESCRIPT] AS [MTG_TYPE_DESCRIPT],
       x.[PURCH_MONEY_IND] AS [PURCH_MONEY_IND],
       x.[S_EXCLUSION_REASON] AS [S_EXCLUSION_REASON],
+      A3.Descript AS [S_EXCLUSION_REASON_Description],
       x.[S_MTG_TYPE] AS [S_MTG_TYPE],
+      A4.Descript AS [S_MTG_TYPE_Description],
       x.[SECURITY_INSTR_VOLUME] AS [SECURITY_INSTR_VOLUME],
       x.[DEBT_CCTIN_TITLE] AS [DEBT_CCTIN_TITLE],
       x.[TRUSTEE_NAME] AS [TRUSTEE_NAME],
@@ -65826,6 +70257,7 @@ AS
       x.[INVESTMENT_CREDIT_LINE] AS [INVESTMENT_CREDIT_LINE],
       x.[CREDIT_TYPE_OTH] AS [CREDIT_TYPE_OTH],
       x.[S_CREDIT_CARD_TYPE] AS [S_CREDIT_CARD_TYPE],
+      A5.Descript AS [S_CREDIT_CARD_TYPE_Description],
       x.[INTERNAL_REFI] AS [INTERNAL_REFI],
       x.[HCOUNTRY] AS [HCOUNTRY],
       x.[SOURCE_CB_PMT] AS [SOURCE_CB_PMT],
@@ -65850,6 +70282,7 @@ AS
       x.[DEBT_REROUTING_NO] AS [DEBT_REROUTING_NO],
       x.[REBEN_ACCT_NUM] AS [REBEN_ACCT_NUM],
       x.[S_LIABILITYDISBTYPE] AS [S_LIABILITYDISBTYPE],
+      A6.Descript AS [S_LIABILITYDISBTYPE_Description],
       x.[P_PYMTLEFT] AS [P_PYMTLEFT],
       x.[P_MNPAYLFT] AS [P_MNPAYLFT],
       x.[P_BALANCE] AS [P_BALANCE],
@@ -65859,6 +70292,7 @@ AS
       x.[OWNERSHP_TYPE] AS [OWNERSHP_TYPE],
       x.[DEDUCT_FROM_INC] AS [DEDUCT_FROM_INC],
       x.[S_ACCOUNT_OWNERSHIP] AS [S_ACCOUNT_OWNERSHIP],
+      A7.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[LATE_30_DAYS] AS [LATE_30_DAYS],
       x.[LATE_60_DAYS] AS [LATE_60_DAYS],
       x.[LATE_90_DAYS] AS [LATE_90_DAYS],
@@ -65866,6 +70300,14 @@ AS
       x.[CREDIT_LIMIT_AMOUNT] AS [CREDIT_LIMIT_AMOUNT],
       x.[INC_CREDIT_LINE] AS [INC_CREDIT_LINE]
    FROM [clt_NetO].[LIABLTY] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LIAB = A0.DBSYMBOL AND A0.[TableName] = 'LIABLTY' and A0.[COLUMNNAME] = 'S_LIAB'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYPER = A1.DBSYMBOL AND A1.[TableName] = 'LIABLTY' and A1.[COLUMNNAME] = 'S_PAYPER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIENPS = A2.DBSYMBOL AND A2.[TableName] = 'LIABLTY' and A2.[COLUMNNAME] = 'S_LIENPS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_EXCLUSION_REASON = A3.DBSYMBOL AND A3.[TableName] = 'LIABLTY' and A3.[COLUMNNAME] = 'S_EXCLUSION_REASON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_MTG_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'LIABLTY' and A4.[COLUMNNAME] = 'S_MTG_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CREDIT_CARD_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'LIABLTY' and A5.[COLUMNNAME] = 'S_CREDIT_CARD_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIABILITYDISBTYPE = A6.DBSYMBOL AND A6.[TableName] = 'LIABLTY' and A6.[COLUMNNAME] = 'S_LIABILITYDISBTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_ACCOUNT_OWNERSHIP = A7.DBSYMBOL AND A7.[TableName] = 'LIABLTY' and A7.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -65989,6 +70431,7 @@ AS
       x.[RESST] AS [RESST],
       x.[RESZIP] AS [RESZIP],
       x.[S_OWNRNT] AS [S_OWNRNT],
+      A0.Descript AS [S_OWNRNT_Description],
       x.[RESNMYRS] AS [RESNMYRS],
       x.[ACCTPREV] AS [ACCTPREV],
       x.[ACCTHLDR] AS [ACCTHLDR],
@@ -66000,12 +70443,17 @@ AS
       x.[YRS_AT_PREV] AS [YRS_AT_PREV],
       x.[MNTHS_AT_PREV] AS [MNTHS_AT_PREV],
       x.[S_RES_UNIT_TYPE] AS [S_RES_UNIT_TYPE],
+      A1.Descript AS [S_RES_UNIT_TYPE_Description],
       x.[RES_UNIT_NUM] AS [RES_UNIT_NUM],
       x.[RES_CNTRY_CODE] AS [RES_CNTRY_CODE],
       x.[PREV_STATE_FOREIN] AS [PREV_STATE_FOREIN],
       x.[PREV_POSTCODE] AS [PREV_POSTCODE],
-      x.[S_LIVE_RENT_FREE_ENUMS] AS [S_LIVE_RENT_FREE_ENUMS]
+      x.[S_LIVE_RENT_FREE_ENUMS] AS [S_LIVE_RENT_FREE_ENUMS],
+      A2.Descript AS [S_LIVE_RENT_FREE_ENUMS_Description]
    FROM [clt_NetO].[PREVRES] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRNT = A0.DBSYMBOL AND A0.[TableName] = 'PREVRES' and A0.[COLUMNNAME] = 'S_OWNRNT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RES_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'PREVRES' and A1.[COLUMNNAME] = 'S_RES_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIVE_RENT_FREE_ENUMS = A2.DBSYMBOL AND A2.[TableName] = 'PREVRES' and A2.[COLUMNNAME] = 'S_LIVE_RENT_FREE_ENUMS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -66028,31 +70476,43 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_PROD] AS [S_PROD],
+      A0.Descript AS [S_PROD_Description],
       x.[S_RATE] AS [S_RATE],
+      A1.Descript AS [S_RATE_Description],
       x.[S_RTCODE] AS [S_RTCODE],
+      A2.Descript AS [S_RTCODE_Description],
       x.[OLA] AS [OLA],
       x.[LTV] AS [LTV],
       x.[S_LCKTYP] AS [S_LCKTYP],
+      A3.Descript AS [S_LCKTYP_Description],
       x.[LOCKDATE] AS [LOCKDATE],
       x.[LOCKEXP] AS [LOCKEXP],
       x.[LOCKDAYS] AS [LOCKDAYS],
       x.[INTRATE] AS [INTRATE],
       x.[LOANTERM] AS [LOANTERM],
       x.[S_LCKEXP] AS [S_LCKEXP],
+      A4.Descript AS [S_LCKEXP_Description],
       x.[S_RATIO] AS [S_RATIO],
+      A5.Descript AS [S_RATIO_Description],
       x.[S_BYDOWN] AS [S_BYDOWN],
+      A6.Descript AS [S_BYDOWN_Description],
       x.[S_MIPLAN] AS [S_MIPLAN],
+      A7.Descript AS [S_MIPLAN_Description],
       x.[FMIRFLAG] AS [FMIRFLAG],
       x.[FMIRFCTR] AS [FMIRFCTR],
       x.[BALLFLAG] AS [BALLFLAG],
       x.[AMTERM] AS [AMTERM],
       x.[PIPMT] AS [PIPMT],
       x.[S_PMTSTR] AS [S_PMTSTR],
+      A8.Descript AS [S_PMTSTR_Description],
       x.[S_DISC] AS [S_DISC],
+      A9.Descript AS [S_DISC_Description],
       x.[S_ORIG] AS [S_ORIG],
+      A10.Descript AS [S_ORIG_Description],
       x.[BASELA] AS [BASELA],
       x.[LOCKED] AS [LOCKED],
       x.[S_QRATE] AS [S_QRATE],
+      A11.Descript AS [S_QRATE_Description],
       x.[BASERATE] AS [BASERATE],
       x.[CNFIRM] AS [CNFIRM],
       x.[BASEMKTDISC] AS [BASEMKTDISC],
@@ -66068,8 +70528,11 @@ AS
       x.[MKTDISCOVERRIDE] AS [MKTDISCOVERRIDE],
       x.[INTRATEOVERRIDE] AS [INTRATEOVERRIDE],
       x.[S_RTCODEOVR] AS [S_RTCODEOVR],
+      A12.Descript AS [S_RTCODEOVR_Description],
       x.[S_LTYPE] AS [S_LTYPE],
+      A13.Descript AS [S_LTYPE_Description],
       x.[S_PROGRM] AS [S_PROGRM],
+      A14.Descript AS [S_PROGRM_Description],
       x.[FINMIPERC] AS [FINMIPERC],
       x.[QUALRATE] AS [QUALRATE],
       x.[BASEQUAL] AS [BASEQUAL],
@@ -66082,8 +70545,10 @@ AS
       x.[BASELAEDT] AS [BASELAEDT],
       x.[ODDRATE] AS [ODDRATE],
       x.[S_AMTYPE] AS [S_AMTYPE],
+      A15.Descript AS [S_AMTYPE_Description],
       x.[SELRTCODE] AS [SELRTCODE],
       x.[S_RCOMNUM] AS [S_RCOMNUM],
+      A16.Descript AS [S_RCOMNUM_Description],
       x.[BYDNPMT4] AS [BYDNPMT4],
       x.[BYDNPMT5] AS [BYDNPMT5],
       x.[BYDNPMT6] AS [BYDNPMT6],
@@ -66108,11 +70573,13 @@ AS
       x.[LOCKEXPDT] AS [LOCKEXPDT],
       x.[SELECTEDINVESTOR] AS [SELECTEDINVESTOR],
       x.[S_BALLOON_TYPE] AS [S_BALLOON_TYPE],
+      A17.Descript AS [S_BALLOON_TYPE_Description],
       x.[AMORT_OTHER] AS [AMORT_OTHER],
       x.[CLIENTRATEINFO] AS [CLIENTRATEINFO],
       x.[SELECTEDPROGRAM] AS [SELECTEDPROGRAM],
       x.[BUYDOWNOVERRIDES] AS [BUYDOWNOVERRIDES],
       x.[S_MORTGAGETYPE] AS [S_MORTGAGETYPE],
+      A18.Descript AS [S_MORTGAGETYPE_Description],
       x.[TOTALPMTNO] AS [TOTALPMTNO],
       x.[MININTPMTRATE] AS [MININTPMTRATE],
       x.[REFI_RESCISSION_EXEMPT] AS [REFI_RESCISSION_EXEMPT],
@@ -66130,8 +70597,10 @@ AS
       x.[BASE_ADJ_DISC] AS [BASE_ADJ_DISC],
       x.[PMTRCODE] AS [PMTRCODE],
       x.[S_AMORT_SUB_TYPE] AS [S_AMORT_SUB_TYPE],
+      A19.Descript AS [S_AMORT_SUB_TYPE_Description],
       x.[QUALMETHOD] AS [QUALMETHOD],
       x.[S_QUALMETHODOVR] AS [S_QUALMETHODOVR],
+      A20.Descript AS [S_QUALMETHODOVR_Description],
       x.[YSP] AS [YSP],
       x.[YSP_OVRD] AS [YSP_OVRD],
       x.[OVERAGE] AS [OVERAGE],
@@ -66158,10 +70627,13 @@ AS
       x.[BORR_RESCISSION_EXEMPT] AS [BORR_RESCISSION_EXEMPT],
       x.[CORR_BOR_RATE_LOCKDATE] AS [CORR_BOR_RATE_LOCKDATE],
       x.[S_203KTYPE] AS [S_203KTYPE],
+      A21.Descript AS [S_203KTYPE_Description],
       x.[PRODUCT_DENIAL] AS [PRODUCT_DENIAL],
       x.[REQ_RESCISSION] AS [REQ_RESCISSION],
       x.[S_PRICING_REGION] AS [S_PRICING_REGION],
+      A22.Descript AS [S_PRICING_REGION_Description],
       x.[S_PRICING_CHANNEL] AS [S_PRICING_CHANNEL],
+      A23.Descript AS [S_PRICING_CHANNEL_Description],
       x.[ROE] AS [ROE],
       x.[ROA] AS [ROA],
       x.[ROEEXP] AS [ROEEXP],
@@ -66201,12 +70673,42 @@ AS
       x.[AUS_INDICATOR] AS [AUS_INDICATOR],
       x.[LOAN_TYPE_CHG_FLAG] AS [LOAN_TYPE_CHG_FLAG],
       x.[S_PROD_PRICE_ENGINE] AS [S_PROD_PRICE_ENGINE],
+      A24.Descript AS [S_PROD_PRICE_ENGINE_Description],
       x.[S_PROD_PRICE_ENGINE_OVR] AS [S_PROD_PRICE_ENGINE_OVR],
+      A25.Descript AS [S_PROD_PRICE_ENGINE_OVR_Description],
       x.[S_PPY_FILTER] AS [S_PPY_FILTER],
+      A26.Descript AS [S_PPY_FILTER_Description],
       x.[BUILDER_LOCK_ADJ] AS [BUILDER_LOCK_ADJ],
       x.[REQLOANTERM] AS [REQLOANTERM],
       x.[DLR_PIPMT] AS [DLR_PIPMT]
    FROM [clt_NetO].[PRODUCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROD = A0.DBSYMBOL AND A0.[TableName] = 'PRODUCT' and A0.[COLUMNNAME] = 'S_PROD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RATE = A1.DBSYMBOL AND A1.[TableName] = 'PRODUCT' and A1.[COLUMNNAME] = 'S_RATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_RTCODE = A2.DBSYMBOL AND A2.[TableName] = 'PRODUCT' and A2.[COLUMNNAME] = 'S_RTCODE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LCKTYP = A3.DBSYMBOL AND A3.[TableName] = 'PRODUCT' and A3.[COLUMNNAME] = 'S_LCKTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LCKEXP = A4.DBSYMBOL AND A4.[TableName] = 'PRODUCT' and A4.[COLUMNNAME] = 'S_LCKEXP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_RATIO = A5.DBSYMBOL AND A5.[TableName] = 'PRODUCT' and A5.[COLUMNNAME] = 'S_RATIO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_BYDOWN = A6.DBSYMBOL AND A6.[TableName] = 'PRODUCT' and A6.[COLUMNNAME] = 'S_BYDOWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_MIPLAN = A7.DBSYMBOL AND A7.[TableName] = 'PRODUCT' and A7.[COLUMNNAME] = 'S_MIPLAN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_PMTSTR = A8.DBSYMBOL AND A8.[TableName] = 'PRODUCT' and A8.[COLUMNNAME] = 'S_PMTSTR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_DISC = A9.DBSYMBOL AND A9.[TableName] = 'PRODUCT' and A9.[COLUMNNAME] = 'S_DISC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_ORIG = A10.DBSYMBOL AND A10.[TableName] = 'PRODUCT' and A10.[COLUMNNAME] = 'S_ORIG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_QRATE = A11.DBSYMBOL AND A11.[TableName] = 'PRODUCT' and A11.[COLUMNNAME] = 'S_QRATE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_RTCODEOVR = A12.DBSYMBOL AND A12.[TableName] = 'PRODUCT' and A12.[COLUMNNAME] = 'S_RTCODEOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_LTYPE = A13.DBSYMBOL AND A13.[TableName] = 'PRODUCT' and A13.[COLUMNNAME] = 'S_LTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROGRM = A14.DBSYMBOL AND A14.[TableName] = 'PRODUCT' and A14.[COLUMNNAME] = 'S_PROGRM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_AMTYPE = A15.DBSYMBOL AND A15.[TableName] = 'PRODUCT' and A15.[COLUMNNAME] = 'S_AMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_RCOMNUM = A16.DBSYMBOL AND A16.[TableName] = 'PRODUCT' and A16.[COLUMNNAME] = 'S_RCOMNUM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_BALLOON_TYPE = A17.DBSYMBOL AND A17.[TableName] = 'PRODUCT' and A17.[COLUMNNAME] = 'S_BALLOON_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_MORTGAGETYPE = A18.DBSYMBOL AND A18.[TableName] = 'PRODUCT' and A18.[COLUMNNAME] = 'S_MORTGAGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_AMORT_SUB_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'PRODUCT' and A19.[COLUMNNAME] = 'S_AMORT_SUB_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_QUALMETHODOVR = A20.DBSYMBOL AND A20.[TableName] = 'PRODUCT' and A20.[COLUMNNAME] = 'S_QUALMETHODOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_203KTYPE = A21.DBSYMBOL AND A21.[TableName] = 'PRODUCT' and A21.[COLUMNNAME] = 'S_203KTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PRICING_REGION = A22.DBSYMBOL AND A22.[TableName] = 'PRODUCT' and A22.[COLUMNNAME] = 'S_PRICING_REGION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_PRICING_CHANNEL = A23.DBSYMBOL AND A23.[TableName] = 'PRODUCT' and A23.[COLUMNNAME] = 'S_PRICING_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_PROD_PRICE_ENGINE = A24.DBSYMBOL AND A24.[TableName] = 'PRODUCT' and A24.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_PROD_PRICE_ENGINE_OVR = A25.DBSYMBOL AND A25.[TableName] = 'PRODUCT' and A25.[COLUMNNAME] = 'S_PROD_PRICE_ENGINE_OVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_PPY_FILTER = A26.DBSYMBOL AND A26.[TableName] = 'PRODUCT' and A26.[COLUMNNAME] = 'S_PPY_FILTER'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -66306,7 +70808,9 @@ AS
       x.[REOSTATE] AS [REOSTATE],
       x.[REOZIP] AS [REOZIP],
       x.[S_REOPST] AS [S_REOPST],
+      A0.Descript AS [S_REOPST_Description],
       x.[S_REOTYP] AS [S_REOTYP],
+      A1.Descript AS [S_REOTYP_Description],
       x.[PRESVAL] AS [PRESVAL],
       x.[PRESMTG] AS [PRESMTG],
       x.[GROSRENT] AS [GROSRENT],
@@ -66316,6 +70820,7 @@ AS
       x.[PGROSINC] AS [PGROSINC],
       x.[AGROSINC] AS [AGROSINC],
       x.[S_ONRSHP] AS [S_ONRSHP],
+      A2.Descript AS [S_ONRSHP_Description],
       x.[REOCNTRY] AS [REOCNTRY],
       x.[PRIM_RES] AS [PRIM_RES],
       x.[SUBJECTP] AS [SUBJECTP],
@@ -66357,15 +70862,24 @@ AS
       x.[UNITNUMREO] AS [UNITNUMREO],
       x.[UNITTYPEREO] AS [UNITTYPEREO],
       x.[S_ACCOUNT_OWNERSHIP] AS [S_ACCOUNT_OWNERSHIP],
+      A3.Descript AS [S_ACCOUNT_OWNERSHIP_Description],
       x.[XPROCEEDOVR] AS [XPROCEEDOVR],
       x.[S_REO_INTEND_OCCUPANCY] AS [S_REO_INTEND_OCCUPANCY],
+      A4.Descript AS [S_REO_INTEND_OCCUPANCY_Description],
       x.[REO_OTHROCCUP_DESC] AS [REO_OTHROCCUP_DESC],
       x.[S_REO_CURR_PROP_USAGE] AS [S_REO_CURR_PROP_USAGE],
+      A5.Descript AS [S_REO_CURR_PROP_USAGE_Description],
       x.[REO_STATE_FOREIN] AS [REO_STATE_FOREIN],
       x.[REO_POSTCODE] AS [REO_POSTCODE],
       x.[REO_CNTRY_COD] AS [REO_CNTRY_COD],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[REOWNED] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REOPST = A0.DBSYMBOL AND A0.[TableName] = 'REOWNED' and A0.[COLUMNNAME] = 'S_REOPST'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_REOTYP = A1.DBSYMBOL AND A1.[TableName] = 'REOWNED' and A1.[COLUMNNAME] = 'S_REOTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ONRSHP = A2.DBSYMBOL AND A2.[TableName] = 'REOWNED' and A2.[COLUMNNAME] = 'S_ONRSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ACCOUNT_OWNERSHIP = A3.DBSYMBOL AND A3.[TableName] = 'REOWNED' and A3.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_REO_INTEND_OCCUPANCY = A4.DBSYMBOL AND A4.[TableName] = 'REOWNED' and A4.[COLUMNNAME] = 'S_REO_INTEND_OCCUPANCY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_REO_CURR_PROP_USAGE = A5.DBSYMBOL AND A5.[TableName] = 'REOWNED' and A5.[COLUMNNAME] = 'S_REO_CURR_PROP_USAGE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -66391,8 +70905,6 @@ AS
       x.[TAXYEAR] AS [TAXYEAR],
       x.[METHOD] AS [METHOD],
       x.[CNTR] AS [CNTR],
-      x.[DBID] AS [DBID],
-      x.[CTR] AS [CTR],
       x.[SCHCPRFT] AS [SCHCPRFT],
       x.[SCHCDEPL] AS [SCHCDEPL],
       x.[SCHCDEPR] AS [SCHCDEPR],
@@ -66458,6 +70970,8 @@ AS
       x.[D_TOTAL] AS [D_TOTAL],
       x.[NOMONTHS] AS [NOMONTHS],
       x.[MNTHAVRG] AS [MNTHAVRG],
+      x.[DBID] AS [DBID],
+      x.[CTR] AS [CTR],
       x.[TOTINC] AS [TOTINC],
       x.[DEPR2106] AS [DEPR2106],
       x.[SCHCOTHI] AS [SCHCOTHI],
@@ -66563,19 +71077,25 @@ AS
       x.[POWER_OF_ATT_DESC] AS [POWER_OF_ATT_DESC],
       x.[ESTABLISHED_STATE] AS [ESTABLISHED_STATE],
       x.[S_BOR_SELLER_OPTION] AS [S_BOR_SELLER_OPTION],
+      A0.Descript AS [S_BOR_SELLER_OPTION_Description],
       x.[S_SEL_UNIT_TYPE] AS [S_SEL_UNIT_TYPE],
+      A1.Descript AS [S_SEL_UNIT_TYPE_Description],
       x.[SEL_UNIT_NUM] AS [SEL_UNIT_NUM],
       x.[SEL_COUNTRY_CODE] AS [SEL_COUNTRY_CODE],
       x.[SEL_STATE_FOREIN] AS [SEL_STATE_FOREIN],
       x.[SEL_POSTCODE] AS [SEL_POSTCODE],
       x.[EMAIL] AS [EMAIL],
       x.[S_IDENTIFICATION_TYPE] AS [S_IDENTIFICATION_TYPE],
+      A2.Descript AS [S_IDENTIFICATION_TYPE_Description],
       x.[IDENTIFICATION_NUMBER] AS [IDENTIFICATION_NUMBER],
       x.[SELLER_LIENHOLDER] AS [SELLER_LIENHOLDER],
       x.[SELLER_CODE] AS [SELLER_CODE],
       x.[SALES_TAX_ID] AS [SALES_TAX_ID],
       x.[REGION] AS [REGION]
    FROM [clt_NetO].[SELLER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BOR_SELLER_OPTION = A0.DBSYMBOL AND A0.[TableName] = 'SELLER' and A0.[COLUMNNAME] = 'S_BOR_SELLER_OPTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEL_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'SELLER' and A1.[COLUMNNAME] = 'S_SEL_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_IDENTIFICATION_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'SELLER' and A2.[COLUMNNAME] = 'S_IDENTIFICATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -66637,8 +71157,10 @@ AS
       x.[DOCS_SENT] AS [DOCS_SENT],
       x.[INDEMNF_AMT] AS [INDEMNF_AMT],
       x.[PC_FEDEX_NUM] AS [PC_FEDEX_NUM],
-      x.[S_SERVICING_STATUS] AS [S_SERVICING_STATUS]
+      x.[S_SERVICING_STATUS] AS [S_SERVICING_STATUS],
+      A0.Descript AS [S_SERVICING_STATUS_Description]
    FROM [clt_NetO].[SERVICNG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SERVICING_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'SERVICNG' and A0.[COLUMNNAME] = 'S_SERVICING_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -66670,14 +71192,18 @@ AS
       x.[SUBJTHLD] AS [SUBJTHLD],
       x.[SUBJMHLD] AS [SUBJMHLD],
       x.[S_OWNRHT] AS [S_OWNRHT],
+      A0.Descript AS [S_OWNRHT_Description],
       x.[SUBJOREX] AS [SUBJOREX],
       x.[SUBJLPRI] AS [SUBJLPRI],
       x.[SUBJAV] AS [SUBJAV],
       x.[SUBJSP] AS [SUBJSP],
       x.[S_PRPTYP] AS [S_PRPTYP],
+      A1.Descript AS [S_PRPTYP_Description],
       x.[SUBJSCFN] AS [SUBJSCFN],
       x.[S_DPAYMT] AS [S_DPAYMT],
+      A2.Descript AS [S_DPAYMT_Description],
       x.[S_RESTYP] AS [S_RESTYP],
+      A3.Descript AS [S_RESTYP_Description],
       x.[SUBJESTE] AS [SUBJESTE],
       x.[SUBJLEXP] AS [SUBJLEXP],
       x.[SUBJCNTY] AS [SUBJCNTY],
@@ -66685,11 +71211,14 @@ AS
       x.[BLOCKNUM] AS [BLOCKNUM],
       x.[SUBDIV] AS [SUBDIV],
       x.[S_PURP] AS [S_PURP],
+      A4.Descript AS [S_PURP_Description],
       x.[STCODE] AS [STCODE],
       x.[CYCODE] AS [CYCODE],
       x.[MSACODE] AS [MSACODE],
       x.[S_LIENPO] AS [S_LIENPO],
+      A5.Descript AS [S_LIENPO_Description],
       x.[S_LIENHO] AS [S_LIENHO],
+      A6.Descript AS [S_LIENHO_Description],
       x.[BALOTHMT] AS [BALOTHMT],
       x.[SUBJLTV] AS [SUBJLTV],
       x.[COMBLTV] AS [COMBLTV],
@@ -66697,6 +71226,7 @@ AS
       x.[STRALIAS] AS [STRALIAS],
       x.[CITYFLAG] AS [CITYFLAG],
       x.[S_PRJCLS] AS [S_PRJCLS],
+      A7.Descript AS [S_PRJCLS_Description],
       x.[PROJNAME] AS [PROJNAME],
       x.[DECLDBID] AS [DECLDBID],
       x.[DECLSERL] AS [DECLSERL],
@@ -66724,7 +71254,9 @@ AS
       x.[LIENPOSOTHER] AS [LIENPOSOTHER],
       x.[PROPTYPEOTHER] AS [PROPTYPEOTHER],
       x.[S_FREPRJCLS] AS [S_FREPRJCLS],
+      A8.Descript AS [S_FREPRJCLS_Description],
       x.[S_FNMPRJCLS] AS [S_FNMPRJCLS],
+      A9.Descript AS [S_FNMPRJCLS_Description],
       x.[HOTEL_INDICATOR] AS [HOTEL_INDICATOR],
       x.[NONWARRANTABLE] AS [NONWARRANTABLE],
       x.[NUMBSTORIES] AS [NUMBSTORIES],
@@ -66736,39 +71268,54 @@ AS
       x.[OTHERPROPRITTYPEDESC] AS [OTHERPROPRITTYPEDESC],
       x.[OTHEROWNTYPEDESC] AS [OTHEROWNTYPEDESC],
       x.[S_UNIQUEDWELLINGTYPE] AS [S_UNIQUEDWELLINGTYPE],
+      A10.Descript AS [S_UNIQUEDWELLINGTYPE_Description],
       x.[OTHERUNIQDWELLINGTYPDSC] AS [OTHERUNIQDWELLINGTYPDSC],
       x.[S_NATIVEAMERICANLANDSTYPE] AS [S_NATIVEAMERICANLANDSTYPE],
+      A11.Descript AS [S_NATIVEAMERICANLANDSTYPE_Description],
       x.[OTHERNATAMERLANDSTYPEDESC] AS [OTHERNATAMERLANDSTYPEDESC],
       x.[COMMLANDTRUSTINDCTR] AS [COMMLANDTRUSTINDCTR],
       x.[INCLUSIONARYZONEINDCTR] AS [INCLUSIONARYZONEINDCTR],
       x.[S_CATEGORYTYPE] AS [S_CATEGORYTYPE],
+      A12.Descript AS [S_CATEGORYTYPE_Description],
       x.[OTHERCATEGORYTYPEDESC] AS [OTHERCATEGORYTYPEDESC],
       x.[S_PROJECTDESIGNTYPE] AS [S_PROJECTDESIGNTYPE],
+      A13.Descript AS [S_PROJECTDESIGNTYPE_Description],
       x.[OTHERPROJDESIGNTYPEDESC] AS [OTHERPROJDESIGNTYPEDESC],
       x.[S_PROJECTCLASSTYPE] AS [S_PROJECTCLASSTYPE],
+      A14.Descript AS [S_PROJECTCLASSTYPE_Description],
       x.[OTHERPROJCLASSTYPEDESC] AS [OTHERPROJCLASSTYPEDESC],
       x.[OTHERDOWNPAYTYPEDESC] AS [OTHERDOWNPAYTYPEDESC],
       x.[S_UNITOWNERSHIPTYPE] AS [S_UNITOWNERSHIPTYPE],
+      A15.Descript AS [S_UNITOWNERSHIPTYPE_Description],
       x.[CONCURRENT_FIN_INPUT] AS [CONCURRENT_FIN_INPUT],
       x.[INCLUDE_ASSIST_PROGS] AS [INCLUDE_ASSIST_PROGS],
       x.[S_DPAYMTNM] AS [S_DPAYMTNM],
+      A16.Descript AS [S_DPAYMTNM_Description],
       x.[DOWNPAYNMDESC] AS [DOWNPAYNMDESC],
       x.[SUBESTAV] AS [SUBESTAV],
       x.[LTV_ROUNDED] AS [LTV_ROUNDED],
       x.[TLTV_ROUNDED] AS [TLTV_ROUNDED],
       x.[S_CONDO_PROJECT_STATUS] AS [S_CONDO_PROJECT_STATUS],
+      A17.Descript AS [S_CONDO_PROJECT_STATUS_Description],
       x.[S_PROJ_ATTACH_TYPE] AS [S_PROJ_ATTACH_TYPE],
+      A18.Descript AS [S_PROJ_ATTACH_TYPE_Description],
       x.[S_PROJECT_DESIGN_TYPE] AS [S_PROJECT_DESIGN_TYPE],
+      A19.Descript AS [S_PROJECT_DESIGN_TYPE_Description],
       x.[S_ATTACHMENT_TYPE] AS [S_ATTACHMENT_TYPE],
+      A20.Descript AS [S_ATTACHMENT_TYPE_Description],
       x.[S_PROJ_CLASS_ID_FNM] AS [S_PROJ_CLASS_ID_FNM],
+      A21.Descript AS [S_PROJ_CLASS_ID_FNM_Description],
       x.[S_PROJ_CLASS_ID_FRE] AS [S_PROJ_CLASS_ID_FRE],
+      A22.Descript AS [S_PROJ_CLASS_ID_FRE_Description],
       x.[PROJ_UNITS_TOTAL] AS [PROJ_UNITS_TOTAL],
       x.[PROJ_UNITS_SOLD] AS [PROJ_UNITS_SOLD],
       x.[ISUSPSVALIDATED] AS [ISUSPSVALIDATED],
       x.[SUBJADD3] AS [SUBJADD3],
       x.[CPMPROID] AS [CPMPROID],
       x.[S_FRPROJ] AS [S_FRPROJ],
+      A23.Descript AS [S_FRPROJ_Description],
       x.[S_FMPROJ] AS [S_FMPROJ],
+      A24.Descript AS [S_FMPROJ_Description],
       x.[PROPDESC] AS [PROPDESC],
       x.[RENTINC_VERIFIED] AS [RENTINC_VERIFIED],
       x.[RENTINC_VERIFY_TYPE] AS [RENTINC_VERIFY_TYPE],
@@ -66776,12 +71323,14 @@ AS
       x.[CONDO_UNITS_COV_HAZ] AS [CONDO_UNITS_COV_HAZ],
       x.[CONDO_UNITS_COV_FLD] AS [CONDO_UNITS_COV_FLD],
       x.[S_STRUCTURETYPE] AS [S_STRUCTURETYPE],
+      A25.Descript AS [S_STRUCTURETYPE_Description],
       x.[CEMA] AS [CEMA],
       x.[FHAHUDAPPROVAL] AS [FHAHUDAPPROVAL],
       x.[IMP_COST_PLUS_EEM] AS [IMP_COST_PLUS_EEM],
       x.[MAX_LIMIT_LOAN_AMT] AS [MAX_LIMIT_LOAN_AMT],
       x.[TOTAL_MTG_PROPERTIES] AS [TOTAL_MTG_PROPERTIES],
       x.[S_SUBJUNITTYPE] AS [S_SUBJUNITTYPE],
+      A26.Descript AS [S_SUBJUNITTYPE_Description],
       x.[CRAEXEMPTION] AS [CRAEXEMPTION],
       x.[MDINDICATOR] AS [MDINDICATOR],
       x.[MSAINDICATOR] AS [MSAINDICATOR],
@@ -66789,7 +71338,9 @@ AS
       x.[INCOME_RESTRICT] AS [INCOME_RESTRICT],
       x.[PROPVALUE_RELIED_ON] AS [PROPVALUE_RELIED_ON],
       x.[S_APPRMTHDREQ] AS [S_APPRMTHDREQ],
+      A27.Descript AS [S_APPRMTHDREQ_Description],
       x.[S_APPRMTHDREQOVR] AS [S_APPRMTHDREQOVR],
+      A28.Descript AS [S_APPRMTHDREQOVR_Description],
       x.[EXIST_EEM_AMT] AS [EXIST_EEM_AMT],
       x.[ISCONDOMINIUM] AS [ISCONDOMINIUM],
       x.[ISCOOPERATIVE] AS [ISCOOPERATIVE],
@@ -66800,6 +71351,7 @@ AS
       x.[MFHOME] AS [MFHOME],
       x.[TX_50A6] AS [TX_50A6],
       x.[S_TRSTYP] AS [S_TRSTYP],
+      A29.Descript AS [S_TRSTYP_Description],
       x.[SHORT_LEGAL_DESC_OVR] AS [SHORT_LEGAL_DESC_OVR],
       x.[SUBJTHLCUR] AS [SUBJTHLCUR],
       x.[ADJLTV] AS [ADJLTV],
@@ -66809,6 +71361,36 @@ AS
       x.[TX_50F2] AS [TX_50F2],
       x.[RESALE_RESTRICTION] AS [RESALE_RESTRICTION]
    FROM [clt_NetO].[SUBJPRP] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRHT = A0.DBSYMBOL AND A0.[TableName] = 'SUBJPRP' and A0.[COLUMNNAME] = 'S_OWNRHT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PRPTYP = A1.DBSYMBOL AND A1.[TableName] = 'SUBJPRP' and A1.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DPAYMT = A2.DBSYMBOL AND A2.[TableName] = 'SUBJPRP' and A2.[COLUMNNAME] = 'S_DPAYMT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_RESTYP = A3.DBSYMBOL AND A3.[TableName] = 'SUBJPRP' and A3.[COLUMNNAME] = 'S_RESTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PURP = A4.DBSYMBOL AND A4.[TableName] = 'SUBJPRP' and A4.[COLUMNNAME] = 'S_PURP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LIENPO = A5.DBSYMBOL AND A5.[TableName] = 'SUBJPRP' and A5.[COLUMNNAME] = 'S_LIENPO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LIENHO = A6.DBSYMBOL AND A6.[TableName] = 'SUBJPRP' and A6.[COLUMNNAME] = 'S_LIENHO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_PRJCLS = A7.DBSYMBOL AND A7.[TableName] = 'SUBJPRP' and A7.[COLUMNNAME] = 'S_PRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_FREPRJCLS = A8.DBSYMBOL AND A8.[TableName] = 'SUBJPRP' and A8.[COLUMNNAME] = 'S_FREPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_FNMPRJCLS = A9.DBSYMBOL AND A9.[TableName] = 'SUBJPRP' and A9.[COLUMNNAME] = 'S_FNMPRJCLS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_UNIQUEDWELLINGTYPE = A10.DBSYMBOL AND A10.[TableName] = 'SUBJPRP' and A10.[COLUMNNAME] = 'S_UNIQUEDWELLINGTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_NATIVEAMERICANLANDSTYPE = A11.DBSYMBOL AND A11.[TableName] = 'SUBJPRP' and A11.[COLUMNNAME] = 'S_NATIVEAMERICANLANDSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_CATEGORYTYPE = A12.DBSYMBOL AND A12.[TableName] = 'SUBJPRP' and A12.[COLUMNNAME] = 'S_CATEGORYTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_PROJECTDESIGNTYPE = A13.DBSYMBOL AND A13.[TableName] = 'SUBJPRP' and A13.[COLUMNNAME] = 'S_PROJECTDESIGNTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_PROJECTCLASSTYPE = A14.DBSYMBOL AND A14.[TableName] = 'SUBJPRP' and A14.[COLUMNNAME] = 'S_PROJECTCLASSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_UNITOWNERSHIPTYPE = A15.DBSYMBOL AND A15.[TableName] = 'SUBJPRP' and A15.[COLUMNNAME] = 'S_UNITOWNERSHIPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_DPAYMTNM = A16.DBSYMBOL AND A16.[TableName] = 'SUBJPRP' and A16.[COLUMNNAME] = 'S_DPAYMTNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_CONDO_PROJECT_STATUS = A17.DBSYMBOL AND A17.[TableName] = 'SUBJPRP' and A17.[COLUMNNAME] = 'S_CONDO_PROJECT_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_PROJ_ATTACH_TYPE = A18.DBSYMBOL AND A18.[TableName] = 'SUBJPRP' and A18.[COLUMNNAME] = 'S_PROJ_ATTACH_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_PROJECT_DESIGN_TYPE = A19.DBSYMBOL AND A19.[TableName] = 'SUBJPRP' and A19.[COLUMNNAME] = 'S_PROJECT_DESIGN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_ATTACHMENT_TYPE = A20.DBSYMBOL AND A20.[TableName] = 'SUBJPRP' and A20.[COLUMNNAME] = 'S_ATTACHMENT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A21 on x.S_PROJ_CLASS_ID_FNM = A21.DBSYMBOL AND A21.[TableName] = 'SUBJPRP' and A21.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FNM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A22 on x.S_PROJ_CLASS_ID_FRE = A22.DBSYMBOL AND A22.[TableName] = 'SUBJPRP' and A22.[COLUMNNAME] = 'S_PROJ_CLASS_ID_FRE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A23 on x.S_FRPROJ = A23.DBSYMBOL AND A23.[TableName] = 'SUBJPRP' and A23.[COLUMNNAME] = 'S_FRPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A24 on x.S_FMPROJ = A24.DBSYMBOL AND A24.[TableName] = 'SUBJPRP' and A24.[COLUMNNAME] = 'S_FMPROJ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A25 on x.S_STRUCTURETYPE = A25.DBSYMBOL AND A25.[TableName] = 'SUBJPRP' and A25.[COLUMNNAME] = 'S_STRUCTURETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A26 on x.S_SUBJUNITTYPE = A26.DBSYMBOL AND A26.[TableName] = 'SUBJPRP' and A26.[COLUMNNAME] = 'S_SUBJUNITTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A27 on x.S_APPRMTHDREQ = A27.DBSYMBOL AND A27.[TableName] = 'SUBJPRP' and A27.[COLUMNNAME] = 'S_APPRMTHDREQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A28 on x.S_APPRMTHDREQOVR = A28.DBSYMBOL AND A28.[TableName] = 'SUBJPRP' and A28.[COLUMNNAME] = 'S_APPRMTHDREQOVR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A29 on x.S_TRSTYP = A29.DBSYMBOL AND A29.[TableName] = 'SUBJPRP' and A29.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -66950,10 +71532,13 @@ AS
       x.[SECINTOWN] AS [SECINTOWN],
       x.[SECINTOTH] AS [SECINTOTH],
       x.[S_LATECHARGETYPE] AS [S_LATECHARGETYPE],
+      A0.Descript AS [S_LATECHARGETYPE_Description],
       x.[S_PPPOPT] AS [S_PPPOPT],
+      A1.Descript AS [S_PPPOPT_Description],
       x.[PMMS_RATE] AS [PMMS_RATE],
       x.[LOCK_REDISCLOSE_IND] AS [LOCK_REDISCLOSE_IND],
       x.[S_TIL2011_OVRD] AS [S_TIL2011_OVRD],
+      A2.Descript AS [S_TIL2011_OVRD_Description],
       x.[FLAT_AMT] AS [FLAT_AMT],
       x.[BPRESOTHPRGS] AS [BPRESOTHPRGS],
       x.[DISCLOSE_APR] AS [DISCLOSE_APR],
@@ -66974,6 +71559,9 @@ AS
       x.[PRESENT_SHARES] AS [PRESENT_SHARES],
       x.[OTHER_COLLATERAL] AS [OTHER_COLLATERAL]
    FROM [clt_NetO].[TILINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LATECHARGETYPE = A0.DBSYMBOL AND A0.[TableName] = 'TILINFO' and A0.[COLUMNNAME] = 'S_LATECHARGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PPPOPT = A1.DBSYMBOL AND A1.[TableName] = 'TILINFO' and A1.[COLUMNNAME] = 'S_PPPOPT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_TIL2011_OVRD = A2.DBSYMBOL AND A2.[TableName] = 'TILINFO' and A2.[COLUMNNAME] = 'S_TIL2011_OVRD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -66999,18 +71587,26 @@ AS
       x.[TRLNDRCN] AS [TRLNDRCN],
       x.[CLNUM] AS [CLNUM],
       x.[S_IVMETH] AS [S_IVMETH],
+      A0.Descript AS [S_IVMETH_Description],
       x.[S_IVID] AS [S_IVID],
+      A1.Descript AS [S_IVID_Description],
       x.[S_BUSCHL] AS [S_BUSCHL],
+      A2.Descript AS [S_BUSCHL_Description],
       x.[CLOSEDT] AS [CLOSEDT],
       x.[DISBURDT] AS [DISBURDT],
       x.[FSTPMTDT] AS [FSTPMTDT],
       x.[ODDDAYS] AS [ODDDAYS],
       x.[FEEFIRST] AS [FEEFIRST],
       x.[S_COPT1] AS [S_COPT1],
+      A3.Descript AS [S_COPT1_Description],
       x.[S_COPT2] AS [S_COPT2],
+      A4.Descript AS [S_COPT2_Description],
       x.[S_COPT3] AS [S_COPT3],
+      A5.Descript AS [S_COPT3_Description],
       x.[S_COPT4] AS [S_COPT4],
+      A6.Descript AS [S_COPT4_Description],
       x.[S_COPT5] AS [S_COPT5],
+      A7.Descript AS [S_COPT5_Description],
       x.[CUSHION] AS [CUSHION],
       x.[AGGEADJ] AS [AGGEADJ],
       x.[DOWNPYMT] AS [DOWNPYMT],
@@ -67027,15 +71623,24 @@ AS
       x.[WHOMCFM] AS [WHOMCFM],
       x.[PREQUAL] AS [PREQUAL],
       x.[S_COPT6] AS [S_COPT6],
+      A8.Descript AS [S_COPT6_Description],
       x.[S_COPT7] AS [S_COPT7],
+      A9.Descript AS [S_COPT7_Description],
       x.[S_COPT8] AS [S_COPT8],
+      A10.Descript AS [S_COPT8_Description],
       x.[S_COPT9] AS [S_COPT9],
+      A11.Descript AS [S_COPT9_Description],
       x.[S_COPT10] AS [S_COPT10],
+      A12.Descript AS [S_COPT10_Description],
       x.[S_CRDGRDRQ] AS [S_CRDGRDRQ],
+      A13.Descript AS [S_CRDGRDRQ_Description],
       x.[S_DOCLEVEL] AS [S_DOCLEVEL],
+      A14.Descript AS [S_DOCLEVEL_Description],
       x.[GRADEDC] AS [GRADEDC],
       x.[S_CRDGRDAP] AS [S_CRDGRDAP],
+      A15.Descript AS [S_CRDGRDAP_Description],
       x.[S_QUALITY] AS [S_QUALITY],
+      A16.Descript AS [S_QUALITY_Description],
       x.[DMSGRADE] AS [DMSGRADE],
       x.[ESTCLOSD] AS [ESTCLOSD],
       x.[SRVCNUM] AS [SRVCNUM],
@@ -67052,6 +71657,7 @@ AS
       x.[LRDATE] AS [LRDATE],
       x.[TPBROKR] AS [TPBROKR],
       x.[S_DELTERMS] AS [S_DELTERMS],
+      A17.Descript AS [S_DELTERMS_Description],
       x.[SELLCL] AS [SELLCL],
       x.[WLSTATUS] AS [WLSTATUS],
       x.[CLTYPE] AS [CLTYPE],
@@ -67061,7 +71667,9 @@ AS
       x.[USERQUALIFIER] AS [USERQUALIFIER],
       x.[PURPOSE_TYPE] AS [PURPOSE_TYPE],
       x.[S_CASE_STATUS] AS [S_CASE_STATUS],
+      A18.Descript AS [S_CASE_STATUS_Description],
       x.[S_REPAY] AS [S_REPAY],
+      A19.Descript AS [S_REPAY_Description],
       x.[UNITPER] AS [UNITPER],
       x.[UNITPEROVR] AS [UNITPEROVR],
       x.[LASTLOCKED] AS [LASTLOCKED],
@@ -67075,6 +71683,7 @@ AS
       x.[OBLIGATED_BORROWER_COUNT] AS [OBLIGATED_BORROWER_COUNT],
       x.[SECURITY_TOKEN] AS [SECURITY_TOKEN],
       x.[S_CHANNEL_SOURCE_CODE] AS [S_CHANNEL_SOURCE_CODE],
+      A20.Descript AS [S_CHANNEL_SOURCE_CODE_Description],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[LOAN_CREATE_DATE] AS [LOAN_CREATE_DATE],
       x.[CLIENT_TOLL_FREE_NUM] AS [CLIENT_TOLL_FREE_NUM],
@@ -67086,6 +71695,27 @@ AS
       x.[AUTO_CREDIT_PULLED] AS [AUTO_CREDIT_PULLED],
       x.[SELLER_SERVICING_NUM] AS [SELLER_SERVICING_NUM]
    FROM [clt_NetO].[TRACKING] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IVMETH = A0.DBSYMBOL AND A0.[TableName] = 'TRACKING' and A0.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_IVID = A1.DBSYMBOL AND A1.[TableName] = 'TRACKING' and A1.[COLUMNNAME] = 'S_IVID'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BUSCHL = A2.DBSYMBOL AND A2.[TableName] = 'TRACKING' and A2.[COLUMNNAME] = 'S_BUSCHL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_COPT1 = A3.DBSYMBOL AND A3.[TableName] = 'TRACKING' and A3.[COLUMNNAME] = 'S_COPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COPT2 = A4.DBSYMBOL AND A4.[TableName] = 'TRACKING' and A4.[COLUMNNAME] = 'S_COPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_COPT3 = A5.DBSYMBOL AND A5.[TableName] = 'TRACKING' and A5.[COLUMNNAME] = 'S_COPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COPT4 = A6.DBSYMBOL AND A6.[TableName] = 'TRACKING' and A6.[COLUMNNAME] = 'S_COPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_COPT5 = A7.DBSYMBOL AND A7.[TableName] = 'TRACKING' and A7.[COLUMNNAME] = 'S_COPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COPT6 = A8.DBSYMBOL AND A8.[TableName] = 'TRACKING' and A8.[COLUMNNAME] = 'S_COPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_COPT7 = A9.DBSYMBOL AND A9.[TableName] = 'TRACKING' and A9.[COLUMNNAME] = 'S_COPT7'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_COPT8 = A10.DBSYMBOL AND A10.[TableName] = 'TRACKING' and A10.[COLUMNNAME] = 'S_COPT8'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_COPT9 = A11.DBSYMBOL AND A11.[TableName] = 'TRACKING' and A11.[COLUMNNAME] = 'S_COPT9'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_COPT10 = A12.DBSYMBOL AND A12.[TableName] = 'TRACKING' and A12.[COLUMNNAME] = 'S_COPT10'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_CRDGRDRQ = A13.DBSYMBOL AND A13.[TableName] = 'TRACKING' and A13.[COLUMNNAME] = 'S_CRDGRDRQ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A14 on x.S_DOCLEVEL = A14.DBSYMBOL AND A14.[TableName] = 'TRACKING' and A14.[COLUMNNAME] = 'S_DOCLEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A15 on x.S_CRDGRDAP = A15.DBSYMBOL AND A15.[TableName] = 'TRACKING' and A15.[COLUMNNAME] = 'S_CRDGRDAP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A16 on x.S_QUALITY = A16.DBSYMBOL AND A16.[TableName] = 'TRACKING' and A16.[COLUMNNAME] = 'S_QUALITY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A17 on x.S_DELTERMS = A17.DBSYMBOL AND A17.[TableName] = 'TRACKING' and A17.[COLUMNNAME] = 'S_DELTERMS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A18 on x.S_CASE_STATUS = A18.DBSYMBOL AND A18.[TableName] = 'TRACKING' and A18.[COLUMNNAME] = 'S_CASE_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A19 on x.S_REPAY = A19.DBSYMBOL AND A19.[TableName] = 'TRACKING' and A19.[COLUMNNAME] = 'S_REPAY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A20 on x.S_CHANNEL_SOURCE_CODE = A20.DBSYMBOL AND A20.[TableName] = 'TRACKING' and A20.[COLUMNNAME] = 'S_CHANNEL_SOURCE_CODE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67167,12 +71797,14 @@ AS
       x.[TRUST_STREET_ADDR2] AS [TRUST_STREET_ADDR2],
       x.[EMAIL] AS [EMAIL],
       x.[S_TRUST_UNIT_TYPE] AS [S_TRUST_UNIT_TYPE],
+      A0.Descript AS [S_TRUST_UNIT_TYPE_Description],
       x.[TRUST_UNIT_NUM] AS [TRUST_UNIT_NUM],
       x.[TRUST_COUNTRY_CODE] AS [TRUST_COUNTRY_CODE],
       x.[LIVING_TRUST_BNUM] AS [LIVING_TRUST_BNUM],
       x.[TRST_STATE_FOR] AS [TRST_STATE_FOR],
       x.[TRST_POSTCODE] AS [TRST_POSTCODE]
    FROM [clt_NetO].[TRSTENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRUST_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'TRSTENTS' and A0.[COLUMNNAME] = 'S_TRUST_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67204,6 +71836,7 @@ AS
       x.[TRSTADT2] AS [TRSTADT2],
       x.[TRSTNUMB] AS [TRSTNUMB],
       x.[S_TRSTYP] AS [S_TRSTYP],
+      A0.Descript AS [S_TRSTYP_Description],
       x.[TRSTINST] AS [TRSTINST],
       x.[TRSTREV] AS [TRSTREV],
       x.[STATE] AS [STATE],
@@ -67214,6 +71847,7 @@ AS
       x.[QPRT_BEN_WAIVER] AS [QPRT_BEN_WAIVER],
       x.[LIVTRST] AS [LIVTRST]
    FROM [clt_NetO].[TRUSTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRSTYP = A0.DBSYMBOL AND A0.[TableName] = 'TRUSTS' and A0.[COLUMNNAME] = 'S_TRSTYP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67236,12 +71870,19 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_DISPOSITION] AS [S_DISPOSITION],
+      A0.Descript AS [S_DISPOSITION_Description],
       x.[S_UWOPT1] AS [S_UWOPT1],
+      A1.Descript AS [S_UWOPT1_Description],
       x.[S_UWOPT2] AS [S_UWOPT2],
+      A2.Descript AS [S_UWOPT2_Description],
       x.[S_UWOPT3] AS [S_UWOPT3],
+      A3.Descript AS [S_UWOPT3_Description],
       x.[S_UWOPT4] AS [S_UWOPT4],
+      A4.Descript AS [S_UWOPT4_Description],
       x.[S_UWOPT5] AS [S_UWOPT5],
+      A5.Descript AS [S_UWOPT5_Description],
       x.[S_UWOPT6] AS [S_UWOPT6],
+      A6.Descript AS [S_UWOPT6_Description],
       x.[INV_APPRV_DATE] AS [INV_APPRV_DATE],
       x.[UNDW_EXP_DATE] AS [UNDW_EXP_DATE],
       x.[DOC_EXP_DATE] AS [DOC_EXP_DATE],
@@ -67253,6 +71894,7 @@ AS
       x.[AUSCOMDBID] AS [AUSCOMDBID],
       x.[AUSCOMSN] AS [AUSCOMSN],
       x.[S_TRGTINV] AS [S_TRGTINV],
+      A7.Descript AS [S_TRGTINV_Description],
       x.[UWENTITY] AS [UWENTITY],
       x.[CREDSCOVRD] AS [CREDSCOVRD],
       x.[DELEGATED_ENDORSEMENT] AS [DELEGATED_ENDORSEMENT],
@@ -67260,10 +71902,20 @@ AS
       x.[EST_CRED_SCORE] AS [EST_CRED_SCORE],
       x.[CREDIT_REPORT_REF] AS [CREDIT_REPORT_REF],
       x.[S_CREDSCORE_OVERRIDE_REASON] AS [S_CREDSCORE_OVERRIDE_REASON],
+      A8.Descript AS [S_CREDSCORE_OVERRIDE_REASON_Description],
       x.[CS_OVR_REAS_OTHERDESC] AS [CS_OVR_REAS_OTHERDESC],
       x.[DECISIONTARGETDATE] AS [DECISIONTARGETDATE],
       x.[DISPOSITION_DATETIME] AS [DISPOSITION_DATETIME]
    FROM [clt_NetO].[UNDCOND1] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_DISPOSITION = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND1' and A0.[COLUMNNAME] = 'S_DISPOSITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UWOPT1 = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND1' and A1.[COLUMNNAME] = 'S_UWOPT1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UWOPT2 = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND1' and A2.[COLUMNNAME] = 'S_UWOPT2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_UWOPT3 = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND1' and A3.[COLUMNNAME] = 'S_UWOPT3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_UWOPT4 = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND1' and A4.[COLUMNNAME] = 'S_UWOPT4'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_UWOPT5 = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND1' and A5.[COLUMNNAME] = 'S_UWOPT5'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_UWOPT6 = A6.DBSYMBOL AND A6.[TableName] = 'UNDCOND1' and A6.[COLUMNNAME] = 'S_UWOPT6'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_TRGTINV = A7.DBSYMBOL AND A7.[TableName] = 'UNDCOND1' and A7.[COLUMNNAME] = 'S_TRGTINV'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CREDSCORE_OVERRIDE_REASON = A8.DBSYMBOL AND A8.[TableName] = 'UNDCOND1' and A8.[COLUMNNAME] = 'S_CREDSCORE_OVERRIDE_REASON'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67288,8 +71940,11 @@ AS
       x.[DBID] AS [DBID],
       x.[CNTR] AS [CNTR],
       x.[S_SUNDCON] AS [S_SUNDCON],
+      A0.Descript AS [S_SUNDCON_Description],
       x.[S_UNDCAT] AS [S_UNDCAT],
+      A1.Descript AS [S_UNDCAT_Description],
       x.[S_UNDTYP] AS [S_UNDTYP],
+      A2.Descript AS [S_UNDTYP_Description],
       x.[CUUSRID] AS [CUUSRID],
       x.[CUUSGRP] AS [CUUSGRP],
       x.[CUDATE] AS [CUDATE],
@@ -67300,13 +71955,16 @@ AS
       x.[UWCKLIST] AS [UWCKLIST],
       x.[ISACTIVE] AS [ISACTIVE],
       x.[S_ASSOCDOC] AS [S_ASSOCDOC],
+      A3.Descript AS [S_ASSOCDOC_Description],
       x.[SHWWAIVE] AS [SHWWAIVE],
       x.[DISCLOSE] AS [DISCLOSE],
       x.[S_COMFLG] AS [S_COMFLG],
+      A4.Descript AS [S_COMFLG_Description],
       x.[RESPONSIBLE_P] AS [RESPONSIBLE_P],
       x.[DUEDATE] AS [DUEDATE],
       x.[ERRORCAUSEBY] AS [ERRORCAUSEBY],
       x.[S_CONDITION_SRC] AS [S_CONDITION_SRC],
+      A5.Descript AS [S_CONDITION_SRC_Description],
       x.[CREATED_DATE] AS [CREATED_DATE],
       x.[CREATED_USER] AS [CREATED_USER],
       x.[RECEIVED_DT] AS [RECEIVED_DT],
@@ -67319,6 +71977,12 @@ AS
       x.[REJECTED_DT] AS [REJECTED_DT],
       x.[RESET_DT] AS [RESET_DT]
    FROM [clt_NetO].[UNDCOND2] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.DBSYMBOL AND A0.[TableName] = 'UNDCOND2' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_UNDCAT = A1.DBSYMBOL AND A1.[TableName] = 'UNDCOND2' and A1.[COLUMNNAME] = 'S_UNDCAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_UNDTYP = A2.DBSYMBOL AND A2.[TableName] = 'UNDCOND2' and A2.[COLUMNNAME] = 'S_UNDTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ASSOCDOC = A3.DBSYMBOL AND A3.[TableName] = 'UNDCOND2' and A3.[COLUMNNAME] = 'S_ASSOCDOC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_COMFLG = A4.DBSYMBOL AND A4.[TableName] = 'UNDCOND2' and A4.[COLUMNNAME] = 'S_COMFLG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CONDITION_SRC = A5.DBSYMBOL AND A5.[TableName] = 'UNDCOND2' and A5.[COLUMNNAME] = 'S_CONDITION_SRC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67343,6 +72007,7 @@ AS
       x.[CNTR] AS [CNTR],
       x.[DBID] AS [DBID],
       x.[S_PRPTYP] AS [S_PRPTYP],
+      A0.Descript AS [S_PRPTYP_Description],
       x.[UNITNUM] AS [UNITNUM],
       x.[PROJNAME] AS [PROJNAME],
       x.[APPRAISAL] AS [APPRAISAL],
@@ -67373,6 +72038,7 @@ AS
       x.[NET6] AS [NET6],
       x.[GROSS6] AS [GROSS6],
       x.[S_APPRTYPE] AS [S_APPRTYPE],
+      A1.Descript AS [S_APPRTYPE_Description],
       x.[SUBMFLG] AS [SUBMFLG],
       x.[LANDTOVALUE] AS [LANDTOVALUE],
       x.[APPRVALUEINDICATOR] AS [APPRVALUEINDICATOR],
@@ -67387,12 +72053,16 @@ AS
       x.[LESS750] AS [LESS750],
       x.[HVE_EFFECTIVE_DT] AS [HVE_EFFECTIVE_DT],
       x.[S_APPRFORMTYPE] AS [S_APPRFORMTYPE],
+      A2.Descript AS [S_APPRFORMTYPE_Description],
       x.[APPRFORMTYPEOTHDESC] AS [APPRFORMTYPEOTHDESC],
       x.[S_PRPFORMTYPE] AS [S_PRPFORMTYPE],
+      A3.Descript AS [S_PRPFORMTYPE_Description],
       x.[PRPFORMTYPEOTHDESC] AS [PRPFORMTYPEOTHDESC],
       x.[S_PRPMETHODTYPE] AS [S_PRPMETHODTYPE],
+      A4.Descript AS [S_PRPMETHODTYPE_Description],
       x.[PRPMETHODTYPEOTHDESC] AS [PRPMETHODTYPEOTHDESC],
       x.[S_LVLPRPRVW] AS [S_LVLPRPRVW],
+      A5.Descript AS [S_LVLPRPRVW_Description],
       x.[APPRLVLPRPRVWTYPEOTHDESC] AS [APPRLVLPRPRVWTYPEOTHDESC],
       x.[APPR_SUPER_LIC] AS [APPR_SUPER_LIC],
       x.[DATEORDERED] AS [DATEORDERED],
@@ -67402,6 +72072,7 @@ AS
       x.[ACTUALCOST] AS [ACTUALCOST],
       x.[DATERECEIVED] AS [DATERECEIVED],
       x.[S_STATUS] AS [S_STATUS],
+      A6.Descript AS [S_STATUS_Description],
       x.[REQUESTEDDATE] AS [REQUESTEDDATE],
       x.[REQUESTEDBY] AS [REQUESTEDBY],
       x.[DATEREVIEWED] AS [DATEREVIEWED],
@@ -67421,8 +72092,11 @@ AS
       x.[SITEVALUE] AS [SITEVALUE],
       x.[SUBJECTTOREPAIRS] AS [SUBJECTTOREPAIRS],
       x.[S_APPRMETH] AS [S_APPRMETH],
+      A7.Descript AS [S_APPRMETH_Description],
       x.[S_AVM] AS [S_AVM],
+      A8.Descript AS [S_AVM_Description],
       x.[S_AVMOTH] AS [S_AVMOTH],
+      A9.Descript AS [S_AVMOTH_Description],
       x.[APPR_SUPER_FNAME] AS [APPR_SUPER_FNAME],
       x.[APPR_SUPER_LNAME] AS [APPR_SUPER_LNAME],
       x.[APPRREINSPFEE] AS [APPRREINSPFEE],
@@ -67438,8 +72112,20 @@ AS
       x.[ADDR2] AS [ADDR2],
       x.[INV_COLL_PROG_ID] AS [INV_COLL_PROG_ID],
       x.[FORECAST_STD_DEV] AS [FORECAST_STD_DEV],
-      x.[S_HOA_FEES_PERIOD_TYPE] AS [S_HOA_FEES_PERIOD_TYPE]
+      x.[S_HOA_FEES_PERIOD_TYPE] AS [S_HOA_FEES_PERIOD_TYPE],
+      A10.Descript AS [S_HOA_FEES_PERIOD_TYPE_Description]
    FROM [clt_NetO].[UWAPPR] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'UWAPPR' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_APPRTYPE = A1.DBSYMBOL AND A1.[TableName] = 'UWAPPR' and A1.[COLUMNNAME] = 'S_APPRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_APPRFORMTYPE = A2.DBSYMBOL AND A2.[TableName] = 'UWAPPR' and A2.[COLUMNNAME] = 'S_APPRFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PRPFORMTYPE = A3.DBSYMBOL AND A3.[TableName] = 'UWAPPR' and A3.[COLUMNNAME] = 'S_PRPFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRPMETHODTYPE = A4.DBSYMBOL AND A4.[TableName] = 'UWAPPR' and A4.[COLUMNNAME] = 'S_PRPMETHODTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LVLPRPRVW = A5.DBSYMBOL AND A5.[TableName] = 'UWAPPR' and A5.[COLUMNNAME] = 'S_LVLPRPRVW'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_STATUS = A6.DBSYMBOL AND A6.[TableName] = 'UWAPPR' and A6.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_APPRMETH = A7.DBSYMBOL AND A7.[TableName] = 'UWAPPR' and A7.[COLUMNNAME] = 'S_APPRMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_AVM = A8.DBSYMBOL AND A8.[TableName] = 'UWAPPR' and A8.[COLUMNNAME] = 'S_AVM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_AVMOTH = A9.DBSYMBOL AND A9.[TableName] = 'UWAPPR' and A9.[COLUMNNAME] = 'S_AVMOTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_HOA_FEES_PERIOD_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'UWAPPR' and A10.[COLUMNNAME] = 'S_HOA_FEES_PERIOD_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67487,10 +72173,9 @@ CREATE VIEW [NetO_sas_pii].[VwVETINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[BNUM] AS [BNUM],
-      x.[DBID] AS [DBID],
       x.[SERVNUM] AS [SERVNUM],
       x.[S_BRANCH] AS [S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[STRTSERV] AS [STRTSERV],
       x.[ENDSERV] AS [ENDSERV],
       x.[EXEMPT] AS [EXEMPT],
@@ -67507,14 +72192,17 @@ AS
       x.[SERVPERD] AS [SERVPERD],
       x.[OSRVNUM1] AS [OSRVNUM1],
       x.[S_OBRCH1] AS [S_OBRCH1],
+      A1.Descript AS [S_OBRCH1_Description],
       x.[OSTRTDT1] AS [OSTRTDT1],
       x.[OENDDT1] AS [OENDDT1],
       x.[OSRVNUM2] AS [OSRVNUM2],
       x.[S_OBRCH2] AS [S_OBRCH2],
+      A2.Descript AS [S_OBRCH2_Description],
       x.[OSTRTDT2] AS [OSTRTDT2],
       x.[OENDDT2] AS [OENDDT2],
       x.[OSRVNUM3] AS [OSRVNUM3],
       x.[S_OBRCH3] AS [S_OBRCH3],
+      A3.Descript AS [S_OBRCH3_Description],
       x.[OSTRTDT3] AS [OSTRTDT3],
       x.[OENDDT3] AS [OENDDT3],
       x.[VETSTATUS] AS [VETSTATUS],
@@ -67523,6 +72211,8 @@ AS
       x.[DVETSSN] AS [DVETSSN],
       x.[DVETCAIVR] AS [DVETCAIVR],
       x.[STATASCR] AS [STATASCR],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
       x.[AWAREVAL] AS [AWAREVAL],
       x.[CERTENCS] AS [CERTENCS],
       x.[CERTLOST] AS [CERTLOST],
@@ -67570,6 +72260,10 @@ AS
       x.[SURVIVING_SPOUSE] AS [SURVIVING_SPOUSE],
       x.[SERVICE_EXPIRATION_DATE] AS [SERVICE_EXPIRATION_DATE]
    FROM [clt_NetO].[VETINFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OBRCH1 = A1.DBSYMBOL AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_OBRCH2 = A2.DBSYMBOL AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_OBRCH3 = A3.DBSYMBOL AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67593,7 +72287,9 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_ASSET_TYPE] AS [S_ASSET_TYPE],
+      A0.Descript AS [S_ASSET_TYPE_Description],
       x.[S_ASSET_PURPOSE] AS [S_ASSET_PURPOSE],
+      A1.Descript AS [S_ASSET_PURPOSE_Description],
       x.[ASSET_VERIFIED] AS [ASSET_VERIFIED],
       x.[VERIFICATION_REQD] AS [VERIFICATION_REQD],
       x.[OWNER_EST_VALUE] AS [OWNER_EST_VALUE],
@@ -67606,6 +72302,8 @@ AS
       x.[PRIMARY_COLLATERAL] AS [PRIMARY_COLLATERAL],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[WG_ASSET] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET' and A0.[COLUMNNAME] = 'S_ASSET_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSET_PURPOSE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET' and A1.[COLUMNNAME] = 'S_ASSET_PURPOSE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67640,6 +72338,7 @@ AS
       x.[ACCT_START_DT] AS [ACCT_START_DT],
       x.[ACCT_MATUR_DT] AS [ACCT_MATUR_DT],
       x.[S_ACCT_OWNERSHIP] AS [S_ACCT_OWNERSHIP],
+      A0.Descript AS [S_ACCT_OWNERSHIP_Description],
       x.[ASSET_ACCT_NO] AS [ASSET_ACCT_NO],
       x.[SHARE_VALUE] AS [SHARE_VALUE],
       x.[ASSET_COLL_VALUE] AS [ASSET_COLL_VALUE],
@@ -67648,6 +72347,7 @@ AS
       x.[EXCHANGE_INFO] AS [EXCHANGE_INFO],
       x.[USE_CALC_LOAN_RT] AS [USE_CALC_LOAN_RT]
    FROM [clt_NetO].[WG_ASSET_ACCT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ACCT_OWNERSHIP = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_ACCT' and A0.[COLUMNNAME] = 'S_ACCT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67684,9 +72384,15 @@ AS
       x.[ENGINE_TITLE_NUM] AS [ENGINE_TITLE_NUM],
       x.[ENGINE_MODEL_NUM] AS [ENGINE_MODEL_NUM],
       x.[S_ENGINE_MFG] AS [S_ENGINE_MFG],
+      A0.Descript AS [S_ENGINE_MFG_Description],
       x.[S_MULTIENGINETYPE] AS [S_MULTIENGINETYPE],
-      x.[S_ENGINE_COLOR] AS [S_ENGINE_COLOR]
+      A1.Descript AS [S_MULTIENGINETYPE_Description],
+      x.[S_ENGINE_COLOR] AS [S_ENGINE_COLOR],
+      A2.Descript AS [S_ENGINE_COLOR_Description]
    FROM [clt_NetO].[WG_ASSET_MARINE_ENG] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ENGINE_MFG = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_MARINE_ENG' and A0.[COLUMNNAME] = 'S_ENGINE_MFG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MULTIENGINETYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_MARINE_ENG' and A1.[COLUMNNAME] = 'S_MULTIENGINETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ENGINE_COLOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_MARINE_ENG' and A2.[COLUMNNAME] = 'S_ENGINE_COLOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67717,23 +72423,31 @@ AS
       x.[NEW_YN] AS [NEW_YN],
       x.[SERIAL] AS [SERIAL],
       x.[S_FUEL_TYPE] AS [S_FUEL_TYPE],
+      A0.Descript AS [S_FUEL_TYPE_Description],
       x.[VEHICLE_REG_NUMBER] AS [VEHICLE_REG_NUMBER],
       x.[BODY_TRIM] AS [BODY_TRIM],
       x.[S_VEHICLE_CONDITION] AS [S_VEHICLE_CONDITION],
+      A1.Descript AS [S_VEHICLE_CONDITION_Description],
       x.[COLL_TITLE_NUM] AS [COLL_TITLE_NUM],
       x.[S_CNRE_OWNERSHIP] AS [S_CNRE_OWNERSHIP],
+      A2.Descript AS [S_CNRE_OWNERSHIP_Description],
       x.[LENGTH] AS [LENGTH],
       x.[WIDTH] AS [WIDTH],
       x.[PRIOR_TITLE_NUM] AS [PRIOR_TITLE_NUM],
       x.[S_TRANSF_AS] AS [S_TRANSF_AS],
+      A3.Descript AS [S_TRANSF_AS_Description],
       x.[S_TRANSF_TO] AS [S_TRANSF_TO],
+      A4.Descript AS [S_TRANSF_TO_Description],
       x.[S_DAMAGE_TYPE] AS [S_DAMAGE_TYPE],
+      A5.Descript AS [S_DAMAGE_TYPE_Description],
       x.[IS_BONAFIDE_GIFT] AS [IS_BONAFIDE_GIFT],
       x.[IS_REBUILDABLE] AS [IS_REBUILDABLE],
       x.[IS_ENERGY_EFFICIENT] AS [IS_ENERGY_EFFICIENT],
       x.[PRIOR_STATE] AS [PRIOR_STATE],
       x.[S_COLOR] AS [S_COLOR],
+      A6.Descript AS [S_COLOR_Description],
       x.[S_GV_WEIGHT_RATING] AS [S_GV_WEIGHT_RATING],
+      A7.Descript AS [S_GV_WEIGHT_RATING_Description],
       x.[SCALE_WEIGHT] AS [SCALE_WEIGHT],
       x.[PAYOFF_AMT] AS [PAYOFF_AMT],
       x.[MFG_REBATE] AS [MFG_REBATE],
@@ -67742,6 +72456,14 @@ AS
       x.[DLR_OPT_PRICE] AS [DLR_OPT_PRICE],
       x.[DLR_OPT_VALUE] AS [DLR_OPT_VALUE]
    FROM [clt_NetO].[WG_ASSET_VEHICLE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FUEL_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VEHICLE' and A0.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_VEHICLE_CONDITION = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VEHICLE' and A1.[COLUMNNAME] = 'S_VEHICLE_CONDITION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CNRE_OWNERSHIP = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VEHICLE' and A2.[COLUMNNAME] = 'S_CNRE_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TRANSF_AS = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VEHICLE' and A3.[COLUMNNAME] = 'S_TRANSF_AS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TRANSF_TO = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VEHICLE' and A4.[COLUMNNAME] = 'S_TRANSF_TO'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DAMAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VEHICLE' and A5.[COLUMNNAME] = 'S_DAMAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_COLOR = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VEHICLE' and A6.[COLUMNNAME] = 'S_COLOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_GV_WEIGHT_RATING = A7.DBSYMBOL AND A7.[TableName] = 'WG_ASSET_VEHICLE' and A7.[COLUMNNAME] = 'S_GV_WEIGHT_RATING'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67768,8 +72490,12 @@ AS
       x.[SERIES] AS [SERIES],
       x.[STYLE] AS [STYLE],
       x.[S_MTRCYCLESTYLE] AS [S_MTRCYCLESTYLE],
-      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE]
+      A0.Descript AS [S_MTRCYCLESTYLE_Description],
+      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE],
+      A1.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_AUTO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MTRCYCLESTYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_AUTO' and A0.[COLUMNNAME] = 'S_MTRCYCLESTYLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GENERIC_BODY_STYLE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_AUTO' and A1.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67793,9 +72519,11 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_MARINE_TYPE] AS [S_MARINE_TYPE],
+      A0.Descript AS [S_MARINE_TYPE_Description],
       x.[BOAT_NAME] AS [BOAT_NAME],
       x.[NET_WEIGHT] AS [NET_WEIGHT],
       x.[S_PROPULSION_TYPE] AS [S_PROPULSION_TYPE],
+      A1.Descript AS [S_PROPULSION_TYPE_Description],
       x.[HAILING_PORT] AS [HAILING_PORT],
       x.[MOORING_ADDR1] AS [MOORING_ADDR1],
       x.[MOORING_ADDR2] AS [MOORING_ADDR2],
@@ -67804,14 +72532,19 @@ AS
       x.[MOORING_ZIP] AS [MOORING_ZIP],
       x.[TRAILER_ASSETID] AS [TRAILER_ASSETID],
       x.[S_FUEL_TYPE] AS [S_FUEL_TYPE],
+      A2.Descript AS [S_FUEL_TYPE_Description],
       x.[BEAM] AS [BEAM],
       x.[MARINE_LENGTH] AS [MARINE_LENGTH],
       x.[S_HULL_MATERIAL] AS [S_HULL_MATERIAL],
+      A3.Descript AS [S_HULL_MATERIAL_Description],
       x.[S_PRIMARY_USE] AS [S_PRIMARY_USE],
+      A4.Descript AS [S_PRIMARY_USE_Description],
       x.[S_ENGINE_DRIVE] AS [S_ENGINE_DRIVE],
+      A5.Descript AS [S_ENGINE_DRIVE_Description],
       x.[IS_DOCUMENTED_VESSEL] AS [IS_DOCUMENTED_VESSEL],
       x.[USCG_OFFICIAL_NUMBER] AS [USCG_OFFICIAL_NUMBER],
       x.[S_MANUF_TYPE] AS [S_MANUF_TYPE],
+      A6.Descript AS [S_MANUF_TYPE_Description],
       x.[TOILETATTACHED] AS [TOILETATTACHED],
       x.[MATLOTHDESC] AS [MATLOTHDESC],
       x.[FUELOTHDESC] AS [FUELOTHDESC],
@@ -67820,6 +72553,13 @@ AS
       x.[MOORING_FACILITY] AS [MOORING_FACILITY],
       x.[MOORING_MRENT] AS [MOORING_MRENT]
    FROM [clt_NetO].[WG_ASSET_VHCL_MARINE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARINE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_MARINE' and A0.[COLUMNNAME] = 'S_MARINE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPULSION_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_MARINE' and A1.[COLUMNNAME] = 'S_PROPULSION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FUEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_MARINE' and A2.[COLUMNNAME] = 'S_FUEL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_HULL_MATERIAL = A3.DBSYMBOL AND A3.[TableName] = 'WG_ASSET_VHCL_MARINE' and A3.[COLUMNNAME] = 'S_HULL_MATERIAL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRIMARY_USE = A4.DBSYMBOL AND A4.[TableName] = 'WG_ASSET_VHCL_MARINE' and A4.[COLUMNNAME] = 'S_PRIMARY_USE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_ENGINE_DRIVE = A5.DBSYMBOL AND A5.[TableName] = 'WG_ASSET_VHCL_MARINE' and A5.[COLUMNNAME] = 'S_ENGINE_DRIVE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_MANUF_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'WG_ASSET_VHCL_MARINE' and A6.[COLUMNNAME] = 'S_MANUF_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67843,14 +72583,16 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[ROWCOUNTER] AS [ROWCOUNTER],
-      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[S_OPTION_TYPE] AS [S_OPTION_TYPE],
+      A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE] AS [VHCL_OPTION_VALUE],
       x.[SELECTED_YN] AS [SELECTED_YN],
       x.[VHCL_OPTION] AS [VHCL_OPTION],
+      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE] AS [OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE] AS [VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OPTION_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_OPTIONS' and A0.[COLUMNNAME] = 'S_OPTION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67874,14 +72616,20 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_RV_TYPE] AS [S_RV_TYPE],
+      A0.Descript AS [S_RV_TYPE_Description],
       x.[MILEAGE] AS [MILEAGE],
       x.[NBR_AXLES] AS [NBR_AXLES],
       x.[NBR_SLIDES] AS [NBR_SLIDES],
       x.[RV_LENGTH] AS [RV_LENGTH],
       x.[SELF_CONTAINED_YN] AS [SELF_CONTAINED_YN],
       x.[S_CATEGORY] AS [S_CATEGORY],
-      x.[S_MODEL_TYPE] AS [S_MODEL_TYPE]
+      A1.Descript AS [S_CATEGORY_Description],
+      x.[S_MODEL_TYPE] AS [S_MODEL_TYPE],
+      A2.Descript AS [S_MODEL_TYPE_Description]
    FROM [clt_NetO].[WG_ASSET_VHCL_RV] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RV_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_RV' and A0.[COLUMNNAME] = 'S_RV_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CATEGORY = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_RV' and A1.[COLUMNNAME] = 'S_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_MODEL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_RV' and A2.[COLUMNNAME] = 'S_MODEL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67905,9 +72653,11 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[S_AXLE_TYPE] AS [S_AXLE_TYPE],
+      A0.Descript AS [S_AXLE_TYPE_Description],
       x.[BRAKES_YN] AS [BRAKES_YN],
       x.[TRAILER_LENGTH] AS [TRAILER_LENGTH]
    FROM [clt_NetO].[WG_ASSET_VHCL_TRAILER] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AXLE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_TRAILER' and A0.[COLUMNNAME] = 'S_AXLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67932,6 +72682,7 @@ AS
       x.[ASSETID] AS [ASSETID],
       x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[S_VALUATION_SOURCE] AS [S_VALUATION_SOURCE],
+      A0.Descript AS [S_VALUATION_SOURCE_Description],
       x.[VALUATION_RESPONSE_ID] AS [VALUATION_RESPONSE_ID],
       x.[ACTIVE_YN] AS [ACTIVE_YN],
       x.[ELECTRONIC_YN] AS [ELECTRONIC_YN],
@@ -67941,7 +72692,9 @@ AS
       x.[BOOK_EDITION] AS [BOOK_EDITION],
       x.[REGION] AS [REGION],
       x.[S_CLEAN_LEVEL] AS [S_CLEAN_LEVEL],
+      A1.Descript AS [S_CLEAN_LEVEL_Description],
       x.[S_USE_FOR_LOAN_VAL] AS [S_USE_FOR_LOAN_VAL],
+      A2.Descript AS [S_USE_FOR_LOAN_VAL_Description],
       x.[COLL_TRADE_BAM_VALUE] AS [COLL_TRADE_BAM_VALUE],
       x.[COLL_LOAN_BAM_VALUE] AS [COLL_LOAN_BAM_VALUE],
       x.[COLL_RETAIL_BAM_VALUE] AS [COLL_RETAIL_BAM_VALUE],
@@ -67958,6 +72711,9 @@ AS
       x.[INVOICE_PRC] AS [INVOICE_PRC],
       x.[TOTL_ADJSTD_VAL_OVRD] AS [TOTL_ADJSTD_VAL_OVRD]
    FROM [clt_NetO].[WG_ASSET_VHCL_VALUATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_VALUATION_SOURCE = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A0.[COLUMNNAME] = 'S_VALUATION_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CLEAN_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A1.[COLUMNNAME] = 'S_CLEAN_LEVEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_USE_FOR_LOAN_VAL = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_VHCL_VALUATION' and A2.[COLUMNNAME] = 'S_USE_FOR_LOAN_VAL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67981,6 +72737,7 @@ AS
       x.[LNUM] AS [LNUM],
       x.[AD_FLAG] AS [AD_FLAG],
       x.[S_AD_ACCT_TYPE] AS [S_AD_ACCT_TYPE],
+      A0.Descript AS [S_AD_ACCT_TYPE_Description],
       x.[AD_INST_NAME] AS [AD_INST_NAME],
       x.[AD_ACCT_NUMB] AS [AD_ACCT_NUMB],
       x.[AD_RT_NUMB] AS [AD_RT_NUMB],
@@ -67988,6 +72745,7 @@ AS
       x.[AD_ADDL_PRINC] AS [AD_ADDL_PRINC],
       x.[AD_ACCT_TYP_OTH] AS [AD_ACCT_TYP_OTH]
    FROM [clt_NetO].[WG_AUTO_DEBIT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AD_ACCT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_AUTO_DEBIT' and A0.[COLUMNNAME] = 'S_AD_ACCT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -68010,16 +72768,28 @@ AS
    SELECT
       x.[FIELDID] AS [FIELDID],
       x.[S_FIELD_STATUS] AS [S_FIELD_STATUS],
+      A0.Descript AS [S_FIELD_STATUS_Description],
       x.[FIELD_NAME] AS [FIELD_NAME],
       x.[FIELD_TEXT] AS [FIELD_TEXT],
       x.[S_FIELD_CONTROL_TYPE] AS [S_FIELD_CONTROL_TYPE],
+      A1.Descript AS [S_FIELD_CONTROL_TYPE_Description],
       x.[S_FIELD_OPERATOR] AS [S_FIELD_OPERATOR],
+      A2.Descript AS [S_FIELD_OPERATOR_Description],
       x.[S_FIELD_LIST_SOURCE] AS [S_FIELD_LIST_SOURCE],
+      A3.Descript AS [S_FIELD_LIST_SOURCE_Description],
       x.[S_FIELD_FORMAT] AS [S_FIELD_FORMAT],
+      A4.Descript AS [S_FIELD_FORMAT_Description],
       x.[CURRENT_USER_DATETIME] AS [CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID] AS [CURRENT_USER_ID],
-      x.[S_USAGE_TYPE] AS [S_USAGE_TYPE]
+      x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A5.Descript AS [S_USAGE_TYPE_Description]
    FROM [clt_NetO].[WG_BRM_DEFN_FIELDS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIELD_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_FIELDS' and A0.[COLUMNNAME] = 'S_FIELD_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FIELD_CONTROL_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_FIELDS' and A1.[COLUMNNAME] = 'S_FIELD_CONTROL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_FIELD_OPERATOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_FIELDS' and A2.[COLUMNNAME] = 'S_FIELD_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_FIELD_LIST_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_DEFN_FIELDS' and A3.[COLUMNNAME] = 'S_FIELD_LIST_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FIELD_FORMAT = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_DEFN_FIELDS' and A4.[COLUMNNAME] = 'S_FIELD_FORMAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68041,8 +72811,11 @@ AS
    SELECT
       x.[GRIDID] AS [GRIDID],
       x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[S_GRID_STATUS] AS [S_GRID_STATUS],
+      A1.Descript AS [S_GRID_STATUS_Description],
       x.[S_GRID_CATEGORY] AS [S_GRID_CATEGORY],
+      A2.Descript AS [S_GRID_CATEGORY_Description],
       x.[GRID_NAME] AS [GRID_NAME],
       x.[GRID_NBR_DIMS] AS [GRID_NBR_DIMS],
       x.[RSLT_START_ROW] AS [RSLT_START_ROW],
@@ -68054,6 +72827,9 @@ AS
       x.[CURRENT_USER_DATETIME] AS [CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID] AS [CURRENT_USER_ID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID' and A1.[COLUMNNAME] = 'S_GRID_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68076,7 +72852,9 @@ AS
       x.[GRIDID] AS [GRIDID],
       x.[DIM_OCC] AS [DIM_OCC],
       x.[S_GRID_VERT_HORIZ] AS [S_GRID_VERT_HORIZ],
+      A0.Descript AS [S_GRID_VERT_HORIZ_Description],
       x.[S_GRID_OPERATOR] AS [S_GRID_OPERATOR],
+      A1.Descript AS [S_GRID_OPERATOR_Description],
       x.[GRID_FIELD_NAME] AS [GRID_FIELD_NAME],
       x.[GRID_LABEL_TEXT] AS [GRID_LABEL_TEXT],
       x.[GRID_LABEL_OCCS] AS [GRID_LABEL_OCCS],
@@ -68088,8 +72866,12 @@ AS
       x.[GRID_TGT_VAL_START_COL] AS [GRID_TGT_VAL_START_COL],
       x.[GRID_TGT_VAL_START_ROW] AS [GRID_TGT_VAL_START_ROW],
       x.[S_GRID_TGT_VAL_SPAN_TYPE] AS [S_GRID_TGT_VAL_SPAN_TYPE],
+      A2.Descript AS [S_GRID_TGT_VAL_SPAN_TYPE_Description],
       x.[FIELDID] AS [FIELDID]
    FROM [clt_NetO].[WG_BRM_DEFN_GRID_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GRID_VERT_HORIZ = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A0.[COLUMNNAME] = 'S_GRID_VERT_HORIZ'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GRID_OPERATOR = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A1.[COLUMNNAME] = 'S_GRID_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68115,18 +72897,22 @@ AS
       x.[EXP_FILE_NAME] AS [EXP_FILE_NAME],
       x.[EXP_FILE_PATH] AS [EXP_FILE_PATH],
       x.[S_EXP_STATUS] AS [S_EXP_STATUS],
+      A0.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID] AS [EXP_RULESET_ID],
       x.[EXP_BRM_IDENT] AS [EXP_BRM_IDENT],
       x.[EXP_BRM_NAME] AS [EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT] AS [EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT] AS [EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS] AS [S_EXP_BRM_STATUS],
+      A1.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[EXP_NOTES] AS [EXP_NOTES],
       x.[DBID] AS [DBID],
       x.[EXP_INCL_FIELDS] AS [EXP_INCL_FIELDS],
       x.[EXP_INCL_CATS] AS [EXP_INCL_CATS],
       x.[EXP_INCL_GRIDS] AS [EXP_INCL_GRIDS]
    FROM [clt_NetO].[WG_BRM_EXPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EXP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_EXPORT' and A0.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68149,9 +72935,11 @@ AS
       x.[BRM_IDENT_FIELD] AS [BRM_IDENT_FIELD],
       x.[BRM_IDENT_CODE] AS [BRM_IDENT_CODE],
       x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[BRM_IDENT_NAME] AS [BRM_IDENT_NAME],
       x.[BRM_IDENT_DESCRIPTION] AS [BRM_IDENT_DESCRIPTION]
    FROM [clt_NetO].[WG_BRM_IDENTIFIERS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68177,18 +72965,21 @@ AS
       x.[IMP_FILE_NAME] AS [IMP_FILE_NAME],
       x.[IMP_FILE_PATH] AS [IMP_FILE_PATH],
       x.[S_IMP_STATUS] AS [S_IMP_STATUS],
+      A0.Descript AS [S_IMP_STATUS_Description],
       x.[EXPORTID] AS [EXPORTID],
       x.[EXP_USER_NAME] AS [EXP_USER_NAME],
       x.[EXP_DATE_TIME] AS [EXP_DATE_TIME],
       x.[EXP_FILE_NAME] AS [EXP_FILE_NAME],
       x.[EXP_FILE_PATH] AS [EXP_FILE_PATH],
       x.[S_EXP_STATUS] AS [S_EXP_STATUS],
+      A1.Descript AS [S_EXP_STATUS_Description],
       x.[EXP_RULESET_ID] AS [EXP_RULESET_ID],
       x.[EXP_BRM_IDENT] AS [EXP_BRM_IDENT],
       x.[EXP_BRM_NAME] AS [EXP_BRM_NAME],
       x.[EXP_BRM_EFFDT] AS [EXP_BRM_EFFDT],
       x.[EXP_BRM_LC_DT] AS [EXP_BRM_LC_DT],
       x.[S_EXP_BRM_STATUS] AS [S_EXP_BRM_STATUS],
+      A2.Descript AS [S_EXP_BRM_STATUS_Description],
       x.[IMP_NOTES] AS [IMP_NOTES],
       x.[EXP_NOTES] AS [EXP_NOTES],
       x.[SYS_FINDINGS] AS [SYS_FINDINGS],
@@ -68200,6 +72991,9 @@ AS
       x.[IMP_IMP_CATS] AS [IMP_IMP_CATS],
       x.[IMP_IMP_GRIDS] AS [IMP_IMP_GRIDS]
    FROM [clt_NetO].[WG_BRM_IMPORT] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IMP_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IMPORT' and A0.[COLUMNNAME] = 'S_IMP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_IMPORT' and A1.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68221,15 +73015,20 @@ AS
    SELECT
       x.[BRMID] AS [BRMID],
       x.[S_USAGE_TYPE] AS [S_USAGE_TYPE],
+      A0.Descript AS [S_USAGE_TYPE_Description],
       x.[LU_BRM_IDENTIFIER] AS [LU_BRM_IDENTIFIER],
       x.[S_BRM_STATUS] AS [S_BRM_STATUS],
+      A1.Descript AS [S_BRM_STATUS_Description],
       x.[S_BRM_TYPE] AS [S_BRM_TYPE],
+      A2.Descript AS [S_BRM_TYPE_Description],
       x.[BRM_NAME] AS [BRM_NAME],
       x.[BRM_DESCRIPTION] AS [BRM_DESCRIPTION],
       x.[BRM_START_DATE] AS [BRM_START_DATE],
       x.[BRM_END_DATE] AS [BRM_END_DATE],
       x.[S_CAP_CATEGORY] AS [S_CAP_CATEGORY],
+      A3.Descript AS [S_CAP_CATEGORY_Description],
       x.[S_EFFECTIVITY_RULE] AS [S_EFFECTIVITY_RULE],
+      A4.Descript AS [S_EFFECTIVITY_RULE_Description],
       x.[CHANGE_EFF_DATE] AS [CHANGE_EFF_DATE],
       x.[CURRENT_USER_DATETIME] AS [CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID] AS [CURRENT_USER_ID],
@@ -68239,8 +73038,15 @@ AS
       x.[LAST_CHANGE_USER_ID] AS [LAST_CHANGE_USER_ID],
       x.[MESSAGE_TEXT] AS [MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL],
+      A5.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[BRM_CATEGORY] AS [BRM_CATEGORY]
    FROM [clt_NetO].[WG_BRM_LKUP_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_BASE' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_BASE' and A1.[COLUMNNAME] = 'S_BRM_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BRM_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_LKUP_BASE' and A2.[COLUMNNAME] = 'S_BRM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_CAP_CATEGORY = A3.DBSYMBOL AND A3.[TableName] = 'WG_BRM_LKUP_BASE' and A3.[COLUMNNAME] = 'S_CAP_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EFFECTIVITY_RULE = A4.DBSYMBOL AND A4.[TableName] = 'WG_BRM_LKUP_BASE' and A4.[COLUMNNAME] = 'S_EFFECTIVITY_RULE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68265,8 +73071,10 @@ AS
       x.[RULE_DESCRIPTION] AS [RULE_DESCRIPTION],
       x.[PRIORITY] AS [PRIORITY],
       x.[MESSAGE_TEXT] AS [MESSAGE_TEXT],
-      x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL]
+      x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL],
+      A0.Descript AS [S_OVERRIDE_LEVEL_Description]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_BASE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68326,8 +73134,10 @@ AS
       x.[RULE_ITEM_GRID_RSLT_COL] AS [RULE_ITEM_GRID_RSLT_COL],
       x.[RULE_ITEM_FIELD_NAME] AS [RULE_ITEM_FIELD_NAME],
       x.[S_RULE_ITEM_OPERATOR] AS [S_RULE_ITEM_OPERATOR],
+      A0.Descript AS [S_RULE_ITEM_OPERATOR_Description],
       x.[RULE_ITEM_FIELDID] AS [RULE_ITEM_FIELDID]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_FIELD] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68351,12 +73161,16 @@ AS
       x.[RULE_OCC] AS [RULE_OCC],
       x.[RULE_ITEM_OCC] AS [RULE_ITEM_OCC],
       x.[S_RULE_ITEM_TYPE] AS [S_RULE_ITEM_TYPE],
+      A0.Descript AS [S_RULE_ITEM_TYPE_Description],
       x.[RULE_ITEM_NAME] AS [RULE_ITEM_NAME],
       x.[PRIORITY] AS [PRIORITY],
       x.[MESSAGE_TEXT] AS [MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL] AS [S_OVERRIDE_LEVEL],
+      A1.Descript AS [S_OVERRIDE_LEVEL_Description],
       x.[MESSAGE_TEXT_2] AS [MESSAGE_TEXT_2]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_ITEMS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A0.[COLUMNNAME] = 'S_RULE_ITEM_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
    ;
@@ -68533,10 +73347,15 @@ AS
       x.[LNUM] AS [LNUM],
       x.[CID_BRANCH] AS [CID_BRANCH],
       x.[S_BUSINESS_CHANNEL] AS [S_BUSINESS_CHANNEL],
+      A0.Descript AS [S_BUSINESS_CHANNEL_Description],
       x.[S_LOAN_TYPE] AS [S_LOAN_TYPE],
+      A1.Descript AS [S_LOAN_TYPE_Description],
       x.[S_LOAN_CATEGORY] AS [S_LOAN_CATEGORY],
+      A2.Descript AS [S_LOAN_CATEGORY_Description],
       x.[S_REFERRAL_SOURCE] AS [S_REFERRAL_SOURCE],
+      A3.Descript AS [S_REFERRAL_SOURCE_Description],
       x.[S_LOAN_PURPOSE] AS [S_LOAN_PURPOSE],
+      A4.Descript AS [S_LOAN_PURPOSE_Description],
       x.[EMP_LOAN_YN] AS [EMP_LOAN_YN],
       x.[REG_O_LOAN_YN] AS [REG_O_LOAN_YN],
       x.[TSWE_EXPECTED_YN] AS [TSWE_EXPECTED_YN],
@@ -68547,6 +73366,7 @@ AS
       x.[MBA_YN] AS [MBA_YN],
       x.[IS_PERSONALUSE_YN] AS [IS_PERSONALUSE_YN],
       x.[S_PRIMARY_COLLATERAL_TYPE] AS [S_PRIMARY_COLLATERAL_TYPE],
+      A5.Descript AS [S_PRIMARY_COLLATERAL_TYPE_Description],
       x.[COLLATERAL_STATE] AS [COLLATERAL_STATE],
       x.[VENDOR_VAL_METHOD] AS [VENDOR_VAL_METHOD],
       x.[VALUATION_SOURCE] AS [VALUATION_SOURCE],
@@ -68555,8 +73375,18 @@ AS
       x.[CURRENTMODELYR] AS [CURRENTMODELYR],
       x.[COLLAGEYRS] AS [COLLAGEYRS],
       x.[S_TITLE_TRANSFER] AS [S_TITLE_TRANSFER],
-      x.[S_SECONDARY_COLLATERAL_TYPE] AS [S_SECONDARY_COLLATERAL_TYPE]
+      A6.Descript AS [S_TITLE_TRANSFER_Description],
+      x.[S_SECONDARY_COLLATERAL_TYPE] AS [S_SECONDARY_COLLATERAL_TYPE],
+      A7.Descript AS [S_SECONDARY_COLLATERAL_TYPE_Description]
    FROM [clt_NetO].[WG_CNS_LOAN_APPLICATION] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BUSINESS_CHANNEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A0.[COLUMNNAME] = 'S_BUSINESS_CHANNEL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_LOAN_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A1.[COLUMNNAME] = 'S_LOAN_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LOAN_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A2.[COLUMNNAME] = 'S_LOAN_CATEGORY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REFERRAL_SOURCE = A3.DBSYMBOL AND A3.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A3.[COLUMNNAME] = 'S_REFERRAL_SOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOAN_PURPOSE = A4.DBSYMBOL AND A4.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A4.[COLUMNNAME] = 'S_LOAN_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_PRIMARY_COLLATERAL_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A5.[COLUMNNAME] = 'S_PRIMARY_COLLATERAL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TITLE_TRANSFER = A6.DBSYMBOL AND A6.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A6.[COLUMNNAME] = 'S_TITLE_TRANSFER'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_SECONDARY_COLLATERAL_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A7.[COLUMNNAME] = 'S_SECONDARY_COLLATERAL_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -68645,7 +73475,6 @@ CREATE VIEW [NetO_sas_pii].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[TRDINCNTR] AS [TRDINCNTR],
       x.[YEAR] AS [YEAR],
       x.[MAKE] AS [MAKE],
       x.[VIN] AS [VIN],
@@ -68658,7 +73487,8 @@ AS
       x.[NET_TRDIN_VALUE] AS [NET_TRDIN_VALUE],
       x.[ISFINANCED] AS [ISFINANCED],
       x.[FININSTITUTE] AS [FININSTITUTE],
-      x.[MNTHPAYMENT] AS [MNTHPAYMENT]
+      x.[MNTHPAYMENT] AS [MNTHPAYMENT],
+      x.[TRDINCNTR] AS [TRDINCNTR]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -69134,8 +73964,10 @@ AS
       x.[INC_SRC_CTR] AS [INC_SRC_CTR],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[S_INCOME_SOURCE_TYPE] AS [S_INCOME_SOURCE_TYPE],
+      A0.Descript AS [S_INCOME_SOURCE_TYPE_Description],
       x.[OTHER_INCOME_SRC_DESC] AS [OTHER_INCOME_SRC_DESC],
       x.[S_BUSINESS_TYPE] AS [S_BUSINESS_TYPE],
+      A1.Descript AS [S_BUSINESS_TYPE_Description],
       x.[SOURCE_NAME] AS [SOURCE_NAME],
       x.[SOURCE_CONTACT] AS [SOURCE_CONTACT],
       x.[ADDRESS_LN_1] AS [ADDRESS_LN_1],
@@ -69149,6 +73981,7 @@ AS
       x.[FAX_NBR] AS [FAX_NBR],
       x.[TITLE] AS [TITLE],
       x.[S_SPECIAL_BOR_EMP_REL_TYPE] AS [S_SPECIAL_BOR_EMP_REL_TYPE],
+      A2.Descript AS [S_SPECIAL_BOR_EMP_REL_TYPE_Description],
       x.[SPEC_BOR_EMP_REL_TYPE_DESC] AS [SPEC_BOR_EMP_REL_TYPE_DESC],
       x.[OCCUPATION] AS [OCCUPATION],
       x.[EMPLOYED_FROM] AS [EMPLOYED_FROM],
@@ -69159,6 +73992,7 @@ AS
       x.[SELF_EMPLOYED_FLAG] AS [SELF_EMPLOYED_FLAG],
       x.[PCT_BUSINESS_OWNED] AS [PCT_BUSINESS_OWNED],
       x.[S_SELF_EMPL_TYPE] AS [S_SELF_EMPL_TYPE],
+      A3.Descript AS [S_SELF_EMPL_TYPE_Description],
       x.[PROF_MONTHS] AS [PROF_MONTHS],
       x.[PROF_YEARS] AS [PROF_YEARS],
       x.[BASE_INCOME] AS [BASE_INCOME],
@@ -69170,6 +74004,7 @@ AS
       x.[TOTAL_INCOME] AS [TOTAL_INCOME],
       x.[LIABCTR] AS [LIABCTR],
       x.[S_EMP_UNIT_TYPE] AS [S_EMP_UNIT_TYPE],
+      A4.Descript AS [S_EMP_UNIT_TYPE_Description],
       x.[EMP_UNIT_NUMBER] AS [EMP_UNIT_NUMBER],
       x.[INCOME_STATE_FOREIN] AS [INCOME_STATE_FOREIN],
       x.[INCOME_POSTCODE] AS [INCOME_POSTCODE],
@@ -69182,6 +74017,11 @@ AS
       x.[INC_DBA_NAME] AS [INC_DBA_NAME],
       x.[INC_EIN] AS [INC_EIN]
    FROM [clt_NetO].[WG_INCOME_SOURCE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME_SOURCE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_INCOME_SOURCE' and A0.[COLUMNNAME] = 'S_INCOME_SOURCE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BUSINESS_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_INCOME_SOURCE' and A1.[COLUMNNAME] = 'S_BUSINESS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPECIAL_BOR_EMP_REL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_INCOME_SOURCE' and A2.[COLUMNNAME] = 'S_SPECIAL_BOR_EMP_REL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SELF_EMPL_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'WG_INCOME_SOURCE' and A3.[COLUMNNAME] = 'S_SELF_EMPL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EMP_UNIT_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'WG_INCOME_SOURCE' and A4.[COLUMNNAME] = 'S_EMP_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -69228,8 +74068,10 @@ AS
       x.[CC] AS [CC],
       x.[STROKE] AS [STROKE],
       x.[CATEGORY] AS [CATEGORY],
-      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE]
+      x.[S_GENERIC_BODY_STYLE] AS [S_GENERIC_BODY_STYLE],
+      A0.Descript AS [S_GENERIC_BODY_STYLE_Description]
    FROM [clt_NetO].[WG_KELLEYBLUEBOOK_RESPONSE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_GENERIC_BODY_STYLE = A0.DBSYMBOL AND A0.[TableName] = 'WG_KELLEYBLUEBOOK_RESPONSE' and A0.[COLUMNNAME] = 'S_GENERIC_BODY_STYLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -69253,9 +74095,11 @@ AS
       x.[ROWCNTR] AS [ROWCNTR],
       x.[LNUM] AS [LNUM],
       x.[S_LOAN_STATUS] AS [S_LOAN_STATUS],
+      A0.Descript AS [S_LOAN_STATUS_Description],
       x.[LOAN_STATUS] AS [LOAN_STATUS],
       x.[STATUS_DATE] AS [STATUS_DATE]
    FROM [clt_NetO].[WG_RPT_LOAN_STATUS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOAN_STATUS = A0.DBSYMBOL AND A0.[TableName] = 'WG_RPT_LOAN_STATUS' and A0.[COLUMNNAME] = 'S_LOAN_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -69518,15 +74362,32 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_BRANCH] AS [S_BRANCH],
+      A0.Descript AS [S_BRANCH_Description],
       x.[START_DATE] AS [START_DATE],
       x.[END_DATE] AS [END_DATE],
       x.[S_OFF_OR_ENLISTED] AS [S_OFF_OR_ENLISTED],
+      A1.Descript AS [S_OFF_OR_ENLISTED_Description],
       x.[SERVICE_NUMBER] AS [SERVICE_NUMBER],
       x.[ACTIVESERVYN] AS [ACTIVESERVYN]
    FROM [clt_NetO].[WG_TLBR_VET_MILT_SERVICE] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OFF_OR_ENLISTED = A1.DBSYMBOL AND A1.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A1.[COLUMNNAME] = 'S_OFF_OR_ENLISTED'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
    ;
    GO
+
+CREATE VIEW [clt_NetO].[SymbolLookup]
+AS
+	SELECT	x.[TABLENAME]
+			,x.[COLUMNNAME]
+			,s.[FLDNAME]
+			,s.[DBSYMBOL]
+			,s.[DESCRIPT]
+	FROM	[clt_NetO].[WG_SYMBOL_XREF] x
+			INNER JOIN [clt_NetO].[L_SYMBOL] s on s.FLDNAME = x.FLDNAME
+;
+GO
+
 

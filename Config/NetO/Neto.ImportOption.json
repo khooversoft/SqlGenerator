@@ -143,11 +143,20 @@
       "private": true
     }
   ],
+
   "Relationships": [
     {
       "TableName": "GF_TS_AUDIT_LOAN_DELETE",
       "ColumnName": "DELETED_LNUM",
       "ReferenceObjectId": "*.LNUM"
+    }
+  ],
+
+  "lookupRelationships": [
+    {
+      "pattern": "*.S_*",
+      "selectLine": "{alias}.Descript AS [{viewColumnName}_Description]",
+      "joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{viewColumnName} = {alias}.DBSYMBOL AND {alias}.[TableName] = '{tableName}' and {alias}.[COLUMNNAME] = '{viewColumnName}'"
     }
   ]
 }

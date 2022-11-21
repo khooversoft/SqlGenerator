@@ -31,12 +31,14 @@ AS
       x.[TRUST_STREET_ADDR2],
       x.[EMAIL],
       x.[S_TRUST_UNIT_TYPE],
+      A0.Descript AS [S_TRUST_UNIT_TYPE_Description],
       x.[TRUST_UNIT_NUM],
       x.[TRUST_COUNTRY_CODE],
       x.[LIVING_TRUST_BNUM],
       x.[TRST_STATE_FOR],
       x.[TRST_POSTCODE]
    FROM [clt_NetO].[TRSTENTS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TRUST_UNIT_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'TRSTENTS' and A0.[COLUMNNAME] = 'S_TRUST_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

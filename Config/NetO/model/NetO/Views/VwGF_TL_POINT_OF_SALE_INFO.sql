@@ -8,16 +8,20 @@ AS
    SELECT
       x.[LNUM],
       x.[S_REFSC],
+      A0.Descript AS [S_REFSC_Description],
       x.[TBDADDR],
       x.[POSFHA],
       x.[S_PROPTYPE],
+      A1.Descript AS [S_PROPTYPE_Description],
       x.[PROJCLAS],
       x.[PROJNAME],
       x.[DPPERCT],
       x.[HELINE],
       x.[HECURBAL],
       x.[S_DOCLVL],
+      A2.Descript AS [S_DOCLVL_Description],
       x.[S_LNSTATUS],
+      A3.Descript AS [S_LNSTATUS_Description],
       x.[HLTVH],
       x.[TSWE_INC_EXPECTED],
       x.[QUAL_TSWE_LOAN],
@@ -33,6 +37,7 @@ AS
       x.[LO_NMLS_NUM_OVR],
       x.[LO_PHONE_OVR],
       x.[S_GFE_TIME_ZONE],
+      A4.Descript AS [S_GFE_TIME_ZONE_Description],
       x.[ALLOWWITHDRAWLOAN],
       x.[GFE_INT_RATE_LSC],
       x.[GFE_INT_RATE_LIR],
@@ -79,6 +84,11 @@ AS
       x.[LP2_RISK_CLASS_OVR],
       x.[DU_DISPLAY_OVR]
    FROM [clt_NetO].[GF_TL_POINT_OF_SALE_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFSC = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A0.[COLUMNNAME] = 'S_REFSC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROPTYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_PROPTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOCLVL = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_DOCLVL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LNSTATUS = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_LNSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_GFE_TIME_ZONE = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

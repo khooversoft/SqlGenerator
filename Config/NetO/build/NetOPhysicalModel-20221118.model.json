@@ -78702,7 +78702,14 @@
       "referenceObjectId": "*.LNUM"
     }
   ],
-  "lookupRelationships": [],
+  "lookupRelationships": [
+    {
+      "referenceTable": null,
+      "pattern": "*.S_*",
+      "selectLine": "{alias}.Descript AS [{viewColumnName}_Description]",
+      "joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{viewColumnName} = {alias}.DBSYMBOL AND {alias}.[TableName] = \u0027{tableName}\u0027 and {alias}.[COLUMNNAME] = \u0027{viewColumnName}\u0027"
+    }
+  ],
   "commands": [
     {
       "type": "excludeView",
@@ -78728,6 +78735,11 @@
       "type": "primaryKey",
       "pattern": "WG_SYMBOL_XREF.FLDNAME",
       "command": null
+    },
+    {
+      "type": "copy",
+      "pattern": "Include\\VwSymbolLookup.sql",
+      "command": "clt_NetO\\Views\\VwSymbolLookup.sql"
     }
   ]
 }
