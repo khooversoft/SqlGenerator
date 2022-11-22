@@ -48,6 +48,7 @@ CREATE TABLE [clt_NetO].[SERVICNG]
    [INDEMNF_AMT]                       decimal(18,3)        NULL,
    [PC_FEDEX_NUM]                      nchar(50)            NULL,
    [S_SERVICING_STATUS]                nvarchar(8)          NULL,
+   [COHORT_NUMBER]                     nvarchar(10)         NULL,
    [ASAP_ROW_HASH]                     nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                     nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                 datetime2(7)         NULL,

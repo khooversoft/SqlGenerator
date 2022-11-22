@@ -5,9 +5,9 @@
 		"NetO_Classification.json"
 	],
 
-	"sourceFile": "NetOPhysicalModel-20221118.csv",
+	"sourceFile": "NetOPhysicalModel-20221122.csv",
 	"buildFolder": null,
-	"tableTypeMetadata": "ConsASAP_MetaData_20221118.csv",
+	"tableTypeMetadata": "ConsASAP_MetaData_20221122.csv",
 	"uspLoadTableOption": {
 		"outputFile": "neto_usp_LoadTable_meta.sql",
 		"dataTableName": "etl.ETLGenPrimaryKeyColumns",

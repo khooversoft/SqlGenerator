@@ -373,6 +373,11 @@ VALUES
 ('GF_TLB_EQ_RES_EDAS', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('GF_TLB_EQ_RES_EDAS', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
 ('GF_TLB_EQ_RES_EDAS', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('GF_TLB_EQ_RES_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLB_EQ_RES_SUMMARY_20'),
+('GF_TLB_EQ_RES_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('GF_TLB_EQ_RES_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('GF_TLB_EQ_RES_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
+('GF_TLB_EQ_RES_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
 ('GF_TLB_EX_RES_TRENDS_SUM', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLB_EX_RES_TRENDS_SUM_20'),
 ('GF_TLB_EX_RES_TRENDS_SUM', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('GF_TLB_EX_RES_TRENDS_SUM', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -878,6 +883,11 @@ VALUES
 ('VARTXT', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('VARTXT', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
 ('VARTXT', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('VESTING', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_VESTING_20'),
+('VESTING', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('VESTING', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('VESTING', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
+('VESTING', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
 ('VETINFO', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_VETINFO_20'),
 ('VETINFO', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('VETINFO', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -1172,7 +1182,12 @@ VALUES
 ('WG_TLBR_VET_MILT_SERVICE', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_TLBR_VET_MILT_SERVICE', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('WG_TLBR_VET_MILT_SERVICE', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
-('WG_TLBR_VET_MILT_SERVICE', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0')
+('WG_TLBR_VET_MILT_SERVICE', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('WG_TLR_RECORDING_INFO', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_WG_TLR_RECORDING_INFO_20'),
+('WG_TLR_RECORDING_INFO', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('WG_TLR_RECORDING_INFO', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('WG_TLR_RECORDING_INFO', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
+('WG_TLR_RECORDING_INFO', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0')
 
 PRINT 'Merge Data Object Parameter';
 

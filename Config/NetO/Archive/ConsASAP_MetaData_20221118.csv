@@ -1,4 +1,5 @@
-TableName,Mode
+Line
+----
 ADV_ACTN,APPEND
 APPREQ,APPEND
 ARMINFO,APPEND
