@@ -19,4 +19,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

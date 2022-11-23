@@ -15,4 +15,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

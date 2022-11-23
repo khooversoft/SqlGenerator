@@ -150,7 +150,7 @@ namespace Toolbox.Extensions
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="values"></param>
-        /// <param name="separatorSelect"></param>
+        /// <param name="separatorSelect">function to apply separator</param>
         /// <returns></returns>
         public static IEnumerable<T> SequenceJoin<T>(this IEnumerable<T> values, Func<T, T> separatorSelect)
         {
@@ -166,6 +166,30 @@ namespace Toolbox.Extensions
             }
 
             if (hasValue) yield return save;
+        }
+
+        /// <summary>
+        /// Join elements by inserting a token
+        /// </summary>
+        /// <typeparam name="T">type</typeparam>
+        /// <param name="values">sequence of values</param>
+        /// <param name="separatorSelect">function to apply separator</param>
+        /// <returns></returns>
+        public static IEnumerable<T> Join<T>(this IEnumerable<T> values, Func<T, T> separatorSelect)
+        {
+            bool first = true;
+
+            foreach (var item in values)
+            {
+                if (first)
+                {
+                    yield return item;
+                    first = false;
+                    continue;
+                }
+
+                yield return separatorSelect(item);
+            }
         }
     }
 }

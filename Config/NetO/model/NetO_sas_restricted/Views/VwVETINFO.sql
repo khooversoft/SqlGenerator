@@ -7,6 +7,8 @@ CREATE VIEW [NetO_sas_restricted].[VwVETINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
       x.[SERVNUM] AS [SERVNUM],
       x.[S_BRANCH] AS [S_BRANCH],
       A0.Descript AS [S_BRANCH_Description],
@@ -45,8 +47,6 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR] AS [DVETCAIVR],
       x.[STATASCR] AS [STATASCR],
-      x.[BNUM] AS [BNUM],
-      x.[DBID] AS [DBID],
       x.[AWAREVAL] AS [AWAREVAL],
       x.[CERTENCS] AS [CERTENCS],
       x.[CERTLOST] AS [CERTLOST],
@@ -101,4 +101,4 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
+;

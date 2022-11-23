@@ -27,4 +27,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

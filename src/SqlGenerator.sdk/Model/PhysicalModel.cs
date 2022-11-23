@@ -18,9 +18,9 @@ public sealed record PhysicalModel
     public IReadOnlyList<TableModel> Tables { get; init; } = Array.Empty<TableModel>();
     public IReadOnlyList<ColumnModel> PrefixColumns { get; init; } = Array.Empty<ColumnModel>();
     public IReadOnlyList<ColumnModel> SuffixColumns { get; init; } = Array.Empty<ColumnModel>();
-    public IReadOnlyList<RelationshipModel> Relationships { get; init; } = Array.Empty<RelationshipModel>();
-    public IReadOnlyList<LookupRelationshipModel> LookupRelationships { get; init; } = Array.Empty<LookupRelationshipModel>();
     public IReadOnlyList<CommandOption> Commands { get; init; } = Array.Empty<CommandOption>();
+    public IReadOnlyList<AddInstruction> AddInstructions { get; init; } = new List<AddInstruction>();
+
 
     public bool Equals(PhysicalModel? obj)
     {
@@ -29,12 +29,10 @@ public sealed record PhysicalModel
             Schemas.Zip(model.Schemas).All(x => x.First == x.Second) &&
             Tables.Count == model.Tables.Count &&
             Tables.Zip(model.Tables).All(x => x.First == x.Second) &&
-            Relationships.Count == model.Relationships.Count &&
-            Relationships.Zip(model.Relationships).All(x => x.First == x.Second) &&
-            LookupRelationships.Count == model.LookupRelationships.Count &&
-            LookupRelationships.Zip(model.LookupRelationships).All(x => x.First == x.Second) &&
             Commands.Count == model.Commands.Count &&
-            Commands.Zip(model.Commands).All(x => x.First == x.Second);
+            Commands.Zip(model.Commands).All(x => x.First == x.Second) &&
+            AddInstructions.Count == model.AddInstructions.Count &&
+            AddInstructions.Zip(model.AddInstructions).All(x => x.First == x.Second);
     }
 
     public override int GetHashCode() => HashCode.Combine(Schemas, Tables);
@@ -48,9 +46,8 @@ public static class PhysicalModelExtensions
         subject.NotNull();
         subject.NotNull().Schemas.ForEach(x => x.Verify());
         subject.NotNull().Tables.ForEach(x => x.Verify());
-        subject.NotNull().Relationships.ForEach(x => x.Verify());
-        subject.NotNull().LookupRelationships.ForEach(x => x.Verify());
         subject.NotNull().Commands.ForEach(x => x.Verify());
+        subject.NotNull().AddInstructions.ForEach(x => x.Verify());
 
         subject.Tables.ForEach(x => subject.IsSchemaPresent(x.Name.Schema).Assert(x => x == true, $"Schema={x.Name.Schema} not found"));
 

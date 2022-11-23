@@ -21,12 +21,11 @@ public record SqlProjectOption
     public IList<SchemaModel> Schemas { get; init; } = new List<SchemaModel>();
     public IList<ColumnModel> PrefixColumns { get; init; } = new List<ColumnModel>();
     public IList<ColumnModel> SufixColumns { get; init; } = new List<ColumnModel>();
-    public IList<RelationshipModel> Relationships { get; init; } = new List<RelationshipModel>();
-    public IList<LookupRelationshipModel> LookupRelationships { get; init; } = new List<LookupRelationshipModel>();
     public IList<NameMapRecord> NameMap { get; init; } = new List<NameMapRecord>();
     public IList<ClassificationRecord> Protection { get; init; } = new List<ClassificationRecord>();
     public IList<string> UpdateCommands { get; init; } = new List<string>();
-    public IReadOnlyList<CommandOption> CommandOptions { get; init; } = new List<CommandOption>();
+    public IList<CommandOption> CommandOptions { get; init; } = new List<CommandOption>();
+    public IList<AddInstruction> AddInstructions { get; init; } = new List<AddInstruction>();
 }
 
 
@@ -60,10 +59,9 @@ public static class SqlProjectOptionFile
         subject.Schemas.NotNull().ForEach(x => x.Verify());
         subject.PrefixColumns.NotNull().ForEach(x => x.Verify());
         subject.SufixColumns.NotNull().ForEach(x => x.Verify());
-        subject.Relationships.NotNull().ForEach(x => x.Verify());
-        subject.LookupRelationships.NotNull().ForEach(x => x.Verify());
         subject.NameMap.NotNull().ForEach(x => x.Verify());
         subject.UpdateCommands.NotNull().ForEach(x => CommandOptionTool.IsValid(x).Assert(y => y == true, y => $"Syntax error: {x}"));
+        subject.AddInstructions.NotNull().ForEach(x => x.Verify());
 
         return subject;
     }

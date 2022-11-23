@@ -7,52 +7,47 @@ namespace SqlGenerator.sdk.Application;
 
 public static class CommandOptionTool
 {
+    private record PatternToken(string Value);
+    private record CommandToken(string Value);
+    private record AfterToken(string Value);
+
     private static Func<IToken, object?>[][] _tokenParseTests = new Func<IToken, object?>[][]
     {
         new Func<IToken, object?>[]
         {
             x => x is TokenValue v && v.Value.EqualsIgnoreCase("exclude") ? CommandType.Exclude : null,
             x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
-            x => x is TokenValue v ? v.Value : null,
+            x => x is TokenValue v ? new PatternToken(v.Value) : null,
         },
 
         new Func<IToken, object?>[]
         {
             x => x is TokenValue v && v.Value.EqualsIgnoreCase("primaryKey") ? CommandType.PrimaryKey : null,
             x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
-            x => x is TokenValue v ? v.Value : null,
-        },
-
-        new Func<IToken, object?>[]
-        {
-            x => x is TokenValue v && v.Value.EqualsIgnoreCase("viewColumn") ? CommandType.ViewColumn : null,
-            x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
-            x => x is TokenValue v ? v.Value : null,
-            x => x is TokenValue v && v.Value == "=" ? "=" : null,
-            x => x is TokenValue v ? v.Value : (x is BlockToken b ? b.Value : null),
+            x => x is TokenValue v ? new PatternToken(v.Value) : null,
         },
 
         new Func<IToken, object?>[]
         {
             x => x is TokenValue v && v.Value.EqualsIgnoreCase("excludeView") ? CommandType.ExcludeView : null,
             x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
-            x => x is TokenValue v ? v.Value : null,
+            x => x is TokenValue v ? new PatternToken(v.Value) : null,
         },
 
         new Func<IToken, object?>[]
         {
             x => x is TokenValue v && v.Value.EqualsIgnoreCase("excludeView") ? CommandType.ExcludeViewNot : null,
             x => x is TokenValue v && v.Value == "-=" ? "-=" : null,
-            x => x is TokenValue v ? v.Value : null,
+            x => x is TokenValue v ? new PatternToken(v.Value) : null,
         },
 
         new Func<IToken, object?>[]
         {
             x => x is TokenValue v && v.Value.EqualsIgnoreCase("copy") ? CommandType.Copy : null,
             x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
-            x => x is TokenValue v ? v.Value : (x is BlockToken b ? b.Value : null),
+            x => x is TokenValue v ? new PatternToken(v.Value) : (x is BlockToken b ? new PatternToken(b.Value) : null),
             x => x is TokenValue v && v.Value == "=>" ? "=>" : null,
-            x => x is TokenValue v ? v.Value : (x is BlockToken b ? b.Value : null),
+            x => x is TokenValue v ? new CommandToken(v.Value) : (x is BlockToken b ? new CommandToken(b.Value) : null),
         },
     };
 
@@ -73,6 +68,7 @@ public static class CommandOptionTool
     public static CommandOption? Parse(string command)
     {
         IReadOnlyList<IToken> tokens = new StringTokenizer()
+            .UseCollapseWhitespace()
             .UseDoubleQuote()
             .UseSingleQuote()
             .Add("=", "+=", "-=", "=>")
@@ -105,9 +101,9 @@ public static class CommandOptionTool
 
         return new CommandOption
         {
-            Type = (CommandType)results[0],
-            Pattern = (string)results[2],
-            Command = results.Length > 3 ? (string)results[4] : null,
+            Type = results.OfType<CommandType>().First(),
+            Pattern = results.OfType<PatternToken>().First().Value,
+            Command = results.OfType<CommandToken>().FirstOrDefault()?.Value,
         };
     }
 }

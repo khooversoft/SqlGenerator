@@ -15,4 +15,4 @@ AS
    FROM [clt_NetO].[GSSUSR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

@@ -11,6 +11,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -18,7 +19,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -26,4 +26,4 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
+;

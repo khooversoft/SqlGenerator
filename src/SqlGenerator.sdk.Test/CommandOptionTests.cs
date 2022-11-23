@@ -44,14 +44,14 @@ public class CommandOptionTests
     }
 
     [Fact]
-    public void GivenViewColumnCommandWithCommandQuoted_WhenParsed_ShouldPass()
+    public void GivenCopyCommandWithCommandQuoted_WhenParsed_ShouldPass()
     {
-        string cmd = "viewColumn += CommonMonthly.* = 'coalesce([{@InvestorLoanIdMap}].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]'";
+        string cmd = "copy += Include\\VwSymbolLookup.sql => clt_NetO\\Views\\VwSymbolLookup.sql";
 
         CommandOption? option = CommandOptionTool.Parse(cmd);
         option.Should().NotBeNull();
-        option!.Type.Should().Be(CommandType.ViewColumn);
-        option.Pattern.Should().Be("CommonMonthly.*");
-        option.Command.Should().Be("coalesce([{@InvestorLoanIdMap}].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]");
+        option!.Type.Should().Be(CommandType.Copy);
+        option.Pattern.Should().Be("Include\\VwSymbolLookup.sql");
+        option.Command.Should().Be("clt_NetO\\Views\\VwSymbolLookup.sql");
     }
 }

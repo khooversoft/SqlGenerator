@@ -2,12 +2,7 @@
 using DocumentFormat.OpenXml.Wordprocessing;
 using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Model;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Toolbox.Data;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -44,6 +39,13 @@ public class SqlViewBuilder
 
         if (columns.Count == 0) return list;
 
+        IReadOnlyList<SqlInstruction> sqlInstructions = new Sequence<SqlInstruction>()
+            + AddNormalColumns(columns, schema)
+            + AddInstructionsForSingle(tableModel, columns, schema)
+            + AddInstructionsForTemplate(tableModel, columns, schema);
+
+        sqlInstructions = SetIndex(sqlInstructions);
+
         var viewName = new SqlObjectName
         {
             Schema = schema.Name,
@@ -74,31 +76,40 @@ public class SqlViewBuilder
         list += "SELECT";
         list += InstructionType.TabPlus;
 
-        var relationships = GetRelationship(tableModel, columns);
-
-        list += columns
-            .Select(x => (index: x.ColumnIndex, line: BuildColumnModel(x, schema)))
-            .Concat(relationships.Select(x => (index: x.ColumnIndex, line: x.Select)))
-            .OrderBy(x => x.index)
-            .Select(x => x.line)
-            .Concat(CalculatedViews(tableModel, relationships))
+        list += sqlInstructions
+            .Where(x => x.Type == InstrType.Select)
+            .OrderBy(x => x.Index)
+            .Select(x => x.Line)
             .SequenceJoin(x => x += ",");
 
         list += InstructionType.TabMinus;
         list += $"FROM {tableModel.Name} x";
 
-        if (relationships.Count > 0)
+        list += InstructionType.TabPlus;
+        list += sqlInstructions
+            .Where(x => x.Type == InstrType.Join)
+            .Select(x => x.Line)
+            .ToArray();
+        list += InstructionType.TabMinus;
+        list += InstructionType.TabMinus;
+
+        var where = sqlInstructions
+            .Where(x => x.Type == InstrType.Where)
+            .Select(x => x.Line)
+            .Join(x => "AND " + x)
+            .ToArray();
+
+        if (where.Length > 0)
         {
             list += InstructionType.TabPlus;
-            list += relationships.Select(x => x.Join);
+            list += $"WHERE";
+            
+            list += InstructionType.TabPlus;
+            list += where;
+            list += InstructionType.TabMinus;
+            
             list += InstructionType.TabMinus;
         }
-
-        list += "WHERE";
-        list += InstructionType.TabPlus;
-        list += $"x.[ASAP_DeleteDateTime] IS NULL";
-        list += BuildRelationshipRestrictions(tableModel);
-        list += InstructionType.TabMinus;
 
         list += ";";
 
@@ -126,27 +137,6 @@ public class SqlViewBuilder
         return !exclude;
     }
 
-    private IReadOnlyList<string> CalculatedViews(TableModel tableModel, IReadOnlyList<RelationshipInstruction> relationships)
-    {
-        var cmdFunction = new CommandFunction()
-            .Add("alias", getAlias);
-
-        var list = _physicalModel.Commands
-            .Where(x => x.Type == CommandType.ViewColumn)
-            .Where(x => PatternMatch.IsMatch(x.Pattern, tableModel.Name.ToSimpleString()))
-            .Select(x => cmdFunction.Resolve(x.Command.NotEmpty()))
-            .ToArray();
-
-        return list;
-
-
-        string getAlias(string tableName) => relationships
-            .Where(x => SqlObjectName.Parse(tableName) == SqlObjectName.Parse(x.ReferenceTableName.NotEmpty()))
-            .Select(x => x.Alias)
-            .FirstOrDefault()
-            .NotEmpty(name: $"Table {tableName} does not exist");
-    }
-
     private string GetRealViewName(TableModel tableModel, SchemaModel schema)
     {
         string realViewName = schema.Format switch
@@ -163,6 +153,16 @@ public class SqlViewBuilder
 
         return realViewName;
     }
+
+    private IReadOnlyList<SqlInstruction> AddNormalColumns(IReadOnlyList<ColumnModel> columns, SchemaModel schemaModel) => columns
+        .Select((x, i) => new SqlInstruction
+        {
+            Type = InstrType.Select,
+            Line = BuildColumnModel(x, schemaModel),
+            Index = i * 10,
+            ColumnName = x.Name,
+        })
+        .ToArray();
 
     private string BuildColumnModel(ColumnModel columnModel, SchemaModel schemaModel)
     {
@@ -207,85 +207,92 @@ public class SqlViewBuilder
         }
     }
 
-    private IEnumerable<string> BuildRelationshipRestrictions(TableModel tableModel)
+    private IReadOnlyList<SqlInstruction> AddInstructionsForSingle(TableModel tableModel, IReadOnlyList<ColumnModel> columns, SchemaModel schemaModel)
     {
-        var found = _physicalModel.Relationships
-            .SelectMany(x => tableModel.Columns.Select(x => x.Name), (r, c) => (
-                columnName: c,
-                foreignTableName: r.TableName,
-                foreignColumnName: r.ColumnName,
-                pass: PatternMatch.IsMatch(r.ReferenceObjectId, $"{tableModel.Name.Name}.{c}")
-                ))
-            .Where(x => x.pass)
-            .ToArray();
+        CommandFunction tableCommands = new CommandFunction()
+            .Add("tableName", tableModel.Name.Name)
+            .Add("schemaName", schemaModel.Name);
 
-        return found.Length switch
-        {
-            0 => Array.Empty<string>(),
-            _ => found.Take(1).Select(x => new string[]
-            {
-                $"AND NOT EXISTS (SELECT * FROM [{tableModel.Name.Schema}].[{x.foreignTableName}] i",
-                $"WHERE x.[{x.columnName}] = i.[{x.foreignColumnName}])",
-            }.Join(" ")
-            )
-        };
-    }
-
-    private IReadOnlyList<RelationshipInstruction> GetRelationship(TableModel tableModel, IReadOnlyList<ColumnModel> columns)
-    {
-        IReadOnlyList<RelationshipInstruction> tableRelationship = GetRelationship(tableModel);
-        IReadOnlyList<RelationshipInstruction> columnRelationship = columns.SelectMany((x, i) => GetRelationship(tableModel, x)).ToArray();
-
-        var result = tableRelationship
-            .Concat(columnRelationship)
-            .Select((x, i) => x with { Alias = $"A{i}" })
-            .Select(x => (x, cmd: getCommandFunction(x)))
-            .Select(x => x.x with
-            {
-                Select = x.cmd.Resolve(x.x.Select),
-                Join = x.cmd.Resolve(x.x.Join),
-            })
-            .ToArray();
+        var result = _physicalModel.AddInstructions
+            .Where(x => x.Model == AddInstructionType.Single)
+            .Where(x => columns.Any(y => PatternMatch.IsMatch(x.Pattern, $"{tableModel.Name.Name}.{y.Name}")))
+            .SelectMany(x => new[]
+                {
+                    x.IsSelect() ? new SqlInstruction { Type = InstrType.Select, Line =  tableResolve(x.SelectLine), SelectLineOrder = x.SelectLineOrder } : null,
+                    x.IsJoin() ? new SqlInstruction { Type = InstrType.Join, Line = tableResolve(x.JoinLine) } : null,
+                    x.IsWhere() ? new SqlInstruction { Type = InstrType.Where, Line = tableResolve(x.WhereLine) } : null,
+                }.OfType<SqlInstruction>()
+            ).ToArray();
 
         return result;
 
-
-        CommandFunction getCommandFunction(RelationshipInstruction relationship) => new CommandFunction()
-            .Add("alias", relationship.Alias)
-            .Add("tableName", relationship.TableName)
-            .Add("viewColumnName", relationship.ViewColumnName);
+        string tableResolve(string? value) => value.Func(x => tableCommands.Resolve(x.NotEmpty()));
     }
 
-    private IReadOnlyList<RelationshipInstruction> GetRelationship(TableModel tableModel) => _physicalModel.LookupRelationships
-        .Where(x => PatternMatch.IsMatch(x.Pattern, tableModel.Name.ToSimpleString()))
-        .Select((x, index) => new RelationshipInstruction
-        {
-            ReferenceTableName = x.ReferenceTable,
-            Select = x.SelectLine,
-            Join = x.JoinLine,
-            ColumnIndex = int.MaxValue,
-        }).ToArray();
-
-    private IReadOnlyList<RelationshipInstruction> GetRelationship(TableModel tableModel, ColumnModel columnModel) => _physicalModel.LookupRelationships
-        .Where(x => PatternMatch.IsMatch(x.Pattern, $"{tableModel.Name.Name}.{columnModel.Name}"))
-        .Select((x, index) => new RelationshipInstruction
-        {
-            ReferenceTableName = x.ReferenceTable,
-            Select = x.SelectLine,
-            Join = x.JoinLine,
-            TableName = tableModel.Name.Name,
-            ViewColumnName = columnModel.Name,
-            ColumnIndex = columnModel.ColumnIndex,
-        }).ToArray();
-
-    private record RelationshipInstruction
+    private IReadOnlyList<SqlInstruction> AddInstructionsForTemplate(TableModel tableModel, IReadOnlyList<ColumnModel> columns, SchemaModel schemaModel)
     {
-        public string? ReferenceTableName { get; init; }
-        public string Alias { get; init; } = null!;
-        public string Select { get; init; } = null!;
-        public string Join { get; init; } = null!;
-        public string? TableName { get; init; }
-        public string? ViewColumnName { get; init; }
-        public int ColumnIndex { get; init; }
+        var columnImpacted = _physicalModel.AddInstructions
+            .Where(x => x.Model == AddInstructionType.Template)
+            .SelectMany(x => columns.Where(c => PatternMatch.IsMatch(x.Pattern, $"{tableModel.Name.Name}.{c.Name}")), (x, m) => (Inst: x, Column: m))
+            .ToArray();
+
+        var result = columnImpacted
+            .Select((x, i) => (x.Inst, x.Column, Cmd: createCommandFunction(x.Column, i)))
+            .SelectMany(x => new[]
+                {
+                    x.Inst.IsSelect() ? new SqlInstruction
+                        {
+                            Type = InstrType.Select,
+                            Line =  x.Cmd.Resolve(x.Inst.SelectLine.NotEmpty()),
+                            SelectLineOrder = !x.Inst.SelectLineOrder.IsEmpty() ? x.Cmd.Resolve(x.Inst.SelectLineOrder) : null,
+                        } : null,
+                    x.Inst.IsJoin() ? new SqlInstruction { Type = InstrType.Join, Line = x.Cmd.Resolve(x.Inst.JoinLine.NotEmpty()) } : null,
+                    x.Inst.IsWhere() ? new SqlInstruction { Type = InstrType.Where, Line = x.Cmd.Resolve(x.Inst.WhereLine.NotEmpty()) } : null,
+                }.OfType<SqlInstruction>()
+            ).ToArray();
+
+        return result;
+
+        CommandFunction createCommandFunction(ColumnModel columnModel, int index) => new CommandFunction()
+            .Add("schemaName", schemaModel.Name)
+            .Add("tableName", tableModel.Name.Name)
+            .Add("columnName", columnModel.Name)
+            .Add("alias", $"A{index}");
+    }
+
+    private IReadOnlyList<SqlInstruction> SetIndex(IReadOnlyList<SqlInstruction> instructions)
+    {
+        var result = instructions
+            .Select(x => x switch
+            {
+                SqlInstruction v when v.Type == InstrType.Select && !x.SelectLineOrder.IsEmpty() => v with
+                {
+                    Index = getIndex(v.Index, v.SelectLineOrder),
+                },
+
+                _ => x
+            }).ToArray();
+
+        return result;
+
+        int? getIndex(int? defaultIndex, string? selectLineOrder) => selectLineOrder.IsEmpty() ? defaultIndex : instructions
+            .Where(x => !x.ColumnName.IsEmpty() && x.ColumnName.EqualsIgnoreCase(selectLineOrder))
+            .FirstOrDefault()?.Index + 1 ?? defaultIndex;
+    }
+
+    private enum InstrType
+    {
+        Select,
+        Join,
+        Where
+    }
+
+    private record SqlInstruction
+    {
+        public required InstrType Type { get; init; }
+        public required string Line { get; init; } = null!;
+        public int? Index { get; init; }
+        public string? SelectLineOrder { get; init; }
+        public string? ColumnName { get; init; }
     }
 }

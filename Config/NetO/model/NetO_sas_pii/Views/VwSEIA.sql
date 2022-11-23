@@ -11,6 +11,8 @@ AS
       x.[TAXYEAR] AS [TAXYEAR],
       x.[METHOD] AS [METHOD],
       x.[CNTR] AS [CNTR],
+      x.[DBID] AS [DBID],
+      x.[CTR] AS [CTR],
       x.[SCHCPRFT] AS [SCHCPRFT],
       x.[SCHCDEPL] AS [SCHCDEPL],
       x.[SCHCDEPR] AS [SCHCDEPR],
@@ -76,8 +78,6 @@ AS
       x.[D_TOTAL] AS [D_TOTAL],
       x.[NOMONTHS] AS [NOMONTHS],
       x.[MNTHAVRG] AS [MNTHAVRG],
-      x.[DBID] AS [DBID],
-      x.[CTR] AS [CTR],
       x.[TOTINC] AS [TOTINC],
       x.[DEPR2106] AS [DEPR2106],
       x.[SCHCOTHI] AS [SCHCOTHI],
@@ -130,4 +130,4 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
+;

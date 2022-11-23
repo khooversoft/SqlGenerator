@@ -32,4 +32,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

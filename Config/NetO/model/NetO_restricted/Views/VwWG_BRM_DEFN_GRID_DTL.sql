@@ -31,4 +31,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

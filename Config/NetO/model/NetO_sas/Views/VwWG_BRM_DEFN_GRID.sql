@@ -29,4 +29,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

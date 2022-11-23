@@ -22,4 +22,4 @@ AS
    FROM [clt_NetO].[L_SYMBOL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

@@ -21,4 +21,4 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_INVESTOR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

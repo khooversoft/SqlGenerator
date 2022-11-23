@@ -35,9 +35,8 @@ public class PhysicalModelBuilder
             Tables = tableModels,
             PrefixColumns = projectOption.PrefixColumns.ToArray(),
             SuffixColumns = projectOption.SufixColumns.ToArray(),
-            Relationships = projectOption.Relationships.ToArray(),
-            LookupRelationships = projectOption.LookupRelationships.ToArray(),
             Commands = projectOption.CommandOptions.ToArray(),
+            AddInstructions = projectOption.AddInstructions.ToArray(),
         }.Verify();
     }
 
@@ -66,7 +65,6 @@ public class PhysicalModelBuilder
                     DataType = y.DataType,
                     NotNull = y.NotNull,
                     PrimaryKey = y.PrimaryKey || IsPrimaryKey(x.Key, y.ColumnName, projectOption),
-                    NonuniqueIndex = IsNonuniqueIndex(projectOption, x.Key, y.ColumnName),
                     PII = y.PII,
                     Restricted = y.Restricted,
                     ColumnIndex = i,
@@ -76,7 +74,7 @@ public class PhysicalModelBuilder
 
     private static IndexType GetIndexType(IReadOnlyList<TableInfo> tableInfos) =>
         tableInfos
-        .Any(x => x.DataType.IndexOf("max", StringComparison.OrdinalIgnoreCase) >= 0) switch
+        .Any(x => x.DataType.Contains("max", StringComparison.OrdinalIgnoreCase)) switch
         {
             false => IndexType.Hash,
             true => IndexType.Cluster
@@ -85,9 +83,6 @@ public class PhysicalModelBuilder
     private static bool IsPrimaryKey(string tableName, string columnName, SqlProjectOption projectOption) => projectOption.CommandOptions
         .Where(x => x.Type == CommandType.PrimaryKey)
         .Any(x => PatternMatch.IsMatch(x.Pattern, $"{tableName}.{columnName}"));
-
-    private static bool IsNonuniqueIndex(SqlProjectOption projectOption, string tableName, string columnName) => projectOption.Relationships
-        .Any(x => x.TableName.EqualsIgnoreCase(tableName) && x.ColumnName.EqualsIgnoreCase(columnName));
 
     private static TableMode GetTableMode(string tableName, IReadOnlyList<TableTypeMetadata>? tableMetadata) => tableMetadata switch
     {

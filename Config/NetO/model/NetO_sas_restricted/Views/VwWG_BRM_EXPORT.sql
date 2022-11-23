@@ -30,4 +30,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

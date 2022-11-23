@@ -6,9 +6,11 @@
 CREATE VIEW [AssetAcq_pii].[Vw_CommonMonthly]
 AS
    SELECT
-      x.[BECU_AccountNumber],
+      x.[BECUAccountNumber],
       x.[MonthEndDate],
-      x.[CurrentAccountNumber],
+      x.[AccountNumber],
+      [idMap].[OriginalMemberNumber] AS [AccountNumberOriginal],
+      coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
       x.[AssetClass],
       x.[ProductType],
       x.[ProductDescription],
@@ -175,11 +177,9 @@ AS
       x.[RecourseFlag],
       x.[Servicer],
       x.[VehicleManufacturer],
-      x.[VehicleIdentificationNumber],
-      a0.[OriginalMemberNumber] AS [OriginalAccountNumber],
-      coalesce([a0].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]
+      x.[VehicleIdentificationNumber]
    FROM [clt_AssetAcq].[CommonMonthly] x
-      LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] a0 ON x.[BECU_AccountNumber] = a0.[LoanId]
+      LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

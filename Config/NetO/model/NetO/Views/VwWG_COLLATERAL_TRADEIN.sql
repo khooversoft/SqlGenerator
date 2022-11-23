@@ -7,6 +7,7 @@ CREATE VIEW [NetO].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -19,10 +20,9 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
+;

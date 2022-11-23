@@ -1,10 +1,9 @@
 {
-  "includeFiles":[
-		"Monthly.ImportOption.json",
-		"CommonMonthly_Classification.json"
-	],
-
-  "sourceFile": "mergeBuild\\CommonMonthlyMerge.dataDictionary.csv",
+  "includeFiles": [
+    "Monthly.ImportOption.json",
+    "CommonMonthly_Classification.json"
+  ],
+  "sourceFile": "CommonMonthlyMerge.dataDictionary.csv",
   "optionFile": "Monthly.ImportOption.json",
   "nameMapFile": null,
   "tableListFile": null,
@@ -12,7 +11,21 @@
   "uspLoadTableOption": null,
   "rawToCultivated": null,
 
-  "updateCommands": [
-		"viewColumn += clt_AssetAcq.CommonMonthly = 'coalesce([{alias(ctl_Investor.InvestorLoanIdMap)}].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]'"
-	]
+  "addInstructions": [
+    {
+			"pattern": "*",
+			"whereLine": "x.[ASAP_DeleteDateTime] IS NULL"
+		},
+    {
+      "pattern": "CommonMonthly.*",
+      "selectLine": "[idMap].[OriginalMemberNumber] AS [AccountNumberOriginal]",
+      "selectLineOrder": "AccountNumber",
+      "joinLine": "LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]"
+    },
+    {
+      "pattern": "CommonMonthly.*",
+      "selectLine": "coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal]",
+      "selectLineOrder": "AccountNumber"
+    }
+  ]
 }

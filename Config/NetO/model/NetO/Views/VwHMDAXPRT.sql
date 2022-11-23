@@ -41,4 +41,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

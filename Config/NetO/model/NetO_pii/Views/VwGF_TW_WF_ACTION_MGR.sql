@@ -35,4 +35,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

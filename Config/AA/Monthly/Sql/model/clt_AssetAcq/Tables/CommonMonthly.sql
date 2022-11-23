@@ -4,11 +4,11 @@
 
 CREATE TABLE [clt_AssetAcq].[CommonMonthly]
 (
-   [BECU_AccountNumber]                   nvarchar(50)         NOT NULL,
+   [BECUAccountNumber]                    nvarchar(50)         NOT NULL,
    [ASAP_RecordEffectiveDateTime]         datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]                  datetime2(7)         NULL,
    [MonthEndDate]                         int                  NULL,
-   [CurrentAccountNumber]                 bigint               NULL,
+   [AccountNumber]                        bigint               NULL,
    [AssetClass]                           nvarchar(100)        NULL,
    [ProductType]                          nvarchar(100)        NULL,
    [ProductDescription]                   nvarchar(100)        NULL,
@@ -185,5 +185,5 @@ CREATE TABLE [clt_AssetAcq].[CommonMonthly]
    [ASAP_TRIGGER_ID]                      nvarchar(36)         NULL,
    [ASAP_SRC_FILEPATH]                    nvarchar(1000)       NULL
 )
-WITH (DISTRIBUTION = HASH ([BECU_AccountNumber]), CLUSTERED COLUMNSTORE INDEX)
+WITH (DISTRIBUTION = HASH ([BECUAccountNumber]), CLUSTERED COLUMNSTORE INDEX)
 ;

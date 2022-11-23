@@ -51,4 +51,4 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

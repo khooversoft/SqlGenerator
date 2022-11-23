@@ -21,4 +21,4 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

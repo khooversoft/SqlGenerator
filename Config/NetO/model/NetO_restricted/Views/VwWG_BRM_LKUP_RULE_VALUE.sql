@@ -19,4 +19,4 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_VALUE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

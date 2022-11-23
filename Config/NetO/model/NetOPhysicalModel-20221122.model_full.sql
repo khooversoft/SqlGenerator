@@ -12489,8 +12489,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -12582,8 +12582,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -12690,8 +12690,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -12760,8 +12760,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -12796,8 +12796,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13028,8 +13028,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13090,8 +13090,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13200,8 +13200,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13320,8 +13320,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13494,8 +13494,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13551,8 +13551,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13626,8 +13626,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13671,8 +13671,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13778,8 +13778,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13796,18 +13796,18 @@ CREATE VIEW [NetO].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13848,8 +13848,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -13885,8 +13885,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14017,8 +14017,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14076,8 +14076,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14134,8 +14134,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14265,8 +14265,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14401,8 +14401,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14545,8 +14545,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14582,8 +14582,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14625,8 +14625,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14663,8 +14663,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14759,8 +14759,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14862,8 +14862,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14889,8 +14889,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14923,8 +14923,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -14978,8 +14978,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15036,8 +15036,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15075,8 +15075,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15129,8 +15129,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15163,8 +15163,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15205,8 +15205,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15244,8 +15244,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15283,8 +15283,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15329,8 +15329,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15369,8 +15369,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15413,8 +15413,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15484,8 +15484,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15581,8 +15581,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15617,8 +15617,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15664,8 +15664,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15700,8 +15700,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15733,8 +15733,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15755,6 +15755,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -15762,7 +15763,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -15770,8 +15770,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15801,8 +15801,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15862,8 +15862,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15892,8 +15892,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15920,8 +15920,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15950,8 +15950,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -15984,8 +15984,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16014,8 +16014,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16045,8 +16045,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16146,8 +16146,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16186,8 +16186,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16244,8 +16244,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16281,8 +16281,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16369,8 +16369,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16408,8 +16408,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16447,8 +16447,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16474,8 +16474,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16504,8 +16504,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16536,8 +16536,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16561,8 +16561,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16594,8 +16594,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16630,8 +16630,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16672,8 +16672,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16759,8 +16759,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16877,8 +16877,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16941,8 +16941,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16971,8 +16971,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17085,8 +17085,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17109,8 +17109,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17133,8 +17133,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17193,8 +17193,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17227,8 +17227,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17255,8 +17255,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17273,8 +17273,8 @@ CREATE VIEW [NetO].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[DELETED_CLNUM],
       x.[USRID],
+      x.[DELETED_CLNUM],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -17282,8 +17282,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17314,8 +17314,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17351,8 +17351,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17377,8 +17377,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17421,8 +17421,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17448,8 +17448,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17472,8 +17472,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17521,8 +17521,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17547,8 +17547,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17579,8 +17579,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_INVESTOR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17605,8 +17605,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRICING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17632,8 +17632,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRODUCT] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17658,8 +17658,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PROGRAM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17681,8 +17681,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_PRICE_OFERING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17711,8 +17711,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17736,8 +17736,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17761,8 +17761,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17799,8 +17799,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17938,8 +17938,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -17984,8 +17984,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18022,8 +18022,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18059,8 +18059,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18092,8 +18092,8 @@ AS
    FROM [clt_NetO].[GFXVARTEXTMAP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18120,8 +18120,8 @@ AS
    FROM [clt_NetO].[GSSGRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18142,8 +18142,8 @@ AS
    FROM [clt_NetO].[GSSMEM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18168,8 +18168,8 @@ AS
    FROM [clt_NetO].[GSSUSR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18220,8 +18220,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18252,8 +18252,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18339,8 +18339,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18391,8 +18391,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18498,8 +18498,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18544,8 +18544,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18577,8 +18577,8 @@ AS
    FROM [clt_NetO].[L_SYMBOL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18723,8 +18723,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18750,8 +18750,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18783,8 +18783,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18816,8 +18816,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -18869,8 +18869,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -19124,8 +19124,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -19192,8 +19192,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -19295,8 +19295,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -19317,6 +19317,8 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
+      x.[DBID],
+      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -19382,8 +19384,6 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
-      x.[DBID],
-      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -19436,8 +19436,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -19511,8 +19511,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -19577,8 +19577,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -19807,8 +19807,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -19873,8 +19873,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -19978,8 +19978,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20132,8 +20132,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20168,8 +20168,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20221,8 +20221,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20264,8 +20264,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20332,8 +20332,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20399,8 +20399,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20542,8 +20542,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20568,8 +20568,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20594,8 +20594,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20612,6 +20612,8 @@ CREATE VIEW [NetO].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       A0.Descript AS [S_BRANCH_Description],
@@ -20650,8 +20652,6 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -20706,8 +20706,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20746,8 +20746,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20790,8 +20790,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20835,8 +20835,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20906,8 +20906,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -20938,8 +20938,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21002,8 +21002,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21022,12 +21022,12 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -21035,8 +21035,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21072,8 +21072,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21100,8 +21100,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21156,8 +21156,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21188,8 +21188,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21231,8 +21231,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21271,8 +21271,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21313,8 +21313,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21354,8 +21354,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21381,8 +21381,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21435,8 +21435,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21488,8 +21488,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21516,8 +21516,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21548,8 +21548,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21579,8 +21579,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21612,8 +21612,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21642,8 +21642,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_VALUE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21766,8 +21766,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21829,8 +21829,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21864,8 +21864,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21896,8 +21896,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21914,6 +21914,7 @@ CREATE VIEW [NetO].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -21926,14 +21927,13 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -21960,8 +21960,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22003,8 +22003,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22065,8 +22065,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22117,8 +22117,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22149,8 +22149,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22183,8 +22183,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ADDRESS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22207,8 +22207,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_PHONE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22344,8 +22344,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22380,8 +22380,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22464,8 +22464,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22514,8 +22514,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22542,8 +22542,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22729,8 +22729,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22753,8 +22753,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22779,8 +22779,8 @@ AS
    FROM [clt_NetO].[WG_SYMBOL_XREF] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22814,8 +22814,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22856,8 +22856,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -22977,8 +22977,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -23070,8 +23070,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -23178,8 +23178,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -23248,8 +23248,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -23284,8 +23284,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -23516,8 +23516,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -23578,8 +23578,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -23688,8 +23688,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -23808,8 +23808,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -23982,8 +23982,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24039,8 +24039,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24114,8 +24114,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24159,8 +24159,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24266,8 +24266,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24284,18 +24284,18 @@ CREATE VIEW [NetO_restricted].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24336,8 +24336,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24373,8 +24373,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24505,8 +24505,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24564,8 +24564,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24622,8 +24622,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24753,8 +24753,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -24889,8 +24889,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25033,8 +25033,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25070,8 +25070,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25113,8 +25113,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25151,8 +25151,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25247,8 +25247,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25350,8 +25350,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25377,8 +25377,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25411,8 +25411,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25466,8 +25466,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25524,8 +25524,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25563,8 +25563,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25617,8 +25617,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25651,8 +25651,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25693,8 +25693,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25732,8 +25732,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25771,8 +25771,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25817,8 +25817,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25857,8 +25857,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25901,8 +25901,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -25972,8 +25972,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26069,8 +26069,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26105,8 +26105,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26152,8 +26152,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26188,8 +26188,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26221,8 +26221,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26243,6 +26243,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -26250,7 +26251,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -26258,8 +26258,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26289,8 +26289,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26350,8 +26350,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26380,8 +26380,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26408,8 +26408,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26438,8 +26438,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26472,8 +26472,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26502,8 +26502,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26533,8 +26533,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26634,8 +26634,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26674,8 +26674,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26732,8 +26732,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26769,8 +26769,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26857,8 +26857,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26896,8 +26896,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26935,8 +26935,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26962,8 +26962,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -26992,8 +26992,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27024,8 +27024,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27049,8 +27049,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27082,8 +27082,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27118,8 +27118,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27160,8 +27160,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27247,8 +27247,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27365,8 +27365,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27429,8 +27429,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27459,8 +27459,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27573,8 +27573,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27597,8 +27597,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27621,8 +27621,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27681,8 +27681,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27715,8 +27715,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27743,8 +27743,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27761,8 +27761,8 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[DELETED_CLNUM],
       x.[USRID],
+      x.[DELETED_CLNUM],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -27770,8 +27770,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27802,8 +27802,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27839,8 +27839,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27865,8 +27865,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27909,8 +27909,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27936,8 +27936,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -27960,8 +27960,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28009,8 +28009,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28035,8 +28035,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28067,8 +28067,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_INVESTOR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28093,8 +28093,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRICING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28120,8 +28120,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRODUCT] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28146,8 +28146,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PROGRAM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28169,8 +28169,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_PRICE_OFERING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28199,8 +28199,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28224,8 +28224,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28249,8 +28249,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28287,8 +28287,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28426,8 +28426,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28472,8 +28472,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28510,8 +28510,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28547,8 +28547,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28580,8 +28580,8 @@ AS
    FROM [clt_NetO].[GFXVARTEXTMAP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28608,8 +28608,8 @@ AS
    FROM [clt_NetO].[GSSGRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28630,8 +28630,8 @@ AS
    FROM [clt_NetO].[GSSMEM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28656,8 +28656,8 @@ AS
    FROM [clt_NetO].[GSSUSR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28708,8 +28708,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28740,8 +28740,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28827,8 +28827,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28879,8 +28879,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -28986,8 +28986,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29032,8 +29032,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29065,8 +29065,8 @@ AS
    FROM [clt_NetO].[L_SYMBOL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29211,8 +29211,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29238,8 +29238,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29271,8 +29271,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29304,8 +29304,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29357,8 +29357,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29612,8 +29612,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29680,8 +29680,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29783,8 +29783,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29805,6 +29805,8 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
+      x.[DBID],
+      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -29870,8 +29872,6 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
-      x.[DBID],
-      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -29924,8 +29924,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -29999,8 +29999,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30065,8 +30065,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30295,8 +30295,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30361,8 +30361,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30466,8 +30466,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30620,8 +30620,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30656,8 +30656,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30709,8 +30709,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30752,8 +30752,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30820,8 +30820,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -30887,8 +30887,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31030,8 +31030,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31056,8 +31056,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31082,8 +31082,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31100,6 +31100,8 @@ CREATE VIEW [NetO_restricted].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       A0.Descript AS [S_BRANCH_Description],
@@ -31138,8 +31140,6 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -31194,8 +31194,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31234,8 +31234,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31278,8 +31278,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31323,8 +31323,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31394,8 +31394,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31426,8 +31426,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31490,8 +31490,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31510,12 +31510,12 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -31523,8 +31523,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31560,8 +31560,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31588,8 +31588,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31644,8 +31644,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31676,8 +31676,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31719,8 +31719,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31759,8 +31759,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31801,8 +31801,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31842,8 +31842,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31869,8 +31869,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31923,8 +31923,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -31976,8 +31976,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32004,8 +32004,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32036,8 +32036,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32067,8 +32067,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32100,8 +32100,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32130,8 +32130,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_VALUE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32254,8 +32254,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32317,8 +32317,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32352,8 +32352,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32384,8 +32384,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32402,6 +32402,7 @@ CREATE VIEW [NetO_restricted].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -32414,14 +32415,13 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32448,8 +32448,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32491,8 +32491,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32553,8 +32553,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32605,8 +32605,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32637,8 +32637,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32671,8 +32671,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ADDRESS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32695,8 +32695,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_PHONE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32832,8 +32832,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32868,8 +32868,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -32952,8 +32952,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33002,8 +33002,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33030,8 +33030,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33217,8 +33217,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33241,8 +33241,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33267,8 +33267,8 @@ AS
    FROM [clt_NetO].[WG_SYMBOL_XREF] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33302,8 +33302,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33344,8 +33344,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33465,8 +33465,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33558,8 +33558,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33666,8 +33666,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33736,8 +33736,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -33772,8 +33772,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34004,8 +34004,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34066,8 +34066,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34176,8 +34176,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34296,8 +34296,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34470,8 +34470,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34527,8 +34527,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34602,8 +34602,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34647,8 +34647,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34754,8 +34754,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34772,18 +34772,18 @@ CREATE VIEW [NetO_pii].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
+      x.[PKFIX],
       x.[FLDNAME],
       x.[USRID],
       x.[MODIFY_DATE],
       x.[TEXT_VALUE],
-      x.[P_TEXT_VALUE],
-      x.[PKFIX]
+      x.[P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34824,8 +34824,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34861,8 +34861,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -34993,8 +34993,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35052,8 +35052,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35110,8 +35110,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35241,8 +35241,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35377,8 +35377,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35521,8 +35521,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35558,8 +35558,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35601,8 +35601,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35639,8 +35639,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35735,8 +35735,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35838,8 +35838,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35865,8 +35865,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35899,8 +35899,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -35954,8 +35954,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36012,8 +36012,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36051,8 +36051,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36105,8 +36105,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36139,8 +36139,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36181,8 +36181,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36220,8 +36220,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36259,8 +36259,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36305,8 +36305,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36345,8 +36345,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36389,8 +36389,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36460,8 +36460,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36557,8 +36557,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36593,8 +36593,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36640,8 +36640,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36676,8 +36676,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36709,8 +36709,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36731,6 +36731,7 @@ AS
       x.[CREDITRESPONSEID],
       x.[SCOREID],
       x.[DBID],
+      x.[BORROWER_ID],
       x.[BNUM],
       x.[SOURCE_TYPE],
       x.[SCORE_DATE],
@@ -36738,7 +36739,6 @@ AS
       x.[MODEL_TYPE],
       x.[OTHER_DESCRIPTION],
       x.[SCORE_VALUE],
-      x.[BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE]
@@ -36746,8 +36746,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36777,8 +36777,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36838,8 +36838,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36868,8 +36868,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36896,8 +36896,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36926,8 +36926,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36960,8 +36960,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -36990,8 +36990,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37021,8 +37021,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37122,8 +37122,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37162,8 +37162,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37220,8 +37220,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37257,8 +37257,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37345,8 +37345,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37384,8 +37384,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37423,8 +37423,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37450,8 +37450,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37480,8 +37480,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37512,8 +37512,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37537,8 +37537,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37570,8 +37570,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37606,8 +37606,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37648,8 +37648,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37735,8 +37735,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37853,8 +37853,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37917,8 +37917,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -37947,8 +37947,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38061,8 +38061,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38085,8 +38085,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38109,8 +38109,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38169,8 +38169,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38203,8 +38203,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38231,8 +38231,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38249,8 +38249,8 @@ CREATE VIEW [NetO_pii].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
-      x.[DELETED_CLNUM],
       x.[USRID],
+      x.[DELETED_CLNUM],
       x.[ACTIVITY],
       x.[TERMINAL],
       x.[OS_USER],
@@ -38258,8 +38258,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38290,8 +38290,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38327,8 +38327,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38353,8 +38353,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38397,8 +38397,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38424,8 +38424,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38448,8 +38448,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38497,8 +38497,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38523,8 +38523,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38555,8 +38555,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_INVESTOR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38581,8 +38581,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRICING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38608,8 +38608,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRODUCT] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38634,8 +38634,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PROGRAM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38657,8 +38657,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_PRICE_OFERING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38687,8 +38687,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38712,8 +38712,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38737,8 +38737,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38775,8 +38775,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38914,8 +38914,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38960,8 +38960,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -38998,8 +38998,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39035,8 +39035,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39068,8 +39068,8 @@ AS
    FROM [clt_NetO].[GFXVARTEXTMAP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39096,8 +39096,8 @@ AS
    FROM [clt_NetO].[GSSGRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39118,8 +39118,8 @@ AS
    FROM [clt_NetO].[GSSMEM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39144,8 +39144,8 @@ AS
    FROM [clt_NetO].[GSSUSR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39196,8 +39196,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39228,8 +39228,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39315,8 +39315,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39367,8 +39367,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39474,8 +39474,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39520,8 +39520,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39553,8 +39553,8 @@ AS
    FROM [clt_NetO].[L_SYMBOL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39699,8 +39699,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39726,8 +39726,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39759,8 +39759,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39792,8 +39792,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -39845,8 +39845,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -40100,8 +40100,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -40168,8 +40168,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -40271,8 +40271,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -40293,6 +40293,8 @@ AS
       x.[TAXYEAR],
       x.[METHOD],
       x.[CNTR],
+      x.[DBID],
+      x.[CTR],
       x.[SCHCPRFT],
       x.[SCHCDEPL],
       x.[SCHCDEPR],
@@ -40358,8 +40360,6 @@ AS
       x.[D_TOTAL],
       x.[NOMONTHS],
       x.[MNTHAVRG],
-      x.[DBID],
-      x.[CTR],
       x.[TOTINC],
       x.[DEPR2106],
       x.[SCHCOTHI],
@@ -40412,8 +40412,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -40487,8 +40487,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -40553,8 +40553,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -40783,8 +40783,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -40849,8 +40849,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -40954,8 +40954,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41108,8 +41108,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41144,8 +41144,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41197,8 +41197,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41240,8 +41240,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41308,8 +41308,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41375,8 +41375,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41518,8 +41518,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41544,8 +41544,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41570,8 +41570,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41588,6 +41588,8 @@ CREATE VIEW [NetO_pii].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       A0.Descript AS [S_BRANCH_Description],
@@ -41626,8 +41628,6 @@ AS
       x.[DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -41682,8 +41682,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41722,8 +41722,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41766,8 +41766,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41811,8 +41811,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41882,8 +41882,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41914,8 +41914,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41978,8 +41978,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -41998,12 +41998,12 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[ROWCOUNTER],
+      x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
       A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],
-      x.[VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -42011,8 +42011,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42048,8 +42048,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42076,8 +42076,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42132,8 +42132,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42164,8 +42164,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42207,8 +42207,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42247,8 +42247,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42289,8 +42289,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42330,8 +42330,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42357,8 +42357,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42411,8 +42411,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42464,8 +42464,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42492,8 +42492,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42524,8 +42524,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42555,8 +42555,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42588,8 +42588,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42618,8 +42618,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_VALUE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42742,8 +42742,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42805,8 +42805,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42840,8 +42840,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42872,8 +42872,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42890,6 +42890,7 @@ CREATE VIEW [NetO_pii].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
+      x.[TRDINCNTR],
       x.[YEAR],
       x.[MAKE],
       x.[VIN],
@@ -42902,14 +42903,13 @@ AS
       x.[NET_TRDIN_VALUE],
       x.[ISFINANCED],
       x.[FININSTITUTE],
-      x.[MNTHPAYMENT],
-      x.[TRDINCNTR]
+      x.[MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42936,8 +42936,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -42979,8 +42979,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43041,8 +43041,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43093,8 +43093,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43125,8 +43125,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43159,8 +43159,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ADDRESS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43183,8 +43183,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_PHONE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43320,8 +43320,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43356,8 +43356,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43440,8 +43440,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43490,8 +43490,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43518,8 +43518,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43705,8 +43705,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43729,8 +43729,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43755,8 +43755,8 @@ AS
    FROM [clt_NetO].[WG_SYMBOL_XREF] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43790,8 +43790,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43832,8 +43832,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -43953,8 +43953,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -44046,8 +44046,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -44154,8 +44154,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -44224,8 +44224,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -44260,8 +44260,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -44492,8 +44492,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -44554,8 +44554,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -44664,8 +44664,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -44784,8 +44784,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -44958,8 +44958,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45015,8 +45015,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45090,8 +45090,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45135,8 +45135,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45242,8 +45242,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45260,18 +45260,18 @@ CREATE VIEW [NetO_sas].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[PKFIX] AS [PKFIX],
       x.[FLDNAME] AS [FLDNAME],
       x.[USRID] AS [USRID],
       x.[MODIFY_DATE] AS [MODIFY_DATE],
       x.[TEXT_VALUE] AS [TEXT_VALUE],
-      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE],
-      x.[PKFIX] AS [PKFIX]
+      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45312,8 +45312,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45349,8 +45349,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45481,8 +45481,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45540,8 +45540,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45598,8 +45598,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45729,8 +45729,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -45865,8 +45865,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46009,8 +46009,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46046,8 +46046,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46089,8 +46089,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46127,8 +46127,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46223,8 +46223,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46326,8 +46326,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46353,8 +46353,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46387,8 +46387,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46442,8 +46442,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46500,8 +46500,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46539,8 +46539,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46593,8 +46593,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46627,8 +46627,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46669,8 +46669,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46708,8 +46708,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46747,8 +46747,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46793,8 +46793,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46833,8 +46833,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46877,8 +46877,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -46948,8 +46948,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47045,8 +47045,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47081,8 +47081,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47128,8 +47128,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47164,8 +47164,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47197,8 +47197,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47219,6 +47219,7 @@ AS
       x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
       x.[SCOREID] AS [SCOREID],
       x.[DBID] AS [DBID],
+      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[BNUM] AS [BNUM],
       x.[SOURCE_TYPE] AS [SOURCE_TYPE],
       x.[SCORE_DATE] AS [SCORE_DATE],
@@ -47226,7 +47227,6 @@ AS
       x.[MODEL_TYPE] AS [MODEL_TYPE],
       x.[OTHER_DESCRIPTION] AS [OTHER_DESCRIPTION],
       x.[SCORE_VALUE] AS [SCORE_VALUE],
-      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC] AS [CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR] AS [FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE] AS [RANK_PERCENTILE]
@@ -47234,8 +47234,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47265,8 +47265,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47326,8 +47326,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47356,8 +47356,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47384,8 +47384,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47414,8 +47414,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47448,8 +47448,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47478,8 +47478,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47509,8 +47509,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47610,8 +47610,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47650,8 +47650,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47708,8 +47708,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47745,8 +47745,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47833,8 +47833,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47872,8 +47872,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47911,8 +47911,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47938,8 +47938,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -47968,8 +47968,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48000,8 +48000,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48025,8 +48025,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48058,8 +48058,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48094,8 +48094,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48136,8 +48136,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48223,8 +48223,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48341,8 +48341,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48405,8 +48405,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48435,8 +48435,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48549,8 +48549,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48573,8 +48573,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48597,8 +48597,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48657,8 +48657,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48691,8 +48691,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48719,8 +48719,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48737,8 +48737,8 @@ CREATE VIEW [NetO_sas].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM] AS [DELETED_LNUM],
-      x.[DELETED_CLNUM] AS [DELETED_CLNUM],
       x.[USRID] AS [USRID],
+      x.[DELETED_CLNUM] AS [DELETED_CLNUM],
       x.[ACTIVITY] AS [ACTIVITY],
       x.[TERMINAL] AS [TERMINAL],
       x.[OS_USER] AS [OS_USER],
@@ -48746,8 +48746,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48778,8 +48778,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48815,8 +48815,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48841,8 +48841,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48885,8 +48885,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48912,8 +48912,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48936,8 +48936,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -48985,8 +48985,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49011,8 +49011,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49043,8 +49043,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_INVESTOR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49069,8 +49069,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRICING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49096,8 +49096,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRODUCT] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49122,8 +49122,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PROGRAM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49145,8 +49145,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_PRICE_OFERING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49175,8 +49175,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49200,8 +49200,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49225,8 +49225,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49263,8 +49263,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49402,8 +49402,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49448,8 +49448,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49486,8 +49486,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49523,8 +49523,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49556,8 +49556,8 @@ AS
    FROM [clt_NetO].[GFXVARTEXTMAP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49584,8 +49584,8 @@ AS
    FROM [clt_NetO].[GSSGRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49606,8 +49606,8 @@ AS
    FROM [clt_NetO].[GSSMEM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49632,8 +49632,8 @@ AS
    FROM [clt_NetO].[GSSUSR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49684,8 +49684,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49716,8 +49716,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49803,8 +49803,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49855,8 +49855,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -49962,8 +49962,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50008,8 +50008,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50041,8 +50041,8 @@ AS
    FROM [clt_NetO].[L_SYMBOL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50187,8 +50187,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50214,8 +50214,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50247,8 +50247,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50280,8 +50280,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50333,8 +50333,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50588,8 +50588,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50656,8 +50656,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50759,8 +50759,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50781,6 +50781,8 @@ AS
       x.[TAXYEAR] AS [TAXYEAR],
       x.[METHOD] AS [METHOD],
       x.[CNTR] AS [CNTR],
+      x.[DBID] AS [DBID],
+      x.[CTR] AS [CTR],
       x.[SCHCPRFT] AS [SCHCPRFT],
       x.[SCHCDEPL] AS [SCHCDEPL],
       x.[SCHCDEPR] AS [SCHCDEPR],
@@ -50846,8 +50848,6 @@ AS
       x.[D_TOTAL] AS [D_TOTAL],
       x.[NOMONTHS] AS [NOMONTHS],
       x.[MNTHAVRG] AS [MNTHAVRG],
-      x.[DBID] AS [DBID],
-      x.[CTR] AS [CTR],
       x.[TOTINC] AS [TOTINC],
       x.[DEPR2106] AS [DEPR2106],
       x.[SCHCOTHI] AS [SCHCOTHI],
@@ -50900,8 +50900,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -50975,8 +50975,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51041,8 +51041,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51271,8 +51271,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51337,8 +51337,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51442,8 +51442,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51596,8 +51596,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51632,8 +51632,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51685,8 +51685,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51728,8 +51728,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51796,8 +51796,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -51863,8 +51863,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52006,8 +52006,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52032,8 +52032,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52058,8 +52058,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52076,6 +52076,8 @@ CREATE VIEW [NetO_sas].[VwVETINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
       x.[SERVNUM] AS [SERVNUM],
       x.[S_BRANCH] AS [S_BRANCH],
       A0.Descript AS [S_BRANCH_Description],
@@ -52114,8 +52116,6 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR] AS [DVETCAIVR],
       x.[STATASCR] AS [STATASCR],
-      x.[BNUM] AS [BNUM],
-      x.[DBID] AS [DBID],
       x.[AWAREVAL] AS [AWAREVAL],
       x.[CERTENCS] AS [CERTENCS],
       x.[CERTLOST] AS [CERTLOST],
@@ -52170,8 +52170,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52210,8 +52210,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52254,8 +52254,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52299,8 +52299,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52370,8 +52370,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52402,8 +52402,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52466,8 +52466,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52486,12 +52486,12 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[ROWCOUNTER] AS [ROWCOUNTER],
+      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[S_OPTION_TYPE] AS [S_OPTION_TYPE],
       A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE] AS [VHCL_OPTION_VALUE],
       x.[SELECTED_YN] AS [SELECTED_YN],
       x.[VHCL_OPTION] AS [VHCL_OPTION],
-      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE] AS [OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE] AS [VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -52499,8 +52499,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52536,8 +52536,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52564,8 +52564,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52620,8 +52620,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52652,8 +52652,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52695,8 +52695,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52735,8 +52735,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52777,8 +52777,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52818,8 +52818,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52845,8 +52845,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52899,8 +52899,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52952,8 +52952,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -52980,8 +52980,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53012,8 +53012,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53043,8 +53043,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53076,8 +53076,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53106,8 +53106,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_VALUE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53230,8 +53230,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53293,8 +53293,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53328,8 +53328,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53360,8 +53360,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53378,6 +53378,7 @@ CREATE VIEW [NetO_sas].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[TRDINCNTR] AS [TRDINCNTR],
       x.[YEAR] AS [YEAR],
       x.[MAKE] AS [MAKE],
       x.[VIN] AS [VIN],
@@ -53390,14 +53391,13 @@ AS
       x.[NET_TRDIN_VALUE] AS [NET_TRDIN_VALUE],
       x.[ISFINANCED] AS [ISFINANCED],
       x.[FININSTITUTE] AS [FININSTITUTE],
-      x.[MNTHPAYMENT] AS [MNTHPAYMENT],
-      x.[TRDINCNTR] AS [TRDINCNTR]
+      x.[MNTHPAYMENT] AS [MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53424,8 +53424,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53467,8 +53467,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53529,8 +53529,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53581,8 +53581,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53613,8 +53613,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53647,8 +53647,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ADDRESS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53671,8 +53671,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_PHONE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53808,8 +53808,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53844,8 +53844,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53928,8 +53928,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -53978,8 +53978,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54006,8 +54006,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54193,8 +54193,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54217,8 +54217,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54243,8 +54243,8 @@ AS
    FROM [clt_NetO].[WG_SYMBOL_XREF] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54278,8 +54278,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54320,8 +54320,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54441,8 +54441,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54534,8 +54534,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54642,8 +54642,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54712,8 +54712,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54748,8 +54748,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -54980,8 +54980,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55042,8 +55042,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55152,8 +55152,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55272,8 +55272,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55446,8 +55446,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55503,8 +55503,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55578,8 +55578,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55623,8 +55623,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55730,8 +55730,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55748,18 +55748,18 @@ CREATE VIEW [NetO_sas_restricted].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[PKFIX] AS [PKFIX],
       x.[FLDNAME] AS [FLDNAME],
       x.[USRID] AS [USRID],
       x.[MODIFY_DATE] AS [MODIFY_DATE],
       x.[TEXT_VALUE] AS [TEXT_VALUE],
-      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE],
-      x.[PKFIX] AS [PKFIX]
+      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55800,8 +55800,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55837,8 +55837,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -55969,8 +55969,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56028,8 +56028,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56086,8 +56086,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56217,8 +56217,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56353,8 +56353,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56497,8 +56497,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56534,8 +56534,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56577,8 +56577,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56615,8 +56615,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56711,8 +56711,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56814,8 +56814,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56841,8 +56841,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56875,8 +56875,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56930,8 +56930,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -56988,8 +56988,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57027,8 +57027,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57081,8 +57081,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57115,8 +57115,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57157,8 +57157,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57196,8 +57196,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57235,8 +57235,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57281,8 +57281,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57321,8 +57321,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57365,8 +57365,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57436,8 +57436,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57533,8 +57533,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57569,8 +57569,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57616,8 +57616,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57652,8 +57652,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57685,8 +57685,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57707,6 +57707,7 @@ AS
       x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
       x.[SCOREID] AS [SCOREID],
       x.[DBID] AS [DBID],
+      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[BNUM] AS [BNUM],
       x.[SOURCE_TYPE] AS [SOURCE_TYPE],
       x.[SCORE_DATE] AS [SCORE_DATE],
@@ -57714,7 +57715,6 @@ AS
       x.[MODEL_TYPE] AS [MODEL_TYPE],
       x.[OTHER_DESCRIPTION] AS [OTHER_DESCRIPTION],
       x.[SCORE_VALUE] AS [SCORE_VALUE],
-      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC] AS [CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR] AS [FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE] AS [RANK_PERCENTILE]
@@ -57722,8 +57722,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57753,8 +57753,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57814,8 +57814,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57844,8 +57844,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57872,8 +57872,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57902,8 +57902,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57936,8 +57936,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57966,8 +57966,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -57997,8 +57997,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58098,8 +58098,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58138,8 +58138,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58196,8 +58196,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58233,8 +58233,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58321,8 +58321,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58360,8 +58360,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58399,8 +58399,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58426,8 +58426,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58456,8 +58456,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58488,8 +58488,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58513,8 +58513,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58546,8 +58546,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58582,8 +58582,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58624,8 +58624,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58711,8 +58711,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58829,8 +58829,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58893,8 +58893,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -58923,8 +58923,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59037,8 +59037,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59061,8 +59061,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59085,8 +59085,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59145,8 +59145,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59179,8 +59179,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59207,8 +59207,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59225,8 +59225,8 @@ CREATE VIEW [NetO_sas_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM] AS [DELETED_LNUM],
-      x.[DELETED_CLNUM] AS [DELETED_CLNUM],
       x.[USRID] AS [USRID],
+      x.[DELETED_CLNUM] AS [DELETED_CLNUM],
       x.[ACTIVITY] AS [ACTIVITY],
       x.[TERMINAL] AS [TERMINAL],
       x.[OS_USER] AS [OS_USER],
@@ -59234,8 +59234,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59266,8 +59266,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59303,8 +59303,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59329,8 +59329,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59373,8 +59373,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59400,8 +59400,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59424,8 +59424,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59473,8 +59473,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59499,8 +59499,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59531,8 +59531,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_INVESTOR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59557,8 +59557,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRICING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59584,8 +59584,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRODUCT] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59610,8 +59610,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PROGRAM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59633,8 +59633,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_PRICE_OFERING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59663,8 +59663,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59688,8 +59688,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59713,8 +59713,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59751,8 +59751,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59890,8 +59890,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59936,8 +59936,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -59974,8 +59974,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60011,8 +60011,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60044,8 +60044,8 @@ AS
    FROM [clt_NetO].[GFXVARTEXTMAP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60072,8 +60072,8 @@ AS
    FROM [clt_NetO].[GSSGRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60094,8 +60094,8 @@ AS
    FROM [clt_NetO].[GSSMEM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60120,8 +60120,8 @@ AS
    FROM [clt_NetO].[GSSUSR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60172,8 +60172,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60204,8 +60204,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60291,8 +60291,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60343,8 +60343,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60450,8 +60450,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60496,8 +60496,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60529,8 +60529,8 @@ AS
    FROM [clt_NetO].[L_SYMBOL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60675,8 +60675,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60702,8 +60702,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60735,8 +60735,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60768,8 +60768,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -60821,8 +60821,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -61076,8 +61076,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -61144,8 +61144,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -61247,8 +61247,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -61269,6 +61269,8 @@ AS
       x.[TAXYEAR] AS [TAXYEAR],
       x.[METHOD] AS [METHOD],
       x.[CNTR] AS [CNTR],
+      x.[DBID] AS [DBID],
+      x.[CTR] AS [CTR],
       x.[SCHCPRFT] AS [SCHCPRFT],
       x.[SCHCDEPL] AS [SCHCDEPL],
       x.[SCHCDEPR] AS [SCHCDEPR],
@@ -61334,8 +61336,6 @@ AS
       x.[D_TOTAL] AS [D_TOTAL],
       x.[NOMONTHS] AS [NOMONTHS],
       x.[MNTHAVRG] AS [MNTHAVRG],
-      x.[DBID] AS [DBID],
-      x.[CTR] AS [CTR],
       x.[TOTINC] AS [TOTINC],
       x.[DEPR2106] AS [DEPR2106],
       x.[SCHCOTHI] AS [SCHCOTHI],
@@ -61388,8 +61388,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -61463,8 +61463,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -61529,8 +61529,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -61759,8 +61759,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -61825,8 +61825,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -61930,8 +61930,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62084,8 +62084,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62120,8 +62120,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62173,8 +62173,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62216,8 +62216,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62284,8 +62284,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62351,8 +62351,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62494,8 +62494,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62520,8 +62520,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62546,8 +62546,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62564,6 +62564,8 @@ CREATE VIEW [NetO_sas_restricted].[VwVETINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
       x.[SERVNUM] AS [SERVNUM],
       x.[S_BRANCH] AS [S_BRANCH],
       A0.Descript AS [S_BRANCH_Description],
@@ -62602,8 +62604,6 @@ AS
       HASHBYTES('SHA2_256', x.[DVETSSN]) AS [DVETSSN],
       x.[DVETCAIVR] AS [DVETCAIVR],
       x.[STATASCR] AS [STATASCR],
-      x.[BNUM] AS [BNUM],
-      x.[DBID] AS [DBID],
       x.[AWAREVAL] AS [AWAREVAL],
       x.[CERTENCS] AS [CERTENCS],
       x.[CERTLOST] AS [CERTLOST],
@@ -62658,8 +62658,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62698,8 +62698,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62742,8 +62742,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62787,8 +62787,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62858,8 +62858,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62890,8 +62890,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62954,8 +62954,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -62974,12 +62974,12 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[ROWCOUNTER] AS [ROWCOUNTER],
+      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[S_OPTION_TYPE] AS [S_OPTION_TYPE],
       A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE] AS [VHCL_OPTION_VALUE],
       x.[SELECTED_YN] AS [SELECTED_YN],
       x.[VHCL_OPTION] AS [VHCL_OPTION],
-      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE] AS [OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE] AS [VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -62987,8 +62987,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63024,8 +63024,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63052,8 +63052,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63108,8 +63108,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63140,8 +63140,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63183,8 +63183,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63223,8 +63223,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63265,8 +63265,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63306,8 +63306,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63333,8 +63333,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63387,8 +63387,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63440,8 +63440,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63468,8 +63468,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63500,8 +63500,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63531,8 +63531,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63564,8 +63564,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63594,8 +63594,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_VALUE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63718,8 +63718,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63781,8 +63781,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63816,8 +63816,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63848,8 +63848,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63866,6 +63866,7 @@ CREATE VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[TRDINCNTR] AS [TRDINCNTR],
       x.[YEAR] AS [YEAR],
       x.[MAKE] AS [MAKE],
       x.[VIN] AS [VIN],
@@ -63878,14 +63879,13 @@ AS
       x.[NET_TRDIN_VALUE] AS [NET_TRDIN_VALUE],
       x.[ISFINANCED] AS [ISFINANCED],
       x.[FININSTITUTE] AS [FININSTITUTE],
-      x.[MNTHPAYMENT] AS [MNTHPAYMENT],
-      x.[TRDINCNTR] AS [TRDINCNTR]
+      x.[MNTHPAYMENT] AS [MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63912,8 +63912,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -63955,8 +63955,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64017,8 +64017,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64069,8 +64069,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64101,8 +64101,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64135,8 +64135,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ADDRESS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64159,8 +64159,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_PHONE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64296,8 +64296,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64332,8 +64332,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64416,8 +64416,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64466,8 +64466,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64494,8 +64494,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64681,8 +64681,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64705,8 +64705,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64731,8 +64731,8 @@ AS
    FROM [clt_NetO].[WG_SYMBOL_XREF] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64766,8 +64766,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64808,8 +64808,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -64929,8 +64929,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65022,8 +65022,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65130,8 +65130,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65200,8 +65200,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65236,8 +65236,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65468,8 +65468,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65530,8 +65530,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65640,8 +65640,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65760,8 +65760,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65934,8 +65934,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -65991,8 +65991,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66066,8 +66066,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66111,8 +66111,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66218,8 +66218,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66236,18 +66236,18 @@ CREATE VIEW [NetO_sas_pii].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[PKFIX] AS [PKFIX],
       x.[FLDNAME] AS [FLDNAME],
       x.[USRID] AS [USRID],
       x.[MODIFY_DATE] AS [MODIFY_DATE],
       x.[TEXT_VALUE] AS [TEXT_VALUE],
-      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE],
-      x.[PKFIX] AS [PKFIX]
+      x.[P_TEXT_VALUE] AS [P_TEXT_VALUE]
    FROM [clt_NetO].[FIELD_HISTORY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66288,8 +66288,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66325,8 +66325,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66457,8 +66457,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66516,8 +66516,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66574,8 +66574,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66705,8 +66705,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66841,8 +66841,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -66985,8 +66985,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67022,8 +67022,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67065,8 +67065,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67103,8 +67103,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67199,8 +67199,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67302,8 +67302,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67329,8 +67329,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67363,8 +67363,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67418,8 +67418,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67476,8 +67476,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67515,8 +67515,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67569,8 +67569,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67603,8 +67603,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67645,8 +67645,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67684,8 +67684,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67723,8 +67723,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67769,8 +67769,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67809,8 +67809,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67853,8 +67853,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -67924,8 +67924,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68021,8 +68021,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68057,8 +68057,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68104,8 +68104,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68140,8 +68140,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68173,8 +68173,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68195,6 +68195,7 @@ AS
       x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
       x.[SCOREID] AS [SCOREID],
       x.[DBID] AS [DBID],
+      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[BNUM] AS [BNUM],
       x.[SOURCE_TYPE] AS [SOURCE_TYPE],
       x.[SCORE_DATE] AS [SCORE_DATE],
@@ -68202,7 +68203,6 @@ AS
       x.[MODEL_TYPE] AS [MODEL_TYPE],
       x.[OTHER_DESCRIPTION] AS [OTHER_DESCRIPTION],
       x.[SCORE_VALUE] AS [SCORE_VALUE],
-      x.[BORROWER_ID] AS [BORROWER_ID],
       x.[CREDREPOSSRCTYPEOTHERDESC] AS [CREDREPOSSRCTYPEOTHERDESC],
       x.[FACTAINQUIRIESINDICATOR] AS [FACTAINQUIRIESINDICATOR],
       x.[RANK_PERCENTILE] AS [RANK_PERCENTILE]
@@ -68210,8 +68210,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68241,8 +68241,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68302,8 +68302,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68332,8 +68332,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68360,8 +68360,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68390,8 +68390,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68424,8 +68424,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68454,8 +68454,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68485,8 +68485,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68586,8 +68586,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68626,8 +68626,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68684,8 +68684,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68721,8 +68721,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68809,8 +68809,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68848,8 +68848,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68887,8 +68887,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68914,8 +68914,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68944,8 +68944,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -68976,8 +68976,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69001,8 +69001,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69034,8 +69034,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69070,8 +69070,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69112,8 +69112,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69199,8 +69199,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69317,8 +69317,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69381,8 +69381,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69411,8 +69411,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69525,8 +69525,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69549,8 +69549,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69573,8 +69573,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69633,8 +69633,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69667,8 +69667,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69695,8 +69695,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69713,8 +69713,8 @@ CREATE VIEW [NetO_sas_pii].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM] AS [DELETED_LNUM],
-      x.[DELETED_CLNUM] AS [DELETED_CLNUM],
       x.[USRID] AS [USRID],
+      x.[DELETED_CLNUM] AS [DELETED_CLNUM],
       x.[ACTIVITY] AS [ACTIVITY],
       x.[TERMINAL] AS [TERMINAL],
       x.[OS_USER] AS [OS_USER],
@@ -69722,8 +69722,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69754,8 +69754,8 @@ AS
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69791,8 +69791,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69817,8 +69817,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMAILTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_EMAIL' and A0.[COLUMNNAME] = 'S_EMAILTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69861,8 +69861,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69888,8 +69888,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PHONETYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_PHONE' and A0.[COLUMNNAME] = 'S_PHONETYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69912,8 +69912,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_TYPE' and A0.[COLUMNNAME] = 'S_CMSTYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69961,8 +69961,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -69987,8 +69987,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_INDEX_VALUE' and A0.[COLUMNNAME] = 'S_INDEX'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70019,8 +70019,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_INVESTOR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70045,8 +70045,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRICING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70072,8 +70072,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PRODUCT] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70098,8 +70098,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_IPG_PROGRAM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70121,8 +70121,8 @@ AS
    FROM [clt_NetO].[GF_TS_PNP_PRICE_OFERING] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70151,8 +70151,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_USER_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_WF_GROUP_USER' and A1.[COLUMNNAME] = 'S_USER_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70176,8 +70176,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS' and A0.[COLUMNNAME] = 'S_PROCESS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70201,8 +70201,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70239,8 +70239,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70378,8 +70378,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70424,8 +70424,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PROC_GROUP = A3.DBSYMBOL AND A3.[TableName] = 'GF_TW_WF_ACTION_MGR' and A3.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70462,8 +70462,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_PROC_GROUP = A2.DBSYMBOL AND A2.[TableName] = 'GF_TW_WF_PROC_MODEL_MGR' and A2.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70499,8 +70499,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.DBSYMBOL AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70532,8 +70532,8 @@ AS
    FROM [clt_NetO].[GFXVARTEXTMAP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70560,8 +70560,8 @@ AS
    FROM [clt_NetO].[GSSGRP] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70582,8 +70582,8 @@ AS
    FROM [clt_NetO].[GSSMEM] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70608,8 +70608,8 @@ AS
    FROM [clt_NetO].[GSSUSR] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70660,8 +70660,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70692,8 +70692,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70779,8 +70779,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70831,8 +70831,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70938,8 +70938,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -70984,8 +70984,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71017,8 +71017,8 @@ AS
    FROM [clt_NetO].[L_SYMBOL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71163,8 +71163,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71190,8 +71190,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71223,8 +71223,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71256,8 +71256,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71309,8 +71309,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71564,8 +71564,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71632,8 +71632,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71735,8 +71735,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71757,6 +71757,8 @@ AS
       x.[TAXYEAR] AS [TAXYEAR],
       x.[METHOD] AS [METHOD],
       x.[CNTR] AS [CNTR],
+      x.[DBID] AS [DBID],
+      x.[CTR] AS [CTR],
       x.[SCHCPRFT] AS [SCHCPRFT],
       x.[SCHCDEPL] AS [SCHCDEPL],
       x.[SCHCDEPR] AS [SCHCDEPR],
@@ -71822,8 +71824,6 @@ AS
       x.[D_TOTAL] AS [D_TOTAL],
       x.[NOMONTHS] AS [NOMONTHS],
       x.[MNTHAVRG] AS [MNTHAVRG],
-      x.[DBID] AS [DBID],
-      x.[CTR] AS [CTR],
       x.[TOTINC] AS [TOTINC],
       x.[DEPR2106] AS [DEPR2106],
       x.[SCHCOTHI] AS [SCHCOTHI],
@@ -71876,8 +71876,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -71951,8 +71951,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72017,8 +72017,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72247,8 +72247,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72313,8 +72313,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72418,8 +72418,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72572,8 +72572,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72608,8 +72608,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72661,8 +72661,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72704,8 +72704,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72772,8 +72772,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72839,8 +72839,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -72982,8 +72982,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73008,8 +73008,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73034,8 +73034,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73052,6 +73052,8 @@ CREATE VIEW [NetO_sas_pii].[VwVETINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
       x.[SERVNUM] AS [SERVNUM],
       x.[S_BRANCH] AS [S_BRANCH],
       A0.Descript AS [S_BRANCH_Description],
@@ -73090,8 +73092,6 @@ AS
       x.[DVETSSN] AS [DVETSSN],
       x.[DVETCAIVR] AS [DVETCAIVR],
       x.[STATASCR] AS [STATASCR],
-      x.[BNUM] AS [BNUM],
-      x.[DBID] AS [DBID],
       x.[AWAREVAL] AS [AWAREVAL],
       x.[CERTENCS] AS [CERTENCS],
       x.[CERTLOST] AS [CERTLOST],
@@ -73146,8 +73146,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73186,8 +73186,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73230,8 +73230,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73275,8 +73275,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73346,8 +73346,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73378,8 +73378,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73442,8 +73442,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73462,12 +73462,12 @@ AS
       x.[LNUM] AS [LNUM],
       x.[ASSETID] AS [ASSETID],
       x.[ROWCOUNTER] AS [ROWCOUNTER],
+      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[S_OPTION_TYPE] AS [S_OPTION_TYPE],
       A0.Descript AS [S_OPTION_TYPE_Description],
       x.[VHCL_OPTION_VALUE] AS [VHCL_OPTION_VALUE],
       x.[SELECTED_YN] AS [SELECTED_YN],
       x.[VHCL_OPTION] AS [VHCL_OPTION],
-      x.[VALUATION_CNTR] AS [VALUATION_CNTR],
       x.[OPTIONS_PRICING_VALUE] AS [OPTIONS_PRICING_VALUE],
       x.[VHCL_OPTION_PRICE] AS [VHCL_OPTION_PRICE]
    FROM [clt_NetO].[WG_ASSET_VHCL_OPTIONS] x
@@ -73475,8 +73475,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73512,8 +73512,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73540,8 +73540,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73596,8 +73596,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73628,8 +73628,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73671,8 +73671,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_USAGE_TYPE = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_DEFN_FIELDS' and A5.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73711,8 +73711,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_CATEGORY = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID' and A2.[COLUMNNAME] = 'S_GRID_CATEGORY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73753,8 +73753,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GRID_TGT_VAL_SPAN_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_DEFN_GRID_DTL' and A2.[COLUMNNAME] = 'S_GRID_TGT_VAL_SPAN_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73794,8 +73794,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73821,8 +73821,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_USAGE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_IDENTIFIERS' and A0.[COLUMNNAME] = 'S_USAGE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73875,8 +73875,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.DBSYMBOL AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73928,8 +73928,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_OVERRIDE_LEVEL = A5.DBSYMBOL AND A5.[TableName] = 'WG_BRM_LKUP_BASE' and A5.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73956,8 +73956,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OVERRIDE_LEVEL = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_BASE' and A0.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -73988,8 +73988,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74019,8 +74019,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.DBSYMBOL AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74052,8 +74052,8 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74082,8 +74082,8 @@ AS
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_VALUE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74206,8 +74206,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74269,8 +74269,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74304,8 +74304,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74336,8 +74336,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74354,6 +74354,7 @@ CREATE VIEW [NetO_sas_pii].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
+      x.[TRDINCNTR] AS [TRDINCNTR],
       x.[YEAR] AS [YEAR],
       x.[MAKE] AS [MAKE],
       x.[VIN] AS [VIN],
@@ -74366,14 +74367,13 @@ AS
       x.[NET_TRDIN_VALUE] AS [NET_TRDIN_VALUE],
       x.[ISFINANCED] AS [ISFINANCED],
       x.[FININSTITUTE] AS [FININSTITUTE],
-      x.[MNTHPAYMENT] AS [MNTHPAYMENT],
-      x.[TRDINCNTR] AS [TRDINCNTR]
+      x.[MNTHPAYMENT] AS [MNTHPAYMENT]
    FROM [clt_NetO].[WG_COLLATERAL_TRADEIN] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74400,8 +74400,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74443,8 +74443,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74505,8 +74505,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74557,8 +74557,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74589,8 +74589,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74623,8 +74623,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_ADDRESS] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74647,8 +74647,8 @@ AS
    FROM [clt_NetO].[WG_CRM_CUSTOMER_PHONE] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74784,8 +74784,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74820,8 +74820,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74904,8 +74904,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74954,8 +74954,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -74982,8 +74982,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -75169,8 +75169,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -75193,8 +75193,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -75219,8 +75219,8 @@ AS
    FROM [clt_NetO].[WG_SYMBOL_XREF] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -75254,8 +75254,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -75296,8 +75296,8 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
-   GO
+;
+GO
 
 CREATE VIEW [clt_NetO].[SymbolLookup]
 AS

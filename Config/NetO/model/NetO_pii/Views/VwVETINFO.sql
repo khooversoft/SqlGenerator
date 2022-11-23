@@ -7,6 +7,8 @@ CREATE VIEW [NetO_pii].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
       A0.Descript AS [S_BRANCH_Description],
@@ -45,8 +47,6 @@ AS
       x.[DVETSSN],
       x.[DVETCAIVR],
       x.[STATASCR],
-      x.[BNUM],
-      x.[DBID],
       x.[AWAREVAL],
       x.[CERTENCS],
       x.[CERTLOST],
@@ -101,4 +101,4 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
-   ;
+;

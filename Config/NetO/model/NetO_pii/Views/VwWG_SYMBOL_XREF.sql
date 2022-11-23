@@ -15,4 +15,4 @@ AS
    FROM [clt_NetO].[WG_SYMBOL_XREF] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

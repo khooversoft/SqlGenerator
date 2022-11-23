@@ -27,4 +27,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_REASSIGN_RULE = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_WF_WORKTYPE' and A3.[COLUMNNAME] = 'S_REASSIGN_RULE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

@@ -22,4 +22,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OVERRIDE_LEVEL = A1.DBSYMBOL AND A1.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A1.[COLUMNNAME] = 'S_OVERRIDE_LEVEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

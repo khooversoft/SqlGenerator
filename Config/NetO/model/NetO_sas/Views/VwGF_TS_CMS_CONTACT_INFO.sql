@@ -33,4 +33,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

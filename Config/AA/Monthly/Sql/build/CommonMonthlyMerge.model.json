@@ -41,19 +41,17 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 0,
           "pii": false,
           "restricted": false
         },
         {
-          "name": "CurrentAccountNumber",
+          "name": "AccountNumber",
           "security": "unrestricted",
           "dataType": "bigint",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 1,
           "pii": false,
           "restricted": false
@@ -65,7 +63,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 2,
           "pii": false,
           "restricted": false
@@ -77,7 +74,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 3,
           "pii": false,
           "restricted": false
@@ -89,7 +85,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 4,
           "pii": false,
           "restricted": false
@@ -101,7 +96,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 5,
           "pii": false,
           "restricted": false
@@ -113,7 +107,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 6,
           "pii": false,
           "restricted": false
@@ -125,7 +118,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 7,
           "pii": false,
           "restricted": false
@@ -137,7 +129,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 8,
           "pii": false,
           "restricted": false
@@ -149,7 +140,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 9,
           "pii": false,
           "restricted": false
@@ -161,7 +151,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 10,
           "pii": false,
           "restricted": false
@@ -173,7 +162,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 11,
           "pii": false,
           "restricted": false
@@ -185,7 +173,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 12,
           "pii": false,
           "restricted": false
@@ -197,7 +184,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 13,
           "pii": false,
           "restricted": false
@@ -209,7 +195,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 14,
           "pii": false,
           "restricted": false
@@ -221,7 +206,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 15,
           "pii": false,
           "restricted": false
@@ -233,7 +217,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 16,
           "pii": false,
           "restricted": false
@@ -245,7 +228,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 17,
           "pii": false,
           "restricted": false
@@ -257,7 +239,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 18,
           "pii": false,
           "restricted": false
@@ -269,7 +250,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 19,
           "pii": false,
           "restricted": false
@@ -281,7 +261,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 20,
           "pii": false,
           "restricted": false
@@ -293,7 +272,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 21,
           "pii": false,
           "restricted": false
@@ -305,7 +283,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 22,
           "pii": false,
           "restricted": false
@@ -317,7 +294,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 23,
           "pii": false,
           "restricted": false
@@ -329,7 +305,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 24,
           "pii": false,
           "restricted": false
@@ -341,7 +316,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 25,
           "pii": false,
           "restricted": false
@@ -353,7 +327,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 26,
           "pii": false,
           "restricted": false
@@ -365,7 +338,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 27,
           "pii": false,
           "restricted": false
@@ -377,7 +349,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 28,
           "pii": false,
           "restricted": false
@@ -389,7 +360,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 29,
           "pii": false,
           "restricted": false
@@ -401,7 +371,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 30,
           "pii": false,
           "restricted": false
@@ -413,7 +382,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 31,
           "pii": false,
           "restricted": false
@@ -425,7 +393,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 32,
           "pii": false,
           "restricted": false
@@ -437,7 +404,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 33,
           "pii": false,
           "restricted": false
@@ -449,7 +415,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 34,
           "pii": false,
           "restricted": false
@@ -461,7 +426,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 35,
           "pii": false,
           "restricted": false
@@ -473,7 +437,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 36,
           "pii": false,
           "restricted": false
@@ -485,7 +448,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 37,
           "pii": false,
           "restricted": false
@@ -497,7 +459,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 38,
           "pii": false,
           "restricted": false
@@ -509,7 +470,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 39,
           "pii": false,
           "restricted": false
@@ -521,7 +481,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 40,
           "pii": false,
           "restricted": false
@@ -533,7 +492,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 41,
           "pii": false,
           "restricted": false
@@ -545,7 +503,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 42,
           "pii": true,
           "restricted": false
@@ -557,7 +514,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 43,
           "pii": true,
           "restricted": false
@@ -569,7 +525,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 44,
           "pii": true,
           "restricted": false
@@ -581,7 +536,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 45,
           "pii": true,
           "restricted": false
@@ -593,7 +547,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 46,
           "pii": true,
           "restricted": false
@@ -605,7 +558,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 47,
           "pii": false,
           "restricted": false
@@ -617,7 +569,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 48,
           "pii": false,
           "restricted": false
@@ -629,7 +580,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 49,
           "pii": false,
           "restricted": false
@@ -641,7 +591,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 50,
           "pii": false,
           "restricted": false
@@ -653,7 +602,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 51,
           "pii": false,
           "restricted": false
@@ -665,7 +613,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 52,
           "pii": false,
           "restricted": false
@@ -677,7 +624,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 53,
           "pii": false,
           "restricted": false
@@ -689,7 +635,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 54,
           "pii": false,
           "restricted": false
@@ -701,7 +646,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 55,
           "pii": false,
           "restricted": false
@@ -713,7 +657,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 56,
           "pii": false,
           "restricted": false
@@ -725,7 +668,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 57,
           "pii": false,
           "restricted": false
@@ -737,7 +679,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 58,
           "pii": false,
           "restricted": false
@@ -749,7 +690,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 59,
           "pii": false,
           "restricted": false
@@ -761,7 +701,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 60,
           "pii": false,
           "restricted": false
@@ -773,7 +712,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 61,
           "pii": false,
           "restricted": false
@@ -785,7 +723,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 62,
           "pii": false,
           "restricted": false
@@ -797,7 +734,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 63,
           "pii": false,
           "restricted": false
@@ -809,7 +745,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 64,
           "pii": false,
           "restricted": false
@@ -821,7 +756,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 65,
           "pii": false,
           "restricted": false
@@ -833,7 +767,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 66,
           "pii": false,
           "restricted": false
@@ -845,7 +778,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 67,
           "pii": false,
           "restricted": false
@@ -857,7 +789,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 68,
           "pii": false,
           "restricted": false
@@ -869,7 +800,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 69,
           "pii": false,
           "restricted": false
@@ -881,7 +811,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 70,
           "pii": false,
           "restricted": false
@@ -893,7 +822,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 71,
           "pii": false,
           "restricted": false
@@ -905,7 +833,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 72,
           "pii": false,
           "restricted": false
@@ -917,7 +844,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 73,
           "pii": false,
           "restricted": false
@@ -929,7 +855,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 74,
           "pii": false,
           "restricted": false
@@ -941,7 +866,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 75,
           "pii": false,
           "restricted": false
@@ -953,7 +877,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 76,
           "pii": false,
           "restricted": false
@@ -965,7 +888,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 77,
           "pii": false,
           "restricted": false
@@ -977,7 +899,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 78,
           "pii": false,
           "restricted": false
@@ -989,7 +910,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 79,
           "pii": false,
           "restricted": false
@@ -1001,7 +921,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 80,
           "pii": false,
           "restricted": false
@@ -1013,7 +932,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 81,
           "pii": false,
           "restricted": false
@@ -1025,7 +943,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 82,
           "pii": false,
           "restricted": false
@@ -1037,7 +954,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 83,
           "pii": false,
           "restricted": false
@@ -1049,7 +965,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 84,
           "pii": false,
           "restricted": false
@@ -1061,7 +976,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 85,
           "pii": false,
           "restricted": false
@@ -1073,7 +987,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 86,
           "pii": false,
           "restricted": false
@@ -1085,7 +998,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 87,
           "pii": false,
           "restricted": false
@@ -1097,7 +1009,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 88,
           "pii": false,
           "restricted": false
@@ -1109,7 +1020,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 89,
           "pii": false,
           "restricted": false
@@ -1121,7 +1031,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 90,
           "pii": false,
           "restricted": false
@@ -1133,7 +1042,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 91,
           "pii": false,
           "restricted": false
@@ -1145,7 +1053,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 92,
           "pii": false,
           "restricted": false
@@ -1157,7 +1064,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 93,
           "pii": false,
           "restricted": false
@@ -1169,7 +1075,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 94,
           "pii": false,
           "restricted": false
@@ -1181,7 +1086,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 95,
           "pii": false,
           "restricted": false
@@ -1193,7 +1097,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 96,
           "pii": false,
           "restricted": false
@@ -1205,7 +1108,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 97,
           "pii": false,
           "restricted": false
@@ -1217,7 +1119,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 98,
           "pii": false,
           "restricted": false
@@ -1229,7 +1130,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 99,
           "pii": false,
           "restricted": false
@@ -1241,7 +1141,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 100,
           "pii": false,
           "restricted": false
@@ -1253,7 +1152,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 101,
           "pii": false,
           "restricted": false
@@ -1265,7 +1163,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 102,
           "pii": false,
           "restricted": false
@@ -1277,7 +1174,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 103,
           "pii": false,
           "restricted": false
@@ -1289,7 +1185,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 104,
           "pii": false,
           "restricted": false
@@ -1301,7 +1196,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 105,
           "pii": false,
           "restricted": false
@@ -1313,7 +1207,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 106,
           "pii": false,
           "restricted": false
@@ -1325,7 +1218,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 107,
           "pii": false,
           "restricted": false
@@ -1337,7 +1229,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 108,
           "pii": false,
           "restricted": false
@@ -1349,7 +1240,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 109,
           "pii": false,
           "restricted": false
@@ -1361,7 +1251,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 110,
           "pii": false,
           "restricted": false
@@ -1373,7 +1262,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 111,
           "pii": false,
           "restricted": false
@@ -1385,7 +1273,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 112,
           "pii": false,
           "restricted": false
@@ -1397,7 +1284,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 113,
           "pii": false,
           "restricted": false
@@ -1409,7 +1295,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 114,
           "pii": false,
           "restricted": false
@@ -1421,7 +1306,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 115,
           "pii": false,
           "restricted": false
@@ -1433,7 +1317,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 116,
           "pii": false,
           "restricted": false
@@ -1445,7 +1328,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 117,
           "pii": false,
           "restricted": false
@@ -1457,7 +1339,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 118,
           "pii": false,
           "restricted": false
@@ -1469,7 +1350,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 119,
           "pii": false,
           "restricted": false
@@ -1481,7 +1361,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 120,
           "pii": false,
           "restricted": false
@@ -1493,7 +1372,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 121,
           "pii": false,
           "restricted": false
@@ -1505,7 +1383,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 122,
           "pii": false,
           "restricted": false
@@ -1517,7 +1394,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 123,
           "pii": false,
           "restricted": false
@@ -1529,7 +1405,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 124,
           "pii": false,
           "restricted": false
@@ -1541,7 +1416,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 125,
           "pii": false,
           "restricted": false
@@ -1553,7 +1427,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 126,
           "pii": false,
           "restricted": false
@@ -1565,7 +1438,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 127,
           "pii": false,
           "restricted": false
@@ -1577,7 +1449,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 128,
           "pii": false,
           "restricted": false
@@ -1589,7 +1460,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 129,
           "pii": false,
           "restricted": false
@@ -1601,7 +1471,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 130,
           "pii": false,
           "restricted": false
@@ -1613,7 +1482,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 131,
           "pii": false,
           "restricted": false
@@ -1625,7 +1493,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 132,
           "pii": false,
           "restricted": false
@@ -1637,7 +1504,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 133,
           "pii": false,
           "restricted": false
@@ -1649,7 +1515,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 134,
           "pii": false,
           "restricted": false
@@ -1661,7 +1526,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 135,
           "pii": false,
           "restricted": false
@@ -1673,7 +1537,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 136,
           "pii": false,
           "restricted": false
@@ -1685,7 +1548,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 137,
           "pii": false,
           "restricted": false
@@ -1697,7 +1559,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 138,
           "pii": false,
           "restricted": false
@@ -1709,7 +1570,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 139,
           "pii": false,
           "restricted": false
@@ -1721,7 +1581,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 140,
           "pii": false,
           "restricted": false
@@ -1733,7 +1592,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 141,
           "pii": false,
           "restricted": false
@@ -1745,7 +1603,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 142,
           "pii": false,
           "restricted": false
@@ -1757,7 +1614,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 143,
           "pii": true,
           "restricted": false
@@ -1769,7 +1625,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 144,
           "pii": true,
           "restricted": false
@@ -1781,7 +1636,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 145,
           "pii": false,
           "restricted": false
@@ -1793,7 +1647,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 146,
           "pii": false,
           "restricted": false
@@ -1805,7 +1658,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 147,
           "pii": false,
           "restricted": false
@@ -1817,7 +1669,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 148,
           "pii": false,
           "restricted": false
@@ -1829,7 +1680,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 149,
           "pii": false,
           "restricted": false
@@ -1841,7 +1691,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 150,
           "pii": false,
           "restricted": false
@@ -1853,7 +1702,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 151,
           "pii": false,
           "restricted": false
@@ -1865,7 +1713,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 152,
           "pii": false,
           "restricted": false
@@ -1877,7 +1724,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 153,
           "pii": false,
           "restricted": false
@@ -1889,7 +1735,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 154,
           "pii": false,
           "restricted": false
@@ -1901,7 +1746,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 155,
           "pii": false,
           "restricted": false
@@ -1913,7 +1757,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 156,
           "pii": false,
           "restricted": false
@@ -1925,7 +1768,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 157,
           "pii": false,
           "restricted": false
@@ -1937,7 +1779,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 158,
           "pii": false,
           "restricted": false
@@ -1949,7 +1790,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 159,
           "pii": false,
           "restricted": false
@@ -1961,7 +1801,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 160,
           "pii": false,
           "restricted": false
@@ -1973,7 +1812,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 161,
           "pii": false,
           "restricted": false
@@ -1985,7 +1823,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 162,
           "pii": false,
           "restricted": false
@@ -1997,7 +1834,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 163,
           "pii": false,
           "restricted": false
@@ -2009,7 +1845,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 164,
           "pii": false,
           "restricted": false
@@ -2021,7 +1856,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 165,
           "pii": false,
           "restricted": false
@@ -2033,7 +1867,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 166,
           "pii": false,
           "restricted": false
@@ -2045,7 +1878,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 167,
           "pii": false,
           "restricted": false
@@ -2057,7 +1889,6 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "nonuniqueIndex": false,
           "columnIndex": 168,
           "pii": true,
           "restricted": false
@@ -2067,13 +1898,12 @@
   ],
   "prefixColumns": [
     {
-      "name": "BECU_AccountNumber",
+      "name": "BECUAccountNumber",
       "security": "unrestricted",
       "dataType": "nvarchar(50)",
       "notNull": true,
       "private": false,
       "primaryKey": true,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2085,7 +1915,6 @@
       "notNull": true,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2097,7 +1926,6 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2111,7 +1939,6 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2123,7 +1950,6 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2135,7 +1961,6 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2147,7 +1972,6 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2159,7 +1983,6 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2171,7 +1994,6 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2183,7 +2005,6 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
@@ -2195,26 +2016,36 @@
       "notNull": false,
       "private": true,
       "primaryKey": false,
-      "nonuniqueIndex": false,
       "columnIndex": 0,
       "pii": false,
       "restricted": false
     }
   ],
-  "relationships": [],
-  "lookupRelationships": [
+  "commands": [],
+  "addInstructions": [
     {
-      "referenceTable": "ctl_Investor.InvestorLoanIdMap",
-      "matchTable": "clt_AssetAcq.CommonMonthly",
-      "selectLine": "{alias}.[OriginalMemberNumber] AS [OriginalAccountNumber]",
-      "joinLine": "LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] {alias} ON x.[BECU_AccountNumber] = {alias}.[LoanId]"
-    }
-  ],
-  "commands": [
+      "model": "single",
+      "pattern": "*",
+      "selectLine": null,
+      "selectLineOrder": null,
+      "joinLine": null,
+      "whereLine": "x.[ASAP_DeleteDateTime] IS NULL"
+    },
     {
-      "type": "viewColumn",
-      "pattern": "clt_AssetAcq.CommonMonthly",
-      "command": "coalesce([{alias(ctl_Investor.InvestorLoanIdMap)}].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]"
+      "model": "single",
+      "pattern": "CommonMonthly.*",
+      "selectLine": "[idMap].[OriginalMemberNumber] AS [AccountNumberOriginal]",
+      "selectLineOrder": "AccountNumber",
+      "joinLine": "LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]",
+      "whereLine": null
+    },
+    {
+      "model": "single",
+      "pattern": "CommonMonthly.*",
+      "selectLine": "coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal]",
+      "selectLineOrder": "AccountNumber",
+      "joinLine": null,
+      "whereLine": null
     }
   ]
 }

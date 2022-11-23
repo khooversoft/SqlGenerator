@@ -128,4 +128,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

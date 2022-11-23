@@ -38,4 +38,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE_OF_COMPANY = A3.DBSYMBOL AND A3.[TableName] = 'GF_TS_CMS_INFOBYTYPE' and A3.[COLUMNNAME] = 'S_TYPE_OF_COMPANY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;

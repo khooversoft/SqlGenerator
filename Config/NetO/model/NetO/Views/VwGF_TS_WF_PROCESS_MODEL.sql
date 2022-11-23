@@ -14,4 +14,4 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS_MODEL = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_WF_PROCESS_MODEL' and A0.[COLUMNNAME] = 'S_PROCESS_MODEL'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
-   ;
+;
