@@ -49,9 +49,9 @@ AS
       x.[M_DBID],
       x.[M_SERIAL],
       x.[S_PRPTYP],
-      A0.Descript AS [S_PRPTYP_Description],
+      A0.Descript AS [S_PRPTYPDescription],
       x.[S_TITLE],
-      A1.Descript AS [S_TITLE_Description],
+      A1.Descript AS [S_TITLEDescription],
       x.[BNKRPT_DISCHARGE_MOS],
       x.[FORECLOSURE_MOS],
       x.[NON_PERMANENT_RESIDENT_ALIEN],
@@ -76,7 +76,7 @@ AS
       x.[SHORT_SALE],
       x.[PROPFORECLOSE],
       x.[S_BANKRUPTCY_TYPE],
-      A2.Descript AS [S_BANKRUPTCY_TYPE_Description],
+      A2.Descript AS [S_BANKRUPTCY_TYPEDescription],
       x.[PREFORECLOS_NOTES],
       x.[PROPFORECL_NOTES],
       x.[PRIMRESID_NOTES],
@@ -103,9 +103,9 @@ AS
       x.[DECBANKRUPTCY_INCINFORM],
       x.[FHA_SECOND_RESID_IND]
    FROM [clt_NetO].[DECLRTN] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.DBSYMBOL AND A0.[TableName] = 'DECLRTN' and A0.[COLUMNNAME] = 'S_PRPTYP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'DECLRTN' and A1.[COLUMNNAME] = 'S_TITLE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BANKRUPTCY_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'DECLRTN' and A2.[COLUMNNAME] = 'S_BANKRUPTCY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.[DBSYMBOL] AND A0.[TableName] = 'DECLRTN' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.[DBSYMBOL] AND A1.[TableName] = 'DECLRTN' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BANKRUPTCY_TYPE = A2.[DBSYMBOL] AND A2.[TableName] = 'DECLRTN' and A2.[COLUMNNAME] = 'S_BANKRUPTCY_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

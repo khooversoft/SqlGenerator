@@ -12,10 +12,10 @@ AS
       x.[INC_SRC_CTR],
       x.[RECORD_CREATED],
       x.[S_INCOME_SOURCE_TYPE],
-      A0.Descript AS [S_INCOME_SOURCE_TYPE_Description],
+      A0.Descript AS [S_INCOME_SOURCE_TYPEDescription],
       x.[OTHER_INCOME_SRC_DESC],
       x.[S_BUSINESS_TYPE],
-      A1.Descript AS [S_BUSINESS_TYPE_Description],
+      A1.Descript AS [S_BUSINESS_TYPEDescription],
       x.[SOURCE_NAME],
       x.[SOURCE_CONTACT],
       x.[ADDRESS_LN_1],
@@ -29,7 +29,7 @@ AS
       x.[FAX_NBR],
       x.[TITLE],
       x.[S_SPECIAL_BOR_EMP_REL_TYPE],
-      A2.Descript AS [S_SPECIAL_BOR_EMP_REL_TYPE_Description],
+      A2.Descript AS [S_SPECIAL_BOR_EMP_REL_TYPEDescription],
       x.[SPEC_BOR_EMP_REL_TYPE_DESC],
       x.[OCCUPATION],
       x.[EMPLOYED_FROM],
@@ -40,7 +40,7 @@ AS
       x.[SELF_EMPLOYED_FLAG],
       x.[PCT_BUSINESS_OWNED],
       x.[S_SELF_EMPL_TYPE],
-      A3.Descript AS [S_SELF_EMPL_TYPE_Description],
+      A3.Descript AS [S_SELF_EMPL_TYPEDescription],
       x.[PROF_MONTHS],
       x.[PROF_YEARS],
       x.[BASE_INCOME],
@@ -52,7 +52,7 @@ AS
       x.[TOTAL_INCOME],
       x.[LIABCTR],
       x.[S_EMP_UNIT_TYPE],
-      A4.Descript AS [S_EMP_UNIT_TYPE_Description],
+      A4.Descript AS [S_EMP_UNIT_TYPEDescription],
       x.[EMP_UNIT_NUMBER],
       x.[INCOME_STATE_FOREIN],
       x.[INCOME_POSTCODE],
@@ -65,11 +65,11 @@ AS
       x.[INC_DBA_NAME],
       x.[INC_EIN]
    FROM [clt_NetO].[WG_INCOME_SOURCE] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME_SOURCE_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'WG_INCOME_SOURCE' and A0.[COLUMNNAME] = 'S_INCOME_SOURCE_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BUSINESS_TYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_INCOME_SOURCE' and A1.[COLUMNNAME] = 'S_BUSINESS_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPECIAL_BOR_EMP_REL_TYPE = A2.DBSYMBOL AND A2.[TableName] = 'WG_INCOME_SOURCE' and A2.[COLUMNNAME] = 'S_SPECIAL_BOR_EMP_REL_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SELF_EMPL_TYPE = A3.DBSYMBOL AND A3.[TableName] = 'WG_INCOME_SOURCE' and A3.[COLUMNNAME] = 'S_SELF_EMPL_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EMP_UNIT_TYPE = A4.DBSYMBOL AND A4.[TableName] = 'WG_INCOME_SOURCE' and A4.[COLUMNNAME] = 'S_EMP_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INCOME_SOURCE_TYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_INCOME_SOURCE' and A0.[COLUMNNAME] = 'S_INCOME_SOURCE_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_BUSINESS_TYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_INCOME_SOURCE' and A1.[COLUMNNAME] = 'S_BUSINESS_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPECIAL_BOR_EMP_REL_TYPE = A2.[DBSYMBOL] AND A2.[TableName] = 'WG_INCOME_SOURCE' and A2.[COLUMNNAME] = 'S_SPECIAL_BOR_EMP_REL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_SELF_EMPL_TYPE = A3.[DBSYMBOL] AND A3.[TableName] = 'WG_INCOME_SOURCE' and A3.[COLUMNNAME] = 'S_SELF_EMPL_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_EMP_UNIT_TYPE = A4.[DBSYMBOL] AND A4.[TableName] = 'WG_INCOME_SOURCE' and A4.[COLUMNNAME] = 'S_EMP_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

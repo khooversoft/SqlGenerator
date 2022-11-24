@@ -6,18 +6,23 @@
 CREATE VIEW [AssetAcq_restricted].[Vw_CommonMonthly]
 AS
    SELECT
-      x.[BECUAccountNumber],
       x.[MonthEndDate],
+      x.[BECUAccountNumber],
       x.[AccountNumber],
       [idMap].[OriginalMemberNumber] AS [AccountNumberOriginal],
       coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
+      x.[VendorId],
       x.[AssetClass],
       x.[ProductType],
+      A0.[BecuCode] AS [ProductTypeBecuCode],
       x.[ProductDescription],
+      A1.[BecuCode] AS [ProductDescriptionBecuCode],
       x.[CreditClass],
       x.[LoanPurposeDesc],
+      A2.[BecuCode] AS [LoanPurposeDescBecuCode],
       x.[ServicingLoanTypeDesc],
       x.[DocumentationType],
+      A3.[BecuCode] AS [DocumentationTypeBecuCode],
       x.[ApprovalMethodName],
       x.[OriginalLoanAmount],
       x.[MonthEndBalanceAmount],
@@ -42,6 +47,7 @@ AS
       x.[BalloonFlag],
       x.[BalloonTerm],
       x.[InterestRateType],
+      A4.[BecuCode] AS [InterestRateTypeBecuCode],
       x.[OriginalInterestRate],
       x.[AnnualInterestRate],
       x.[PrincipalAndInterestPMTAmount],
@@ -50,6 +56,7 @@ AS
       x.[PrepayPenaltyCode],
       x.[PrepayPenaltyTerm],
       x.[OccupancyCode],
+      A5.[BecuCode] AS [OccupancyCodeBecuCode],
       x.[PropertyTypeDescription],
       HASHBYTES('SHA2_256', x.[PropertyStateCode]) AS [PropertyStateCode],
       HASHBYTES('SHA2_256', x.[PropertyCityName]) AS [PropertyCityName],
@@ -71,6 +78,7 @@ AS
       x.[CurrentCombinedLoanToValueAmount],
       x.[CurrentLoanToValueAmountSecond],
       x.[AccountStatusCode],
+      A6.[BecuCode] AS [AccountStatusCodeBecuCode],
       x.[DaysDelinquentCount],
       x.[BankruptcyStatusCode],
       x.[BankruptcyTypeCode],
@@ -151,6 +159,7 @@ AS
       x.[VehicleMake],
       x.[VehicleModel],
       x.[CollateralTypeDescription],
+      A7.[BecuCode] AS [CollateralTypeDescriptionBecuCode],
       x.[CollateralYear],
       HASHBYTES('SHA2_256', x.[CollateralStateCode]) AS [CollateralStateCode],
       HASHBYTES('SHA2_256', x.[CollateralZipCode]) AS [CollateralZipCode],
@@ -158,6 +167,7 @@ AS
       x.[CreditImpairedFlag],
       x.[CurrentCollateralValue],
       x.[CurrentCreditGrade],
+      A8.[BecuCode] AS [CurrentCreditGradeBecuCode],
       x.[CurrentPaymentandInterestAMT],
       x.[ClosedDate],
       x.[DealerName],
@@ -172,6 +182,7 @@ AS
       x.[Channel],
       x.[OriginalCollateralValue],
       x.[OriginalCreditGrade],
+      A9.[BecuCode] AS [OriginalCreditGradeBecuCode],
       x.[PaymentFrequency],
       x.[PaymentToIncomeRatio],
       x.[RecourseFlag],
@@ -180,6 +191,16 @@ AS
       HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]) AS [VehicleIdentificationNumber]
    FROM [clt_AssetAcq].[CommonMonthly] x
       LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A1 on A1.[BecuAttributeName] = 'ProductDescription' AND A1.[VendorId] = x.[VendorId] AND A1.[VendorCode] = x.[ProductDescription]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A2 on A2.[BecuAttributeName] = 'LoanPurposeDesc' AND A2.[VendorId] = x.[VendorId] AND A2.[VendorCode] = x.[LoanPurposeDesc]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A3 on A3.[BecuAttributeName] = 'DocumentationType' AND A3.[VendorId] = x.[VendorId] AND A3.[VendorCode] = x.[DocumentationType]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A4 on A4.[BecuAttributeName] = 'InterestRateType' AND A4.[VendorId] = x.[VendorId] AND A4.[VendorCode] = x.[InterestRateType]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A5 on A5.[BecuAttributeName] = 'OccupancyCode' AND A5.[VendorId] = x.[VendorId] AND A5.[VendorCode] = x.[OccupancyCode]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A6 on A6.[BecuAttributeName] = 'AccountStatusCode' AND A6.[VendorId] = x.[VendorId] AND A6.[VendorCode] = x.[AccountStatusCode]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A7 on A7.[BecuAttributeName] = 'CollateralTypeDescription' AND A7.[VendorId] = x.[VendorId] AND A7.[VendorCode] = x.[CollateralTypeDescription]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A8 on A8.[BecuAttributeName] = 'CurrentCreditGrade' AND A8.[VendorId] = x.[VendorId] AND A8.[VendorCode] = x.[CurrentCreditGrade]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A9 on A9.[BecuAttributeName] = 'OriginalCreditGrade' AND A9.[VendorId] = x.[VendorId] AND A9.[VendorCode] = x.[OriginalCreditGrade]
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

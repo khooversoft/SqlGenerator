@@ -11,7 +11,7 @@ AS
       x.[DBID],
       x.[SERVNUM],
       x.[S_BRANCH],
-      A0.Descript AS [S_BRANCH_Description],
+      A0.Descript AS [S_BRANCHDescription],
       x.[STRTSERV],
       x.[ENDSERV],
       x.[EXEMPT],
@@ -28,17 +28,17 @@ AS
       x.[SERVPERD],
       x.[OSRVNUM1],
       x.[S_OBRCH1],
-      A1.Descript AS [S_OBRCH1_Description],
+      A1.Descript AS [S_OBRCH1Description],
       x.[OSTRTDT1],
       x.[OENDDT1],
       x.[OSRVNUM2],
       x.[S_OBRCH2],
-      A2.Descript AS [S_OBRCH2_Description],
+      A2.Descript AS [S_OBRCH2Description],
       x.[OSTRTDT2],
       x.[OENDDT2],
       x.[OSRVNUM3],
       x.[S_OBRCH3],
-      A3.Descript AS [S_OBRCH3_Description],
+      A3.Descript AS [S_OBRCH3Description],
       x.[OSTRTDT3],
       x.[OENDDT3],
       x.[VETSTATUS],
@@ -94,10 +94,10 @@ AS
       x.[SURVIVING_SPOUSE],
       x.[SERVICE_EXPIRATION_DATE]
    FROM [clt_NetO].[VETINFO] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.DBSYMBOL AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OBRCH1 = A1.DBSYMBOL AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_OBRCH2 = A2.DBSYMBOL AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_OBRCH3 = A3.DBSYMBOL AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.[DBSYMBOL] AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OBRCH1 = A1.[DBSYMBOL] AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_OBRCH2 = A2.[DBSYMBOL] AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_OBRCH3 = A3.[DBSYMBOL] AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

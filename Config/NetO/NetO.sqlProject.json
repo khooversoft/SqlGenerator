@@ -4,6 +4,7 @@
 		"..\\NameMap.json",
 		"NetO_Classification.json"
 	],
+
 	"sourceFile": "NetOPhysicalModel-20221122.csv",
 	"buildFolder": null,
 	"tableTypeMetadata": "ConsASAP_MetaData_20221122.csv",
@@ -45,8 +46,8 @@
 		{
 			"model": "template",
 			"pattern": "*.S_*",
-			"selectLine": "{alias}.Descript AS [{columnName}_Description]",
-			"joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{columnName} = {alias}.DBSYMBOL AND {alias}.[TableName] = '{tableName}' and {alias}.[COLUMNNAME] = '{columnName}'",
+			"selectLine": "{alias}.Descript AS [{columnName}Description]",
+			"joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{columnName} = {alias}.[DBSYMBOL] AND {alias}.[TableName] = '{tableName}' and {alias}.[COLUMNNAME] = '{columnName}'",
 			"selectLineOrder": "{columnName}"
 		}
 	]

@@ -215,7 +215,7 @@ public class SqlViewBuilder
 
         var result = _physicalModel.AddInstructions
             .Where(x => x.Model == AddInstructionType.Single)
-            .Where(x => columns.Any(y => PatternMatch.IsMatch(x.Pattern, $"{tableModel.Name.Name}.{y.Name}")))
+            .Where(x => columns.Any(y => x.IsMatch($"{tableModel.Name.Name}.{y.Name}")))
             .SelectMany(x => new[]
                 {
                     x.IsSelect() ? new SqlInstruction { Type = InstrType.Select, Line =  tableResolve(x.SelectLine), SelectLineOrder = x.SelectLineOrder } : null,
@@ -233,7 +233,7 @@ public class SqlViewBuilder
     {
         var columnImpacted = _physicalModel.AddInstructions
             .Where(x => x.Model == AddInstructionType.Template)
-            .SelectMany(x => columns.Where(c => PatternMatch.IsMatch(x.Pattern, $"{tableModel.Name.Name}.{c.Name}")), (x, m) => (Inst: x, Column: m))
+            .SelectMany(x => columns.Where(c => x.IsMatch($"{tableModel.Name.Name}.{c.Name}")), (x, m) => (Inst: x, Column: m))
             .ToArray();
 
         var result = columnImpacted

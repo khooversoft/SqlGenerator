@@ -10,7 +10,7 @@ AS
       x.[DBID] AS [DBID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_INSTYPE] AS [S_INSTYPE],
-      A0.Descript AS [S_INSTYPE_Description],
+      A0.Descript AS [S_INSTYPEDescription],
       x.[COVAMNT] AS [COVAMNT],
       x.[MINCOVER] AS [MINCOVER],
       x.[PREMAMT] AS [PREMAMT],
@@ -44,11 +44,11 @@ AS
       x.[PMTOPTDBID] AS [PMTOPTDBID],
       x.[PMTOPTSERNO] AS [PMTOPTSERNO],
       x.[S_OTH_INS_TYPE_DESC] AS [S_OTH_INS_TYPE_DESC],
-      A1.Descript AS [S_OTH_INS_TYPE_DESC_Description],
+      A1.Descript AS [S_OTH_INS_TYPE_DESCDescription],
       x.[HUDLINE] AS [HUDLINE],
       x.[POLICY_TERM] AS [POLICY_TERM],
       x.[S_ESCINS] AS [S_ESCINS],
-      A2.Descript AS [S_ESCINS_Description],
+      A2.Descript AS [S_ESCINSDescription],
       x.[ASSETID] AS [ASSETID],
       x.[DT_ORDERED] AS [DT_ORDERED],
       x.[DT_EXPECTED] AS [DT_EXPECTED],
@@ -71,9 +71,9 @@ AS
       x.[NFIP_MAX_COVERAGE] AS [NFIP_MAX_COVERAGE],
       x.[MINIMUM_COVERAGE] AS [MINIMUM_COVERAGE]
    FROM [clt_NetO].[GF_TLR_INSURANCE] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INSTYPE = A0.DBSYMBOL AND A0.[TableName] = 'GF_TLR_INSURANCE' and A0.[COLUMNNAME] = 'S_INSTYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OTH_INS_TYPE_DESC = A1.DBSYMBOL AND A1.[TableName] = 'GF_TLR_INSURANCE' and A1.[COLUMNNAME] = 'S_OTH_INS_TYPE_DESC'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ESCINS = A2.DBSYMBOL AND A2.[TableName] = 'GF_TLR_INSURANCE' and A2.[COLUMNNAME] = 'S_ESCINS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INSTYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_INSURANCE' and A0.[COLUMNNAME] = 'S_INSTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OTH_INS_TYPE_DESC = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_INSURANCE' and A1.[COLUMNNAME] = 'S_OTH_INS_TYPE_DESC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ESCINS = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_INSURANCE' and A2.[COLUMNNAME] = 'S_ESCINS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

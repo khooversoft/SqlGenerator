@@ -3,7 +3,8 @@
     "Monthly.ImportOption.json",
     "CommonMonthly_Classification.json"
   ],
-  "sourceFile": "CommonMonthlyMerge.dataDictionary.csv",
+
+  "sourceFile": "CommonMonthly.dataDictionary.csv",
   "optionFile": "Monthly.ImportOption.json",
   "nameMapFile": null,
   "tableListFile": null,
@@ -11,11 +12,17 @@
   "uspLoadTableOption": null,
   "rawToCultivated": null,
 
+  "updateCommands": [
+    "primaryKey += PrimaryDataMap.VendorId",
+    "primaryKey += PrimaryDataMap.VendorAttributeName",
+    "primaryKey += PrimaryDataMap.VendorCode"
+  ],
+
   "addInstructions": [
     {
-			"pattern": "*",
-			"whereLine": "x.[ASAP_DeleteDateTime] IS NULL"
-		},
+      "pattern": "*",
+      "whereLine": "x.[ASAP_DeleteDateTime] IS NULL"
+    },
     {
       "pattern": "CommonMonthly.*",
       "selectLine": "[idMap].[OriginalMemberNumber] AS [AccountNumberOriginal]",
@@ -26,6 +33,18 @@
       "pattern": "CommonMonthly.*",
       "selectLine": "coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal]",
       "selectLineOrder": "AccountNumber"
+    },
+    {
+      "model": "template",
+      "patterns": [
+        "CommonMonthly.AccountStatusCode;CommonMonthly.CollateralTypeDescription;CommonMonthly.CurrentCreditGrade",
+        "CommonMonthly.DocumentationType;CommonMonthly.InterestRateType;CommonMonthly.LoanPurposeDesc",
+        "CommonMonthly.OccupancyCode;CommonMonthly.OriginalCreditGrade;CommonMonthly.ProductDescription",
+        "CommonMonthly.ProductType"
+      ],
+      "selectLine": "{alias}.[BecuCode] AS [{columnName}BecuCode]",
+      "joinLine": "LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] {alias} on {alias}.[BecuAttributeName] = '{columnName}' AND {alias}.[VendorId] = x.[VendorId] AND {alias}.[VendorCode] = x.[{columnName}]",
+      "selectLineOrder": "{columnName}"
     }
   ]
 }

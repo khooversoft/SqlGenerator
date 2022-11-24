@@ -73,9 +73,9 @@ AS
       x.[CUR_HOUSING_PMT],
       x.[OTHERINDEXTYPEDESC],
       x.[S_INDEX],
-      A0.Descript AS [S_INDEX_Description],
+      A0.Descript AS [S_INDEXDescription],
       x.[S_PAYEETYPE],
-      A1.Descript AS [S_PAYEETYPE_Description],
+      A1.Descript AS [S_PAYEETYPEDescription],
       x.[PAYEETYPEOTHERDESC],
       x.[CLNUM_COUNTER],
       x.[LEAD_COUNTER],
@@ -86,22 +86,22 @@ AS
       x.[DMI_OWN_RIGHTS],
       x.[DMI_BILLING_MODE],
       x.[S_AUSUWTYPE],
-      A2.Descript AS [S_AUSUWTYPE_Description],
+      A2.Descript AS [S_AUSUWTYPEDescription],
       x.[MSP_INVESTOR_ID],
       x.[MSP_INVESTOR_ID_OVERRIDE],
       x.[MSP_INVESTOR_CATEGORY],
       x.[MSP_INVESTOR_CATEGORY_OVERRIDE],
       x.[FIRST_DISB_REC_AMT],
       x.[S_INTPRD_COMM_MET],
-      A3.Descript AS [S_INTPRD_COMM_MET_Description],
+      A3.Descript AS [S_INTPRD_COMM_METDescription],
       x.[EXCLUDE_FROM_QRM],
       x.[READY_REDISCLSR],
       x.[S_WELCOME_CALL],
-      A4.Descript AS [S_WELCOME_CALL_Description],
+      A4.Descript AS [S_WELCOME_CALLDescription],
       x.[LOAN_AMOUNT_TOLER],
       x.[MAX_APPR_RATE],
       x.[S_AUS_RESULT],
-      A5.Descript AS [S_AUS_RESULT_Description],
+      A5.Descript AS [S_AUS_RESULTDescription],
       x.[P_ADMINOVR],
       x.[P_CB_ADMINOVR],
       x.[P_COMPOVR],
@@ -110,10 +110,10 @@ AS
       x.[HARP_MI_REQUIRED],
       x.[NET_NEW_DOLLARS],
       x.[S_INIT_DISC_DELIVERY_MTHD],
-      A6.Descript AS [S_INIT_DISC_DELIVERY_MTHD_Description],
+      A6.Descript AS [S_INIT_DISC_DELIVERY_MTHDDescription],
       x.[CONFIDENCE_SCR_HLMAI],
       x.[S_BRANCH_TYPE],
-      A7.Descript AS [S_BRANCH_TYPE_Description],
+      A7.Descript AS [S_BRANCH_TYPEDescription],
       x.[BRANCH_ID],
       x.[BRANCH_BANK_CODE],
       x.[BRANCH_COST_CENTER],
@@ -122,14 +122,14 @@ AS
       x.[PROMOTION_CODE],
       x.[ONBOARD_DISB_STATUS]
    FROM [clt_NetO].[GF_TL_LOAN_DATA] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.DBSYMBOL AND A0.[TableName] = 'GF_TL_LOAN_DATA' and A0.[COLUMNNAME] = 'S_INDEX'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYEETYPE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TL_LOAN_DATA' and A1.[COLUMNNAME] = 'S_PAYEETYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AUSUWTYPE = A2.DBSYMBOL AND A2.[TableName] = 'GF_TL_LOAN_DATA' and A2.[COLUMNNAME] = 'S_AUSUWTYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_INTPRD_COMM_MET = A3.DBSYMBOL AND A3.[TableName] = 'GF_TL_LOAN_DATA' and A3.[COLUMNNAME] = 'S_INTPRD_COMM_MET'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_WELCOME_CALL = A4.DBSYMBOL AND A4.[TableName] = 'GF_TL_LOAN_DATA' and A4.[COLUMNNAME] = 'S_WELCOME_CALL'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_AUS_RESULT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TL_LOAN_DATA' and A5.[COLUMNNAME] = 'S_AUS_RESULT'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_INIT_DISC_DELIVERY_MTHD = A6.DBSYMBOL AND A6.[TableName] = 'GF_TL_LOAN_DATA' and A6.[COLUMNNAME] = 'S_INIT_DISC_DELIVERY_MTHD'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_BRANCH_TYPE = A7.DBSYMBOL AND A7.[TableName] = 'GF_TL_LOAN_DATA' and A7.[COLUMNNAME] = 'S_BRANCH_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_INDEX = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TL_LOAN_DATA' and A0.[COLUMNNAME] = 'S_INDEX'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PAYEETYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TL_LOAN_DATA' and A1.[COLUMNNAME] = 'S_PAYEETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_AUSUWTYPE = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TL_LOAN_DATA' and A2.[COLUMNNAME] = 'S_AUSUWTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_INTPRD_COMM_MET = A3.[DBSYMBOL] AND A3.[TableName] = 'GF_TL_LOAN_DATA' and A3.[COLUMNNAME] = 'S_INTPRD_COMM_MET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_WELCOME_CALL = A4.[DBSYMBOL] AND A4.[TableName] = 'GF_TL_LOAN_DATA' and A4.[COLUMNNAME] = 'S_WELCOME_CALL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_AUS_RESULT = A5.[DBSYMBOL] AND A5.[TableName] = 'GF_TL_LOAN_DATA' and A5.[COLUMNNAME] = 'S_AUS_RESULT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_INIT_DISC_DELIVERY_MTHD = A6.[DBSYMBOL] AND A6.[TableName] = 'GF_TL_LOAN_DATA' and A6.[COLUMNNAME] = 'S_INIT_DISC_DELIVERY_MTHD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_BRANCH_TYPE = A7.[DBSYMBOL] AND A7.[TableName] = 'GF_TL_LOAN_DATA' and A7.[COLUMNNAME] = 'S_BRANCH_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

@@ -22,15 +22,15 @@ AS
       x.[ENGINE_TITLE_NUM],
       x.[ENGINE_MODEL_NUM],
       x.[S_ENGINE_MFG],
-      A0.Descript AS [S_ENGINE_MFG_Description],
+      A0.Descript AS [S_ENGINE_MFGDescription],
       x.[S_MULTIENGINETYPE],
-      A1.Descript AS [S_MULTIENGINETYPE_Description],
+      A1.Descript AS [S_MULTIENGINETYPEDescription],
       x.[S_ENGINE_COLOR],
-      A2.Descript AS [S_ENGINE_COLOR_Description]
+      A2.Descript AS [S_ENGINE_COLORDescription]
    FROM [clt_NetO].[WG_ASSET_MARINE_ENG] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ENGINE_MFG = A0.DBSYMBOL AND A0.[TableName] = 'WG_ASSET_MARINE_ENG' and A0.[COLUMNNAME] = 'S_ENGINE_MFG'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MULTIENGINETYPE = A1.DBSYMBOL AND A1.[TableName] = 'WG_ASSET_MARINE_ENG' and A1.[COLUMNNAME] = 'S_MULTIENGINETYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ENGINE_COLOR = A2.DBSYMBOL AND A2.[TableName] = 'WG_ASSET_MARINE_ENG' and A2.[COLUMNNAME] = 'S_ENGINE_COLOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ENGINE_MFG = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_ASSET_MARINE_ENG' and A0.[COLUMNNAME] = 'S_ENGINE_MFG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MULTIENGINETYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_ASSET_MARINE_ENG' and A1.[COLUMNNAME] = 'S_MULTIENGINETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_ENGINE_COLOR = A2.[DBSYMBOL] AND A2.[TableName] = 'WG_ASSET_MARINE_ENG' and A2.[COLUMNNAME] = 'S_ENGINE_COLOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

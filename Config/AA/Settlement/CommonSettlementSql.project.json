@@ -6,5 +6,12 @@
   "ClassificationFile": "CommonSettlement_Classification.json",
   "buildFolder": null,
   "uspLoadTableOption": null,
-  "rawToCultivated": null
+  "rawToCultivated": null,
+
+  "addInstructions": [
+    {
+			"pattern": "*",
+			"whereLine": "x.[ASAP_DeleteDateTime] IS NULL"
+		}
+  ]
 }

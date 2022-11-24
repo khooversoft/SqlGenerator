@@ -40,9 +40,9 @@ AS
       x.[OLD_AGENCY_NUM_REQUIRED],
       x.[PROD_IDENTIFIER],
       x.[S_AUS_INDICATOR],
-      A0.Descript AS [S_AUS_INDICATOR_Description],
+      A0.Descript AS [S_AUS_INDICATORDescription],
       x.[S_SERVICE_TYPE_IND],
-      A1.Descript AS [S_SERVICE_TYPE_IND_Description],
+      A1.Descript AS [S_SERVICE_TYPE_INDDescription],
       x.[SERVICE_INT_INDICATOR],
       x.[SERVICE_LOC_CID],
       x.[SUB_PRIME_INDICATOR],
@@ -57,7 +57,7 @@ AS
       x.[INTEREST_ONLY_PRODUCT],
       x.[ODDDEFER],
       x.[S_SPEC_PRG],
-      A2.Descript AS [S_SPEC_PRG_Description],
+      A2.Descript AS [S_SPEC_PRGDescription],
       x.[MI_REQUIRED],
       x.[CRA_REPORTABLE],
       x.[MIN_ALLOW_TERM],
@@ -69,17 +69,17 @@ AS
       x.[PREQUAL_ALLOWED_YN],
       x.[PREAPPROVAL_ALLOWED_YN],
       x.[S_LOANFIT_PURP_CAT],
-      A3.Descript AS [S_LOANFIT_PURP_CAT_Description],
+      A3.Descript AS [S_LOANFIT_PURP_CATDescription],
       x.[S_LOANFIT_PROD_CAT],
-      A4.Descript AS [S_LOANFIT_PROD_CAT_Description],
+      A4.Descript AS [S_LOANFIT_PROD_CATDescription],
       x.[S_LOANFIT_LIEN_CAT],
-      A5.Descript AS [S_LOANFIT_LIEN_CAT_Description],
+      A5.Descript AS [S_LOANFIT_LIEN_CATDescription],
       x.[LOANFIT_CATEGORY_POSN],
       x.[LOANFIT_DISPLAY_POSN],
       x.[S_LOANFIT_AMT_GROUP],
-      A6.Descript AS [S_LOANFIT_AMT_GROUP_Description],
+      A6.Descript AS [S_LOANFIT_AMT_GROUPDescription],
       x.[S_LOANFIT_LTV_GROUP],
-      A7.Descript AS [S_LOANFIT_LTV_GROUP_Description],
+      A7.Descript AS [S_LOANFIT_LTV_GROUPDescription],
       x.[LOANFIT_MIN_LOAN],
       x.[LOANFIT_MAX_LOAN],
       x.[LOANFIT_MIN_LTV],
@@ -99,7 +99,7 @@ AS
       x.[CREATE_DATE],
       x.[MODIFY_DATE],
       x.[S_CONST_PROGRAM],
-      A8.Descript AS [S_CONST_PROGRAM_Description],
+      A8.Descript AS [S_CONST_PROGRAMDescription],
       x.[CONST_MONTHS],
       x.[IPG_RENOVA_PROD],
       x.[DOCMAGIC_PLAN_CODE],
@@ -108,24 +108,24 @@ AS
       x.[DAYS_FINAL_FLOAT_ELIG],
       x.[IPG_FINAL_INVESTOR],
       x.[S_ASSUMABILITY_FEATURE],
-      A9.Descript AS [S_ASSUMABILITY_FEATURE_Description],
+      A9.Descript AS [S_ASSUMABILITY_FEATUREDescription],
       x.[S_IPG_BUYDWN],
-      A10.Descript AS [S_IPG_BUYDWN_Description],
+      A10.Descript AS [S_IPG_BUYDWNDescription],
       x.[S_BUYDWN_CNTRBTR],
-      A11.Descript AS [S_BUYDWN_CNTRBTR_Description]
+      A11.Descript AS [S_BUYDWN_CNTRBTRDescription]
    FROM [clt_NetO].[GF_TSR_PNP_IPG_BASE] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AUS_INDICATOR = A0.DBSYMBOL AND A0.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A0.[COLUMNNAME] = 'S_AUS_INDICATOR'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SERVICE_TYPE_IND = A1.DBSYMBOL AND A1.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A1.[COLUMNNAME] = 'S_SERVICE_TYPE_IND'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPEC_PRG = A2.DBSYMBOL AND A2.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A2.[COLUMNNAME] = 'S_SPEC_PRG'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LOANFIT_PURP_CAT = A3.DBSYMBOL AND A3.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A3.[COLUMNNAME] = 'S_LOANFIT_PURP_CAT'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOANFIT_PROD_CAT = A4.DBSYMBOL AND A4.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A4.[COLUMNNAME] = 'S_LOANFIT_PROD_CAT'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LOANFIT_LIEN_CAT = A5.DBSYMBOL AND A5.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A5.[COLUMNNAME] = 'S_LOANFIT_LIEN_CAT'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LOANFIT_AMT_GROUP = A6.DBSYMBOL AND A6.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A6.[COLUMNNAME] = 'S_LOANFIT_AMT_GROUP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LOANFIT_LTV_GROUP = A7.DBSYMBOL AND A7.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A7.[COLUMNNAME] = 'S_LOANFIT_LTV_GROUP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CONST_PROGRAM = A8.DBSYMBOL AND A8.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A8.[COLUMNNAME] = 'S_CONST_PROGRAM'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_ASSUMABILITY_FEATURE = A9.DBSYMBOL AND A9.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A9.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_IPG_BUYDWN = A10.DBSYMBOL AND A10.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A10.[COLUMNNAME] = 'S_IPG_BUYDWN'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.DBSYMBOL AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AUS_INDICATOR = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A0.[COLUMNNAME] = 'S_AUS_INDICATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SERVICE_TYPE_IND = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A1.[COLUMNNAME] = 'S_SERVICE_TYPE_IND'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_SPEC_PRG = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A2.[COLUMNNAME] = 'S_SPEC_PRG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_LOANFIT_PURP_CAT = A3.[DBSYMBOL] AND A3.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A3.[COLUMNNAME] = 'S_LOANFIT_PURP_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_LOANFIT_PROD_CAT = A4.[DBSYMBOL] AND A4.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A4.[COLUMNNAME] = 'S_LOANFIT_PROD_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LOANFIT_LIEN_CAT = A5.[DBSYMBOL] AND A5.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A5.[COLUMNNAME] = 'S_LOANFIT_LIEN_CAT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LOANFIT_AMT_GROUP = A6.[DBSYMBOL] AND A6.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A6.[COLUMNNAME] = 'S_LOANFIT_AMT_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LOANFIT_LTV_GROUP = A7.[DBSYMBOL] AND A7.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A7.[COLUMNNAME] = 'S_LOANFIT_LTV_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_CONST_PROGRAM = A8.[DBSYMBOL] AND A8.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A8.[COLUMNNAME] = 'S_CONST_PROGRAM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_ASSUMABILITY_FEATURE = A9.[DBSYMBOL] AND A9.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A9.[COLUMNNAME] = 'S_ASSUMABILITY_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_IPG_BUYDWN = A10.[DBSYMBOL] AND A10.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A10.[COLUMNNAME] = 'S_IPG_BUYDWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_BUYDWN_CNTRBTR = A11.[DBSYMBOL] AND A11.[TableName] = 'GF_TSR_PNP_IPG_BASE' and A11.[COLUMNNAME] = 'S_BUYDWN_CNTRBTR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

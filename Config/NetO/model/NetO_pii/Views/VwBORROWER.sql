@@ -16,7 +16,7 @@ AS
       x.[AGE],
       x.[YRSSCHL],
       x.[S_MARITL],
-      A0.Descript AS [S_MARITL_Description],
+      A0.Descript AS [S_MARITLDescription],
       x.[FRNINFO],
       x.[GENDER],
       x.[NUMDEP],
@@ -32,7 +32,7 @@ AS
       x.[APPNUMB],
       x.[FIRSTBUY],
       x.[S_OWNSHP],
-      A1.Descript AS [S_OWNSHP_Description],
+      A1.Descript AS [S_OWNSHPDescription],
       x.[VOR_ACCT],
       x.[VOR_NAME],
       x.[OTHINCM],
@@ -40,10 +40,10 @@ AS
       x.[JOINTLY],
       x.[DOB],
       x.[S_BORTYP],
-      A2.Descript AS [S_BORTYP_Description],
+      A2.Descript AS [S_BORTYPDescription],
       x.[ALIASES],
       x.[S_VESTNG],
-      A3.Descript AS [S_VESTNG_Description],
+      A3.Descript AS [S_VESTNGDescription],
       x.[PRTENTTL],
       x.[PARTNOTE],
       x.[COUNTY],
@@ -108,7 +108,7 @@ AS
       x.[ELEC_DISC_CONSENT],
       x.[ELEC_DISC_WITHDRAW],
       x.[S_IVMETH],
-      A4.Descript AS [S_IVMETH_Description],
+      A4.Descript AS [S_IVMETHDescription],
       x.[ATALLLIQUIDTOTAL],
       x.[ATGIFTTOTAL],
       x.[ATREONETPROCEEDSTOTAL],
@@ -116,7 +116,7 @@ AS
       x.[LTNONSUBJDEBTMOTOTAL],
       x.[LTNONSUBJPAYOFFTOTAL],
       x.[S_CBSOURCE],
-      A5.Descript AS [S_CBSOURCE_Description],
+      A5.Descript AS [S_CBSOURCEDescription],
       x.[VETERAN],
       x.[ENTITLEMENT],
       x.[LDP_NUMBER],
@@ -140,9 +140,9 @@ AS
       x.[DISPLAY_NAME],
       x.[NON_INDIV_BORR_NAME],
       x.[S_LEGAL_ENTITY_TYPE],
-      A6.Descript AS [S_LEGAL_ENTITY_TYPE_Description],
+      A6.Descript AS [S_LEGAL_ENTITY_TYPEDescription],
       x.[S_LEGAL_ENTITY_TYP_OTH],
-      A7.Descript AS [S_LEGAL_ENTITY_TYP_OTH_Description],
+      A7.Descript AS [S_LEGAL_ENTITY_TYP_OTHDescription],
       x.[ULDD_TAXPAYER_ID],
       x.[INCLUDE_IN_PROFORMA],
       x.[FADDR_INDICATOR],
@@ -158,11 +158,11 @@ AS
       x.[MNTHS_AT_PRSNT],
       x.[BORR_COVERED],
       x.[S_COV_BORR_STATUS],
-      A8.Descript AS [S_COV_BORR_STATUS_Description],
+      A8.Descript AS [S_COV_BORR_STATUSDescription],
       x.[BORR_VERBDISC],
       x.[MLACERTID],
       x.[S_BOR_UNIT_TYPE],
-      A9.Descript AS [S_BOR_UNIT_TYPE_Description],
+      A9.Descript AS [S_BOR_UNIT_TYPEDescription],
       x.[BOR_UNIT_NUM],
       x.[BOR_COUNTRY],
       x.[BOR_COUNTRY_CODE],
@@ -179,11 +179,11 @@ AS
       x.[COPIED_MAIL_ADDRESS],
       x.[CHECK_ALIAS],
       x.[S_PARTY_TYPE],
-      A10.Descript AS [S_PARTY_TYPE_Description],
+      A10.Descript AS [S_PARTY_TYPEDescription],
       x.[S_CITIZENSHIP],
-      A11.Descript AS [S_CITIZENSHIP_Description],
+      A11.Descript AS [S_CITIZENSHIPDescription],
       x.[S_UNMARRIED],
-      A12.Descript AS [S_UNMARRIED_Description],
+      A12.Descript AS [S_UNMARRIEDDescription],
       x.[ATTR_PORTAL_REG],
       x.[ATTR_COUNSELING_REQUIRED],
       x.[ATTR_CHILD_CARE],
@@ -191,7 +191,7 @@ AS
       x.[ATTR_GUARDIANSHIP],
       x.[ATTR_SOLE_PROPRIETOR],
       x.[S_UNMARRIED_RLTNSHIP],
-      A13.Descript AS [S_UNMARRIED_RLTNSHIP_Description],
+      A13.Descript AS [S_UNMARRIED_RLTNSHIPDescription],
       x.[UNMARRIED_RLTNSHIP_STATE],
       x.[UNMARRIED_RLTNSHIP_OTHERDESC],
       x.[RETIRED_BORROWER],
@@ -204,20 +204,20 @@ AS
       x.[IS_DEALER_EMPLOYEE],
       x.[LIVE_RENT_FREE_ENUMS]
    FROM [clt_NetO].[BORROWER] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARITL = A0.DBSYMBOL AND A0.[TableName] = 'BORROWER' and A0.[COLUMNNAME] = 'S_MARITL'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OWNSHP = A1.DBSYMBOL AND A1.[TableName] = 'BORROWER' and A1.[COLUMNNAME] = 'S_OWNSHP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BORTYP = A2.DBSYMBOL AND A2.[TableName] = 'BORROWER' and A2.[COLUMNNAME] = 'S_BORTYP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_VESTNG = A3.DBSYMBOL AND A3.[TableName] = 'BORROWER' and A3.[COLUMNNAME] = 'S_VESTNG'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_IVMETH = A4.DBSYMBOL AND A4.[TableName] = 'BORROWER' and A4.[COLUMNNAME] = 'S_IVMETH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CBSOURCE = A5.DBSYMBOL AND A5.[TableName] = 'BORROWER' and A5.[COLUMNNAME] = 'S_CBSOURCE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LEGAL_ENTITY_TYPE = A6.DBSYMBOL AND A6.[TableName] = 'BORROWER' and A6.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LEGAL_ENTITY_TYP_OTH = A7.DBSYMBOL AND A7.[TableName] = 'BORROWER' and A7.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYP_OTH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COV_BORR_STATUS = A8.DBSYMBOL AND A8.[TableName] = 'BORROWER' and A8.[COLUMNNAME] = 'S_COV_BORR_STATUS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BOR_UNIT_TYPE = A9.DBSYMBOL AND A9.[TableName] = 'BORROWER' and A9.[COLUMNNAME] = 'S_BOR_UNIT_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_PARTY_TYPE = A10.DBSYMBOL AND A10.[TableName] = 'BORROWER' and A10.[COLUMNNAME] = 'S_PARTY_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_CITIZENSHIP = A11.DBSYMBOL AND A11.[TableName] = 'BORROWER' and A11.[COLUMNNAME] = 'S_CITIZENSHIP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_UNMARRIED = A12.DBSYMBOL AND A12.[TableName] = 'BORROWER' and A12.[COLUMNNAME] = 'S_UNMARRIED'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_UNMARRIED_RLTNSHIP = A13.DBSYMBOL AND A13.[TableName] = 'BORROWER' and A13.[COLUMNNAME] = 'S_UNMARRIED_RLTNSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_MARITL = A0.[DBSYMBOL] AND A0.[TableName] = 'BORROWER' and A0.[COLUMNNAME] = 'S_MARITL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OWNSHP = A1.[DBSYMBOL] AND A1.[TableName] = 'BORROWER' and A1.[COLUMNNAME] = 'S_OWNSHP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_BORTYP = A2.[DBSYMBOL] AND A2.[TableName] = 'BORROWER' and A2.[COLUMNNAME] = 'S_BORTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_VESTNG = A3.[DBSYMBOL] AND A3.[TableName] = 'BORROWER' and A3.[COLUMNNAME] = 'S_VESTNG'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_IVMETH = A4.[DBSYMBOL] AND A4.[TableName] = 'BORROWER' and A4.[COLUMNNAME] = 'S_IVMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_CBSOURCE = A5.[DBSYMBOL] AND A5.[TableName] = 'BORROWER' and A5.[COLUMNNAME] = 'S_CBSOURCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_LEGAL_ENTITY_TYPE = A6.[DBSYMBOL] AND A6.[TableName] = 'BORROWER' and A6.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_LEGAL_ENTITY_TYP_OTH = A7.[DBSYMBOL] AND A7.[TableName] = 'BORROWER' and A7.[COLUMNNAME] = 'S_LEGAL_ENTITY_TYP_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_COV_BORR_STATUS = A8.[DBSYMBOL] AND A8.[TableName] = 'BORROWER' and A8.[COLUMNNAME] = 'S_COV_BORR_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_BOR_UNIT_TYPE = A9.[DBSYMBOL] AND A9.[TableName] = 'BORROWER' and A9.[COLUMNNAME] = 'S_BOR_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_PARTY_TYPE = A10.[DBSYMBOL] AND A10.[TableName] = 'BORROWER' and A10.[COLUMNNAME] = 'S_PARTY_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A11 on x.S_CITIZENSHIP = A11.[DBSYMBOL] AND A11.[TableName] = 'BORROWER' and A11.[COLUMNNAME] = 'S_CITIZENSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A12 on x.S_UNMARRIED = A12.[DBSYMBOL] AND A12.[TableName] = 'BORROWER' and A12.[COLUMNNAME] = 'S_UNMARRIED'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A13 on x.S_UNMARRIED_RLTNSHIP = A13.[DBSYMBOL] AND A13.[TableName] = 'BORROWER' and A13.[COLUMNNAME] = 'S_UNMARRIED_RLTNSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

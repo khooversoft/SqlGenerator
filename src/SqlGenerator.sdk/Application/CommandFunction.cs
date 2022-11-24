@@ -32,7 +32,9 @@ public class CommandFunction
         return GetParts(line) switch
         {
             null => line,
-            IReadOnlyList<(bool IsFunction, string Data)> v => Resolve(v).Join(),
+            IReadOnlyList<(bool IsFunction, string Data)> v when v.Count == 0 => line,
+
+            IReadOnlyList <(bool IsFunction, string Data)> v => Resolve(v).Join(),
         };
     }
 
@@ -79,7 +81,7 @@ public class CommandFunction
 
                 parts.Add((true, popValue.Value));
 
-                if (!tokenStack.TryPop(out popValue) || popValue.Value != "}") return new List<(bool, string)>();
+                if (!tokenStack.TryPop(out popValue) || popValue.Value != "}") throw new ArgumentException($"Syntax error: {line}");
                 continue;
             }
 

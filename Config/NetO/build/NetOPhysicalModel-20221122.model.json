@@ -73029,56 +73029,49 @@
     {
       "type": "excludeView",
       "pattern": "WG_RPT*.*",
-      "command": null,
-      "attributes": []
+      "command": null
     },
     {
       "type": "excludeViewNot",
       "pattern": "WG_RPT_LOAN_STATUS.*",
-      "command": null,
-      "attributes": []
+      "command": null
     },
     {
       "type": "primaryKey",
       "pattern": "WG_SYMBOL_XREF.TABLENAME",
-      "command": null,
-      "attributes": []
+      "command": null
     },
     {
       "type": "primaryKey",
       "pattern": "WG_SYMBOL_XREF.COLUMNNAME",
-      "command": null,
-      "attributes": []
+      "command": null
     },
     {
       "type": "primaryKey",
       "pattern": "WG_SYMBOL_XREF.FLDNAME",
-      "command": null,
-      "attributes": []
+      "command": null
     },
     {
       "type": "primaryKey",
       "pattern": "L_SYMBOL.FLDNAME",
-      "command": null,
-      "attributes": []
+      "command": null
     },
     {
       "type": "primaryKey",
       "pattern": "L_SYMBOL.DBSYMBOL",
-      "command": null,
-      "attributes": []
+      "command": null
     },
     {
       "type": "copy",
       "pattern": "Include\\VwSymbolLookup.sql",
-      "command": "clt_NetO\\Views\\VwSymbolLookup.sql",
-      "attributes": []
+      "command": "clt_NetO\\Views\\VwSymbolLookup.sql"
     }
   ],
   "addInstructions": [
     {
       "model": "single",
       "pattern": "*",
+      "patterns": [],
       "selectLine": null,
       "selectLineOrder": null,
       "joinLine": null,
@@ -73087,6 +73080,7 @@
     {
       "model": "single",
       "pattern": "*.LNUM",
+      "patterns": [],
       "selectLine": null,
       "selectLineOrder": null,
       "joinLine": null,
@@ -73095,9 +73089,10 @@
     {
       "model": "template",
       "pattern": "*.S_*",
-      "selectLine": "{alias}.Descript AS [{columnName}_Description]",
+      "patterns": [],
+      "selectLine": "{alias}.Descript AS [{columnName}Description]",
       "selectLineOrder": "{columnName}",
-      "joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{columnName} = {alias}.DBSYMBOL AND {alias}.[TableName] = \u0027{tableName}\u0027 and {alias}.[COLUMNNAME] = \u0027{columnName}\u0027",
+      "joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{columnName} = {alias}.[DBSYMBOL] AND {alias}.[TableName] = \u0027{tableName}\u0027 and {alias}.[COLUMNNAME] = \u0027{columnName}\u0027",
       "whereLine": null
     }
   ]

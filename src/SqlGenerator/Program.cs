@@ -16,7 +16,7 @@ try
 {
     return await Run(args);
 }
-catch (ArgumentException ex)
+catch (Exception ex)
 {
     Console.WriteLine($"Error: {ex.Message}");
     return 1;
@@ -29,30 +29,19 @@ async Task<int> Run(string[] args)
 
     using ServiceProvider container = BuildContainer();
 
-    try
+    var rc = new RootCommand("Generator SQL code from table and column dataset.")
     {
-        var rc = new RootCommand("Generator SQL code from table and column dataset.")
-        {
-            container.GetRequiredService<BuildCommand>(),
-        };
+        container.GetRequiredService<BuildCommand>(),
+    };
 
-        int exitCode = await rc.InvokeAsync(args);
-        await Task.Delay(TimeSpan.FromMilliseconds(200));
+    int exitCode = await rc.InvokeAsync(args);
+    await Task.Delay(TimeSpan.FromMilliseconds(200));
 
-        Console.WriteLine();
-        Console.WriteLine(exitCode == 0 ? "Completed" : $"Exit code={exitCode}");
-        Console.WriteLine($"Detail logs are at {_loggingFolder}");
-        Console.WriteLine();
+    Console.WriteLine();
+    Console.WriteLine($"Detail logs are at {_loggingFolder}");
+    Console.WriteLine();
 
-        return exitCode;
-    }
-    catch (Exception ex)
-    {
-        ILoggerFactory factory = container.GetService<ILoggerFactory>().NotNull();
-        ILogger<Program> logger = factory.CreateLogger<Program>();
-        logger.LogError(ex, "Failed");
-        return 1;
-    }
+    return exitCode;
 }
 
 ServiceProvider BuildContainer()

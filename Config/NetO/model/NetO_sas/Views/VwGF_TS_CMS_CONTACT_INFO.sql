@@ -9,12 +9,12 @@ AS
       x.[CID] AS [CID],
       x.[ACTIVE] AS [ACTIVE],
       x.[S_CMSSTATUS] AS [S_CMSSTATUS],
-      A0.Descript AS [S_CMSSTATUS_Description],
+      A0.Descript AS [S_CMSSTATUSDescription],
       x.[FULLNAME] AS [FULLNAME],
       x.[SHORTNAME] AS [SHORTNAME],
       HASHBYTES('SHA2_256', x.[SSNTIN]) AS [SSNTIN],
       x.[S_TITLE] AS [S_TITLE],
-      A1.Descript AS [S_TITLE_Description],
+      A1.Descript AS [S_TITLEDescription],
       x.[REFCODE] AS [REFCODE],
       x.[CREATED_BY_USER] AS [CREATED_BY_USER],
       x.[CREATED_DATE] AS [CREATED_DATE],
@@ -29,8 +29,8 @@ AS
       x.[SUFFIXNAME] AS [SUFFIXNAME],
       x.[PORTAL_REFCODE] AS [PORTAL_REFCODE]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_INFO] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSSTATUS = A0.DBSYMBOL AND A0.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A0.[COLUMNNAME] = 'S_CMSSTATUS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.DBSYMBOL AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CMSSTATUS = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A0.[COLUMNNAME] = 'S_CMSSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_TITLE = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TS_CMS_CONTACT_INFO' and A1.[COLUMNNAME] = 'S_TITLE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

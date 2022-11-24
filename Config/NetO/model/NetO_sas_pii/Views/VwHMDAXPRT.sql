@@ -34,11 +34,11 @@ AS
       x.[RPTYEAR] AS [RPTYEAR],
       x.[CFPNUM] AS [CFPNUM],
       x.[S_CUSTOMQRY] AS [S_CUSTOMQRY],
-      A0.Descript AS [S_CUSTOMQRY_Description],
+      A0.Descript AS [S_CUSTOMQRYDescription],
       x.[CEMAIL] AS [CEMAIL],
       x.[HMDA_LAR_LEI] AS [HMDA_LAR_LEI]
    FROM [clt_NetO].[HMDAXPRT] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.DBSYMBOL AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_CUSTOMQRY = A0.[DBSYMBOL] AND A0.[TableName] = 'HMDAXPRT' and A0.[COLUMNNAME] = 'S_CUSTOMQRY'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

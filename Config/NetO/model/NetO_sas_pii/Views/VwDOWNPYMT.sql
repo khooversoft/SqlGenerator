@@ -11,7 +11,7 @@ AS
       x.[DBID] AS [DBID],
       x.[DPYMTCTR] AS [DPYMTCTR],
       x.[S_TYPE] AS [S_TYPE],
-      A0.Descript AS [S_TYPE_Description],
+      A0.Descript AS [S_TYPEDescription],
       x.[AMOUNT] AS [AMOUNT],
       x.[NAME] AS [NAME],
       x.[ADDR1] AS [ADDR1],
@@ -36,31 +36,31 @@ AS
       x.[VERIFYFND] AS [VERIFYFND],
       x.[OTHERDOWNPAYTYPEDESC] AS [OTHERDOWNPAYTYPEDESC],
       x.[S_DOWN_PMT_SRC_TYP] AS [S_DOWN_PMT_SRC_TYP],
-      A1.Descript AS [S_DOWN_PMT_SRC_TYP_Description],
+      A1.Descript AS [S_DOWN_PMT_SRC_TYPDescription],
       x.[S_DOWN_PMT_SRC_OTH] AS [S_DOWN_PMT_SRC_OTH],
-      A2.Descript AS [S_DOWN_PMT_SRC_OTH_Description],
+      A2.Descript AS [S_DOWN_PMT_SRC_OTHDescription],
       x.[S_DOWN_PMT_TYP] AS [S_DOWN_PMT_TYP],
-      A3.Descript AS [S_DOWN_PMT_TYP_Description],
+      A3.Descript AS [S_DOWN_PMT_TYPDescription],
       x.[S_TYPE_OTH] AS [S_TYPE_OTH],
-      A4.Descript AS [S_TYPE_OTH_Description],
+      A4.Descript AS [S_TYPE_OTHDescription],
       x.[PRIMARY_SRC] AS [PRIMARY_SRC],
       x.[DOWNPAYMENTPERCENT] AS [DOWNPAYMENTPERCENT],
       x.[S_DOWN_PMT_SRC] AS [S_DOWN_PMT_SRC],
-      A5.Descript AS [S_DOWN_PMT_SRC_Description],
+      A5.Descript AS [S_DOWN_PMT_SRCDescription],
       x.[S_TYPENM] AS [S_TYPENM],
-      A6.Descript AS [S_TYPENM_Description],
+      A6.Descript AS [S_TYPENMDescription],
       x.[DOWNPAYTYPENMOTHERDESC] AS [DOWNPAYTYPENMOTHERDESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED],
       x.[TOTAL_GIFT_FUNDS] AS [TOTAL_GIFT_FUNDS],
       x.[ASSETCTR] AS [ASSETCTR]
    FROM [clt_NetO].[DOWNPYMT] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TYPE = A0.DBSYMBOL AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_DOWN_PMT_SRC_TYP = A1.DBSYMBOL AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOWN_PMT_SRC_OTH = A2.DBSYMBOL AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_DOWN_PMT_TYP = A3.DBSYMBOL AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TYPE_OTH = A4.DBSYMBOL AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DOWN_PMT_SRC = A5.DBSYMBOL AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TYPENM = A6.DBSYMBOL AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_DOWN_PMT_SRC_TYP = A1.[DBSYMBOL] AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOWN_PMT_SRC_OTH = A2.[DBSYMBOL] AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_DOWN_PMT_TYP = A3.[DBSYMBOL] AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TYPE_OTH = A4.[DBSYMBOL] AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DOWN_PMT_SRC = A5.[DBSYMBOL] AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TYPENM = A6.[DBSYMBOL] AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

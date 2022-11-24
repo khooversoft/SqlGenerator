@@ -27,14 +27,6 @@
   ],
   "prefixColumns": [
     {
-      "name": "BECUAccountNumber",
-      "security": "unrestricted",
-      "dataType": "nvarchar(50)",
-      "notNull": true,
-      "primaryKey": true,
-      "private": false
-    },
-    {
       "name": "ASAP_RecordEffectiveDateTime",
       "security": "unrestricted",
       "dataType": "datetime2(7)",
