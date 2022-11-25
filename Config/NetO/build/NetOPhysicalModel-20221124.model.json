@@ -3365,6 +3365,93 @@
     {
       "name": {
         "schema": "clt_NetO",
+        "name": "ASSOCDOCS"
+      },
+      "indexType": "hash",
+      "tableMode": "full",
+      "columns": [
+        {
+          "name": "S_SUNDCON",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CNTR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_ASSOCDOC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SRCENV",
+          "security": "unrestricted",
+          "dataType": "nvarchar(5)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REC_CUSTOM",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREATE_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MODIFY_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
         "name": "BORDEP"
       },
       "indexType": "hash",
@@ -56739,6 +56826,610 @@
           "private": false,
           "primaryKey": false,
           "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
+        "name": "WG_BORR_INCOME_SRC_PAYSTUB"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BNUM",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PS_CTR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INC_SRC_CTR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "YTD_FROM_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "YTD_TO_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PAYSTUB_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "AVGHOURSPERWEEK",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MONTHLYBASEPAY",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MONTHLYRATE",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OVERTIME_PAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "YTD_BASEPAY",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "YTD_OVERTIMEPAY",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "YTD_BONUSPAY",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 14,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "YTD_COMMISSIONPAY",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 15,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "YTD_TOTALPAY",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 16,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OTHER_PAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 17,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "COMMISSION_PAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 18,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DEPENDENT_CARE_BENEFITS",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 19,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "GARNISHMENTS",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 20,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "YTD_OTHERPAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 21,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LOAN_REPAYMENT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 22,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PAYS_TOTAL_PAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 23,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CALCULATED_INCOME",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 24,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OVR_CALCULATED_INCOME",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 25,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OTHER_DEDUCTION",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 26,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "AVG_YTD_BASE",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 27,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "AVG_YTD_GROSS",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 28,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CHK_AVG_YTD_BASE",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 29,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CHK_CURRENT_BASE",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 30,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CHK_AVG_YTD_GROSS",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 31,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BONUS_PAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 32,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PAYFREQ",
+          "security": "unrestricted",
+          "dataType": "nchar(2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 33,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BASE_HOURLY_PAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 34,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CHK_BASE_HOURLY_PAY",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 35,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SUMMARY_CURRENT_NETPAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 36,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OVERTIMEHOURS",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 37,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OVERTIMERATE",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 38,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BONUSHOURS",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 39,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BONUSRATE",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 40,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "COMMISSIONHOURS",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 41,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "COMMISSIONRATE",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 42,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OTHERHOURS",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 43,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OTHERRATE",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 44,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MILITARYHOURS",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 45,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MILITARYRATE",
+          "security": "unrestricted",
+          "dataType": "numeric(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 46,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MILITARY_PAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 47,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "YTD_MILITARYPAY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 48,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DOC_UPLOADED_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 49,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DATA_UPDATED_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 50,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DATA_UPDATED_BYUSER",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 51,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OCR_DATA_FLAG",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 52,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "VALID_CARD",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 53,
           "pii": false,
           "restricted": false
         }

@@ -469,6 +469,43 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'ASSOCDOCS')
+BEGIN
+   DROP TABLE [clt_NetO].[ASSOCDOCS]
+END
+GO
+
+CREATE TABLE [clt_NetO].[ASSOCDOCS]
+(
+   [S_SUNDCON]                        nvarchar(8)          NOT NULL,
+   [CNTR]                             int                  NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [S_ASSOCDOC]                       nvarchar(8)          NULL,
+   [SRCENV]                           nvarchar(5)          NULL,
+   [REC_CUSTOM]                       nchar(1)             NULL,
+   [CREATE_DATE]                      datetime             NULL,
+   [MODIFY_DATE]                      datetime             NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([S_SUNDCON]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'BORDEP')
 BEGIN
    DROP TABLE [clt_NetO].[BORDEP]
@@ -9511,6 +9548,90 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'WG_BORR_INCOME_SRC_PAYSTUB')
+BEGIN
+   DROP TABLE [clt_NetO].[WG_BORR_INCOME_SRC_PAYSTUB]
+END
+GO
+
+CREATE TABLE [clt_NetO].[WG_BORR_INCOME_SRC_PAYSTUB]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [BNUM]                             smallint             NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [PS_CTR]                           int                  NOT NULL,
+   [INC_SRC_CTR]                      int                  NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [YTD_FROM_DATE]                    datetime             NULL,
+   [YTD_TO_DATE]                      datetime             NULL,
+   [PAYSTUB_DATE]                     datetime             NULL,
+   [AVGHOURSPERWEEK]                  numeric(16,6)        NULL,
+   [MONTHLYBASEPAY]                   numeric(16,6)        NULL,
+   [MONTHLYRATE]                      numeric(16,6)        NULL,
+   [OVERTIME_PAY]                     decimal(18,2)        NULL,
+   [YTD_BASEPAY]                      numeric(16,6)        NULL,
+   [YTD_OVERTIMEPAY]                  numeric(16,6)        NULL,
+   [YTD_BONUSPAY]                     numeric(16,6)        NULL,
+   [YTD_COMMISSIONPAY]                numeric(16,6)        NULL,
+   [YTD_TOTALPAY]                     numeric(16,6)        NULL,
+   [OTHER_PAY]                        decimal(18,2)        NULL,
+   [COMMISSION_PAY]                   decimal(18,2)        NULL,
+   [DEPENDENT_CARE_BENEFITS]          decimal(18,2)        NULL,
+   [GARNISHMENTS]                     decimal(18,2)        NULL,
+   [YTD_OTHERPAY]                     decimal(18,2)        NULL,
+   [LOAN_REPAYMENT]                   decimal(18,2)        NULL,
+   [PAYS_TOTAL_PAY]                   decimal(18,2)        NULL,
+   [CALCULATED_INCOME]                decimal(18,2)        NULL,
+   [OVR_CALCULATED_INCOME]            decimal(18,2)        NULL,
+   [OTHER_DEDUCTION]                  decimal(18,2)        NULL,
+   [AVG_YTD_BASE]                     decimal(18,2)        NULL,
+   [AVG_YTD_GROSS]                    decimal(18,2)        NULL,
+   [CHK_AVG_YTD_BASE]                 nchar(1)             NULL,
+   [CHK_CURRENT_BASE]                 nchar(1)             NULL,
+   [CHK_AVG_YTD_GROSS]                nchar(1)             NULL,
+   [BONUS_PAY]                        decimal(18,2)        NULL,
+   [PAYFREQ]                          nchar(2)             NULL,
+   [BASE_HOURLY_PAY]                  decimal(18,2)        NULL,
+   [CHK_BASE_HOURLY_PAY]              nchar(1)             NULL,
+   [SUMMARY_CURRENT_NETPAY]           decimal(18,3)        NULL,
+   [OVERTIMEHOURS]                    numeric(16,6)        NULL,
+   [OVERTIMERATE]                     numeric(16,6)        NULL,
+   [BONUSHOURS]                       numeric(16,6)        NULL,
+   [BONUSRATE]                        numeric(16,6)        NULL,
+   [COMMISSIONHOURS]                  numeric(16,6)        NULL,
+   [COMMISSIONRATE]                   numeric(16,6)        NULL,
+   [OTHERHOURS]                       numeric(16,6)        NULL,
+   [OTHERRATE]                        numeric(16,6)        NULL,
+   [MILITARYHOURS]                    numeric(16,6)        NULL,
+   [MILITARYRATE]                     numeric(16,6)        NULL,
+   [MILITARY_PAY]                     decimal(18,2)        NULL,
+   [YTD_MILITARYPAY]                  decimal(18,2)        NULL,
+   [DOC_UPLOADED_DATE]                datetime             NULL,
+   [DATA_UPDATED_DATE]                datetime             NULL,
+   [DATA_UPDATED_BYUSER]              nvarchar(100)        NULL,
+   [OCR_DATA_FLAG]                    nchar(1)             NULL,
+   [VALID_CARD]                       nchar(1)             NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'WG_BRM_DEFN_FIELDS')
 BEGIN
    DROP TABLE [clt_NetO].[WG_BRM_DEFN_FIELDS]
@@ -12760,6 +12881,37 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwASSOCDOCS')
+BEGIN
+   DROP VIEW [NetO].[VwASSOCDOCS]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwASSOCDOCS]
+AS
+   SELECT
+      x.[S_SUNDCON],
+      A0.Descript AS [S_SUNDCONDescription],
+      x.[CNTR],
+      x.[S_ASSOCDOC],
+      A1.Descript AS [S_ASSOCDOCDescription],
+      x.[SRCENV],
+      x.[REC_CUSTOM],
+      x.[CREATE_DATE],
+      x.[MODIFY_DATE]
+   FROM [clt_NetO].[ASSOCDOCS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.[DBSYMBOL] AND A0.[TableName] = 'ASSOCDOCS' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSOCDOC = A1.[DBSYMBOL] AND A1.[TableName] = 'ASSOCDOCS' and A1.[COLUMNNAME] = 'S_ASSOCDOC'
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -21195,6 +21347,81 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
+BEGIN
+   DROP VIEW [NetO].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[PS_CTR],
+      x.[INC_SRC_CTR],
+      x.[YTD_FROM_DATE],
+      x.[YTD_TO_DATE],
+      x.[PAYSTUB_DATE],
+      x.[AVGHOURSPERWEEK],
+      x.[MONTHLYBASEPAY],
+      x.[MONTHLYRATE],
+      x.[OVERTIME_PAY],
+      x.[YTD_BASEPAY],
+      x.[YTD_OVERTIMEPAY],
+      x.[YTD_BONUSPAY],
+      x.[YTD_COMMISSIONPAY],
+      x.[YTD_TOTALPAY],
+      x.[OTHER_PAY],
+      x.[COMMISSION_PAY],
+      x.[DEPENDENT_CARE_BENEFITS],
+      x.[GARNISHMENTS],
+      x.[YTD_OTHERPAY],
+      x.[LOAN_REPAYMENT],
+      x.[PAYS_TOTAL_PAY],
+      x.[CALCULATED_INCOME],
+      x.[OVR_CALCULATED_INCOME],
+      x.[OTHER_DEDUCTION],
+      x.[AVG_YTD_BASE],
+      x.[AVG_YTD_GROSS],
+      x.[CHK_AVG_YTD_BASE],
+      x.[CHK_CURRENT_BASE],
+      x.[CHK_AVG_YTD_GROSS],
+      x.[BONUS_PAY],
+      x.[PAYFREQ],
+      x.[BASE_HOURLY_PAY],
+      x.[CHK_BASE_HOURLY_PAY],
+      x.[SUMMARY_CURRENT_NETPAY],
+      x.[OVERTIMEHOURS],
+      x.[OVERTIMERATE],
+      x.[BONUSHOURS],
+      x.[BONUSRATE],
+      x.[COMMISSIONHOURS],
+      x.[COMMISSIONRATE],
+      x.[OTHERHOURS],
+      x.[OTHERRATE],
+      x.[MILITARYHOURS],
+      x.[MILITARYRATE],
+      x.[MILITARY_PAY],
+      x.[YTD_MILITARYPAY],
+      x.[DOC_UPLOADED_DATE],
+      x.[DATA_UPDATED_DATE],
+      x.[DATA_UPDATED_BYUSER],
+      x.[OCR_DATA_FLAG],
+      x.[VALID_CARD]
+   FROM [clt_NetO].[WG_BORR_INCOME_SRC_PAYSTUB] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwWG_BRM_DEFN_FIELDS')
 BEGIN
    DROP VIEW [NetO].[VwWG_BRM_DEFN_FIELDS]
@@ -23248,6 +23475,37 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwASSOCDOCS')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwASSOCDOCS]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwASSOCDOCS]
+AS
+   SELECT
+      x.[S_SUNDCON],
+      A0.Descript AS [S_SUNDCONDescription],
+      x.[CNTR],
+      x.[S_ASSOCDOC],
+      A1.Descript AS [S_ASSOCDOCDescription],
+      x.[SRCENV],
+      x.[REC_CUSTOM],
+      x.[CREATE_DATE],
+      x.[MODIFY_DATE]
+   FROM [clt_NetO].[ASSOCDOCS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.[DBSYMBOL] AND A0.[TableName] = 'ASSOCDOCS' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSOCDOC = A1.[DBSYMBOL] AND A1.[TableName] = 'ASSOCDOCS' and A1.[COLUMNNAME] = 'S_ASSOCDOC'
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -31683,6 +31941,81 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[PS_CTR],
+      x.[INC_SRC_CTR],
+      x.[YTD_FROM_DATE],
+      x.[YTD_TO_DATE],
+      x.[PAYSTUB_DATE],
+      x.[AVGHOURSPERWEEK],
+      x.[MONTHLYBASEPAY],
+      x.[MONTHLYRATE],
+      x.[OVERTIME_PAY],
+      x.[YTD_BASEPAY],
+      x.[YTD_OVERTIMEPAY],
+      x.[YTD_BONUSPAY],
+      x.[YTD_COMMISSIONPAY],
+      x.[YTD_TOTALPAY],
+      x.[OTHER_PAY],
+      x.[COMMISSION_PAY],
+      x.[DEPENDENT_CARE_BENEFITS],
+      x.[GARNISHMENTS],
+      x.[YTD_OTHERPAY],
+      x.[LOAN_REPAYMENT],
+      x.[PAYS_TOTAL_PAY],
+      x.[CALCULATED_INCOME],
+      x.[OVR_CALCULATED_INCOME],
+      x.[OTHER_DEDUCTION],
+      x.[AVG_YTD_BASE],
+      x.[AVG_YTD_GROSS],
+      x.[CHK_AVG_YTD_BASE],
+      x.[CHK_CURRENT_BASE],
+      x.[CHK_AVG_YTD_GROSS],
+      x.[BONUS_PAY],
+      x.[PAYFREQ],
+      x.[BASE_HOURLY_PAY],
+      x.[CHK_BASE_HOURLY_PAY],
+      x.[SUMMARY_CURRENT_NETPAY],
+      x.[OVERTIMEHOURS],
+      x.[OVERTIMERATE],
+      x.[BONUSHOURS],
+      x.[BONUSRATE],
+      x.[COMMISSIONHOURS],
+      x.[COMMISSIONRATE],
+      x.[OTHERHOURS],
+      x.[OTHERRATE],
+      x.[MILITARYHOURS],
+      x.[MILITARYRATE],
+      x.[MILITARY_PAY],
+      x.[YTD_MILITARYPAY],
+      x.[DOC_UPLOADED_DATE],
+      x.[DATA_UPDATED_DATE],
+      x.[DATA_UPDATED_BYUSER],
+      x.[OCR_DATA_FLAG],
+      x.[VALID_CARD]
+   FROM [clt_NetO].[WG_BORR_INCOME_SRC_PAYSTUB] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_DEFN_FIELDS')
 BEGIN
    DROP VIEW [NetO_restricted].[VwWG_BRM_DEFN_FIELDS]
@@ -33736,6 +34069,37 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwASSOCDOCS')
+BEGIN
+   DROP VIEW [NetO_pii].[VwASSOCDOCS]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwASSOCDOCS]
+AS
+   SELECT
+      x.[S_SUNDCON],
+      A0.Descript AS [S_SUNDCONDescription],
+      x.[CNTR],
+      x.[S_ASSOCDOC],
+      A1.Descript AS [S_ASSOCDOCDescription],
+      x.[SRCENV],
+      x.[REC_CUSTOM],
+      x.[CREATE_DATE],
+      x.[MODIFY_DATE]
+   FROM [clt_NetO].[ASSOCDOCS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.[DBSYMBOL] AND A0.[TableName] = 'ASSOCDOCS' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSOCDOC = A1.[DBSYMBOL] AND A1.[TableName] = 'ASSOCDOCS' and A1.[COLUMNNAME] = 'S_ASSOCDOC'
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -42171,6 +42535,81 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
+BEGIN
+   DROP VIEW [NetO_pii].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[PS_CTR],
+      x.[INC_SRC_CTR],
+      x.[YTD_FROM_DATE],
+      x.[YTD_TO_DATE],
+      x.[PAYSTUB_DATE],
+      x.[AVGHOURSPERWEEK],
+      x.[MONTHLYBASEPAY],
+      x.[MONTHLYRATE],
+      x.[OVERTIME_PAY],
+      x.[YTD_BASEPAY],
+      x.[YTD_OVERTIMEPAY],
+      x.[YTD_BONUSPAY],
+      x.[YTD_COMMISSIONPAY],
+      x.[YTD_TOTALPAY],
+      x.[OTHER_PAY],
+      x.[COMMISSION_PAY],
+      x.[DEPENDENT_CARE_BENEFITS],
+      x.[GARNISHMENTS],
+      x.[YTD_OTHERPAY],
+      x.[LOAN_REPAYMENT],
+      x.[PAYS_TOTAL_PAY],
+      x.[CALCULATED_INCOME],
+      x.[OVR_CALCULATED_INCOME],
+      x.[OTHER_DEDUCTION],
+      x.[AVG_YTD_BASE],
+      x.[AVG_YTD_GROSS],
+      x.[CHK_AVG_YTD_BASE],
+      x.[CHK_CURRENT_BASE],
+      x.[CHK_AVG_YTD_GROSS],
+      x.[BONUS_PAY],
+      x.[PAYFREQ],
+      x.[BASE_HOURLY_PAY],
+      x.[CHK_BASE_HOURLY_PAY],
+      x.[SUMMARY_CURRENT_NETPAY],
+      x.[OVERTIMEHOURS],
+      x.[OVERTIMERATE],
+      x.[BONUSHOURS],
+      x.[BONUSRATE],
+      x.[COMMISSIONHOURS],
+      x.[COMMISSIONRATE],
+      x.[OTHERHOURS],
+      x.[OTHERRATE],
+      x.[MILITARYHOURS],
+      x.[MILITARYRATE],
+      x.[MILITARY_PAY],
+      x.[YTD_MILITARYPAY],
+      x.[DOC_UPLOADED_DATE],
+      x.[DATA_UPDATED_DATE],
+      x.[DATA_UPDATED_BYUSER],
+      x.[OCR_DATA_FLAG],
+      x.[VALID_CARD]
+   FROM [clt_NetO].[WG_BORR_INCOME_SRC_PAYSTUB] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwWG_BRM_DEFN_FIELDS')
 BEGIN
    DROP VIEW [NetO_pii].[VwWG_BRM_DEFN_FIELDS]
@@ -44224,6 +44663,37 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwASSOCDOCS')
+BEGIN
+   DROP VIEW [NetO_sas].[VwASSOCDOCS]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwASSOCDOCS]
+AS
+   SELECT
+      x.[S_SUNDCON] AS [S_SUNDCON],
+      A0.Descript AS [S_SUNDCONDescription],
+      x.[CNTR] AS [CNTR],
+      x.[S_ASSOCDOC] AS [S_ASSOCDOC],
+      A1.Descript AS [S_ASSOCDOCDescription],
+      x.[SRCENV] AS [SRCENV],
+      x.[REC_CUSTOM] AS [REC_CUSTOM],
+      x.[CREATE_DATE] AS [CREATE_DATE],
+      x.[MODIFY_DATE] AS [MODIFY_DATE]
+   FROM [clt_NetO].[ASSOCDOCS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.[DBSYMBOL] AND A0.[TableName] = 'ASSOCDOCS' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSOCDOC = A1.[DBSYMBOL] AND A1.[TableName] = 'ASSOCDOCS' and A1.[COLUMNNAME] = 'S_ASSOCDOC'
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -52659,6 +53129,81 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
+BEGIN
+   DROP VIEW [NetO_sas].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[PS_CTR] AS [PS_CTR],
+      x.[INC_SRC_CTR] AS [INC_SRC_CTR],
+      x.[YTD_FROM_DATE] AS [YTD_FROM_DATE],
+      x.[YTD_TO_DATE] AS [YTD_TO_DATE],
+      x.[PAYSTUB_DATE] AS [PAYSTUB_DATE],
+      x.[AVGHOURSPERWEEK] AS [AVGHOURSPERWEEK],
+      x.[MONTHLYBASEPAY] AS [MONTHLYBASEPAY],
+      x.[MONTHLYRATE] AS [MONTHLYRATE],
+      x.[OVERTIME_PAY] AS [OVERTIME_PAY],
+      x.[YTD_BASEPAY] AS [YTD_BASEPAY],
+      x.[YTD_OVERTIMEPAY] AS [YTD_OVERTIMEPAY],
+      x.[YTD_BONUSPAY] AS [YTD_BONUSPAY],
+      x.[YTD_COMMISSIONPAY] AS [YTD_COMMISSIONPAY],
+      x.[YTD_TOTALPAY] AS [YTD_TOTALPAY],
+      x.[OTHER_PAY] AS [OTHER_PAY],
+      x.[COMMISSION_PAY] AS [COMMISSION_PAY],
+      x.[DEPENDENT_CARE_BENEFITS] AS [DEPENDENT_CARE_BENEFITS],
+      x.[GARNISHMENTS] AS [GARNISHMENTS],
+      x.[YTD_OTHERPAY] AS [YTD_OTHERPAY],
+      x.[LOAN_REPAYMENT] AS [LOAN_REPAYMENT],
+      x.[PAYS_TOTAL_PAY] AS [PAYS_TOTAL_PAY],
+      x.[CALCULATED_INCOME] AS [CALCULATED_INCOME],
+      x.[OVR_CALCULATED_INCOME] AS [OVR_CALCULATED_INCOME],
+      x.[OTHER_DEDUCTION] AS [OTHER_DEDUCTION],
+      x.[AVG_YTD_BASE] AS [AVG_YTD_BASE],
+      x.[AVG_YTD_GROSS] AS [AVG_YTD_GROSS],
+      x.[CHK_AVG_YTD_BASE] AS [CHK_AVG_YTD_BASE],
+      x.[CHK_CURRENT_BASE] AS [CHK_CURRENT_BASE],
+      x.[CHK_AVG_YTD_GROSS] AS [CHK_AVG_YTD_GROSS],
+      x.[BONUS_PAY] AS [BONUS_PAY],
+      x.[PAYFREQ] AS [PAYFREQ],
+      x.[BASE_HOURLY_PAY] AS [BASE_HOURLY_PAY],
+      x.[CHK_BASE_HOURLY_PAY] AS [CHK_BASE_HOURLY_PAY],
+      x.[SUMMARY_CURRENT_NETPAY] AS [SUMMARY_CURRENT_NETPAY],
+      x.[OVERTIMEHOURS] AS [OVERTIMEHOURS],
+      x.[OVERTIMERATE] AS [OVERTIMERATE],
+      x.[BONUSHOURS] AS [BONUSHOURS],
+      x.[BONUSRATE] AS [BONUSRATE],
+      x.[COMMISSIONHOURS] AS [COMMISSIONHOURS],
+      x.[COMMISSIONRATE] AS [COMMISSIONRATE],
+      x.[OTHERHOURS] AS [OTHERHOURS],
+      x.[OTHERRATE] AS [OTHERRATE],
+      x.[MILITARYHOURS] AS [MILITARYHOURS],
+      x.[MILITARYRATE] AS [MILITARYRATE],
+      x.[MILITARY_PAY] AS [MILITARY_PAY],
+      x.[YTD_MILITARYPAY] AS [YTD_MILITARYPAY],
+      x.[DOC_UPLOADED_DATE] AS [DOC_UPLOADED_DATE],
+      x.[DATA_UPDATED_DATE] AS [DATA_UPDATED_DATE],
+      x.[DATA_UPDATED_BYUSER] AS [DATA_UPDATED_BYUSER],
+      x.[OCR_DATA_FLAG] AS [OCR_DATA_FLAG],
+      x.[VALID_CARD] AS [VALID_CARD]
+   FROM [clt_NetO].[WG_BORR_INCOME_SRC_PAYSTUB] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwWG_BRM_DEFN_FIELDS')
 BEGIN
    DROP VIEW [NetO_sas].[VwWG_BRM_DEFN_FIELDS]
@@ -54712,6 +55257,37 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwASSOCDOCS')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwASSOCDOCS]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwASSOCDOCS]
+AS
+   SELECT
+      x.[S_SUNDCON] AS [S_SUNDCON],
+      A0.Descript AS [S_SUNDCONDescription],
+      x.[CNTR] AS [CNTR],
+      x.[S_ASSOCDOC] AS [S_ASSOCDOC],
+      A1.Descript AS [S_ASSOCDOCDescription],
+      x.[SRCENV] AS [SRCENV],
+      x.[REC_CUSTOM] AS [REC_CUSTOM],
+      x.[CREATE_DATE] AS [CREATE_DATE],
+      x.[MODIFY_DATE] AS [MODIFY_DATE]
+   FROM [clt_NetO].[ASSOCDOCS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.[DBSYMBOL] AND A0.[TableName] = 'ASSOCDOCS' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSOCDOC = A1.[DBSYMBOL] AND A1.[TableName] = 'ASSOCDOCS' and A1.[COLUMNNAME] = 'S_ASSOCDOC'
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -63147,6 +63723,81 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[PS_CTR] AS [PS_CTR],
+      x.[INC_SRC_CTR] AS [INC_SRC_CTR],
+      x.[YTD_FROM_DATE] AS [YTD_FROM_DATE],
+      x.[YTD_TO_DATE] AS [YTD_TO_DATE],
+      x.[PAYSTUB_DATE] AS [PAYSTUB_DATE],
+      x.[AVGHOURSPERWEEK] AS [AVGHOURSPERWEEK],
+      x.[MONTHLYBASEPAY] AS [MONTHLYBASEPAY],
+      x.[MONTHLYRATE] AS [MONTHLYRATE],
+      x.[OVERTIME_PAY] AS [OVERTIME_PAY],
+      x.[YTD_BASEPAY] AS [YTD_BASEPAY],
+      x.[YTD_OVERTIMEPAY] AS [YTD_OVERTIMEPAY],
+      x.[YTD_BONUSPAY] AS [YTD_BONUSPAY],
+      x.[YTD_COMMISSIONPAY] AS [YTD_COMMISSIONPAY],
+      x.[YTD_TOTALPAY] AS [YTD_TOTALPAY],
+      x.[OTHER_PAY] AS [OTHER_PAY],
+      x.[COMMISSION_PAY] AS [COMMISSION_PAY],
+      x.[DEPENDENT_CARE_BENEFITS] AS [DEPENDENT_CARE_BENEFITS],
+      x.[GARNISHMENTS] AS [GARNISHMENTS],
+      x.[YTD_OTHERPAY] AS [YTD_OTHERPAY],
+      x.[LOAN_REPAYMENT] AS [LOAN_REPAYMENT],
+      x.[PAYS_TOTAL_PAY] AS [PAYS_TOTAL_PAY],
+      x.[CALCULATED_INCOME] AS [CALCULATED_INCOME],
+      x.[OVR_CALCULATED_INCOME] AS [OVR_CALCULATED_INCOME],
+      x.[OTHER_DEDUCTION] AS [OTHER_DEDUCTION],
+      x.[AVG_YTD_BASE] AS [AVG_YTD_BASE],
+      x.[AVG_YTD_GROSS] AS [AVG_YTD_GROSS],
+      x.[CHK_AVG_YTD_BASE] AS [CHK_AVG_YTD_BASE],
+      x.[CHK_CURRENT_BASE] AS [CHK_CURRENT_BASE],
+      x.[CHK_AVG_YTD_GROSS] AS [CHK_AVG_YTD_GROSS],
+      x.[BONUS_PAY] AS [BONUS_PAY],
+      x.[PAYFREQ] AS [PAYFREQ],
+      x.[BASE_HOURLY_PAY] AS [BASE_HOURLY_PAY],
+      x.[CHK_BASE_HOURLY_PAY] AS [CHK_BASE_HOURLY_PAY],
+      x.[SUMMARY_CURRENT_NETPAY] AS [SUMMARY_CURRENT_NETPAY],
+      x.[OVERTIMEHOURS] AS [OVERTIMEHOURS],
+      x.[OVERTIMERATE] AS [OVERTIMERATE],
+      x.[BONUSHOURS] AS [BONUSHOURS],
+      x.[BONUSRATE] AS [BONUSRATE],
+      x.[COMMISSIONHOURS] AS [COMMISSIONHOURS],
+      x.[COMMISSIONRATE] AS [COMMISSIONRATE],
+      x.[OTHERHOURS] AS [OTHERHOURS],
+      x.[OTHERRATE] AS [OTHERRATE],
+      x.[MILITARYHOURS] AS [MILITARYHOURS],
+      x.[MILITARYRATE] AS [MILITARYRATE],
+      x.[MILITARY_PAY] AS [MILITARY_PAY],
+      x.[YTD_MILITARYPAY] AS [YTD_MILITARYPAY],
+      x.[DOC_UPLOADED_DATE] AS [DOC_UPLOADED_DATE],
+      x.[DATA_UPDATED_DATE] AS [DATA_UPDATED_DATE],
+      x.[DATA_UPDATED_BYUSER] AS [DATA_UPDATED_BYUSER],
+      x.[OCR_DATA_FLAG] AS [OCR_DATA_FLAG],
+      x.[VALID_CARD] AS [VALID_CARD]
+   FROM [clt_NetO].[WG_BORR_INCOME_SRC_PAYSTUB] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_DEFN_FIELDS')
 BEGIN
    DROP VIEW [NetO_sas_restricted].[VwWG_BRM_DEFN_FIELDS]
@@ -65200,6 +65851,37 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwASSOCDOCS')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwASSOCDOCS]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwASSOCDOCS]
+AS
+   SELECT
+      x.[S_SUNDCON] AS [S_SUNDCON],
+      A0.Descript AS [S_SUNDCONDescription],
+      x.[CNTR] AS [CNTR],
+      x.[S_ASSOCDOC] AS [S_ASSOCDOC],
+      A1.Descript AS [S_ASSOCDOCDescription],
+      x.[SRCENV] AS [SRCENV],
+      x.[REC_CUSTOM] AS [REC_CUSTOM],
+      x.[CREATE_DATE] AS [CREATE_DATE],
+      x.[MODIFY_DATE] AS [MODIFY_DATE]
+   FROM [clt_NetO].[ASSOCDOCS] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_SUNDCON = A0.[DBSYMBOL] AND A0.[TableName] = 'ASSOCDOCS' and A0.[COLUMNNAME] = 'S_SUNDCON'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSOCDOC = A1.[DBSYMBOL] AND A1.[TableName] = 'ASSOCDOCS' and A1.[COLUMNNAME] = 'S_ASSOCDOC'
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -73625,6 +74307,81 @@ AS
       x.[AD_ACCT_TYP_OTH] AS [AD_ACCT_TYP_OTH]
    FROM [clt_NetO].[WG_AUTO_DEBIT] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_AD_ACCT_TYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_AUTO_DEBIT' and A0.[COLUMNNAME] = 'S_AD_ACCT_TYPE'
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[PS_CTR] AS [PS_CTR],
+      x.[INC_SRC_CTR] AS [INC_SRC_CTR],
+      x.[YTD_FROM_DATE] AS [YTD_FROM_DATE],
+      x.[YTD_TO_DATE] AS [YTD_TO_DATE],
+      x.[PAYSTUB_DATE] AS [PAYSTUB_DATE],
+      x.[AVGHOURSPERWEEK] AS [AVGHOURSPERWEEK],
+      x.[MONTHLYBASEPAY] AS [MONTHLYBASEPAY],
+      x.[MONTHLYRATE] AS [MONTHLYRATE],
+      x.[OVERTIME_PAY] AS [OVERTIME_PAY],
+      x.[YTD_BASEPAY] AS [YTD_BASEPAY],
+      x.[YTD_OVERTIMEPAY] AS [YTD_OVERTIMEPAY],
+      x.[YTD_BONUSPAY] AS [YTD_BONUSPAY],
+      x.[YTD_COMMISSIONPAY] AS [YTD_COMMISSIONPAY],
+      x.[YTD_TOTALPAY] AS [YTD_TOTALPAY],
+      x.[OTHER_PAY] AS [OTHER_PAY],
+      x.[COMMISSION_PAY] AS [COMMISSION_PAY],
+      x.[DEPENDENT_CARE_BENEFITS] AS [DEPENDENT_CARE_BENEFITS],
+      x.[GARNISHMENTS] AS [GARNISHMENTS],
+      x.[YTD_OTHERPAY] AS [YTD_OTHERPAY],
+      x.[LOAN_REPAYMENT] AS [LOAN_REPAYMENT],
+      x.[PAYS_TOTAL_PAY] AS [PAYS_TOTAL_PAY],
+      x.[CALCULATED_INCOME] AS [CALCULATED_INCOME],
+      x.[OVR_CALCULATED_INCOME] AS [OVR_CALCULATED_INCOME],
+      x.[OTHER_DEDUCTION] AS [OTHER_DEDUCTION],
+      x.[AVG_YTD_BASE] AS [AVG_YTD_BASE],
+      x.[AVG_YTD_GROSS] AS [AVG_YTD_GROSS],
+      x.[CHK_AVG_YTD_BASE] AS [CHK_AVG_YTD_BASE],
+      x.[CHK_CURRENT_BASE] AS [CHK_CURRENT_BASE],
+      x.[CHK_AVG_YTD_GROSS] AS [CHK_AVG_YTD_GROSS],
+      x.[BONUS_PAY] AS [BONUS_PAY],
+      x.[PAYFREQ] AS [PAYFREQ],
+      x.[BASE_HOURLY_PAY] AS [BASE_HOURLY_PAY],
+      x.[CHK_BASE_HOURLY_PAY] AS [CHK_BASE_HOURLY_PAY],
+      x.[SUMMARY_CURRENT_NETPAY] AS [SUMMARY_CURRENT_NETPAY],
+      x.[OVERTIMEHOURS] AS [OVERTIMEHOURS],
+      x.[OVERTIMERATE] AS [OVERTIMERATE],
+      x.[BONUSHOURS] AS [BONUSHOURS],
+      x.[BONUSRATE] AS [BONUSRATE],
+      x.[COMMISSIONHOURS] AS [COMMISSIONHOURS],
+      x.[COMMISSIONRATE] AS [COMMISSIONRATE],
+      x.[OTHERHOURS] AS [OTHERHOURS],
+      x.[OTHERRATE] AS [OTHERRATE],
+      x.[MILITARYHOURS] AS [MILITARYHOURS],
+      x.[MILITARYRATE] AS [MILITARYRATE],
+      x.[MILITARY_PAY] AS [MILITARY_PAY],
+      x.[YTD_MILITARYPAY] AS [YTD_MILITARYPAY],
+      x.[DOC_UPLOADED_DATE] AS [DOC_UPLOADED_DATE],
+      x.[DATA_UPDATED_DATE] AS [DATA_UPDATED_DATE],
+      x.[DATA_UPDATED_BYUSER] AS [DATA_UPDATED_BYUSER],
+      x.[OCR_DATA_FLAG] AS [OCR_DATA_FLAG],
+      x.[VALID_CARD] AS [VALID_CARD]
+   FROM [clt_NetO].[WG_BORR_INCOME_SRC_PAYSTUB] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
