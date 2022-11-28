@@ -162,7 +162,12 @@ VALUES
 (@activity_id, @activity_name, 'copy_cmd', 'Source', 'ASAP_RecordEffectiveDateTime_mapping', 'ASAP_SRC_FILE_DATE'),
 (@activity_id, @activity_name, 'copy_cmd', 'Source', 'tgt_linked_service', 'asap_syn'),
 (@activity_id, @activity_name, 'copy_cmd', 'Source', 'parent_key', 'LNUM'),
-(@activity_id, @activity_name, 'copy_cmd', 'Source', 'date_from_format', 'YYYYMMDD_HHMMSS');
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'date_from_format', 'YYYYMMDD_HHMMSS'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'sp_name_create_ingest_table', 'etl.usp_create_ingest_table'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'sp_name_raw_to_ingest_load', 'etl.usp_raw_to_ingest_load'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'sp_name_Load_Q_Table_From_Ingest', 'etl.usp_Load_Q_Table_From_Ingest'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'sp_name_LoadTable', 'etl.usp_LoadTable'),
+(@activity_id, @activity_name, 'copy_cmd', 'Source', 'sp_name_IncrementalSnapshot_DeleteStampTable', 'etl.usp_IncrementalSnapshot_DeleteStampTable');
 
 PRINT 'Merge Activity Parameter';
 
