@@ -16,7 +16,7 @@ AS
       x.[REG_O_BORROWER],
       x.[EMPLOYEE_BORROWER],
       x.[S_EMP_REGO_TYPE],
-      A0.Descript AS [S_EMP_REGO_TYPEDescription],
+      A0.Descript AS [EMP_REGO_TYPE],
       x.[EXEC_EDUC],
       x.[EXEC_OFFIC_OTH],
       x.[EXEC_OFFIC_YN],

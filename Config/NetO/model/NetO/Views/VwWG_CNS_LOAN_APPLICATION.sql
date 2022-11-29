@@ -9,15 +9,15 @@ AS
       x.[LNUM],
       x.[CID_BRANCH],
       x.[S_BUSINESS_CHANNEL],
-      A0.Descript AS [S_BUSINESS_CHANNELDescription],
+      A0.Descript AS [BUSINESCHANNEL],
       x.[S_LOAN_TYPE],
-      A1.Descript AS [S_LOAN_TYPEDescription],
+      A1.Descript AS [LOAN_TYPE],
       x.[S_LOAN_CATEGORY],
-      A2.Descript AS [S_LOAN_CATEGORYDescription],
+      A2.Descript AS [LOAN_CATEGORY],
       x.[S_REFERRAL_SOURCE],
-      A3.Descript AS [S_REFERRAL_SOURCEDescription],
+      A3.Descript AS [REFERRAL_SOURCE],
       x.[S_LOAN_PURPOSE],
-      A4.Descript AS [S_LOAN_PURPOSEDescription],
+      A4.Descript AS [LOAN_PURPOSE],
       x.[EMP_LOAN_YN],
       x.[REG_O_LOAN_YN],
       x.[TSWE_EXPECTED_YN],
@@ -28,7 +28,7 @@ AS
       x.[MBA_YN],
       x.[IS_PERSONALUSE_YN],
       x.[S_PRIMARY_COLLATERAL_TYPE],
-      A5.Descript AS [S_PRIMARY_COLLATERAL_TYPEDescription],
+      A5.Descript AS [PRIMARY_COLLATERAL_TYPE],
       x.[COLLATERAL_STATE],
       x.[VENDOR_VAL_METHOD],
       x.[VALUATION_SOURCE],
@@ -37,9 +37,9 @@ AS
       x.[CURRENTMODELYR],
       x.[COLLAGEYRS],
       x.[S_TITLE_TRANSFER],
-      A6.Descript AS [S_TITLE_TRANSFERDescription],
+      A6.Descript AS [TITLE_TRANSFER],
       x.[S_SECONDARY_COLLATERAL_TYPE],
-      A7.Descript AS [S_SECONDARY_COLLATERAL_TYPEDescription]
+      A7.Descript AS [SECONDARY_COLLATERAL_TYPE]
    FROM [clt_NetO].[WG_CNS_LOAN_APPLICATION] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BUSINESS_CHANNEL = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A0.[COLUMNNAME] = 'S_BUSINESS_CHANNEL'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_LOAN_TYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_CNS_LOAN_APPLICATION' and A1.[COLUMNNAME] = 'S_LOAN_TYPE'

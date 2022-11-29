@@ -10,7 +10,6 @@ namespace SqlGenerator.sdk.Generator;
 
 public class SqlViewBuilder
 {
-    private const string _aliasFormat = "{alias}";
     private const string _tableFormat = "{tableName}";
     private readonly PhysicalModel _physicalModel;
     private readonly SqlProjectOption _option;
@@ -257,7 +256,14 @@ public class SqlViewBuilder
             .Add("schemaName", schemaModel.Name)
             .Add("tableName", tableModel.Name.Name)
             .Add("columnName", columnModel.Name)
-            .Add("alias", $"A{index}");
+            .Add("alias", $"A{index}")
+            .Add("mapColumnName", x => mapColumnName(columnModel.Name.Replace(x, string.Empty)));
+
+        string mapColumnName(string columnName) => schemaModel.MaxColumnSize switch
+        {
+            null => columnName,
+            int v => _option?.ShortName(columnName, v) ?? columnName,
+        };
     }
 
     private IReadOnlyList<SqlInstruction> SetIndex(IReadOnlyList<SqlInstruction> instructions)

@@ -8,21 +8,21 @@ AS
    SELECT
       x.[FIELDID],
       x.[S_FIELD_STATUS],
-      A0.Descript AS [S_FIELD_STATUSDescription],
+      A0.Descript AS [FIELD_STATUS],
       x.[FIELD_NAME],
       x.[FIELD_TEXT],
       x.[S_FIELD_CONTROL_TYPE],
-      A1.Descript AS [S_FIELD_CONTROL_TYPEDescription],
+      A1.Descript AS [FIELD_CONTROL_TYPE],
       x.[S_FIELD_OPERATOR],
-      A2.Descript AS [S_FIELD_OPERATORDescription],
+      A2.Descript AS [FIELD_OPERATOR],
       x.[S_FIELD_LIST_SOURCE],
-      A3.Descript AS [S_FIELD_LIST_SOURCEDescription],
+      A3.Descript AS [FIELD_LIST_SOURCE],
       x.[S_FIELD_FORMAT],
-      A4.Descript AS [S_FIELD_FORMATDescription],
+      A4.Descript AS [FIELD_FORMAT],
       x.[CURRENT_USER_DATETIME],
       x.[CURRENT_USER_ID],
       x.[S_USAGE_TYPE],
-      A5.Descript AS [S_USAGE_TYPEDescription]
+      A5.Descript AS [USAGE_TYPE]
    FROM [clt_NetO].[WG_BRM_DEFN_FIELDS] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FIELD_STATUS = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_BRM_DEFN_FIELDS' and A0.[COLUMNNAME] = 'S_FIELD_STATUS'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FIELD_CONTROL_TYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_BRM_DEFN_FIELDS' and A1.[COLUMNNAME] = 'S_FIELD_CONTROL_TYPE'

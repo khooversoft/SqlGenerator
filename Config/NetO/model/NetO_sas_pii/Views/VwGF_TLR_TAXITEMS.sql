@@ -11,7 +11,7 @@ AS
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[HUDLINE] AS [HUDLINE],
       x.[S_TAXTYPE] AS [S_TAXTYPE],
-      A0.Descript AS [S_TAXTYPEDescription],
+      A0.Descript AS [TAXTYPE],
       x.[ANN_AMT] AS [ANN_AMT],
       x.[FIRST_DUE] AS [FIRST_DUE],
       x.[ESCROW] AS [ESCROW],
@@ -39,7 +39,7 @@ AS
       x.[RATEPERTHOUSAND] AS [RATEPERTHOUSAND],
       x.[COLFIRSTYR] AS [COLFIRSTYR],
       x.[S_ESCTAX] AS [S_ESCTAX],
-      A1.Descript AS [S_ESCTAXDescription],
+      A1.Descript AS [ESCTAX],
       x.[ISMERGEDINT] AS [ISMERGEDINT],
       x.[TAX_TYPE_DESC] AS [TAX_TYPE_DESC],
       x.[UPFRONT_TAX_AMOUNT] AS [UPFRONT_TAX_AMOUNT]

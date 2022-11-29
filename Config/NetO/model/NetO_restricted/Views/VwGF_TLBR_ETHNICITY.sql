@@ -11,7 +11,7 @@ AS
       x.[DBID],
       x.[ETHNICITY_CTR],
       x.[S_ETHNICITY],
-      A0.Descript AS [S_ETHNICITYDescription],
+      A0.Descript AS [ETHNICITY],
       x.[FURNISH_INFO_YN],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_ETHNICITY] x

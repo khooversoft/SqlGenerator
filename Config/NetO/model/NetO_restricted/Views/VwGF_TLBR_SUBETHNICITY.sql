@@ -11,7 +11,7 @@ AS
       x.[DBID],
       x.[SUBETHNICITY_CTR],
       x.[S_SUBETHNICITY],
-      A0.Descript AS [S_SUBETHNICITYDescription],
+      A0.Descript AS [SUBETHNICITY],
       x.[OTHER_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_SUBETHNICITY] x

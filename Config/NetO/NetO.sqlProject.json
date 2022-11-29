@@ -46,7 +46,7 @@
 		{
 			"model": "template",
 			"pattern": "*.S_*",
-			"selectLine": "{alias}.Descript AS [{columnName}Description]",
+			"selectLine": "{alias}.Descript AS [{mapColumnName(S_)}]",
 			"joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{columnName} = {alias}.[DBSYMBOL] AND {alias}.[TableName] = '{tableName}' and {alias}.[COLUMNNAME] = '{columnName}'",
 			"selectLineOrder": "{columnName}"
 		}

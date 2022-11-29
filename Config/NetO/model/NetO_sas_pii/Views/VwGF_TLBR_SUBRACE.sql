@@ -11,7 +11,7 @@ AS
       x.[DBID] AS [DBID],
       x.[SUBRACE_CTR] AS [SUBRACE_CTR],
       x.[S_SUBRACE] AS [S_SUBRACE],
-      A0.Descript AS [S_SUBRACEDescription],
+      A0.Descript AS [SUBRACE],
       x.[OTHER_ASIAN_DESC] AS [OTHER_ASIAN_DESC],
       x.[OTHER_PACISLDR_DESC] AS [OTHER_PACISLDR_DESC],
       x.[RECORD_CREATED] AS [RECORD_CREATED]

@@ -22,11 +22,11 @@ AS
       x.[ENGINE_TITLE_NUM],
       x.[ENGINE_MODEL_NUM],
       x.[S_ENGINE_MFG],
-      A0.Descript AS [S_ENGINE_MFGDescription],
+      A0.Descript AS [ENGINE_MFG],
       x.[S_MULTIENGINETYPE],
-      A1.Descript AS [S_MULTIENGINETYPEDescription],
+      A1.Descript AS [MULTIENGINETYPE],
       x.[S_ENGINE_COLOR],
-      A2.Descript AS [S_ENGINE_COLORDescription]
+      A2.Descript AS [ENGINE_COLOR]
    FROM [clt_NetO].[WG_ASSET_MARINE_ENG] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ENGINE_MFG = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_ASSET_MARINE_ENG' and A0.[COLUMNNAME] = 'S_ENGINE_MFG'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_MULTIENGINETYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_ASSET_MARINE_ENG' and A1.[COLUMNNAME] = 'S_MULTIENGINETYPE'

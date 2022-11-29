@@ -11,7 +11,7 @@ AS
       x.[DBID],
       x.[ASSETCTR],
       x.[S_ASSET],
-      A0.Descript AS [S_ASSETDescription],
+      A0.Descript AS [ASSET],
       x.[ASSETDSC],
       x.[ACCTNUM],
       x.[HOLDER],
@@ -47,9 +47,9 @@ AS
       x.[BUILDER_EARNEST],
       x.[ASSET_INDICATOR],
       x.[S_ACCOUNT_OWNERSHIP],
-      A1.Descript AS [S_ACCOUNT_OWNERSHIPDescription],
+      A1.Descript AS [ACCOUNT_OWNERSHIP],
       x.[S_GIFT_PRVDR_TYPE],
-      A2.Descript AS [S_GIFT_PRVDR_TYPEDescription],
+      A2.Descript AS [GIFT_PRVDR_TYPE],
       x.[GIFT_PRVDR_OTH_DESC],
       x.[GIFT_DEPOSIT_STATUS]
    FROM [clt_NetO].[ASSETS] x

@@ -31,7 +31,7 @@ AS
       x.[TRUST_STREET_ADDR2],
       x.[EMAIL],
       x.[S_TRUST_UNIT_TYPE],
-      A0.Descript AS [S_TRUST_UNIT_TYPEDescription],
+      A0.Descript AS [TRUST_UNIT_TYPE],
       x.[TRUST_UNIT_NUM],
       x.[TRUST_COUNTRY_CODE],
       x.[LIVING_TRUST_BNUM],

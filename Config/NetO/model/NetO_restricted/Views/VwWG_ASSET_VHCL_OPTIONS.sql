@@ -11,7 +11,7 @@ AS
       x.[ROWCOUNTER],
       x.[VALUATION_CNTR],
       x.[S_OPTION_TYPE],
-      A0.Descript AS [S_OPTION_TYPEDescription],
+      A0.Descript AS [OPTION_TYPE],
       x.[VHCL_OPTION_VALUE],
       x.[SELECTED_YN],
       x.[VHCL_OPTION],

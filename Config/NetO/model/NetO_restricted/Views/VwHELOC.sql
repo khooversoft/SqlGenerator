@@ -20,20 +20,20 @@ AS
       x.[CTAXLTV],
       x.[NUM_CARDS],
       x.[S_LOCTYPE],
-      A0.Descript AS [S_LOCTYPEDescription],
+      A0.Descript AS [LOCTYPE],
       x.[ANNUAL_FEE],
       x.[REPAY_MTHS],
       x.[TERMIN_FEE],
       x.[DRAWACCESS_FEE],
       x.[S_FUNDS_TO_BE_DRAWN],
-      A1.Descript AS [S_FUNDS_TO_BE_DRAWNDescription],
+      A1.Descript AS [FUNDTO_BE_DRAWN],
       x.[OVERDRAFT_PROTECTION],
       x.[ODP_ACCOUNT_NUMBER],
       x.[ODP_ROUTING_NUMBER],
       x.[ANNUAL_CALC_OVR],
       x.[TERM_CALC_OVR],
       x.[S_REPAYMENT_METHOD],
-      A2.Descript AS [S_REPAYMENT_METHODDescription]
+      A2.Descript AS [REPAYMENT_METHOD]
    FROM [clt_NetO].[HELOC] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOCTYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'HELOC' and A0.[COLUMNNAME] = 'S_LOCTYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FUNDS_TO_BE_DRAWN = A1.[DBSYMBOL] AND A1.[TableName] = 'HELOC' and A1.[COLUMNNAME] = 'S_FUNDS_TO_BE_DRAWN'

@@ -9,7 +9,7 @@ AS
       x.[ROWCNTR] AS [ROWCNTR],
       x.[LNUM] AS [LNUM],
       x.[S_LOAN_STATUS] AS [S_LOAN_STATUS],
-      A0.Descript AS [S_LOAN_STATUSDescription],
+      A0.Descript AS [LOAN_STATUS],
       x.[LOAN_STATUS] AS [LOAN_STATUS],
       x.[STATUS_DATE] AS [STATUS_DATE]
    FROM [clt_NetO].[WG_RPT_LOAN_STATUS] x

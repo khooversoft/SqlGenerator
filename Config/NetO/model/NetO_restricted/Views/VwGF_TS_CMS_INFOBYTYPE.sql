@@ -8,15 +8,15 @@ AS
    SELECT
       x.[CID],
       x.[S_CMSTYPE],
-      A0.Descript AS [S_CMSTYPEDescription],
+      A0.Descript AS [CMSTYPE],
       x.[S_STATUS],
-      A1.Descript AS [S_STATUSDescription],
+      A1.Descript AS [STATUS],
       x.[STATUS_START_DT],
       x.[STATUS_STOP_DT],
       x.[STATUS_CHGD_DT],
       x.[USEPARENT],
       x.[S_GRADE],
-      A2.Descript AS [S_GRADEDescription],
+      A2.Descript AS [GRADE],
       x.[COMPLIANCE_MONITOR],
       x.[COMPLIANCE_EMAIL],
       x.[EMPLOYER_ID],
@@ -28,7 +28,7 @@ AS
       x.[SAR_ID],
       x.[PROVIDER_ID],
       x.[S_TYPE_OF_COMPANY],
-      A3.Descript AS [S_TYPE_OF_COMPANYDescription],
+      A3.Descript AS [TYPE_OF_COMPANY],
       x.[CMS_SHORT_DESC],
       x.[CMS_COMMENTS]
    FROM [clt_NetO].[GF_TS_CMS_INFOBYTYPE] x
