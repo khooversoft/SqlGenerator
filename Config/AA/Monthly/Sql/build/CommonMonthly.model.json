@@ -37,7 +37,7 @@
         {
           "name": "MonthEndDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": true,
@@ -58,14 +58,14 @@
         },
         {
           "name": "AccountNumber",
-          "security": "unrestricted",
+          "security": "restricted",
           "dataType": "bigint",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 2,
           "pii": false,
-          "restricted": false
+          "restricted": true
         },
         {
           "name": "VendorId",
@@ -169,7 +169,7 @@
         {
           "name": "OriginalLoanAmount",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -191,7 +191,7 @@
         {
           "name": "OriginalJuniorBalance",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -202,7 +202,7 @@
         {
           "name": "CurrentJuniorBalance",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -213,7 +213,7 @@
         {
           "name": "OriginalSeniorBalance",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -224,7 +224,7 @@
         {
           "name": "CurrentSeniorBalance",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -235,7 +235,7 @@
         {
           "name": "CreditLimitAmount",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -245,35 +245,35 @@
         },
         {
           "name": "OriginalCreditScore",
-          "security": "unrestricted",
+          "security": "pii",
           "dataType": "int",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 19,
-          "pii": false,
+          "pii": true,
           "restricted": false
         },
         {
           "name": "CurrentCreditScore",
-          "security": "unrestricted",
+          "security": "pii",
           "dataType": "int",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 20,
-          "pii": false,
+          "pii": true,
           "restricted": false
         },
         {
           "name": "CreditScoreDate",
-          "security": "unrestricted",
-          "dataType": "int",
+          "security": "pii",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 21,
-          "pii": false,
+          "pii": true,
           "restricted": false
         },
         {
@@ -323,7 +323,7 @@
         {
           "name": "AccountOpenedDate",
           "security": "unrestricted",
-          "dataType": "nvarchar(100)",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -334,7 +334,7 @@
         {
           "name": "FirstDueDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -345,7 +345,7 @@
         {
           "name": "AccountMaturityDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -367,7 +367,7 @@
         {
           "name": "NextPaymentDueDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -378,7 +378,7 @@
         {
           "name": "PaidThruDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -552,24 +552,13 @@
           "restricted": false
         },
         {
-          "name": "ZipCode5",
-          "security": "pii",
-          "dataType": "int",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 47,
-          "pii": true,
-          "restricted": false
-        },
-        {
           "name": "PropertyMSA",
           "security": "pii",
           "dataType": "nvarchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 48,
+          "columnIndex": 47,
           "pii": true,
           "restricted": false
         },
@@ -580,7 +569,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 49,
+          "columnIndex": 48,
           "pii": false,
           "restricted": false
         },
@@ -591,14 +580,25 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 50,
+          "columnIndex": 49,
           "pii": false,
           "restricted": false
         },
         {
           "name": "OriginalAppraisalAmount",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 50,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OriginalAppraisalDate",
+          "security": "unrestricted",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -607,24 +607,13 @@
           "restricted": false
         },
         {
-          "name": "OriginalAppraisalDate",
+          "name": "CurrentAppraisalAmount",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 52,
-          "pii": false,
-          "restricted": false
-        },
-        {
-          "name": "CurrentAppraisalAmount",
-          "security": "unrestricted",
-          "dataType": "int",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 53,
           "pii": false,
           "restricted": false
         },
@@ -635,29 +624,29 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 54,
+          "columnIndex": 53,
           "pii": false,
           "restricted": false
         },
         {
           "name": "CurrentAppraisalDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 55,
+          "columnIndex": 54,
           "pii": false,
           "restricted": false
         },
         {
           "name": "FHLBPurchasePriceAmount",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 56,
+          "columnIndex": 55,
           "pii": false,
           "restricted": false
         },
@@ -668,18 +657,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 57,
+          "columnIndex": 56,
           "pii": false,
           "restricted": false
         },
         {
           "name": "OriginalLoanToValueAMTSecond",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 58,
+          "columnIndex": 57,
           "pii": false,
           "restricted": false
         },
@@ -690,7 +679,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 59,
+          "columnIndex": 58,
           "pii": false,
           "restricted": false
         },
@@ -701,29 +690,29 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 60,
+          "columnIndex": 59,
           "pii": false,
           "restricted": false
         },
         {
           "name": "CurrentCombinedLoanToValueAmount",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 61,
+          "columnIndex": 60,
           "pii": false,
           "restricted": false
         },
         {
           "name": "CurrentLoanToValueAmountSecond",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 62,
+          "columnIndex": 61,
           "pii": false,
           "restricted": false
         },
@@ -734,7 +723,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 63,
+          "columnIndex": 62,
           "pii": false,
           "restricted": false
         },
@@ -745,7 +734,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 64,
+          "columnIndex": 63,
           "pii": false,
           "restricted": false
         },
@@ -756,18 +745,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 65,
+          "columnIndex": 64,
           "pii": false,
           "restricted": false
         },
         {
           "name": "BankruptcyTypeCode",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nvarchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 66,
+          "columnIndex": 65,
           "pii": false,
           "restricted": false
         },
@@ -778,7 +767,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 67,
+          "columnIndex": 66,
           "pii": false,
           "restricted": false
         },
@@ -789,7 +778,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 68,
+          "columnIndex": 67,
           "pii": false,
           "restricted": false
         },
@@ -800,7 +789,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 69,
+          "columnIndex": 68,
           "pii": false,
           "restricted": false
         },
@@ -811,14 +800,25 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 70,
+          "columnIndex": 69,
           "pii": false,
           "restricted": false
         },
         {
           "name": "ChargeOffAmount",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 70,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RecoveryAmount",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -827,24 +827,13 @@
           "restricted": false
         },
         {
-          "name": "RecoveryAmount",
+          "name": "FFIECWritedownAmount",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 72,
-          "pii": false,
-          "restricted": false
-        },
-        {
-          "name": "FFIECWritedownAmount",
-          "security": "unrestricted",
-          "dataType": "int",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 73,
           "pii": false,
           "restricted": false
         },
@@ -855,7 +844,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 74,
+          "columnIndex": 73,
           "pii": false,
           "restricted": false
         },
@@ -866,7 +855,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 75,
+          "columnIndex": 74,
           "pii": false,
           "restricted": false
         },
@@ -877,7 +866,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 76,
+          "columnIndex": 75,
           "pii": false,
           "restricted": false
         },
@@ -888,7 +877,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 77,
+          "columnIndex": 76,
           "pii": false,
           "restricted": false
         },
@@ -899,7 +888,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 78,
+          "columnIndex": 77,
           "pii": false,
           "restricted": false
         },
@@ -910,14 +899,25 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 79,
+          "columnIndex": 78,
           "pii": false,
           "restricted": false
         },
         {
           "name": "BankruptcyEffectiveDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 79,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ForeclosureStartDate",
+          "security": "unrestricted",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -926,9 +926,9 @@
           "restricted": false
         },
         {
-          "name": "ForeclosureStartDate",
+          "name": "ForeclosureSaleDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -937,24 +937,13 @@
           "restricted": false
         },
         {
-          "name": "ForeclosureSaleDate",
+          "name": "RealEstateOwnedDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 82,
-          "pii": false,
-          "restricted": false
-        },
-        {
-          "name": "RealEstateOwnedDate",
-          "security": "unrestricted",
-          "dataType": "int",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 83,
           "pii": false,
           "restricted": false
         },
@@ -965,7 +954,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 84,
+          "columnIndex": 83,
           "pii": false,
           "restricted": false
         },
@@ -976,18 +965,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 85,
+          "columnIndex": 84,
           "pii": false,
           "restricted": false
         },
         {
           "name": "TDRImpairmentAmount",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 86,
+          "columnIndex": 85,
           "pii": false,
           "restricted": false
         },
@@ -998,18 +987,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 87,
+          "columnIndex": 86,
           "pii": false,
           "restricted": false
         },
         {
           "name": "ModificationDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 88,
+          "columnIndex": 87,
           "pii": false,
           "restricted": false
         },
@@ -1020,18 +1009,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 89,
+          "columnIndex": 88,
           "pii": false,
           "restricted": false
         },
         {
           "name": "LastModificationDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 90,
+          "columnIndex": 89,
           "pii": false,
           "restricted": false
         },
@@ -1042,14 +1031,25 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 91,
+          "columnIndex": 90,
           "pii": false,
           "restricted": false
         },
         {
           "name": "ModificationMaturityDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 91,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ModificationForgiveDate",
+          "security": "unrestricted",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1058,24 +1058,13 @@
           "restricted": false
         },
         {
-          "name": "ModificationForgiveDate",
+          "name": "ModificationForborneDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 93,
-          "pii": false,
-          "restricted": false
-        },
-        {
-          "name": "ModificationForborneDate",
-          "security": "unrestricted",
-          "dataType": "int",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 94,
           "pii": false,
           "restricted": false
         },
@@ -1086,7 +1075,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 95,
+          "columnIndex": 94,
           "pii": false,
           "restricted": false
         },
@@ -1097,7 +1086,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 96,
+          "columnIndex": 95,
           "pii": false,
           "restricted": false
         },
@@ -1108,18 +1097,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 97,
+          "columnIndex": 96,
           "pii": false,
           "restricted": false
         },
         {
           "name": "PostModificationLoanToValue",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 98,
+          "columnIndex": 97,
           "pii": false,
           "restricted": false
         },
@@ -1130,18 +1119,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 99,
+          "columnIndex": 98,
           "pii": false,
           "restricted": false
         },
         {
           "name": "ModificationBalance",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 100,
+          "columnIndex": 99,
           "pii": false,
           "restricted": false
         },
@@ -1152,7 +1141,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 101,
+          "columnIndex": 100,
           "pii": false,
           "restricted": false
         },
@@ -1163,7 +1152,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 102,
+          "columnIndex": 101,
           "pii": false,
           "restricted": false
         },
@@ -1174,7 +1163,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 103,
+          "columnIndex": 102,
           "pii": false,
           "restricted": false
         },
@@ -1185,7 +1174,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 104,
+          "columnIndex": 103,
           "pii": false,
           "restricted": false
         },
@@ -1196,7 +1185,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 105,
+          "columnIndex": 104,
           "pii": false,
           "restricted": false
         },
@@ -1207,7 +1196,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 106,
+          "columnIndex": 105,
           "pii": false,
           "restricted": false
         },
@@ -1218,7 +1207,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 107,
+          "columnIndex": 106,
           "pii": false,
           "restricted": false
         },
@@ -1229,7 +1218,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 108,
+          "columnIndex": 107,
           "pii": false,
           "restricted": false
         },
@@ -1240,7 +1229,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 109,
+          "columnIndex": 108,
           "pii": false,
           "restricted": false
         },
@@ -1251,7 +1240,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 110,
+          "columnIndex": 109,
           "pii": false,
           "restricted": false
         },
@@ -1262,7 +1251,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 111,
+          "columnIndex": 110,
           "pii": false,
           "restricted": false
         },
@@ -1273,29 +1262,29 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 112,
+          "columnIndex": 111,
           "pii": false,
           "restricted": false
         },
         {
           "name": "FirstRateAdjustDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 113,
+          "columnIndex": 112,
           "pii": false,
           "restricted": false
         },
         {
           "name": "NextRateAdjustDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 114,
+          "columnIndex": 113,
           "pii": false,
           "restricted": false
         },
@@ -1306,7 +1295,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 115,
+          "columnIndex": 114,
           "pii": false,
           "restricted": false
         },
@@ -1317,7 +1306,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 116,
+          "columnIndex": 115,
           "pii": false,
           "restricted": false
         },
@@ -1328,7 +1317,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 117,
+          "columnIndex": 116,
           "pii": false,
           "restricted": false
         },
@@ -1339,7 +1328,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 118,
+          "columnIndex": 117,
           "pii": false,
           "restricted": false
         },
@@ -1350,14 +1339,25 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 119,
+          "columnIndex": 118,
           "pii": false,
           "restricted": false
         },
         {
           "name": "FirstPaymentAdjustDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 119,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "NextPaymentAdjustDate",
+          "security": "unrestricted",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1366,24 +1366,13 @@
           "restricted": false
         },
         {
-          "name": "NextPaymentAdjustDate",
+          "name": "OrigMortgageInsuranceCoverage",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 121,
-          "pii": false,
-          "restricted": false
-        },
-        {
-          "name": "OrigMortgageInsuranceCoverage",
-          "security": "unrestricted",
-          "dataType": "int",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 122,
           "pii": false,
           "restricted": false
         },
@@ -1394,7 +1383,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 123,
+          "columnIndex": 122,
           "pii": false,
           "restricted": false
         },
@@ -1405,7 +1394,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 124,
+          "columnIndex": 123,
           "pii": false,
           "restricted": false
         },
@@ -1416,18 +1405,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 125,
+          "columnIndex": 124,
           "pii": false,
           "restricted": false
         },
         {
           "name": "CreditFrozenFlag",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nchar(1)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 126,
+          "columnIndex": 125,
           "pii": false,
           "restricted": false
         },
@@ -1438,7 +1427,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 127,
+          "columnIndex": 126,
           "pii": false,
           "restricted": false
         },
@@ -1449,7 +1438,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 128,
+          "columnIndex": 127,
           "pii": false,
           "restricted": false
         },
@@ -1460,7 +1449,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 129,
+          "columnIndex": 128,
           "pii": false,
           "restricted": false
         },
@@ -1471,14 +1460,25 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 130,
+          "columnIndex": 129,
           "pii": false,
           "restricted": false
         },
         {
           "name": "LineChangedDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 130,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LineClosedDate",
+          "security": "unrestricted",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1487,24 +1487,13 @@
           "restricted": false
         },
         {
-          "name": "LineClosedDate",
+          "name": "BusinessAccountFlag",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nchar(1)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
           "columnIndex": 132,
-          "pii": false,
-          "restricted": false
-        },
-        {
-          "name": "BusinessAccountFlag",
-          "security": "unrestricted",
-          "dataType": "nvarchar(100)",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 133,
           "pii": false,
           "restricted": false
         },
@@ -1515,7 +1504,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 134,
+          "columnIndex": 133,
           "pii": false,
           "restricted": false
         },
@@ -1526,7 +1515,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 135,
+          "columnIndex": 134,
           "pii": false,
           "restricted": false
         },
@@ -1537,7 +1526,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 136,
+          "columnIndex": 135,
           "pii": false,
           "restricted": false
         },
@@ -1548,7 +1537,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 137,
+          "columnIndex": 136,
           "pii": false,
           "restricted": false
         },
@@ -1559,7 +1548,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 138,
+          "columnIndex": 137,
           "pii": false,
           "restricted": false
         },
@@ -1570,7 +1559,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 139,
+          "columnIndex": 138,
           "pii": false,
           "restricted": false
         },
@@ -1581,7 +1570,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 140,
+          "columnIndex": 139,
           "pii": false,
           "restricted": false
         },
@@ -1592,7 +1581,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 141,
+          "columnIndex": 140,
           "pii": false,
           "restricted": false
         },
@@ -1603,7 +1592,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 142,
+          "columnIndex": 141,
           "pii": false,
           "restricted": false
         },
@@ -1614,7 +1603,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 143,
+          "columnIndex": 142,
           "pii": false,
           "restricted": false
         },
@@ -1625,51 +1614,40 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 144,
+          "columnIndex": 143,
           "pii": false,
           "restricted": false
         },
         {
-          "name": "CollateralStateCode",
+          "name": "PropertyZipCode",
           "security": "pii",
           "dataType": "nvarchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 145,
-          "pii": true,
-          "restricted": false
-        },
-        {
-          "name": "CollateralZipCode",
-          "security": "pii",
-          "dataType": "nvarchar(100)",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 146,
+          "columnIndex": 144,
           "pii": true,
           "restricted": false
         },
         {
           "name": "ContractResidualValue",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 147,
+          "columnIndex": 145,
           "pii": false,
           "restricted": false
         },
         {
           "name": "CreditImpairedFlag",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nchar(1)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 148,
+          "columnIndex": 146,
           "pii": false,
           "restricted": false
         },
@@ -1680,7 +1658,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 149,
+          "columnIndex": 147,
           "pii": false,
           "restricted": false
         },
@@ -1691,7 +1669,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 150,
+          "columnIndex": 148,
           "pii": false,
           "restricted": false
         },
@@ -1702,18 +1680,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 151,
+          "columnIndex": 149,
           "pii": false,
           "restricted": false
         },
         {
           "name": "ClosedDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 152,
+          "columnIndex": 150,
           "pii": false,
           "restricted": false
         },
@@ -1724,29 +1702,29 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 153,
+          "columnIndex": 151,
           "pii": false,
           "restricted": false
         },
         {
           "name": "DefaultDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 154,
+          "columnIndex": 152,
           "pii": false,
           "restricted": false
         },
         {
           "name": "EstimatedResidualValue",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 155,
+          "columnIndex": 153,
           "pii": false,
           "restricted": false
         },
@@ -1757,7 +1735,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 156,
+          "columnIndex": 154,
           "pii": false,
           "restricted": false
         },
@@ -1768,7 +1746,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 157,
+          "columnIndex": 155,
           "pii": false,
           "restricted": false
         },
@@ -1779,7 +1757,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 158,
+          "columnIndex": 156,
           "pii": false,
           "restricted": false
         },
@@ -1790,18 +1768,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 159,
+          "columnIndex": 157,
           "pii": false,
           "restricted": false
         },
         {
           "name": "LastLimitChangeDate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "date",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 160,
+          "columnIndex": 158,
           "pii": false,
           "restricted": false
         },
@@ -1812,7 +1790,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 161,
+          "columnIndex": 159,
           "pii": false,
           "restricted": false
         },
@@ -1823,18 +1801,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 162,
+          "columnIndex": 160,
           "pii": false,
           "restricted": false
         },
         {
           "name": "OriginalCollateralValue",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 163,
+          "columnIndex": 161,
           "pii": false,
           "restricted": false
         },
@@ -1845,7 +1823,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 164,
+          "columnIndex": 162,
           "pii": false,
           "restricted": false
         },
@@ -1856,7 +1834,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 165,
+          "columnIndex": 163,
           "pii": false,
           "restricted": false
         },
@@ -1867,7 +1845,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 166,
+          "columnIndex": 164,
           "pii": false,
           "restricted": false
         },
@@ -1878,7 +1856,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 167,
+          "columnIndex": 165,
           "pii": false,
           "restricted": false
         },
@@ -1889,7 +1867,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 168,
+          "columnIndex": 166,
           "pii": false,
           "restricted": false
         },
@@ -1900,7 +1878,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 169,
+          "columnIndex": 167,
           "pii": false,
           "restricted": false
         },
@@ -1911,7 +1889,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 170,
+          "columnIndex": 168,
           "pii": true,
           "restricted": false
         }

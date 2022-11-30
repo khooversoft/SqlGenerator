@@ -4,7 +4,7 @@
     "CommonMonthly_Classification.json"
   ],
 
-  "sourceFile": "CommonMonthly.dataDictionary.csv",
+  "sourceFile": "CommonMonthly.dataDictionary-20221130.csv",
   "optionFile": "Monthly.ImportOption.json",
   "nameMapFile": null,
   "tableListFile": null,

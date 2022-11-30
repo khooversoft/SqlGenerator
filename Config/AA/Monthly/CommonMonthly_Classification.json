@@ -1,14 +1,24 @@
 {
   "protection": [
     {
-      "columnNameMatch": "*.PropertyStateCode;*.PropertyCityName;*.PropertyCountyName;*.ZipCode5;*.PropertyMSA",
+      "columnNameMatch": "*.PropertyStateCode;*.PropertyCityName;*.PropertyCountyName;*.PropertyMSA;*.PropertyZipCode",
       "PII": true,
       "restricted": false
     },
     {
-      "columnNameMatch": "*.CollateralStateCode;*.CollateralZipCode;*.VehicleIdentificationNumber",
+      "columnNameMatch": "*.VehicleIdentificationNumber",
       "PII": true,
       "restricted": false
+    },
+    {
+      "columnNameMatch": "*.OriginalCreditScore;*.CurrentCreditScore;*.CreditScoreDate",
+      "PII": true,
+      "restricted": false
+    },
+    {
+      "columnNameMatch": "*.AccountNumber",
+      "PII": false,
+      "restricted": true
     }
   ]
 }
