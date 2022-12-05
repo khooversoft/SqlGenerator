@@ -455,7 +455,7 @@
         {
           "name": "ARMInterestOnlyOrFullyAmortizing",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nchar(1)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -543,7 +543,7 @@
         {
           "name": "PropertyCountyName",
           "security": "pii",
-          "dataType": "int",
+          "dataType": "nvarchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -576,7 +576,7 @@
         {
           "name": "OriginalAppraisalType",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nvarchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -620,7 +620,7 @@
         {
           "name": "CurrentAppraisalType",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "varchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1027,7 +1027,7 @@
         {
           "name": "ModificationRate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1071,7 +1071,7 @@
         {
           "name": "ModificationPrincipalAndInterest",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1115,7 +1115,7 @@
         {
           "name": "PreModificationRate",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1137,7 +1137,7 @@
         {
           "name": "PreModificationPayment",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1148,7 +1148,7 @@
         {
           "name": "PostModificationPayment",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1159,7 +1159,7 @@
         {
           "name": "RateIndexDescription",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nvarchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1324,7 +1324,7 @@
         {
           "name": "InterestNetMargin",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "decimal(16,6)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1379,7 +1379,7 @@
         {
           "name": "MortgageInsuranceCompany",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nvarchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1423,7 +1423,7 @@
         {
           "name": "CreditLimitChangeAction",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "varchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1456,7 +1456,7 @@
         {
           "name": "HomeEquityType",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nvarchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
@@ -1542,13 +1542,24 @@
           "restricted": false
         },
         {
+          "name": "BorrowerZipCode",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 137,
+          "pii": false,
+          "restricted": false
+        },
+        {
           "name": "OriginalCoBorrowerCreditScore",
           "security": "unrestricted",
           "dataType": "int",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 137,
+          "columnIndex": 138,
           "pii": false,
           "restricted": false
         },
@@ -1559,7 +1570,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 138,
+          "columnIndex": 139,
           "pii": false,
           "restricted": false
         },
@@ -1570,7 +1581,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 139,
+          "columnIndex": 140,
           "pii": false,
           "restricted": false
         },
@@ -1581,7 +1592,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 140,
+          "columnIndex": 141,
           "pii": false,
           "restricted": false
         },
@@ -1592,7 +1603,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 141,
+          "columnIndex": 142,
           "pii": false,
           "restricted": false
         },
@@ -1603,7 +1614,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 142,
+          "columnIndex": 143,
           "pii": false,
           "restricted": false
         },
@@ -1614,7 +1625,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 143,
+          "columnIndex": 144,
           "pii": false,
           "restricted": false
         },
@@ -1625,7 +1636,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 144,
+          "columnIndex": 145,
           "pii": true,
           "restricted": false
         },
@@ -1636,7 +1647,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 145,
+          "columnIndex": 146,
           "pii": false,
           "restricted": false
         },
@@ -1647,7 +1658,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 146,
+          "columnIndex": 147,
           "pii": false,
           "restricted": false
         },
@@ -1658,7 +1669,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 147,
+          "columnIndex": 148,
           "pii": false,
           "restricted": false
         },
@@ -1669,7 +1680,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 148,
+          "columnIndex": 149,
           "pii": false,
           "restricted": false
         },
@@ -1680,7 +1691,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 149,
+          "columnIndex": 150,
           "pii": false,
           "restricted": false
         },
@@ -1691,18 +1702,18 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 150,
+          "columnIndex": 151,
           "pii": false,
           "restricted": false
         },
         {
           "name": "DealerName",
           "security": "unrestricted",
-          "dataType": "int",
+          "dataType": "nvarchar(100)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 151,
+          "columnIndex": 152,
           "pii": false,
           "restricted": false
         },
@@ -1713,7 +1724,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 152,
+          "columnIndex": 153,
           "pii": false,
           "restricted": false
         },
@@ -1724,7 +1735,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 153,
+          "columnIndex": 154,
           "pii": false,
           "restricted": false
         },
@@ -1735,7 +1746,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 154,
+          "columnIndex": 155,
           "pii": false,
           "restricted": false
         },
@@ -1746,7 +1757,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 155,
+          "columnIndex": 156,
           "pii": false,
           "restricted": false
         },
@@ -1757,7 +1768,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 156,
+          "columnIndex": 157,
           "pii": false,
           "restricted": false
         },
@@ -1768,7 +1779,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 157,
+          "columnIndex": 158,
           "pii": false,
           "restricted": false
         },
@@ -1779,7 +1790,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 158,
+          "columnIndex": 159,
           "pii": false,
           "restricted": false
         },
@@ -1790,7 +1801,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 159,
+          "columnIndex": 160,
           "pii": false,
           "restricted": false
         },
@@ -1801,7 +1812,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 160,
+          "columnIndex": 161,
           "pii": false,
           "restricted": false
         },
@@ -1812,7 +1823,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 161,
+          "columnIndex": 162,
           "pii": false,
           "restricted": false
         },
@@ -1823,7 +1834,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 162,
+          "columnIndex": 163,
           "pii": false,
           "restricted": false
         },
@@ -1834,7 +1845,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 163,
+          "columnIndex": 164,
           "pii": false,
           "restricted": false
         },
@@ -1845,7 +1856,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 164,
+          "columnIndex": 165,
           "pii": false,
           "restricted": false
         },
@@ -1856,7 +1867,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 165,
+          "columnIndex": 166,
           "pii": false,
           "restricted": false
         },
@@ -1867,7 +1878,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 166,
+          "columnIndex": 167,
           "pii": false,
           "restricted": false
         },
@@ -1878,7 +1889,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 167,
+          "columnIndex": 168,
           "pii": false,
           "restricted": false
         },
@@ -1889,8 +1900,446 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 168,
+          "columnIndex": 169,
           "pii": true,
+          "restricted": false
+        },
+        {
+          "name": "PersonBirthDate",
+          "security": "unrestricted",
+          "dataType": "date",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 170,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FinalIncomeAmount",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 171,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "HeldForSaleFlag",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 172,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "IncomeVerificationFlag",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 173,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LeaseFlag",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 174,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OriginalCreditScoreModel",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 175,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ParticpationRatio",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 176,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "AmortizationTerm",
+          "security": "unrestricted",
+          "dataType": "Int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 177,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FirstPaymentDate",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 178,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EVFlag",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 179,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "AccrualStatusFlag",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 180,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ActualPrincipalAndInterestPaidAmount",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 181,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CurrentCreditScoreModel",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 182,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_AssetAcq",
+        "name": "CommonSettlement"
+      },
+      "indexType": "hash",
+      "tableMode": "none",
+      "columns": [
+        {
+          "name": "BECUAccountNumber",
+          "security": "unrestricted",
+          "dataType": "nvarchar(50)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "loan_number",
+          "security": "unrestricted",
+          "dataType": "long",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "product_type",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "service_fee",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "balance",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "participation_balance_90",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "date_interest_paid_to",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "original_loan_to_value_ratio",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "net_int",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "price",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "premium_discount",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "funds_due",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PoolId",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "HeldForSaleFlag",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ParticpationRatio",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 14,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LoanSource",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 15,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_AssetAcq",
+        "name": "LoanModification"
+      },
+      "indexType": "hash",
+      "tableMode": "none",
+      "columns": [
+        {
+          "name": "BECUAccountNumber",
+          "security": "unrestricted",
+          "dataType": "nvarchar(50)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "Loan_ID",
+          "security": "unrestricted",
+          "dataType": "nvarchar(50)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ModID",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ModEffectiveDate",
+          "security": "unrestricted",
+          "dataType": "Date",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ModStartDate",
+          "security": "unrestricted",
+          "dataType": "Date",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ModEndDate",
+          "security": "unrestricted",
+          "dataType": "Date",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ValuePre",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ValuePost",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FreezeDays",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
           "restricted": false
         }
       ]
@@ -1950,7 +2399,8 @@
       ]
     }
   ],
-  "prefixColumns": [
+  "prefixColumns": [],
+  "suffixColumns": [
     {
       "name": "ASAP_RecordEffectiveDateTime",
       "security": "unrestricted",
@@ -1972,9 +2422,7 @@
       "columnIndex": 0,
       "pii": false,
       "restricted": false
-    }
-  ],
-  "suffixColumns": [
+    },
     {
       "name": "ASAP_ROW_HASH",
       "security": "unrestricted",

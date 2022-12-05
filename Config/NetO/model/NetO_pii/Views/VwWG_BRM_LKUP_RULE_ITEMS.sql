@@ -10,12 +10,12 @@ AS
       x.[RULE_OCC],
       x.[RULE_ITEM_OCC],
       x.[S_RULE_ITEM_TYPE],
-      A0.Descript AS [RULE_ITEM_TYPE],
+      A0.Descript AS [D_RULE_ITEM_TYPE],
       x.[RULE_ITEM_NAME],
       x.[PRIORITY],
       x.[MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL],
-      A1.Descript AS [OVERRIDE_LEVEL],
+      A1.Descript AS [D_OVERRIDE_LEVEL],
       x.[MESSAGE_TEXT_2]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_ITEMS] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_TYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_BRM_LKUP_RULE_ITEMS' and A0.[COLUMNNAME] = 'S_RULE_ITEM_TYPE'

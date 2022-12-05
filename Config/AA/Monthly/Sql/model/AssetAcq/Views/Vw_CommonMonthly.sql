@@ -60,7 +60,7 @@ AS
       x.[PropertyTypeDescription],
       HASHBYTES('SHA2_256', x.[PropertyStateCode]) AS [PropertyStateCode],
       HASHBYTES('SHA2_256', x.[PropertyCityName]) AS [PropertyCityName],
-      HASHBYTES('SHA2_256', CAST(x.[PropertyCountyName] AS NVARCHAR(50))) AS [PropertyCountyName],
+      HASHBYTES('SHA2_256', x.[PropertyCountyName]) AS [PropertyCountyName],
       HASHBYTES('SHA2_256', x.[PropertyMSA]) AS [PropertyMSA],
       x.[LienPosition],
       x.[OriginalAppraisalType],
@@ -152,6 +152,7 @@ AS
       x.[AmortizationType],
       x.[BackEndLoanToValue],
       x.[BorrowerAge],
+      x.[BorrowerZipCode],
       x.[OriginalCoBorrowerCreditScore],
       x.[CoBorrowerFlag],
       x.[CoBorrowerOccupation],
@@ -186,7 +187,20 @@ AS
       x.[RecourseFlag],
       x.[Servicer],
       x.[VehicleManufacturer],
-      HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]) AS [VehicleIdentificationNumber]
+      HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]) AS [VehicleIdentificationNumber],
+      x.[PersonBirthDate],
+      x.[FinalIncomeAmount],
+      x.[HeldForSaleFlag],
+      x.[IncomeVerificationFlag],
+      x.[LeaseFlag],
+      x.[OriginalCreditScoreModel],
+      x.[ParticpationRatio],
+      x.[AmortizationTerm],
+      x.[FirstPaymentDate],
+      x.[EVFlag],
+      x.[AccrualStatusFlag],
+      x.[ActualPrincipalAndInterestPaidAmount],
+      x.[CurrentCreditScoreModel]
    FROM [clt_AssetAcq].[CommonMonthly] x
       LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]

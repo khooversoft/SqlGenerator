@@ -17,7 +17,7 @@ AS
       x.[TRSTADT2] AS [TRSTADT2],
       x.[TRSTNUMB] AS [TRSTNUMB],
       x.[S_TRSTYP] AS [S_TRSTYP],
-      A0.Descript AS [TRSTYP],
+      A0.Descript AS [D_TRSTYP],
       x.[TRSTINST] AS [TRSTINST],
       x.[TRSTREV] AS [TRSTREV],
       x.[STATE] AS [STATE],

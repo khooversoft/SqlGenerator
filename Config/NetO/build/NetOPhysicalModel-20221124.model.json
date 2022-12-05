@@ -73781,7 +73781,7 @@
       "model": "template",
       "pattern": "*.S_*",
       "patterns": [],
-      "selectLine": "{alias}.Descript AS [{mapColumnName(S_)}]",
+      "selectLine": "{alias}.Descript AS [D_{mapColumnName(S_)}]",
       "selectLineOrder": "{columnName}",
       "joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{columnName} = {alias}.[DBSYMBOL] AND {alias}.[TableName] = \u0027{tableName}\u0027 and {alias}.[COLUMNNAME] = \u0027{columnName}\u0027",
       "whereLine": null

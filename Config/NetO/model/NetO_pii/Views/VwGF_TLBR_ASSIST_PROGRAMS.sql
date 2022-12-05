@@ -15,7 +15,7 @@ AS
       x.[GRANT_CRA_CODE],
       x.[PROGRAM_EXP],
       x.[S_ASSIST_TYPE],
-      A0.Descript AS [ASSIST_TYPE],
+      A0.Descript AS [D_ASSIST_TYPE],
       x.[REPAY_TERM],
       x.[REPAY_RATE],
       x.[REPAY_PMT],
@@ -26,7 +26,7 @@ AS
       x.[ALLOW_AP_EXCEPT],
       x.[PROVIDER_EIN],
       x.[S_ASSIST_PVDR_TYP],
-      A1.Descript AS [ASSIST_PVDR_TYP],
+      A1.Descript AS [D_ASSIST_PVDR_TYP],
       x.[AP_OTH_DESC],
       x.[RECORD_CREATED],
       x.[ASSETCTR]

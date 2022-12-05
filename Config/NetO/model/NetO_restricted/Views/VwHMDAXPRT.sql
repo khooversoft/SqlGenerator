@@ -34,7 +34,7 @@ AS
       x.[RPTYEAR],
       x.[CFPNUM],
       x.[S_CUSTOMQRY],
-      A0.Descript AS [CUSTOMQRY],
+      A0.Descript AS [D_CUSTOMQRY],
       x.[CEMAIL],
       x.[HMDA_LAR_LEI]
    FROM [clt_NetO].[HMDAXPRT] x

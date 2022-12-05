@@ -25,7 +25,7 @@
       "maxColumnSize": null
     }
   ],
-  "prefixColumns": [
+  "sufixColumns": [
     {
       "name": "ASAP_RecordEffectiveDateTime",
       "security": "unrestricted",
@@ -39,9 +39,7 @@
       "dataType": "datetime2(7)",
       "notNull": false,
       "private": true
-    }
-  ],
-  "sufixColumns": [
+    },
     {
       "name": "ASAP_ROW_HASH",
       "security": "unrestricted",

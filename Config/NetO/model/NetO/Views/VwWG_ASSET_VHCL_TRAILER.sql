@@ -9,7 +9,7 @@ AS
       x.[LNUM],
       x.[ASSETID],
       x.[S_AXLE_TYPE],
-      A0.Descript AS [AXLE_TYPE],
+      A0.Descript AS [D_AXLE_TYPE],
       x.[BRAKES_YN],
       x.[TRAILER_LENGTH]
    FROM [clt_NetO].[WG_ASSET_VHCL_TRAILER] x

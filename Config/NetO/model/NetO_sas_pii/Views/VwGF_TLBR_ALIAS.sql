@@ -14,7 +14,7 @@ AS
       x.[MID_NAME] AS [MID_NAME],
       x.[LAST_NAME] AS [LAST_NAME],
       x.[S_BORR_ALIAS] AS [S_BORR_ALIAS],
-      A0.Descript AS [BORR_ALIAS],
+      A0.Descript AS [D_BORR_ALIAS],
       x.[NAME_SUFFIX] AS [NAME_SUFFIX],
       x.[ALIAS_TYPE_OTH_DESC] AS [ALIAS_TYPE_OTH_DESC],
       x.[CREDITORNAME] AS [CREDITORNAME],

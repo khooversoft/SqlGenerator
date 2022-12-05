@@ -9,7 +9,7 @@ AS
       x.[LNUM] AS [LNUM],
       x.[AD_FLAG] AS [AD_FLAG],
       x.[S_AD_ACCT_TYPE] AS [S_AD_ACCT_TYPE],
-      A0.Descript AS [AD_ACCT_TYPE],
+      A0.Descript AS [D_AD_ACCT_TYPE],
       x.[AD_INST_NAME] AS [AD_INST_NAME],
       x.[AD_ACCT_NUMB] AS [AD_ACCT_NUMB],
       x.[AD_RT_NUMB] AS [AD_RT_NUMB],
