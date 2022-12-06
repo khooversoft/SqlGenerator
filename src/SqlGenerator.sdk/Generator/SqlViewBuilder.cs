@@ -102,11 +102,11 @@ public class SqlViewBuilder
         {
             list += InstructionType.TabPlus;
             list += $"WHERE";
-            
+
             list += InstructionType.TabPlus;
             list += where;
             list += InstructionType.TabMinus;
-            
+
             list += InstructionType.TabMinus;
         }
 
@@ -257,9 +257,20 @@ public class SqlViewBuilder
             .Add("tableName", tableModel.Name.Name)
             .Add("columnName", columnModel.Name)
             .Add("alias", $"A{index}")
-            .Add("mapColumnName", x => mapColumnName(columnModel.Name.Replace(x, string.Empty)));
+            .Add("mapColumnName", x => mapColumnName(columnModel.Name.Replace(x, string.Empty), columns));
 
-        string mapColumnName(string columnName) => schemaModel.MaxColumnSize switch
+        string mapColumnName(string columnName, IReadOnlyList<ColumnModel> columns)
+        {
+            string proposeColumnName = getColumnName(columnName);
+
+            return columns.Count(x => x.Name.EqualsIgnoreCase(proposeColumnName)) switch
+            {
+                0 => proposeColumnName,
+                int v => proposeColumnName + v.ToString(),
+            };
+        }
+
+        string getColumnName(string columnName) => schemaModel.MaxColumnSize switch
         {
             null => columnName,
             int v => _option?.ShortName(columnName, v) ?? columnName,

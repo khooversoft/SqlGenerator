@@ -25367,6 +25367,225 @@
     {
       "name": {
         "schema": "clt_NetO",
+        "name": "GF_TLR_CREDIT_RESPONSE"
+      },
+      "indexType": "cluster",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDITRESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "VERSION_IDENT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDIT_REPORT_IDENT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FIRST_ISSUE_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LAST_UPDATE_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MERGE_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REPORT_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REPORT_TYPE_OTHER",
+          "security": "unrestricted",
+          "dataType": "nvarchar(35)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RATEING_CODE_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RATING_TYPE_OTHER",
+          "security": "unrestricted",
+          "dataType": "nvarchar(35)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EQUIFAX_INDC",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXPERIAN_INDC",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 14,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "TRANSUNION_INDC",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 15,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OTHER_REPOSITORY_NAME",
+          "security": "unrestricted",
+          "dataType": "nvarchar(35)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 16,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDITREPORTTRANSID",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 17,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDIT_RESP_IMPORT_XML",
+          "security": "unrestricted",
+          "dataType": "nvarchar(MAX)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 18,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
         "name": "GF_TLR_DISBURSEMENTS"
       },
       "indexType": "hash",
@@ -31238,6 +31457,104 @@
           "private": false,
           "primaryKey": false,
           "columnIndex": 42,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
+        "name": "GF_TLR_RES_TITLE_TAX"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "TITLERESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "TAXID",
+          "security": "unrestricted",
+          "dataType": "nvarchar(50)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LANDVALUE",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "IMPROVEDVALUE",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "TOTALVALUE",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
           "pii": false,
           "restricted": false
         }
@@ -65099,6 +65416,71 @@
     {
       "name": {
         "schema": "clt_NetO",
+        "name": "WG_PROMOTION"
+      },
+      "indexType": "hash",
+      "tableMode": "full",
+      "columns": [
+        {
+          "name": "PROMO_ID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PROMO_CODE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PROMO_DESCRIPTION",
+          "security": "unrestricted",
+          "dataType": "nvarchar(50)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "START_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "END_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
         "name": "WG_RPT_AMOUNTS"
       },
       "indexType": "hash",
@@ -73755,7 +74137,7 @@
     {
       "type": "copy",
       "pattern": "Include\\VwSymbolLookup.sql",
-      "command": "clt_NetO\\Views\\VwSymbolLookup.sql"
+      "command": "clt_NetO\\Tables\\VwSymbolLookup.sql"
     }
   ],
   "addInstructions": [
@@ -73781,7 +74163,7 @@
       "model": "template",
       "pattern": "*.S_*",
       "patterns": [],
-      "selectLine": "{alias}.Descript AS [D_{mapColumnName(S_)}]",
+      "selectLine": "{alias}.Descript AS [{mapColumnName(S_)}]",
       "selectLineOrder": "{columnName}",
       "joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{columnName} = {alias}.[DBSYMBOL] AND {alias}.[TableName] = \u0027{tableName}\u0027 and {alias}.[COLUMNNAME] = \u0027{columnName}\u0027",
       "whereLine": null

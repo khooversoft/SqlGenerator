@@ -7,7 +7,7 @@ CREATE VIEW [NetO].[VwGF_TS_WF_PROCESS]
 AS
    SELECT
       x.[S_PROCESS],
-      A0.Descript AS [D_PROCESS],
+      A0.Descript AS [PROCESS],
       x.[IS_ACTIVE],
       x.[EST_TO_COMPLETE]
    FROM [clt_NetO].[GF_TS_WF_PROCESS] x

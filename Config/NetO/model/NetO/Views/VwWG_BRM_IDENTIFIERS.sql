@@ -9,7 +9,7 @@ AS
       x.[BRM_IDENT_FIELD],
       x.[BRM_IDENT_CODE],
       x.[S_USAGE_TYPE],
-      A0.Descript AS [D_USAGE_TYPE],
+      A0.Descript AS [USAGE_TYPE],
       x.[BRM_IDENT_NAME],
       x.[BRM_IDENT_DESCRIPTION]
    FROM [clt_NetO].[WG_BRM_IDENTIFIERS] x

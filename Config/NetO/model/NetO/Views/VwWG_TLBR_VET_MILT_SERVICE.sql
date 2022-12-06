@@ -11,11 +11,11 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_BRANCH],
-      A0.Descript AS [D_BRANCH],
+      A0.Descript AS [BRANCH],
       x.[START_DATE],
       x.[END_DATE],
       x.[S_OFF_OR_ENLISTED],
-      A1.Descript AS [D_OFF_OR_ENLISTED],
+      A1.Descript AS [OFF_OR_ENLISTED],
       x.[SERVICE_NUMBER],
       x.[ACTIVESERVYN]
    FROM [clt_NetO].[WG_TLBR_VET_MILT_SERVICE] x

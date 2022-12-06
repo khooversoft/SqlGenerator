@@ -9,7 +9,7 @@ AS
       x.[CID] AS [CID],
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[S_PHONETYPE] AS [S_PHONETYPE],
-      A0.Descript AS [D_PHONETYPE],
+      A0.Descript AS [PHONETYPE],
       x.[PHONENBR] AS [PHONENBR],
       x.[PHONEEXT] AS [PHONEEXT]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_PHONE] x

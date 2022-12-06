@@ -16,7 +16,7 @@ AS
       x.[REPAIRAMOUNT],
       x.[REPLACEMENTAMOUNT],
       x.[S_FLOODMAPZONE],
-      A0.Descript AS [D_FLOODMAPZONE],
+      A0.Descript AS [FLOODMAPZONE],
       x.[APP_SENT_BORROWER],
       x.[APPRAISAL_DELIVERED],
       x.[APP_TIME_WAIVE],
@@ -30,14 +30,14 @@ AS
       x.[PERCENT_MULTI_FAM],
       x.[PERCENT_COMMERCIAL],
       x.[S_PROP_LOC_TYPE],
-      A1.Descript AS [D_PROP_LOC_TYPE],
+      A1.Descript AS [PROP_LOC_TYPE],
       x.[PROP_LTN_TYP_OTHDESC],
       x.[S_CAR_STORAGE_TYPE],
-      A2.Descript AS [D_CAR_STORAGE_TYPE],
+      A2.Descript AS [CAR_STORAGE_TYPE],
       x.[CARSTORAGE_TYPE_OTHR_DESC],
       x.[CARSTORAGE_NBR_CARS],
       x.[S_FOUNDATION_TYPE],
-      A3.Descript AS [D_FOUNDATION_TYPE],
+      A3.Descript AS [FOUNDATION_TYPE],
       x.[FNDN_TYPE_OTHER_DESC]
    FROM [clt_NetO].[GF_TL_UWAPPREXT] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FLOODMAPZONE = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TL_UWAPPREXT' and A0.[COLUMNNAME] = 'S_FLOODMAPZONE'

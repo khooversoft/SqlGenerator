@@ -20,7 +20,7 @@ AS
       x.[ACCT_START_DT],
       x.[ACCT_MATUR_DT],
       x.[S_ACCT_OWNERSHIP],
-      A0.Descript AS [D_ACCT_OWNERSHIP],
+      A0.Descript AS [ACCT_OWNERSHIP],
       x.[ASSET_ACCT_NO],
       x.[SHARE_VALUE],
       x.[ASSET_COLL_VALUE],

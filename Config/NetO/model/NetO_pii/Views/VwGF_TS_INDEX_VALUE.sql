@@ -7,7 +7,7 @@ CREATE VIEW [NetO_pii].[VwGF_TS_INDEX_VALUE]
 AS
    SELECT
       x.[S_INDEX],
-      A0.Descript AS [D_INDEX],
+      A0.Descript AS [INDEX],
       x.[INDEX_ID],
       x.[EFFECTIVE_DATE],
       x.[INDEX_VALUE]

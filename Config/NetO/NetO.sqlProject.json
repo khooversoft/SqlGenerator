@@ -5,9 +5,9 @@
 		"NetO_Classification.json"
 	],
 
-	"sourceFile": "NetOPhysicalModel-20221124.csv",
+	"sourceFile": "NetOPhysicalModel-20221205.csv",
 	"buildFolder": null,
-	"tableTypeMetadata": "ConsASAP_MetaData_20221124.csv",
+	"tableTypeMetadata": "ConsASAP_MetaData-20221205.csv",
 
 	"uspLoadTableOption": {
 		"outputFile": "neto_usp_LoadTable_meta.sql",
@@ -31,7 +31,7 @@
 		"primaryKey += L_SYMBOL.FLDNAME",
 		"primaryKey += L_SYMBOL.DBSYMBOL",
 		
-		"copy += Include\\VwSymbolLookup.sql => clt_NetO\\Views\\VwSymbolLookup.sql"
+		"copy += Include\\VwSymbolLookup.sql => clt_NetO\\Tables\\VwSymbolLookup.sql"
 	],
 
 	"addInstructions": [

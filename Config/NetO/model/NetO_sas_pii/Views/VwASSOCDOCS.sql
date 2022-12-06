@@ -7,10 +7,10 @@ CREATE VIEW [NetO_sas_pii].[VwASSOCDOCS]
 AS
    SELECT
       x.[S_SUNDCON] AS [S_SUNDCON],
-      A0.Descript AS [D_SUNDCON],
+      A0.Descript AS [SUNDCON],
       x.[CNTR] AS [CNTR],
       x.[S_ASSOCDOC] AS [S_ASSOCDOC],
-      A1.Descript AS [D_ASSOCDOC],
+      A1.Descript AS [ASSOCDOC],
       x.[SRCENV] AS [SRCENV],
       x.[REC_CUSTOM] AS [REC_CUSTOM],
       x.[CREATE_DATE] AS [CREATE_DATE],
