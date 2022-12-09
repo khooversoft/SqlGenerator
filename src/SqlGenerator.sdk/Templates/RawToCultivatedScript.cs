@@ -182,33 +182,25 @@ DECLARE @pipeline_name AS NVARCHAR(260) = N'");
                     "s_enabled,\r\n       context,\r\n       param_name,\r\n       param_value\r\nINTO\r\n #dat" +
                     "a_object_parameter\r\nFROM\r\n cntrl.data_object_parameter;\r\n\r\n\r\nTRUNCATE TABLE #dat" +
                     "a_object_parameter;\r\n\r\n--Query Option 3: Lookup Column, generated in copy parame" +
-                    "ter\r\n/************copy_into_test************/\r\n\r\n");
+                    "ter\r\n/************copy_into_test************/\r\n\r\n\r\n");
             
-            #line 218 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+            #line 219 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
 
 foreach(IReadOnlyList<string> chuck in GetTableNames())
 {
-    
+
             
             #line default
             #line hidden
-            this.Write("    INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_n" +
-                    "ame, is_enabled, context, param_name, param_value)\r\n    VALUES\r\n\r\n    ");
+            this.Write("\r\nINSERT INTO #data_object_parameter (data_object_name, activity_id, activity_nam" +
+                    "e, is_enabled, context, param_name, param_value)\r\nVALUES\r\n\r\n");
             
-            #line 225 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+            #line 227 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
 
-    foreach(string item in chuck)
-    {
-        WriteLine(item);
-    }
-    
-            
-            #line default
-            #line hidden
-            this.Write("    GO\r\n    ");
-            
-            #line 232 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
-
+foreach(string item in chuck)
+{
+    WriteLine(item);
+}
 }
 
             

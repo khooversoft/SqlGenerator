@@ -24,7 +24,6 @@
 	"updateCommands": [
 		"excludeView += WG_RPT*.*",
 		"excludeView -= WG_RPT_LOAN_STATUS.*",
-		"excludeView -= RATECODE.RATEBLOB",
 
 		"primaryKey += WG_SYMBOL_XREF.TABLENAME",
 		"primaryKey += WG_SYMBOL_XREF.COLUMNNAME",
@@ -48,7 +47,7 @@
 			"model": "template",
 			"pattern": "*.S_*",
 			"selectLine": "{alias}.Descript AS [{mapColumnName(S_)}]",
-			"joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{columnName} = {alias}.[DBSYMBOL] AND {alias}.[TableName] = '{tableName}' and {alias}.[COLUMNNAME] = '{columnName}'",
+			"joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.[{columnName}] = {alias}.[DBSYMBOL] AND {alias}.[TableName] = '{tableName}' and {alias}.[COLUMNNAME] = '{columnName}'",
 			"selectLineOrder": "{columnName}"
 		}
 	]

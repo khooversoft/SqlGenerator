@@ -215,21 +215,20 @@ TRUNCATE TABLE #data_object_parameter;
 --Query Option 3: Lookup Column, generated in copy parameter
 /************copy_into_test************/
 
+
 <#
 foreach(IReadOnlyList<string> chuck in GetTableNames())
 {
-    #>
-    INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
-    VALUES
+#>
 
-    <#
-    foreach(string item in chuck)
-    {
-        WriteLine(item);
-    }
-    #>
-    GO
-    <#
+INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
+VALUES
+
+<#
+foreach(string item in chuck)
+{
+    WriteLine(item);
+}
 }
 #>
 

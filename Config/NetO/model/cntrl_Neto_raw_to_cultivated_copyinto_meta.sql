@@ -207,11 +207,13 @@ FROM
 
 TRUNCATE TABLE #data_object_parameter;
 
-INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
-VALUES
-
 --Query Option 3: Lookup Column, generated in copy parameter
 /************copy_into_test************/
+
+
+
+INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
+VALUES
 
 ('ADV_ACTN', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_ADV_ACTN_20'),
 ('ADV_ACTN', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
@@ -1112,7 +1114,11 @@ VALUES
 ('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
-('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0')
+
+INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
+VALUES
+
 ('WG_KELLEYBLUEBOOK_RESPONSE', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_WG_KELLEYBLUEBOOK_RESPONSE_20'),
 ('WG_KELLEYBLUEBOOK_RESPONSE', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_KELLEYBLUEBOOK_RESPONSE', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -1233,6 +1239,7 @@ VALUES
 ('WG_TLR_RECORDING_INFO', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('WG_TLR_RECORDING_INFO', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
 ('WG_TLR_RECORDING_INFO', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0')
+
 
 PRINT 'Merge Data Object Parameter';
 

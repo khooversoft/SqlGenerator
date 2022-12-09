@@ -65,10 +65,10 @@ public partial class RawToCultivatedScript
             })
             .ToList();
 
-        return list
-            .Select((x, i) => i == list.Count - 1 ? x : x + ",")
+       return list
             .ToList()
             .Chunk(900)
+            .Select(x => x.Select((y, i) => i == x.Length - 1 ? y : y + ",").ToArray())
             .ToArray();
 
         int hasLnum(string tableName) => PhysicalModel.Tables

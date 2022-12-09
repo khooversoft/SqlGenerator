@@ -59,7 +59,7 @@ public class PhysicalModelBuilder
                     var v => v,
                 },
                 TableMode = GetTableMode(x.Key, tableMetadata),
-                Columns = x.Select((y, i) => new ColumnModel
+                Columns = x.Where(y => y.DataType != "**").Select((y, i) => new ColumnModel
                 {
                     Name = y.ColumnName,
                     Security = y.GetSecurity(),

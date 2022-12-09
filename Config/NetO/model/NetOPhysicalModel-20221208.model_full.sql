@@ -7660,7 +7660,6 @@ CREATE TABLE [clt_NetO].[RATECODE]
    [LOCKDATE]                         datetime             NOT NULL,
    [BEGINTIME]                        datetime             NOT NULL,
    [ENDTIME]                          datetime             NULL,
-   [RATEBLOB]                         **                   NULL,
    [PRICING_CHANNEL]                  nvarchar(8)          NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
@@ -19733,7 +19732,6 @@ AS
       x.[LOCKDATE],
       x.[BEGINTIME],
       x.[ENDTIME],
-      x.[RATEBLOB],
       x.[PRICING_CHANNEL]
    FROM [clt_NetO].[RATECODE] x
    WHERE
@@ -30647,7 +30645,6 @@ AS
       x.[LOCKDATE],
       x.[BEGINTIME],
       x.[ENDTIME],
-      x.[RATEBLOB],
       x.[PRICING_CHANNEL]
    FROM [clt_NetO].[RATECODE] x
    WHERE
@@ -41561,7 +41558,6 @@ AS
       x.[LOCKDATE],
       x.[BEGINTIME],
       x.[ENDTIME],
-      x.[RATEBLOB],
       x.[PRICING_CHANNEL]
    FROM [clt_NetO].[RATECODE] x
    WHERE
@@ -52475,7 +52471,6 @@ AS
       x.[LOCKDATE] AS [LOCKDATE],
       x.[BEGINTIME] AS [BEGINTIME],
       x.[ENDTIME] AS [ENDTIME],
-      x.[RATEBLOB] AS [RATEBLOB],
       x.[PRICING_CHANNEL] AS [PRICING_CHANNEL]
    FROM [clt_NetO].[RATECODE] x
    WHERE
@@ -63389,7 +63384,6 @@ AS
       x.[LOCKDATE] AS [LOCKDATE],
       x.[BEGINTIME] AS [BEGINTIME],
       x.[ENDTIME] AS [ENDTIME],
-      x.[RATEBLOB] AS [RATEBLOB],
       x.[PRICING_CHANNEL] AS [PRICING_CHANNEL]
    FROM [clt_NetO].[RATECODE] x
    WHERE
@@ -74303,7 +74297,6 @@ AS
       x.[LOCKDATE] AS [LOCKDATE],
       x.[BEGINTIME] AS [BEGINTIME],
       x.[ENDTIME] AS [ENDTIME],
-      x.[RATEBLOB] AS [RATEBLOB],
       x.[PRICING_CHANNEL] AS [PRICING_CHANNEL]
    FROM [clt_NetO].[RATECODE] x
    WHERE

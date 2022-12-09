@@ -44271,24 +44271,13 @@
           "restricted": false
         },
         {
-          "name": "RATEBLOB",
-          "security": "unrestricted",
-          "dataType": "**",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 6,
-          "pii": false,
-          "restricted": false
-        },
-        {
           "name": "COUNTER",
           "security": "unrestricted",
           "dataType": "int",
           "notNull": true,
           "private": false,
           "primaryKey": true,
-          "columnIndex": 7,
+          "columnIndex": 6,
           "pii": false,
           "restricted": false
         },
@@ -44299,7 +44288,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 8,
+          "columnIndex": 7,
           "pii": false,
           "restricted": false
         }
@@ -75122,5 +75111,6 @@
       "joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.[{columnName}] = {alias}.[DBSYMBOL] AND {alias}.[TableName] = \u0027{tableName}\u0027 and {alias}.[COLUMNNAME] = \u0027{columnName}\u0027",
       "whereLine": null
     }
-  ]
+  ],
+  "xRefTables": []
 }

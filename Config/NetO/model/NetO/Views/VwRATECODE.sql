@@ -13,7 +13,6 @@ AS
       x.[LOCKDATE],
       x.[BEGINTIME],
       x.[ENDTIME],
-      x.[RATEBLOB],
       x.[PRICING_CHANNEL]
    FROM [clt_NetO].[RATECODE] x
    WHERE
