@@ -82,11 +82,11 @@ AS
       x.[W_APPRVDDT1],
       x.[W_APPRVDDT2]
    FROM [clt_NetO].[GF_TLR_DISBURSEMENTS] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FMETHOD = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_DISBURSEMENTS' and A0.[COLUMNNAME] = 'S_FMETHOD'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FSTATUS = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_DISBURSEMENTS' and A1.[COLUMNNAME] = 'S_FSTATUS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DMETHOD = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_DMETHOD'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_TYPE = A3.[DBSYMBOL] AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'S_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_FUNDLOC = A4.[DBSYMBOL] AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'S_FUNDLOC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_FMETHOD] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_DISBURSEMENTS' and A0.[COLUMNNAME] = 'S_FMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FSTATUS] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_DISBURSEMENTS' and A1.[COLUMNNAME] = 'S_FSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_DMETHOD] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_DMETHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[S_TYPE] = A3.[DBSYMBOL] AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.[S_FUNDLOC] = A4.[DBSYMBOL] AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'S_FUNDLOC'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

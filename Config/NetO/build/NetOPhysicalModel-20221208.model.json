@@ -44199,6 +44199,115 @@
     {
       "name": {
         "schema": "clt_NetO",
+        "name": "RATECODE"
+      },
+      "indexType": "hash",
+      "tableMode": "full",
+      "columns": [
+        {
+          "name": "USEKEY",
+          "security": "unrestricted",
+          "dataType": "nvarchar(10)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CURRENTCODE",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RATECODE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(10)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LOCKDATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": true,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BEGINTIME",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": true,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ENDTIME",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RATEBLOB",
+          "security": "unrestricted",
+          "dataType": "**",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "COUNTER",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRICING_CHANNEL",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
         "name": "REOWNED"
       },
       "indexType": "hash",
@@ -65416,6 +65525,851 @@
     {
       "name": {
         "schema": "clt_NetO",
+        "name": "WG_LOAN_EXCEPTIONS"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ROWSERIALNO",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_EXCEPTION_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_EXCEPTION_STATUS",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_EXCEPTION_REASON",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXCEPTION_RATE",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXCEPTION_POINTS",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXCEPTION_REQUESTED_BY_CID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXCEPTION_REQUESTED_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXCEPTION_REQUEST_NOTE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(254)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXCEPTION_REFERENCE_ID",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "WORKFLOW_PROCESS_MODEL_ID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPROVER1_CMSTYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPROVER1_CID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 14,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPROVER1_DECISION",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 15,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPROVER1_DECISION_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 16,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPROVER1_NOTE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(254)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 17,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPROVER2_CMSTYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 18,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPROVER2_CID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 19,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPROVER2_DECISION",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 20,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPROVER2_DECISION_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 21,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPROVER2_NOTE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(254)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 22,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPROVER3_CMSTYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 23,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPROVER3_CID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 24,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPROVER3_DECISION",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 25,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPROVER3_DECISION_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 26,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPROVER3_NOTE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(254)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 27,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_CANNED_REASON",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 28,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXC_REQ_DISC_PCT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 29,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXC_REQ_RATE_PCT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 30,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXC_REQ_MARGIN_PCT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 31,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_EXCEPTION_CATEGORY",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 32,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR1_EXC_REASON1",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 33,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR2_EXC_REASON1",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 34,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR3_EXC_REASON1",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 35,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR1_EXC_REASON2",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 36,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR2_EXC_REASON2",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 37,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR3_EXC_REASON2",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 38,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR1_EXC_REASON3",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 39,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR2_EXC_REASON3",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 40,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR3_EXC_REASON3",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 41,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR1_DEC_REASON",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 42,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR2_DEC_REASON",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 43,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR3_DEC_REASON",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 44,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR1_DEC_REASON1",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 45,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR1_DEC_REASON2",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 46,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR2_DEC_REASON1",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 47,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR2_DEC_REASON2",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 48,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR3_DEC_REASON1",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 49,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR3_DEC_REASON2",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 50,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR1_EXC_REASON_DTL1",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 51,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR2_EXC_REASON_DTL1",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 52,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR3_EXC_REASON_DTL1",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 53,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR1_EXC_REASON_DTL2",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 54,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR2_EXC_REASON_DTL2",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 55,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR3_EXC_REASON_DTL2",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 56,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR1_EXC_REASON_DTL3",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 57,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR2_EXC_REASON_DTL3",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 58,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPR3_EXC_REASON_DTL3",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 59,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXC_REQ_INTRO_RATE",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 60,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXC_REQ_ANNUAL_FEE",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 61,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXC_REQ_DURATION",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 62,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXC_REQ_WAIVE_ANN_FEE",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 63,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
+        "name": "WG_PRICE_EXCEPTIONS"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXCEPTIONID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_EXCEPTION_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DATE_ADDED",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXCEPTION_REASON",
+          "security": "unrestricted",
+          "dataType": "nvarchar(80)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXCEPTION_REQUESTED_BY_USER",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INACTIVE",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INACTIVE_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_EXCEPTION_STATUS",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DATE_ACTIONED",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LENDER_DECISION_NOTES",
+          "security": "unrestricted",
+          "dataType": "nvarchar(256)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
         "name": "WG_PROMOTION"
       },
       "indexType": "hash",
@@ -74165,7 +75119,7 @@
       "patterns": [],
       "selectLine": "{alias}.Descript AS [{mapColumnName(S_)}]",
       "selectLineOrder": "{columnName}",
-      "joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.{columnName} = {alias}.[DBSYMBOL] AND {alias}.[TableName] = \u0027{tableName}\u0027 and {alias}.[COLUMNNAME] = \u0027{columnName}\u0027",
+      "joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.[{columnName}] = {alias}.[DBSYMBOL] AND {alias}.[TableName] = \u0027{tableName}\u0027 and {alias}.[COLUMNNAME] = \u0027{columnName}\u0027",
       "whereLine": null
     }
   ]

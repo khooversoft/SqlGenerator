@@ -118,17 +118,17 @@ AS
       x.[S_HOA_FEES_PERIOD_TYPE] AS [S_HOA_FEES_PERIOD_TYPE],
       A10.Descript AS [HOA_FEEPERIOD_TYPE]
    FROM [clt_NetO].[UWAPPR] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PRPTYP = A0.[DBSYMBOL] AND A0.[TableName] = 'UWAPPR' and A0.[COLUMNNAME] = 'S_PRPTYP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_APPRTYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'UWAPPR' and A1.[COLUMNNAME] = 'S_APPRTYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_APPRFORMTYPE = A2.[DBSYMBOL] AND A2.[TableName] = 'UWAPPR' and A2.[COLUMNNAME] = 'S_APPRFORMTYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_PRPFORMTYPE = A3.[DBSYMBOL] AND A3.[TableName] = 'UWAPPR' and A3.[COLUMNNAME] = 'S_PRPFORMTYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_PRPMETHODTYPE = A4.[DBSYMBOL] AND A4.[TableName] = 'UWAPPR' and A4.[COLUMNNAME] = 'S_PRPMETHODTYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_LVLPRPRVW = A5.[DBSYMBOL] AND A5.[TableName] = 'UWAPPR' and A5.[COLUMNNAME] = 'S_LVLPRPRVW'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_STATUS = A6.[DBSYMBOL] AND A6.[TableName] = 'UWAPPR' and A6.[COLUMNNAME] = 'S_STATUS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.S_APPRMETH = A7.[DBSYMBOL] AND A7.[TableName] = 'UWAPPR' and A7.[COLUMNNAME] = 'S_APPRMETH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.S_AVM = A8.[DBSYMBOL] AND A8.[TableName] = 'UWAPPR' and A8.[COLUMNNAME] = 'S_AVM'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.S_AVMOTH = A9.[DBSYMBOL] AND A9.[TableName] = 'UWAPPR' and A9.[COLUMNNAME] = 'S_AVMOTH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.S_HOA_FEES_PERIOD_TYPE = A10.[DBSYMBOL] AND A10.[TableName] = 'UWAPPR' and A10.[COLUMNNAME] = 'S_HOA_FEES_PERIOD_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_PRPTYP] = A0.[DBSYMBOL] AND A0.[TableName] = 'UWAPPR' and A0.[COLUMNNAME] = 'S_PRPTYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_APPRTYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'UWAPPR' and A1.[COLUMNNAME] = 'S_APPRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_APPRFORMTYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'UWAPPR' and A2.[COLUMNNAME] = 'S_APPRFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[S_PRPFORMTYPE] = A3.[DBSYMBOL] AND A3.[TableName] = 'UWAPPR' and A3.[COLUMNNAME] = 'S_PRPFORMTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.[S_PRPMETHODTYPE] = A4.[DBSYMBOL] AND A4.[TableName] = 'UWAPPR' and A4.[COLUMNNAME] = 'S_PRPMETHODTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.[S_LVLPRPRVW] = A5.[DBSYMBOL] AND A5.[TableName] = 'UWAPPR' and A5.[COLUMNNAME] = 'S_LVLPRPRVW'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.[S_STATUS] = A6.[DBSYMBOL] AND A6.[TableName] = 'UWAPPR' and A6.[COLUMNNAME] = 'S_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.[S_APPRMETH] = A7.[DBSYMBOL] AND A7.[TableName] = 'UWAPPR' and A7.[COLUMNNAME] = 'S_APPRMETH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.[S_AVM] = A8.[DBSYMBOL] AND A8.[TableName] = 'UWAPPR' and A8.[COLUMNNAME] = 'S_AVM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.[S_AVMOTH] = A9.[DBSYMBOL] AND A9.[TableName] = 'UWAPPR' and A9.[COLUMNNAME] = 'S_AVMOTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A10 on x.[S_HOA_FEES_PERIOD_TYPE] = A10.[DBSYMBOL] AND A10.[TableName] = 'UWAPPR' and A10.[COLUMNNAME] = 'S_HOA_FEES_PERIOD_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

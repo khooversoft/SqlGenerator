@@ -37,6 +37,7 @@ public class PhysicalModelBuilder
             SuffixColumns = projectOption.SufixColumns.ToArray(),
             Commands = projectOption.CommandOptions.ToArray(),
             AddInstructions = projectOption.AddInstructions.ToArray(),
+            XRefTables = ReadXRefTable(projectOption),
         }.Verify();
     }
 
@@ -99,4 +100,9 @@ public class PhysicalModelBuilder
         string v => v.ToEnum<TableMode>(),
         _ => TableMode.None,
     };
+
+    private IReadOnlyList<XRefTableModel> ReadXRefTable(SqlProjectOption projectOption) => projectOption.CommandOptions
+        .Where(x => x.Type == CommandType.XRefTable)
+        .SelectMany(x => XRefTableFile.Read(x.Pattern).Items)
+        .ToArray();
 }

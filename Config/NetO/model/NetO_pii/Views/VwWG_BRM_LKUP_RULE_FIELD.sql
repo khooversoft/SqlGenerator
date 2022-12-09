@@ -17,7 +17,7 @@ AS
       A0.Descript AS [RULE_ITEM_OPERATOR],
       x.[RULE_ITEM_FIELDID]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_FIELD] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_RULE_ITEM_OPERATOR = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_RULE_ITEM_OPERATOR] = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_BRM_LKUP_RULE_FIELD' and A0.[COLUMNNAME] = 'S_RULE_ITEM_OPERATOR'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

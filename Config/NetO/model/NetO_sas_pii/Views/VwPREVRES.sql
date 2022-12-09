@@ -36,9 +36,9 @@ AS
       x.[S_LIVE_RENT_FREE_ENUMS] AS [S_LIVE_RENT_FREE_ENUMS],
       A2.Descript AS [LIVE_RENT_FREE_ENUMS]
    FROM [clt_NetO].[PREVRES] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_OWNRNT = A0.[DBSYMBOL] AND A0.[TableName] = 'PREVRES' and A0.[COLUMNNAME] = 'S_OWNRNT'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_RES_UNIT_TYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'PREVRES' and A1.[COLUMNNAME] = 'S_RES_UNIT_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_LIVE_RENT_FREE_ENUMS = A2.[DBSYMBOL] AND A2.[TableName] = 'PREVRES' and A2.[COLUMNNAME] = 'S_LIVE_RENT_FREE_ENUMS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_OWNRNT] = A0.[DBSYMBOL] AND A0.[TableName] = 'PREVRES' and A0.[COLUMNNAME] = 'S_OWNRNT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_RES_UNIT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'PREVRES' and A1.[COLUMNNAME] = 'S_RES_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_LIVE_RENT_FREE_ENUMS] = A2.[DBSYMBOL] AND A2.[TableName] = 'PREVRES' and A2.[COLUMNNAME] = 'S_LIVE_RENT_FREE_ENUMS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

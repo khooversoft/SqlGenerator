@@ -18,7 +18,7 @@ namespace SqlGenerator.sdk.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+    #line 1 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
     public partial class RawToCultivatedScript : RawToCultivatedScriptBase
     {
@@ -60,14 +60,14 @@ PRINT CONCAT('@src_storage_acct',@src_storage_acct)
 ******************************************************/
 DECLARE @pipeline_name AS NVARCHAR(260) = N'");
             
-            #line 36 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+            #line 36 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PipelineName));
             
             #line default
             #line hidden
             this.Write("\';\r\nDECLARE @activity_name AS NVARCHAR(260) = N\'");
             
-            #line 37 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+            #line 37 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ActivityName));
             
             #line default
@@ -181,23 +181,41 @@ DECLARE @pipeline_name AS NVARCHAR(260) = N'");
                     "\r\n       data_object_name,\r\n       activity_id,\r\n       activity_name,\r\n       i" +
                     "s_enabled,\r\n       context,\r\n       param_name,\r\n       param_value\r\nINTO\r\n #dat" +
                     "a_object_parameter\r\nFROM\r\n cntrl.data_object_parameter;\r\n\r\n\r\nTRUNCATE TABLE #dat" +
-                    "a_object_parameter;\r\n\r\nINSERT INTO #data_object_parameter (data_object_name, act" +
-                    "ivity_id, activity_name, is_enabled, context, param_name, param_value)\r\nVALUES\r\n" +
-                    "\r\n--Query Option 3: Lookup Column, generated in copy parameter\r\n/************cop" +
-                    "y_into_test************/\r\n\r\n");
+                    "a_object_parameter;\r\n\r\n--Query Option 3: Lookup Column, generated in copy parame" +
+                    "ter\r\n/************copy_into_test************/\r\n\r\n");
             
-            #line 221 "D:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+            #line 218 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
 
-foreach(var item in GetTableNames())
+foreach(IReadOnlyList<string> chuck in GetTableNames())
 {
-    WriteLine(item);
-}
+    
+            
+            #line default
+            #line hidden
+            this.Write("    INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_n" +
+                    "ame, is_enabled, context, param_name, param_value)\r\n    VALUES\r\n\r\n    ");
+            
+            #line 225 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
 
+    foreach(string item in chuck)
+    {
+        WriteLine(item);
+    }
+    
+            
+            #line default
+            #line hidden
+            this.Write("    GO\r\n    ");
+            
+            #line 232 "C:\Sources\SqlGenerator\src\SqlGenerator.sdk\Templates\RawToCultivatedScript.tt"
+
+}
 
             
             #line default
             #line hidden
             this.Write(@"
+
 PRINT 'Merge Data Object Parameter';
 
 MERGE cntrl.data_object_parameter tgt

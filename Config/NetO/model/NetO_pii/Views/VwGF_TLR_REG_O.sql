@@ -24,7 +24,7 @@ AS
       x.[BOD_APPROVAL_DATE],
       x.[COMMITTEE_APPROVAL]
    FROM [clt_NetO].[GF_TLR_REG_O] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EMP_REGO_TYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_REG_O' and A0.[COLUMNNAME] = 'S_EMP_REGO_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_EMP_REGO_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_REG_O' and A0.[COLUMNNAME] = 'S_EMP_REGO_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

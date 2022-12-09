@@ -92,8 +92,8 @@ AS
       x.[S_FNM_INDEX_TYPE] AS [S_FNM_INDEX_TYPE],
       A1.Descript AS [FNM_INDEX_TYPE]
    FROM [clt_NetO].[ARMINFO] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_FRE_INDEX_TYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'ARMINFO' and A0.[COLUMNNAME] = 'S_FRE_INDEX_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FNM_INDEX_TYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'ARMINFO' and A1.[COLUMNNAME] = 'S_FNM_INDEX_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_FRE_INDEX_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'ARMINFO' and A0.[COLUMNNAME] = 'S_FRE_INDEX_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FNM_INDEX_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'ARMINFO' and A1.[COLUMNNAME] = 'S_FNM_INDEX_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

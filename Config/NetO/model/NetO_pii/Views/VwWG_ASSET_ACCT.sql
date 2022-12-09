@@ -29,7 +29,7 @@ AS
       x.[EXCHANGE_INFO],
       x.[USE_CALC_LOAN_RT]
    FROM [clt_NetO].[WG_ASSET_ACCT] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ACCT_OWNERSHIP = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_ASSET_ACCT' and A0.[COLUMNNAME] = 'S_ACCT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_ACCT_OWNERSHIP] = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_ASSET_ACCT' and A0.[COLUMNNAME] = 'S_ACCT_OWNERSHIP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

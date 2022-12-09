@@ -5,9 +5,9 @@
 		"NetO_Classification.json"
 	],
 
-	"sourceFile": "NetOPhysicalModel-20221205.csv",
+	"sourceFile": "NetOPhysicalModel-20221208.csv",
 	"buildFolder": null,
-	"tableTypeMetadata": "ConsASAP_MetaData-20221205.csv",
+	"tableTypeMetadata": "ConsASAP_MetaData-20221208.csv",
 
 	"uspLoadTableOption": {
 		"outputFile": "neto_usp_LoadTable_meta.sql",
@@ -24,6 +24,7 @@
 	"updateCommands": [
 		"excludeView += WG_RPT*.*",
 		"excludeView -= WG_RPT_LOAN_STATUS.*",
+		"excludeView -= RATECODE.RATEBLOB",
 
 		"primaryKey += WG_SYMBOL_XREF.TABLENAME",
 		"primaryKey += WG_SYMBOL_XREF.COLUMNNAME",

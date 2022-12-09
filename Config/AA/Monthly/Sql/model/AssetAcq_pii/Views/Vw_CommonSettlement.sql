@@ -18,7 +18,8 @@ AS
       x.[price],
       x.[premium_discount],
       x.[funds_due],
-      x.[PoolId],
+      x.[VendorId],
+      x.[DealId],
       x.[HeldForSaleFlag],
       x.[ParticpationRatio],
       x.[LoanSource]

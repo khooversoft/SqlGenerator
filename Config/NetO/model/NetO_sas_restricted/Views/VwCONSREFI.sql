@@ -41,13 +41,13 @@ AS
       x.[LIMIT_DESC] AS [LIMIT_DESC],
       x.[REFI_LOAN_ACCT_NBR] AS [REFI_LOAN_ACCT_NBR]
    FROM [clt_NetO].[CONSREFI] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_REFPRP = A0.[DBSYMBOL] AND A0.[TableName] = 'CONSREFI' and A0.[COLUMNNAME] = 'S_REFPRP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_GSE_REFINANCE_PURPOSE = A1.[DBSYMBOL] AND A1.[TableName] = 'CONSREFI' and A1.[COLUMNNAME] = 'S_GSE_REFINANCE_PURPOSE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_CONST_PERM_CLOSING = A2.[DBSYMBOL] AND A2.[TableName] = 'CONSREFI' and A2.[COLUMNNAME] = 'S_CONST_PERM_CLOSING'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_ORIG_INVESTOR = A3.[DBSYMBOL] AND A3.[TableName] = 'CONSREFI' and A3.[COLUMNNAME] = 'S_ORIG_INVESTOR'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_CONST_PERM_FEATURE = A4.[DBSYMBOL] AND A4.[TableName] = 'CONSREFI' and A4.[COLUMNNAME] = 'S_CONST_PERM_FEATURE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_FNM_REFI_PGM = A5.[DBSYMBOL] AND A5.[TableName] = 'CONSREFI' and A5.[COLUMNNAME] = 'S_FNM_REFI_PGM'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_FRE_REFI_PGM = A6.[DBSYMBOL] AND A6.[TableName] = 'CONSREFI' and A6.[COLUMNNAME] = 'S_FRE_REFI_PGM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_REFPRP] = A0.[DBSYMBOL] AND A0.[TableName] = 'CONSREFI' and A0.[COLUMNNAME] = 'S_REFPRP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_GSE_REFINANCE_PURPOSE] = A1.[DBSYMBOL] AND A1.[TableName] = 'CONSREFI' and A1.[COLUMNNAME] = 'S_GSE_REFINANCE_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_CONST_PERM_CLOSING] = A2.[DBSYMBOL] AND A2.[TableName] = 'CONSREFI' and A2.[COLUMNNAME] = 'S_CONST_PERM_CLOSING'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[S_ORIG_INVESTOR] = A3.[DBSYMBOL] AND A3.[TableName] = 'CONSREFI' and A3.[COLUMNNAME] = 'S_ORIG_INVESTOR'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.[S_CONST_PERM_FEATURE] = A4.[DBSYMBOL] AND A4.[TableName] = 'CONSREFI' and A4.[COLUMNNAME] = 'S_CONST_PERM_FEATURE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.[S_FNM_REFI_PGM] = A5.[DBSYMBOL] AND A5.[TableName] = 'CONSREFI' and A5.[COLUMNNAME] = 'S_FNM_REFI_PGM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.[S_FRE_REFI_PGM] = A6.[DBSYMBOL] AND A6.[TableName] = 'CONSREFI' and A6.[COLUMNNAME] = 'S_FRE_REFI_PGM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

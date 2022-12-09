@@ -53,9 +53,9 @@ AS
       x.[GIFT_PRVDR_OTH_DESC] AS [GIFT_PRVDR_OTH_DESC],
       x.[GIFT_DEPOSIT_STATUS] AS [GIFT_DEPOSIT_STATUS]
    FROM [clt_NetO].[ASSETS] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET = A0.[DBSYMBOL] AND A0.[TableName] = 'ASSETS' and A0.[COLUMNNAME] = 'S_ASSET'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ACCOUNT_OWNERSHIP = A1.[DBSYMBOL] AND A1.[TableName] = 'ASSETS' and A1.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_GIFT_PRVDR_TYPE = A2.[DBSYMBOL] AND A2.[TableName] = 'ASSETS' and A2.[COLUMNNAME] = 'S_GIFT_PRVDR_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_ASSET] = A0.[DBSYMBOL] AND A0.[TableName] = 'ASSETS' and A0.[COLUMNNAME] = 'S_ASSET'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_ACCOUNT_OWNERSHIP] = A1.[DBSYMBOL] AND A1.[TableName] = 'ASSETS' and A1.[COLUMNNAME] = 'S_ACCOUNT_OWNERSHIP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_GIFT_PRVDR_TYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'ASSETS' and A2.[COLUMNNAME] = 'S_GIFT_PRVDR_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

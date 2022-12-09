@@ -88,9 +88,9 @@ AS
       x.[PRESENT_SHARES],
       x.[OTHER_COLLATERAL]
    FROM [clt_NetO].[TILINFO] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LATECHARGETYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'TILINFO' and A0.[COLUMNNAME] = 'S_LATECHARGETYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PPPOPT = A1.[DBSYMBOL] AND A1.[TableName] = 'TILINFO' and A1.[COLUMNNAME] = 'S_PPPOPT'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_TIL2011_OVRD = A2.[DBSYMBOL] AND A2.[TableName] = 'TILINFO' and A2.[COLUMNNAME] = 'S_TIL2011_OVRD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_LATECHARGETYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'TILINFO' and A0.[COLUMNNAME] = 'S_LATECHARGETYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_PPPOPT] = A1.[DBSYMBOL] AND A1.[TableName] = 'TILINFO' and A1.[COLUMNNAME] = 'S_PPPOPT'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_TIL2011_OVRD] = A2.[DBSYMBOL] AND A2.[TableName] = 'TILINFO' and A2.[COLUMNNAME] = 'S_TIL2011_OVRD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

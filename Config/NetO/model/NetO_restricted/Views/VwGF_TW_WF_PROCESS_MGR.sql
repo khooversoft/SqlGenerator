@@ -22,8 +22,8 @@ AS
       x.[S_PROC_GROUP],
       A1.Descript AS [PROC_GROUP]
    FROM [clt_NetO].[GF_TW_WF_PROCESS_MGR] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_PROCESS = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A0.[COLUMNNAME] = 'S_PROCESS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_PROC_GROUP = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_PROCESS] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A0.[COLUMNNAME] = 'S_PROCESS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_PROC_GROUP] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TW_WF_PROCESS_MGR' and A1.[COLUMNNAME] = 'S_PROC_GROUP'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

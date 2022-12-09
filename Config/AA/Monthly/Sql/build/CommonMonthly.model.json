@@ -2190,7 +2190,7 @@
           "restricted": false
         },
         {
-          "name": "PoolId",
+          "name": "VendorId",
           "security": "unrestricted",
           "dataType": "nvarchar(100)",
           "notNull": false,
@@ -2201,13 +2201,24 @@
           "restricted": false
         },
         {
+          "name": "DealId",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
+          "pii": false,
+          "restricted": false
+        },
+        {
           "name": "HeldForSaleFlag",
           "security": "unrestricted",
           "dataType": "nchar(1)",
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 13,
+          "columnIndex": 14,
           "pii": false,
           "restricted": false
         },
@@ -2218,7 +2229,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 14,
+          "columnIndex": 15,
           "pii": false,
           "restricted": false
         },
@@ -2229,7 +2240,7 @@
           "notNull": false,
           "private": false,
           "primaryKey": false,
-          "columnIndex": 15,
+          "columnIndex": 16,
           "pii": false,
           "restricted": false
         }

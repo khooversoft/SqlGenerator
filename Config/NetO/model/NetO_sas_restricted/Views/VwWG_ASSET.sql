@@ -24,8 +24,8 @@ AS
       x.[PRIMARY_COLLATERAL] AS [PRIMARY_COLLATERAL],
       x.[RECORD_CREATED] AS [RECORD_CREATED]
    FROM [clt_NetO].[WG_ASSET] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ASSET_TYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_ASSET' and A0.[COLUMNNAME] = 'S_ASSET_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_ASSET_PURPOSE = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_ASSET' and A1.[COLUMNNAME] = 'S_ASSET_PURPOSE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_ASSET_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_ASSET' and A0.[COLUMNNAME] = 'S_ASSET_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_ASSET_PURPOSE] = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_ASSET' and A1.[COLUMNNAME] = 'S_ASSET_PURPOSE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

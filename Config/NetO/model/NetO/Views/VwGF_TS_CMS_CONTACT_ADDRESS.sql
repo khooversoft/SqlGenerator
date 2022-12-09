@@ -22,8 +22,8 @@ AS
       A1.Descript AS [CMSADR_UNIT_TYPE],
       x.[CMSADR_UNIT_NUM]
    FROM [clt_NetO].[GF_TS_CMS_CONTACT_ADDRESS] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_ADDRTYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A0.[COLUMNNAME] = 'S_ADDRTYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_CMSADR_UNIT_TYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_ADDRTYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A0.[COLUMNNAME] = 'S_ADDRTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_CMSADR_UNIT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TS_CMS_CONTACT_ADDRESS' and A1.[COLUMNNAME] = 'S_CMSADR_UNIT_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

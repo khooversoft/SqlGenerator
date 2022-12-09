@@ -94,10 +94,10 @@ AS
       x.[SURVIVING_SPOUSE],
       x.[SERVICE_EXPIRATION_DATE]
    FROM [clt_NetO].[VETINFO] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BRANCH = A0.[DBSYMBOL] AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_OBRCH1 = A1.[DBSYMBOL] AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_OBRCH2 = A2.[DBSYMBOL] AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_OBRCH3 = A3.[DBSYMBOL] AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_BRANCH] = A0.[DBSYMBOL] AND A0.[TableName] = 'VETINFO' and A0.[COLUMNNAME] = 'S_BRANCH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_OBRCH1] = A1.[DBSYMBOL] AND A1.[TableName] = 'VETINFO' and A1.[COLUMNNAME] = 'S_OBRCH1'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_OBRCH2] = A2.[DBSYMBOL] AND A2.[TableName] = 'VETINFO' and A2.[COLUMNNAME] = 'S_OBRCH2'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[S_OBRCH3] = A3.[DBSYMBOL] AND A3.[TableName] = 'VETINFO' and A3.[COLUMNNAME] = 'S_OBRCH3'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

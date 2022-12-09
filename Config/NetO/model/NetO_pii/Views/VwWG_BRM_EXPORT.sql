@@ -26,8 +26,8 @@ AS
       x.[EXP_INCL_CATS],
       x.[EXP_INCL_GRIDS]
    FROM [clt_NetO].[WG_BRM_EXPORT] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_EXP_STATUS = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_BRM_EXPORT' and A0.[COLUMNNAME] = 'S_EXP_STATUS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_BRM_STATUS = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_EXP_STATUS] = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_BRM_EXPORT' and A0.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_EXP_BRM_STATUS] = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_BRM_EXPORT' and A1.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

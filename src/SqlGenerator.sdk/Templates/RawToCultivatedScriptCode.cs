@@ -47,7 +47,7 @@ public partial class RawToCultivatedScript
             }),
     };
 
-    public IReadOnlyList<string> GetTableNames()
+    public IReadOnlyList<IReadOnlyList<string>> GetTableNames()
     {
         var list = PhysicalModel
             .Tables
@@ -67,7 +67,9 @@ public partial class RawToCultivatedScript
 
         return list
             .Select((x, i) => i == list.Count - 1 ? x : x + ",")
-            .ToList();
+            .ToList()
+            .Chunk(900)
+            .ToArray();
 
         int hasLnum(string tableName) => PhysicalModel.Tables
             .Where(x => x.Name.Name == tableName)

@@ -54,13 +54,13 @@ AS
       x.[TOTAL_GIFT_FUNDS] AS [TOTAL_GIFT_FUNDS],
       x.[ASSETCTR] AS [ASSETCTR]
    FROM [clt_NetO].[DOWNPYMT] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_TYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_DOWN_PMT_SRC_TYP = A1.[DBSYMBOL] AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_DOWN_PMT_SRC_OTH = A2.[DBSYMBOL] AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.S_DOWN_PMT_TYP = A3.[DBSYMBOL] AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.S_TYPE_OTH = A4.[DBSYMBOL] AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.S_DOWN_PMT_SRC = A5.[DBSYMBOL] AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.S_TYPENM = A6.[DBSYMBOL] AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'DOWNPYMT' and A0.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_DOWN_PMT_SRC_TYP] = A1.[DBSYMBOL] AND A1.[TableName] = 'DOWNPYMT' and A1.[COLUMNNAME] = 'S_DOWN_PMT_SRC_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_DOWN_PMT_SRC_OTH] = A2.[DBSYMBOL] AND A2.[TableName] = 'DOWNPYMT' and A2.[COLUMNNAME] = 'S_DOWN_PMT_SRC_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[S_DOWN_PMT_TYP] = A3.[DBSYMBOL] AND A3.[TableName] = 'DOWNPYMT' and A3.[COLUMNNAME] = 'S_DOWN_PMT_TYP'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.[S_TYPE_OTH] = A4.[DBSYMBOL] AND A4.[TableName] = 'DOWNPYMT' and A4.[COLUMNNAME] = 'S_TYPE_OTH'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A5 on x.[S_DOWN_PMT_SRC] = A5.[DBSYMBOL] AND A5.[TableName] = 'DOWNPYMT' and A5.[COLUMNNAME] = 'S_DOWN_PMT_SRC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.[S_TYPENM] = A6.[DBSYMBOL] AND A6.[TableName] = 'DOWNPYMT' and A6.[COLUMNNAME] = 'S_TYPENM'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

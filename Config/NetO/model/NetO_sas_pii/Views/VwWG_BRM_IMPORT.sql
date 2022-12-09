@@ -38,9 +38,9 @@ AS
       x.[IMP_IMP_CATS] AS [IMP_IMP_CATS],
       x.[IMP_IMP_GRIDS] AS [IMP_IMP_GRIDS]
    FROM [clt_NetO].[WG_BRM_IMPORT] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_IMP_STATUS = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_BRM_IMPORT' and A0.[COLUMNNAME] = 'S_IMP_STATUS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_EXP_STATUS = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_BRM_IMPORT' and A1.[COLUMNNAME] = 'S_EXP_STATUS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_EXP_BRM_STATUS = A2.[DBSYMBOL] AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_IMP_STATUS] = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_BRM_IMPORT' and A0.[COLUMNNAME] = 'S_IMP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_EXP_STATUS] = A1.[DBSYMBOL] AND A1.[TableName] = 'WG_BRM_IMPORT' and A1.[COLUMNNAME] = 'S_EXP_STATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_EXP_BRM_STATUS] = A2.[DBSYMBOL] AND A2.[TableName] = 'WG_BRM_IMPORT' and A2.[COLUMNNAME] = 'S_EXP_BRM_STATUS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

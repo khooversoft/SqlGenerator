@@ -58,9 +58,9 @@ AS
       x.[SALES_TAX_ID],
       x.[REGION]
    FROM [clt_NetO].[SELLER] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_BOR_SELLER_OPTION = A0.[DBSYMBOL] AND A0.[TableName] = 'SELLER' and A0.[COLUMNNAME] = 'S_BOR_SELLER_OPTION'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_SEL_UNIT_TYPE = A1.[DBSYMBOL] AND A1.[TableName] = 'SELLER' and A1.[COLUMNNAME] = 'S_SEL_UNIT_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_IDENTIFICATION_TYPE = A2.[DBSYMBOL] AND A2.[TableName] = 'SELLER' and A2.[COLUMNNAME] = 'S_IDENTIFICATION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_BOR_SELLER_OPTION] = A0.[DBSYMBOL] AND A0.[TableName] = 'SELLER' and A0.[COLUMNNAME] = 'S_BOR_SELLER_OPTION'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_SEL_UNIT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'SELLER' and A1.[COLUMNNAME] = 'S_SEL_UNIT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_IDENTIFICATION_TYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'SELLER' and A2.[COLUMNNAME] = 'S_IDENTIFICATION_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

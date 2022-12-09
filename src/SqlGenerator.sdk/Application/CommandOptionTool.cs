@@ -49,6 +49,13 @@ public static class CommandOptionTool
             x => x is TokenValue v && v.Value == "=>" ? "=>" : null,
             x => x is TokenValue v ? new CommandToken(v.Value) : (x is BlockToken b ? new CommandToken(b.Value) : null),
         },
+
+        new Func<IToken, object?>[]
+        {
+            x => x is TokenValue v && v.Value.EqualsIgnoreCase("xrefTable") ? CommandType.XRefTable : null,
+            x => x is TokenValue v && v.Value == "+=" ? "+=" : null,
+            x => x is TokenValue v ? new PatternToken(v.Value) : (x is BlockToken b ? new PatternToken(b.Value) : null),
+        },
     };
 
 

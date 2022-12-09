@@ -35,9 +35,9 @@ AS
       x.[S_REPAYMENT_METHOD] AS [S_REPAYMENT_METHOD],
       A2.Descript AS [REPAYMENT_METHOD]
    FROM [clt_NetO].[HELOC] x
-      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.S_LOCTYPE = A0.[DBSYMBOL] AND A0.[TableName] = 'HELOC' and A0.[COLUMNNAME] = 'S_LOCTYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.S_FUNDS_TO_BE_DRAWN = A1.[DBSYMBOL] AND A1.[TableName] = 'HELOC' and A1.[COLUMNNAME] = 'S_FUNDS_TO_BE_DRAWN'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.S_REPAYMENT_METHOD = A2.[DBSYMBOL] AND A2.[TableName] = 'HELOC' and A2.[COLUMNNAME] = 'S_REPAYMENT_METHOD'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_LOCTYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'HELOC' and A0.[COLUMNNAME] = 'S_LOCTYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FUNDS_TO_BE_DRAWN] = A1.[DBSYMBOL] AND A1.[TableName] = 'HELOC' and A1.[COLUMNNAME] = 'S_FUNDS_TO_BE_DRAWN'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_REPAYMENT_METHOD] = A2.[DBSYMBOL] AND A2.[TableName] = 'HELOC' and A2.[COLUMNNAME] = 'S_REPAYMENT_METHOD'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
