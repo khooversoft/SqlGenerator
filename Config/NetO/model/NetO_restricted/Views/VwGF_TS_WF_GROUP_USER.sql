@@ -7,10 +7,10 @@ CREATE VIEW [NetO_restricted].[VwGF_TS_WF_GROUP_USER]
 AS
    SELECT
       x.[S_PROC_GROUP],
-      A0.Descript AS [PROC_GROUP],
+      A0.[Descript] AS [S_PROC_GROUP_X],
       x.[USERID],
       x.[S_USER_TYPE],
-      A1.Descript AS [USER_TYPE],
+      A1.[Descript] AS [S_USER_TYPE_X],
       x.[IS_ACTIVE],
       x.[WEIGHT],
       x.[SUPERVISOR_ID]

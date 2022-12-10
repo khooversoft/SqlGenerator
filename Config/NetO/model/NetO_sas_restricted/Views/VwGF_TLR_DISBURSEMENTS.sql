@@ -11,11 +11,10 @@ AS
       x.[ROWSERIALNO] AS [ROWSERIALNO],
       x.[MODIFIED_USERID] AS [MODIFIED_USERID],
       x.[S_FMETHOD] AS [S_FMETHOD],
-      A0.Descript AS [FMETHOD],
+      A0.[Descript] AS [S_FMETHOD_X],
       x.[S_FSTATUS] AS [S_FSTATUS],
-      A1.Descript AS [FSTATUS],
+      A1.[Descript] AS [S_FSTATUS_X],
       x.[S_DMETHOD] AS [S_DMETHOD],
-      A2.Descript AS [DMETHOD],
       x.[AMOUNT] AS [AMOUNT],
       HASHBYTES('SHA2_256', x.[PAYEE_NAME]) AS [PAYEE_NAME],
       HASHBYTES('SHA2_256', x.[PAYEE_ADDRESS]) AS [PAYEE_ADDRESS],
@@ -25,9 +24,8 @@ AS
       x.[ISSUEDATE] AS [ISSUEDATE],
       x.[REQDATE] AS [REQDATE],
       x.[S_TYPE] AS [S_TYPE],
-      A3.Descript AS [TYPE],
+      A2.[Descript] AS [S_TYPE_X],
       x.[S_FUNDLOC] AS [S_FUNDLOC],
-      A4.Descript AS [FUNDLOC],
       x.[ROUTENUM] AS [ROUTENUM],
       x.[ACCOUNTNUM] AS [ACCOUNTNUM],
       x.[TRANSNUM] AS [TRANSNUM],
@@ -72,7 +70,9 @@ AS
       x.[WIRE_CONFIRMATION_NBR] AS [WIRE_CONFIRMATION_NBR],
       x.[DISBDESC] AS [DISBDESC],
       x.[ACH_ACCOUNT_TYPE] AS [ACH_ACCOUNT_TYPE],
+      A3.[Descript] AS [ACH_ACCOUNT_TYPE_X],
       x.[ACH_DEBIT_OR_CREDIT] AS [ACH_DEBIT_OR_CREDIT],
+      A4.[Descript] AS [ACH_DEBIT_OR_CREDIT_X],
       x.[ACH_ROUTING_NUMBER] AS [ACH_ROUTING_NUMBER],
       x.[ACH_ACCOUNT_NUMBER] AS [ACH_ACCOUNT_NUMBER],
       x.[W_APPRVDBY1] AS [W_APPRVDBY1],
@@ -84,9 +84,9 @@ AS
    FROM [clt_NetO].[GF_TLR_DISBURSEMENTS] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_FMETHOD] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_DISBURSEMENTS' and A0.[COLUMNNAME] = 'S_FMETHOD'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FSTATUS] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_DISBURSEMENTS' and A1.[COLUMNNAME] = 'S_FSTATUS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_DMETHOD] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_DMETHOD'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[S_TYPE] = A3.[DBSYMBOL] AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'S_TYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.[S_FUNDLOC] = A4.[DBSYMBOL] AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'S_FUNDLOC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_TYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_DISBURSEMENTS' and A2.[COLUMNNAME] = 'S_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[ACH_ACCOUNT_TYPE] = A3.[DBSYMBOL] AND A3.[TableName] = 'GF_TLR_DISBURSEMENTS' and A3.[COLUMNNAME] = 'ACH_ACCOUNT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.[ACH_DEBIT_OR_CREDIT] = A4.[DBSYMBOL] AND A4.[TableName] = 'GF_TLR_DISBURSEMENTS' and A4.[COLUMNNAME] = 'ACH_DEBIT_OR_CREDIT'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

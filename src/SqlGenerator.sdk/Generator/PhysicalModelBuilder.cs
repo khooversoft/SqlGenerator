@@ -103,6 +103,6 @@ public class PhysicalModelBuilder
 
     private IReadOnlyList<XRefTableModel> ReadXRefTable(SqlProjectOption projectOption) => projectOption.CommandOptions
         .Where(x => x.Type == CommandType.XRefTable)
-        .SelectMany(x => XRefTableFile.Read(x.Pattern).Items)
+        .SelectMany(x => XRefTableFile.Read(x.Pattern))
         .ToArray();
 }

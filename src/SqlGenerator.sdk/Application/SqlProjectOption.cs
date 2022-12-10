@@ -46,7 +46,13 @@ public static class SqlProjectOptionFile
                 ProjectOptionFile = projectFile,
                 SourceFile = PathTool.ToFullPath(projectFile, x.SourceFile),
                 TableTypeMetadata = PathTool.ToFullPath(projectFile, x.TableTypeMetadata),
-                CommandOptions = x.UpdateCommands.Select(y => CommandOption.Create(y)).ToArray(),
+                CommandOptions = x.UpdateCommands
+                    .Select(y => CommandOption.Create(y) switch
+                    {
+                        CommandOption v when v.Type == CommandType.XRefTable => v with { Pattern = PathTool.ToFullPath(projectFile, v.Pattern) },
+                        CommandOption v => v,
+                    })
+                    .ToArray(),
             });
     }
 

@@ -31,7 +31,8 @@
 		"primaryKey += L_SYMBOL.FLDNAME",
 		"primaryKey += L_SYMBOL.DBSYMBOL",
 		
-		"copy += Include\\VwSymbolLookup.sql => clt_NetO\\Tables\\VwSymbolLookup.sql"
+		"copy += Include\\VwSymbolLookup.sql => clt_NetO\\Tables\\VwSymbolLookup.sql",
+		"xrefTable += NetO-LSymbolXref.csv"
 	],
 
 	"addInstructions": [
@@ -44,10 +45,23 @@
 			"whereLine": "NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])"
 		},
 		{
-			"model": "template",
-			"pattern": "*.S_*",
-			"selectLine": "{alias}.Descript AS [{mapColumnName(S_)}]",
+			"model": "xrefTable",
+			"pattern": "L_SYMBOL",
+			"selectLine": "{alias}.[Descript] AS [{mapColumnName(_X)}]",
 			"joinLine": "LEFT JOIN [clt_NetO].[SymbolLookup] {alias} on x.[{columnName}] = {alias}.[DBSYMBOL] AND {alias}.[TableName] = '{tableName}' and {alias}.[COLUMNNAME] = '{columnName}'",
+			"selectLineOrder": "{columnName}"
+		},
+		{
+			"model": "xrefTable",
+			"patterns": [
+				"GF_TS_PNP_IPG_INVESTOR",
+				"GF_TS_PNP_IPG_PRICING",
+				"GF_TS_PNP_IPG_PRODUCT",
+				"GF_TS_PNP_IPG_PROGRAM",
+				"RATECODE"
+			],
+			"selectLine": "{alias}.[{lookupDisplayColumnName}] AS [{columnName}_X]",
+			"joinLine": "LEFT JOIN [clt_NetO].[{lookupTable}] {alias} on x.[{columnName}] = {alias}.[{lookupColumnName}]",
 			"selectLineOrder": "{columnName}"
 		}
 	]

@@ -11,7 +11,7 @@ AS
       x.[DBID],
       x.[ROWSERIALNO],
       x.[S_RACE],
-      A0.Descript AS [RACE],
+      A0.[Descript] AS [S_RACE_X],
       x.[OTHER_AMERICAN_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_RACE] x

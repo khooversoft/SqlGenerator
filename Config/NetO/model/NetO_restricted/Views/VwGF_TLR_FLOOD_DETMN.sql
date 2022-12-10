@@ -33,10 +33,12 @@ AS
       x.[NFIP_MAP_PANEL_DATE],
       x.[NFIP_MAP_PANEL_SUFFIX],
       x.[NFIP_FLOOD_REV_TYPE],
+      A0.[Descript] AS [NFIP_FLOOD_REV_TYPE_X],
       x.[NFIP_MAP_DATE],
       x.[NFIP_FLOOD_ZONE_ID],
       x.[NFIP_MAP_IND],
       x.[NFIP_STATUS_TYPE],
+      A1.[Descript] AS [NFIP_STATUS_TYPE_X],
       x.[PROTECTED_AREA_IND],
       x.[PROTECTED_AREA_DATE],
       x.[SELECTED_FOR_LOAN_IND],
@@ -44,6 +46,8 @@ AS
       x.[FLOOD_CHECK_IDENTIFIER],
       x.[FLOOD_PRODUCT_CERTIFY_DATE]
    FROM [clt_NetO].[GF_TLR_FLOOD_DETMN] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[NFIP_FLOOD_REV_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_FLOOD_DETMN' and A0.[COLUMNNAME] = 'NFIP_FLOOD_REV_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[NFIP_STATUS_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_FLOOD_DETMN' and A1.[COLUMNNAME] = 'NFIP_STATUS_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataTools.sdk.Model;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -11,7 +12,8 @@ namespace SqlGenerator.sdk.Application;
 public enum AddInstructionType
 {
     Single,
-    Template
+    Template,
+    XrefTable
 }
 
 public record AddInstruction
@@ -45,7 +47,7 @@ public static class AddInstructionExtensions
         .ToArray();
 
     public static bool IsMatch(this AddInstruction instruction, string value) => instruction.GetPatterns().Any(x => PatternMatch.IsMatch(x, value));
-
+    public static bool IsMatch(this AddInstruction instruction, XRefTableModel xRefTableFile) => instruction.GetPatterns().Any(x => PatternMatch.IsMatch(x, xRefTableFile.LookupTable));
     public static bool IsSelect(this AddInstruction instruction) => !instruction.SelectLine.IsEmpty();
     public static bool IsJoin(this AddInstruction instruction) => !instruction.JoinLine.IsEmpty();
     public static bool IsWhere(this AddInstruction instruction) => !instruction.WhereLine.IsEmpty();

@@ -1,4 +1,5 @@
-﻿using DataTools.sdk.Model;
+﻿using System.Diagnostics;
+using DataTools.sdk.Model;
 using DocumentFormat.OpenXml.Wordprocessing;
 using SqlGenerator.sdk.Application;
 using SqlGenerator.sdk.Model;
@@ -41,7 +42,8 @@ public class SqlViewBuilder
         IReadOnlyList<SqlInstruction> sqlInstructions = new Sequence<SqlInstruction>()
             + AddNormalColumns(columns, schema)
             + AddInstructionsForSingle(tableModel, columns, schema)
-            + AddInstructionsForTemplate(tableModel, columns, schema);
+            + AddInstructionsForTemplate(tableModel, columns, schema)
+            + AddInstructionsForXrefTable(tableModel, columns, schema);
 
         sqlInstructions = SetIndex(sqlInstructions);
 
@@ -230,7 +232,7 @@ public class SqlViewBuilder
 
     private IReadOnlyList<SqlInstruction> AddInstructionsForTemplate(TableModel tableModel, IReadOnlyList<ColumnModel> columns, SchemaModel schemaModel)
     {
-        var columnImpacted = _physicalModel.AddInstructions
+        (AddInstruction Inst, ColumnModel Column)[] columnImpacted = _physicalModel.AddInstructions
             .Where(x => x.Model == AddInstructionType.Template)
             .SelectMany(x => columns.Where(c => x.IsMatch($"{tableModel.Name.Name}.{c.Name}")), (x, m) => (Inst: x, Column: m))
             .ToArray();
@@ -257,25 +259,64 @@ public class SqlViewBuilder
             .Add("tableName", tableModel.Name.Name)
             .Add("columnName", columnModel.Name)
             .Add("alias", $"A{index}")
-            .Add("mapColumnName", x => mapColumnName(columnModel.Name.Replace(x, string.Empty), columns));
+            .Add("mapColumnName", x => MapColumnName(columnModel.Name.Replace(x, string.Empty), columns, schemaModel));
+    }
 
-        string mapColumnName(string columnName, IReadOnlyList<ColumnModel> columns)
+    private IReadOnlyList<SqlInstruction> AddInstructionsForXrefTable(TableModel tableModel, IReadOnlyList<ColumnModel> columns, SchemaModel schemaModel)
+    {
+        (AddInstruction Inst, XRefTableModel Table, ColumnModel Column)[] columnImpacted = _physicalModel.AddInstructions
+            .Where(x => x.Model == AddInstructionType.XrefTable)
+            .SelectMany(x => _physicalModel.XRefTables.Where(y => x.IsMatch(y) && y.TableName.EqualsIgnoreCase(tableModel.Name.Name)), (o, i) => (Inst: o, Table: i))
+            .SelectMany(x => columns.Where(c => x.Table.ColumnName.EqualsIgnoreCase(c.Name)), (o, i) => (o.Inst, o.Table, Column: i))
+            .OrderBy(x => x.Column.ColumnIndex)
+            .ToArray();
+
+        if (tableModel.Name.Name == "BORROWER") Debugger.Break();
+
+        var result = columnImpacted
+            .Select((x, i) => (x.Inst, x.Column, Cmd: createCommandFunction(x.Column, x.Table, i)))
+            .SelectMany(x => new[]
+                {
+                    x.Inst.IsSelect() ? new SqlInstruction
+                        {
+                            Type = InstrType.Select,
+                            Line =  x.Cmd.Resolve(x.Inst.SelectLine.NotEmpty()),
+                            SelectLineOrder = !x.Inst.SelectLineOrder.IsEmpty() ? x.Cmd.Resolve(x.Inst.SelectLineOrder) : null,
+                        } : null,
+                    x.Inst.IsJoin() ? new SqlInstruction { Type = InstrType.Join, Line = x.Cmd.Resolve(x.Inst.JoinLine.NotEmpty()) } : null,
+                    x.Inst.IsWhere() ? new SqlInstruction { Type = InstrType.Where, Line = x.Cmd.Resolve(x.Inst.WhereLine.NotEmpty()) } : null,
+                }.OfType<SqlInstruction>()
+            ).ToArray();
+
+        return result;
+
+        CommandFunction createCommandFunction(ColumnModel columnModel, XRefTableModel table, int index) => new CommandFunction()
+            .Add("schemaName", schemaModel.Name)
+            .Add("tableName", tableModel.Name.Name)
+            .Add("columnName", columnModel.Name)
+            .Add("alias", $"A{index}")
+            .Add("lookupTable", table.LookupTable)
+            .Add("lookupColumnName", table.LookupColumnName)
+            .Add("lookupDisplayColumnName", table.LookupDisplayColumnName)
+            .Add("mapColumnName", x => MapColumnName(columnModel.Name + x, columns, schemaModel));
+    }
+
+    private string MapColumnName(string columnName, IReadOnlyList<ColumnModel> columns, SchemaModel schemaModel)
+    {
+        string proposeColumnName = GetColumnName(columnName, schemaModel);
+
+        return columns.Count(x => x.Name.EqualsIgnoreCase(proposeColumnName)) switch
         {
-            string proposeColumnName = getColumnName(columnName);
-
-            return columns.Count(x => x.Name.EqualsIgnoreCase(proposeColumnName)) switch
-            {
-                0 => proposeColumnName,
-                int v => proposeColumnName + v.ToString(),
-            };
-        }
-
-        string getColumnName(string columnName) => schemaModel.MaxColumnSize switch
-        {
-            null => columnName,
-            int v => _option?.ShortName(columnName, v) ?? columnName,
+            0 => proposeColumnName,
+            int v => proposeColumnName + v.ToString(),
         };
     }
+
+    private string GetColumnName(string columnName, SchemaModel schemaModel) => schemaModel.MaxColumnSize switch
+    {
+        null => columnName,
+        int v => _option?.ShortName(columnName, v) ?? columnName,
+    };
 
     private IReadOnlyList<SqlInstruction> SetIndex(IReadOnlyList<SqlInstruction> instructions)
     {

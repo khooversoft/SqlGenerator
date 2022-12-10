@@ -14,7 +14,7 @@ AS
       x.[MID_NAME],
       HASHBYTES('SHA2_256', x.[LAST_NAME]) AS [LAST_NAME],
       x.[S_BORR_ALIAS],
-      A0.Descript AS [BORR_ALIAS],
+      A0.[Descript] AS [S_BORR_ALIAS_X],
       HASHBYTES('SHA2_256', x.[NAME_SUFFIX]) AS [NAME_SUFFIX],
       x.[ALIAS_TYPE_OTH_DESC],
       x.[CREDITORNAME],

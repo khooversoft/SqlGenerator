@@ -18,7 +18,7 @@ AS
       x.[MAILCOUNTRY],
       x.[MAIL_FADDR_INDICATOR],
       x.[S_MAIL_UNIT_TYPE],
-      A0.Descript AS [MAIL_UNIT_TYPE],
+      A0.[Descript] AS [S_MAIL_UNIT_TYPE_X],
       x.[MAIL_UNIT_NUM],
       x.[MAIL_COUNTRY_CODE],
       x.[BOR_MAIL_STATE_FOREIN],

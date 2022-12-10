@@ -13,7 +13,7 @@ AS
       x.[MIN_BALANCE],
       x.[OPENEND_CREDIT_IND],
       x.[S_RTC_TYPE],
-      A0.Descript AS [RTC_TYPE],
+      A0.[Descript] AS [S_RTC_TYPE_X],
       x.[WAIVE_ANNUAL_FEE],
       x.[ANNUAL_FEE_START_DT]
    FROM [clt_NetO].[HELOC2] x

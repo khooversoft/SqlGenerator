@@ -11,11 +11,6 @@ using Toolbox.Tools;
 
 namespace DataTools.sdk.Model;
 
-public record XRefTable
-{
-    public IReadOnlyList<XRefTableModel> Items { get; init; } = Array.Empty<XRefTableModel>();
-}
-
 public record XRefTableModel
 {
     [Name("TABLENAME")]
@@ -49,16 +44,15 @@ public static class XRefTableFile
         return subject;
     }
 
-    public static XRefTable Read(string file)
+    public static IReadOnlyList<XRefTableModel> Read(string file)
     {
         file.NotEmpty();
 
         using var reader = new StreamReader(file);
         using CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
-        return new XRefTable
-        {
-            Items = csv.GetRecords<XRefTableModel>().ToArray(),
-        };
+        return csv
+            .GetRecords<XRefTableModel>()
+            .ToArray();
     }
 }

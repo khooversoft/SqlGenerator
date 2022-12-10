@@ -8,9 +8,9 @@ AS
    SELECT
       x.[PROC_MDL_MGR_ID],
       x.[S_PROCESS_MODEL],
-      A0.Descript AS [PROCESMODEL],
+      A0.[Descript] AS [S_PROCESS_MODEL_X],
       x.[S_PROC_MDL_MGR_RESOLUTION],
-      A1.Descript AS [PROC_MDL_MGR_RESOLUTION],
+      A1.[Descript] AS [S_PROC_MDL_MGR_RESOLUTION_X],
       x.[EXP_DATE_TO_COMPLETE],
       x.[START_DATE],
       x.[END_DATE],
@@ -18,7 +18,7 @@ AS
       x.[IS_COMPLETE],
       x.[RESERVED_BY],
       x.[S_PROC_GROUP],
-      A2.Descript AS [PROC_GROUP],
+      A2.[Descript] AS [S_PROC_GROUP_X],
       x.[PROC_MGR_ID],
       x.[PARENT_PROC_MDL_MGR_ID]
    FROM [clt_NetO].[GF_TW_WF_PROC_MODEL_MGR] x

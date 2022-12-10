@@ -8,20 +8,19 @@ AS
    SELECT
       x.[LNUM] AS [LNUM],
       x.[S_REFSC] AS [S_REFSC],
-      A0.Descript AS [REFSC],
+      A0.[Descript] AS [S_REFSC_X],
       x.[TBDADDR] AS [TBDADDR],
       x.[POSFHA] AS [POSFHA],
       x.[S_PROPTYPE] AS [S_PROPTYPE],
-      A1.Descript AS [PROPTYPE],
       x.[PROJCLAS] AS [PROJCLAS],
       x.[PROJNAME] AS [PROJNAME],
       x.[DPPERCT] AS [DPPERCT],
       x.[HELINE] AS [HELINE],
       x.[HECURBAL] AS [HECURBAL],
       x.[S_DOCLVL] AS [S_DOCLVL],
-      A2.Descript AS [DOCLVL],
+      A1.[Descript] AS [S_DOCLVL_X],
       x.[S_LNSTATUS] AS [S_LNSTATUS],
-      A3.Descript AS [LNSTATUS],
+      A2.[Descript] AS [S_LNSTATUS_X],
       x.[HLTVH] AS [HLTVH],
       x.[TSWE_INC_EXPECTED] AS [TSWE_INC_EXPECTED],
       x.[QUAL_TSWE_LOAN] AS [QUAL_TSWE_LOAN],
@@ -37,7 +36,7 @@ AS
       x.[LO_NMLS_NUM_OVR] AS [LO_NMLS_NUM_OVR],
       x.[LO_PHONE_OVR] AS [LO_PHONE_OVR],
       x.[S_GFE_TIME_ZONE] AS [S_GFE_TIME_ZONE],
-      A4.Descript AS [GFE_TIME_ZONE],
+      A3.[Descript] AS [S_GFE_TIME_ZONE_X],
       x.[ALLOWWITHDRAWLOAN] AS [ALLOWWITHDRAWLOAN],
       x.[GFE_INT_RATE_LSC] AS [GFE_INT_RATE_LSC],
       x.[GFE_INT_RATE_LIR] AS [GFE_INT_RATE_LIR],
@@ -55,6 +54,7 @@ AS
       x.[AUTO_UW_YN] AS [AUTO_UW_YN],
       x.[VA_TOT_RESID_INCOME] AS [VA_TOT_RESID_INCOME],
       x.[PER_DIEM_CALC_BASIS] AS [PER_DIEM_CALC_BASIS],
+      A4.[Descript] AS [PER_DIEM_CALC_BASIS_X],
       x.[PER_DIEM] AS [PER_DIEM],
       x.[PER_DIEM_INTEREST] AS [PER_DIEM_INTEREST],
       x.[ESCROW_CUSHION_MNTH] AS [ESCROW_CUSHION_MNTH],
@@ -85,10 +85,10 @@ AS
       x.[DU_DISPLAY_OVR] AS [DU_DISPLAY_OVR]
    FROM [clt_NetO].[GF_TL_POINT_OF_SALE_INFO] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_REFSC] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A0.[COLUMNNAME] = 'S_REFSC'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_PROPTYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_PROPTYPE'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_DOCLVL] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_DOCLVL'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[S_LNSTATUS] = A3.[DBSYMBOL] AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_LNSTATUS'
-      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.[S_GFE_TIME_ZONE] = A4.[DBSYMBOL] AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_DOCLVL] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_DOCLVL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_LNSTATUS] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_LNSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[S_GFE_TIME_ZONE] = A3.[DBSYMBOL] AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.[PER_DIEM_CALC_BASIS] = A4.[DBSYMBOL] AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'PER_DIEM_CALC_BASIS'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

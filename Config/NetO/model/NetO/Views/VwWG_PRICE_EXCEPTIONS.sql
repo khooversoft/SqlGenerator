@@ -9,14 +9,14 @@ AS
       x.[LNUM],
       x.[EXCEPTIONID],
       x.[S_EXCEPTION_TYPE],
-      A0.Descript AS [EXCEPTION_TYPE],
+      A0.[Descript] AS [S_EXCEPTION_TYPE_X],
       x.[DATE_ADDED],
       x.[EXCEPTION_REASON],
       x.[EXCEPTION_REQUESTED_BY_USER],
       x.[INACTIVE],
       x.[INACTIVE_DATE],
       x.[S_EXCEPTION_STATUS],
-      A1.Descript AS [EXCEPTION_STATUS],
+      A1.[Descript] AS [S_EXCEPTION_STATUS_X],
       x.[DATE_ACTIONED],
       x.[LENDER_DECISION_NOTES]
    FROM [clt_NetO].[WG_PRICE_EXCEPTIONS] x

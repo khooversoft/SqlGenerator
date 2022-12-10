@@ -88,9 +88,9 @@ AS
       x.[MIN_1ST_ADJ_RATE] AS [MIN_1ST_ADJ_RATE],
       x.[FIR_MAX_MONTHLY_AMT] AS [FIR_MAX_MONTHLY_AMT],
       x.[S_FRE_INDEX_TYPE] AS [S_FRE_INDEX_TYPE],
-      A0.Descript AS [FRE_INDEX_TYPE],
+      A0.[Descript] AS [S_FRE_INDEX_TYPE_X],
       x.[S_FNM_INDEX_TYPE] AS [S_FNM_INDEX_TYPE],
-      A1.Descript AS [FNM_INDEX_TYPE]
+      A1.[Descript] AS [S_FNM_INDEX_TYPE_X]
    FROM [clt_NetO].[ARMINFO] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_FRE_INDEX_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'ARMINFO' and A0.[COLUMNNAME] = 'S_FRE_INDEX_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FNM_INDEX_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'ARMINFO' and A1.[COLUMNNAME] = 'S_FNM_INDEX_TYPE'

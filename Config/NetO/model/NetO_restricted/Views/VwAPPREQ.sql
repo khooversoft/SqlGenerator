@@ -77,8 +77,10 @@ AS
       x.[WARCITY],
       x.[WARSTATE],
       x.[WARZIP],
-      x.[APPR_B2G_LIC_TYPE]
+      x.[APPR_B2G_LIC_TYPE],
+      A0.[Descript] AS [APPR_B2G_LIC_TYPE_X]
    FROM [clt_NetO].[APPREQ] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[APPR_B2G_LIC_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'APPREQ' and A0.[COLUMNNAME] = 'APPR_B2G_LIC_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
