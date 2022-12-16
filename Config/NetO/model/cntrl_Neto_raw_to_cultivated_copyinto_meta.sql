@@ -390,6 +390,11 @@ VALUES
 ('GF_TLB_EQ_RES_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('GF_TLB_EQ_RES_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
 ('GF_TLB_EQ_RES_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('GF_TLB_EX_RES_PROF_SUM', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLB_EX_RES_PROF_SUM_20'),
+('GF_TLB_EX_RES_PROF_SUM', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('GF_TLB_EX_RES_PROF_SUM', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('GF_TLB_EX_RES_PROF_SUM', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
+('GF_TLB_EX_RES_PROF_SUM', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
 ('GF_TLB_EX_RES_TRENDS_SUM', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLB_EX_RES_TRENDS_SUM_20'),
 ('GF_TLB_EX_RES_TRENDS_SUM', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('GF_TLB_EX_RES_TRENDS_SUM', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -410,11 +415,26 @@ VALUES
 ('GF_TLB_TU_RES_CRED_SUM', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('GF_TLB_TU_RES_CRED_SUM', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
 ('GF_TLB_TU_RES_CRED_SUM', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('GF_TLB_TU_RES_SCORING', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLB_TU_RES_SCORING_20'),
+('GF_TLB_TU_RES_SCORING', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('GF_TLB_TU_RES_SCORING', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('GF_TLB_TU_RES_SCORING', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
+('GF_TLB_TU_RES_SCORING', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('GF_TLB_TU_RES_SUBJ_INFO', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLB_TU_RES_SUBJ_INFO_20'),
+('GF_TLB_TU_RES_SUBJ_INFO', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('GF_TLB_TU_RES_SUBJ_INFO', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('GF_TLB_TU_RES_SUBJ_INFO', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
+('GF_TLB_TU_RES_SUBJ_INFO', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
 ('GF_TLBC_EQ_RES_COLLECT', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLBC_EQ_RES_COLLECT_20'),
 ('GF_TLBC_EQ_RES_COLLECT', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('GF_TLBC_EQ_RES_COLLECT', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('GF_TLBC_EQ_RES_COLLECT', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
 ('GF_TLBC_EQ_RES_COLLECT', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('GF_TLBC_EX_RES_INQUIRY', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLBC_EX_RES_INQUIRY_20'),
+('GF_TLBC_EX_RES_INQUIRY', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('GF_TLBC_EX_RES_INQUIRY', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('GF_TLBC_EX_RES_INQUIRY', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
+('GF_TLBC_EX_RES_INQUIRY', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
 ('GF_TLBC_TU_RES_GEOCODE', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLBC_TU_RES_GEOCODE_20'),
 ('GF_TLBC_TU_RES_GEOCODE', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('GF_TLBC_TU_RES_GEOCODE', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -545,6 +565,11 @@ VALUES
 ('GF_TLR_REOWNED_BORROWERS', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('GF_TLR_REOWNED_BORROWERS', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
 ('GF_TLR_REOWNED_BORROWERS', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('GF_TLR_REQ_CREDIT_DATA', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLR_REQ_CREDIT_DATA_20'),
+('GF_TLR_REQ_CREDIT_DATA', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('GF_TLR_REQ_CREDIT_DATA', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('GF_TLR_REQ_CREDIT_DATA', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
+('GF_TLR_REQ_CREDIT_DATA', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
 ('GF_TLR_REQ_CREDIT_LIAB_REP', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TLR_REQ_CREDIT_LIAB_REP_20'),
 ('GF_TLR_REQ_CREDIT_LIAB_REP', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('GF_TLR_REQ_CREDIT_LIAB_REP', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -1089,7 +1114,11 @@ VALUES
 ('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '1'),
-('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '1'),
+('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '1')
+
+INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
+VALUES
+
 ('WG_CRM_CUSTOMER_ADDRESS', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_WG_CRM_CUSTOMER_ADDRESS_20'),
 ('WG_CRM_CUSTOMER_ADDRESS', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_CRM_CUSTOMER_ADDRESS', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -1114,11 +1143,7 @@ VALUES
 ('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
-('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0')
-
-INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
-VALUES
-
+('WG_INCOME_SOURCE', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
 ('WG_KELLEYBLUEBOOK_RESPONSE', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_WG_KELLEYBLUEBOOK_RESPONSE_20'),
 ('WG_KELLEYBLUEBOOK_RESPONSE', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_KELLEYBLUEBOOK_RESPONSE', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),

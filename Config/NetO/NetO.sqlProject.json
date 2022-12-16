@@ -5,9 +5,9 @@
 		"NetO_Classification.json"
 	],
 
-	"sourceFile": "NetOPhysicalModel-20221208.csv",
+	"sourceFile": "NetOPhysicalModel-20221215.csv",
 	"buildFolder": null,
-	"tableTypeMetadata": "ConsASAP_MetaData-20221208.csv",
+	"tableTypeMetadata": "ConsASAP_MetaData-20221215.csv",
 
 	"uspLoadTableOption": {
 		"outputFile": "neto_usp_LoadTable_meta.sql",

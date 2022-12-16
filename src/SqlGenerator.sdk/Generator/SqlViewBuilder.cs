@@ -271,8 +271,6 @@ public class SqlViewBuilder
             .OrderBy(x => x.Column.ColumnIndex)
             .ToArray();
 
-        if (tableModel.Name.Name == "BORROWER") Debugger.Break();
-
         var result = columnImpacted
             .Select((x, i) => (x.Inst, x.Column, Cmd: createCommandFunction(x.Column, x.Table, i)))
             .SelectMany(x => new[]

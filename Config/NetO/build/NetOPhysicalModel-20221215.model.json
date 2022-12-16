@@ -20571,6 +20571,335 @@
     {
       "name": {
         "schema": "clt_NetO",
+        "name": "GF_TLB_EX_RES_PROF_SUM"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BNUM",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDITRESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DISPUTED_ACCTS_EXCLUDED",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PUB_REC_NUM",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INSTALLMENT_AMT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REAL_ESTATE_AMT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REVOLVING_AMT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PAST_DUE_AMT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MONTHLY_PMT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MONTHLY_PMT_PART_FLAG",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REAL_ESTATE_PMT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RE_PMT_PART_FLAG",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 14,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REVOLVE_AVAIL_PCT",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 15,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REVOLVE_AVAIL_PART_FLAG",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 16,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INQUIRIES_TTL",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 17,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INQUIRIES_LAST_6_MOS",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 18,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "TRADE_ITEMS_TTL",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 19,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PAID_ACCTS",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 20,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SATISFACTORY_ACCTS",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 21,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "NOW_DELINQUENT",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 22,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "WAS_DELINQUENT",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 23,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OLDEST_TRADE_OPEN_DT",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 24,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DELINQUENCIES_30_DAYS",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 25,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DELINQUENCIES_60_DAYS",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 26,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DELINQUENCIES_90_DAYS",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 27,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DEROG_COUNTER",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 28,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
         "name": "GF_TLB_EX_RES_TRENDS_SUM"
       },
       "indexType": "hash",
@@ -21359,6 +21688,543 @@
     {
       "name": {
         "schema": "clt_NetO",
+        "name": "GF_TLB_TU_RES_SCORING"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BNUM",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDITRESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRODUCT_CODE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(5)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SIGN",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SCORE",
+          "security": "pii",
+          "dataType": "nvarchar(5)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": true,
+          "restricted": false
+        },
+        {
+          "name": "SCORING_IND_FLAG",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SCORE_DEROG_ALERT_FLAG",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FIRST_FACTOR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SECOND_FACTOR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "THIRD_FACTOR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FOURTH_FACTOR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SCORE_CARD_IND",
+          "security": "unrestricted",
+          "dataType": "nvarchar(2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 14,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FIRSTFACTORNARRATIVE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 15,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SECONDFACTORNARRATIVE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 16,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "THIRDFACTORNARRATIVE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 17,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FOURTHFACTORNARRATIVE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(100)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 18,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_ALERTFLAG",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 19,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SEARCH_STATUS",
+          "security": "unrestricted",
+          "dataType": "nvarchar(15)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 20,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FILEINQUIRIES_IMPACTEDSCORE",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 21,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "NOSCOREREASON",
+          "security": "unrestricted",
+          "dataType": "nvarchar(30)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 22,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
+        "name": "GF_TLB_TU_RES_SUBJ_INFO"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BNUM",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDITRESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CUSTOMER_ID",
+          "security": "unrestricted",
+          "dataType": "nvarchar(12)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SUBJ_IDENTIFIER",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FILE_NUM",
+          "security": "unrestricted",
+          "dataType": "nvarchar(2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FILE_HIT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SSN_MATCH_IND",
+          "security": "pii",
+          "dataType": "nvarchar(15)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": true,
+          "restricted": false
+        },
+        {
+          "name": "CONS_STMT_IND",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BUR_MKT_FILE_CNTRL",
+          "security": "unrestricted",
+          "dataType": "nchar(2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BUR_SUBMKT_FILE_CNTRL",
+          "security": "unrestricted",
+          "dataType": "nchar(2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SUPPRESSION_IND",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FILE_SINCE_DT",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 14,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SUBJ_HIT_STATUS",
+          "security": "unrestricted",
+          "dataType": "nvarchar(10)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 15,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SUBJ_RESTRICT_STATUS",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 16,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SUBJ_COUNTRY",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 17,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CRDTDATASTS_MINOR",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 18,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CRDTDATASTS_DISPUTED",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 19,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DO_NOT_PROMOTE_IND",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 20,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DONOTPROMOTE_DTOFEXPIRE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 21,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CRDTDATASTS_FREEZE_IND",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 22,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CRDTDATASTS_FREEZE_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(15)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 23,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
         "name": "GF_TLBC_EQ_RES_COLLECT"
       },
       "indexType": "hash",
@@ -21636,6 +22502,170 @@
           "private": false,
           "primaryKey": false,
           "columnIndex": 24,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
+        "name": "GF_TLBC_EX_RES_INQUIRY"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BNUM",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ROWCOUNTER",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDITRESPONSEID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACCT_TYPE",
+          "security": "unrestricted",
+          "dataType": "nchar(2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SUBSCRIBER_NAME",
+          "security": "pii",
+          "dataType": "nvarchar(24)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": true,
+          "restricted": false
+        },
+        {
+          "name": "INQUIRY_DT",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "AMOUNT",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "TERMS",
+          "security": "unrestricted",
+          "dataType": "nvarchar(3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACCT_NUM",
+          "security": "unrestricted",
+          "dataType": "nvarchar(40)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SUBCODE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(7)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "KOB",
+          "security": "unrestricted",
+          "dataType": "nchar(2)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
           "pii": false,
           "restricted": false
         }
@@ -28331,6 +29361,269 @@
           "private": false,
           "primaryKey": true,
           "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
+        "name": "GF_TLR_REQ_CREDIT_DATA"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REQUESTID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDITREQUESTID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DATAID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REPORT_IDENT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REPORT_PRODUCT_DESC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(30)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRIMARY_BNUM",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRIMARY_DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 8,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SECONDARY_BNUM",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 9,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SECONDARY_DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 10,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACTION_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACTION_OTHER_DESC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(30)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 12,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REPORT_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 13,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REPORT_OTHER_DESC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(30)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 14,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REPOSITORY_COUNT",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 15,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REQUEST_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 16,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EQIFAX_INDC",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 17,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "TRANSUNION_INDC",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 18,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "EXPERIAN_INDC",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 19,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OTHER_REPOS",
+          "security": "unrestricted",
+          "dataType": "nvarchar(30)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 20,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREDIT_REQ_TYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 21,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "KROLL_REPORT_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 22,
           "pii": false,
           "restricted": false
         }
@@ -74421,6 +75714,633 @@
           "columnIndex": 165,
           "pii": false,
           "restricted": false
+        },
+        {
+          "name": "PRIM_BORR_CRSCORE_ATT",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 166,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRIM_BORR_CRSCORE_SRC",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 167,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PRIM_BORR_CRSCORE_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 168,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_BORR_CRSCORE_ATT",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 169,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_BORR_CRSCORE_SRC",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 170,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_BORR_CRSCORE_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 171,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INQ_NBR_6MOS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 172,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INQUIRY_NBR_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 173,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INQUIRY_NBR_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 174,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INQUIRY_NBR_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 175,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SAT_TRD_NBR_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 176,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ST_TRD_NBR_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 177,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ST_TRD_NBR_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 178,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ST_TRD_NBR_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 179,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "NL_COF_CNT_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 180,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "NL_CHGOFF_IND_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 181,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "NL_CHGOFF_IND_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 182,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "NL_CHGOFF_IND_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 183,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MTG_DELQ_30CNT_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 184,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MTG_DELQ_60CNT_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 185,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MTG_DELQ_90CNT_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 186,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MTG_BK_CNT_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 187,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MTG_COF_CNT_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 188,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CURR_MTG_DELINQ_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 189,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CURR_MTG_DELINQ_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 190,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CURR_MTG_DELINQ_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 191,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BK_MTG_DELINQ_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 192,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BK_MTG_DELINQ_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 193,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BK_MTG_DELINQ_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 194,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_MTG_DELINQ_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 195,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_MTG_DELINQ_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 196,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CO_MTG_DELINQ_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 197,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RES_MOS_OVR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 198,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CURR_RES_IND_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 199,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CURR_RES_IND_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 200,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CURR_RES_IND_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 201,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OCCUPANCY_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 202,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OCCUPANCY_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 203,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "OCCUPANCY_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 204,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PURPOSE_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 205,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PURPOSE_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 206,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "PURPOSE_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 207,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESIDENT_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 208,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESIDENT_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 209,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RESIDENT_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 210,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACREAGE_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 211,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACREAGE_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 212,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACREAGE_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 213,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FLOODZONE_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 214,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FLOODZONE_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 215,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "FLOODZONE_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 216,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACREAGEHLTV_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 217,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACREAGEHLTV_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 218,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "ACREAGEHLTV_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 219,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LA_VAL_DEC_ATT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 220,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LA_VAL_DEC_SRC",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 221,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "LA_VAL_DEC_OVR",
+          "security": "unrestricted",
+          "dataType": "nvarchar(20)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 222,
+          "pii": false,
+          "restricted": false
         }
       ]
     },
@@ -75084,7 +77004,7 @@
     },
     {
       "type": "xRefTable",
-      "pattern": "C:\\Sources\\SqlGenerator\\Config\\NetO\\NetO-LSymbolXref.csv",
+      "pattern": "D:\\Sources\\SqlGenerator\\Config\\NetO\\NetO-LSymbolXref.csv",
       "command": null
     }
   ],

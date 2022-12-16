@@ -2935,6 +2935,65 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'GF_TLB_EX_RES_PROF_SUM')
+BEGIN
+   DROP TABLE [clt_NetO].[GF_TLB_EX_RES_PROF_SUM]
+END
+GO
+
+CREATE TABLE [clt_NetO].[GF_TLB_EX_RES_PROF_SUM]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [BNUM]                             smallint             NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [RESPONSEID]                       int                  NOT NULL,
+   [CREDITRESPONSEID]                 int                  NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [DISPUTED_ACCTS_EXCLUDED]          smallint             NULL,
+   [PUB_REC_NUM]                      smallint             NULL,
+   [INSTALLMENT_AMT]                  decimal(18,3)        NULL,
+   [REAL_ESTATE_AMT]                  decimal(18,3)        NULL,
+   [REVOLVING_AMT]                    decimal(18,3)        NULL,
+   [PAST_DUE_AMT]                     decimal(18,3)        NULL,
+   [MONTHLY_PMT]                      decimal(18,3)        NULL,
+   [MONTHLY_PMT_PART_FLAG]            nchar(1)             NULL,
+   [REAL_ESTATE_PMT]                  decimal(18,3)        NULL,
+   [RE_PMT_PART_FLAG]                 nchar(1)             NULL,
+   [REVOLVE_AVAIL_PCT]                smallint             NULL,
+   [REVOLVE_AVAIL_PART_FLAG]          nchar(1)             NULL,
+   [INQUIRIES_TTL]                    smallint             NULL,
+   [INQUIRIES_LAST_6_MOS]             smallint             NULL,
+   [TRADE_ITEMS_TTL]                  smallint             NULL,
+   [PAID_ACCTS]                       smallint             NULL,
+   [SATISFACTORY_ACCTS]               smallint             NULL,
+   [NOW_DELINQUENT]                   smallint             NULL,
+   [WAS_DELINQUENT]                   smallint             NULL,
+   [OLDEST_TRADE_OPEN_DT]             datetime             NULL,
+   [DELINQUENCIES_30_DAYS]            smallint             NULL,
+   [DELINQUENCIES_60_DAYS]            smallint             NULL,
+   [DELINQUENCIES_90_DAYS]            smallint             NULL,
+   [DEROG_COUNTER]                    smallint             NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'GF_TLB_EX_RES_TRENDS_SUM')
 BEGIN
    DROP TABLE [clt_NetO].[GF_TLB_EX_RES_TRENDS_SUM]
@@ -3123,6 +3182,113 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'GF_TLB_TU_RES_SCORING')
+BEGIN
+   DROP TABLE [clt_NetO].[GF_TLB_TU_RES_SCORING]
+END
+GO
+
+CREATE TABLE [clt_NetO].[GF_TLB_TU_RES_SCORING]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [BNUM]                             smallint             NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [RESPONSEID]                       int                  NOT NULL,
+   [CREDITRESPONSEID]                 int                  NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [PRODUCT_CODE]                     nvarchar(5)          NULL,
+   [SIGN]                             nchar(1)             NULL,
+   [SCORE]                            nvarchar(5)          NULL,
+   [SCORING_IND_FLAG]                 nchar(1)             NULL,
+   [SCORE_DEROG_ALERT_FLAG]           nchar(1)             NULL,
+   [FIRST_FACTOR]                     nvarchar(3)          NULL,
+   [SECOND_FACTOR]                    nvarchar(3)          NULL,
+   [THIRD_FACTOR]                     nvarchar(3)          NULL,
+   [FOURTH_FACTOR]                    nvarchar(3)          NULL,
+   [SCORE_CARD_IND]                   nvarchar(2)          NULL,
+   [FIRSTFACTORNARRATIVE]             nvarchar(100)        NULL,
+   [SECONDFACTORNARRATIVE]            nvarchar(100)        NULL,
+   [THIRDFACTORNARRATIVE]             nvarchar(100)        NULL,
+   [FOURTHFACTORNARRATIVE]            nvarchar(100)        NULL,
+   [S_ALERTFLAG]                      nvarchar(8)          NULL,
+   [SEARCH_STATUS]                    nvarchar(15)         NULL,
+   [FILEINQUIRIES_IMPACTEDSCORE]      nchar(1)             NULL,
+   [NOSCOREREASON]                    nvarchar(30)         NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'GF_TLB_TU_RES_SUBJ_INFO')
+BEGIN
+   DROP TABLE [clt_NetO].[GF_TLB_TU_RES_SUBJ_INFO]
+END
+GO
+
+CREATE TABLE [clt_NetO].[GF_TLB_TU_RES_SUBJ_INFO]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [BNUM]                             smallint             NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [RESPONSEID]                       int                  NOT NULL,
+   [CREDITRESPONSEID]                 int                  NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [CUSTOMER_ID]                      nvarchar(12)         NULL,
+   [SUBJ_IDENTIFIER]                  nchar(1)             NULL,
+   [FILE_NUM]                         nvarchar(2)          NULL,
+   [FILE_HIT]                         nvarchar(20)         NULL,
+   [SSN_MATCH_IND]                    nvarchar(15)         NULL,
+   [CONS_STMT_IND]                    nchar(1)             NULL,
+   [BUR_MKT_FILE_CNTRL]               nchar(2)             NULL,
+   [BUR_SUBMKT_FILE_CNTRL]            nchar(2)             NULL,
+   [SUPPRESSION_IND]                  nchar(1)             NULL,
+   [FILE_SINCE_DT]                    datetime             NULL,
+   [SUBJ_HIT_STATUS]                  nvarchar(10)         NULL,
+   [SUBJ_RESTRICT_STATUS]             nchar(1)             NULL,
+   [SUBJ_COUNTRY]                     nchar(1)             NULL,
+   [CRDTDATASTS_MINOR]                nchar(1)             NULL,
+   [CRDTDATASTS_DISPUTED]             nchar(1)             NULL,
+   [DO_NOT_PROMOTE_IND]               nchar(1)             NULL,
+   [DONOTPROMOTE_DTOFEXPIRE]          datetime             NULL,
+   [CRDTDATASTS_FREEZE_IND]           nchar(1)             NULL,
+   [CRDTDATASTS_FREEZE_TYPE]          nvarchar(15)         NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'GF_TLBC_EQ_RES_COLLECT')
 BEGIN
    DROP TABLE [clt_NetO].[GF_TLBC_EQ_RES_COLLECT]
@@ -3158,6 +3324,50 @@ CREATE TABLE [clt_NetO].[GF_TLBC_EQ_RES_COLLECT]
    [CREDITOR_CLASS_CODE]              nchar(2)             NULL,
    [CRECITOR_CLASS_TEXT]              nvarchar(72)         NULL,
    [LAST_PMT_DT]                      datetime             NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'GF_TLBC_EX_RES_INQUIRY')
+BEGIN
+   DROP TABLE [clt_NetO].[GF_TLBC_EX_RES_INQUIRY]
+END
+GO
+
+CREATE TABLE [clt_NetO].[GF_TLBC_EX_RES_INQUIRY]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [BNUM]                             smallint             NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [ROWCOUNTER]                       smallint             NOT NULL,
+   [RESPONSEID]                       int                  NOT NULL,
+   [CREDITRESPONSEID]                 int                  NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [ACCT_TYPE]                        nchar(2)             NULL,
+   [SUBSCRIBER_NAME]                  nvarchar(24)         NULL,
+   [INQUIRY_DT]                       datetime             NULL,
+   [AMOUNT]                           decimal(18,3)        NULL,
+   [TERMS]                            nvarchar(3)          NULL,
+   [ACCT_NUM]                         nvarchar(40)         NULL,
+   [SUBCODE]                          nvarchar(7)          NULL,
+   [KOB]                              nchar(2)             NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -4523,6 +4733,59 @@ CREATE TABLE [clt_NetO].[GF_TLR_REOWNED_BORROWERS]
    [REL_BNUM]                         smallint             NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'GF_TLR_REQ_CREDIT_DATA')
+BEGIN
+   DROP TABLE [clt_NetO].[GF_TLR_REQ_CREDIT_DATA]
+END
+GO
+
+CREATE TABLE [clt_NetO].[GF_TLR_REQ_CREDIT_DATA]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [REQUESTID]                        int                  NOT NULL,
+   [CREDITREQUESTID]                  int                  NOT NULL,
+   [DATAID]                           int                  NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [REPORT_IDENT]                     nvarchar(20)         NULL,
+   [REPORT_PRODUCT_DESC]              nvarchar(30)         NULL,
+   [PRIMARY_BNUM]                     smallint             NULL,
+   [PRIMARY_DBID]                     nchar(5)             NULL,
+   [SECONDARY_BNUM]                   smallint             NULL,
+   [SECONDARY_DBID]                   nchar(5)             NULL,
+   [ACTION_TYPE]                      nvarchar(8)          NULL,
+   [ACTION_OTHER_DESC]                nvarchar(30)         NULL,
+   [REPORT_TYPE]                      nvarchar(8)          NULL,
+   [REPORT_OTHER_DESC]                nvarchar(30)         NULL,
+   [REPOSITORY_COUNT]                 smallint             NULL,
+   [REQUEST_TYPE]                     nvarchar(8)          NULL,
+   [EQIFAX_INDC]                      nchar(1)             NULL,
+   [TRANSUNION_INDC]                  nchar(1)             NULL,
+   [EXPERIAN_INDC]                    nchar(1)             NULL,
+   [OTHER_REPOS]                      nvarchar(30)         NULL,
+   [CREDIT_REQ_TYPE]                  nvarchar(20)         NULL,
+   [KROLL_REPORT_DATE]                datetime             NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -12611,6 +12874,63 @@ CREATE TABLE [clt_NetO].[WG_SC_ATTRIBUTES]
    [PRI_TOT_NSF_24MONS_OVR]           int                  NULL,
    [CO_TOT_NSF_24MONS_OVR]            int                  NULL,
    [CUST_CREDIT_SCORE_OVR]            int                  NULL,
+   [PRIM_BORR_CRSCORE_ATT]            int                  NULL,
+   [PRIM_BORR_CRSCORE_SRC]            int                  NULL,
+   [PRIM_BORR_CRSCORE_OVR]            int                  NULL,
+   [CO_BORR_CRSCORE_ATT]              int                  NULL,
+   [CO_BORR_CRSCORE_SRC]              int                  NULL,
+   [CO_BORR_CRSCORE_OVR]              int                  NULL,
+   [INQ_NBR_6MOS_OVR]                 int                  NULL,
+   [INQUIRY_NBR_ATT]                  nvarchar(20)         NULL,
+   [INQUIRY_NBR_SRC]                  nvarchar(20)         NULL,
+   [INQUIRY_NBR_OVR]                  nvarchar(20)         NULL,
+   [SAT_TRD_NBR_OVR]                  int                  NULL,
+   [ST_TRD_NBR_ATT]                   nvarchar(20)         NULL,
+   [ST_TRD_NBR_SRC]                   nvarchar(20)         NULL,
+   [ST_TRD_NBR_OVR]                   nvarchar(20)         NULL,
+   [NL_COF_CNT_OVR]                   int                  NULL,
+   [NL_CHGOFF_IND_ATT]                nvarchar(20)         NULL,
+   [NL_CHGOFF_IND_SRC]                nvarchar(20)         NULL,
+   [NL_CHGOFF_IND_OVR]                nvarchar(20)         NULL,
+   [MTG_DELQ_30CNT_OVR]               int                  NULL,
+   [MTG_DELQ_60CNT_OVR]               int                  NULL,
+   [MTG_DELQ_90CNT_OVR]               int                  NULL,
+   [MTG_BK_CNT_OVR]                   int                  NULL,
+   [MTG_COF_CNT_OVR]                  int                  NULL,
+   [CURR_MTG_DELINQ_ATT]              nvarchar(20)         NULL,
+   [CURR_MTG_DELINQ_SRC]              nvarchar(20)         NULL,
+   [CURR_MTG_DELINQ_OVR]              nvarchar(20)         NULL,
+   [BK_MTG_DELINQ_ATT]                nvarchar(20)         NULL,
+   [BK_MTG_DELINQ_SRC]                nvarchar(20)         NULL,
+   [BK_MTG_DELINQ_OVR]                nvarchar(20)         NULL,
+   [CO_MTG_DELINQ_ATT]                nvarchar(20)         NULL,
+   [CO_MTG_DELINQ_SRC]                nvarchar(20)         NULL,
+   [CO_MTG_DELINQ_OVR]                nvarchar(20)         NULL,
+   [RES_MOS_OVR]                      int                  NULL,
+   [CURR_RES_IND_ATT]                 nvarchar(20)         NULL,
+   [CURR_RES_IND_SRC]                 nvarchar(20)         NULL,
+   [CURR_RES_IND_OVR]                 nvarchar(20)         NULL,
+   [OCCUPANCY_ATT]                    nvarchar(20)         NULL,
+   [OCCUPANCY_SRC]                    nvarchar(20)         NULL,
+   [OCCUPANCY_OVR]                    nvarchar(20)         NULL,
+   [PURPOSE_ATT]                      nvarchar(20)         NULL,
+   [PURPOSE_SRC]                      nvarchar(20)         NULL,
+   [PURPOSE_OVR]                      nvarchar(20)         NULL,
+   [RESIDENT_ATT]                     nvarchar(20)         NULL,
+   [RESIDENT_SRC]                     nvarchar(20)         NULL,
+   [RESIDENT_OVR]                     nvarchar(20)         NULL,
+   [ACREAGE_ATT]                      nvarchar(20)         NULL,
+   [ACREAGE_SRC]                      nvarchar(20)         NULL,
+   [ACREAGE_OVR]                      nvarchar(20)         NULL,
+   [FLOODZONE_ATT]                    nvarchar(20)         NULL,
+   [FLOODZONE_SRC]                    nvarchar(20)         NULL,
+   [FLOODZONE_OVR]                    nvarchar(20)         NULL,
+   [ACREAGEHLTV_ATT]                  nvarchar(20)         NULL,
+   [ACREAGEHLTV_SRC]                  nvarchar(20)         NULL,
+   [ACREAGEHLTV_OVR]                  nvarchar(20)         NULL,
+   [LA_VAL_DEC_ATT]                   nvarchar(20)         NULL,
+   [LA_VAL_DEC_SRC]                   nvarchar(20)         NULL,
+   [LA_VAL_DEC_OVR]                   nvarchar(20)         NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -15605,6 +15925,56 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
+BEGIN
+   DROP VIEW [NetO].[VwGF_TLB_EX_RES_PROF_SUM]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwGF_TLB_EX_RES_PROF_SUM]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[DISPUTED_ACCTS_EXCLUDED],
+      x.[PUB_REC_NUM],
+      x.[INSTALLMENT_AMT],
+      x.[REAL_ESTATE_AMT],
+      x.[REVOLVING_AMT],
+      x.[PAST_DUE_AMT],
+      x.[MONTHLY_PMT],
+      x.[MONTHLY_PMT_PART_FLAG],
+      x.[REAL_ESTATE_PMT],
+      x.[RE_PMT_PART_FLAG],
+      x.[REVOLVE_AVAIL_PCT],
+      x.[REVOLVE_AVAIL_PART_FLAG],
+      x.[INQUIRIES_TTL],
+      x.[INQUIRIES_LAST_6_MOS],
+      x.[TRADE_ITEMS_TTL],
+      x.[PAID_ACCTS],
+      x.[SATISFACTORY_ACCTS],
+      x.[NOW_DELINQUENT],
+      x.[WAS_DELINQUENT],
+      x.[OLDEST_TRADE_OPEN_DT],
+      x.[DELINQUENCIES_30_DAYS],
+      x.[DELINQUENCIES_60_DAYS],
+      x.[DELINQUENCIES_90_DAYS],
+      x.[DEROG_COUNTER]
+   FROM [clt_NetO].[GF_TLB_EX_RES_PROF_SUM] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
 BEGIN
    DROP VIEW [NetO].[VwGF_TLB_EX_RES_TRENDS_SUM]
@@ -15759,6 +16129,95 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
+BEGIN
+   DROP VIEW [NetO].[VwGF_TLB_TU_RES_SCORING]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwGF_TLB_TU_RES_SCORING]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[PRODUCT_CODE],
+      x.[SIGN],
+      HASHBYTES('SHA2_256', x.[SCORE]) AS [SCORE],
+      x.[SCORING_IND_FLAG],
+      x.[SCORE_DEROG_ALERT_FLAG],
+      x.[FIRST_FACTOR],
+      x.[SECOND_FACTOR],
+      x.[THIRD_FACTOR],
+      x.[FOURTH_FACTOR],
+      x.[SCORE_CARD_IND],
+      x.[FIRSTFACTORNARRATIVE],
+      x.[SECONDFACTORNARRATIVE],
+      x.[THIRDFACTORNARRATIVE],
+      x.[FOURTHFACTORNARRATIVE],
+      x.[S_ALERTFLAG],
+      x.[SEARCH_STATUS],
+      x.[FILEINQUIRIES_IMPACTEDSCORE],
+      x.[NOSCOREREASON]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SCORING] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
+BEGIN
+   DROP VIEW [NetO].[VwGF_TLB_TU_RES_SUBJ_INFO]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwGF_TLB_TU_RES_SUBJ_INFO]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[CUSTOMER_ID],
+      x.[SUBJ_IDENTIFIER],
+      x.[FILE_NUM],
+      x.[FILE_HIT],
+      HASHBYTES('SHA2_256', x.[SSN_MATCH_IND]) AS [SSN_MATCH_IND],
+      x.[CONS_STMT_IND],
+      x.[BUR_MKT_FILE_CNTRL],
+      x.[BUR_SUBMKT_FILE_CNTRL],
+      x.[SUPPRESSION_IND],
+      x.[FILE_SINCE_DT],
+      x.[SUBJ_HIT_STATUS],
+      x.[SUBJ_RESTRICT_STATUS],
+      x.[SUBJ_COUNTRY],
+      x.[CRDTDATASTS_MINOR],
+      x.[CRDTDATASTS_DISPUTED],
+      x.[DO_NOT_PROMOTE_IND],
+      x.[DONOTPROMOTE_DTOFEXPIRE],
+      x.[CRDTDATASTS_FREEZE_IND],
+      x.[CRDTDATASTS_FREEZE_TYPE]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SUBJ_INFO] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
 BEGIN
    DROP VIEW [NetO].[VwGF_TLBC_EQ_RES_COLLECT]
@@ -15795,6 +16254,41 @@ AS
       x.[CRECITOR_CLASS_TEXT],
       x.[LAST_PMT_DT]
    FROM [clt_NetO].[GF_TLBC_EQ_RES_COLLECT] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
+BEGIN
+   DROP VIEW [NetO].[VwGF_TLBC_EX_RES_INQUIRY]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwGF_TLBC_EX_RES_INQUIRY]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[ROWCOUNTER],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[ACCT_TYPE],
+      HASHBYTES('SHA2_256', x.[SUBSCRIBER_NAME]) AS [SUBSCRIBER_NAME],
+      x.[INQUIRY_DT],
+      x.[AMOUNT],
+      x.[TERMS],
+      x.[ACCT_NUM],
+      x.[SUBCODE],
+      x.[KOB]
+   FROM [clt_NetO].[GF_TLBC_EX_RES_INQUIRY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -17002,6 +17496,56 @@ AS
       x.[REL_DBID],
       x.[REL_BNUM]
    FROM [clt_NetO].[GF_TLR_REOWNED_BORROWERS] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
+BEGIN
+   DROP VIEW [NetO].[VwGF_TLR_REQ_CREDIT_DATA]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwGF_TLR_REQ_CREDIT_DATA]
+AS
+   SELECT
+      x.[LNUM],
+      x.[REQUESTID],
+      x.[CREDITREQUESTID],
+      x.[DATAID],
+      x.[DBID],
+      x.[REPORT_IDENT],
+      x.[REPORT_PRODUCT_DESC],
+      x.[PRIMARY_BNUM],
+      x.[PRIMARY_DBID],
+      x.[SECONDARY_BNUM],
+      x.[SECONDARY_DBID],
+      x.[ACTION_TYPE],
+      A0.[Descript] AS [ACTION_TYPE_X],
+      x.[ACTION_OTHER_DESC],
+      x.[REPORT_TYPE],
+      A1.[Descript] AS [REPORT_TYPE_X],
+      x.[REPORT_OTHER_DESC],
+      x.[REPOSITORY_COUNT],
+      x.[REQUEST_TYPE],
+      A2.[Descript] AS [REQUEST_TYPE_X],
+      x.[EQIFAX_INDC],
+      x.[TRANSUNION_INDC],
+      x.[EXPERIAN_INDC],
+      x.[OTHER_REPOS],
+      x.[CREDIT_REQ_TYPE],
+      x.[KROLL_REPORT_DATE]
+   FROM [clt_NetO].[GF_TLR_REQ_CREDIT_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ACTION_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A0.[COLUMNNAME] = 'ACTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A1.[COLUMNNAME] = 'REPORT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[REQUEST_TYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A2.[COLUMNNAME] = 'REQUEST_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -23565,7 +24109,64 @@ AS
       x.[CO_REVOLV_TRD_HCR_OVR],
       x.[PRI_TOT_NSF_24MONS_OVR],
       x.[CO_TOT_NSF_24MONS_OVR],
-      x.[CUST_CREDIT_SCORE_OVR]
+      x.[CUST_CREDIT_SCORE_OVR],
+      x.[PRIM_BORR_CRSCORE_ATT],
+      x.[PRIM_BORR_CRSCORE_SRC],
+      x.[PRIM_BORR_CRSCORE_OVR],
+      x.[CO_BORR_CRSCORE_ATT],
+      x.[CO_BORR_CRSCORE_SRC],
+      x.[CO_BORR_CRSCORE_OVR],
+      x.[INQ_NBR_6MOS_OVR],
+      x.[INQUIRY_NBR_ATT],
+      x.[INQUIRY_NBR_SRC],
+      x.[INQUIRY_NBR_OVR],
+      x.[SAT_TRD_NBR_OVR],
+      x.[ST_TRD_NBR_ATT],
+      x.[ST_TRD_NBR_SRC],
+      x.[ST_TRD_NBR_OVR],
+      x.[NL_COF_CNT_OVR],
+      x.[NL_CHGOFF_IND_ATT],
+      x.[NL_CHGOFF_IND_SRC],
+      x.[NL_CHGOFF_IND_OVR],
+      x.[MTG_DELQ_30CNT_OVR],
+      x.[MTG_DELQ_60CNT_OVR],
+      x.[MTG_DELQ_90CNT_OVR],
+      x.[MTG_BK_CNT_OVR],
+      x.[MTG_COF_CNT_OVR],
+      x.[CURR_MTG_DELINQ_ATT],
+      x.[CURR_MTG_DELINQ_SRC],
+      x.[CURR_MTG_DELINQ_OVR],
+      x.[BK_MTG_DELINQ_ATT],
+      x.[BK_MTG_DELINQ_SRC],
+      x.[BK_MTG_DELINQ_OVR],
+      x.[CO_MTG_DELINQ_ATT],
+      x.[CO_MTG_DELINQ_SRC],
+      x.[CO_MTG_DELINQ_OVR],
+      x.[RES_MOS_OVR],
+      x.[CURR_RES_IND_ATT],
+      x.[CURR_RES_IND_SRC],
+      x.[CURR_RES_IND_OVR],
+      x.[OCCUPANCY_ATT],
+      x.[OCCUPANCY_SRC],
+      x.[OCCUPANCY_OVR],
+      x.[PURPOSE_ATT],
+      x.[PURPOSE_SRC],
+      x.[PURPOSE_OVR],
+      x.[RESIDENT_ATT],
+      x.[RESIDENT_SRC],
+      x.[RESIDENT_OVR],
+      x.[ACREAGE_ATT],
+      x.[ACREAGE_SRC],
+      x.[ACREAGE_OVR],
+      x.[FLOODZONE_ATT],
+      x.[FLOODZONE_SRC],
+      x.[FLOODZONE_OVR],
+      x.[ACREAGEHLTV_ATT],
+      x.[ACREAGEHLTV_SRC],
+      x.[ACREAGEHLTV_OVR],
+      x.[LA_VAL_DEC_ATT],
+      x.[LA_VAL_DEC_SRC],
+      x.[LA_VAL_DEC_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -26522,6 +27123,56 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwGF_TLB_EX_RES_PROF_SUM]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwGF_TLB_EX_RES_PROF_SUM]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[DISPUTED_ACCTS_EXCLUDED],
+      x.[PUB_REC_NUM],
+      x.[INSTALLMENT_AMT],
+      x.[REAL_ESTATE_AMT],
+      x.[REVOLVING_AMT],
+      x.[PAST_DUE_AMT],
+      x.[MONTHLY_PMT],
+      x.[MONTHLY_PMT_PART_FLAG],
+      x.[REAL_ESTATE_PMT],
+      x.[RE_PMT_PART_FLAG],
+      x.[REVOLVE_AVAIL_PCT],
+      x.[REVOLVE_AVAIL_PART_FLAG],
+      x.[INQUIRIES_TTL],
+      x.[INQUIRIES_LAST_6_MOS],
+      x.[TRADE_ITEMS_TTL],
+      x.[PAID_ACCTS],
+      x.[SATISFACTORY_ACCTS],
+      x.[NOW_DELINQUENT],
+      x.[WAS_DELINQUENT],
+      x.[OLDEST_TRADE_OPEN_DT],
+      x.[DELINQUENCIES_30_DAYS],
+      x.[DELINQUENCIES_60_DAYS],
+      x.[DELINQUENCIES_90_DAYS],
+      x.[DEROG_COUNTER]
+   FROM [clt_NetO].[GF_TLB_EX_RES_PROF_SUM] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
 BEGIN
    DROP VIEW [NetO_restricted].[VwGF_TLB_EX_RES_TRENDS_SUM]
@@ -26676,6 +27327,95 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwGF_TLB_TU_RES_SCORING]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwGF_TLB_TU_RES_SCORING]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[PRODUCT_CODE],
+      x.[SIGN],
+      HASHBYTES('SHA2_256', x.[SCORE]) AS [SCORE],
+      x.[SCORING_IND_FLAG],
+      x.[SCORE_DEROG_ALERT_FLAG],
+      x.[FIRST_FACTOR],
+      x.[SECOND_FACTOR],
+      x.[THIRD_FACTOR],
+      x.[FOURTH_FACTOR],
+      x.[SCORE_CARD_IND],
+      x.[FIRSTFACTORNARRATIVE],
+      x.[SECONDFACTORNARRATIVE],
+      x.[THIRDFACTORNARRATIVE],
+      x.[FOURTHFACTORNARRATIVE],
+      x.[S_ALERTFLAG],
+      x.[SEARCH_STATUS],
+      x.[FILEINQUIRIES_IMPACTEDSCORE],
+      x.[NOSCOREREASON]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SCORING] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwGF_TLB_TU_RES_SUBJ_INFO]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwGF_TLB_TU_RES_SUBJ_INFO]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[CUSTOMER_ID],
+      x.[SUBJ_IDENTIFIER],
+      x.[FILE_NUM],
+      x.[FILE_HIT],
+      HASHBYTES('SHA2_256', x.[SSN_MATCH_IND]) AS [SSN_MATCH_IND],
+      x.[CONS_STMT_IND],
+      x.[BUR_MKT_FILE_CNTRL],
+      x.[BUR_SUBMKT_FILE_CNTRL],
+      x.[SUPPRESSION_IND],
+      x.[FILE_SINCE_DT],
+      x.[SUBJ_HIT_STATUS],
+      x.[SUBJ_RESTRICT_STATUS],
+      x.[SUBJ_COUNTRY],
+      x.[CRDTDATASTS_MINOR],
+      x.[CRDTDATASTS_DISPUTED],
+      x.[DO_NOT_PROMOTE_IND],
+      x.[DONOTPROMOTE_DTOFEXPIRE],
+      x.[CRDTDATASTS_FREEZE_IND],
+      x.[CRDTDATASTS_FREEZE_TYPE]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SUBJ_INFO] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
 BEGIN
    DROP VIEW [NetO_restricted].[VwGF_TLBC_EQ_RES_COLLECT]
@@ -26712,6 +27452,41 @@ AS
       x.[CRECITOR_CLASS_TEXT],
       x.[LAST_PMT_DT]
    FROM [clt_NetO].[GF_TLBC_EQ_RES_COLLECT] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwGF_TLBC_EX_RES_INQUIRY]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwGF_TLBC_EX_RES_INQUIRY]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[ROWCOUNTER],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[ACCT_TYPE],
+      HASHBYTES('SHA2_256', x.[SUBSCRIBER_NAME]) AS [SUBSCRIBER_NAME],
+      x.[INQUIRY_DT],
+      x.[AMOUNT],
+      x.[TERMS],
+      x.[ACCT_NUM],
+      x.[SUBCODE],
+      x.[KOB]
+   FROM [clt_NetO].[GF_TLBC_EX_RES_INQUIRY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -27919,6 +28694,56 @@ AS
       x.[REL_DBID],
       x.[REL_BNUM]
    FROM [clt_NetO].[GF_TLR_REOWNED_BORROWERS] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwGF_TLR_REQ_CREDIT_DATA]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwGF_TLR_REQ_CREDIT_DATA]
+AS
+   SELECT
+      x.[LNUM],
+      x.[REQUESTID],
+      x.[CREDITREQUESTID],
+      x.[DATAID],
+      x.[DBID],
+      x.[REPORT_IDENT],
+      x.[REPORT_PRODUCT_DESC],
+      x.[PRIMARY_BNUM],
+      x.[PRIMARY_DBID],
+      x.[SECONDARY_BNUM],
+      x.[SECONDARY_DBID],
+      x.[ACTION_TYPE],
+      A0.[Descript] AS [ACTION_TYPE_X],
+      x.[ACTION_OTHER_DESC],
+      x.[REPORT_TYPE],
+      A1.[Descript] AS [REPORT_TYPE_X],
+      x.[REPORT_OTHER_DESC],
+      x.[REPOSITORY_COUNT],
+      x.[REQUEST_TYPE],
+      A2.[Descript] AS [REQUEST_TYPE_X],
+      x.[EQIFAX_INDC],
+      x.[TRANSUNION_INDC],
+      x.[EXPERIAN_INDC],
+      x.[OTHER_REPOS],
+      x.[CREDIT_REQ_TYPE],
+      x.[KROLL_REPORT_DATE]
+   FROM [clt_NetO].[GF_TLR_REQ_CREDIT_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ACTION_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A0.[COLUMNNAME] = 'ACTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A1.[COLUMNNAME] = 'REPORT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[REQUEST_TYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A2.[COLUMNNAME] = 'REQUEST_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -34482,7 +35307,64 @@ AS
       x.[CO_REVOLV_TRD_HCR_OVR],
       x.[PRI_TOT_NSF_24MONS_OVR],
       x.[CO_TOT_NSF_24MONS_OVR],
-      x.[CUST_CREDIT_SCORE_OVR]
+      x.[CUST_CREDIT_SCORE_OVR],
+      x.[PRIM_BORR_CRSCORE_ATT],
+      x.[PRIM_BORR_CRSCORE_SRC],
+      x.[PRIM_BORR_CRSCORE_OVR],
+      x.[CO_BORR_CRSCORE_ATT],
+      x.[CO_BORR_CRSCORE_SRC],
+      x.[CO_BORR_CRSCORE_OVR],
+      x.[INQ_NBR_6MOS_OVR],
+      x.[INQUIRY_NBR_ATT],
+      x.[INQUIRY_NBR_SRC],
+      x.[INQUIRY_NBR_OVR],
+      x.[SAT_TRD_NBR_OVR],
+      x.[ST_TRD_NBR_ATT],
+      x.[ST_TRD_NBR_SRC],
+      x.[ST_TRD_NBR_OVR],
+      x.[NL_COF_CNT_OVR],
+      x.[NL_CHGOFF_IND_ATT],
+      x.[NL_CHGOFF_IND_SRC],
+      x.[NL_CHGOFF_IND_OVR],
+      x.[MTG_DELQ_30CNT_OVR],
+      x.[MTG_DELQ_60CNT_OVR],
+      x.[MTG_DELQ_90CNT_OVR],
+      x.[MTG_BK_CNT_OVR],
+      x.[MTG_COF_CNT_OVR],
+      x.[CURR_MTG_DELINQ_ATT],
+      x.[CURR_MTG_DELINQ_SRC],
+      x.[CURR_MTG_DELINQ_OVR],
+      x.[BK_MTG_DELINQ_ATT],
+      x.[BK_MTG_DELINQ_SRC],
+      x.[BK_MTG_DELINQ_OVR],
+      x.[CO_MTG_DELINQ_ATT],
+      x.[CO_MTG_DELINQ_SRC],
+      x.[CO_MTG_DELINQ_OVR],
+      x.[RES_MOS_OVR],
+      x.[CURR_RES_IND_ATT],
+      x.[CURR_RES_IND_SRC],
+      x.[CURR_RES_IND_OVR],
+      x.[OCCUPANCY_ATT],
+      x.[OCCUPANCY_SRC],
+      x.[OCCUPANCY_OVR],
+      x.[PURPOSE_ATT],
+      x.[PURPOSE_SRC],
+      x.[PURPOSE_OVR],
+      x.[RESIDENT_ATT],
+      x.[RESIDENT_SRC],
+      x.[RESIDENT_OVR],
+      x.[ACREAGE_ATT],
+      x.[ACREAGE_SRC],
+      x.[ACREAGE_OVR],
+      x.[FLOODZONE_ATT],
+      x.[FLOODZONE_SRC],
+      x.[FLOODZONE_OVR],
+      x.[ACREAGEHLTV_ATT],
+      x.[ACREAGEHLTV_SRC],
+      x.[ACREAGEHLTV_OVR],
+      x.[LA_VAL_DEC_ATT],
+      x.[LA_VAL_DEC_SRC],
+      x.[LA_VAL_DEC_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -37439,6 +38321,56 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
+BEGIN
+   DROP VIEW [NetO_pii].[VwGF_TLB_EX_RES_PROF_SUM]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwGF_TLB_EX_RES_PROF_SUM]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[DISPUTED_ACCTS_EXCLUDED],
+      x.[PUB_REC_NUM],
+      x.[INSTALLMENT_AMT],
+      x.[REAL_ESTATE_AMT],
+      x.[REVOLVING_AMT],
+      x.[PAST_DUE_AMT],
+      x.[MONTHLY_PMT],
+      x.[MONTHLY_PMT_PART_FLAG],
+      x.[REAL_ESTATE_PMT],
+      x.[RE_PMT_PART_FLAG],
+      x.[REVOLVE_AVAIL_PCT],
+      x.[REVOLVE_AVAIL_PART_FLAG],
+      x.[INQUIRIES_TTL],
+      x.[INQUIRIES_LAST_6_MOS],
+      x.[TRADE_ITEMS_TTL],
+      x.[PAID_ACCTS],
+      x.[SATISFACTORY_ACCTS],
+      x.[NOW_DELINQUENT],
+      x.[WAS_DELINQUENT],
+      x.[OLDEST_TRADE_OPEN_DT],
+      x.[DELINQUENCIES_30_DAYS],
+      x.[DELINQUENCIES_60_DAYS],
+      x.[DELINQUENCIES_90_DAYS],
+      x.[DEROG_COUNTER]
+   FROM [clt_NetO].[GF_TLB_EX_RES_PROF_SUM] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
 BEGIN
    DROP VIEW [NetO_pii].[VwGF_TLB_EX_RES_TRENDS_SUM]
@@ -37593,6 +38525,95 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
+BEGIN
+   DROP VIEW [NetO_pii].[VwGF_TLB_TU_RES_SCORING]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwGF_TLB_TU_RES_SCORING]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[PRODUCT_CODE],
+      x.[SIGN],
+      x.[SCORE],
+      x.[SCORING_IND_FLAG],
+      x.[SCORE_DEROG_ALERT_FLAG],
+      x.[FIRST_FACTOR],
+      x.[SECOND_FACTOR],
+      x.[THIRD_FACTOR],
+      x.[FOURTH_FACTOR],
+      x.[SCORE_CARD_IND],
+      x.[FIRSTFACTORNARRATIVE],
+      x.[SECONDFACTORNARRATIVE],
+      x.[THIRDFACTORNARRATIVE],
+      x.[FOURTHFACTORNARRATIVE],
+      x.[S_ALERTFLAG],
+      x.[SEARCH_STATUS],
+      x.[FILEINQUIRIES_IMPACTEDSCORE],
+      x.[NOSCOREREASON]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SCORING] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
+BEGIN
+   DROP VIEW [NetO_pii].[VwGF_TLB_TU_RES_SUBJ_INFO]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwGF_TLB_TU_RES_SUBJ_INFO]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[CUSTOMER_ID],
+      x.[SUBJ_IDENTIFIER],
+      x.[FILE_NUM],
+      x.[FILE_HIT],
+      x.[SSN_MATCH_IND],
+      x.[CONS_STMT_IND],
+      x.[BUR_MKT_FILE_CNTRL],
+      x.[BUR_SUBMKT_FILE_CNTRL],
+      x.[SUPPRESSION_IND],
+      x.[FILE_SINCE_DT],
+      x.[SUBJ_HIT_STATUS],
+      x.[SUBJ_RESTRICT_STATUS],
+      x.[SUBJ_COUNTRY],
+      x.[CRDTDATASTS_MINOR],
+      x.[CRDTDATASTS_DISPUTED],
+      x.[DO_NOT_PROMOTE_IND],
+      x.[DONOTPROMOTE_DTOFEXPIRE],
+      x.[CRDTDATASTS_FREEZE_IND],
+      x.[CRDTDATASTS_FREEZE_TYPE]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SUBJ_INFO] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
 BEGIN
    DROP VIEW [NetO_pii].[VwGF_TLBC_EQ_RES_COLLECT]
@@ -37629,6 +38650,41 @@ AS
       x.[CRECITOR_CLASS_TEXT],
       x.[LAST_PMT_DT]
    FROM [clt_NetO].[GF_TLBC_EQ_RES_COLLECT] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
+BEGIN
+   DROP VIEW [NetO_pii].[VwGF_TLBC_EX_RES_INQUIRY]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwGF_TLBC_EX_RES_INQUIRY]
+AS
+   SELECT
+      x.[LNUM],
+      x.[BNUM],
+      x.[DBID],
+      x.[ROWCOUNTER],
+      x.[RESPONSEID],
+      x.[CREDITRESPONSEID],
+      x.[ACCT_TYPE],
+      x.[SUBSCRIBER_NAME],
+      x.[INQUIRY_DT],
+      x.[AMOUNT],
+      x.[TERMS],
+      x.[ACCT_NUM],
+      x.[SUBCODE],
+      x.[KOB]
+   FROM [clt_NetO].[GF_TLBC_EX_RES_INQUIRY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -38836,6 +39892,56 @@ AS
       x.[REL_DBID],
       x.[REL_BNUM]
    FROM [clt_NetO].[GF_TLR_REOWNED_BORROWERS] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
+BEGIN
+   DROP VIEW [NetO_pii].[VwGF_TLR_REQ_CREDIT_DATA]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwGF_TLR_REQ_CREDIT_DATA]
+AS
+   SELECT
+      x.[LNUM],
+      x.[REQUESTID],
+      x.[CREDITREQUESTID],
+      x.[DATAID],
+      x.[DBID],
+      x.[REPORT_IDENT],
+      x.[REPORT_PRODUCT_DESC],
+      x.[PRIMARY_BNUM],
+      x.[PRIMARY_DBID],
+      x.[SECONDARY_BNUM],
+      x.[SECONDARY_DBID],
+      x.[ACTION_TYPE],
+      A0.[Descript] AS [ACTION_TYPE_X],
+      x.[ACTION_OTHER_DESC],
+      x.[REPORT_TYPE],
+      A1.[Descript] AS [REPORT_TYPE_X],
+      x.[REPORT_OTHER_DESC],
+      x.[REPOSITORY_COUNT],
+      x.[REQUEST_TYPE],
+      A2.[Descript] AS [REQUEST_TYPE_X],
+      x.[EQIFAX_INDC],
+      x.[TRANSUNION_INDC],
+      x.[EXPERIAN_INDC],
+      x.[OTHER_REPOS],
+      x.[CREDIT_REQ_TYPE],
+      x.[KROLL_REPORT_DATE]
+   FROM [clt_NetO].[GF_TLR_REQ_CREDIT_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ACTION_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A0.[COLUMNNAME] = 'ACTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A1.[COLUMNNAME] = 'REPORT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[REQUEST_TYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A2.[COLUMNNAME] = 'REQUEST_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -45399,7 +46505,64 @@ AS
       x.[CO_REVOLV_TRD_HCR_OVR],
       x.[PRI_TOT_NSF_24MONS_OVR],
       x.[CO_TOT_NSF_24MONS_OVR],
-      x.[CUST_CREDIT_SCORE_OVR]
+      x.[CUST_CREDIT_SCORE_OVR],
+      x.[PRIM_BORR_CRSCORE_ATT],
+      x.[PRIM_BORR_CRSCORE_SRC],
+      x.[PRIM_BORR_CRSCORE_OVR],
+      x.[CO_BORR_CRSCORE_ATT],
+      x.[CO_BORR_CRSCORE_SRC],
+      x.[CO_BORR_CRSCORE_OVR],
+      x.[INQ_NBR_6MOS_OVR],
+      x.[INQUIRY_NBR_ATT],
+      x.[INQUIRY_NBR_SRC],
+      x.[INQUIRY_NBR_OVR],
+      x.[SAT_TRD_NBR_OVR],
+      x.[ST_TRD_NBR_ATT],
+      x.[ST_TRD_NBR_SRC],
+      x.[ST_TRD_NBR_OVR],
+      x.[NL_COF_CNT_OVR],
+      x.[NL_CHGOFF_IND_ATT],
+      x.[NL_CHGOFF_IND_SRC],
+      x.[NL_CHGOFF_IND_OVR],
+      x.[MTG_DELQ_30CNT_OVR],
+      x.[MTG_DELQ_60CNT_OVR],
+      x.[MTG_DELQ_90CNT_OVR],
+      x.[MTG_BK_CNT_OVR],
+      x.[MTG_COF_CNT_OVR],
+      x.[CURR_MTG_DELINQ_ATT],
+      x.[CURR_MTG_DELINQ_SRC],
+      x.[CURR_MTG_DELINQ_OVR],
+      x.[BK_MTG_DELINQ_ATT],
+      x.[BK_MTG_DELINQ_SRC],
+      x.[BK_MTG_DELINQ_OVR],
+      x.[CO_MTG_DELINQ_ATT],
+      x.[CO_MTG_DELINQ_SRC],
+      x.[CO_MTG_DELINQ_OVR],
+      x.[RES_MOS_OVR],
+      x.[CURR_RES_IND_ATT],
+      x.[CURR_RES_IND_SRC],
+      x.[CURR_RES_IND_OVR],
+      x.[OCCUPANCY_ATT],
+      x.[OCCUPANCY_SRC],
+      x.[OCCUPANCY_OVR],
+      x.[PURPOSE_ATT],
+      x.[PURPOSE_SRC],
+      x.[PURPOSE_OVR],
+      x.[RESIDENT_ATT],
+      x.[RESIDENT_SRC],
+      x.[RESIDENT_OVR],
+      x.[ACREAGE_ATT],
+      x.[ACREAGE_SRC],
+      x.[ACREAGE_OVR],
+      x.[FLOODZONE_ATT],
+      x.[FLOODZONE_SRC],
+      x.[FLOODZONE_OVR],
+      x.[ACREAGEHLTV_ATT],
+      x.[ACREAGEHLTV_SRC],
+      x.[ACREAGEHLTV_OVR],
+      x.[LA_VAL_DEC_ATT],
+      x.[LA_VAL_DEC_SRC],
+      x.[LA_VAL_DEC_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -48356,6 +49519,56 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
+BEGIN
+   DROP VIEW [NetO_sas].[VwGF_TLB_EX_RES_PROF_SUM]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwGF_TLB_EX_RES_PROF_SUM]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[DISPUTED_ACCTS_EXCLUDED] AS [DISPUTED_ACCTS_EXCLUDED],
+      x.[PUB_REC_NUM] AS [PUB_REC_NUM],
+      x.[INSTALLMENT_AMT] AS [INSTALLMENT_AMT],
+      x.[REAL_ESTATE_AMT] AS [REAL_ESTATE_AMT],
+      x.[REVOLVING_AMT] AS [REVOLVING_AMT],
+      x.[PAST_DUE_AMT] AS [PAST_DUE_AMT],
+      x.[MONTHLY_PMT] AS [MONTHLY_PMT],
+      x.[MONTHLY_PMT_PART_FLAG] AS [MONTHLY_PMT_PART_FLAG],
+      x.[REAL_ESTATE_PMT] AS [REAL_ESTATE_PMT],
+      x.[RE_PMT_PART_FLAG] AS [RE_PMT_PART_FLAG],
+      x.[REVOLVE_AVAIL_PCT] AS [REVOLVE_AVAIL_PCT],
+      x.[REVOLVE_AVAIL_PART_FLAG] AS [REVOLVE_AVAIL_PART_FLAG],
+      x.[INQUIRIES_TTL] AS [INQUIRIES_TTL],
+      x.[INQUIRIES_LAST_6_MOS] AS [INQUIRIES_LAST_6_MOS],
+      x.[TRADE_ITEMS_TTL] AS [TRADE_ITEMS_TTL],
+      x.[PAID_ACCTS] AS [PAID_ACCTS],
+      x.[SATISFACTORY_ACCTS] AS [SATISFACTORY_ACCTS],
+      x.[NOW_DELINQUENT] AS [NOW_DELINQUENT],
+      x.[WAS_DELINQUENT] AS [WAS_DELINQUENT],
+      x.[OLDEST_TRADE_OPEN_DT] AS [OLDEST_TRADE_OPEN_DT],
+      x.[DELINQUENCIES_30_DAYS] AS [DELINQUENCIES_30_DAYS],
+      x.[DELINQUENCIES_60_DAYS] AS [DELINQUENCIES_60_DAYS],
+      x.[DELINQUENCIES_90_DAYS] AS [DELINQUENCIES_90_DAYS],
+      x.[DEROG_COUNTER] AS [DEROG_COUNTER]
+   FROM [clt_NetO].[GF_TLB_EX_RES_PROF_SUM] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
 BEGIN
    DROP VIEW [NetO_sas].[VwGF_TLB_EX_RES_TRENDS_SUM]
@@ -48510,6 +49723,95 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
+BEGIN
+   DROP VIEW [NetO_sas].[VwGF_TLB_TU_RES_SCORING]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwGF_TLB_TU_RES_SCORING]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[PRODUCT_CODE] AS [PRODUCT_CODE],
+      x.[SIGN] AS [SIGN],
+      HASHBYTES('SHA2_256', x.[SCORE]) AS [SCORE],
+      x.[SCORING_IND_FLAG] AS [SCORING_IND_FLAG],
+      x.[SCORE_DEROG_ALERT_FLAG] AS [SCORE_DEROG_ALERT_FLAG],
+      x.[FIRST_FACTOR] AS [FIRST_FACTOR],
+      x.[SECOND_FACTOR] AS [SECOND_FACTOR],
+      x.[THIRD_FACTOR] AS [THIRD_FACTOR],
+      x.[FOURTH_FACTOR] AS [FOURTH_FACTOR],
+      x.[SCORE_CARD_IND] AS [SCORE_CARD_IND],
+      x.[FIRSTFACTORNARRATIVE] AS [FIRSTFACTORNARRATIVE],
+      x.[SECONDFACTORNARRATIVE] AS [SECONDFACTORNARRATIVE],
+      x.[THIRDFACTORNARRATIVE] AS [THIRDFACTORNARRATIVE],
+      x.[FOURTHFACTORNARRATIVE] AS [FOURTHFACTORNARRATIVE],
+      x.[S_ALERTFLAG] AS [S_ALERTFLAG],
+      x.[SEARCH_STATUS] AS [SEARCH_STATUS],
+      x.[FILEINQUIRIES_IMPACTEDSCORE] AS [FILEINQUIRIES_IMPACTEDSCORE],
+      x.[NOSCOREREASON] AS [NOSCOREREASON]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SCORING] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
+BEGIN
+   DROP VIEW [NetO_sas].[VwGF_TLB_TU_RES_SUBJ_INFO]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwGF_TLB_TU_RES_SUBJ_INFO]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[CUSTOMER_ID] AS [CUSTOMER_ID],
+      x.[SUBJ_IDENTIFIER] AS [SUBJ_IDENTIFIER],
+      x.[FILE_NUM] AS [FILE_NUM],
+      x.[FILE_HIT] AS [FILE_HIT],
+      HASHBYTES('SHA2_256', x.[SSN_MATCH_IND]) AS [SSN_MATCH_IND],
+      x.[CONS_STMT_IND] AS [CONS_STMT_IND],
+      x.[BUR_MKT_FILE_CNTRL] AS [BUR_MKT_FILE_CNTRL],
+      x.[BUR_SUBMKT_FILE_CNTRL] AS [BUR_SUBMKT_FILE_CNTRL],
+      x.[SUPPRESSION_IND] AS [SUPPRESSION_IND],
+      x.[FILE_SINCE_DT] AS [FILE_SINCE_DT],
+      x.[SUBJ_HIT_STATUS] AS [SUBJ_HIT_STATUS],
+      x.[SUBJ_RESTRICT_STATUS] AS [SUBJ_RESTRICT_STATUS],
+      x.[SUBJ_COUNTRY] AS [SUBJ_COUNTRY],
+      x.[CRDTDATASTS_MINOR] AS [CRDTDATASTS_MINOR],
+      x.[CRDTDATASTS_DISPUTED] AS [CRDTDATASTS_DISPUTED],
+      x.[DO_NOT_PROMOTE_IND] AS [DO_NOT_PROMOTE_IND],
+      x.[DONOTPROMOTE_DTOFEXPIRE] AS [DONOTPROMOTE_DTOFEXPIRE],
+      x.[CRDTDATASTS_FREEZE_IND] AS [CRDTDATASTS_FREEZE_IND],
+      x.[CRDTDATASTS_FREEZE_TYPE] AS [CRDTDATASTS_FREEZE_TYPE]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SUBJ_INFO] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
 BEGIN
    DROP VIEW [NetO_sas].[VwGF_TLBC_EQ_RES_COLLECT]
@@ -48546,6 +49848,41 @@ AS
       x.[CRECITOR_CLASS_TEXT] AS [CRECITOR_CLASS_TEXT],
       x.[LAST_PMT_DT] AS [LAST_PMT_DT]
    FROM [clt_NetO].[GF_TLBC_EQ_RES_COLLECT] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
+BEGIN
+   DROP VIEW [NetO_sas].[VwGF_TLBC_EX_RES_INQUIRY]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwGF_TLBC_EX_RES_INQUIRY]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[ROWCOUNTER] AS [ROWCOUNTER],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[ACCT_TYPE] AS [ACCT_TYPE],
+      HASHBYTES('SHA2_256', x.[SUBSCRIBER_NAME]) AS [SUBSCRIBER_NAME],
+      x.[INQUIRY_DT] AS [INQUIRY_DT],
+      x.[AMOUNT] AS [AMOUNT],
+      x.[TERMS] AS [TERMS],
+      x.[ACCT_NUM] AS [ACCT_NUM],
+      x.[SUBCODE] AS [SUBCODE],
+      x.[KOB] AS [KOB]
+   FROM [clt_NetO].[GF_TLBC_EX_RES_INQUIRY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -49753,6 +51090,56 @@ AS
       x.[REL_DBID] AS [REL_DBID],
       x.[REL_BNUM] AS [REL_BNUM]
    FROM [clt_NetO].[GF_TLR_REOWNED_BORROWERS] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
+BEGIN
+   DROP VIEW [NetO_sas].[VwGF_TLR_REQ_CREDIT_DATA]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwGF_TLR_REQ_CREDIT_DATA]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[REQUESTID] AS [REQUESTID],
+      x.[CREDITREQUESTID] AS [CREDITREQUESTID],
+      x.[DATAID] AS [DATAID],
+      x.[DBID] AS [DBID],
+      x.[REPORT_IDENT] AS [REPORT_IDENT],
+      x.[REPORT_PRODUCT_DESC] AS [REPORT_PRODUCT_DESC],
+      x.[PRIMARY_BNUM] AS [PRIMARY_BNUM],
+      x.[PRIMARY_DBID] AS [PRIMARY_DBID],
+      x.[SECONDARY_BNUM] AS [SECONDARY_BNUM],
+      x.[SECONDARY_DBID] AS [SECONDARY_DBID],
+      x.[ACTION_TYPE] AS [ACTION_TYPE],
+      A0.[Descript] AS [ACTION_TYPE_X],
+      x.[ACTION_OTHER_DESC] AS [ACTION_OTHER_DESC],
+      x.[REPORT_TYPE] AS [REPORT_TYPE],
+      A1.[Descript] AS [REPORT_TYPE_X],
+      x.[REPORT_OTHER_DESC] AS [REPORT_OTHER_DESC],
+      x.[REPOSITORY_COUNT] AS [REPOSITORY_COUNT],
+      x.[REQUEST_TYPE] AS [REQUEST_TYPE],
+      A2.[Descript] AS [REQUEST_TYPE_X],
+      x.[EQIFAX_INDC] AS [EQIFAX_INDC],
+      x.[TRANSUNION_INDC] AS [TRANSUNION_INDC],
+      x.[EXPERIAN_INDC] AS [EXPERIAN_INDC],
+      x.[OTHER_REPOS] AS [OTHER_REPOS],
+      x.[CREDIT_REQ_TYPE] AS [CREDIT_REQ_TYPE],
+      x.[KROLL_REPORT_DATE] AS [KROLL_REPORT_DATE]
+   FROM [clt_NetO].[GF_TLR_REQ_CREDIT_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ACTION_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A0.[COLUMNNAME] = 'ACTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A1.[COLUMNNAME] = 'REPORT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[REQUEST_TYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A2.[COLUMNNAME] = 'REQUEST_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -56316,7 +57703,64 @@ AS
       x.[CO_REVOLV_TRD_HCR_OVR] AS [CO_REVOLV_TRD_HCR_OVR],
       x.[PRI_TOT_NSF_24MONS_OVR] AS [PRI_TOT_NSF_24MONS_OVR],
       x.[CO_TOT_NSF_24MONS_OVR] AS [CO_TOT_NSF_24MONS_OVR],
-      x.[CUST_CREDIT_SCORE_OVR] AS [CUST_CREDIT_SCORE_OVR]
+      x.[CUST_CREDIT_SCORE_OVR] AS [CUST_CREDIT_SCORE_OVR],
+      x.[PRIM_BORR_CRSCORE_ATT] AS [PRIM_BORR_CRSCORE_ATT],
+      x.[PRIM_BORR_CRSCORE_SRC] AS [PRIM_BORR_CRSCORE_SRC],
+      x.[PRIM_BORR_CRSCORE_OVR] AS [PRIM_BORR_CRSCORE_OVR],
+      x.[CO_BORR_CRSCORE_ATT] AS [CO_BORR_CRSCORE_ATT],
+      x.[CO_BORR_CRSCORE_SRC] AS [CO_BORR_CRSCORE_SRC],
+      x.[CO_BORR_CRSCORE_OVR] AS [CO_BORR_CRSCORE_OVR],
+      x.[INQ_NBR_6MOS_OVR] AS [INQ_NBR_6MOS_OVR],
+      x.[INQUIRY_NBR_ATT] AS [INQUIRY_NBR_ATT],
+      x.[INQUIRY_NBR_SRC] AS [INQUIRY_NBR_SRC],
+      x.[INQUIRY_NBR_OVR] AS [INQUIRY_NBR_OVR],
+      x.[SAT_TRD_NBR_OVR] AS [SAT_TRD_NBR_OVR],
+      x.[ST_TRD_NBR_ATT] AS [ST_TRD_NBR_ATT],
+      x.[ST_TRD_NBR_SRC] AS [ST_TRD_NBR_SRC],
+      x.[ST_TRD_NBR_OVR] AS [ST_TRD_NBR_OVR],
+      x.[NL_COF_CNT_OVR] AS [NL_COF_CNT_OVR],
+      x.[NL_CHGOFF_IND_ATT] AS [NL_CHGOFF_IND_ATT],
+      x.[NL_CHGOFF_IND_SRC] AS [NL_CHGOFF_IND_SRC],
+      x.[NL_CHGOFF_IND_OVR] AS [NL_CHGOFF_IND_OVR],
+      x.[MTG_DELQ_30CNT_OVR] AS [MTG_DELQ_30CNT_OVR],
+      x.[MTG_DELQ_60CNT_OVR] AS [MTG_DELQ_60CNT_OVR],
+      x.[MTG_DELQ_90CNT_OVR] AS [MTG_DELQ_90CNT_OVR],
+      x.[MTG_BK_CNT_OVR] AS [MTG_BK_CNT_OVR],
+      x.[MTG_COF_CNT_OVR] AS [MTG_COF_CNT_OVR],
+      x.[CURR_MTG_DELINQ_ATT] AS [CURR_MTG_DELINQ_ATT],
+      x.[CURR_MTG_DELINQ_SRC] AS [CURR_MTG_DELINQ_SRC],
+      x.[CURR_MTG_DELINQ_OVR] AS [CURR_MTG_DELINQ_OVR],
+      x.[BK_MTG_DELINQ_ATT] AS [BK_MTG_DELINQ_ATT],
+      x.[BK_MTG_DELINQ_SRC] AS [BK_MTG_DELINQ_SRC],
+      x.[BK_MTG_DELINQ_OVR] AS [BK_MTG_DELINQ_OVR],
+      x.[CO_MTG_DELINQ_ATT] AS [CO_MTG_DELINQ_ATT],
+      x.[CO_MTG_DELINQ_SRC] AS [CO_MTG_DELINQ_SRC],
+      x.[CO_MTG_DELINQ_OVR] AS [CO_MTG_DELINQ_OVR],
+      x.[RES_MOS_OVR] AS [RES_MOS_OVR],
+      x.[CURR_RES_IND_ATT] AS [CURR_RES_IND_ATT],
+      x.[CURR_RES_IND_SRC] AS [CURR_RES_IND_SRC],
+      x.[CURR_RES_IND_OVR] AS [CURR_RES_IND_OVR],
+      x.[OCCUPANCY_ATT] AS [OCCUPANCY_ATT],
+      x.[OCCUPANCY_SRC] AS [OCCUPANCY_SRC],
+      x.[OCCUPANCY_OVR] AS [OCCUPANCY_OVR],
+      x.[PURPOSE_ATT] AS [PURPOSE_ATT],
+      x.[PURPOSE_SRC] AS [PURPOSE_SRC],
+      x.[PURPOSE_OVR] AS [PURPOSE_OVR],
+      x.[RESIDENT_ATT] AS [RESIDENT_ATT],
+      x.[RESIDENT_SRC] AS [RESIDENT_SRC],
+      x.[RESIDENT_OVR] AS [RESIDENT_OVR],
+      x.[ACREAGE_ATT] AS [ACREAGE_ATT],
+      x.[ACREAGE_SRC] AS [ACREAGE_SRC],
+      x.[ACREAGE_OVR] AS [ACREAGE_OVR],
+      x.[FLOODZONE_ATT] AS [FLOODZONE_ATT],
+      x.[FLOODZONE_SRC] AS [FLOODZONE_SRC],
+      x.[FLOODZONE_OVR] AS [FLOODZONE_OVR],
+      x.[ACREAGEHLTV_ATT] AS [ACREAGEHLTV_ATT],
+      x.[ACREAGEHLTV_SRC] AS [ACREAGEHLTV_SRC],
+      x.[ACREAGEHLTV_OVR] AS [ACREAGEHLTV_OVR],
+      x.[LA_VAL_DEC_ATT] AS [LA_VAL_DEC_ATT],
+      x.[LA_VAL_DEC_SRC] AS [LA_VAL_DEC_SRC],
+      x.[LA_VAL_DEC_OVR] AS [LA_VAL_DEC_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -59273,6 +60717,56 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_EX_RES_PROF_SUM]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_EX_RES_PROF_SUM]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[DISPUTED_ACCTS_EXCLUDED] AS [DISPUTED_ACCTS_EXCLUDED],
+      x.[PUB_REC_NUM] AS [PUB_REC_NUM],
+      x.[INSTALLMENT_AMT] AS [INSTALLMENT_AMT],
+      x.[REAL_ESTATE_AMT] AS [REAL_ESTATE_AMT],
+      x.[REVOLVING_AMT] AS [REVOLVING_AMT],
+      x.[PAST_DUE_AMT] AS [PAST_DUE_AMT],
+      x.[MONTHLY_PMT] AS [MONTHLY_PMT],
+      x.[MONTHLY_PMT_PART_FLAG] AS [MONTHLY_PMT_PART_FLAG],
+      x.[REAL_ESTATE_PMT] AS [REAL_ESTATE_PMT],
+      x.[RE_PMT_PART_FLAG] AS [RE_PMT_PART_FLAG],
+      x.[REVOLVE_AVAIL_PCT] AS [REVOLVE_AVAIL_PCT],
+      x.[REVOLVE_AVAIL_PART_FLAG] AS [REVOLVE_AVAIL_PART_FLAG],
+      x.[INQUIRIES_TTL] AS [INQUIRIES_TTL],
+      x.[INQUIRIES_LAST_6_MOS] AS [INQUIRIES_LAST_6_MOS],
+      x.[TRADE_ITEMS_TTL] AS [TRADE_ITEMS_TTL],
+      x.[PAID_ACCTS] AS [PAID_ACCTS],
+      x.[SATISFACTORY_ACCTS] AS [SATISFACTORY_ACCTS],
+      x.[NOW_DELINQUENT] AS [NOW_DELINQUENT],
+      x.[WAS_DELINQUENT] AS [WAS_DELINQUENT],
+      x.[OLDEST_TRADE_OPEN_DT] AS [OLDEST_TRADE_OPEN_DT],
+      x.[DELINQUENCIES_30_DAYS] AS [DELINQUENCIES_30_DAYS],
+      x.[DELINQUENCIES_60_DAYS] AS [DELINQUENCIES_60_DAYS],
+      x.[DELINQUENCIES_90_DAYS] AS [DELINQUENCIES_90_DAYS],
+      x.[DEROG_COUNTER] AS [DEROG_COUNTER]
+   FROM [clt_NetO].[GF_TLB_EX_RES_PROF_SUM] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
 BEGIN
    DROP VIEW [NetO_sas_restricted].[VwGF_TLB_EX_RES_TRENDS_SUM]
@@ -59427,6 +60921,95 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_SCORING]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_SCORING]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[PRODUCT_CODE] AS [PRODUCT_CODE],
+      x.[SIGN] AS [SIGN],
+      HASHBYTES('SHA2_256', x.[SCORE]) AS [SCORE],
+      x.[SCORING_IND_FLAG] AS [SCORING_IND_FLAG],
+      x.[SCORE_DEROG_ALERT_FLAG] AS [SCORE_DEROG_ALERT_FLAG],
+      x.[FIRST_FACTOR] AS [FIRST_FACTOR],
+      x.[SECOND_FACTOR] AS [SECOND_FACTOR],
+      x.[THIRD_FACTOR] AS [THIRD_FACTOR],
+      x.[FOURTH_FACTOR] AS [FOURTH_FACTOR],
+      x.[SCORE_CARD_IND] AS [SCORE_CARD_IND],
+      x.[FIRSTFACTORNARRATIVE] AS [FIRSTFACTORNARRATIVE],
+      x.[SECONDFACTORNARRATIVE] AS [SECONDFACTORNARRATIVE],
+      x.[THIRDFACTORNARRATIVE] AS [THIRDFACTORNARRATIVE],
+      x.[FOURTHFACTORNARRATIVE] AS [FOURTHFACTORNARRATIVE],
+      x.[S_ALERTFLAG] AS [S_ALERTFLAG],
+      x.[SEARCH_STATUS] AS [SEARCH_STATUS],
+      x.[FILEINQUIRIES_IMPACTEDSCORE] AS [FILEINQUIRIES_IMPACTEDSCORE],
+      x.[NOSCOREREASON] AS [NOSCOREREASON]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SCORING] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_SUBJ_INFO]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_SUBJ_INFO]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[CUSTOMER_ID] AS [CUSTOMER_ID],
+      x.[SUBJ_IDENTIFIER] AS [SUBJ_IDENTIFIER],
+      x.[FILE_NUM] AS [FILE_NUM],
+      x.[FILE_HIT] AS [FILE_HIT],
+      HASHBYTES('SHA2_256', x.[SSN_MATCH_IND]) AS [SSN_MATCH_IND],
+      x.[CONS_STMT_IND] AS [CONS_STMT_IND],
+      x.[BUR_MKT_FILE_CNTRL] AS [BUR_MKT_FILE_CNTRL],
+      x.[BUR_SUBMKT_FILE_CNTRL] AS [BUR_SUBMKT_FILE_CNTRL],
+      x.[SUPPRESSION_IND] AS [SUPPRESSION_IND],
+      x.[FILE_SINCE_DT] AS [FILE_SINCE_DT],
+      x.[SUBJ_HIT_STATUS] AS [SUBJ_HIT_STATUS],
+      x.[SUBJ_RESTRICT_STATUS] AS [SUBJ_RESTRICT_STATUS],
+      x.[SUBJ_COUNTRY] AS [SUBJ_COUNTRY],
+      x.[CRDTDATASTS_MINOR] AS [CRDTDATASTS_MINOR],
+      x.[CRDTDATASTS_DISPUTED] AS [CRDTDATASTS_DISPUTED],
+      x.[DO_NOT_PROMOTE_IND] AS [DO_NOT_PROMOTE_IND],
+      x.[DONOTPROMOTE_DTOFEXPIRE] AS [DONOTPROMOTE_DTOFEXPIRE],
+      x.[CRDTDATASTS_FREEZE_IND] AS [CRDTDATASTS_FREEZE_IND],
+      x.[CRDTDATASTS_FREEZE_TYPE] AS [CRDTDATASTS_FREEZE_TYPE]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SUBJ_INFO] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
 BEGIN
    DROP VIEW [NetO_sas_restricted].[VwGF_TLBC_EQ_RES_COLLECT]
@@ -59463,6 +61046,41 @@ AS
       x.[CRECITOR_CLASS_TEXT] AS [CRECITOR_CLASS_TEXT],
       x.[LAST_PMT_DT] AS [LAST_PMT_DT]
    FROM [clt_NetO].[GF_TLBC_EQ_RES_COLLECT] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwGF_TLBC_EX_RES_INQUIRY]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwGF_TLBC_EX_RES_INQUIRY]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[ROWCOUNTER] AS [ROWCOUNTER],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[ACCT_TYPE] AS [ACCT_TYPE],
+      HASHBYTES('SHA2_256', x.[SUBSCRIBER_NAME]) AS [SUBSCRIBER_NAME],
+      x.[INQUIRY_DT] AS [INQUIRY_DT],
+      x.[AMOUNT] AS [AMOUNT],
+      x.[TERMS] AS [TERMS],
+      x.[ACCT_NUM] AS [ACCT_NUM],
+      x.[SUBCODE] AS [SUBCODE],
+      x.[KOB] AS [KOB]
+   FROM [clt_NetO].[GF_TLBC_EX_RES_INQUIRY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -60670,6 +62288,56 @@ AS
       x.[REL_DBID] AS [REL_DBID],
       x.[REL_BNUM] AS [REL_BNUM]
    FROM [clt_NetO].[GF_TLR_REOWNED_BORROWERS] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_REQ_CREDIT_DATA]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_REQ_CREDIT_DATA]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[REQUESTID] AS [REQUESTID],
+      x.[CREDITREQUESTID] AS [CREDITREQUESTID],
+      x.[DATAID] AS [DATAID],
+      x.[DBID] AS [DBID],
+      x.[REPORT_IDENT] AS [REPORT_IDENT],
+      x.[REPORT_PRODUCT_DESC] AS [REPORT_PRODUCT_DESC],
+      x.[PRIMARY_BNUM] AS [PRIMARY_BNUM],
+      x.[PRIMARY_DBID] AS [PRIMARY_DBID],
+      x.[SECONDARY_BNUM] AS [SECONDARY_BNUM],
+      x.[SECONDARY_DBID] AS [SECONDARY_DBID],
+      x.[ACTION_TYPE] AS [ACTION_TYPE],
+      A0.[Descript] AS [ACTION_TYPE_X],
+      x.[ACTION_OTHER_DESC] AS [ACTION_OTHER_DESC],
+      x.[REPORT_TYPE] AS [REPORT_TYPE],
+      A1.[Descript] AS [REPORT_TYPE_X],
+      x.[REPORT_OTHER_DESC] AS [REPORT_OTHER_DESC],
+      x.[REPOSITORY_COUNT] AS [REPOSITORY_COUNT],
+      x.[REQUEST_TYPE] AS [REQUEST_TYPE],
+      A2.[Descript] AS [REQUEST_TYPE_X],
+      x.[EQIFAX_INDC] AS [EQIFAX_INDC],
+      x.[TRANSUNION_INDC] AS [TRANSUNION_INDC],
+      x.[EXPERIAN_INDC] AS [EXPERIAN_INDC],
+      x.[OTHER_REPOS] AS [OTHER_REPOS],
+      x.[CREDIT_REQ_TYPE] AS [CREDIT_REQ_TYPE],
+      x.[KROLL_REPORT_DATE] AS [KROLL_REPORT_DATE]
+   FROM [clt_NetO].[GF_TLR_REQ_CREDIT_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ACTION_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A0.[COLUMNNAME] = 'ACTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A1.[COLUMNNAME] = 'REPORT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[REQUEST_TYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A2.[COLUMNNAME] = 'REQUEST_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -67233,7 +68901,64 @@ AS
       x.[CO_REVOLV_TRD_HCR_OVR] AS [CO_REVOLV_TRD_HCR_OVR],
       x.[PRI_TOT_NSF_24MONS_OVR] AS [PRI_TOT_NSF_24MONS_OVR],
       x.[CO_TOT_NSF_24MONS_OVR] AS [CO_TOT_NSF_24MONS_OVR],
-      x.[CUST_CREDIT_SCORE_OVR] AS [CUST_CREDIT_SCORE_OVR]
+      x.[CUST_CREDIT_SCORE_OVR] AS [CUST_CREDIT_SCORE_OVR],
+      x.[PRIM_BORR_CRSCORE_ATT] AS [PRIM_BORR_CRSCORE_ATT],
+      x.[PRIM_BORR_CRSCORE_SRC] AS [PRIM_BORR_CRSCORE_SRC],
+      x.[PRIM_BORR_CRSCORE_OVR] AS [PRIM_BORR_CRSCORE_OVR],
+      x.[CO_BORR_CRSCORE_ATT] AS [CO_BORR_CRSCORE_ATT],
+      x.[CO_BORR_CRSCORE_SRC] AS [CO_BORR_CRSCORE_SRC],
+      x.[CO_BORR_CRSCORE_OVR] AS [CO_BORR_CRSCORE_OVR],
+      x.[INQ_NBR_6MOS_OVR] AS [INQ_NBR_6MOS_OVR],
+      x.[INQUIRY_NBR_ATT] AS [INQUIRY_NBR_ATT],
+      x.[INQUIRY_NBR_SRC] AS [INQUIRY_NBR_SRC],
+      x.[INQUIRY_NBR_OVR] AS [INQUIRY_NBR_OVR],
+      x.[SAT_TRD_NBR_OVR] AS [SAT_TRD_NBR_OVR],
+      x.[ST_TRD_NBR_ATT] AS [ST_TRD_NBR_ATT],
+      x.[ST_TRD_NBR_SRC] AS [ST_TRD_NBR_SRC],
+      x.[ST_TRD_NBR_OVR] AS [ST_TRD_NBR_OVR],
+      x.[NL_COF_CNT_OVR] AS [NL_COF_CNT_OVR],
+      x.[NL_CHGOFF_IND_ATT] AS [NL_CHGOFF_IND_ATT],
+      x.[NL_CHGOFF_IND_SRC] AS [NL_CHGOFF_IND_SRC],
+      x.[NL_CHGOFF_IND_OVR] AS [NL_CHGOFF_IND_OVR],
+      x.[MTG_DELQ_30CNT_OVR] AS [MTG_DELQ_30CNT_OVR],
+      x.[MTG_DELQ_60CNT_OVR] AS [MTG_DELQ_60CNT_OVR],
+      x.[MTG_DELQ_90CNT_OVR] AS [MTG_DELQ_90CNT_OVR],
+      x.[MTG_BK_CNT_OVR] AS [MTG_BK_CNT_OVR],
+      x.[MTG_COF_CNT_OVR] AS [MTG_COF_CNT_OVR],
+      x.[CURR_MTG_DELINQ_ATT] AS [CURR_MTG_DELINQ_ATT],
+      x.[CURR_MTG_DELINQ_SRC] AS [CURR_MTG_DELINQ_SRC],
+      x.[CURR_MTG_DELINQ_OVR] AS [CURR_MTG_DELINQ_OVR],
+      x.[BK_MTG_DELINQ_ATT] AS [BK_MTG_DELINQ_ATT],
+      x.[BK_MTG_DELINQ_SRC] AS [BK_MTG_DELINQ_SRC],
+      x.[BK_MTG_DELINQ_OVR] AS [BK_MTG_DELINQ_OVR],
+      x.[CO_MTG_DELINQ_ATT] AS [CO_MTG_DELINQ_ATT],
+      x.[CO_MTG_DELINQ_SRC] AS [CO_MTG_DELINQ_SRC],
+      x.[CO_MTG_DELINQ_OVR] AS [CO_MTG_DELINQ_OVR],
+      x.[RES_MOS_OVR] AS [RES_MOS_OVR],
+      x.[CURR_RES_IND_ATT] AS [CURR_RES_IND_ATT],
+      x.[CURR_RES_IND_SRC] AS [CURR_RES_IND_SRC],
+      x.[CURR_RES_IND_OVR] AS [CURR_RES_IND_OVR],
+      x.[OCCUPANCY_ATT] AS [OCCUPANCY_ATT],
+      x.[OCCUPANCY_SRC] AS [OCCUPANCY_SRC],
+      x.[OCCUPANCY_OVR] AS [OCCUPANCY_OVR],
+      x.[PURPOSE_ATT] AS [PURPOSE_ATT],
+      x.[PURPOSE_SRC] AS [PURPOSE_SRC],
+      x.[PURPOSE_OVR] AS [PURPOSE_OVR],
+      x.[RESIDENT_ATT] AS [RESIDENT_ATT],
+      x.[RESIDENT_SRC] AS [RESIDENT_SRC],
+      x.[RESIDENT_OVR] AS [RESIDENT_OVR],
+      x.[ACREAGE_ATT] AS [ACREAGE_ATT],
+      x.[ACREAGE_SRC] AS [ACREAGE_SRC],
+      x.[ACREAGE_OVR] AS [ACREAGE_OVR],
+      x.[FLOODZONE_ATT] AS [FLOODZONE_ATT],
+      x.[FLOODZONE_SRC] AS [FLOODZONE_SRC],
+      x.[FLOODZONE_OVR] AS [FLOODZONE_OVR],
+      x.[ACREAGEHLTV_ATT] AS [ACREAGEHLTV_ATT],
+      x.[ACREAGEHLTV_SRC] AS [ACREAGEHLTV_SRC],
+      x.[ACREAGEHLTV_OVR] AS [ACREAGEHLTV_OVR],
+      x.[LA_VAL_DEC_ATT] AS [LA_VAL_DEC_ATT],
+      x.[LA_VAL_DEC_SRC] AS [LA_VAL_DEC_SRC],
+      x.[LA_VAL_DEC_OVR] AS [LA_VAL_DEC_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
@@ -70190,6 +71915,56 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwGF_TLB_EX_RES_PROF_SUM]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwGF_TLB_EX_RES_PROF_SUM]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[DISPUTED_ACCTS_EXCLUDED] AS [DISPUTED_ACCTS_EXCLUDED],
+      x.[PUB_REC_NUM] AS [PUB_REC_NUM],
+      x.[INSTALLMENT_AMT] AS [INSTALLMENT_AMT],
+      x.[REAL_ESTATE_AMT] AS [REAL_ESTATE_AMT],
+      x.[REVOLVING_AMT] AS [REVOLVING_AMT],
+      x.[PAST_DUE_AMT] AS [PAST_DUE_AMT],
+      x.[MONTHLY_PMT] AS [MONTHLY_PMT],
+      x.[MONTHLY_PMT_PART_FLAG] AS [MONTHLY_PMT_PART_FLAG],
+      x.[REAL_ESTATE_PMT] AS [REAL_ESTATE_PMT],
+      x.[RE_PMT_PART_FLAG] AS [RE_PMT_PART_FLAG],
+      x.[REVOLVE_AVAIL_PCT] AS [REVOLVE_AVAIL_PCT],
+      x.[REVOLVE_AVAIL_PART_FLAG] AS [REVOLVE_AVAIL_PART_FLAG],
+      x.[INQUIRIES_TTL] AS [INQUIRIES_TTL],
+      x.[INQUIRIES_LAST_6_MOS] AS [INQUIRIES_LAST_6_MOS],
+      x.[TRADE_ITEMS_TTL] AS [TRADE_ITEMS_TTL],
+      x.[PAID_ACCTS] AS [PAID_ACCTS],
+      x.[SATISFACTORY_ACCTS] AS [SATISFACTORY_ACCTS],
+      x.[NOW_DELINQUENT] AS [NOW_DELINQUENT],
+      x.[WAS_DELINQUENT] AS [WAS_DELINQUENT],
+      x.[OLDEST_TRADE_OPEN_DT] AS [OLDEST_TRADE_OPEN_DT],
+      x.[DELINQUENCIES_30_DAYS] AS [DELINQUENCIES_30_DAYS],
+      x.[DELINQUENCIES_60_DAYS] AS [DELINQUENCIES_60_DAYS],
+      x.[DELINQUENCIES_90_DAYS] AS [DELINQUENCIES_90_DAYS],
+      x.[DEROG_COUNTER] AS [DEROG_COUNTER]
+   FROM [clt_NetO].[GF_TLB_EX_RES_PROF_SUM] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
 BEGIN
    DROP VIEW [NetO_sas_pii].[VwGF_TLB_EX_RES_TRENDS_SUM]
@@ -70344,6 +72119,95 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwGF_TLB_TU_RES_SCORING]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwGF_TLB_TU_RES_SCORING]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[PRODUCT_CODE] AS [PRODUCT_CODE],
+      x.[SIGN] AS [SIGN],
+      x.[SCORE] AS [SCORE],
+      x.[SCORING_IND_FLAG] AS [SCORING_IND_FLAG],
+      x.[SCORE_DEROG_ALERT_FLAG] AS [SCORE_DEROG_ALERT_FLAG],
+      x.[FIRST_FACTOR] AS [FIRST_FACTOR],
+      x.[SECOND_FACTOR] AS [SECOND_FACTOR],
+      x.[THIRD_FACTOR] AS [THIRD_FACTOR],
+      x.[FOURTH_FACTOR] AS [FOURTH_FACTOR],
+      x.[SCORE_CARD_IND] AS [SCORE_CARD_IND],
+      x.[FIRSTFACTORNARRATIVE] AS [FIRSTFACTORNARRATIVE],
+      x.[SECONDFACTORNARRATIVE] AS [SECONDFACTORNARRATIVE],
+      x.[THIRDFACTORNARRATIVE] AS [THIRDFACTORNARRATIVE],
+      x.[FOURTHFACTORNARRATIVE] AS [FOURTHFACTORNARRATIVE],
+      x.[S_ALERTFLAG] AS [S_ALERTFLAG],
+      x.[SEARCH_STATUS] AS [SEARCH_STATUS],
+      x.[FILEINQUIRIES_IMPACTEDSCORE] AS [FILEINQUIRIES_IMPACTEDSCORE],
+      x.[NOSCOREREASON] AS [NOSCOREREASON]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SCORING] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwGF_TLB_TU_RES_SUBJ_INFO]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwGF_TLB_TU_RES_SUBJ_INFO]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[CUSTOMER_ID] AS [CUSTOMER_ID],
+      x.[SUBJ_IDENTIFIER] AS [SUBJ_IDENTIFIER],
+      x.[FILE_NUM] AS [FILE_NUM],
+      x.[FILE_HIT] AS [FILE_HIT],
+      x.[SSN_MATCH_IND] AS [SSN_MATCH_IND],
+      x.[CONS_STMT_IND] AS [CONS_STMT_IND],
+      x.[BUR_MKT_FILE_CNTRL] AS [BUR_MKT_FILE_CNTRL],
+      x.[BUR_SUBMKT_FILE_CNTRL] AS [BUR_SUBMKT_FILE_CNTRL],
+      x.[SUPPRESSION_IND] AS [SUPPRESSION_IND],
+      x.[FILE_SINCE_DT] AS [FILE_SINCE_DT],
+      x.[SUBJ_HIT_STATUS] AS [SUBJ_HIT_STATUS],
+      x.[SUBJ_RESTRICT_STATUS] AS [SUBJ_RESTRICT_STATUS],
+      x.[SUBJ_COUNTRY] AS [SUBJ_COUNTRY],
+      x.[CRDTDATASTS_MINOR] AS [CRDTDATASTS_MINOR],
+      x.[CRDTDATASTS_DISPUTED] AS [CRDTDATASTS_DISPUTED],
+      x.[DO_NOT_PROMOTE_IND] AS [DO_NOT_PROMOTE_IND],
+      x.[DONOTPROMOTE_DTOFEXPIRE] AS [DONOTPROMOTE_DTOFEXPIRE],
+      x.[CRDTDATASTS_FREEZE_IND] AS [CRDTDATASTS_FREEZE_IND],
+      x.[CRDTDATASTS_FREEZE_TYPE] AS [CRDTDATASTS_FREEZE_TYPE]
+   FROM [clt_NetO].[GF_TLB_TU_RES_SUBJ_INFO] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
 BEGIN
    DROP VIEW [NetO_sas_pii].[VwGF_TLBC_EQ_RES_COLLECT]
@@ -70380,6 +72244,41 @@ AS
       x.[CRECITOR_CLASS_TEXT] AS [CRECITOR_CLASS_TEXT],
       x.[LAST_PMT_DT] AS [LAST_PMT_DT]
    FROM [clt_NetO].[GF_TLBC_EQ_RES_COLLECT] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwGF_TLBC_EX_RES_INQUIRY]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwGF_TLBC_EX_RES_INQUIRY]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[ROWCOUNTER] AS [ROWCOUNTER],
+      x.[RESPONSEID] AS [RESPONSEID],
+      x.[CREDITRESPONSEID] AS [CREDITRESPONSEID],
+      x.[ACCT_TYPE] AS [ACCT_TYPE],
+      x.[SUBSCRIBER_NAME] AS [SUBSCRIBER_NAME],
+      x.[INQUIRY_DT] AS [INQUIRY_DT],
+      x.[AMOUNT] AS [AMOUNT],
+      x.[TERMS] AS [TERMS],
+      x.[ACCT_NUM] AS [ACCT_NUM],
+      x.[SUBCODE] AS [SUBCODE],
+      x.[KOB] AS [KOB]
+   FROM [clt_NetO].[GF_TLBC_EX_RES_INQUIRY] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -71587,6 +73486,56 @@ AS
       x.[REL_DBID] AS [REL_DBID],
       x.[REL_BNUM] AS [REL_BNUM]
    FROM [clt_NetO].[GF_TLR_REOWNED_BORROWERS] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwGF_TLR_REQ_CREDIT_DATA]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwGF_TLR_REQ_CREDIT_DATA]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[REQUESTID] AS [REQUESTID],
+      x.[CREDITREQUESTID] AS [CREDITREQUESTID],
+      x.[DATAID] AS [DATAID],
+      x.[DBID] AS [DBID],
+      x.[REPORT_IDENT] AS [REPORT_IDENT],
+      x.[REPORT_PRODUCT_DESC] AS [REPORT_PRODUCT_DESC],
+      x.[PRIMARY_BNUM] AS [PRIMARY_BNUM],
+      x.[PRIMARY_DBID] AS [PRIMARY_DBID],
+      x.[SECONDARY_BNUM] AS [SECONDARY_BNUM],
+      x.[SECONDARY_DBID] AS [SECONDARY_DBID],
+      x.[ACTION_TYPE] AS [ACTION_TYPE],
+      A0.[Descript] AS [ACTION_TYPE_X],
+      x.[ACTION_OTHER_DESC] AS [ACTION_OTHER_DESC],
+      x.[REPORT_TYPE] AS [REPORT_TYPE],
+      A1.[Descript] AS [REPORT_TYPE_X],
+      x.[REPORT_OTHER_DESC] AS [REPORT_OTHER_DESC],
+      x.[REPOSITORY_COUNT] AS [REPOSITORY_COUNT],
+      x.[REQUEST_TYPE] AS [REQUEST_TYPE],
+      A2.[Descript] AS [REQUEST_TYPE_X],
+      x.[EQIFAX_INDC] AS [EQIFAX_INDC],
+      x.[TRANSUNION_INDC] AS [TRANSUNION_INDC],
+      x.[EXPERIAN_INDC] AS [EXPERIAN_INDC],
+      x.[OTHER_REPOS] AS [OTHER_REPOS],
+      x.[CREDIT_REQ_TYPE] AS [CREDIT_REQ_TYPE],
+      x.[KROLL_REPORT_DATE] AS [KROLL_REPORT_DATE]
+   FROM [clt_NetO].[GF_TLR_REQ_CREDIT_DATA] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ACTION_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A0.[COLUMNNAME] = 'ACTION_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A1.[COLUMNNAME] = 'REPORT_TYPE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[REQUEST_TYPE] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TLR_REQ_CREDIT_DATA' and A2.[COLUMNNAME] = 'REQUEST_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -78150,7 +80099,64 @@ AS
       x.[CO_REVOLV_TRD_HCR_OVR] AS [CO_REVOLV_TRD_HCR_OVR],
       x.[PRI_TOT_NSF_24MONS_OVR] AS [PRI_TOT_NSF_24MONS_OVR],
       x.[CO_TOT_NSF_24MONS_OVR] AS [CO_TOT_NSF_24MONS_OVR],
-      x.[CUST_CREDIT_SCORE_OVR] AS [CUST_CREDIT_SCORE_OVR]
+      x.[CUST_CREDIT_SCORE_OVR] AS [CUST_CREDIT_SCORE_OVR],
+      x.[PRIM_BORR_CRSCORE_ATT] AS [PRIM_BORR_CRSCORE_ATT],
+      x.[PRIM_BORR_CRSCORE_SRC] AS [PRIM_BORR_CRSCORE_SRC],
+      x.[PRIM_BORR_CRSCORE_OVR] AS [PRIM_BORR_CRSCORE_OVR],
+      x.[CO_BORR_CRSCORE_ATT] AS [CO_BORR_CRSCORE_ATT],
+      x.[CO_BORR_CRSCORE_SRC] AS [CO_BORR_CRSCORE_SRC],
+      x.[CO_BORR_CRSCORE_OVR] AS [CO_BORR_CRSCORE_OVR],
+      x.[INQ_NBR_6MOS_OVR] AS [INQ_NBR_6MOS_OVR],
+      x.[INQUIRY_NBR_ATT] AS [INQUIRY_NBR_ATT],
+      x.[INQUIRY_NBR_SRC] AS [INQUIRY_NBR_SRC],
+      x.[INQUIRY_NBR_OVR] AS [INQUIRY_NBR_OVR],
+      x.[SAT_TRD_NBR_OVR] AS [SAT_TRD_NBR_OVR],
+      x.[ST_TRD_NBR_ATT] AS [ST_TRD_NBR_ATT],
+      x.[ST_TRD_NBR_SRC] AS [ST_TRD_NBR_SRC],
+      x.[ST_TRD_NBR_OVR] AS [ST_TRD_NBR_OVR],
+      x.[NL_COF_CNT_OVR] AS [NL_COF_CNT_OVR],
+      x.[NL_CHGOFF_IND_ATT] AS [NL_CHGOFF_IND_ATT],
+      x.[NL_CHGOFF_IND_SRC] AS [NL_CHGOFF_IND_SRC],
+      x.[NL_CHGOFF_IND_OVR] AS [NL_CHGOFF_IND_OVR],
+      x.[MTG_DELQ_30CNT_OVR] AS [MTG_DELQ_30CNT_OVR],
+      x.[MTG_DELQ_60CNT_OVR] AS [MTG_DELQ_60CNT_OVR],
+      x.[MTG_DELQ_90CNT_OVR] AS [MTG_DELQ_90CNT_OVR],
+      x.[MTG_BK_CNT_OVR] AS [MTG_BK_CNT_OVR],
+      x.[MTG_COF_CNT_OVR] AS [MTG_COF_CNT_OVR],
+      x.[CURR_MTG_DELINQ_ATT] AS [CURR_MTG_DELINQ_ATT],
+      x.[CURR_MTG_DELINQ_SRC] AS [CURR_MTG_DELINQ_SRC],
+      x.[CURR_MTG_DELINQ_OVR] AS [CURR_MTG_DELINQ_OVR],
+      x.[BK_MTG_DELINQ_ATT] AS [BK_MTG_DELINQ_ATT],
+      x.[BK_MTG_DELINQ_SRC] AS [BK_MTG_DELINQ_SRC],
+      x.[BK_MTG_DELINQ_OVR] AS [BK_MTG_DELINQ_OVR],
+      x.[CO_MTG_DELINQ_ATT] AS [CO_MTG_DELINQ_ATT],
+      x.[CO_MTG_DELINQ_SRC] AS [CO_MTG_DELINQ_SRC],
+      x.[CO_MTG_DELINQ_OVR] AS [CO_MTG_DELINQ_OVR],
+      x.[RES_MOS_OVR] AS [RES_MOS_OVR],
+      x.[CURR_RES_IND_ATT] AS [CURR_RES_IND_ATT],
+      x.[CURR_RES_IND_SRC] AS [CURR_RES_IND_SRC],
+      x.[CURR_RES_IND_OVR] AS [CURR_RES_IND_OVR],
+      x.[OCCUPANCY_ATT] AS [OCCUPANCY_ATT],
+      x.[OCCUPANCY_SRC] AS [OCCUPANCY_SRC],
+      x.[OCCUPANCY_OVR] AS [OCCUPANCY_OVR],
+      x.[PURPOSE_ATT] AS [PURPOSE_ATT],
+      x.[PURPOSE_SRC] AS [PURPOSE_SRC],
+      x.[PURPOSE_OVR] AS [PURPOSE_OVR],
+      x.[RESIDENT_ATT] AS [RESIDENT_ATT],
+      x.[RESIDENT_SRC] AS [RESIDENT_SRC],
+      x.[RESIDENT_OVR] AS [RESIDENT_OVR],
+      x.[ACREAGE_ATT] AS [ACREAGE_ATT],
+      x.[ACREAGE_SRC] AS [ACREAGE_SRC],
+      x.[ACREAGE_OVR] AS [ACREAGE_OVR],
+      x.[FLOODZONE_ATT] AS [FLOODZONE_ATT],
+      x.[FLOODZONE_SRC] AS [FLOODZONE_SRC],
+      x.[FLOODZONE_OVR] AS [FLOODZONE_OVR],
+      x.[ACREAGEHLTV_ATT] AS [ACREAGEHLTV_ATT],
+      x.[ACREAGEHLTV_SRC] AS [ACREAGEHLTV_SRC],
+      x.[ACREAGEHLTV_OVR] AS [ACREAGEHLTV_OVR],
+      x.[LA_VAL_DEC_ATT] AS [LA_VAL_DEC_ATT],
+      x.[LA_VAL_DEC_SRC] AS [LA_VAL_DEC_SRC],
+      x.[LA_VAL_DEC_OVR] AS [LA_VAL_DEC_OVR]
    FROM [clt_NetO].[WG_SC_ATTRIBUTES] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
