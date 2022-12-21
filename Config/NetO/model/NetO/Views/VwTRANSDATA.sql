@@ -14,7 +14,7 @@ AS
       x.[ESTPREPD],
       x.[ESTCLOS],
       x.[MIFUND],
-      x.[DISCOUNT],
+      HASHBYTES('SHA2_256', CAST(x.[DISCOUNT] AS NVARCHAR(50))) AS [DISCOUNT],
       x.[SUBFIN],
       x.[SELLCLOS],
       x.[FINFEES],

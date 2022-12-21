@@ -21,7 +21,7 @@ AS
       x.[REPAY_PMT],
       x.[GRANT_LOAN_NUM],
       x.[AGENCY_APP_DATE],
-      x.[AHP_PROJECT],
+      HASHBYTES('SHA2_256', x.[AHP_PROJECT]) AS [AHP_PROJECT],
       x.[REPAY_REQ],
       x.[ALLOW_AP_EXCEPT],
       x.[PROVIDER_EIN],

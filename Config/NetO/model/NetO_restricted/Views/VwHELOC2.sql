@@ -11,7 +11,7 @@ AS
       x.[HELOC_DESCRIPTION],
       x.[BILL_END_DATE],
       x.[MIN_BALANCE],
-      x.[OPENEND_CREDIT_IND],
+      HASHBYTES('SHA2_256', x.[OPENEND_CREDIT_IND]) AS [OPENEND_CREDIT_IND],
       x.[S_RTC_TYPE],
       A0.[Descript] AS [S_RTC_TYPE_X],
       x.[WAIVE_ANNUAL_FEE],

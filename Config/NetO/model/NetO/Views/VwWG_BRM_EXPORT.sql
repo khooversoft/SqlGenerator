@@ -7,7 +7,7 @@ CREATE VIEW [NetO].[VwWG_BRM_EXPORT]
 AS
    SELECT
       x.[EXPORTID],
-      x.[EXP_USER_NAME],
+      HASHBYTES('SHA2_256', x.[EXP_USER_NAME]) AS [EXP_USER_NAME],
       x.[EXP_DATE_TIME],
       x.[EXP_FILE_NAME],
       x.[EXP_FILE_PATH],

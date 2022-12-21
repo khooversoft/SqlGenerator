@@ -12,7 +12,7 @@ AS
       x.[EXTERNAL_CODE],
       x.[EXT_CODE_DESC],
       x.[EXP_COMP_DATE],
-      x.[START_DATE],
+      HASHBYTES('SHA2_256', CAST(x.[START_DATE] AS NVARCHAR(50))) AS [START_DATE],
       x.[END_DATE],
       x.[LAST_ACTION_DATE],
       x.[MODELS_STARTED],

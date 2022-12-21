@@ -7,7 +7,7 @@ CREATE VIEW [NetO_sas].[VwVARTXT]
 AS
    SELECT
       x.[DBID] AS [DBID],
-      x.[SERIALNO] AS [SERIALNO],
+      HASHBYTES('SHA2_256', CAST(x.[SERIALNO] AS NVARCHAR(50))) AS [SERIALNO],
       x.[SEQNO] AS [SEQNO],
       x.[TEXTSEG] AS [TEXTSEG],
       x.[LNUM] AS [LNUM]

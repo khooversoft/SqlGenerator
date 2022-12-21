@@ -13,7 +13,7 @@ AS
       A0.[Descript] AS [S_TRAN_X],
       x.[TRANDESC],
       x.[TRANAMT],
-      x.[OTHERAMT],
+      HASHBYTES('SHA2_256', CAST(x.[OTHERAMT] AS NVARCHAR(50))) AS [OTHERAMT],
       x.[S_PURCH_CREDIT_TYPE],
       A1.[Descript] AS [S_PURCH_CREDIT_TYPE_X],
       x.[S_PURCH_SOURCE_TYPE],

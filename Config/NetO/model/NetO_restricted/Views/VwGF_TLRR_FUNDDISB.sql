@@ -8,7 +8,7 @@ AS
    SELECT
       x.[LNUM],
       x.[DISB_DBID],
-      x.[DISB_SERNO],
+      HASHBYTES('SHA2_256', CAST(x.[DISB_SERNO] AS NVARCHAR(50))) AS [DISB_SERNO],
       x.[ORIG_CNTR],
       x.[ORIG_DBID],
       x.[VOIDED_YN],

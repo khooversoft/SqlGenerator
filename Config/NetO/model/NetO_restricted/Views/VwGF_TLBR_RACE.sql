@@ -9,10 +9,10 @@ AS
       x.[LNUM],
       x.[BNUM],
       x.[DBID],
-      x.[ROWSERIALNO],
+      HASHBYTES('SHA2_256', CAST(x.[ROWSERIALNO] AS NVARCHAR(50))) AS [ROWSERIALNO],
       x.[S_RACE],
       A0.[Descript] AS [S_RACE_X],
-      x.[OTHER_AMERICAN_DESC],
+      HASHBYTES('SHA2_256', x.[OTHER_AMERICAN_DESC]) AS [OTHER_AMERICAN_DESC],
       x.[RECORD_CREATED]
    FROM [clt_NetO].[GF_TLBR_RACE] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_RACE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLBR_RACE' and A0.[COLUMNNAME] = 'S_RACE'

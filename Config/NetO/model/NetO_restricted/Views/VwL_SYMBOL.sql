@@ -8,7 +8,7 @@ AS
    SELECT
       x.[FLDNAME],
       x.[DBSYMBOL],
-      x.[ALIAS],
+      HASHBYTES('SHA2_256', x.[ALIAS]) AS [ALIAS],
       x.[SYMBOLID],
       x.[PROFID],
       x.[DESCRIPT],

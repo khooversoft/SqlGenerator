@@ -10,7 +10,7 @@ AS
       x.[ASSETID] AS [ASSETID],
       x.[HOLDER] AS [HOLDER],
       x.[ATTNOF] AS [ATTNOF],
-      x.[ACCTBAL] AS [ACCTBAL],
+      HASHBYTES('SHA2_256', CAST(x.[ACCTBAL] AS NVARCHAR(50))) AS [ACCTBAL],
       x.[ACCTIN] AS [ACCTIN],
       x.[LIFEFACE] AS [LIFEFACE],
       x.[ISSUER] AS [ISSUER],

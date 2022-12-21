@@ -14,7 +14,7 @@ AS
       A1.[Descript] AS [S_BRM_STATUS_X],
       x.[S_BRM_TYPE],
       A2.[Descript] AS [S_BRM_TYPE_X],
-      x.[BRM_NAME],
+      HASHBYTES('SHA2_256', x.[BRM_NAME]) AS [BRM_NAME],
       x.[BRM_DESCRIPTION],
       x.[BRM_START_DATE],
       x.[BRM_END_DATE],
@@ -29,7 +29,7 @@ AS
       x.[CREATED_BY_USER_ID],
       x.[LAST_CHANGE_DATE],
       x.[LAST_CHANGE_USER_ID],
-      x.[MESSAGE_TEXT],
+      HASHBYTES('SHA2_256', x.[MESSAGE_TEXT]) AS [MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL],
       A5.[Descript] AS [S_OVERRIDE_LEVEL_X],
       x.[BRM_CATEGORY]

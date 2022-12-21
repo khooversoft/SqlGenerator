@@ -9,13 +9,13 @@ AS
       x.[LNUM],
       x.[BNUM],
       x.[DBID],
-      x.[ROWSERIALNO],
+      HASHBYTES('SHA2_256', CAST(x.[ROWSERIALNO] AS NVARCHAR(50))) AS [ROWSERIALNO],
       x.[S_BRANCH],
       A0.[Descript] AS [S_BRANCH_X],
-      x.[START_DATE],
+      HASHBYTES('SHA2_256', CAST(x.[START_DATE] AS NVARCHAR(50))) AS [START_DATE],
       x.[END_DATE],
       x.[S_OFF_OR_ENLISTED],
-      x.[SERVICE_NUMBER],
+      HASHBYTES('SHA2_256', x.[SERVICE_NUMBER]) AS [SERVICE_NUMBER],
       x.[ACTIVESERVYN]
    FROM [clt_NetO].[WG_TLBR_VET_MILT_SERVICE] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_BRANCH] = A0.[DBSYMBOL] AND A0.[TableName] = 'WG_TLBR_VET_MILT_SERVICE' and A0.[COLUMNNAME] = 'S_BRANCH'

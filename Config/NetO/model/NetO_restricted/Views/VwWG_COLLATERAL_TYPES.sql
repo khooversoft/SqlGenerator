@@ -8,7 +8,7 @@ AS
    SELECT
       x.[LNUM],
       x.[DBID],
-      x.[ROWSERIALNO],
+      HASHBYTES('SHA2_256', CAST(x.[ROWSERIALNO] AS NVARCHAR(50))) AS [ROWSERIALNO],
       x.[COLLATERAL_TYPE],
       A0.[Descript] AS [COLLATERAL_TYPE_X],
       x.[PLEDGED_ACC],

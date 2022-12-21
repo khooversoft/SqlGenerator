@@ -9,9 +9,9 @@ AS
       x.[LNUM],
       x.[TRANS_COUNTER],
       x.[TRANS_DBID],
-      x.[SOURCE_XREF],
+      HASHBYTES('SHA2_256', x.[SOURCE_XREF]) AS [SOURCE_XREF],
       x.[MODIFIED_DATE],
-      x.[MODIFIED_USER],
+      HASHBYTES('SHA2_256', x.[MODIFIED_USER]) AS [MODIFIED_USER],
       x.[DESCRIPT],
       x.[AMOUNT],
       x.[OMIT_FROM_FUNDING],
@@ -19,7 +19,7 @@ AS
       x.[ITEM_STATUS],
       x.[GL_TRANS_CODE],
       x.[BATCHID],
-      x.[SOURCE_DISPLAY],
+      HASHBYTES('SHA2_256', x.[SOURCE_DISPLAY]) AS [SOURCE_DISPLAY],
       x.[SRC_FLDNAME],
       x.[SRC_CODE]
    FROM [clt_NetO].[GF_TLR_FUNDITEM] x

@@ -11,7 +11,7 @@ AS
       x.[DBID],
       x.[ROWCOUNTER],
       x.[RESPONSEID],
-      x.[CREDITRESPONSEID],
+      HASHBYTES('SHA2_256', CAST(x.[CREDITRESPONSEID] AS NVARCHAR(50))) AS [CREDITRESPONSEID],
       x.[FILED_DT],
       x.[ASSETS],
       x.[PLAINTIFF],
@@ -19,7 +19,7 @@ AS
       x.[INDUSTRY_CODE],
       x.[MEMBER_CODE],
       x.[PR_TYPE],
-      x.[DOCKET_NUMBER],
+      HASHBYTES('SHA2_256', x.[DOCKET_NUMBER]) AS [DOCKET_NUMBER],
       x.[ATTORNEY],
       x.[REPORTED_DT],
       x.[PAID_DT],
@@ -28,7 +28,7 @@ AS
       HASHBYTES('SHA2_256', CAST(x.[CURRENT_BALANCE] AS NVARCHAR(50))) AS [CURRENT_BALANCE],
       x.[PR_SOURCE_CODE],
       x.[SOURCE_CITY],
-      x.[SOURCE_STATE]
+      HASHBYTES('SHA2_256', x.[SOURCE_STATE]) AS [SOURCE_STATE]
    FROM [clt_NetO].[GF_TLBC_TU_RES_PUB_REC] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

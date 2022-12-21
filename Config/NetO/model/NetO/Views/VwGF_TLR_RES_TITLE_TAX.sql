@@ -10,7 +10,7 @@ AS
       x.[RESPONSEID],
       x.[DBID],
       x.[TITLERESPONSEID],
-      x.[TAXID],
+      HASHBYTES('SHA2_256', x.[TAXID]) AS [TAXID],
       x.[LANDVALUE],
       x.[IMPROVEDVALUE],
       x.[TOTALVALUE]

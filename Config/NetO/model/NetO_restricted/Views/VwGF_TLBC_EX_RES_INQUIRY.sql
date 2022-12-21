@@ -11,13 +11,13 @@ AS
       x.[DBID],
       x.[ROWCOUNTER],
       x.[RESPONSEID],
-      x.[CREDITRESPONSEID],
+      HASHBYTES('SHA2_256', CAST(x.[CREDITRESPONSEID] AS NVARCHAR(50))) AS [CREDITRESPONSEID],
       x.[ACCT_TYPE],
       HASHBYTES('SHA2_256', x.[SUBSCRIBER_NAME]) AS [SUBSCRIBER_NAME],
       x.[INQUIRY_DT],
       x.[AMOUNT],
       x.[TERMS],
-      x.[ACCT_NUM],
+      HASHBYTES('SHA2_256', x.[ACCT_NUM]) AS [ACCT_NUM],
       x.[SUBCODE],
       x.[KOB]
    FROM [clt_NetO].[GF_TLBC_EX_RES_INQUIRY] x

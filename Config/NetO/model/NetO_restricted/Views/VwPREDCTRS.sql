@@ -14,7 +14,7 @@ AS
       x.[CTR],
       x.[CQOPER],
       x.[ORGORRES],
-      x.[SCORES],
+      HASHBYTES('SHA2_256', x.[SCORES]) AS [SCORES],
       x.[FACTORS],
       x.[EXCLUSION],
       x.[RECORD_CREATED]

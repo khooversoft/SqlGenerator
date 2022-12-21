@@ -10,14 +10,14 @@ AS
       x.[BNUM],
       x.[DBID],
       x.[POADBID],
-      x.[POASN],
-      x.[POA_SIGN_NAME],
-      x.[POA_TITLE],
+      HASHBYTES('SHA2_256', CAST(x.[POASN] AS NVARCHAR(50))) AS [POASN],
+      HASHBYTES('SHA2_256', x.[POA_SIGN_NAME]) AS [POA_SIGN_NAME],
+      HASHBYTES('SHA2_256', x.[POA_TITLE]) AS [POA_TITLE],
       x.[POA_CAPACITY],
       x.[POA_DESC_TEXT],
-      x.[POA_EMAIL],
-      x.[POA_TELEPHONE],
-      x.[POA_MOBILE]
+      HASHBYTES('SHA2_256', x.[POA_EMAIL]) AS [POA_EMAIL],
+      HASHBYTES('SHA2_256', x.[POA_TELEPHONE]) AS [POA_TELEPHONE],
+      HASHBYTES('SHA2_256', x.[POA_MOBILE]) AS [POA_MOBILE]
    FROM [clt_NetO].[POA] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

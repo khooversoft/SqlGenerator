@@ -42,7 +42,7 @@ AS
       x.[NAC],
       x.[LCA],
       x.[SPST],
-      x.[MTHPYMT],
+      HASHBYTES('SHA2_256', CAST(x.[MTHPYMT] AS NVARCHAR(50))) AS [MTHPYMT],
       x.[NEWPIPMT],
       x.[NEWIRATE],
       x.[SRP],

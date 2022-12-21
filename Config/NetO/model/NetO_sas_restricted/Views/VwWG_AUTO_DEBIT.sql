@@ -10,7 +10,7 @@ AS
       x.[AD_FLAG] AS [AD_FLAG],
       x.[S_AD_ACCT_TYPE] AS [S_AD_ACCT_TYPE],
       A0.[Descript] AS [S_AD_ACCT_TYPE_X],
-      x.[AD_INST_NAME] AS [AD_INST_NAME],
+      HASHBYTES('SHA2_256', x.[AD_INST_NAME]) AS [AD_INST_NAME],
       x.[AD_ACCT_NUMB] AS [AD_ACCT_NUMB],
       x.[AD_RT_NUMB] AS [AD_RT_NUMB],
       x.[AD_DAYOFAD] AS [AD_DAYOFAD],

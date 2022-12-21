@@ -9,7 +9,7 @@ AS
       x.[PROMO_ID],
       x.[PROMO_CODE],
       x.[PROMO_DESCRIPTION],
-      x.[START_DATE],
+      HASHBYTES('SHA2_256', CAST(x.[START_DATE] AS NVARCHAR(50))) AS [START_DATE],
       x.[END_DATE]
    FROM [clt_NetO].[WG_PROMOTION] x
    WHERE

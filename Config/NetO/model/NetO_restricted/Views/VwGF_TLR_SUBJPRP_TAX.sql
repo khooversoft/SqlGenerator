@@ -8,7 +8,7 @@ AS
    SELECT
       x.[LNUM],
       x.[DBID],
-      x.[ROWSERIALNO]
+      HASHBYTES('SHA2_256', CAST(x.[ROWSERIALNO] AS NVARCHAR(50))) AS [ROWSERIALNO]
    FROM [clt_NetO].[GF_TLR_SUBJPRP_TAX] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL

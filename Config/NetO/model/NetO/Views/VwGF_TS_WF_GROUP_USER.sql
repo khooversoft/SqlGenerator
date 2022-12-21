@@ -8,7 +8,7 @@ AS
    SELECT
       x.[S_PROC_GROUP],
       A0.[Descript] AS [S_PROC_GROUP_X],
-      x.[USERID],
+      HASHBYTES('SHA2_256', CAST(x.[USERID] AS NVARCHAR(50))) AS [USERID],
       x.[S_USER_TYPE],
       A1.[Descript] AS [S_USER_TYPE_X],
       x.[IS_ACTIVE],

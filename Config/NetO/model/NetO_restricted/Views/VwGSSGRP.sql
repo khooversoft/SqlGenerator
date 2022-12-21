@@ -7,7 +7,7 @@ CREATE VIEW [NetO_restricted].[VwGSSGRP]
 AS
    SELECT
       x.[GRPID],
-      x.[GRPNAME],
+      HASHBYTES('SHA2_256', x.[GRPNAME]) AS [GRPNAME],
       x.[DESCRIPT],
       x.[GRPABBR],
       x.[SRCENV],

@@ -8,7 +8,7 @@ AS
    SELECT
       x.[LNUM],
       x.[REQUESTID],
-      x.[CREDITREQUESTID],
+      HASHBYTES('SHA2_256', CAST(x.[CREDITREQUESTID] AS NVARCHAR(50))) AS [CREDITREQUESTID],
       x.[DATAID],
       x.[DBID],
       x.[REPORT_IDENT],
@@ -26,10 +26,10 @@ AS
       x.[REPOSITORY_COUNT],
       x.[REQUEST_TYPE],
       A2.[Descript] AS [REQUEST_TYPE_X],
-      x.[EQIFAX_INDC],
+      HASHBYTES('SHA2_256', x.[EQIFAX_INDC]) AS [EQIFAX_INDC],
       x.[TRANSUNION_INDC],
       x.[EXPERIAN_INDC],
-      x.[OTHER_REPOS],
+      HASHBYTES('SHA2_256', x.[OTHER_REPOS]) AS [OTHER_REPOS],
       x.[CREDIT_REQ_TYPE],
       x.[KROLL_REPORT_DATE]
    FROM [clt_NetO].[GF_TLR_REQ_CREDIT_DATA] x

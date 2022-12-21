@@ -7,8 +7,8 @@ CREATE VIEW [NetO].[VwGSSUSR]
 AS
    SELECT
       x.[USRID],
-      x.[USRNAME],
-      x.[FULLNAME],
+      HASHBYTES('SHA2_256', x.[USRNAME]) AS [USRNAME],
+      HASHBYTES('SHA2_256', x.[FULLNAME]) AS [FULLNAME],
       x.[DESCRIPT],
       x.[SECMASK],
       x.[CID]

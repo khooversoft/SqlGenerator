@@ -7,8 +7,8 @@ CREATE VIEW [NetO_restricted].[VwGF_TL_AFFORDABILITY]
 AS
    SELECT
       x.[LNUM],
-      x.[INCOME],
-      x.[DEBTS],
+      HASHBYTES('SHA2_256', CAST(x.[INCOME] AS NVARCHAR(50))) AS [INCOME],
+      HASHBYTES('SHA2_256', CAST(x.[DEBTS] AS NVARCHAR(50))) AS [DEBTS],
       x.[TAXRATE],
       x.[HAZRATE],
       x.[CASHONHAND],

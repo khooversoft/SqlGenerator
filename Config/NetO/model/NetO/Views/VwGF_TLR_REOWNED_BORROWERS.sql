@@ -9,7 +9,7 @@ AS
       x.[LNUM],
       x.[BNUM],
       x.[DBID],
-      x.[REOCNTR],
+      HASHBYTES('SHA2_256', CAST(x.[REOCNTR] AS NVARCHAR(50))) AS [REOCNTR],
       x.[REL_DBID],
       x.[REL_BNUM]
    FROM [clt_NetO].[GF_TLR_REOWNED_BORROWERS] x

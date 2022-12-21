@@ -8,7 +8,7 @@ AS
    SELECT
       x.[LNUM],
       x.[VDBID],
-      x.[VSN],
+      HASHBYTES('SHA2_256', CAST(x.[VSN] AS NVARCHAR(50))) AS [VSN],
       x.[STATUS],
       x.[MANUAL]
    FROM [clt_NetO].[VESTING] x

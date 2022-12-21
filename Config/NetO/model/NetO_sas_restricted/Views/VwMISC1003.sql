@@ -7,7 +7,7 @@ CREATE VIEW [NetO_sas_restricted].[VwMISC1003]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
-      x.[APPNUM] AS [APPNUM],
+      HASHBYTES('SHA2_256', CAST(x.[APPNUM] AS NVARCHAR(50))) AS [APPNUM],
       x.[OTHINCM] AS [OTHINCM],
       x.[COMMUNTY] AS [COMMUNTY],
       x.[JOINTLY] AS [JOINTLY],

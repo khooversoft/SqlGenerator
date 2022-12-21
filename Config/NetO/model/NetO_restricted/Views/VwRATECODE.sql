@@ -7,7 +7,7 @@ CREATE VIEW [NetO_restricted].[VwRATECODE]
 AS
    SELECT
       x.[USEKEY],
-      x.[CURRENTCODE],
+      HASHBYTES('SHA2_256', x.[CURRENTCODE]) AS [CURRENTCODE],
       x.[RATECODE],
       x.[COUNTER],
       x.[LOCKDATE],

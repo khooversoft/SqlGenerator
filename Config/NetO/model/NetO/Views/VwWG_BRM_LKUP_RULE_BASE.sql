@@ -10,7 +10,7 @@ AS
       x.[RULE_OCC],
       x.[RULE_DESCRIPTION],
       x.[PRIORITY],
-      x.[MESSAGE_TEXT],
+      HASHBYTES('SHA2_256', x.[MESSAGE_TEXT]) AS [MESSAGE_TEXT],
       x.[S_OVERRIDE_LEVEL],
       A0.[Descript] AS [S_OVERRIDE_LEVEL_X]
    FROM [clt_NetO].[WG_BRM_LKUP_RULE_BASE] x

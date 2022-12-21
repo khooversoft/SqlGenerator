@@ -10,7 +10,7 @@ AS
       x.[TRDINCNTR] AS [TRDINCNTR],
       x.[YEAR] AS [YEAR],
       x.[MAKE] AS [MAKE],
-      x.[VIN] AS [VIN],
+      HASHBYTES('SHA2_256', x.[VIN]) AS [VIN],
       x.[MODEL] AS [MODEL],
       x.[TRIM] AS [TRIM],
       x.[VALUE] AS [VALUE],

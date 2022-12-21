@@ -3,6 +3,7 @@ using DocumentFormat.OpenXml;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SqlGenerator.sdk.Model;
+using System.Diagnostics;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -16,6 +17,7 @@ public record SqlProjectOption
     public string? SourceFile { get; init; }
     public string? BuildFolder { get; init; }
     public string? TableTypeMetadata { get; init; }
+    public string? PiiProtectedFile { get; init; }
     public UspLoadTableOption? UspLoadTableOption { get; init; }
     public RawToCultivatedOption? RawToCultivated { get; init; }
     public IList<SchemaModel> Schemas { get; init; } = new List<SchemaModel>();
@@ -35,7 +37,7 @@ public static class SqlProjectOptionFile
     {
         IncludeOption include = IncludeOptionFile.Read(projectFile);
 
-        return new ConfigurationBuilder()
+        var result = new ConfigurationBuilder()
             .Action(x => include.IncludeFiles.ForEach(y => x.AddJsonFile(PathTool.ToFullPath(projectFile, y))))
             .AddJsonFile(projectFile)
             .Build()
@@ -46,14 +48,28 @@ public static class SqlProjectOptionFile
                 ProjectOptionFile = projectFile,
                 SourceFile = PathTool.ToFullPath(projectFile, x.SourceFile),
                 TableTypeMetadata = PathTool.ToFullPath(projectFile, x.TableTypeMetadata),
+                PiiProtectedFile = PathTool.ToFullPath(projectFile, x.PiiProtectedFile),
                 CommandOptions = x.UpdateCommands
                     .Select(y => CommandOption.Create(y) switch
                     {
-                        CommandOption v when v.Type == CommandType.XRefTable => v with { Pattern = PathTool.ToFullPath(projectFile, v.Pattern) },
+                        CommandOption v when v.Type == CommandType.XRefTable => v with { Pattern = PathTool.ToFullPath(projectFile, v.Pattern).NotNull() },
                         CommandOption v => v,
                     })
                     .ToArray(),
+            })
+            .Func(x => x switch
+            {
+                var v when !v.PiiProtectedFile.IsEmpty() => v with
+                {
+                    Protection = v.Protection
+                        .Concat(GetProtections(v.PiiProtectedFile))
+                        .ToArray(),
+                },
+
+                var v => v,
             });
+
+        return result;
     }
 
     public static SqlProjectOption Verify(this SqlProjectOption? subject)
@@ -79,5 +95,22 @@ public static class SqlProjectOptionFile
 
         string json = projectOption.ToJsonFormat();
         await File.WriteAllTextAsync(file, json);
+    }
+
+    private static IReadOnlyList<ClassificationRecord> GetProtections(string file)
+    {
+        DataDictionary dataDictionary = DataDictionaryFile.Read(file);
+
+        var result = dataDictionary.Items
+            .Where(x => x.PII || x.Restricted)
+            .Select(x => new ClassificationRecord
+            {
+                ColumnNameMatch = $"{x.TableName}.{x.ColumnName}",
+                PII = x.PII,
+                Restricted = x.Restricted,
+            })
+            .ToArray();
+
+        return result;
     }
 }
