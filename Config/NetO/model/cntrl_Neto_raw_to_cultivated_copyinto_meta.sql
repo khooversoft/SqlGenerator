@@ -215,6 +215,11 @@ TRUNCATE TABLE #data_object_parameter;
 INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
 VALUES
 
+('ACTIVITY', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_ACTIVITY_20'),
+('ACTIVITY', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('ACTIVITY', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('ACTIVITY', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '1'),
+('ACTIVITY', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '1'),
 ('ADV_ACTN', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_ADV_ACTN_20'),
 ('ADV_ACTN', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('ADV_ACTN', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -665,6 +670,11 @@ VALUES
 ('GF_TS_AUDIT_USER_LOCK', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('GF_TS_AUDIT_USER_LOCK', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '1'),
 ('GF_TS_AUDIT_USER_LOCK', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '1'),
+('GF_TS_CMS_APPROVAL_DTL', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TS_CMS_APPROVAL_DTL_20'),
+('GF_TS_CMS_APPROVAL_DTL', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('GF_TS_CMS_APPROVAL_DTL', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('GF_TS_CMS_APPROVAL_DTL', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '1'),
+('GF_TS_CMS_APPROVAL_DTL', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '1'),
 ('GF_TS_CMS_CONTACT_ADDRESS', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_GF_TS_CMS_CONTACT_ADDRESS_20'),
 ('GF_TS_CMS_CONTACT_ADDRESS', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('GF_TS_CMS_CONTACT_ADDRESS', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -1104,7 +1114,11 @@ VALUES
 ('WG_CRM_CUSTOMER', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_CRM_CUSTOMER', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('WG_CRM_CUSTOMER', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '1'),
-('WG_CRM_CUSTOMER', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '1'),
+('WG_CRM_CUSTOMER', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '1')
+
+INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
+VALUES
+
 ('WG_CRM_CUSTOMER_ACCT_DETAIL', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_WG_CRM_CUSTOMER_ACCT_DETAIL_20'),
 ('WG_CRM_CUSTOMER_ACCT_DETAIL', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_CRM_CUSTOMER_ACCT_DETAIL', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -1114,11 +1128,7 @@ VALUES
 ('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '1'),
-('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '1')
-
-INSERT INTO #data_object_parameter (data_object_name, activity_id, activity_name, is_enabled, context, param_name, param_value)
-VALUES
-
+('WG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '1'),
 ('WG_CRM_CUSTOMER_ADDRESS', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_WG_CRM_CUSTOMER_ADDRESS_20'),
 ('WG_CRM_CUSTOMER_ADDRESS', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_CRM_CUSTOMER_ADDRESS', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
@@ -1249,6 +1259,11 @@ VALUES
 ('WG_SC_DECISION', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
 ('WG_SC_DECISION', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
 ('WG_SC_DECISION', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
+('WG_SC_DECISION_REASON', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_WG_SC_DECISION_REASON_20'),
+('WG_SC_DECISION_REASON', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
+('WG_SC_DECISION_REASON', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),
+('WG_SC_DECISION_REASON', @activity_id, @activity_name, 1, 'Source', 'IncrementalSnapshot_Deletes_Execution_Type', '0'),
+('WG_SC_DECISION_REASON', @activity_id, @activity_name, 1, 'Source', 'LoadTable_Snapshot_Delete', '0'),
 ('WG_SYMBOL_XREF', @activity_id, @activity_name, 1, 'Source', 'src_file_prefix', 'Netoxygen_WG_SYMBOL_XREF_20'),
 ('WG_SYMBOL_XREF', @activity_id, @activity_name, 1, 'Source', 'pii_columns', ''),
 ('WG_SYMBOL_XREF', @activity_id, @activity_name, 1, 'Source', 'ASAP_DeleteDateTime_mapping', NULL),

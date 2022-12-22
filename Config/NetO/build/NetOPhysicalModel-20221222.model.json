@@ -47,6 +47,104 @@
     {
       "name": {
         "schema": "clt_NetO",
+        "name": "ACTIVITY"
+      },
+      "indexType": "hash",
+      "tableMode": "full",
+      "columns": [
+        {
+          "name": "S_ACTIVI",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "TIMEALLT",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "TIMETYPE",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "INITIALACT",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "SRCENV",
+          "security": "unrestricted",
+          "dataType": "nvarchar(5)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REC_CUSTOM",
+          "security": "unrestricted",
+          "dataType": "nchar(1)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "CREATE_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 6,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "MODIFY_DATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 7,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
         "name": "ADV_ACTN"
       },
       "indexType": "hash",
@@ -24358,6 +24456,17 @@
           "columnIndex": 57,
           "pii": true,
           "restricted": false
+        },
+        {
+          "name": "BORR_OTHERMTHY",
+          "security": "unrestricted",
+          "dataType": "decimal(18,3)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 58,
+          "pii": false,
+          "restricted": false
         }
       ]
     },
@@ -26399,7 +26508,7 @@
         "schema": "clt_NetO",
         "name": "GF_TLR_CREDIT_RESPONSE"
       },
-      "indexType": "cluster",
+      "indexType": "hash",
       "tableMode": "append",
       "columns": [
         {
@@ -26598,17 +26707,6 @@
           "primaryKey": false,
           "columnIndex": 17,
           "pii": true,
-          "restricted": false
-        },
-        {
-          "name": "CREDIT_RESP_IMPORT_XML",
-          "security": "unrestricted",
-          "dataType": "nvarchar(MAX)",
-          "notNull": false,
-          "private": false,
-          "primaryKey": false,
-          "columnIndex": 18,
-          "pii": false,
           "restricted": false
         }
       ]
@@ -34918,6 +35016,82 @@
           "private": false,
           "primaryKey": false,
           "columnIndex": 11,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
+        "name": "GF_TS_CMS_APPROVAL_DTL"
+      },
+      "indexType": "hash",
+      "tableMode": "full",
+      "columns": [
+        {
+          "name": "CID",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_CMSTYPE",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPROVEDCO",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "S_APPRSTAT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(8)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPRDATE",
+          "security": "unrestricted",
+          "dataType": "datetime",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "APPRLIMIT",
+          "security": "unrestricted",
+          "dataType": "decimal(16,6)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
           "pii": false,
           "restricted": false
         }
@@ -76390,6 +76564,82 @@
     {
       "name": {
         "schema": "clt_NetO",
+        "name": "WG_SC_DECISION_REASON"
+      },
+      "indexType": "hash",
+      "tableMode": "append",
+      "columns": [
+        {
+          "name": "LNUM",
+          "security": "unrestricted",
+          "dataType": "nchar(20)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 0,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DECISION_INDICATOR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 1,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "BNUM",
+          "security": "unrestricted",
+          "dataType": "smallint",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 2,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "DBID",
+          "security": "unrestricted",
+          "dataType": "nchar(5)",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 3,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "RSN_CTR",
+          "security": "unrestricted",
+          "dataType": "int",
+          "notNull": true,
+          "private": false,
+          "primaryKey": true,
+          "columnIndex": 4,
+          "pii": false,
+          "restricted": false
+        },
+        {
+          "name": "REASON_TXT",
+          "security": "unrestricted",
+          "dataType": "nvarchar(500)",
+          "notNull": false,
+          "private": false,
+          "primaryKey": false,
+          "columnIndex": 5,
+          "pii": false,
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "name": {
+        "schema": "clt_NetO",
         "name": "WG_SYMBOL_XREF"
       },
       "indexType": "cluster",
@@ -77004,7 +77254,7 @@
     },
     {
       "type": "xRefTable",
-      "pattern": "D:\\Sources\\SqlGenerator\\Config\\NetO\\NetO-LSymbolXref.csv",
+      "pattern": "D:\\Sources\\SqlGenerator\\Config\\NetO\\Netoxygen_WG_SYMBOL_XREF_20221221_223004.csv",
       "command": null
     }
   ],
@@ -77083,13 +77333,6 @@
     },
     {
       "tableName": "ASSETS",
-      "columnName": "S_ACCOUNT_OWNERSHIP",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "ActOwnShip",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "ASSETS",
       "columnName": "S_ASSET",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Asset Type",
@@ -77142,13 +77385,6 @@
       "columnName": "S_BORTYP",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Borrower Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "BORROWER",
-      "columnName": "S_CBSOURCE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Credit Rep Source",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -77545,13 +77781,6 @@
     },
     {
       "tableName": "DELIVERY",
-      "columnName": "S_RFC",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Balloon Round Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "DELIVERY",
       "columnName": "S_SFSRC1",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Secondary Fin 1",
@@ -77643,13 +77872,6 @@
     },
     {
       "tableName": "DOWNPYMT",
-      "columnName": "S_DOWN_PMT_SRC",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Down Payment Src 1",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "DOWNPYMT",
       "columnName": "S_DOWN_PMT_SRC_OTH",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Downpaymt Src Oth",
@@ -77681,13 +77903,6 @@
       "columnName": "S_TYPE_OTH",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Downpaymt Type Oth",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "DOWNPYMT",
-      "columnName": "S_TYPENM",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Down Payment Type NM",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -77814,13 +78029,6 @@
       "columnName": "S_TOLERANCE_CATEGORY",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "FeeToleranceCategory",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "FLOOD",
-      "columnName": "S_FIRM",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Flood Map Zone",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -78210,13 +78418,6 @@
     },
     {
       "tableName": "GF_TL_LOAN_DATA",
-      "columnName": "S_PAYEETYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Loss Payee Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TL_LOAN_DATA",
       "columnName": "S_WELCOME_CALL",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Welcome Call",
@@ -78227,13 +78428,6 @@
       "columnName": "S_LOAN_STATUS",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Loan Status",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TL_LOAN_STATUS",
-      "columnName": "S_LOCK_STATUS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "InvLk Lock Status",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -78308,20 +78502,6 @@
     },
     {
       "tableName": "GF_TL_PNP_IPG_DETAIL",
-      "columnName": "S_PREPAY_PEN",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Prepay Penalty Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TL_PNP_IPG_DETAIL",
-      "columnName": "S_SEC_POOL_TYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Cmtmt Pool Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TL_PNP_IPG_DETAIL",
       "columnName": "S_SPEC_PROG",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "IPG Special Program",
@@ -78332,13 +78512,6 @@
       "columnName": "PER_DIEM_CALC_BASIS",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "PerDiem Calc Basis",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TL_POINT_OF_SALE_INFO",
-      "columnName": "S_DOCLVL",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Documentation Level",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -78549,13 +78722,6 @@
       "columnName": "S_COUNSEL_FORMAT_TYP",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Counsel Format Typ",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TLBR_ADDITIONALDATA",
-      "columnName": "S_CRDTSCORE_MODEL_OVR",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Crdt Sc Model Name",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -79798,13 +79964,6 @@
       "lookupDisplayColumnName": "ALIAS"
     },
     {
-      "tableName": "GF_TS_CMS_CONTACT_TYPE",
-      "columnName": "S_CMSTYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "CMSType",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
       "tableName": "GF_TS_CMS_CONTACT_URL",
       "columnName": "S_URLTYPE",
       "lookupTable": "L_SYMBOL",
@@ -79816,13 +79975,6 @@
       "columnName": "S_COST_CENTER",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "CMS Cost Ctr Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TS_CMS_INFOBYTYPE",
-      "columnName": "S_CMSTYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "CMSType",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -79938,13 +80090,6 @@
       "lookupDisplayColumnName": "ALIAS"
     },
     {
-      "tableName": "GF_TS_INDEX_VALUE",
-      "columnName": "S_INDEX",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Setup Index",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
       "tableName": "GF_TS_LMS_LEAD_INFO",
       "columnName": "S_MKT_CAMPAIGN",
       "lookupTable": "L_SYMBOL",
@@ -79974,13 +80119,6 @@
     },
     {
       "tableName": "GF_TS_WF_GROUP_USER",
-      "columnName": "S_PROC_GROUP",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PROC GROUP",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TS_WF_GROUP_USER",
       "columnName": "S_USER_TYPE",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "WF GU User Type",
@@ -80001,52 +80139,10 @@
       "lookupDisplayColumnName": "ALIAS"
     },
     {
-      "tableName": "GF_TS_WF_PROCESS",
-      "columnName": "S_PROCESS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PROCESS",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TS_WF_PROCESS_MODEL",
-      "columnName": "S_PROCESS_MODEL",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PROCESS MODEL",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
       "tableName": "GF_TS_WF_USER_SCHED_EXCP",
       "columnName": "S_EXCEPTION_TYPE",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "WF USE Excp Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TS_WF_WORKTYPE",
-      "columnName": "S_REASSIGN_RULE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS REASSIGN RULE",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TS_WF_WORKTYPE",
-      "columnName": "S_USERINTERFACE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Activities",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TS_WF_WORKTYPE",
-      "columnName": "S_WORKTYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS WORKTYPE",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TS_WF_WORKTYPE",
-      "columnName": "S_WT_TYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS WORKTYPE TYPE",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -80058,79 +80154,9 @@
     },
     {
       "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_AUS_INDICATOR",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "IPG_AUSIndicator",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_BUYDWN_CNTRBTR",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Buydown Contributor",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
       "columnName": "S_CONST_PROGRAM",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "ConstProgram",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_IPG_BUYDWN",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Buydown",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_LOANFIT_AMT_GROUP",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "LoanFit Amt Grp",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_LOANFIT_LIEN_CAT",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "LoanFit Lien Cat",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_LOANFIT_LTV_GROUP",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "LoanFit LTV Grp",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_LOANFIT_PROD_CAT",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "LoanFit Product Cat",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_LOANFIT_PURP_CAT",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "LoanFit Purpose",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_SERVICE_TYPE_IND",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "USIPPServiceTypeInd",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TSR_PNP_IPG_BASE",
-      "columnName": "S_SPEC_PRG",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "IPG_SpecialProgram",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -80138,69 +80164,6 @@
       "columnName": "S_LIMIT_TYPE",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "IPGS Limit Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TW_WF_ACTION_MGR",
-      "columnName": "S_ACTION_RESOLUTION",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS RESOLUTION",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TW_WF_ACTION_MGR",
-      "columnName": "S_PROC_GROUP",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PROC GROUP",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TW_WF_ACTION_MGR",
-      "columnName": "S_PROC_MDL_RESOLUTION",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PM RESOLUTION",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TW_WF_ACTION_MGR",
-      "columnName": "S_WORKTYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS WORKTYPE",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TW_WF_PROC_MODEL_MGR",
-      "columnName": "S_PROC_GROUP",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PROC GROUP",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TW_WF_PROC_MODEL_MGR",
-      "columnName": "S_PROC_MDL_MGR_RESOLUTION",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PM RESOLUTION",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TW_WF_PROC_MODEL_MGR",
-      "columnName": "S_PROCESS_MODEL",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PROCESS MODEL",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TW_WF_PROCESS_MGR",
-      "columnName": "S_PROC_GROUP",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PROC GROUP",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "GF_TW_WF_PROCESS_MGR",
-      "columnName": "S_PROCESS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "WFS PROCESS",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -80306,13 +80269,6 @@
       "columnName": "S_PAYPER",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Income Period",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "Income",
-      "columnName": "S_SELFEMPTYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "SelfEmpType",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -80863,31 +80819,10 @@
     },
     {
       "tableName": "PRODUCT",
-      "columnName": "S_RATE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "IntRateCode",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "PRODUCT",
       "columnName": "S_RATIO",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Ratios",
       "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "PRODUCT",
-      "columnName": "S_RTCODE",
-      "lookupTable": "RATECODE",
-      "lookupColumnName": "RATECODE",
-      "lookupDisplayColumnName": "RATECODE"
-    },
-    {
-      "tableName": "PRODUCT",
-      "columnName": "S_RTCODEOVR",
-      "lookupTable": "RATECODE",
-      "lookupColumnName": "RATECODE",
-      "lookupDisplayColumnName": "RATECODE"
     },
     {
       "tableName": "REOWNED",
@@ -81031,20 +80966,6 @@
     },
     {
       "tableName": "SUBJPRP",
-      "columnName": "S_APPRMTHDREQ",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "ApprMethodReqrd",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "SUBJPRP",
-      "columnName": "S_APPRMTHDREQOVR",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "UW Prop Val Mth Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "SUBJPRP",
       "columnName": "S_ATTACHMENT_TYPE",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Attachment Type",
@@ -81080,13 +81001,6 @@
     },
     {
       "tableName": "SUBJPRP",
-      "columnName": "S_FMPROJ",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "FNMProject Class",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "SUBJPRP",
       "columnName": "S_FNMPRJCLS",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "FNMProject Class",
@@ -81095,13 +81009,6 @@
     {
       "tableName": "SUBJPRP",
       "columnName": "S_FREPRJCLS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "FREProject Class",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "SUBJPRP",
-      "columnName": "S_FRPROJ",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "FREProject Class",
       "lookupDisplayColumnName": "ALIAS"
@@ -81125,13 +81032,6 @@
       "columnName": "S_NATIVEAMERICANLANDSTYPE",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "NatAmericanLandsType",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "SUBJPRP",
-      "columnName": "S_OWNRHT",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "SP Own Rights",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -81367,30 +81267,9 @@
     },
     {
       "tableName": "TRACKING",
-      "columnName": "S_COPT10",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Client Option 10",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "TRACKING",
-      "columnName": "S_COPT2",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Client Option 2",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "TRACKING",
       "columnName": "S_COPT3",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Client Option 3",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "TRACKING",
-      "columnName": "S_COPT4",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Client Option 4",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -81402,23 +81281,9 @@
     },
     {
       "tableName": "TRACKING",
-      "columnName": "S_COPT6",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Client Option 6",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "TRACKING",
       "columnName": "S_COPT7",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Client Option 7",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "TRACKING",
-      "columnName": "S_COPT8",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Client Option 8",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -81549,20 +81414,6 @@
     },
     {
       "tableName": "UNDCOND2",
-      "columnName": "S_SUNDCON",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "UW CONDITION",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "UNDCOND2",
-      "columnName": "S_UNDCAT",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "UW Cond. Category",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "UNDCOND2",
       "columnName": "S_UNDTYP",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "UW Type Condition",
@@ -81643,13 +81494,6 @@
       "columnName": "S_PRPMETHODTYPE",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "UW Prop Val Mth Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "UWAPPR",
-      "columnName": "S_PRPTYP",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "UW Prop Val Frm Type",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -81790,13 +81634,6 @@
       "columnName": "S_ENGINE_COLOR",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Marine Eng Color",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_ASSET_MARINE_ENG",
-      "columnName": "S_ENGINE_MFG",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Marine Eng Mfg",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -82157,13 +81994,6 @@
       "lookupDisplayColumnName": "ALIAS"
     },
     {
-      "tableName": "WG_BRM_DEFN_FIELDS",
-      "columnName": "S_USAGE_TYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "BRM Usage Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
       "tableName": "WG_BRM_DEFN_GRID",
       "columnName": "S_GRID_CATEGORY",
       "lookupTable": "L_SYMBOL",
@@ -82175,13 +82005,6 @@
       "columnName": "S_GRID_STATUS",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "BRM Grid Status",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_BRM_DEFN_GRID",
-      "columnName": "S_USAGE_TYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "BRM Usage Type",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -82203,48 +82026,6 @@
       "columnName": "S_GRID_VERT_HORIZ",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "BRM Grid Orientation",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_BRM_EXPORT",
-      "columnName": "S_EXP_BRM_STATUS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "BRM Exp Status",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_BRM_EXPORT",
-      "columnName": "S_EXP_STATUS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "BRM Status",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_BRM_IDENTIFIERS",
-      "columnName": "S_USAGE_TYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "BRM Usage Type",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_BRM_IMPORT",
-      "columnName": "S_EXP_STATUS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "BRM Status",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_BRM_IMPORT",
-      "columnName": "S_IMP_STATUS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "BRM Status",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_BRM_LKUP_BASE",
-      "columnName": "S_BRM_STATUS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "BRM Status",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -82273,13 +82054,6 @@
       "columnName": "S_OVERRIDE_LEVEL",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "BRM Override Level",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_BRM_LKUP_BASE",
-      "columnName": "S_USAGE_TYPE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "BRM Usage Type",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -82459,13 +82233,6 @@
     },
     {
       "tableName": "WG_CNS_LOAN_APPLICATION",
-      "columnName": "S_BUSINESS_CHANNEL",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Business Channel",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_CNS_LOAN_APPLICATION",
       "columnName": "S_LOAN_PURPOSE",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "L Loan Purpose",
@@ -82483,13 +82250,6 @@
       "columnName": "S_PRIMARY_COLLATERAL_TYPE",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "Primary Coll Typ",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_CNS_LOAN_APPLICATION",
-      "columnName": "S_REFERRAL_SOURCE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Referral Source",
       "lookupDisplayColumnName": "ALIAS"
     },
     {
@@ -82990,13 +82750,6 @@
       "lookupDisplayColumnName": "ALIAS"
     },
     {
-      "tableName": "WG_KELLEYBLUEBOOK_RESPONSE",
-      "columnName": "S_GENERIC_BODY_STYLE",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Generic Body Style",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
       "tableName": "WG_KEYSTONE_EVENTS",
       "columnName": "S_DISP_ATTCH_TYP",
       "lookupTable": "L_SYMBOL",
@@ -83424,20 +83177,6 @@
       "lookupDisplayColumnName": "ALIAS"
     },
     {
-      "tableName": "WG_RPT_LOAN_ACTIVITY",
-      "columnName": "S_LOAN_ACTIVITY",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Activities",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
-      "tableName": "WG_RPT_LOAN_STATUS",
-      "columnName": "S_LOAN_STATUS",
-      "lookupTable": "L_SYMBOL",
-      "lookupColumnName": "Loan Status",
-      "lookupDisplayColumnName": "ALIAS"
-    },
-    {
       "tableName": "WG_SELLER_MORTGAGE_INFO",
       "columnName": "LIEN_POSITION",
       "lookupTable": "L_SYMBOL",
@@ -83715,6 +83454,524 @@
       "columnName": "S_WTHRDES",
       "lookupTable": "L_SYMBOL",
       "lookupColumnName": "WeatherizationDesc",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TLBR_ADDITIONALDATA",
+      "columnName": "S_ELIGIBLE_TYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Member Elig Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "BORROWER",
+      "columnName": "S_CBSOURCE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Credit Rep Source",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "DELIVERY",
+      "columnName": "S_RFC",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Balloon Round Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "DOWNPYMT",
+      "columnName": "S_DOWN_PMT_SRC",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Down Payment Src 1",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "DOWNPYMT",
+      "columnName": "S_TYPENM",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Down Payment Type NM",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "FLOOD",
+      "columnName": "S_FIRM",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Flood Map Zone",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TL_LOAN_DATA",
+      "columnName": "S_PAYEETYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Loss Payee Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TL_LOAN_STATUS",
+      "columnName": "S_LOCK_STATUS",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "InvLk Lock Status",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TL_PNP_IPG_DETAIL",
+      "columnName": "S_PREPAY_PEN",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Prepay Penalty Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TL_PNP_IPG_DETAIL",
+      "columnName": "S_SEC_POOL_TYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Cmtmt Pool Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TL_POINT_OF_SALE_INFO",
+      "columnName": "S_DOCLVL",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Documentation Level",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TLBR_ADDITIONALDATA",
+      "columnName": "S_CRDTSCORE_MODEL_OVR",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Crdt Sc Model Name",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_CMS_CONTACT_TYPE",
+      "columnName": "S_CMSTYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "CMSType",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_CMS_INFOBYTYPE",
+      "columnName": "S_CMSTYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "CMSType",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_INDEX_VALUE",
+      "columnName": "S_INDEX",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Setup Index",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_WF_GROUP_USER",
+      "columnName": "S_PROC_GROUP",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PROC GROUP",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_WF_PROCESS",
+      "columnName": "S_PROCESS",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PROCESS",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_WF_PROCESS_MODEL",
+      "columnName": "S_PROCESS_MODEL",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PROCESS MODEL",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_WF_WORKTYPE",
+      "columnName": "S_REASSIGN_RULE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS REASSIGN RULE",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_WF_WORKTYPE",
+      "columnName": "S_USERINTERFACE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Activities",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_WF_WORKTYPE",
+      "columnName": "S_WORKTYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS WORKTYPE",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TS_WF_WORKTYPE",
+      "columnName": "S_WT_TYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS WORKTYPE TYPE",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_AUS_INDICATOR",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "IPG_AUSIndicator",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_BUYDWN_CNTRBTR",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Buydown Contributor",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_IPG_BUYDWN",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Buydown",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_LOANFIT_AMT_GROUP",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "LoanFit Amt Grp",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_LOANFIT_LIEN_CAT",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "LoanFit Lien Cat",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_LOANFIT_LTV_GROUP",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "LoanFit LTV Grp",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_LOANFIT_PROD_CAT",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "LoanFit Product Cat",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_LOANFIT_PURP_CAT",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "LoanFit Purpose",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_SERVICE_TYPE_IND",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "USIPPServiceTypeInd",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TSR_PNP_IPG_BASE",
+      "columnName": "S_SPEC_PRG",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "IPG_SpecialProgram",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TW_WF_ACTION_MGR",
+      "columnName": "S_ACTION_RESOLUTION",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS RESOLUTION",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TW_WF_ACTION_MGR",
+      "columnName": "S_PROC_GROUP",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PROC GROUP",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TW_WF_ACTION_MGR",
+      "columnName": "S_PROC_MDL_RESOLUTION",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PM RESOLUTION",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TW_WF_ACTION_MGR",
+      "columnName": "S_WORKTYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS WORKTYPE",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TW_WF_PROC_MODEL_MGR",
+      "columnName": "S_PROC_GROUP",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PROC GROUP",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TW_WF_PROC_MODEL_MGR",
+      "columnName": "S_PROC_MDL_MGR_RESOLUTION",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PM RESOLUTION",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TW_WF_PROC_MODEL_MGR",
+      "columnName": "S_PROCESS_MODEL",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PROCESS MODEL",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TW_WF_PROCESS_MGR",
+      "columnName": "S_PROC_GROUP",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PROC GROUP",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "GF_TW_WF_PROCESS_MGR",
+      "columnName": "S_PROCESS",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "WFS PROCESS",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "PRODUCT",
+      "columnName": "S_RATE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "IntRateCode",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "PRODUCT",
+      "columnName": "S_RTCODE",
+      "lookupTable": "RATECODE",
+      "lookupColumnName": "RATECODE",
+      "lookupDisplayColumnName": "RATECODE"
+    },
+    {
+      "tableName": "PRODUCT",
+      "columnName": "S_RTCODEOVR",
+      "lookupTable": "RATECODE",
+      "lookupColumnName": "RATECODE",
+      "lookupDisplayColumnName": "RATECODE"
+    },
+    {
+      "tableName": "SUBJPRP",
+      "columnName": "S_APPRMTHDREQOVR",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "UW Prop Val Mth Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "SUBJPRP",
+      "columnName": "S_FMPROJ",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "FNMProject Class",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "SUBJPRP",
+      "columnName": "S_FRPROJ",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "FREProject Class",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "SUBJPRP",
+      "columnName": "S_OWNRHT",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "SP Own Rights",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "TRACKING",
+      "columnName": "S_COPT10",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Client Option 10",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "TRACKING",
+      "columnName": "S_COPT2",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Client Option 2",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "TRACKING",
+      "columnName": "S_COPT4",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Client Option 4",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "TRACKING",
+      "columnName": "S_COPT6",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Client Option 6",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "TRACKING",
+      "columnName": "S_COPT8",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Client Option 8",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "UNDCOND2",
+      "columnName": "S_SUNDCON",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "UW CONDITION",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "UNDCOND2",
+      "columnName": "S_UNDCAT",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "UW Cond. Category",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "UWAPPR",
+      "columnName": "S_PRPTYP",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "UW Prop Val Frm Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "SUBJPRP",
+      "columnName": "S_APPRMTHDREQ",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "ApprMethodReqrd",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_ASSET_MARINE_ENG",
+      "columnName": "S_ENGINE_MFG",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Marine Eng Mfg",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_BRM_DEFN_FIELDS",
+      "columnName": "S_USAGE_TYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "BRM Usage Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_BRM_DEFN_GRID",
+      "columnName": "S_USAGE_TYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "BRM Usage Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_BRM_EXPORT",
+      "columnName": "S_EXP_BRM_STATUS",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "BRM Exp Status",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_BRM_EXPORT",
+      "columnName": "S_EXP_STATUS",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "BRM Status",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_BRM_IDENTIFIERS",
+      "columnName": "S_USAGE_TYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "BRM Usage Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_BRM_IMPORT",
+      "columnName": "S_EXP_STATUS",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "BRM Status",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_BRM_IMPORT",
+      "columnName": "S_IMP_STATUS",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "BRM Status",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_BRM_LKUP_BASE",
+      "columnName": "S_BRM_STATUS",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "BRM Status",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_BRM_LKUP_BASE",
+      "columnName": "S_USAGE_TYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "BRM Usage Type",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_CNS_LOAN_APPLICATION",
+      "columnName": "S_BUSINESS_CHANNEL",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Business Channel",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_CNS_LOAN_APPLICATION",
+      "columnName": "S_REFERRAL_SOURCE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Referral Source",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_KELLEYBLUEBOOK_RESPONSE",
+      "columnName": "S_GENERIC_BODY_STYLE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Generic Body Style",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_RPT_LOAN_ACTIVITY",
+      "columnName": "S_LOAN_ACTIVITY",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Activities",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "WG_RPT_LOAN_STATUS",
+      "columnName": "S_LOAN_STATUS",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "Loan Status",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "ASSETS",
+      "columnName": "S_ACCOUNT_OWNERSHIP",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "ActOwnShip",
+      "lookupDisplayColumnName": "ALIAS"
+    },
+    {
+      "tableName": "INCOME",
+      "columnName": "S_SELFEMPTYPE",
+      "lookupTable": "L_SYMBOL",
+      "lookupColumnName": "SelfEmpType",
       "lookupDisplayColumnName": "ALIAS"
     }
   ]

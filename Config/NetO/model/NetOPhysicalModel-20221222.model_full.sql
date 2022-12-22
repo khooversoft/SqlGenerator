@@ -51,6 +51,44 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'ACTIVITY')
+BEGIN
+   DROP TABLE [clt_NetO].[ACTIVITY]
+END
+GO
+
+CREATE TABLE [clt_NetO].[ACTIVITY]
+(
+   [S_ACTIVI]                         nvarchar(8)          NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [TIMEALLT]                         smallint             NULL,
+   [TIMETYPE]                         smallint             NULL,
+   [INITIALACT]                       nchar(1)             NULL,
+   [SRCENV]                           nvarchar(5)          NULL,
+   [REC_CUSTOM]                       nchar(1)             NULL,
+   [CREATE_DATE]                      datetime             NULL,
+   [MODIFY_DATE]                      datetime             NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([S_ACTIVI]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'ADV_ACTN')
 BEGIN
    DROP TABLE [clt_NetO].[ADV_ACTN]
@@ -3638,6 +3676,7 @@ CREATE TABLE [clt_NetO].[GF_TLBR_ADDITIONALDATA]
    [S_ELIGIBLE_TYPE]                  nvarchar(8)          NULL,
    [ELIGIBLE_CODE]                    nvarchar(20)         NULL,
    [ELIGIBLE_TEXT]                    nvarchar(400)        NULL,
+   [BORR_OTHERMTHY]                   decimal(18,3)        NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -4249,7 +4288,6 @@ CREATE TABLE [clt_NetO].[GF_TLR_CREDIT_RESPONSE]
    [TRANSUNION_INDC]                  nchar(1)             NULL,
    [OTHER_REPOSITORY_NAME]            nvarchar(35)         NULL,
    [CREDITREPORTTRANSID]              nvarchar(20)         NULL,
-   [CREDIT_RESP_IMPORT_XML]           nvarchar(MAX)        NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
    [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
    [ASAP_CREATED_DATE]                datetime2(7)         NULL,
@@ -4261,7 +4299,7 @@ CREATE TABLE [clt_NetO].[GF_TLR_CREDIT_RESPONSE]
    [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
    [ASAP_SRC_NAME]                    nvarchar(36)         NULL
 )
-WITH ( CLUSTERED INDEX ([LNUM], [RESPONSEID], [CREDITRESPONSEID], [DBID]) )
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
 ;
 GO
 
@@ -5832,6 +5870,42 @@ CREATE TABLE [clt_NetO].[GF_TS_AUDIT_USER_LOCK]
    [ASAP_SRC_NAME]                    nvarchar(36)         NULL
 )
 WITH (DISTRIBUTION = HASH ([UL_ID]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'GF_TS_CMS_APPROVAL_DTL')
+BEGIN
+   DROP TABLE [clt_NetO].[GF_TS_CMS_APPROVAL_DTL]
+END
+GO
+
+CREATE TABLE [clt_NetO].[GF_TS_CMS_APPROVAL_DTL]
+(
+   [CID]                              int                  NOT NULL,
+   [S_CMSTYPE]                        nvarchar(8)          NOT NULL,
+   [S_APPROVEDCO]                     nvarchar(8)          NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [S_APPRSTAT]                       nvarchar(8)          NULL,
+   [APPRDATE]                         datetime             NULL,
+   [APPRLIMIT]                        decimal(16,6)        NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([CID]), CLUSTERED COLUMNSTORE INDEX)
 ;
 GO
 
@@ -12984,6 +13058,42 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'WG_SC_DECISION_REASON')
+BEGIN
+   DROP TABLE [clt_NetO].[WG_SC_DECISION_REASON]
+END
+GO
+
+CREATE TABLE [clt_NetO].[WG_SC_DECISION_REASON]
+(
+   [LNUM]                             nchar(20)            NOT NULL,
+   [DECISION_INDICATOR]               int                  NOT NULL,
+   [BNUM]                             smallint             NOT NULL,
+   [DBID]                             nchar(5)             NOT NULL,
+   [RSN_CTR]                          int                  NOT NULL,
+   [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
+   [ASAP_DeleteDateTime]              datetime2(7)         NULL,
+   [REASON_TXT]                       nvarchar(500)        NULL,
+   [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
+   [ASAP_DML_FLAG]                    nvarchar(2)          NULL,
+   [ASAP_CREATED_DATE]                datetime2(7)         NULL,
+   [ASAP_UPDATED_DATE]                datetime2(7)         NULL,
+   [ASAP_LINEAGE_ID]                  nvarchar(36)         NULL,
+   [ASAP_ACTIVITY_ID]                 nvarchar(36)         NULL,
+   [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
+   [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL,
+   [ASAP_SRC_FILE_DATE]               datetime2(7)         NULL,
+   [ASAP_SRC_NAME]                    nvarchar(36)         NULL
+)
+WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
+;
+GO
+
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_NetO' AND TABLE_NAME = 'WG_SYMBOL_XREF')
 BEGIN
    DROP TABLE [clt_NetO].[WG_SYMBOL_XREF]
@@ -13106,6 +13216,34 @@ WITH (DISTRIBUTION = HASH ([LNUM]), CLUSTERED COLUMNSTORE INDEX)
 ;
 GO
 
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwACTIVITY')
+BEGIN
+   DROP VIEW [NetO].[VwACTIVITY]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwACTIVITY]
+AS
+   SELECT
+      x.[S_ACTIVI],
+      x.[TIMEALLT],
+      x.[TIMETYPE],
+      x.[INITIALACT],
+      x.[SRCENV],
+      x.[REC_CUSTOM],
+      x.[CREATE_DATE],
+      x.[MODIFY_DATE]
+   FROM [clt_NetO].[ACTIVITY] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
 
 -- -----------------------------------------------------
 -- Auto generated
@@ -16529,8 +16667,10 @@ AS
       HASHBYTES('SHA2_256', x.[MOTHERS_MAIDEN]) AS [MOTHERS_MAIDEN],
       x.[APP_DISCL_READ],
       x.[S_ELIGIBLE_TYPE],
+      A9.[Descript] AS [S_ELIGIBLE_TYPE_X],
       x.[ELIGIBLE_CODE],
-      HASHBYTES('SHA2_256', x.[ELIGIBLE_TEXT]) AS [ELIGIBLE_TEXT]
+      HASHBYTES('SHA2_256', x.[ELIGIBLE_TEXT]) AS [ELIGIBLE_TEXT],
+      x.[BORR_OTHERMTHY]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ETHINICITY] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'ETHINICITY'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FIRSTTIMEHBCOUNSEL] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
@@ -16541,6 +16681,7 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.[S_CRDTSCORE_MODEL_OVR] = A6.[DBSYMBOL] AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
       LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.[S_CREDIT_TYPE] = A7.[DBSYMBOL] AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_CREDIT_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.[S_LANGUAGEPREFERENCE] = A8.[DBSYMBOL] AND A8.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A8.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.[S_ELIGIBLE_TYPE] = A9.[DBSYMBOL] AND A9.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A9.[COLUMNNAME] = 'S_ELIGIBLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -17055,8 +17196,7 @@ AS
       x.[EXPERIAN_INDC],
       x.[TRANSUNION_INDC],
       HASHBYTES('SHA2_256', x.[OTHER_REPOSITORY_NAME]) AS [OTHER_REPOSITORY_NAME],
-      HASHBYTES('SHA2_256', x.[CREDITREPORTTRANSID]) AS [CREDITREPORTTRANSID],
-      x.[CREDIT_RESP_IMPORT_XML]
+      HASHBYTES('SHA2_256', x.[CREDITREPORTTRANSID]) AS [CREDITREPORTTRANSID]
    FROM [clt_NetO].[GF_TLR_CREDIT_RESPONSE] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[MERGE_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A0.[COLUMNNAME] = 'MERGE_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A1.[COLUMNNAME] = 'REPORT_TYPE'
@@ -18444,6 +18584,34 @@ AS
       x.[DELETE_LASTLOCKED],
       x.[MODIFIED_DATETIME]
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
+BEGIN
+   DROP VIEW [NetO].[VwGF_TS_CMS_APPROVAL_DTL]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwGF_TS_CMS_APPROVAL_DTL]
+AS
+   SELECT
+      x.[CID],
+      x.[S_CMSTYPE],
+      x.[S_APPROVEDCO],
+      x.[S_APPRSTAT],
+      A0.[Descript] AS [S_APPRSTAT_X],
+      x.[APPRDATE],
+      x.[APPRLIMIT]
+   FROM [clt_NetO].[GF_TS_CMS_APPROVAL_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_APPRSTAT] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TS_CMS_APPROVAL_DTL' and A0.[COLUMNNAME] = 'S_APPRSTAT'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
@@ -24202,6 +24370,33 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
+BEGIN
+   DROP VIEW [NetO].[VwWG_SC_DECISION_REASON]
+END
+GO
+
+
+CREATE VIEW [NetO].[VwWG_SC_DECISION_REASON]
+AS
+   SELECT
+      x.[LNUM],
+      x.[DECISION_INDICATOR],
+      x.[BNUM],
+      x.[DBID],
+      x.[RSN_CTR],
+      x.[REASON_TXT]
+   FROM [clt_NetO].[WG_SC_DECISION_REASON] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO' AND TABLE_NAME = 'VwWG_SYMBOL_XREF')
 BEGIN
    DROP VIEW [NetO].[VwWG_SYMBOL_XREF]
@@ -24302,6 +24497,34 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwACTIVITY')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwACTIVITY]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwACTIVITY]
+AS
+   SELECT
+      x.[S_ACTIVI],
+      x.[TIMEALLT],
+      x.[TIMETYPE],
+      x.[INITIALACT],
+      x.[SRCENV],
+      x.[REC_CUSTOM],
+      x.[CREATE_DATE],
+      x.[MODIFY_DATE]
+   FROM [clt_NetO].[ACTIVITY] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -27727,8 +27950,10 @@ AS
       HASHBYTES('SHA2_256', x.[MOTHERS_MAIDEN]) AS [MOTHERS_MAIDEN],
       x.[APP_DISCL_READ],
       x.[S_ELIGIBLE_TYPE],
+      A9.[Descript] AS [S_ELIGIBLE_TYPE_X],
       x.[ELIGIBLE_CODE],
-      HASHBYTES('SHA2_256', x.[ELIGIBLE_TEXT]) AS [ELIGIBLE_TEXT]
+      HASHBYTES('SHA2_256', x.[ELIGIBLE_TEXT]) AS [ELIGIBLE_TEXT],
+      x.[BORR_OTHERMTHY]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ETHINICITY] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'ETHINICITY'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FIRSTTIMEHBCOUNSEL] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
@@ -27739,6 +27964,7 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.[S_CRDTSCORE_MODEL_OVR] = A6.[DBSYMBOL] AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
       LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.[S_CREDIT_TYPE] = A7.[DBSYMBOL] AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_CREDIT_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.[S_LANGUAGEPREFERENCE] = A8.[DBSYMBOL] AND A8.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A8.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.[S_ELIGIBLE_TYPE] = A9.[DBSYMBOL] AND A9.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A9.[COLUMNNAME] = 'S_ELIGIBLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -28253,8 +28479,7 @@ AS
       x.[EXPERIAN_INDC],
       x.[TRANSUNION_INDC],
       HASHBYTES('SHA2_256', x.[OTHER_REPOSITORY_NAME]) AS [OTHER_REPOSITORY_NAME],
-      HASHBYTES('SHA2_256', x.[CREDITREPORTTRANSID]) AS [CREDITREPORTTRANSID],
-      x.[CREDIT_RESP_IMPORT_XML]
+      HASHBYTES('SHA2_256', x.[CREDITREPORTTRANSID]) AS [CREDITREPORTTRANSID]
    FROM [clt_NetO].[GF_TLR_CREDIT_RESPONSE] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[MERGE_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A0.[COLUMNNAME] = 'MERGE_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A1.[COLUMNNAME] = 'REPORT_TYPE'
@@ -29642,6 +29867,34 @@ AS
       x.[DELETE_LASTLOCKED],
       x.[MODIFIED_DATETIME]
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwGF_TS_CMS_APPROVAL_DTL]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwGF_TS_CMS_APPROVAL_DTL]
+AS
+   SELECT
+      x.[CID],
+      x.[S_CMSTYPE],
+      x.[S_APPROVEDCO],
+      x.[S_APPRSTAT],
+      A0.[Descript] AS [S_APPRSTAT_X],
+      x.[APPRDATE],
+      x.[APPRLIMIT]
+   FROM [clt_NetO].[GF_TS_CMS_APPROVAL_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_APPRSTAT] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TS_CMS_APPROVAL_DTL' and A0.[COLUMNNAME] = 'S_APPRSTAT'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
@@ -35400,6 +35653,33 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
+BEGIN
+   DROP VIEW [NetO_restricted].[VwWG_SC_DECISION_REASON]
+END
+GO
+
+
+CREATE VIEW [NetO_restricted].[VwWG_SC_DECISION_REASON]
+AS
+   SELECT
+      x.[LNUM],
+      x.[DECISION_INDICATOR],
+      x.[BNUM],
+      x.[DBID],
+      x.[RSN_CTR],
+      x.[REASON_TXT]
+   FROM [clt_NetO].[WG_SC_DECISION_REASON] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_SYMBOL_XREF')
 BEGIN
    DROP VIEW [NetO_restricted].[VwWG_SYMBOL_XREF]
@@ -35500,6 +35780,34 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwACTIVITY')
+BEGIN
+   DROP VIEW [NetO_pii].[VwACTIVITY]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwACTIVITY]
+AS
+   SELECT
+      x.[S_ACTIVI],
+      x.[TIMEALLT],
+      x.[TIMETYPE],
+      x.[INITIALACT],
+      x.[SRCENV],
+      x.[REC_CUSTOM],
+      x.[CREATE_DATE],
+      x.[MODIFY_DATE]
+   FROM [clt_NetO].[ACTIVITY] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -38925,8 +39233,10 @@ AS
       x.[MOTHERS_MAIDEN],
       x.[APP_DISCL_READ],
       x.[S_ELIGIBLE_TYPE],
+      A9.[Descript] AS [S_ELIGIBLE_TYPE_X],
       x.[ELIGIBLE_CODE],
-      x.[ELIGIBLE_TEXT]
+      x.[ELIGIBLE_TEXT],
+      x.[BORR_OTHERMTHY]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ETHINICITY] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'ETHINICITY'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FIRSTTIMEHBCOUNSEL] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
@@ -38937,6 +39247,7 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.[S_CRDTSCORE_MODEL_OVR] = A6.[DBSYMBOL] AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
       LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.[S_CREDIT_TYPE] = A7.[DBSYMBOL] AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_CREDIT_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.[S_LANGUAGEPREFERENCE] = A8.[DBSYMBOL] AND A8.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A8.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.[S_ELIGIBLE_TYPE] = A9.[DBSYMBOL] AND A9.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A9.[COLUMNNAME] = 'S_ELIGIBLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -39451,8 +39762,7 @@ AS
       x.[EXPERIAN_INDC],
       x.[TRANSUNION_INDC],
       x.[OTHER_REPOSITORY_NAME],
-      x.[CREDITREPORTTRANSID],
-      x.[CREDIT_RESP_IMPORT_XML]
+      x.[CREDITREPORTTRANSID]
    FROM [clt_NetO].[GF_TLR_CREDIT_RESPONSE] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[MERGE_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A0.[COLUMNNAME] = 'MERGE_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A1.[COLUMNNAME] = 'REPORT_TYPE'
@@ -40840,6 +41150,34 @@ AS
       x.[DELETE_LASTLOCKED],
       x.[MODIFIED_DATETIME]
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
+BEGIN
+   DROP VIEW [NetO_pii].[VwGF_TS_CMS_APPROVAL_DTL]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwGF_TS_CMS_APPROVAL_DTL]
+AS
+   SELECT
+      x.[CID],
+      x.[S_CMSTYPE],
+      x.[S_APPROVEDCO],
+      x.[S_APPRSTAT],
+      A0.[Descript] AS [S_APPRSTAT_X],
+      x.[APPRDATE],
+      x.[APPRLIMIT]
+   FROM [clt_NetO].[GF_TS_CMS_APPROVAL_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_APPRSTAT] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TS_CMS_APPROVAL_DTL' and A0.[COLUMNNAME] = 'S_APPRSTAT'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
@@ -46598,6 +46936,33 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
+BEGIN
+   DROP VIEW [NetO_pii].[VwWG_SC_DECISION_REASON]
+END
+GO
+
+
+CREATE VIEW [NetO_pii].[VwWG_SC_DECISION_REASON]
+AS
+   SELECT
+      x.[LNUM],
+      x.[DECISION_INDICATOR],
+      x.[BNUM],
+      x.[DBID],
+      x.[RSN_CTR],
+      x.[REASON_TXT]
+   FROM [clt_NetO].[WG_SC_DECISION_REASON] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_pii' AND TABLE_NAME = 'VwWG_SYMBOL_XREF')
 BEGIN
    DROP VIEW [NetO_pii].[VwWG_SYMBOL_XREF]
@@ -46698,6 +47063,34 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwACTIVITY')
+BEGIN
+   DROP VIEW [NetO_sas].[VwACTIVITY]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwACTIVITY]
+AS
+   SELECT
+      x.[S_ACTIVI] AS [S_ACTIVI],
+      x.[TIMEALLT] AS [TIMEALLT],
+      x.[TIMETYPE] AS [TIMETYPE],
+      x.[INITIALACT] AS [INITIALACT],
+      x.[SRCENV] AS [SRCENV],
+      x.[REC_CUSTOM] AS [REC_CUSTOM],
+      x.[CREATE_DATE] AS [CREATE_DATE],
+      x.[MODIFY_DATE] AS [MODIFY_DATE]
+   FROM [clt_NetO].[ACTIVITY] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -50123,8 +50516,10 @@ AS
       HASHBYTES('SHA2_256', x.[MOTHERS_MAIDEN]) AS [MOTHERS_MAIDEN],
       x.[APP_DISCL_READ] AS [APP_DISCL_READ],
       x.[S_ELIGIBLE_TYPE] AS [S_ELIGIBLE_TYPE],
+      A9.[Descript] AS [S_ELIGIBLE_TYPE_X],
       x.[ELIGIBLE_CODE] AS [ELIGIBLE_CODE],
-      HASHBYTES('SHA2_256', x.[ELIGIBLE_TEXT]) AS [ELIGIBLE_TEXT]
+      HASHBYTES('SHA2_256', x.[ELIGIBLE_TEXT]) AS [ELIGIBLE_TEXT],
+      x.[BORR_OTHERMTHY] AS [BORR_OTHERMTHY]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ETHINICITY] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'ETHINICITY'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FIRSTTIMEHBCOUNSEL] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
@@ -50135,6 +50530,7 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.[S_CRDTSCORE_MODEL_OVR] = A6.[DBSYMBOL] AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
       LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.[S_CREDIT_TYPE] = A7.[DBSYMBOL] AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_CREDIT_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.[S_LANGUAGEPREFERENCE] = A8.[DBSYMBOL] AND A8.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A8.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.[S_ELIGIBLE_TYPE] = A9.[DBSYMBOL] AND A9.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A9.[COLUMNNAME] = 'S_ELIGIBLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -50649,8 +51045,7 @@ AS
       x.[EXPERIAN_INDC] AS [EXPERIAN_INDC],
       x.[TRANSUNION_INDC] AS [TRANSUNION_INDC],
       HASHBYTES('SHA2_256', x.[OTHER_REPOSITORY_NAME]) AS [OTHER_REPOSITORY_NAME],
-      HASHBYTES('SHA2_256', x.[CREDITREPORTTRANSID]) AS [CREDITREPORTTRANSID],
-      x.[CREDIT_RESP_IMPORT_XML] AS [CREDIT_RESP_IMPORT_XML]
+      HASHBYTES('SHA2_256', x.[CREDITREPORTTRANSID]) AS [CREDITREPORTTRANSID]
    FROM [clt_NetO].[GF_TLR_CREDIT_RESPONSE] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[MERGE_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A0.[COLUMNNAME] = 'MERGE_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A1.[COLUMNNAME] = 'REPORT_TYPE'
@@ -52038,6 +52433,34 @@ AS
       x.[DELETE_LASTLOCKED] AS [DELETE_LASTLOCKED],
       x.[MODIFIED_DATETIME] AS [MODIFIED_DATETIME]
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
+BEGIN
+   DROP VIEW [NetO_sas].[VwGF_TS_CMS_APPROVAL_DTL]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwGF_TS_CMS_APPROVAL_DTL]
+AS
+   SELECT
+      x.[CID] AS [CID],
+      x.[S_CMSTYPE] AS [S_CMSTYPE],
+      x.[S_APPROVEDCO] AS [S_APPROVEDCO],
+      x.[S_APPRSTAT] AS [S_APPRSTAT],
+      A0.[Descript] AS [S_APPRSTAT_X],
+      x.[APPRDATE] AS [APPRDATE],
+      x.[APPRLIMIT] AS [APPRLIMIT]
+   FROM [clt_NetO].[GF_TS_CMS_APPROVAL_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_APPRSTAT] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TS_CMS_APPROVAL_DTL' and A0.[COLUMNNAME] = 'S_APPRSTAT'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
@@ -57796,6 +58219,33 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
+BEGIN
+   DROP VIEW [NetO_sas].[VwWG_SC_DECISION_REASON]
+END
+GO
+
+
+CREATE VIEW [NetO_sas].[VwWG_SC_DECISION_REASON]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[DECISION_INDICATOR] AS [DECISION_INDICATOR],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RSN_CTR] AS [RSN_CTR],
+      x.[REASON_TXT] AS [REASON_TXT]
+   FROM [clt_NetO].[WG_SC_DECISION_REASON] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas' AND TABLE_NAME = 'VwWG_SYMBOL_XREF')
 BEGIN
    DROP VIEW [NetO_sas].[VwWG_SYMBOL_XREF]
@@ -57896,6 +58346,34 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwACTIVITY')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwACTIVITY]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwACTIVITY]
+AS
+   SELECT
+      x.[S_ACTIVI] AS [S_ACTIVI],
+      x.[TIMEALLT] AS [TIMEALLT],
+      x.[TIMETYPE] AS [TIMETYPE],
+      x.[INITIALACT] AS [INITIALACT],
+      x.[SRCENV] AS [SRCENV],
+      x.[REC_CUSTOM] AS [REC_CUSTOM],
+      x.[CREATE_DATE] AS [CREATE_DATE],
+      x.[MODIFY_DATE] AS [MODIFY_DATE]
+   FROM [clt_NetO].[ACTIVITY] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -61321,8 +61799,10 @@ AS
       HASHBYTES('SHA2_256', x.[MOTHERS_MAIDEN]) AS [MOTHERS_MAIDEN],
       x.[APP_DISCL_READ] AS [APP_DISCL_READ],
       x.[S_ELIGIBLE_TYPE] AS [S_ELIGIBLE_TYPE],
+      A9.[Descript] AS [S_ELIGIBLE_TYPE_X],
       x.[ELIGIBLE_CODE] AS [ELIGIBLE_CODE],
-      HASHBYTES('SHA2_256', x.[ELIGIBLE_TEXT]) AS [ELIGIBLE_TEXT]
+      HASHBYTES('SHA2_256', x.[ELIGIBLE_TEXT]) AS [ELIGIBLE_TEXT],
+      x.[BORR_OTHERMTHY] AS [BORR_OTHERMTHY]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ETHINICITY] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'ETHINICITY'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FIRSTTIMEHBCOUNSEL] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
@@ -61333,6 +61813,7 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.[S_CRDTSCORE_MODEL_OVR] = A6.[DBSYMBOL] AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
       LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.[S_CREDIT_TYPE] = A7.[DBSYMBOL] AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_CREDIT_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.[S_LANGUAGEPREFERENCE] = A8.[DBSYMBOL] AND A8.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A8.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.[S_ELIGIBLE_TYPE] = A9.[DBSYMBOL] AND A9.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A9.[COLUMNNAME] = 'S_ELIGIBLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -61847,8 +62328,7 @@ AS
       x.[EXPERIAN_INDC] AS [EXPERIAN_INDC],
       x.[TRANSUNION_INDC] AS [TRANSUNION_INDC],
       HASHBYTES('SHA2_256', x.[OTHER_REPOSITORY_NAME]) AS [OTHER_REPOSITORY_NAME],
-      HASHBYTES('SHA2_256', x.[CREDITREPORTTRANSID]) AS [CREDITREPORTTRANSID],
-      x.[CREDIT_RESP_IMPORT_XML] AS [CREDIT_RESP_IMPORT_XML]
+      HASHBYTES('SHA2_256', x.[CREDITREPORTTRANSID]) AS [CREDITREPORTTRANSID]
    FROM [clt_NetO].[GF_TLR_CREDIT_RESPONSE] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[MERGE_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A0.[COLUMNNAME] = 'MERGE_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A1.[COLUMNNAME] = 'REPORT_TYPE'
@@ -63236,6 +63716,34 @@ AS
       x.[DELETE_LASTLOCKED] AS [DELETE_LASTLOCKED],
       x.[MODIFIED_DATETIME] AS [MODIFIED_DATETIME]
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwGF_TS_CMS_APPROVAL_DTL]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwGF_TS_CMS_APPROVAL_DTL]
+AS
+   SELECT
+      x.[CID] AS [CID],
+      x.[S_CMSTYPE] AS [S_CMSTYPE],
+      x.[S_APPROVEDCO] AS [S_APPROVEDCO],
+      x.[S_APPRSTAT] AS [S_APPRSTAT],
+      A0.[Descript] AS [S_APPRSTAT_X],
+      x.[APPRDATE] AS [APPRDATE],
+      x.[APPRLIMIT] AS [APPRLIMIT]
+   FROM [clt_NetO].[GF_TS_CMS_APPROVAL_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_APPRSTAT] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TS_CMS_APPROVAL_DTL' and A0.[COLUMNNAME] = 'S_APPRSTAT'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
@@ -68994,6 +69502,33 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
+BEGIN
+   DROP VIEW [NetO_sas_restricted].[VwWG_SC_DECISION_REASON]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_restricted].[VwWG_SC_DECISION_REASON]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[DECISION_INDICATOR] AS [DECISION_INDICATOR],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RSN_CTR] AS [RSN_CTR],
+      x.[REASON_TXT] AS [REASON_TXT]
+   FROM [clt_NetO].[WG_SC_DECISION_REASON] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_SYMBOL_XREF')
 BEGIN
    DROP VIEW [NetO_sas_restricted].[VwWG_SYMBOL_XREF]
@@ -69094,6 +69629,34 @@ AS
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwACTIVITY')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwACTIVITY]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwACTIVITY]
+AS
+   SELECT
+      x.[S_ACTIVI] AS [S_ACTIVI],
+      x.[TIMEALLT] AS [TIMEALLT],
+      x.[TIMETYPE] AS [TIMETYPE],
+      x.[INITIALACT] AS [INITIALACT],
+      x.[SRCENV] AS [SRCENV],
+      x.[REC_CUSTOM] AS [REC_CUSTOM],
+      x.[CREATE_DATE] AS [CREATE_DATE],
+      x.[MODIFY_DATE] AS [MODIFY_DATE]
+   FROM [clt_NetO].[ACTIVITY] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
 ;
 GO
 
@@ -72519,8 +73082,10 @@ AS
       x.[MOTHERS_MAIDEN] AS [MOTHERS_MAIDEN],
       x.[APP_DISCL_READ] AS [APP_DISCL_READ],
       x.[S_ELIGIBLE_TYPE] AS [S_ELIGIBLE_TYPE],
+      A9.[Descript] AS [S_ELIGIBLE_TYPE_X],
       x.[ELIGIBLE_CODE] AS [ELIGIBLE_CODE],
-      x.[ELIGIBLE_TEXT] AS [ELIGIBLE_TEXT]
+      x.[ELIGIBLE_TEXT] AS [ELIGIBLE_TEXT],
+      x.[BORR_OTHERMTHY] AS [BORR_OTHERMTHY]
    FROM [clt_NetO].[GF_TLBR_ADDITIONALDATA] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[ETHINICITY] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A0.[COLUMNNAME] = 'ETHINICITY'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_FIRSTTIMEHBCOUNSEL] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A1.[COLUMNNAME] = 'S_FIRSTTIMEHBCOUNSEL'
@@ -72531,6 +73096,7 @@ AS
       LEFT JOIN [clt_NetO].[SymbolLookup] A6 on x.[S_CRDTSCORE_MODEL_OVR] = A6.[DBSYMBOL] AND A6.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A6.[COLUMNNAME] = 'S_CRDTSCORE_MODEL_OVR'
       LEFT JOIN [clt_NetO].[SymbolLookup] A7 on x.[S_CREDIT_TYPE] = A7.[DBSYMBOL] AND A7.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A7.[COLUMNNAME] = 'S_CREDIT_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A8 on x.[S_LANGUAGEPREFERENCE] = A8.[DBSYMBOL] AND A8.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A8.[COLUMNNAME] = 'S_LANGUAGEPREFERENCE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A9 on x.[S_ELIGIBLE_TYPE] = A9.[DBSYMBOL] AND A9.[TableName] = 'GF_TLBR_ADDITIONALDATA' and A9.[COLUMNNAME] = 'S_ELIGIBLE_TYPE'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
@@ -73045,8 +73611,7 @@ AS
       x.[EXPERIAN_INDC] AS [EXPERIAN_INDC],
       x.[TRANSUNION_INDC] AS [TRANSUNION_INDC],
       x.[OTHER_REPOSITORY_NAME] AS [OTHER_REPOSITORY_NAME],
-      x.[CREDITREPORTTRANSID] AS [CREDITREPORTTRANSID],
-      x.[CREDIT_RESP_IMPORT_XML] AS [CREDIT_RESP_IMPORT_XML]
+      x.[CREDITREPORTTRANSID] AS [CREDITREPORTTRANSID]
    FROM [clt_NetO].[GF_TLR_CREDIT_RESPONSE] x
       LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[MERGE_TYPE] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A0.[COLUMNNAME] = 'MERGE_TYPE'
       LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[REPORT_TYPE] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TLR_CREDIT_RESPONSE' and A1.[COLUMNNAME] = 'REPORT_TYPE'
@@ -74434,6 +74999,34 @@ AS
       x.[DELETE_LASTLOCKED] AS [DELETE_LASTLOCKED],
       x.[MODIFIED_DATETIME] AS [MODIFIED_DATETIME]
    FROM [clt_NetO].[GF_TS_AUDIT_USER_LOCK] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwGF_TS_CMS_APPROVAL_DTL]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwGF_TS_CMS_APPROVAL_DTL]
+AS
+   SELECT
+      x.[CID] AS [CID],
+      x.[S_CMSTYPE] AS [S_CMSTYPE],
+      x.[S_APPROVEDCO] AS [S_APPROVEDCO],
+      x.[S_APPRSTAT] AS [S_APPRSTAT],
+      A0.[Descript] AS [S_APPRSTAT_X],
+      x.[APPRDATE] AS [APPRDATE],
+      x.[APPRLIMIT] AS [APPRLIMIT]
+   FROM [clt_NetO].[GF_TS_CMS_APPROVAL_DTL] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_APPRSTAT] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TS_CMS_APPROVAL_DTL' and A0.[COLUMNNAME] = 'S_APPRSTAT'
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
@@ -80182,6 +80775,33 @@ AS
       x.[DECISION_INDICATOR] AS [DECISION_INDICATOR],
       x.[RECOMMENDATION_TEXT] AS [RECOMMENDATION_TEXT]
    FROM [clt_NetO].[WG_SC_DECISION] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_pii' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
+BEGIN
+   DROP VIEW [NetO_sas_pii].[VwWG_SC_DECISION_REASON]
+END
+GO
+
+
+CREATE VIEW [NetO_sas_pii].[VwWG_SC_DECISION_REASON]
+AS
+   SELECT
+      x.[LNUM] AS [LNUM],
+      x.[DECISION_INDICATOR] AS [DECISION_INDICATOR],
+      x.[BNUM] AS [BNUM],
+      x.[DBID] AS [DBID],
+      x.[RSN_CTR] AS [RSN_CTR],
+      x.[REASON_TXT] AS [REASON_TXT]
+   FROM [clt_NetO].[WG_SC_DECISION_REASON] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
       AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])

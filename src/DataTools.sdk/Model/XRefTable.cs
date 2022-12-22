@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
+using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
+using DocumentFormat.OpenXml.Math;
 using Toolbox.Extensions;
 using Toolbox.Tools;
 
@@ -48,8 +50,13 @@ public static class XRefTableFile
     {
         file.NotEmpty();
 
+        var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+        {
+            Delimiter = "||",
+        };
+
         using var reader = new StreamReader(file);
-        using CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+        using CsvReader csv = new CsvReader(reader, config);
 
         return csv
             .GetRecords<XRefTableModel>()
