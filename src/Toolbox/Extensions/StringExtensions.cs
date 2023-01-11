@@ -115,5 +115,35 @@ namespace Toolbox.Extensions
             ms.Seek(0, SeekOrigin.Begin);
             return MD5.Create().ComputeHash(ms);
         }
+
+        [DebuggerStepThrough]
+        public static string? Trim(this string? subject, int? maxLength, string marker = "...") => subject switch
+        {
+            null => null,
+            string v1 => maxLength switch
+            {
+                null => v1,
+                int length when v1.Length < length => v1,
+                int length => string.Concat(v1.AsSpan(0, length - marker.Length), marker),
+            }
+        };
+
+        [DebuggerStepThrough]
+        public static string? Find(this string? subject, string? findValue, StringComparison comparisonType = StringComparison.CurrentCulture)
+        {
+            return subject switch
+            {
+                null => null,
+                string s1 => findValue switch
+                {
+                    null => null,
+                    string s2 => s1.IndexOf(s2, comparisonType) switch
+                    {
+                        -1 => null,
+                        int index => s1[index..(index + s2.Length)],
+                    }
+                }
+            };
+        }
     }
 }

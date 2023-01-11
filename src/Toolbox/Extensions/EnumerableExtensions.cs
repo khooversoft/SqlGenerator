@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Toolbox.Extensions
         /// <typeparam name="T">type</typeparam>
         /// <param name="self">object to convert</param>
         /// <returns>enumerator</returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> ToEnumerable<T>(this T self)
         {
             yield return self;
@@ -27,6 +29,7 @@ namespace Toolbox.Extensions
         /// <typeparam name="T">type</typeparam>
         /// <param name="subjects">types to process</param>
         /// <param name="action">action to execute</param>
+        [DebuggerStepThrough]
         public static void ForEach<T>(this IEnumerable<T> subjects, Action<T> action)
         {
             subjects.NotNull();
@@ -44,6 +47,7 @@ namespace Toolbox.Extensions
         /// <typeparam name="T">type</typeparam>
         /// <param name="subjects">list to operate on</param>
         /// <param name="action">action to execute</param>
+        [DebuggerStepThrough]
         public static void ForEach<T>(this IEnumerable<T> subjects, Action<T, int> action)
         {
             subjects.NotNull();
@@ -63,6 +67,7 @@ namespace Toolbox.Extensions
         /// <param name="subjects"></param>
         /// <param name="action"></param>
         /// <returns></returns>
+        [DebuggerStepThrough]
         public static async Task ForEachAsync<T>(this IEnumerable<T> subjects, Func<T, Task> action)
         {
             subjects.NotNull();
@@ -80,6 +85,7 @@ namespace Toolbox.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="subjects"></param>
         /// <returns>Stack<typeparamref name="T"/></returns>
+        [DebuggerStepThrough]
         public static Stack<T> ToStack<T>(this IEnumerable<T>? subjects) => new Stack<T>(subjects ?? Array.Empty<T>());
 
         /// <summary>
@@ -88,6 +94,7 @@ namespace Toolbox.Extensions
         /// <typeparam name="T">type in list</typeparam>
         /// <param name="self">list to shuffle</param>
         /// <returns>shuffled list</returns>
+        [DebuggerStepThrough]
         public static IReadOnlyList<T> Shuffle<T>(this IEnumerable<T> self)
         {
             self.NotNull();
@@ -123,6 +130,7 @@ namespace Toolbox.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> ToSafe<T>(this IEnumerable<T>? list) => (list ?? Array.Empty<T>());
 
         /// <summary>
@@ -132,6 +140,7 @@ namespace Toolbox.Extensions
         /// <param name="values"></param>
         /// <param name="separator"></param>
         /// <returns></returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> SequenceJoin<T>(this IEnumerable<T> values, T separator)
         {
             bool run = false;
@@ -152,6 +161,7 @@ namespace Toolbox.Extensions
         /// <param name="values"></param>
         /// <param name="separatorSelect">function to apply separator</param>
         /// <returns></returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> SequenceJoin<T>(this IEnumerable<T> values, Func<T, T> separatorSelect)
         {
             bool hasValue = false;
@@ -175,6 +185,7 @@ namespace Toolbox.Extensions
         /// <param name="values">sequence of values</param>
         /// <param name="separatorSelect">function to apply separator</param>
         /// <returns></returns>
+        [DebuggerStepThrough]
         public static IEnumerable<T> Join<T>(this IEnumerable<T> values, Func<T, T> separatorSelect)
         {
             bool first = true;

@@ -1,18 +1,7 @@
-﻿using SqlGenerator.sdk.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Toolbox.Extensions;
+﻿using Toolbox.Extensions;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Application;
-
-//public record NameMapOption
-//{
-//    public NameMapRecord[] NameMap { get; init; } = Array.Empty<NameMapRecord>();
-//}
 
 public record NameMapRecord
 {
@@ -22,20 +11,6 @@ public record NameMapRecord
 
 public static class NameMapRecordFile
 {
-    //public static NameMapOption Read(string file) => File.ReadAllText(file)
-    //    .NotNull(name: $"File {file} is empty")
-    //    .ToObject<NameMapOption>()
-    //    .NotNull()
-    //    .Verify();
-
-    //public static NameMapOption Verify(this NameMapOption subject)
-    //{
-    //    subject.NotNull();
-    //    subject.NameMap.ForEach(x => x.Verify());
-
-    //    return subject;
-    //}
-
     public static NameMapRecord Verify(this NameMapRecord subject)
     {
         subject.NotNull();
@@ -45,36 +20,60 @@ public static class NameMapRecordFile
         return subject;
     }
 
-
-
     /// <summary>
     /// Lookup shorter name if required
     /// </summary>
-    /// <param name="option">name shorting map</param>
-    /// <param name="name">column name to short</param>
-    /// <param name="maxColumNameSize">max column size, if null no short name is created</param>
-    /// <returns>null or short name</returns>
-    public static string? ShortName(this SqlProjectOption option, string name, int? maxColumNameSize)
-    {
-        option.NotNull();
+    /// <param name="option"></param>
+    /// <param name="name"></param>
+    /// <param name="maxColumNameSize"></param>
+    /// <returns></returns>
+    public static string? ShortName(
+            this SqlProjectOption option,
+            string name,
+            int? maxColumNameSize,
+            StringComparison comparisonType = StringComparison.OrdinalIgnoreCase
+        ) => ShortName(option.NameMap, name, maxColumNameSize, comparisonType);
 
-        return maxColumNameSize switch
+    public static string? ShortName(
+            this IEnumerable<NameMapRecord> nameMaps,
+            string name,
+            int? maxColumNameSize,
+            StringComparison comparisonType = StringComparison.CurrentCulture
+        ) => maxColumNameSize switch
         {
             null => null,
-            int v when name.Length <= v => null,
-
-            int v => option.NameMap
-                .Where(x => name.IndexOf(x.Long) >= 0)
-                .FirstOrDefault() switch
+            int size when name.Length <= size => null,
+            int size => ShortName(nameMaps, name, comparisonType) switch
             {
-                null => string.Concat(name.AsSpan(0, v - 1), "_"),
+                null => null,
+                string v => v.Trim(size, "_"),
+            }
+        };
 
-                NameMapRecord r => name.Replace(r.Long, r.Short) switch
-                {
-                    string v1 when v1.Length <= maxColumNameSize => v1,
-                    string v1 => string.Concat(v1.AsSpan(0, v - 1), "_"),
-                }
+    public static string? ShortName(this IEnumerable<NameMapRecord> nameMaps, string name, StringComparison comparisonType = StringComparison.CurrentCulture)
+    {
+        nameMaps.NotNull();
+
+        return nameMaps
+            .Select(x => (r: x, find: name.Find(x.Long, comparisonType)))
+            .Where(x => x.find != null)
+            .FirstOrDefault() switch
+        {
+            (null, null) => null,
+
+            (NameMapRecord r, string f) => isUpper(f) switch
+            {
+                true => name.Replace(f, r.Short.ToUpper()),
+                false => name.Replace(f, r.Short),
             },
+
+            _ => throw new NotImplementedException()
+        };
+
+        bool isUpper(string value) => value switch
+        {
+            null => false,
+            string v => v.All(x => !char.IsLetter(x) || char.IsUpper(x)),
         };
     }
 }

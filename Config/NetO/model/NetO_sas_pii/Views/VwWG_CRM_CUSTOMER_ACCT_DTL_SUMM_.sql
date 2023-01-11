@@ -3,7 +3,7 @@
 -- -----------------------------------------------------
 
 
-CREATE VIEW [NetO_sas_pii].[VwWG_CRM_CUSTOMER_ACCT_DETAIL_S_]
+CREATE VIEW [NetO_sas_pii].[VwWG_CRM_CUSTOMER_ACCT_DTL_SUMM_]
 AS
    SELECT
       x.[CURRENT_CUSTOMERID] AS [CURRENT_CUSTOMERID],
