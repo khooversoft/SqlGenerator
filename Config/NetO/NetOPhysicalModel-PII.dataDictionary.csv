@@ -1,4 +1,4 @@
-Table Name,Column Name,Column Datatype,Column Null Option,Primary Key,Restricted,PII,Excluded
+Table Name,Column Name,Column Datatype,Column Null Option,Primary Key,Restricted,PII,CreditScore
 ADV_ACTN,LNUM,nchar(20),NOT NULL,Yes,,,
 ADV_ACTN,NOFILE,nchar(1),NULL,,,,
 ADV_ACTN,INSUFFCR,nchar(1),NULL,,,,
