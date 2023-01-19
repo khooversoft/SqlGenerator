@@ -85,6 +85,23 @@ namespace Toolbox.Tools
             throw new ArgumentException(message);
         }
 
+        public static void Assert(
+            Func<bool> test,
+            string message,
+            ILogger? logger = null,
+            [CallerMemberName] string function = "",
+            [CallerFilePath] string path = "",
+            [CallerLineNumber] int lineNumber = 0
+            )
+        {
+            if (test()) return;
+
+            message.NotEmpty(name: message += ", " + FormatCaller(function, path, lineNumber));
+            logger?.LogError(message);
+            throw new ArgumentException(message);
+        }
+
+
         /// <summary>
         /// Verify state
         /// </summary>

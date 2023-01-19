@@ -1,0 +1,95 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+
+CREATE VIEW [NetO_creditScore].[VwGF_TL_POINT_OF_SALE_INFO]
+AS
+   SELECT
+      x.[LNUM],
+      x.[S_REFSC],
+      A0.[Descript] AS [S_REFSC_X],
+      HASHBYTES('SHA2_256', x.[TBDADDR]) AS [TBDADDR],
+      x.[POSFHA],
+      x.[S_PROPTYPE],
+      x.[PROJCLAS],
+      x.[PROJNAME],
+      x.[DPPERCT],
+      x.[HELINE],
+      x.[HECURBAL],
+      x.[S_DOCLVL],
+      A1.[Descript] AS [S_DOCLVL_X],
+      x.[S_LNSTATUS],
+      A2.[Descript] AS [S_LNSTATUS_X],
+      x.[HLTVH],
+      x.[TSWE_INC_EXPECTED],
+      HASHBYTES('SHA2_256', x.[QUAL_TSWE_LOAN]) AS [QUAL_TSWE_LOAN],
+      x.[LNSTATUS_DT],
+      x.[SCHEME_ID],
+      HASHBYTES('SHA2_256', x.[BORRCONTACTMETH]) AS [BORRCONTACTMETH],
+      x.[EST_PROCESSING_DAYS],
+      x.[TABLE_FUNDED_IND],
+      x.[WAIT_WAIVED_BPOC],
+      x.[WAIT_WAIVED_CLOSDT],
+      x.[USE_RESPA_2010],
+      HASHBYTES('SHA2_256', x.[LO_NAME_OVR]) AS [LO_NAME_OVR],
+      x.[LO_NMLS_NUM_OVR],
+      HASHBYTES('SHA2_256', x.[LO_PHONE_OVR]) AS [LO_PHONE_OVR],
+      x.[S_GFE_TIME_ZONE],
+      A3.[Descript] AS [S_GFE_TIME_ZONE_X],
+      x.[ALLOWWITHDRAWLOAN],
+      x.[GFE_INT_RATE_LSC],
+      x.[GFE_INT_RATE_LIR],
+      x.[GFE_SET_CHRG_LSC],
+      x.[GFE_SET_CHRG_LIR],
+      x.[MAXLTV],
+      x.[EMPLOYEE_LOAN_YN],
+      HASHBYTES('SHA2_256', x.[HIGH_PRICE_LOAN_YN]) AS [HIGH_PRICE_LOAN_YN],
+      x.[MONTHLY_ESCROW_TOTAL],
+      HASHBYTES('SHA2_256', x.[REFI_LOAN_ACCT_NBR]) AS [REFI_LOAN_ACCT_NBR],
+      x.[LO_NMLS_NUM],
+      x.[LO_COMP_NMLS_NUM],
+      x.[DU_DISPLAY],
+      HASHBYTES('SHA2_256', x.[LP2_RISK_CLASS]) AS [LP2_RISK_CLASS],
+      x.[AUTO_UW_YN],
+      x.[VA_TOT_RESID_INCOME],
+      x.[PER_DIEM_CALC_BASIS],
+      A4.[Descript] AS [PER_DIEM_CALC_BASIS_X],
+      x.[PER_DIEM],
+      x.[PER_DIEM_INTEREST],
+      x.[ESCROW_CUSHION_MNTH],
+      x.[SPEC_FLOOD_HAZ_AREA],
+      x.[NFIP_FLOOD_ZONE_ID],
+      x.[SCHEME_VERSION],
+      x.[HLTV_ROUNDED],
+      x.[CHECKLOANSTATUS],
+      x.[TOTAL_PROPOSED_HOUSING_EXP],
+      HASHBYTES('SHA2_256', x.[SELLER_OUT_MORT]) AS [SELLER_OUT_MORT],
+      HASHBYTES('SHA2_256', x.[LO_EMAIL_OVR]) AS [LO_EMAIL_OVR],
+      x.[USE_NEW_ESCROW_CALC],
+      x.[SPONSORORIG],
+      HASHBYTES('SHA2_256', x.[ACH_SELECTED]) AS [ACH_SELECTED],
+      x.[REFERREDBY],
+      HASHBYTES('SHA2_256', x.[LO_EMPLOYER_OVR]) AS [LO_EMPLOYER_OVR],
+      HASHBYTES('SHA2_256', x.[LO_ADDR1_OVR]) AS [LO_ADDR1_OVR],
+      x.[LO_CSZ_OVR],
+      x.[TIL_UNDER_DISCL_AMT],
+      HASHBYTES('SHA2_256', x.[LO_COMP_NMLS_NO_OVR]) AS [LO_COMP_NMLS_NO_OVR],
+      x.[ORIGINATOR_NMLS_NO],
+      x.[APP_DATE_REQUIREMENTS_MET],
+      x.[IS_TEMPORARY_FINANCING_LOAN],
+      x.[LO_PROPST_LICNUM_OVR],
+      x.[ADJHCLTV],
+      x.[PRODNAMEPARAM_EMAIL],
+      HASHBYTES('SHA2_256', x.[LP2_RISK_CLASS_OVR]) AS [LP2_RISK_CLASS_OVR],
+      x.[DU_DISPLAY_OVR]
+   FROM [clt_NetO].[GF_TL_POINT_OF_SALE_INFO] x
+      LEFT JOIN [clt_NetO].[SymbolLookup] A0 on x.[S_REFSC] = A0.[DBSYMBOL] AND A0.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A0.[COLUMNNAME] = 'S_REFSC'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A1 on x.[S_DOCLVL] = A1.[DBSYMBOL] AND A1.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A1.[COLUMNNAME] = 'S_DOCLVL'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A2 on x.[S_LNSTATUS] = A2.[DBSYMBOL] AND A2.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A2.[COLUMNNAME] = 'S_LNSTATUS'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A3 on x.[S_GFE_TIME_ZONE] = A3.[DBSYMBOL] AND A3.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A3.[COLUMNNAME] = 'S_GFE_TIME_ZONE'
+      LEFT JOIN [clt_NetO].[SymbolLookup] A4 on x.[PER_DIEM_CALC_BASIS] = A4.[DBSYMBOL] AND A4.[TableName] = 'GF_TL_POINT_OF_SALE_INFO' and A4.[COLUMNNAME] = 'PER_DIEM_CALC_BASIS'
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+      AND NOT EXISTS (SELECT * FROM [clt_NetO].[GF_TS_AUDIT_LOAN_DELETE] i WHERE x.[LNUM] = i.[DELETED_LNUM])
+;

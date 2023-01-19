@@ -11,4 +11,5 @@ namespace Toolbox.Tools;
 public class PatternMatch
 {
     public static bool IsMatch(string matchFormat, string value) => FileSystemName.MatchesSimpleExpression(matchFormat, value);
+    public static bool IsMatch(string matchFormat, string value, bool ignoreCase) => FileSystemName.MatchesSimpleExpression(matchFormat, value, ignoreCase);
 }

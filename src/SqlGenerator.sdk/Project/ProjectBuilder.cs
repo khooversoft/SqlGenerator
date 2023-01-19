@@ -11,30 +11,21 @@ namespace SqlGenerator.sdk.Project;
 public partial class ProjectBuilder
 {
     private readonly ILogger<ProjectBuilder> _logger;
-    private readonly UpdateSourceActivity _updateSourceActivity;
     private readonly ModelActivity _modelActivity;
     private readonly GenerateSqlCodeActivity _generateSqlCodeActivity;
-    private readonly BuildDataDictionaryActivity _buildDataDictionaryActivity;
-    private readonly MergeActivity _mergeActivity;
     private readonly UspLoadTableMetaActivity _uspLoadTableMetaActivity;
     private readonly RawToCultivatedActivity _rawToCultivatedActivity;
 
     public ProjectBuilder(
-        UpdateSourceActivity updateSourceActivity,
         ModelActivity modelActivity,
         GenerateSqlCodeActivity generateSqlCodeActivity,
-        BuildDataDictionaryActivity buildDataDictionaryActivity,
-        MergeActivity mergeActivity,
         UspLoadTableMetaActivity uspLoadTableMetaActivity,
         RawToCultivatedActivity rawToCultivatedActivity,
         ILogger<ProjectBuilder> logger
         )
     {
-        _updateSourceActivity = updateSourceActivity.NotNull();
         _modelActivity = modelActivity.NotNull();
         _generateSqlCodeActivity = generateSqlCodeActivity.NotNull();
-        _buildDataDictionaryActivity = buildDataDictionaryActivity.NotNull();
-        _mergeActivity = mergeActivity.NotNull();
         _uspLoadTableMetaActivity = uspLoadTableMetaActivity.NotNull();
         _rawToCultivatedActivity = rawToCultivatedActivity.NotNull();
         _logger = logger.NotNull();
@@ -54,7 +45,6 @@ public partial class ProjectBuilder
         var context = CreateContext(projectFile, projectOption, sourceFile);
 
         Setup(context);
-        await UpdateSettings(context);
         await BuildModel(context);
         await GenerateSql(context);
         await GenerateUspLoadTable(context);
@@ -70,19 +60,12 @@ public partial class ProjectBuilder
         DirectoryTool.ClearDirectory(context.ModelFolder);
     }
 
-    private async Task UpdateSettings(Context context)
-    {
-        await _updateSourceActivity.Update(context.SourceFile, context.ProjectOption, context.DataDictionaryFile);
-    }
-
     private async Task BuildModel(Context context)
     {
         ConfigFile sourceFile = context switch
         {
-            Context v when v.DataDictionaryFile.Exists() => v.DataDictionaryFile,
             Context v when v.SourceFile.Exists() => v.SourceFile,
-
-            _ => throw new InvalidOperationException(),
+            var v => throw new InvalidOperationException($"Source file={v} does not exist"),
         };
 
         await _modelActivity.Build(sourceFile, context.ProjectOption, context.ModelFile);
@@ -138,14 +121,13 @@ public partial class ProjectBuilder
     {
         var context = projectOption.CreateContext(projectFile, sourceFile);
 
-        var logDetails = new
+        new
         {
             context.ProjectFile,
             context.BuildFolder,
             context.ModelFolder,
             context.SourceFile,
             context.ModelFile,
-            context.DataDictionaryFile,
 
         }.LogProperties("Build properties...", _logger);
 

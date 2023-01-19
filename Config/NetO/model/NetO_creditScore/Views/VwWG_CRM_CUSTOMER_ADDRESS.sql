@@ -1,0 +1,26 @@
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+
+CREATE VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER_ADDRESS]
+AS
+   SELECT
+      x.[CUSTOMER_ID],
+      HASHBYTES('SHA2_256', x.[ADDRESS_TYPE]) AS [ADDRESS_TYPE],
+      HASHBYTES('SHA2_256', x.[ADDR_LINE1]) AS [ADDR_LINE1],
+      HASHBYTES('SHA2_256', x.[ADDR_LINE2]) AS [ADDR_LINE2],
+      HASHBYTES('SHA2_256', x.[ADDR_LINE3]) AS [ADDR_LINE3],
+      HASHBYTES('SHA2_256', x.[ADDR_CITY]) AS [ADDR_CITY],
+      HASHBYTES('SHA2_256', x.[ADDR_STATE]) AS [ADDR_STATE],
+      HASHBYTES('SHA2_256', x.[ADDR_ZIP]) AS [ADDR_ZIP],
+      HASHBYTES('SHA2_256', x.[ADDR_COUNTY]) AS [ADDR_COUNTY],
+      HASHBYTES('SHA2_256', x.[ADDR_COUNTRY]) AS [ADDR_COUNTRY],
+      HASHBYTES('SHA2_256', x.[ADDR_COUNTYCODE]) AS [ADDR_COUNTYCODE],
+      HASHBYTES('SHA2_256', x.[ADDR_UNIT]) AS [ADDR_UNIT],
+      HASHBYTES('SHA2_256', x.[ADDR_PFX]) AS [ADDR_PFX],
+      HASHBYTES('SHA2_256', x.[ADDR_SUFFIX]) AS [ADDR_SUFFIX]
+   FROM [clt_NetO].[WG_CRM_CUSTOMER_ADDRESS] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;

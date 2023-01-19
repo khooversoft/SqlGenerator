@@ -9,20 +9,18 @@ public class ColumnSecurityTests
     [Fact]
     public void GivenNormalSchema_DifferentProtection_ShouldPass()
     {
-        new ColumnModel { PII = false, Restricted = false }.CanShowValue(Security.Unrestricted).Should().BeTrue();
-        new ColumnModel { PII = false, Restricted = false }.CanShowValue(Security.Restricted).Should().BeTrue();
-        new ColumnModel { PII = false, Restricted = false }.CanShowValue(Security.PII).Should().BeTrue();
+        new ColumnModel { Security = new SecurityList() }.Security.CanShow("Unrestricted").Should().BeTrue();
 
-        new ColumnModel { PII = true, Restricted = false }.CanShowValue(Security.Unrestricted).Should().BeFalse();
-        new ColumnModel { PII = true, Restricted = false }.CanShowValue(Security.Restricted).Should().BeFalse();
-        new ColumnModel { PII = true, Restricted = false }.CanShowValue(Security.PII).Should().BeTrue();
+        new ColumnModel { Security = new SecurityList("pii") }.Security.CanShow("Unrestricted").Should().BeFalse();
+        new ColumnModel { Security = new SecurityList("pii") }.Security.CanShow("Restricted").Should().BeFalse();
+        new ColumnModel { Security = new SecurityList("pii") }.Security.CanShow("PII").Should().BeTrue();
 
-        new ColumnModel { PII = false, Restricted = true }.CanShowValue(Security.Unrestricted).Should().BeFalse();
-        new ColumnModel { PII = false, Restricted = true }.CanShowValue(Security.Restricted).Should().BeTrue();
-        new ColumnModel { PII = false, Restricted = true }.CanShowValue(Security.PII).Should().BeFalse();
+        new ColumnModel { Security = new SecurityList("Restricted") }.Security.CanShow("Unrestricted").Should().BeFalse();
+        new ColumnModel { Security = new SecurityList("Restricted") }.Security.CanShow("Restricted").Should().BeTrue();
+        new ColumnModel { Security = new SecurityList("Restricted") }.Security.CanShow("PII").Should().BeFalse();
 
-        new ColumnModel { PII = true, Restricted = true }.CanShowValue(Security.Unrestricted).Should().BeFalse();
-        new ColumnModel { PII = true, Restricted = true }.CanShowValue(Security.Restricted).Should().BeTrue();
-        new ColumnModel { PII = true, Restricted = true }.CanShowValue(Security.PII).Should().BeTrue();
+        new ColumnModel { Security = new SecurityList("pii;Restricted") }.Security.CanShow("Unrestricted").Should().BeFalse();
+        new ColumnModel { Security = new SecurityList("pii;Restricted") }.Security.CanShow("Restricted").Should().BeTrue();
+        new ColumnModel { Security = new SecurityList("pii;Restricted") }.Security.CanShow("PII").Should().BeTrue();
     }
 }

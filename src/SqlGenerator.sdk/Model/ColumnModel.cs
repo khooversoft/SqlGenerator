@@ -1,4 +1,5 @@
 ﻿using DataTools.sdk.Model;
+using Toolbox.Extensions;
 using Toolbox.Tools;
 
 namespace SqlGenerator.sdk.Model;
@@ -6,14 +7,12 @@ namespace SqlGenerator.sdk.Model;
 public sealed record ColumnModel
 {
     public string Name { get; init; } = null!;
-    public Security Security { get; init; }
     public string DataType { get; init; } = null!;
     public bool NotNull { get; init; }
     public bool Private { get; init; }
     public bool PrimaryKey { get; init; }
     public int ColumnIndex { get; init; }
-    public bool PII { get; init; }
-    public bool Restricted { get; init; }
+    public SecurityList Security { get; init; } = null!;
 
 
     public bool Equals(ColumnModel? obj)
@@ -25,9 +24,7 @@ public sealed record ColumnModel
             NotNull == model.NotNull &&
             Private == model.Private &&
             PrimaryKey == model.PrimaryKey &&
-            ColumnIndex == model.ColumnIndex &&
-            PII == model.PII &&
-            Restricted == model.Restricted;
+            ColumnIndex == model.ColumnIndex;
     }
 
     public override int GetHashCode() => HashCode.Combine(Name, Security, DataType, NotNull, Private, PrimaryKey, ColumnIndex);
@@ -40,21 +37,8 @@ public static class ColumnDefinitionExtensions
     {
         subject.NotNull();
         subject.Name.NotEmpty();
-        subject.Security.AssertValid();
         subject.DataType.NotEmpty();
 
         return subject;
-    }
-
-    public static bool CanShowValue(this ColumnModel subject, Security schemaSecurity)
-    {
-        return schemaSecurity switch
-        {
-            Security.Unrestricted when !subject.PII && !subject.Restricted => true,
-            Security.Restricted when !subject.PII || subject.Restricted => true,
-            Security.PII when subject.PII || !subject.Restricted => true,
-
-            _ => false,
-        };
     }
 }

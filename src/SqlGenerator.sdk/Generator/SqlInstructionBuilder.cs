@@ -46,7 +46,7 @@ public class SqlInstructionBuilder
         list += _physicalModel.Schemas.Select(x => BuildSchemaModel(x, buildType));
         list += InstructionType.PopFolder;
 
-        foreach (var schema in _physicalModel.Schemas.Where(x => x.Security.ForTable()))
+        foreach (var schema in _physicalModel.Schemas.Where(x => x.ForTable()))
         {
             list += (InstructionType.PushFolder, schema.Name);
             list += (InstructionType.PushFolder, "Tables");
@@ -59,7 +59,7 @@ public class SqlInstructionBuilder
             list += InstructionType.PopFolder;
         }
 
-        foreach (SchemaModel schema in _physicalModel.Schemas.Where(x => x.Security.ForView()))
+        foreach (SchemaModel schema in _physicalModel.Schemas.Where(x => x.ForView()))
         {
             list += (InstructionType.PushFolder, schema.Name);
             list += (InstructionType.PushFolder, "Views");

@@ -34,7 +34,7 @@ async Task<int> Run(string[] args)
             container.GetRequiredService<MaskCommand>(),
             container.GetRequiredService<ExtractCommand>(),
             container.GetRequiredService<MergeCommand>(),
-            container.GetRequiredService<UpdateCommand>(),
+            //container.GetRequiredService<UpdateCommand>(),
             container.GetRequiredService<TestCommand>(),
         };
 
@@ -72,13 +72,13 @@ ServiceProvider BuildContainer()
     service.AddSingleton<MaskActivity>();
     service.AddSingleton<ExtractActivity>();
     service.AddSingleton<MergeActivity>();
-    service.AddSingleton<UpdateActivity>();
+    //service.AddSingleton<UpdateActivity>();
     service.AddSingleton<TestActivity>();
 
     service.AddSingleton<MaskCommand>();
     service.AddSingleton<ExtractCommand>();
     service.AddSingleton<MergeCommand>();
-    service.AddSingleton<UpdateCommand>();
+    //service.AddSingleton<UpdateCommand>();
     service.AddSingleton<TestCommand>();
 
     return service.BuildServiceProvider();

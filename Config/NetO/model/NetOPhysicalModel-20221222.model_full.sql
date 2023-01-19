@@ -12,9 +12,9 @@ END
 GO
 
 
-IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'NetO_restricted')
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'NetO_creditScore')
 BEGIN
-  EXEC( 'CREATE SCHEMA NetO_restricted;' )
+  EXEC( 'CREATE SCHEMA NetO_creditScore;' )
 END
 GO
 
@@ -33,9 +33,9 @@ END
 GO
 
 
-IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'NetO_sas_restricted')
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'NetO_sas_creditScore')
 BEGIN
-  EXEC( 'CREATE SCHEMA NetO_sas_restricted;' )
+  EXEC( 'CREATE SCHEMA NetO_sas_creditScore;' )
 END
 GO
 
@@ -24504,14 +24504,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwACTIVITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwACTIVITY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwACTIVITY]
+   DROP VIEW [NetO_creditScore].[VwACTIVITY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwACTIVITY]
+CREATE VIEW [NetO_creditScore].[VwACTIVITY]
 AS
    SELECT
       x.[S_ACTIVI],
@@ -24532,14 +24532,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwADV_ACTN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwADV_ACTN')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwADV_ACTN]
+   DROP VIEW [NetO_creditScore].[VwADV_ACTN]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwADV_ACTN]
+CREATE VIEW [NetO_creditScore].[VwADV_ACTN]
 AS
    SELECT
       x.[LNUM],
@@ -24653,14 +24653,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwAPPREQ')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwAPPREQ')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwAPPREQ]
+   DROP VIEW [NetO_creditScore].[VwAPPREQ]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwAPPREQ]
+CREATE VIEW [NetO_creditScore].[VwAPPREQ]
 AS
    SELECT
       x.[LNUM],
@@ -24748,14 +24748,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwARMINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwARMINFO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwARMINFO]
+   DROP VIEW [NetO_creditScore].[VwARMINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwARMINFO]
+CREATE VIEW [NetO_creditScore].[VwARMINFO]
 AS
    SELECT
       x.[LNUM],
@@ -24856,14 +24856,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwASSETS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwASSETS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwASSETS]
+   DROP VIEW [NetO_creditScore].[VwASSETS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwASSETS]
+CREATE VIEW [NetO_creditScore].[VwASSETS]
 AS
    SELECT
       x.[LNUM],
@@ -24928,14 +24928,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwASSOCDOCS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwASSOCDOCS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwASSOCDOCS]
+   DROP VIEW [NetO_creditScore].[VwASSOCDOCS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwASSOCDOCS]
+CREATE VIEW [NetO_creditScore].[VwASSOCDOCS]
 AS
    SELECT
       x.[S_SUNDCON],
@@ -24955,14 +24955,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwBORDEP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwBORDEP')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwBORDEP]
+   DROP VIEW [NetO_creditScore].[VwBORDEP]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwBORDEP]
+CREATE VIEW [NetO_creditScore].[VwBORDEP]
 AS
    SELECT
       x.[LNUM],
@@ -24991,14 +24991,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwBORROWER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwBORROWER')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwBORROWER]
+   DROP VIEW [NetO_creditScore].[VwBORROWER]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwBORROWER]
+CREATE VIEW [NetO_creditScore].[VwBORROWER]
 AS
    SELECT
       x.[LNUM],
@@ -25229,14 +25229,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwCONSREFI')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwCONSREFI')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwCONSREFI]
+   DROP VIEW [NetO_creditScore].[VwCONSREFI]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwCONSREFI]
+CREATE VIEW [NetO_creditScore].[VwCONSREFI]
 AS
    SELECT
       x.[LNUM],
@@ -25291,14 +25291,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwDATES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwDATES')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwDATES]
+   DROP VIEW [NetO_creditScore].[VwDATES]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwDATES]
+CREATE VIEW [NetO_creditScore].[VwDATES]
 AS
    SELECT
       x.[LNUM],
@@ -25401,14 +25401,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwDECLRTN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwDECLRTN')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwDECLRTN]
+   DROP VIEW [NetO_creditScore].[VwDECLRTN]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwDECLRTN]
+CREATE VIEW [NetO_creditScore].[VwDECLRTN]
 AS
    SELECT
       x.[LNUM],
@@ -25521,14 +25521,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwDELIVERY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwDELIVERY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwDELIVERY]
+   DROP VIEW [NetO_creditScore].[VwDELIVERY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwDELIVERY]
+CREATE VIEW [NetO_creditScore].[VwDELIVERY]
 AS
    SELECT
       x.[LNUM],
@@ -25695,14 +25695,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwDENIAL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwDENIAL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwDENIAL]
+   DROP VIEW [NetO_creditScore].[VwDENIAL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwDENIAL]
+CREATE VIEW [NetO_creditScore].[VwDENIAL]
 AS
    SELECT
       x.[LNUM],
@@ -25752,14 +25752,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwDOWNPYMT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwDOWNPYMT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwDOWNPYMT]
+   DROP VIEW [NetO_creditScore].[VwDOWNPYMT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwDOWNPYMT]
+CREATE VIEW [NetO_creditScore].[VwDOWNPYMT]
 AS
    SELECT
       x.[LNUM],
@@ -25827,14 +25827,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwDTLTRAN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwDTLTRAN')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwDTLTRAN]
+   DROP VIEW [NetO_creditScore].[VwDTLTRAN]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwDTLTRAN]
+CREATE VIEW [NetO_creditScore].[VwDTLTRAN]
 AS
    SELECT
       x.[LNUM],
@@ -25872,14 +25872,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwFEEVALS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwFEEVALS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwFEEVALS]
+   DROP VIEW [NetO_creditScore].[VwFEEVALS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwFEEVALS]
+CREATE VIEW [NetO_creditScore].[VwFEEVALS]
 AS
    SELECT
       x.[LNUM],
@@ -25977,14 +25977,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwFIELD_HISTORY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwFIELD_HISTORY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwFIELD_HISTORY]
+   DROP VIEW [NetO_creditScore].[VwFIELD_HISTORY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwFIELD_HISTORY]
+CREATE VIEW [NetO_creditScore].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM],
@@ -26005,14 +26005,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwFLOOD')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwFLOOD')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwFLOOD]
+   DROP VIEW [NetO_creditScore].[VwFLOOD]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwFLOOD]
+CREATE VIEW [NetO_creditScore].[VwFLOOD]
 AS
    SELECT
       x.[LNUM],
@@ -26047,14 +26047,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_AFFORDABILITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_AFFORDABILITY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_AFFORDABILITY]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_AFFORDABILITY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_AFFORDABILITY]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_AFFORDABILITY]
 AS
    SELECT
       x.[LNUM],
@@ -26084,14 +26084,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_DATES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_DATES')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_DATES]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_DATES]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_DATES]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_DATES]
 AS
    SELECT
       x.[LNUM],
@@ -26216,14 +26216,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_DATES3')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_DATES3')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_DATES3]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_DATES3]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_DATES3]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_DATES3]
 AS
    SELECT
       x.[LNUM],
@@ -26275,14 +26275,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_HOUSING_PROPSD')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_HOUSING_PROPSD')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_HOUSING_PROPSD]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_HOUSING_PROPSD]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_HOUSING_PROPSD]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_HOUSING_PROPSD]
 AS
    SELECT
       x.[LNUM],
@@ -26333,14 +26333,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_LOAN_CONTACTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_LOAN_CONTACTS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_LOAN_CONTACTS]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_LOAN_CONTACTS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_LOAN_CONTACTS]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_LOAN_CONTACTS]
 AS
    SELECT
       x.[LNUM],
@@ -26464,14 +26464,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_LOAN_CONTACTS2')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_LOAN_CONTACTS2')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_LOAN_CONTACTS2]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_LOAN_CONTACTS2]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_LOAN_CONTACTS2]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_LOAN_CONTACTS2]
 AS
    SELECT
       x.[LNUM],
@@ -26600,14 +26600,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_LOAN_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_LOAN_DATA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_LOAN_DATA]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_LOAN_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_LOAN_DATA]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_LOAN_DATA]
 AS
    SELECT
       x.[LNUM],
@@ -26748,14 +26748,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_LOAN_STATUS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_LOAN_STATUS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_LOAN_STATUS]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_LOAN_STATUS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_LOAN_STATUS]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_LOAN_STATUS]
 AS
    SELECT
       x.[LNUM],
@@ -26783,14 +26783,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_MISC_CK')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_MISC_CK')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_MISC_CK]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_MISC_CK]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_MISC_CK]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_MISC_CK]
 AS
    SELECT
       x.[LNUM],
@@ -26826,14 +26826,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_PMT_STREAMS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_PMT_STREAMS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_PMT_STREAMS]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_PMT_STREAMS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_PMT_STREAMS]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_PMT_STREAMS]
 AS
    SELECT
       x.[LNUM],
@@ -26864,14 +26864,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_PNP_IPG_DETAIL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_PNP_IPG_DETAIL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_PNP_IPG_DETAIL]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_PNP_IPG_DETAIL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_PNP_IPG_DETAIL]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_PNP_IPG_DETAIL]
 AS
    SELECT
       x.[LNUM],
@@ -26970,14 +26970,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_POINT_OF_SALE_INFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_POINT_OF_SALE_INFO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_POINT_OF_SALE_INFO]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_POINT_OF_SALE_INFO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_POINT_OF_SALE_INFO]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_POINT_OF_SALE_INFO]
 AS
    SELECT
       x.[LNUM],
@@ -27073,14 +27073,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_PORTAL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_PORTAL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_PORTAL]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_PORTAL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_PORTAL]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_PORTAL]
 AS
    SELECT
       x.[LNUM],
@@ -27100,14 +27100,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_TRANSOVR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_TRANSOVR')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_TRANSOVR]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_TRANSOVR]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_TRANSOVR]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_TRANSOVR]
 AS
    SELECT
       x.[LNUM],
@@ -27134,14 +27134,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_UW_4')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_UW_4')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_UW_4]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_UW_4]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_UW_4]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_UW_4]
 AS
    SELECT
       x.[LNUM],
@@ -27193,14 +27193,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TL_UWAPPREXT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TL_UWAPPREXT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TL_UWAPPREXT]
+   DROP VIEW [NetO_creditScore].[VwGF_TL_UWAPPREXT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TL_UWAPPREXT]
+CREATE VIEW [NetO_creditScore].[VwGF_TL_UWAPPREXT]
 AS
    SELECT
       x.[LNUM],
@@ -27253,14 +27253,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_EQ_RES_EDAS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLB_EQ_RES_EDAS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLB_EQ_RES_EDAS]
+   DROP VIEW [NetO_creditScore].[VwGF_TLB_EQ_RES_EDAS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLB_EQ_RES_EDAS]
+CREATE VIEW [NetO_creditScore].[VwGF_TLB_EQ_RES_EDAS]
 AS
    SELECT
       x.[LNUM],
@@ -27292,14 +27292,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_EQ_RES_SUMMARY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLB_EQ_RES_SUMMARY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLB_EQ_RES_SUMMARY]
+   DROP VIEW [NetO_creditScore].[VwGF_TLB_EQ_RES_SUMMARY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLB_EQ_RES_SUMMARY]
+CREATE VIEW [NetO_creditScore].[VwGF_TLB_EQ_RES_SUMMARY]
 AS
    SELECT
       x.[LNUM],
@@ -27346,14 +27346,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLB_EX_RES_PROF_SUM]
+   DROP VIEW [NetO_creditScore].[VwGF_TLB_EX_RES_PROF_SUM]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLB_EX_RES_PROF_SUM]
+CREATE VIEW [NetO_creditScore].[VwGF_TLB_EX_RES_PROF_SUM]
 AS
    SELECT
       x.[LNUM],
@@ -27396,14 +27396,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLB_EX_RES_TRENDS_SUM]
+   DROP VIEW [NetO_creditScore].[VwGF_TLB_EX_RES_TRENDS_SUM]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLB_EX_RES_TRENDS_SUM]
+CREATE VIEW [NetO_creditScore].[VwGF_TLB_EX_RES_TRENDS_SUM]
 AS
    SELECT
       x.[LNUM],
@@ -27430,14 +27430,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_HOUSING_PRSNT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLB_HOUSING_PRSNT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLB_HOUSING_PRSNT]
+   DROP VIEW [NetO_creditScore].[VwGF_TLB_HOUSING_PRSNT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLB_HOUSING_PRSNT]
+CREATE VIEW [NetO_creditScore].[VwGF_TLB_HOUSING_PRSNT]
 AS
    SELECT
       x.[LNUM],
@@ -27472,14 +27472,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_MAILING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLB_MAILING')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLB_MAILING]
+   DROP VIEW [NetO_creditScore].[VwGF_TLB_MAILING]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLB_MAILING]
+CREATE VIEW [NetO_creditScore].[VwGF_TLB_MAILING]
 AS
    SELECT
       x.[LNUM],
@@ -27511,14 +27511,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_CRED_SUM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLB_TU_RES_CRED_SUM')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLB_TU_RES_CRED_SUM]
+   DROP VIEW [NetO_creditScore].[VwGF_TLB_TU_RES_CRED_SUM]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLB_TU_RES_CRED_SUM]
+CREATE VIEW [NetO_creditScore].[VwGF_TLB_TU_RES_CRED_SUM]
 AS
    SELECT
       x.[LNUM],
@@ -27550,14 +27550,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLB_TU_RES_SCORING]
+   DROP VIEW [NetO_creditScore].[VwGF_TLB_TU_RES_SCORING]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLB_TU_RES_SCORING]
+CREATE VIEW [NetO_creditScore].[VwGF_TLB_TU_RES_SCORING]
 AS
    SELECT
       x.[LNUM],
@@ -27594,14 +27594,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLB_TU_RES_SUBJ_INFO]
+   DROP VIEW [NetO_creditScore].[VwGF_TLB_TU_RES_SUBJ_INFO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLB_TU_RES_SUBJ_INFO]
+CREATE VIEW [NetO_creditScore].[VwGF_TLB_TU_RES_SUBJ_INFO]
 AS
    SELECT
       x.[LNUM],
@@ -27639,14 +27639,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBC_EQ_RES_COLLECT]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBC_EQ_RES_COLLECT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBC_EQ_RES_COLLECT]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBC_EQ_RES_COLLECT]
 AS
    SELECT
       x.[LNUM],
@@ -27685,14 +27685,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBC_EX_RES_INQUIRY]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBC_EX_RES_INQUIRY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBC_EX_RES_INQUIRY]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBC_EX_RES_INQUIRY]
 AS
    SELECT
       x.[LNUM],
@@ -27720,14 +27720,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_GEOCODE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_GEOCODE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBC_TU_RES_GEOCODE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBC_TU_RES_GEOCODE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBC_TU_RES_GEOCODE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBC_TU_RES_GEOCODE]
 AS
    SELECT
       x.[LNUM],
@@ -27760,14 +27760,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_PUB_REC')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_PUB_REC')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBC_TU_RES_PUB_REC]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBC_TU_RES_PUB_REC]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBC_TU_RES_PUB_REC]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBC_TU_RES_PUB_REC]
 AS
    SELECT
       x.[LNUM],
@@ -27804,14 +27804,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_TRADELINE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_TRADELINE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBC_TU_RES_TRADELINE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBC_TU_RES_TRADELINE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBC_TU_RES_TRADELINE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBC_TU_RES_TRADELINE]
 AS
    SELECT
       x.[LNUM],
@@ -27875,14 +27875,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_ADDITIONALDATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_ADDITIONALDATA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_ADDITIONALDATA]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_ADDITIONALDATA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_ADDITIONALDATA]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_ADDITIONALDATA]
 AS
    SELECT
       x.[LNUM],
@@ -27975,14 +27975,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_ALIAS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_ALIAS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_ALIAS]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_ALIAS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_ALIAS]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_ALIAS]
 AS
    SELECT
       x.[LNUM],
@@ -28011,14 +28011,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_ASSIST_PROGRAMS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_ASSIST_PROGRAMS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_ASSIST_PROGRAMS]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_ASSIST_PROGRAMS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_ASSIST_PROGRAMS]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_ASSIST_PROGRAMS]
 AS
    SELECT
       x.[LNUM],
@@ -28058,14 +28058,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_BORROWERID')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_BORROWERID')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_BORROWERID]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_BORROWERID]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_BORROWERID]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_BORROWERID]
 AS
    SELECT
       x.[LNUM],
@@ -28096,14 +28096,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_CREDIT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_CREDIT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_CREDIT]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_CREDIT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_CREDIT]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_CREDIT]
 AS
    SELECT
       x.[LNUM],
@@ -28129,14 +28129,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_CREDIT_SCORE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_CREDIT_SCORE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_CREDIT_SCORE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_CREDIT_SCORE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_CREDIT_SCORE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_CREDIT_SCORE]
 AS
    SELECT
       x.[LNUM],
@@ -28172,14 +28172,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_DEPENDENTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_DEPENDENTS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_DEPENDENTS]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_DEPENDENTS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_DEPENDENTS]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_DEPENDENTS]
 AS
    SELECT
       x.[LNUM],
@@ -28203,14 +28203,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_EMPLOYER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_EMPLOYER')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_EMPLOYER]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_EMPLOYER]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_EMPLOYER]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_EMPLOYER]
 AS
    SELECT
       x.[LNUM],
@@ -28260,14 +28260,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_ETHNICITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_ETHNICITY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_ETHNICITY]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_ETHNICITY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_ETHNICITY]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_ETHNICITY]
 AS
    SELECT
       x.[LNUM],
@@ -28290,14 +28290,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_HOUSNG_PRSNT_OTH')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_HOUSNG_PRSNT_OTH')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_HOUSNG_PRSNT_OTH]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_HOUSNG_PRSNT_OTH]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_HOUSNG_PRSNT_OTH]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_HOUSNG_PRSNT_OTH]
 AS
    SELECT
       x.[LNUM],
@@ -28318,14 +28318,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_RACE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_RACE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_RACE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_RACE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_RACE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_RACE]
 AS
    SELECT
       x.[LNUM],
@@ -28348,14 +28348,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_RAW_SCORES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_RAW_SCORES')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_RAW_SCORES]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_RAW_SCORES]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_RAW_SCORES]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_RAW_SCORES]
 AS
    SELECT
       x.[LNUM],
@@ -28388,14 +28388,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_SUBETHNICITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_SUBETHNICITY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_SUBETHNICITY]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_SUBETHNICITY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_SUBETHNICITY]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_SUBETHNICITY]
 AS
    SELECT
       x.[LNUM],
@@ -28418,14 +28418,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLBR_SUBRACE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLBR_SUBRACE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLBR_SUBRACE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLBR_SUBRACE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLBR_SUBRACE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLBR_SUBRACE]
 AS
    SELECT
       x.[LNUM],
@@ -28449,14 +28449,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_CREDIT_RESPONSE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_CREDIT_RESPONSE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_CREDIT_RESPONSE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_CREDIT_RESPONSE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_CREDIT_RESPONSE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_CREDIT_RESPONSE]
 AS
    SELECT
       x.[LNUM],
@@ -28494,14 +28494,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_DISBURSEMENTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_DISBURSEMENTS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_DISBURSEMENTS]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_DISBURSEMENTS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_DISBURSEMENTS]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_DISBURSEMENTS]
 AS
    SELECT
       x.[LNUM],
@@ -28595,14 +28595,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_DISCL_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_DISCL_DATA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_DISCL_DATA]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_DISCL_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_DISCL_DATA]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_DISCL_DATA]
 AS
    SELECT
       x.[LNUM],
@@ -28635,14 +28635,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_FLOOD_DETMN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_FLOOD_DETMN')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_FLOOD_DETMN]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_FLOOD_DETMN]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_FLOOD_DETMN]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_FLOOD_DETMN]
 AS
    SELECT
       x.[LNUM],
@@ -28697,14 +28697,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_FUNDITEM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_FUNDITEM')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_FUNDITEM]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_FUNDITEM]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_FUNDITEM]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_FUNDITEM]
 AS
    SELECT
       x.[LNUM],
@@ -28734,14 +28734,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_INSURANCE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_INSURANCE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_INSURANCE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_INSURANCE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_INSURANCE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_INSURANCE]
 AS
    SELECT
       x.[LNUM],
@@ -28824,14 +28824,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_PYMT_HIST')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_PYMT_HIST')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_PYMT_HIST]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_PYMT_HIST]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_PYMT_HIST]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_PYMT_HIST]
 AS
    SELECT
       x.[LNUM],
@@ -28863,14 +28863,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_REG_O')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_REG_O')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_REG_O]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_REG_O]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_REG_O]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_REG_O]
 AS
    SELECT
       x.[LNUM],
@@ -28902,14 +28902,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_REOWNED_BORROWERS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_REOWNED_BORROWERS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_REOWNED_BORROWERS]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_REOWNED_BORROWERS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_REOWNED_BORROWERS]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_REOWNED_BORROWERS]
 AS
    SELECT
       x.[LNUM],
@@ -28929,14 +28929,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_REQ_CREDIT_DATA]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_REQ_CREDIT_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_REQ_CREDIT_DATA]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_REQ_CREDIT_DATA]
 AS
    SELECT
       x.[LNUM],
@@ -28979,14 +28979,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_LIAB_REP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_LIAB_REP')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_REQ_CREDIT_LIAB_REP]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_REQ_CREDIT_LIAB_REP]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_REQ_CREDIT_LIAB_REP]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_REQ_CREDIT_LIAB_REP]
 AS
    SELECT
       x.[LNUM],
@@ -29011,14 +29011,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_REQ_NADA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_REQ_NADA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_REQ_NADA]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_REQ_NADA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_REQ_NADA]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_REQ_NADA]
 AS
    SELECT
       x.[LNUM],
@@ -29043,14 +29043,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_REQUESTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_REQUESTS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_REQUESTS]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_REQUESTS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_REQUESTS]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_REQUESTS]
 AS
    SELECT
       x.[LNUM],
@@ -29068,14 +29068,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CRD_FILE_ALIAS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CRD_FILE_ALIAS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_RES_CRD_FILE_ALIAS]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_RES_CRD_FILE_ALIAS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_RES_CRD_FILE_ALIAS]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_RES_CRD_FILE_ALIAS]
 AS
    SELECT
       x.[LNUM],
@@ -29101,14 +29101,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_FILE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_FILE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_RES_CREDIT_FILE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_RES_CREDIT_FILE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_RES_CREDIT_FILE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_RES_CREDIT_FILE]
 AS
    SELECT
       x.[LNUM],
@@ -29137,14 +29137,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_INQUIRY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_INQUIRY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_RES_CREDIT_INQUIRY]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_RES_CREDIT_INQUIRY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_RES_CREDIT_INQUIRY]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_RES_CREDIT_INQUIRY]
 AS
    SELECT
       x.[LNUM],
@@ -29183,14 +29183,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_LIABILITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_LIABILITY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_RES_CREDIT_LIABILITY]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_RES_CREDIT_LIABILITY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_RES_CREDIT_LIABILITY]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_RES_CREDIT_LIABILITY]
 AS
    SELECT
       x.[LNUM],
@@ -29290,14 +29290,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_SUMMARY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_SUMMARY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_RES_CREDIT_SUMMARY]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_RES_CREDIT_SUMMARY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_RES_CREDIT_SUMMARY]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_RES_CREDIT_SUMMARY]
 AS
    SELECT
       x.[LNUM],
@@ -29408,14 +29408,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_NADA_VAL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_NADA_VAL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_RES_NADA_VAL]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_RES_NADA_VAL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_RES_NADA_VAL]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_RES_NADA_VAL]
 AS
    SELECT
       x.[LNUM],
@@ -29472,14 +29472,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_TITLE_TAX')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_TITLE_TAX')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_RES_TITLE_TAX]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_RES_TITLE_TAX]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_RES_TITLE_TAX]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_RES_TITLE_TAX]
 AS
    SELECT
       x.[LNUM],
@@ -29501,14 +29501,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_RESPONSE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_RESPONSE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_RESPONSE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_RESPONSE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_RESPONSE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_RESPONSE]
 AS
    SELECT
       x.[LNUM],
@@ -29531,14 +29531,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_RSP_LP_LOANFDBCK')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_RSP_LP_LOANFDBCK')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_RSP_LP_LOANFDBCK]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_RSP_LP_LOANFDBCK]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_RSP_LP_LOANFDBCK]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_RSP_LP_LOANFDBCK]
 AS
    SELECT
       x.[LNUM],
@@ -29645,14 +29645,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_SUBJPRP_INSURANCE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_SUBJPRP_INSURANCE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_SUBJPRP_INSURANCE]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_SUBJPRP_INSURANCE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_SUBJPRP_INSURANCE]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_SUBJPRP_INSURANCE]
 AS
    SELECT
       x.[LNUM],
@@ -29669,14 +29669,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_SUBJPRP_TAX')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_SUBJPRP_TAX')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_SUBJPRP_TAX]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_SUBJPRP_TAX]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_SUBJPRP_TAX]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_SUBJPRP_TAX]
 AS
    SELECT
       x.[LNUM],
@@ -29693,14 +29693,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_TAXITEMS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_TAXITEMS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_TAXITEMS]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_TAXITEMS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_TAXITEMS]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_TAXITEMS]
 AS
    SELECT
       x.[LNUM],
@@ -29755,14 +29755,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLR_TL_REC_DOC_ROLES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLR_TL_REC_DOC_ROLES')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLR_TL_REC_DOC_ROLES]
+   DROP VIEW [NetO_creditScore].[VwGF_TLR_TL_REC_DOC_ROLES]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLR_TL_REC_DOC_ROLES]
+CREATE VIEW [NetO_creditScore].[VwGF_TLR_TL_REC_DOC_ROLES]
 AS
    SELECT
       x.[LNUM],
@@ -29789,14 +29789,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TLRR_FUNDDISB')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TLRR_FUNDDISB')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TLRR_FUNDDISB]
+   DROP VIEW [NetO_creditScore].[VwGF_TLRR_FUNDDISB]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TLRR_FUNDDISB]
+CREATE VIEW [NetO_creditScore].[VwGF_TLRR_FUNDDISB]
 AS
    SELECT
       x.[LNUM],
@@ -29817,14 +29817,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_AUDIT_LOAN_DELETE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_AUDIT_LOAN_DELETE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_AUDIT_LOAN_DELETE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM],
@@ -29844,14 +29844,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_AUDIT_USER_LOCK')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_AUDIT_USER_LOCK')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_AUDIT_USER_LOCK]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_AUDIT_USER_LOCK]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_AUDIT_USER_LOCK]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_AUDIT_USER_LOCK]
 AS
    SELECT
       x.[UL_ID],
@@ -29876,14 +29876,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_CMS_APPROVAL_DTL]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_CMS_APPROVAL_DTL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_CMS_APPROVAL_DTL]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_CMS_APPROVAL_DTL]
 AS
    SELECT
       x.[CID],
@@ -29904,14 +29904,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_ADDRESS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_ADDRESS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_ADDRESS]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_ADDRESS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_ADDRESS]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_ADDRESS]
 AS
    SELECT
       x.[CID],
@@ -29941,14 +29941,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_EMAIL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_EMAIL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_EMAIL]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_EMAIL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_EMAIL]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_EMAIL]
 AS
    SELECT
       x.[CID],
@@ -29967,14 +29967,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_INFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_INFO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_INFO]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_INFO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_INFO]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_INFO]
 AS
    SELECT
       x.[CID],
@@ -30011,14 +30011,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_PHONE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_PHONE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_PHONE]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_PHONE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_PHONE]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_PHONE]
 AS
    SELECT
       x.[CID],
@@ -30038,14 +30038,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_TYPE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_TYPE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_TYPE]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_TYPE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_CMS_CONTACT_TYPE]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_CMS_CONTACT_TYPE]
 AS
    SELECT
       x.[CID],
@@ -30062,14 +30062,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_INFOBYTYPE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_INFOBYTYPE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_CMS_INFOBYTYPE]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_CMS_INFOBYTYPE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_CMS_INFOBYTYPE]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_CMS_INFOBYTYPE]
 AS
    SELECT
       x.[CID],
@@ -30111,14 +30111,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_INDEX_VALUE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_INDEX_VALUE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_INDEX_VALUE]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_INDEX_VALUE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_INDEX_VALUE]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_INDEX_VALUE]
 AS
    SELECT
       x.[S_INDEX],
@@ -30137,14 +30137,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_INVESTOR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_INVESTOR')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_PNP_IPG_INVESTOR]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_PNP_IPG_INVESTOR]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_PNP_IPG_INVESTOR]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_PNP_IPG_INVESTOR]
 AS
    SELECT
       HASHBYTES('SHA2_256', x.[INVESTORCODE]) AS [INVESTORCODE],
@@ -30169,14 +30169,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PRICING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PRICING')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_PNP_IPG_PRICING]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_PNP_IPG_PRICING]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_PNP_IPG_PRICING]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_PNP_IPG_PRICING]
 AS
    SELECT
       x.[PRICING_GROUP_CODE],
@@ -30195,14 +30195,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PRODUCT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PRODUCT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_PNP_IPG_PRODUCT]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_PNP_IPG_PRODUCT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_PNP_IPG_PRODUCT]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_PNP_IPG_PRODUCT]
 AS
    SELECT
       x.[PRODUCTCODE],
@@ -30222,14 +30222,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PROGRAM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PROGRAM')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_PNP_IPG_PROGRAM]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_PNP_IPG_PROGRAM]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_PNP_IPG_PROGRAM]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_PNP_IPG_PROGRAM]
 AS
    SELECT
       x.[PROGRAMCODE],
@@ -30248,14 +30248,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_PRICE_OFERING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_PRICE_OFERING')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_PNP_PRICE_OFERING]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_PNP_PRICE_OFERING]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_PNP_PRICE_OFERING]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_PNP_PRICE_OFERING]
 AS
    SELECT
       x.[PA_DBCODE],
@@ -30271,14 +30271,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_WF_GROUP_USER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_WF_GROUP_USER')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_WF_GROUP_USER]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_WF_GROUP_USER]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_WF_GROUP_USER]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_WF_GROUP_USER]
 AS
    SELECT
       x.[S_PROC_GROUP],
@@ -30301,14 +30301,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_WF_PROCESS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_WF_PROCESS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_WF_PROCESS]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_WF_PROCESS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_WF_PROCESS]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_WF_PROCESS]
 AS
    SELECT
       x.[S_PROCESS],
@@ -30326,14 +30326,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_WF_PROCESS_MODEL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_WF_PROCESS_MODEL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_WF_PROCESS_MODEL]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_WF_PROCESS_MODEL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_WF_PROCESS_MODEL]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_WF_PROCESS_MODEL]
 AS
    SELECT
       x.[S_PROCESS_MODEL],
@@ -30351,14 +30351,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TS_WF_WORKTYPE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TS_WF_WORKTYPE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TS_WF_WORKTYPE]
+   DROP VIEW [NetO_creditScore].[VwGF_TS_WF_WORKTYPE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TS_WF_WORKTYPE]
+CREATE VIEW [NetO_creditScore].[VwGF_TS_WF_WORKTYPE]
 AS
    SELECT
       x.[S_WORKTYPE],
@@ -30389,14 +30389,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TSR_PNP_IPG_BASE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TSR_PNP_IPG_BASE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TSR_PNP_IPG_BASE]
+   DROP VIEW [NetO_creditScore].[VwGF_TSR_PNP_IPG_BASE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TSR_PNP_IPG_BASE]
+CREATE VIEW [NetO_creditScore].[VwGF_TSR_PNP_IPG_BASE]
 AS
    SELECT
       HASHBYTES('SHA2_256', x.[INVESTOR_CODE]) AS [INVESTOR_CODE],
@@ -30528,14 +30528,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TW_WF_ACTION_MGR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TW_WF_ACTION_MGR')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TW_WF_ACTION_MGR]
+   DROP VIEW [NetO_creditScore].[VwGF_TW_WF_ACTION_MGR]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TW_WF_ACTION_MGR]
+CREATE VIEW [NetO_creditScore].[VwGF_TW_WF_ACTION_MGR]
 AS
    SELECT
       x.[ACTION_ID],
@@ -30574,14 +30574,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TW_WF_PROC_MODEL_MGR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TW_WF_PROC_MODEL_MGR')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TW_WF_PROC_MODEL_MGR]
+   DROP VIEW [NetO_creditScore].[VwGF_TW_WF_PROC_MODEL_MGR]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TW_WF_PROC_MODEL_MGR]
+CREATE VIEW [NetO_creditScore].[VwGF_TW_WF_PROC_MODEL_MGR]
 AS
    SELECT
       x.[PROC_MDL_MGR_ID],
@@ -30612,14 +30612,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGF_TW_WF_PROCESS_MGR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGF_TW_WF_PROCESS_MGR')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGF_TW_WF_PROCESS_MGR]
+   DROP VIEW [NetO_creditScore].[VwGF_TW_WF_PROCESS_MGR]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGF_TW_WF_PROCESS_MGR]
+CREATE VIEW [NetO_creditScore].[VwGF_TW_WF_PROCESS_MGR]
 AS
    SELECT
       x.[PROC_MGR_ID],
@@ -30649,14 +30649,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGFXVARTEXTMAP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGFXVARTEXTMAP')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGFXVARTEXTMAP]
+   DROP VIEW [NetO_creditScore].[VwGFXVARTEXTMAP]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGFXVARTEXTMAP]
+CREATE VIEW [NetO_creditScore].[VwGFXVARTEXTMAP]
 AS
    SELECT
       x.[TABLENAME],
@@ -30682,14 +30682,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGSSGRP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGSSGRP')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGSSGRP]
+   DROP VIEW [NetO_creditScore].[VwGSSGRP]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGSSGRP]
+CREATE VIEW [NetO_creditScore].[VwGSSGRP]
 AS
    SELECT
       x.[GRPID],
@@ -30710,14 +30710,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGSSMEM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGSSMEM')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGSSMEM]
+   DROP VIEW [NetO_creditScore].[VwGSSMEM]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGSSMEM]
+CREATE VIEW [NetO_creditScore].[VwGSSMEM]
 AS
    SELECT
       x.[GRPID],
@@ -30732,14 +30732,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwGSSUSR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwGSSUSR')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwGSSUSR]
+   DROP VIEW [NetO_creditScore].[VwGSSUSR]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwGSSUSR]
+CREATE VIEW [NetO_creditScore].[VwGSSUSR]
 AS
    SELECT
       x.[USRID],
@@ -30758,14 +30758,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwHELOC')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwHELOC')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwHELOC]
+   DROP VIEW [NetO_creditScore].[VwHELOC]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwHELOC]
+CREATE VIEW [NetO_creditScore].[VwHELOC]
 AS
    SELECT
       x.[LNUM],
@@ -30810,14 +30810,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwHELOC2')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwHELOC2')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwHELOC2]
+   DROP VIEW [NetO_creditScore].[VwHELOC2]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwHELOC2]
+CREATE VIEW [NetO_creditScore].[VwHELOC2]
 AS
    SELECT
       x.[LNUM],
@@ -30842,14 +30842,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwHMDAINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwHMDAINFO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwHMDAINFO]
+   DROP VIEW [NetO_creditScore].[VwHMDAINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwHMDAINFO]
+CREATE VIEW [NetO_creditScore].[VwHMDAINFO]
 AS
    SELECT
       x.[LNUM],
@@ -30931,14 +30931,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwHMDAXPRT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwHMDAXPRT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwHMDAXPRT]
+   DROP VIEW [NetO_creditScore].[VwHMDAXPRT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwHMDAXPRT]
+CREATE VIEW [NetO_creditScore].[VwHMDAXPRT]
 AS
    SELECT
       x.[PRI_DBID],
@@ -30983,14 +30983,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwINCOME')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwINCOME')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwINCOME]
+   DROP VIEW [NetO_creditScore].[VwINCOME]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwINCOME]
+CREATE VIEW [NetO_creditScore].[VwINCOME]
 AS
    SELECT
       x.[LNUM],
@@ -31090,14 +31090,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwINFO1008')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwINFO1008')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwINFO1008]
+   DROP VIEW [NetO_creditScore].[VwINFO1008]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwINFO1008]
+CREATE VIEW [NetO_creditScore].[VwINFO1008]
 AS
    SELECT
       x.[LNUM],
@@ -31136,14 +31136,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwL_SYMBOL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwL_SYMBOL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwL_SYMBOL]
+   DROP VIEW [NetO_creditScore].[VwL_SYMBOL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwL_SYMBOL]
+CREATE VIEW [NetO_creditScore].[VwL_SYMBOL]
 AS
    SELECT
       x.[FLDNAME],
@@ -31169,14 +31169,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwLIABLTY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwLIABLTY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwLIABLTY]
+   DROP VIEW [NetO_creditScore].[VwLIABLTY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwLIABLTY]
+CREATE VIEW [NetO_creditScore].[VwLIABLTY]
 AS
    SELECT
       x.[LNUM],
@@ -31321,14 +31321,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwMISC1003')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwMISC1003')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwMISC1003]
+   DROP VIEW [NetO_creditScore].[VwMISC1003]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwMISC1003]
+CREATE VIEW [NetO_creditScore].[VwMISC1003]
 AS
    SELECT
       x.[LNUM],
@@ -31348,14 +31348,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwPOA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwPOA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwPOA]
+   DROP VIEW [NetO_creditScore].[VwPOA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwPOA]
+CREATE VIEW [NetO_creditScore].[VwPOA]
 AS
    SELECT
       x.[LNUM],
@@ -31381,14 +31381,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwPREDCTRS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwPREDCTRS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwPREDCTRS]
+   DROP VIEW [NetO_creditScore].[VwPREDCTRS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwPREDCTRS]
+CREATE VIEW [NetO_creditScore].[VwPREDCTRS]
 AS
    SELECT
       x.[LNUM],
@@ -31414,14 +31414,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwPREVRES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwPREVRES')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwPREVRES]
+   DROP VIEW [NetO_creditScore].[VwPREVRES]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwPREVRES]
+CREATE VIEW [NetO_creditScore].[VwPREVRES]
 AS
    SELECT
       x.[LNUM],
@@ -31467,14 +31467,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwPRODUCT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwPRODUCT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwPRODUCT]
+   DROP VIEW [NetO_creditScore].[VwPRODUCT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwPRODUCT]
+CREATE VIEW [NetO_creditScore].[VwPRODUCT]
 AS
    SELECT
       x.[LNUM],
@@ -31712,14 +31712,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwPRTFOLIO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwPRTFOLIO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwPRTFOLIO]
+   DROP VIEW [NetO_creditScore].[VwPRTFOLIO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwPRTFOLIO]
+CREATE VIEW [NetO_creditScore].[VwPRTFOLIO]
 AS
    SELECT
       x.[LNUM],
@@ -31780,14 +31780,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwRATECODE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwRATECODE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwRATECODE]
+   DROP VIEW [NetO_creditScore].[VwRATECODE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwRATECODE]
+CREATE VIEW [NetO_creditScore].[VwRATECODE]
 AS
    SELECT
       x.[USEKEY],
@@ -31808,14 +31808,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwREOWNED')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwREOWNED')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwREOWNED]
+   DROP VIEW [NetO_creditScore].[VwREOWNED]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwREOWNED]
+CREATE VIEW [NetO_creditScore].[VwREOWNED]
 AS
    SELECT
       x.[LNUM],
@@ -31917,14 +31917,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwSEIA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwSEIA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwSEIA]
+   DROP VIEW [NetO_creditScore].[VwSEIA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwSEIA]
+CREATE VIEW [NetO_creditScore].[VwSEIA]
 AS
    SELECT
       x.[LNUM],
@@ -32058,14 +32058,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwSELLER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwSELLER')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwSELLER]
+   DROP VIEW [NetO_creditScore].[VwSELLER]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwSELLER]
+CREATE VIEW [NetO_creditScore].[VwSELLER]
 AS
    SELECT
       x.[LNUM],
@@ -32133,14 +32133,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwSERVICNG')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwSERVICNG')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwSERVICNG]
+   DROP VIEW [NetO_creditScore].[VwSERVICNG]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwSERVICNG]
+CREATE VIEW [NetO_creditScore].[VwSERVICNG]
 AS
    SELECT
       x.[LNUM],
@@ -32201,14 +32201,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwSUBJPRP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwSUBJPRP')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwSUBJPRP]
+   DROP VIEW [NetO_creditScore].[VwSUBJPRP]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwSUBJPRP]
+CREATE VIEW [NetO_creditScore].[VwSUBJPRP]
 AS
    SELECT
       x.[LNUM],
@@ -32439,14 +32439,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwTAXINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwTAXINFO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwTAXINFO]
+   DROP VIEW [NetO_creditScore].[VwTAXINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwTAXINFO]
+CREATE VIEW [NetO_creditScore].[VwTAXINFO]
 AS
    SELECT
       x.[LNUM],
@@ -32505,14 +32505,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwTILINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwTILINFO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwTILINFO]
+   DROP VIEW [NetO_creditScore].[VwTILINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwTILINFO]
+CREATE VIEW [NetO_creditScore].[VwTILINFO]
 AS
    SELECT
       x.[LNUM],
@@ -32612,14 +32612,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwTRACKING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwTRACKING')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwTRACKING]
+   DROP VIEW [NetO_creditScore].[VwTRACKING]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwTRACKING]
+CREATE VIEW [NetO_creditScore].[VwTRACKING]
 AS
    SELECT
       x.[LNUM],
@@ -32766,14 +32766,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwTRANSDATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwTRANSDATA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwTRANSDATA]
+   DROP VIEW [NetO_creditScore].[VwTRANSDATA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwTRANSDATA]
+CREATE VIEW [NetO_creditScore].[VwTRANSDATA]
 AS
    SELECT
       x.[LNUM],
@@ -32802,14 +32802,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwTRSTENTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwTRSTENTS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwTRSTENTS]
+   DROP VIEW [NetO_creditScore].[VwTRSTENTS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwTRSTENTS]
+CREATE VIEW [NetO_creditScore].[VwTRSTENTS]
 AS
    SELECT
       x.[LNUM],
@@ -32855,14 +32855,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwTRUSTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwTRUSTS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwTRUSTS]
+   DROP VIEW [NetO_creditScore].[VwTRUSTS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwTRUSTS]
+CREATE VIEW [NetO_creditScore].[VwTRUSTS]
 AS
    SELECT
       x.[LNUM],
@@ -32898,14 +32898,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwUNDCOND1')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwUNDCOND1')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwUNDCOND1]
+   DROP VIEW [NetO_creditScore].[VwUNDCOND1]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwUNDCOND1]
+CREATE VIEW [NetO_creditScore].[VwUNDCOND1]
 AS
    SELECT
       x.[LNUM],
@@ -32956,14 +32956,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwUNDCOND2')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwUNDCOND2')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwUNDCOND2]
+   DROP VIEW [NetO_creditScore].[VwUNDCOND2]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwUNDCOND2]
+CREATE VIEW [NetO_creditScore].[VwUNDCOND2]
 AS
    SELECT
       x.[LNUM],
@@ -33025,14 +33025,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwUWAPPR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwUWAPPR')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwUWAPPR]
+   DROP VIEW [NetO_creditScore].[VwUWAPPR]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwUWAPPR]
+CREATE VIEW [NetO_creditScore].[VwUWAPPR]
 AS
    SELECT
       x.[LNUM],
@@ -33172,14 +33172,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwVARTXT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwVARTXT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwVARTXT]
+   DROP VIEW [NetO_creditScore].[VwVARTXT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwVARTXT]
+CREATE VIEW [NetO_creditScore].[VwVARTXT]
 AS
    SELECT
       x.[DBID],
@@ -33198,14 +33198,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwVESTING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwVESTING')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwVESTING]
+   DROP VIEW [NetO_creditScore].[VwVESTING]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwVESTING]
+CREATE VIEW [NetO_creditScore].[VwVESTING]
 AS
    SELECT
       x.[LNUM],
@@ -33224,14 +33224,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwVETINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwVETINFO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwVETINFO]
+   DROP VIEW [NetO_creditScore].[VwVETINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwVETINFO]
+CREATE VIEW [NetO_creditScore].[VwVETINFO]
 AS
    SELECT
       x.[LNUM],
@@ -33336,14 +33336,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET]
 AS
    SELECT
       x.[LNUM],
@@ -33376,14 +33376,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET_ACCT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET_ACCT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET_ACCT]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET_ACCT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET_ACCT]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET_ACCT]
 AS
    SELECT
       x.[LNUM],
@@ -33420,14 +33420,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET_MARINE_ENG')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET_MARINE_ENG')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET_MARINE_ENG]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET_MARINE_ENG]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET_MARINE_ENG]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET_MARINE_ENG]
 AS
    SELECT
       x.[LNUM],
@@ -33465,14 +33465,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET_VEHICLE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VEHICLE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET_VEHICLE]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET_VEHICLE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET_VEHICLE]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET_VEHICLE]
 AS
    SELECT
       x.[LNUM],
@@ -33536,14 +33536,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_AUTO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_AUTO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET_VHCL_AUTO]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_AUTO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET_VHCL_AUTO]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_AUTO]
 AS
    SELECT
       x.[LNUM],
@@ -33568,14 +33568,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_MARINE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_MARINE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET_VHCL_MARINE]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_MARINE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET_VHCL_MARINE]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_MARINE]
 AS
    SELECT
       x.[LNUM],
@@ -33632,14 +33632,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_OPTIONS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_OPTIONS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET_VHCL_OPTIONS]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_OPTIONS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET_VHCL_OPTIONS]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_OPTIONS]
 AS
    SELECT
       x.[LNUM],
@@ -33663,14 +33663,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_RV')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_RV')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET_VHCL_RV]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_RV]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET_VHCL_RV]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_RV]
 AS
    SELECT
       x.[LNUM],
@@ -33698,14 +33698,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_TRAILER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_TRAILER')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET_VHCL_TRAILER]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_TRAILER]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET_VHCL_TRAILER]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_TRAILER]
 AS
    SELECT
       x.[LNUM],
@@ -33726,14 +33726,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_VALUATION')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_VALUATION')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_ASSET_VHCL_VALUATION]
+   DROP VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_VALUATION]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_ASSET_VHCL_VALUATION]
+CREATE VIEW [NetO_creditScore].[VwWG_ASSET_VHCL_VALUATION]
 AS
    SELECT
       x.[LNUM],
@@ -33782,14 +33782,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_AUTO_DEBIT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_AUTO_DEBIT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_AUTO_DEBIT]
+   DROP VIEW [NetO_creditScore].[VwWG_AUTO_DEBIT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_AUTO_DEBIT]
+CREATE VIEW [NetO_creditScore].[VwWG_AUTO_DEBIT]
 AS
    SELECT
       x.[LNUM],
@@ -33814,14 +33814,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+   DROP VIEW [NetO_creditScore].[VwWG_BORR_INCOME_SRC_PAYSTUB]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+CREATE VIEW [NetO_creditScore].[VwWG_BORR_INCOME_SRC_PAYSTUB]
 AS
    SELECT
       x.[LNUM],
@@ -33889,14 +33889,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_DEFN_FIELDS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_DEFN_FIELDS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_DEFN_FIELDS]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_DEFN_FIELDS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_DEFN_FIELDS]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_DEFN_FIELDS]
 AS
    SELECT
       x.[FIELDID],
@@ -33932,14 +33932,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_DEFN_GRID')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_DEFN_GRID')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_DEFN_GRID]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_DEFN_GRID]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_DEFN_GRID]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_DEFN_GRID]
 AS
    SELECT
       x.[GRIDID],
@@ -33972,14 +33972,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_DEFN_GRID_DTL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_DEFN_GRID_DTL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_DEFN_GRID_DTL]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_DEFN_GRID_DTL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_DEFN_GRID_DTL]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_DEFN_GRID_DTL]
 AS
    SELECT
       x.[GRIDID],
@@ -34014,14 +34014,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_EXPORT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_EXPORT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_EXPORT]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_EXPORT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_EXPORT]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_EXPORT]
 AS
    SELECT
       x.[EXPORTID],
@@ -34055,14 +34055,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_IDENTIFIERS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_IDENTIFIERS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_IDENTIFIERS]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_IDENTIFIERS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_IDENTIFIERS]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_IDENTIFIERS]
 AS
    SELECT
       x.[BRM_IDENT_FIELD],
@@ -34082,14 +34082,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_IMPORT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_IMPORT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_IMPORT]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_IMPORT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_IMPORT]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_IMPORT]
 AS
    SELECT
       x.[IMPORTID],
@@ -34134,14 +34134,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_BASE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_BASE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_LKUP_BASE]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_LKUP_BASE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_LKUP_BASE]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_LKUP_BASE]
 AS
    SELECT
       x.[BRMID],
@@ -34187,14 +34187,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_BASE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_BASE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_BASE]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_BASE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_BASE]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_BASE]
 AS
    SELECT
       x.[BRMID],
@@ -34215,14 +34215,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_DETAIL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_DETAIL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_DETAIL]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_DETAIL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_DETAIL]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_DETAIL]
 AS
    SELECT
       x.[BRMID],
@@ -34247,14 +34247,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_FIELD')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_FIELD')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_FIELD]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_FIELD]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_FIELD]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_FIELD]
 AS
    SELECT
       x.[BRMID],
@@ -34278,14 +34278,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_ITEMS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_ITEMS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_ITEMS]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_ITEMS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_ITEMS]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_ITEMS]
 AS
    SELECT
       x.[BRMID],
@@ -34311,14 +34311,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_VALUE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_VALUE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_VALUE]
+   DROP VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_VALUE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BRM_LKUP_RULE_VALUE]
+CREATE VIEW [NetO_creditScore].[VwWG_BRM_LKUP_RULE_VALUE]
 AS
    SELECT
       x.[BRMID],
@@ -34341,14 +34341,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_BULK_IMPORT_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_BULK_IMPORT_DATA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_BULK_IMPORT_DATA]
+   DROP VIEW [NetO_creditScore].[VwWG_BULK_IMPORT_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_BULK_IMPORT_DATA]
+CREATE VIEW [NetO_creditScore].[VwWG_BULK_IMPORT_DATA]
 AS
    SELECT
       x.[BULK_ID],
@@ -34465,14 +34465,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_CNS_LOAN_APPLICATION')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_CNS_LOAN_APPLICATION')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_CNS_LOAN_APPLICATION]
+   DROP VIEW [NetO_creditScore].[VwWG_CNS_LOAN_APPLICATION]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_CNS_LOAN_APPLICATION]
+CREATE VIEW [NetO_creditScore].[VwWG_CNS_LOAN_APPLICATION]
 AS
    SELECT
       x.[LNUM],
@@ -34526,14 +34526,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_COLLATERAL_ADDRESS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_COLLATERAL_ADDRESS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_COLLATERAL_ADDRESS]
+   DROP VIEW [NetO_creditScore].[VwWG_COLLATERAL_ADDRESS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_COLLATERAL_ADDRESS]
+CREATE VIEW [NetO_creditScore].[VwWG_COLLATERAL_ADDRESS]
 AS
    SELECT
       x.[LNUM],
@@ -34561,14 +34561,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_COLLATERAL_PLEDGOR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_COLLATERAL_PLEDGOR')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_COLLATERAL_PLEDGOR]
+   DROP VIEW [NetO_creditScore].[VwWG_COLLATERAL_PLEDGOR]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_COLLATERAL_PLEDGOR]
+CREATE VIEW [NetO_creditScore].[VwWG_COLLATERAL_PLEDGOR]
 AS
    SELECT
       x.[LNUM],
@@ -34593,14 +34593,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_COLLATERAL_TRADEIN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_COLLATERAL_TRADEIN')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_COLLATERAL_TRADEIN]
+   DROP VIEW [NetO_creditScore].[VwWG_COLLATERAL_TRADEIN]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_COLLATERAL_TRADEIN]
+CREATE VIEW [NetO_creditScore].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM],
@@ -34629,14 +34629,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_COLLATERAL_TYPES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_COLLATERAL_TYPES')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_COLLATERAL_TYPES]
+   DROP VIEW [NetO_creditScore].[VwWG_COLLATERAL_TYPES]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_COLLATERAL_TYPES]
+CREATE VIEW [NetO_creditScore].[VwWG_COLLATERAL_TYPES]
 AS
    SELECT
       x.[LNUM],
@@ -34659,14 +34659,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_CORR_FUNDING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_CORR_FUNDING')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_CORR_FUNDING]
+   DROP VIEW [NetO_creditScore].[VwWG_CORR_FUNDING]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_CORR_FUNDING]
+CREATE VIEW [NetO_creditScore].[VwWG_CORR_FUNDING]
 AS
    SELECT
       x.[LNUM],
@@ -34702,14 +34702,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER]
+   DROP VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER]
+CREATE VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER]
 AS
    SELECT
       x.[CUSTOMER_ID],
@@ -34764,14 +34764,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ACCT_DETAIL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ACCT_DETAIL')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER_ACCT_DETAIL]
+   DROP VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER_ACCT_DETAIL]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER_ACCT_DETAIL]
+CREATE VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER_ACCT_DETAIL]
 AS
    SELECT
       HASHBYTES('SHA2_256', x.[CURRENT_CUSTOMERID]) AS [CURRENT_CUSTOMERID],
@@ -34816,14 +34816,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY]
+   DROP VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY]
+CREATE VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER_ACCT_DETAIL_SUMMARY]
 AS
    SELECT
       HASHBYTES('SHA2_256', x.[CURRENT_CUSTOMERID]) AS [CURRENT_CUSTOMERID],
@@ -34848,14 +34848,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ADDRESS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ADDRESS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER_ADDRESS]
+   DROP VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER_ADDRESS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER_ADDRESS]
+CREATE VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER_ADDRESS]
 AS
    SELECT
       x.[CUSTOMER_ID],
@@ -34882,14 +34882,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_PHONE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_PHONE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER_PHONE]
+   DROP VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER_PHONE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_CRM_CUSTOMER_PHONE]
+CREATE VIEW [NetO_creditScore].[VwWG_CRM_CUSTOMER_PHONE]
 AS
    SELECT
       x.[CUSTOMER_ID],
@@ -34906,14 +34906,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_HMDAINFO_EXT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_HMDAINFO_EXT')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_HMDAINFO_EXT]
+   DROP VIEW [NetO_creditScore].[VwWG_HMDAINFO_EXT]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_HMDAINFO_EXT]
+CREATE VIEW [NetO_creditScore].[VwWG_HMDAINFO_EXT]
 AS
    SELECT
       x.[LNUM],
@@ -35045,14 +35045,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_HOEPA_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_HOEPA_DATA')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_HOEPA_DATA]
+   DROP VIEW [NetO_creditScore].[VwWG_HOEPA_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_HOEPA_DATA]
+CREATE VIEW [NetO_creditScore].[VwWG_HOEPA_DATA]
 AS
    SELECT
       x.[LNUM],
@@ -35081,14 +35081,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_INCOME_SOURCE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_INCOME_SOURCE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_INCOME_SOURCE]
+   DROP VIEW [NetO_creditScore].[VwWG_INCOME_SOURCE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_INCOME_SOURCE]
+CREATE VIEW [NetO_creditScore].[VwWG_INCOME_SOURCE]
 AS
    SELECT
       x.[LNUM],
@@ -35161,14 +35161,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_KELLEYBLUEBOOK_RESPONSE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_KELLEYBLUEBOOK_RESPONSE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_KELLEYBLUEBOOK_RESPONSE]
+   DROP VIEW [NetO_creditScore].[VwWG_KELLEYBLUEBOOK_RESPONSE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_KELLEYBLUEBOOK_RESPONSE]
+CREATE VIEW [NetO_creditScore].[VwWG_KELLEYBLUEBOOK_RESPONSE]
 AS
    SELECT
       x.[LNUM],
@@ -35211,14 +35211,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_LOAN_EXCEPTIONS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_LOAN_EXCEPTIONS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_LOAN_EXCEPTIONS]
+   DROP VIEW [NetO_creditScore].[VwWG_LOAN_EXCEPTIONS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_LOAN_EXCEPTIONS]
+CREATE VIEW [NetO_creditScore].[VwWG_LOAN_EXCEPTIONS]
 AS
    SELECT
       x.[LNUM],
@@ -35296,14 +35296,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_PRICE_EXCEPTIONS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_PRICE_EXCEPTIONS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_PRICE_EXCEPTIONS]
+   DROP VIEW [NetO_creditScore].[VwWG_PRICE_EXCEPTIONS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_PRICE_EXCEPTIONS]
+CREATE VIEW [NetO_creditScore].[VwWG_PRICE_EXCEPTIONS]
 AS
    SELECT
       x.[LNUM],
@@ -35332,14 +35332,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_PROMOTION')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_PROMOTION')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_PROMOTION]
+   DROP VIEW [NetO_creditScore].[VwWG_PROMOTION]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_PROMOTION]
+CREATE VIEW [NetO_creditScore].[VwWG_PROMOTION]
 AS
    SELECT
       x.[PROMO_ID],
@@ -35357,14 +35357,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_RPT_LOAN_STATUS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_RPT_LOAN_STATUS')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_RPT_LOAN_STATUS]
+   DROP VIEW [NetO_creditScore].[VwWG_RPT_LOAN_STATUS]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_RPT_LOAN_STATUS]
+CREATE VIEW [NetO_creditScore].[VwWG_RPT_LOAN_STATUS]
 AS
    SELECT
       x.[ROWCNTR],
@@ -35385,14 +35385,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_SC_ATTRIBUTES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_SC_ATTRIBUTES')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_SC_ATTRIBUTES]
+   DROP VIEW [NetO_creditScore].[VwWG_SC_ATTRIBUTES]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_SC_ATTRIBUTES]
+CREATE VIEW [NetO_creditScore].[VwWG_SC_ATTRIBUTES]
 AS
    SELECT
       x.[LNUM],
@@ -35629,14 +35629,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_SC_DECISION')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_SC_DECISION')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_SC_DECISION]
+   DROP VIEW [NetO_creditScore].[VwWG_SC_DECISION]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_SC_DECISION]
+CREATE VIEW [NetO_creditScore].[VwWG_SC_DECISION]
 AS
    SELECT
       x.[LNUM],
@@ -35653,14 +35653,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_SC_DECISION_REASON]
+   DROP VIEW [NetO_creditScore].[VwWG_SC_DECISION_REASON]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_SC_DECISION_REASON]
+CREATE VIEW [NetO_creditScore].[VwWG_SC_DECISION_REASON]
 AS
    SELECT
       x.[LNUM],
@@ -35680,14 +35680,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_SYMBOL_XREF')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_SYMBOL_XREF')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_SYMBOL_XREF]
+   DROP VIEW [NetO_creditScore].[VwWG_SYMBOL_XREF]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_SYMBOL_XREF]
+CREATE VIEW [NetO_creditScore].[VwWG_SYMBOL_XREF]
 AS
    SELECT
       x.[TABLENAME],
@@ -35706,14 +35706,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_TLBR_VET_MILT_SERVICE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_TLBR_VET_MILT_SERVICE')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_TLBR_VET_MILT_SERVICE]
+   DROP VIEW [NetO_creditScore].[VwWG_TLBR_VET_MILT_SERVICE]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_TLBR_VET_MILT_SERVICE]
+CREATE VIEW [NetO_creditScore].[VwWG_TLBR_VET_MILT_SERVICE]
 AS
    SELECT
       x.[LNUM],
@@ -35739,14 +35739,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_restricted' AND TABLE_NAME = 'VwWG_TLR_RECORDING_INFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_creditScore' AND TABLE_NAME = 'VwWG_TLR_RECORDING_INFO')
 BEGIN
-   DROP VIEW [NetO_restricted].[VwWG_TLR_RECORDING_INFO]
+   DROP VIEW [NetO_creditScore].[VwWG_TLR_RECORDING_INFO]
 END
 GO
 
 
-CREATE VIEW [NetO_restricted].[VwWG_TLR_RECORDING_INFO]
+CREATE VIEW [NetO_creditScore].[VwWG_TLR_RECORDING_INFO]
 AS
    SELECT
       x.[LNUM],
@@ -58353,14 +58353,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwACTIVITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwACTIVITY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwACTIVITY]
+   DROP VIEW [NetO_sas_creditScore].[VwACTIVITY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwACTIVITY]
+CREATE VIEW [NetO_sas_creditScore].[VwACTIVITY]
 AS
    SELECT
       x.[S_ACTIVI] AS [S_ACTIVI],
@@ -58381,14 +58381,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwADV_ACTN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwADV_ACTN')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwADV_ACTN]
+   DROP VIEW [NetO_sas_creditScore].[VwADV_ACTN]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwADV_ACTN]
+CREATE VIEW [NetO_sas_creditScore].[VwADV_ACTN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -58502,14 +58502,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwAPPREQ')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwAPPREQ')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwAPPREQ]
+   DROP VIEW [NetO_sas_creditScore].[VwAPPREQ]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwAPPREQ]
+CREATE VIEW [NetO_sas_creditScore].[VwAPPREQ]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -58597,14 +58597,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwARMINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwARMINFO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwARMINFO]
+   DROP VIEW [NetO_sas_creditScore].[VwARMINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwARMINFO]
+CREATE VIEW [NetO_sas_creditScore].[VwARMINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -58705,14 +58705,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwASSETS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwASSETS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwASSETS]
+   DROP VIEW [NetO_sas_creditScore].[VwASSETS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwASSETS]
+CREATE VIEW [NetO_sas_creditScore].[VwASSETS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -58777,14 +58777,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwASSOCDOCS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwASSOCDOCS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwASSOCDOCS]
+   DROP VIEW [NetO_sas_creditScore].[VwASSOCDOCS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwASSOCDOCS]
+CREATE VIEW [NetO_sas_creditScore].[VwASSOCDOCS]
 AS
    SELECT
       x.[S_SUNDCON] AS [S_SUNDCON],
@@ -58804,14 +58804,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwBORDEP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwBORDEP')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwBORDEP]
+   DROP VIEW [NetO_sas_creditScore].[VwBORDEP]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwBORDEP]
+CREATE VIEW [NetO_sas_creditScore].[VwBORDEP]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -58840,14 +58840,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwBORROWER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwBORROWER')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwBORROWER]
+   DROP VIEW [NetO_sas_creditScore].[VwBORROWER]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwBORROWER]
+CREATE VIEW [NetO_sas_creditScore].[VwBORROWER]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59078,14 +59078,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwCONSREFI')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwCONSREFI')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwCONSREFI]
+   DROP VIEW [NetO_sas_creditScore].[VwCONSREFI]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwCONSREFI]
+CREATE VIEW [NetO_sas_creditScore].[VwCONSREFI]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59140,14 +59140,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwDATES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwDATES')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwDATES]
+   DROP VIEW [NetO_sas_creditScore].[VwDATES]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwDATES]
+CREATE VIEW [NetO_sas_creditScore].[VwDATES]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59250,14 +59250,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwDECLRTN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwDECLRTN')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwDECLRTN]
+   DROP VIEW [NetO_sas_creditScore].[VwDECLRTN]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwDECLRTN]
+CREATE VIEW [NetO_sas_creditScore].[VwDECLRTN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59370,14 +59370,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwDELIVERY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwDELIVERY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwDELIVERY]
+   DROP VIEW [NetO_sas_creditScore].[VwDELIVERY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwDELIVERY]
+CREATE VIEW [NetO_sas_creditScore].[VwDELIVERY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59544,14 +59544,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwDENIAL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwDENIAL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwDENIAL]
+   DROP VIEW [NetO_sas_creditScore].[VwDENIAL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwDENIAL]
+CREATE VIEW [NetO_sas_creditScore].[VwDENIAL]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59601,14 +59601,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwDOWNPYMT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwDOWNPYMT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwDOWNPYMT]
+   DROP VIEW [NetO_sas_creditScore].[VwDOWNPYMT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwDOWNPYMT]
+CREATE VIEW [NetO_sas_creditScore].[VwDOWNPYMT]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59676,14 +59676,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwDTLTRAN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwDTLTRAN')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwDTLTRAN]
+   DROP VIEW [NetO_sas_creditScore].[VwDTLTRAN]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwDTLTRAN]
+CREATE VIEW [NetO_sas_creditScore].[VwDTLTRAN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59721,14 +59721,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwFEEVALS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwFEEVALS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwFEEVALS]
+   DROP VIEW [NetO_sas_creditScore].[VwFEEVALS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwFEEVALS]
+CREATE VIEW [NetO_sas_creditScore].[VwFEEVALS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59826,14 +59826,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwFIELD_HISTORY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwFIELD_HISTORY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwFIELD_HISTORY]
+   DROP VIEW [NetO_sas_creditScore].[VwFIELD_HISTORY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwFIELD_HISTORY]
+CREATE VIEW [NetO_sas_creditScore].[VwFIELD_HISTORY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59854,14 +59854,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwFLOOD')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwFLOOD')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwFLOOD]
+   DROP VIEW [NetO_sas_creditScore].[VwFLOOD]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwFLOOD]
+CREATE VIEW [NetO_sas_creditScore].[VwFLOOD]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59896,14 +59896,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_AFFORDABILITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_AFFORDABILITY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_AFFORDABILITY]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_AFFORDABILITY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_AFFORDABILITY]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_AFFORDABILITY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -59933,14 +59933,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_DATES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_DATES')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_DATES]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_DATES]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_DATES]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_DATES]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60065,14 +60065,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_DATES3')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_DATES3')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_DATES3]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_DATES3]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_DATES3]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_DATES3]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60124,14 +60124,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_HOUSING_PROPSD')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_HOUSING_PROPSD')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_HOUSING_PROPSD]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_HOUSING_PROPSD]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_HOUSING_PROPSD]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_HOUSING_PROPSD]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60182,14 +60182,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_LOAN_CONTACTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_LOAN_CONTACTS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_LOAN_CONTACTS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_LOAN_CONTACTS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_LOAN_CONTACTS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_LOAN_CONTACTS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60313,14 +60313,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_LOAN_CONTACTS2')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_LOAN_CONTACTS2')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_LOAN_CONTACTS2]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_LOAN_CONTACTS2]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_LOAN_CONTACTS2]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_LOAN_CONTACTS2]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60449,14 +60449,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_LOAN_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_LOAN_DATA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_LOAN_DATA]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_LOAN_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_LOAN_DATA]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_LOAN_DATA]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60597,14 +60597,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_LOAN_STATUS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_LOAN_STATUS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_LOAN_STATUS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_LOAN_STATUS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_LOAN_STATUS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_LOAN_STATUS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60632,14 +60632,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_MISC_CK')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_MISC_CK')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_MISC_CK]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_MISC_CK]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_MISC_CK]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_MISC_CK]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60675,14 +60675,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_PMT_STREAMS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_PMT_STREAMS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_PMT_STREAMS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_PMT_STREAMS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_PMT_STREAMS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_PMT_STREAMS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60713,14 +60713,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_PNP_IPG_DETAIL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_PNP_IPG_DETAIL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_PNP_IPG_DETAIL]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_PNP_IPG_DETAIL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_PNP_IPG_DETAIL]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_PNP_IPG_DETAIL]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60819,14 +60819,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_POINT_OF_SALE_INFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_POINT_OF_SALE_INFO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_POINT_OF_SALE_INFO]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_POINT_OF_SALE_INFO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_POINT_OF_SALE_INFO]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_POINT_OF_SALE_INFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60922,14 +60922,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_PORTAL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_PORTAL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_PORTAL]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_PORTAL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_PORTAL]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_PORTAL]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60949,14 +60949,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_TRANSOVR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_TRANSOVR')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_TRANSOVR]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_TRANSOVR]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_TRANSOVR]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_TRANSOVR]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -60983,14 +60983,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_UW_4')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_UW_4')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_UW_4]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_UW_4]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_UW_4]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_UW_4]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61042,14 +61042,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TL_UWAPPREXT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TL_UWAPPREXT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TL_UWAPPREXT]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TL_UWAPPREXT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TL_UWAPPREXT]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TL_UWAPPREXT]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61102,14 +61102,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_EQ_RES_EDAS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLB_EQ_RES_EDAS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_EQ_RES_EDAS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLB_EQ_RES_EDAS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_EQ_RES_EDAS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLB_EQ_RES_EDAS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61141,14 +61141,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_EQ_RES_SUMMARY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLB_EQ_RES_SUMMARY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_EQ_RES_SUMMARY]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLB_EQ_RES_SUMMARY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_EQ_RES_SUMMARY]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLB_EQ_RES_SUMMARY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61195,14 +61195,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLB_EX_RES_PROF_SUM')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_EX_RES_PROF_SUM]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLB_EX_RES_PROF_SUM]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_EX_RES_PROF_SUM]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLB_EX_RES_PROF_SUM]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61245,14 +61245,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLB_EX_RES_TRENDS_SUM')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_EX_RES_TRENDS_SUM]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLB_EX_RES_TRENDS_SUM]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_EX_RES_TRENDS_SUM]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLB_EX_RES_TRENDS_SUM]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61279,14 +61279,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_HOUSING_PRSNT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLB_HOUSING_PRSNT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_HOUSING_PRSNT]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLB_HOUSING_PRSNT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_HOUSING_PRSNT]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLB_HOUSING_PRSNT]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61321,14 +61321,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_MAILING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLB_MAILING')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_MAILING]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLB_MAILING]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_MAILING]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLB_MAILING]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61360,14 +61360,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_CRED_SUM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLB_TU_RES_CRED_SUM')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_CRED_SUM]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLB_TU_RES_CRED_SUM]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_CRED_SUM]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLB_TU_RES_CRED_SUM]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61399,14 +61399,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SCORING')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_SCORING]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLB_TU_RES_SCORING]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_SCORING]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLB_TU_RES_SCORING]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61443,14 +61443,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLB_TU_RES_SUBJ_INFO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_SUBJ_INFO]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLB_TU_RES_SUBJ_INFO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLB_TU_RES_SUBJ_INFO]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLB_TU_RES_SUBJ_INFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61488,14 +61488,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBC_EQ_RES_COLLECT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBC_EQ_RES_COLLECT]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBC_EQ_RES_COLLECT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBC_EQ_RES_COLLECT]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBC_EQ_RES_COLLECT]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61534,14 +61534,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBC_EX_RES_INQUIRY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBC_EX_RES_INQUIRY]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBC_EX_RES_INQUIRY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBC_EX_RES_INQUIRY]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBC_EX_RES_INQUIRY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61569,14 +61569,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_GEOCODE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_GEOCODE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBC_TU_RES_GEOCODE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBC_TU_RES_GEOCODE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBC_TU_RES_GEOCODE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBC_TU_RES_GEOCODE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61609,14 +61609,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_PUB_REC')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_PUB_REC')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBC_TU_RES_PUB_REC]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBC_TU_RES_PUB_REC]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBC_TU_RES_PUB_REC]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBC_TU_RES_PUB_REC]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61653,14 +61653,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_TRADELINE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBC_TU_RES_TRADELINE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBC_TU_RES_TRADELINE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBC_TU_RES_TRADELINE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBC_TU_RES_TRADELINE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBC_TU_RES_TRADELINE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61724,14 +61724,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_ADDITIONALDATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_ADDITIONALDATA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_ADDITIONALDATA]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_ADDITIONALDATA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_ADDITIONALDATA]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_ADDITIONALDATA]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61824,14 +61824,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_ALIAS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_ALIAS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_ALIAS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_ALIAS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_ALIAS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_ALIAS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61860,14 +61860,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_ASSIST_PROGRAMS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_ASSIST_PROGRAMS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_ASSIST_PROGRAMS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_ASSIST_PROGRAMS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_ASSIST_PROGRAMS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_ASSIST_PROGRAMS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61907,14 +61907,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_BORROWERID')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_BORROWERID')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_BORROWERID]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_BORROWERID]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_BORROWERID]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_BORROWERID]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61945,14 +61945,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_CREDIT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_CREDIT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_CREDIT]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_CREDIT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_CREDIT]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_CREDIT]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -61978,14 +61978,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_CREDIT_SCORE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_CREDIT_SCORE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_CREDIT_SCORE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_CREDIT_SCORE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_CREDIT_SCORE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_CREDIT_SCORE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62021,14 +62021,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_DEPENDENTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_DEPENDENTS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_DEPENDENTS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_DEPENDENTS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_DEPENDENTS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_DEPENDENTS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62052,14 +62052,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_EMPLOYER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_EMPLOYER')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_EMPLOYER]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_EMPLOYER]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_EMPLOYER]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_EMPLOYER]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62109,14 +62109,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_ETHNICITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_ETHNICITY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_ETHNICITY]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_ETHNICITY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_ETHNICITY]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_ETHNICITY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62139,14 +62139,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_HOUSNG_PRSNT_OTH')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_HOUSNG_PRSNT_OTH')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_HOUSNG_PRSNT_OTH]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_HOUSNG_PRSNT_OTH]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_HOUSNG_PRSNT_OTH]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_HOUSNG_PRSNT_OTH]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62167,14 +62167,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_RACE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_RACE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_RACE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_RACE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_RACE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_RACE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62197,14 +62197,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_RAW_SCORES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_RAW_SCORES')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_RAW_SCORES]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_RAW_SCORES]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_RAW_SCORES]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_RAW_SCORES]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62237,14 +62237,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_SUBETHNICITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_SUBETHNICITY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_SUBETHNICITY]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_SUBETHNICITY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_SUBETHNICITY]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_SUBETHNICITY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62267,14 +62267,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLBR_SUBRACE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLBR_SUBRACE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLBR_SUBRACE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLBR_SUBRACE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLBR_SUBRACE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLBR_SUBRACE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62298,14 +62298,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_CREDIT_RESPONSE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_CREDIT_RESPONSE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_CREDIT_RESPONSE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_CREDIT_RESPONSE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_CREDIT_RESPONSE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_CREDIT_RESPONSE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62343,14 +62343,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_DISBURSEMENTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_DISBURSEMENTS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_DISBURSEMENTS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_DISBURSEMENTS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_DISBURSEMENTS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_DISBURSEMENTS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62444,14 +62444,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_DISCL_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_DISCL_DATA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_DISCL_DATA]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_DISCL_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_DISCL_DATA]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_DISCL_DATA]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62484,14 +62484,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_FLOOD_DETMN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_FLOOD_DETMN')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_FLOOD_DETMN]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_FLOOD_DETMN]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_FLOOD_DETMN]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_FLOOD_DETMN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62546,14 +62546,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_FUNDITEM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_FUNDITEM')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_FUNDITEM]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_FUNDITEM]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_FUNDITEM]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_FUNDITEM]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62583,14 +62583,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_INSURANCE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_INSURANCE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_INSURANCE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_INSURANCE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_INSURANCE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_INSURANCE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62673,14 +62673,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_PYMT_HIST')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_PYMT_HIST')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_PYMT_HIST]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_PYMT_HIST]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_PYMT_HIST]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_PYMT_HIST]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62712,14 +62712,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_REG_O')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_REG_O')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_REG_O]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_REG_O]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_REG_O]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_REG_O]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62751,14 +62751,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_REOWNED_BORROWERS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_REOWNED_BORROWERS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_REOWNED_BORROWERS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_REOWNED_BORROWERS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_REOWNED_BORROWERS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_REOWNED_BORROWERS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62778,14 +62778,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_DATA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_REQ_CREDIT_DATA]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_REQ_CREDIT_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_REQ_CREDIT_DATA]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_REQ_CREDIT_DATA]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62828,14 +62828,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_LIAB_REP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_REQ_CREDIT_LIAB_REP')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_REQ_CREDIT_LIAB_REP]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_REQ_CREDIT_LIAB_REP]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_REQ_CREDIT_LIAB_REP]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_REQ_CREDIT_LIAB_REP]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62860,14 +62860,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_REQ_NADA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_REQ_NADA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_REQ_NADA]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_REQ_NADA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_REQ_NADA]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_REQ_NADA]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62892,14 +62892,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_REQUESTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_REQUESTS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_REQUESTS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_REQUESTS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_REQUESTS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_REQUESTS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62917,14 +62917,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CRD_FILE_ALIAS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CRD_FILE_ALIAS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CRD_FILE_ALIAS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CRD_FILE_ALIAS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CRD_FILE_ALIAS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CRD_FILE_ALIAS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62950,14 +62950,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_FILE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_FILE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CREDIT_FILE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CREDIT_FILE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CREDIT_FILE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CREDIT_FILE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -62986,14 +62986,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_INQUIRY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_INQUIRY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CREDIT_INQUIRY]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CREDIT_INQUIRY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CREDIT_INQUIRY]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CREDIT_INQUIRY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63032,14 +63032,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_LIABILITY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_LIABILITY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CREDIT_LIABILITY]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CREDIT_LIABILITY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CREDIT_LIABILITY]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CREDIT_LIABILITY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63139,14 +63139,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_SUMMARY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_CREDIT_SUMMARY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CREDIT_SUMMARY]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CREDIT_SUMMARY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_RES_CREDIT_SUMMARY]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_CREDIT_SUMMARY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63257,14 +63257,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_NADA_VAL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_NADA_VAL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_RES_NADA_VAL]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_NADA_VAL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_RES_NADA_VAL]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_NADA_VAL]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63321,14 +63321,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_RES_TITLE_TAX')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_RES_TITLE_TAX')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_RES_TITLE_TAX]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_TITLE_TAX]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_RES_TITLE_TAX]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_RES_TITLE_TAX]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63350,14 +63350,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_RESPONSE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_RESPONSE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_RESPONSE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_RESPONSE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_RESPONSE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_RESPONSE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63380,14 +63380,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_RSP_LP_LOANFDBCK')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_RSP_LP_LOANFDBCK')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_RSP_LP_LOANFDBCK]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_RSP_LP_LOANFDBCK]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_RSP_LP_LOANFDBCK]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_RSP_LP_LOANFDBCK]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63494,14 +63494,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_SUBJPRP_INSURANCE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_SUBJPRP_INSURANCE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_SUBJPRP_INSURANCE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_SUBJPRP_INSURANCE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_SUBJPRP_INSURANCE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_SUBJPRP_INSURANCE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63518,14 +63518,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_SUBJPRP_TAX')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_SUBJPRP_TAX')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_SUBJPRP_TAX]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_SUBJPRP_TAX]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_SUBJPRP_TAX]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_SUBJPRP_TAX]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63542,14 +63542,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_TAXITEMS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_TAXITEMS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_TAXITEMS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_TAXITEMS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_TAXITEMS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_TAXITEMS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63604,14 +63604,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLR_TL_REC_DOC_ROLES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLR_TL_REC_DOC_ROLES')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLR_TL_REC_DOC_ROLES]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLR_TL_REC_DOC_ROLES]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLR_TL_REC_DOC_ROLES]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLR_TL_REC_DOC_ROLES]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63638,14 +63638,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TLRR_FUNDDISB')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TLRR_FUNDDISB')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TLRR_FUNDDISB]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TLRR_FUNDDISB]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TLRR_FUNDDISB]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TLRR_FUNDDISB]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -63666,14 +63666,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_AUDIT_LOAN_DELETE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_AUDIT_LOAN_DELETE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_AUDIT_LOAN_DELETE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_AUDIT_LOAN_DELETE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_AUDIT_LOAN_DELETE]
 AS
    SELECT
       x.[DELETED_LNUM] AS [DELETED_LNUM],
@@ -63693,14 +63693,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_AUDIT_USER_LOCK')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_AUDIT_USER_LOCK')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_AUDIT_USER_LOCK]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_AUDIT_USER_LOCK]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_AUDIT_USER_LOCK]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_AUDIT_USER_LOCK]
 AS
    SELECT
       x.[UL_ID] AS [UL_ID],
@@ -63725,14 +63725,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_APPROVAL_DTL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_CMS_APPROVAL_DTL]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_APPROVAL_DTL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_CMS_APPROVAL_DTL]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_APPROVAL_DTL]
 AS
    SELECT
       x.[CID] AS [CID],
@@ -63753,14 +63753,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_ADDRESS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_ADDRESS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_ADDRESS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_ADDRESS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_ADDRESS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_ADDRESS]
 AS
    SELECT
       x.[CID] AS [CID],
@@ -63790,14 +63790,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_EMAIL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_EMAIL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_EMAIL]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_EMAIL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_EMAIL]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_EMAIL]
 AS
    SELECT
       x.[CID] AS [CID],
@@ -63816,14 +63816,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_INFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_INFO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_INFO]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_INFO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_INFO]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_INFO]
 AS
    SELECT
       x.[CID] AS [CID],
@@ -63860,14 +63860,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_PHONE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_PHONE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_PHONE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_PHONE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_PHONE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_PHONE]
 AS
    SELECT
       x.[CID] AS [CID],
@@ -63887,14 +63887,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_TYPE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_CONTACT_TYPE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_TYPE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_TYPE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_CMS_CONTACT_TYPE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_CONTACT_TYPE]
 AS
    SELECT
       x.[CID] AS [CID],
@@ -63911,14 +63911,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_CMS_INFOBYTYPE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_CMS_INFOBYTYPE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_CMS_INFOBYTYPE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_INFOBYTYPE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_CMS_INFOBYTYPE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_CMS_INFOBYTYPE]
 AS
    SELECT
       x.[CID] AS [CID],
@@ -63960,14 +63960,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_INDEX_VALUE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_INDEX_VALUE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_INDEX_VALUE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_INDEX_VALUE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_INDEX_VALUE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_INDEX_VALUE]
 AS
    SELECT
       x.[S_INDEX] AS [S_INDEX],
@@ -63986,14 +63986,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_INVESTOR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_INVESTOR')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_PNP_IPG_INVESTOR]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_IPG_INVESTOR]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_PNP_IPG_INVESTOR]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_IPG_INVESTOR]
 AS
    SELECT
       HASHBYTES('SHA2_256', x.[INVESTORCODE]) AS [INVESTORCODE],
@@ -64018,14 +64018,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PRICING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PRICING')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_PNP_IPG_PRICING]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_IPG_PRICING]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_PNP_IPG_PRICING]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_IPG_PRICING]
 AS
    SELECT
       x.[PRICING_GROUP_CODE] AS [PRICING_GROUP_CODE],
@@ -64044,14 +64044,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PRODUCT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PRODUCT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_PNP_IPG_PRODUCT]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_IPG_PRODUCT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_PNP_IPG_PRODUCT]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_IPG_PRODUCT]
 AS
    SELECT
       x.[PRODUCTCODE] AS [PRODUCTCODE],
@@ -64071,14 +64071,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PROGRAM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_IPG_PROGRAM')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_PNP_IPG_PROGRAM]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_IPG_PROGRAM]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_PNP_IPG_PROGRAM]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_IPG_PROGRAM]
 AS
    SELECT
       x.[PROGRAMCODE] AS [PROGRAMCODE],
@@ -64097,14 +64097,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_PNP_PRICE_OFERING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_PNP_PRICE_OFERING')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_PNP_PRICE_OFERING]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_PRICE_OFERING]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_PNP_PRICE_OFERING]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_PNP_PRICE_OFERING]
 AS
    SELECT
       x.[PA_DBCODE] AS [PA_DBCODE],
@@ -64120,14 +64120,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_WF_GROUP_USER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_WF_GROUP_USER')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_WF_GROUP_USER]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_WF_GROUP_USER]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_WF_GROUP_USER]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_WF_GROUP_USER]
 AS
    SELECT
       x.[S_PROC_GROUP] AS [S_PROC_GROUP],
@@ -64150,14 +64150,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_WF_PROCESS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_WF_PROCESS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_WF_PROCESS]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_WF_PROCESS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_WF_PROCESS]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_WF_PROCESS]
 AS
    SELECT
       x.[S_PROCESS] AS [S_PROCESS],
@@ -64175,14 +64175,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_WF_PROCESS_MODEL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_WF_PROCESS_MODEL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_WF_PROCESS_MODEL]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_WF_PROCESS_MODEL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_WF_PROCESS_MODEL]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_WF_PROCESS_MODEL]
 AS
    SELECT
       x.[S_PROCESS_MODEL] AS [S_PROCESS_MODEL],
@@ -64200,14 +64200,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TS_WF_WORKTYPE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TS_WF_WORKTYPE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TS_WF_WORKTYPE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TS_WF_WORKTYPE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TS_WF_WORKTYPE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TS_WF_WORKTYPE]
 AS
    SELECT
       x.[S_WORKTYPE] AS [S_WORKTYPE],
@@ -64238,14 +64238,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TSR_PNP_IPG_BASE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TSR_PNP_IPG_BASE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TSR_PNP_IPG_BASE]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TSR_PNP_IPG_BASE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TSR_PNP_IPG_BASE]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TSR_PNP_IPG_BASE]
 AS
    SELECT
       HASHBYTES('SHA2_256', x.[INVESTOR_CODE]) AS [INVESTOR_CODE],
@@ -64377,14 +64377,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TW_WF_ACTION_MGR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TW_WF_ACTION_MGR')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TW_WF_ACTION_MGR]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TW_WF_ACTION_MGR]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TW_WF_ACTION_MGR]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TW_WF_ACTION_MGR]
 AS
    SELECT
       x.[ACTION_ID] AS [ACTION_ID],
@@ -64423,14 +64423,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TW_WF_PROC_MODEL_MGR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TW_WF_PROC_MODEL_MGR')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TW_WF_PROC_MODEL_MGR]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TW_WF_PROC_MODEL_MGR]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TW_WF_PROC_MODEL_MGR]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TW_WF_PROC_MODEL_MGR]
 AS
    SELECT
       x.[PROC_MDL_MGR_ID] AS [PROC_MDL_MGR_ID],
@@ -64461,14 +64461,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGF_TW_WF_PROCESS_MGR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGF_TW_WF_PROCESS_MGR')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGF_TW_WF_PROCESS_MGR]
+   DROP VIEW [NetO_sas_creditScore].[VwGF_TW_WF_PROCESS_MGR]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGF_TW_WF_PROCESS_MGR]
+CREATE VIEW [NetO_sas_creditScore].[VwGF_TW_WF_PROCESS_MGR]
 AS
    SELECT
       x.[PROC_MGR_ID] AS [PROC_MGR_ID],
@@ -64498,14 +64498,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGFXVARTEXTMAP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGFXVARTEXTMAP')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGFXVARTEXTMAP]
+   DROP VIEW [NetO_sas_creditScore].[VwGFXVARTEXTMAP]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGFXVARTEXTMAP]
+CREATE VIEW [NetO_sas_creditScore].[VwGFXVARTEXTMAP]
 AS
    SELECT
       x.[TABLENAME] AS [TABLENAME],
@@ -64531,14 +64531,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGSSGRP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGSSGRP')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGSSGRP]
+   DROP VIEW [NetO_sas_creditScore].[VwGSSGRP]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGSSGRP]
+CREATE VIEW [NetO_sas_creditScore].[VwGSSGRP]
 AS
    SELECT
       x.[GRPID] AS [GRPID],
@@ -64559,14 +64559,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGSSMEM')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGSSMEM')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGSSMEM]
+   DROP VIEW [NetO_sas_creditScore].[VwGSSMEM]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGSSMEM]
+CREATE VIEW [NetO_sas_creditScore].[VwGSSMEM]
 AS
    SELECT
       x.[GRPID] AS [GRPID],
@@ -64581,14 +64581,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwGSSUSR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwGSSUSR')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwGSSUSR]
+   DROP VIEW [NetO_sas_creditScore].[VwGSSUSR]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwGSSUSR]
+CREATE VIEW [NetO_sas_creditScore].[VwGSSUSR]
 AS
    SELECT
       x.[USRID] AS [USRID],
@@ -64607,14 +64607,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwHELOC')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwHELOC')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwHELOC]
+   DROP VIEW [NetO_sas_creditScore].[VwHELOC]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwHELOC]
+CREATE VIEW [NetO_sas_creditScore].[VwHELOC]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -64659,14 +64659,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwHELOC2')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwHELOC2')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwHELOC2]
+   DROP VIEW [NetO_sas_creditScore].[VwHELOC2]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwHELOC2]
+CREATE VIEW [NetO_sas_creditScore].[VwHELOC2]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -64691,14 +64691,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwHMDAINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwHMDAINFO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwHMDAINFO]
+   DROP VIEW [NetO_sas_creditScore].[VwHMDAINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwHMDAINFO]
+CREATE VIEW [NetO_sas_creditScore].[VwHMDAINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -64780,14 +64780,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwHMDAXPRT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwHMDAXPRT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwHMDAXPRT]
+   DROP VIEW [NetO_sas_creditScore].[VwHMDAXPRT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwHMDAXPRT]
+CREATE VIEW [NetO_sas_creditScore].[VwHMDAXPRT]
 AS
    SELECT
       x.[PRI_DBID] AS [PRI_DBID],
@@ -64832,14 +64832,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwINCOME')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwINCOME')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwINCOME]
+   DROP VIEW [NetO_sas_creditScore].[VwINCOME]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwINCOME]
+CREATE VIEW [NetO_sas_creditScore].[VwINCOME]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -64939,14 +64939,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwINFO1008')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwINFO1008')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwINFO1008]
+   DROP VIEW [NetO_sas_creditScore].[VwINFO1008]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwINFO1008]
+CREATE VIEW [NetO_sas_creditScore].[VwINFO1008]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -64985,14 +64985,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwL_SYMBOL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwL_SYMBOL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwL_SYMBOL]
+   DROP VIEW [NetO_sas_creditScore].[VwL_SYMBOL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwL_SYMBOL]
+CREATE VIEW [NetO_sas_creditScore].[VwL_SYMBOL]
 AS
    SELECT
       x.[FLDNAME] AS [FLDNAME],
@@ -65018,14 +65018,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwLIABLTY')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwLIABLTY')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwLIABLTY]
+   DROP VIEW [NetO_sas_creditScore].[VwLIABLTY]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwLIABLTY]
+CREATE VIEW [NetO_sas_creditScore].[VwLIABLTY]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65170,14 +65170,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwMISC1003')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwMISC1003')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwMISC1003]
+   DROP VIEW [NetO_sas_creditScore].[VwMISC1003]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwMISC1003]
+CREATE VIEW [NetO_sas_creditScore].[VwMISC1003]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65197,14 +65197,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwPOA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwPOA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwPOA]
+   DROP VIEW [NetO_sas_creditScore].[VwPOA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwPOA]
+CREATE VIEW [NetO_sas_creditScore].[VwPOA]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65230,14 +65230,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwPREDCTRS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwPREDCTRS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwPREDCTRS]
+   DROP VIEW [NetO_sas_creditScore].[VwPREDCTRS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwPREDCTRS]
+CREATE VIEW [NetO_sas_creditScore].[VwPREDCTRS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65263,14 +65263,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwPREVRES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwPREVRES')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwPREVRES]
+   DROP VIEW [NetO_sas_creditScore].[VwPREVRES]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwPREVRES]
+CREATE VIEW [NetO_sas_creditScore].[VwPREVRES]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65316,14 +65316,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwPRODUCT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwPRODUCT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwPRODUCT]
+   DROP VIEW [NetO_sas_creditScore].[VwPRODUCT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwPRODUCT]
+CREATE VIEW [NetO_sas_creditScore].[VwPRODUCT]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65561,14 +65561,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwPRTFOLIO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwPRTFOLIO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwPRTFOLIO]
+   DROP VIEW [NetO_sas_creditScore].[VwPRTFOLIO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwPRTFOLIO]
+CREATE VIEW [NetO_sas_creditScore].[VwPRTFOLIO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65629,14 +65629,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwRATECODE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwRATECODE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwRATECODE]
+   DROP VIEW [NetO_sas_creditScore].[VwRATECODE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwRATECODE]
+CREATE VIEW [NetO_sas_creditScore].[VwRATECODE]
 AS
    SELECT
       x.[USEKEY] AS [USEKEY],
@@ -65657,14 +65657,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwREOWNED')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwREOWNED')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwREOWNED]
+   DROP VIEW [NetO_sas_creditScore].[VwREOWNED]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwREOWNED]
+CREATE VIEW [NetO_sas_creditScore].[VwREOWNED]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65766,14 +65766,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwSEIA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwSEIA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwSEIA]
+   DROP VIEW [NetO_sas_creditScore].[VwSEIA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwSEIA]
+CREATE VIEW [NetO_sas_creditScore].[VwSEIA]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65907,14 +65907,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwSELLER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwSELLER')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwSELLER]
+   DROP VIEW [NetO_sas_creditScore].[VwSELLER]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwSELLER]
+CREATE VIEW [NetO_sas_creditScore].[VwSELLER]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -65982,14 +65982,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwSERVICNG')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwSERVICNG')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwSERVICNG]
+   DROP VIEW [NetO_sas_creditScore].[VwSERVICNG]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwSERVICNG]
+CREATE VIEW [NetO_sas_creditScore].[VwSERVICNG]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66050,14 +66050,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwSUBJPRP')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwSUBJPRP')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwSUBJPRP]
+   DROP VIEW [NetO_sas_creditScore].[VwSUBJPRP]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwSUBJPRP]
+CREATE VIEW [NetO_sas_creditScore].[VwSUBJPRP]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66288,14 +66288,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwTAXINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwTAXINFO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwTAXINFO]
+   DROP VIEW [NetO_sas_creditScore].[VwTAXINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwTAXINFO]
+CREATE VIEW [NetO_sas_creditScore].[VwTAXINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66354,14 +66354,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwTILINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwTILINFO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwTILINFO]
+   DROP VIEW [NetO_sas_creditScore].[VwTILINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwTILINFO]
+CREATE VIEW [NetO_sas_creditScore].[VwTILINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66461,14 +66461,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwTRACKING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwTRACKING')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwTRACKING]
+   DROP VIEW [NetO_sas_creditScore].[VwTRACKING]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwTRACKING]
+CREATE VIEW [NetO_sas_creditScore].[VwTRACKING]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66615,14 +66615,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwTRANSDATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwTRANSDATA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwTRANSDATA]
+   DROP VIEW [NetO_sas_creditScore].[VwTRANSDATA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwTRANSDATA]
+CREATE VIEW [NetO_sas_creditScore].[VwTRANSDATA]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66651,14 +66651,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwTRSTENTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwTRSTENTS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwTRSTENTS]
+   DROP VIEW [NetO_sas_creditScore].[VwTRSTENTS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwTRSTENTS]
+CREATE VIEW [NetO_sas_creditScore].[VwTRSTENTS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66704,14 +66704,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwTRUSTS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwTRUSTS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwTRUSTS]
+   DROP VIEW [NetO_sas_creditScore].[VwTRUSTS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwTRUSTS]
+CREATE VIEW [NetO_sas_creditScore].[VwTRUSTS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66747,14 +66747,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwUNDCOND1')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwUNDCOND1')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwUNDCOND1]
+   DROP VIEW [NetO_sas_creditScore].[VwUNDCOND1]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwUNDCOND1]
+CREATE VIEW [NetO_sas_creditScore].[VwUNDCOND1]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66805,14 +66805,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwUNDCOND2')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwUNDCOND2')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwUNDCOND2]
+   DROP VIEW [NetO_sas_creditScore].[VwUNDCOND2]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwUNDCOND2]
+CREATE VIEW [NetO_sas_creditScore].[VwUNDCOND2]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -66874,14 +66874,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwUWAPPR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwUWAPPR')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwUWAPPR]
+   DROP VIEW [NetO_sas_creditScore].[VwUWAPPR]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwUWAPPR]
+CREATE VIEW [NetO_sas_creditScore].[VwUWAPPR]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67021,14 +67021,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwVARTXT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwVARTXT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwVARTXT]
+   DROP VIEW [NetO_sas_creditScore].[VwVARTXT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwVARTXT]
+CREATE VIEW [NetO_sas_creditScore].[VwVARTXT]
 AS
    SELECT
       x.[DBID] AS [DBID],
@@ -67047,14 +67047,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwVESTING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwVESTING')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwVESTING]
+   DROP VIEW [NetO_sas_creditScore].[VwVESTING]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwVESTING]
+CREATE VIEW [NetO_sas_creditScore].[VwVESTING]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67073,14 +67073,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwVETINFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwVETINFO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwVETINFO]
+   DROP VIEW [NetO_sas_creditScore].[VwVETINFO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwVETINFO]
+CREATE VIEW [NetO_sas_creditScore].[VwVETINFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67185,14 +67185,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67225,14 +67225,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET_ACCT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET_ACCT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET_ACCT]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET_ACCT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET_ACCT]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET_ACCT]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67269,14 +67269,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET_MARINE_ENG')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET_MARINE_ENG')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET_MARINE_ENG]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET_MARINE_ENG]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET_MARINE_ENG]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET_MARINE_ENG]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67314,14 +67314,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET_VEHICLE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VEHICLE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET_VEHICLE]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET_VEHICLE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET_VEHICLE]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET_VEHICLE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67385,14 +67385,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_AUTO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_AUTO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_AUTO]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_AUTO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_AUTO]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_AUTO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67417,14 +67417,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_MARINE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_MARINE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_MARINE]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_MARINE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_MARINE]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_MARINE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67481,14 +67481,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_OPTIONS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_OPTIONS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_OPTIONS]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_OPTIONS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_OPTIONS]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_OPTIONS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67512,14 +67512,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_RV')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_RV')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_RV]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_RV]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_RV]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_RV]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67547,14 +67547,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_TRAILER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_TRAILER')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_TRAILER]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_TRAILER]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_TRAILER]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_TRAILER]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67575,14 +67575,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_ASSET_VHCL_VALUATION')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_ASSET_VHCL_VALUATION')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_VALUATION]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_VALUATION]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_ASSET_VHCL_VALUATION]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_ASSET_VHCL_VALUATION]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67631,14 +67631,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_AUTO_DEBIT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_AUTO_DEBIT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_AUTO_DEBIT]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_AUTO_DEBIT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_AUTO_DEBIT]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_AUTO_DEBIT]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67663,14 +67663,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BORR_INCOME_SRC_PAYSTUB')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BORR_INCOME_SRC_PAYSTUB]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BORR_INCOME_SRC_PAYSTUB]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BORR_INCOME_SRC_PAYSTUB]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -67738,14 +67738,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_DEFN_FIELDS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_DEFN_FIELDS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_DEFN_FIELDS]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_DEFN_FIELDS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_DEFN_FIELDS]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_DEFN_FIELDS]
 AS
    SELECT
       x.[FIELDID] AS [FIELDID],
@@ -67781,14 +67781,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_DEFN_GRID')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_DEFN_GRID')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_DEFN_GRID]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_DEFN_GRID]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_DEFN_GRID]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_DEFN_GRID]
 AS
    SELECT
       x.[GRIDID] AS [GRIDID],
@@ -67821,14 +67821,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_DEFN_GRID_DTL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_DEFN_GRID_DTL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_DEFN_GRID_DTL]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_DEFN_GRID_DTL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_DEFN_GRID_DTL]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_DEFN_GRID_DTL]
 AS
    SELECT
       x.[GRIDID] AS [GRIDID],
@@ -67863,14 +67863,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_EXPORT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_EXPORT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_EXPORT]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_EXPORT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_EXPORT]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_EXPORT]
 AS
    SELECT
       x.[EXPORTID] AS [EXPORTID],
@@ -67904,14 +67904,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_IDENTIFIERS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_IDENTIFIERS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_IDENTIFIERS]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_IDENTIFIERS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_IDENTIFIERS]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_IDENTIFIERS]
 AS
    SELECT
       x.[BRM_IDENT_FIELD] AS [BRM_IDENT_FIELD],
@@ -67931,14 +67931,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_IMPORT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_IMPORT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_IMPORT]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_IMPORT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_IMPORT]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_IMPORT]
 AS
    SELECT
       x.[IMPORTID] AS [IMPORTID],
@@ -67983,14 +67983,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_BASE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_BASE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_BASE]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_BASE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_BASE]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_BASE]
 AS
    SELECT
       x.[BRMID] AS [BRMID],
@@ -68036,14 +68036,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_BASE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_BASE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_BASE]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_BASE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_BASE]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_BASE]
 AS
    SELECT
       x.[BRMID] AS [BRMID],
@@ -68064,14 +68064,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_DETAIL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_DETAIL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_DETAIL]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_DETAIL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_DETAIL]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_DETAIL]
 AS
    SELECT
       x.[BRMID] AS [BRMID],
@@ -68096,14 +68096,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_FIELD')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_FIELD')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_FIELD]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_FIELD]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_FIELD]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_FIELD]
 AS
    SELECT
       x.[BRMID] AS [BRMID],
@@ -68127,14 +68127,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_ITEMS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_ITEMS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_ITEMS]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_ITEMS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_ITEMS]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_ITEMS]
 AS
    SELECT
       x.[BRMID] AS [BRMID],
@@ -68160,14 +68160,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_VALUE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BRM_LKUP_RULE_VALUE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_VALUE]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_VALUE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BRM_LKUP_RULE_VALUE]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BRM_LKUP_RULE_VALUE]
 AS
    SELECT
       x.[BRMID] AS [BRMID],
@@ -68190,14 +68190,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_BULK_IMPORT_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_BULK_IMPORT_DATA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_BULK_IMPORT_DATA]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_BULK_IMPORT_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_BULK_IMPORT_DATA]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_BULK_IMPORT_DATA]
 AS
    SELECT
       x.[BULK_ID] AS [BULK_ID],
@@ -68314,14 +68314,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_CNS_LOAN_APPLICATION')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_CNS_LOAN_APPLICATION')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_CNS_LOAN_APPLICATION]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_CNS_LOAN_APPLICATION]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_CNS_LOAN_APPLICATION]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_CNS_LOAN_APPLICATION]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -68375,14 +68375,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_COLLATERAL_ADDRESS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_COLLATERAL_ADDRESS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_ADDRESS]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_COLLATERAL_ADDRESS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_ADDRESS]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_COLLATERAL_ADDRESS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -68410,14 +68410,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_COLLATERAL_PLEDGOR')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_COLLATERAL_PLEDGOR')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_PLEDGOR]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_COLLATERAL_PLEDGOR]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_PLEDGOR]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_COLLATERAL_PLEDGOR]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -68442,14 +68442,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_COLLATERAL_TRADEIN')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_COLLATERAL_TRADEIN')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_TRADEIN]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_COLLATERAL_TRADEIN]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_TRADEIN]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_COLLATERAL_TRADEIN]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -68478,14 +68478,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_COLLATERAL_TYPES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_COLLATERAL_TYPES')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_TYPES]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_COLLATERAL_TYPES]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_COLLATERAL_TYPES]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_COLLATERAL_TYPES]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -68508,14 +68508,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_CORR_FUNDING')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_CORR_FUNDING')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_CORR_FUNDING]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_CORR_FUNDING]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_CORR_FUNDING]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_CORR_FUNDING]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -68551,14 +68551,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER]
 AS
    SELECT
       x.[CUSTOMER_ID] AS [CUSTOMER_ID],
@@ -68613,14 +68613,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ACCT_DETAIL')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ACCT_DETAIL')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_ACCT_DETAIL]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER_ACCT_DETAIL]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_ACCT_DETAIL]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER_ACCT_DETAIL]
 AS
    SELECT
       HASHBYTES('SHA2_256', x.[CURRENT_CUSTOMERID]) AS [CURRENT_CUSTOMERID],
@@ -68665,14 +68665,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ACCT_DTL_SUMM_')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ACCT_DTL_SUMM_')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_ACCT_DTL_SUMM_]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER_ACCT_DTL_SUMM_]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_ACCT_DTL_SUMM_]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER_ACCT_DTL_SUMM_]
 AS
    SELECT
       HASHBYTES('SHA2_256', x.[CURRENT_CUSTOMERID]) AS [CURRENT_CUSTOMERID],
@@ -68697,14 +68697,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ADDRESS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_ADDRESS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_ADDRESS]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER_ADDRESS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_ADDRESS]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER_ADDRESS]
 AS
    SELECT
       x.[CUSTOMER_ID] AS [CUSTOMER_ID],
@@ -68731,14 +68731,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_PHONE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_CRM_CUSTOMER_PHONE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_PHONE]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER_PHONE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_CRM_CUSTOMER_PHONE]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_CRM_CUSTOMER_PHONE]
 AS
    SELECT
       x.[CUSTOMER_ID] AS [CUSTOMER_ID],
@@ -68755,14 +68755,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_HMDAINFO_EXT')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_HMDAINFO_EXT')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_HMDAINFO_EXT]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_HMDAINFO_EXT]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_HMDAINFO_EXT]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_HMDAINFO_EXT]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -68894,14 +68894,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_HOEPA_DATA')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_HOEPA_DATA')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_HOEPA_DATA]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_HOEPA_DATA]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_HOEPA_DATA]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_HOEPA_DATA]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -68930,14 +68930,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_INCOME_SOURCE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_INCOME_SOURCE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_INCOME_SOURCE]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_INCOME_SOURCE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_INCOME_SOURCE]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_INCOME_SOURCE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -69010,14 +69010,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_KELLEYBLUEBOOK_RESPONSE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_KELLEYBLUEBOOK_RESPONSE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_KELLEYBLUEBOOK_RESPONSE]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_KELLEYBLUEBOOK_RESPONSE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_KELLEYBLUEBOOK_RESPONSE]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_KELLEYBLUEBOOK_RESPONSE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -69060,14 +69060,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_LOAN_EXCEPTIONS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_LOAN_EXCEPTIONS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_LOAN_EXCEPTIONS]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_LOAN_EXCEPTIONS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_LOAN_EXCEPTIONS]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_LOAN_EXCEPTIONS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -69145,14 +69145,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_PRICE_EXCEPTIONS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_PRICE_EXCEPTIONS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_PRICE_EXCEPTIONS]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_PRICE_EXCEPTIONS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_PRICE_EXCEPTIONS]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_PRICE_EXCEPTIONS]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -69181,14 +69181,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_PROMOTION')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_PROMOTION')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_PROMOTION]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_PROMOTION]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_PROMOTION]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_PROMOTION]
 AS
    SELECT
       x.[PROMO_ID] AS [PROMO_ID],
@@ -69206,14 +69206,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_RPT_LOAN_STATUS')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_RPT_LOAN_STATUS')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_RPT_LOAN_STATUS]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_RPT_LOAN_STATUS]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_RPT_LOAN_STATUS]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_RPT_LOAN_STATUS]
 AS
    SELECT
       x.[ROWCNTR] AS [ROWCNTR],
@@ -69234,14 +69234,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_SC_ATTRIBUTES')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_SC_ATTRIBUTES')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_SC_ATTRIBUTES]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_SC_ATTRIBUTES]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_SC_ATTRIBUTES]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_SC_ATTRIBUTES]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -69478,14 +69478,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_SC_DECISION')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_SC_DECISION')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_SC_DECISION]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_SC_DECISION]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_SC_DECISION]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_SC_DECISION]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -69502,14 +69502,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_SC_DECISION_REASON')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_SC_DECISION_REASON]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_SC_DECISION_REASON]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_SC_DECISION_REASON]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_SC_DECISION_REASON]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -69529,14 +69529,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_SYMBOL_XREF')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_SYMBOL_XREF')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_SYMBOL_XREF]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_SYMBOL_XREF]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_SYMBOL_XREF]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_SYMBOL_XREF]
 AS
    SELECT
       x.[TABLENAME] AS [TABLENAME],
@@ -69555,14 +69555,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_TLBR_VET_MILT_SERVICE')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_TLBR_VET_MILT_SERVICE')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_TLBR_VET_MILT_SERVICE]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_TLBR_VET_MILT_SERVICE]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_TLBR_VET_MILT_SERVICE]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_TLBR_VET_MILT_SERVICE]
 AS
    SELECT
       x.[LNUM] AS [LNUM],
@@ -69588,14 +69588,14 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_restricted' AND TABLE_NAME = 'VwWG_TLR_RECORDING_INFO')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'NetO_sas_creditScore' AND TABLE_NAME = 'VwWG_TLR_RECORDING_INFO')
 BEGIN
-   DROP VIEW [NetO_sas_restricted].[VwWG_TLR_RECORDING_INFO]
+   DROP VIEW [NetO_sas_creditScore].[VwWG_TLR_RECORDING_INFO]
 END
 GO
 
 
-CREATE VIEW [NetO_sas_restricted].[VwWG_TLR_RECORDING_INFO]
+CREATE VIEW [NetO_sas_creditScore].[VwWG_TLR_RECORDING_INFO]
 AS
    SELECT
       x.[LNUM] AS [LNUM],

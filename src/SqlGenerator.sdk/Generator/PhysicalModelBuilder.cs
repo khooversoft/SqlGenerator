@@ -14,16 +14,18 @@ public class PhysicalModelBuilder
     public PhysicalModel Build(
         IReadOnlyList<TableInfo> infos,
         SqlProjectOption projectOption,
-        IReadOnlyList<TableTypeMetadata>? tableMetadata
+        IReadOnlyList<TableTypeMetadata>? tableMetadata,
+        IReadOnlyList<TableInfo>? protection
         )
     {
         infos.NotNull();
         projectOption.Verify();
 
-        IReadOnlyList<TableInfo> tableInfos = infos.ToList();
+        IReadOnlyList<TableInfo> tableInfos = ApplyProtection(infos, protection);
+        VerifySecurity(tableInfos, projectOption.Schemas);
 
         SchemaModel dataSchemaModel = projectOption.Schemas
-            .Where(x => x.Security.ForTable())
+            .Where(x => x.ForTable())
             .FirstOrDefault()
             .NotNull(name: $"Cannot find data schema in option");
 
@@ -39,6 +41,47 @@ public class PhysicalModelBuilder
             AddInstructions = projectOption.AddInstructions.ToArray(),
             XRefTables = ReadXRefTable(projectOption),
         }.Verify();
+    }
+
+    private void VerifySecurity(IReadOnlyList<TableInfo> tableInfos, IList<SchemaModel> schemas)
+    {
+        var securityUsed = tableInfos
+            .SelectMany(x => x.Security.Items)
+            .Select(x => x.ToLower())
+            .Distinct()
+            .OrderBy(x => x)
+            .ToArray();
+
+        var schemaUsed = schemas
+            .Where(x => x.ForView())
+            .Select(x => x.Security.ToLower())
+            .Distinct()
+            .OrderBy(x => x)
+            .ToArray();
+
+        Verify.Assert(
+            () => !securityUsed.Except(schemaUsed).Any(),
+            $"Schema security does not match data dictionary's security settings, securityUsed={securityUsed.Join(",")}, schemaUsed={schemaUsed.Join(",")}"
+            );
+    }
+
+    private IReadOnlyList<TableInfo> ApplyProtection(IReadOnlyList<TableInfo> tableInfos, IReadOnlyList<TableInfo>? protection)
+    {
+        return protection switch
+        {
+            null => tableInfos.ToArray(),
+
+            var v => tableInfos
+                .GroupJoin(v, x => x.GetColumnKey(), x => x.GetColumnKey(), (o, i) => (row: o, protection: i))
+                .Select(x => x.row with
+                {
+                    Security = new SecurityList(mergeSecurity(x.row, x.protection)),
+                })
+                .ToArray(),
+        };
+
+        IEnumerable<string> mergeSecurity(TableInfo row, IEnumerable<TableInfo> protection) => row.Security.Items
+            .Concat(protection.SelectMany(x => x.Security.Items));
     }
 
     private static IReadOnlyList<TableModel> GenerateTable(
@@ -62,12 +105,10 @@ public class PhysicalModelBuilder
                 Columns = x.Where(y => y.DataType != "**").Select((y, i) => new ColumnModel
                 {
                     Name = y.ColumnName,
-                    Security = y.GetSecurity(),
+                    Security = y.Security,
                     DataType = y.DataType,
                     NotNull = y.NotNull,
                     PrimaryKey = y.PrimaryKey || IsPrimaryKey(x.Key, y.ColumnName, projectOption),
-                    PII = y.PII,
-                    Restricted = y.Restricted,
                     ColumnIndex = i,
                 }).ToList(),
             }).ToList();
@@ -101,7 +142,7 @@ public class PhysicalModelBuilder
         _ => TableMode.None,
     };
 
-    private IReadOnlyList<XRefTableModel> ReadXRefTable(SqlProjectOption projectOption) => projectOption.CommandOptions
+    private static IReadOnlyList<XRefTableModel> ReadXRefTable(SqlProjectOption projectOption) => projectOption.CommandOptions
         .Where(x => x.Type == CommandType.XRefTable)
         .SelectMany(x => XRefTableFile.Read(x.Pattern))
         .ToArray();

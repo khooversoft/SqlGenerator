@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Toolbox\Toolbox.csproj" />
+    <Compile Remove="Tools\**" />
+    <EmbeddedResource Remove="Tools\**" />
+    <None Remove="Tools\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Tools\" />
+    <ProjectReference Include="..\Toolbox\Toolbox.csproj" />
   </ItemGroup>
 
   <ItemGroup>

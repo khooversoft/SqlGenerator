@@ -1,7 +1,6 @@
-﻿using CsvHelper;
+﻿using DataTools.sdk.Application;
 using DataTools.sdk.Storage;
-using System.Globalization;
-using Toolbox.Extensions;
+using Toolbox.Data;
 using Toolbox.Tools;
 
 namespace DataTools.sdk.Model;
@@ -26,15 +25,12 @@ public static class DataDictionaryFile
     {
         file.NotEmpty();
 
-        using var reader = new StreamReader(file);
-        using CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+        StringTable table = CsvFile.ReadDynamic(file);
 
-        return csv.GetRecords<TableInfoModel>()
-            .Select((x, i) => x.ConvertTo() with { Ordinal = i + 1 })
-            .Func(x => new DataDictionary
-            {
-                Items = x.ToList(),
-            });
+        return new DataDictionary
+        {
+            Items = table.ConvertToTableInfo(),
+        };
     }
 
     public static DataDictionary Write(this DataDictionary dataDictionary, string file)
@@ -44,13 +40,36 @@ public static class DataDictionaryFile
 
         int startOrdinal = dataDictionary.Items.Count + 1;
 
-        var records = dataDictionary.Items
+        TableInfo[] records = dataDictionary.Items
             .Select((x, i) => x.Ordinal > 0 ? x : x with { Ordinal = startOrdinal + i })
             .OrderBy(x => x.TableName)
             .ThenBy(x => x.Ordinal)
-            .Select(x => x.ConvertTo());
+            .ToArray();
 
-        CsvFile.Write(file, records);
+        var addColumns = dataDictionary.Items
+            .SelectMany(x => x.Security.Items)
+            .Distinct()
+            .Select((x, i) => (index: i, columnName: x))
+            .OrderBy(x => x.index)
+            .ToArray();
+
+        var table = new StringTable()
+            + Constants.ColumnIndex.List()
+                .Select(x => x.LabelColumnName)
+                .Concat(addColumns.Select(x => x.columnName));
+
+        foreach (var item in dataDictionary.Items)
+        {
+            var row = new StringRow()
+                + item.TableName
+                + item.ColumnName
+                + item.DataType
+                + (item.NotNull ? "NOT NULL" : "NULL")
+                + (item.PrimaryKey ? "Yes" : "")
+                + (addColumns.Select(x => item.Security.Contains(x.columnName) ? "Yes" : string.Empty));
+        }
+
+        table.WriteToCsv(file);
 
         return dataDictionary;
     }

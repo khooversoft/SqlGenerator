@@ -14,7 +14,7 @@
     },
     {
       "security": "restricted",
-      "name": "NetO_restricted",
+      "name": "NetO_creditScore",
       "format": "Vw{tableName}",
       "maxColumnSize": null
     },
@@ -32,7 +32,7 @@
     },
     {
       "security": "restricted",
-      "name": "NetO_sas_restricted",
+      "name": "NetO_sas_creditScore",
       "format": "Vw{tableName}",
       "maxColumnSize": 32
     },

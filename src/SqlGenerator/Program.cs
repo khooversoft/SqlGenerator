@@ -1,11 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.CommandLine;
+using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SqlGenerator.Activities;
 using SqlGenerator.Commands;
-using SqlGenerator.sdk.Project;
-using SqlGenerator.sdk.Project.Activities;
-using System.CommandLine;
-using System.Reflection;
+using SqlGenerator.sdk;
 using Toolbox.Logging;
 using Toolbox.Tools;
 
@@ -58,7 +57,6 @@ ServiceProvider BuildContainer()
     });
 
     service.AddSingleton<BuildActivity>();
-    service.AddSingleton<MergeActivity>();
     service.AddProjectBuild();
 
     service.AddSingleton<BuildCommand>();

@@ -22,6 +22,7 @@ public class ModelActivity
     public Task Build(string sourceFile, SqlProjectOption projectOption, string outputFile)
     {
         sourceFile.NotEmpty();
+        projectOption.NotNull();
         outputFile.NotEmpty();
 
         new
@@ -31,14 +32,20 @@ public class ModelActivity
         }.LogProperties("Building model...", _logger);
 
         DataDictionary dataDictionary = DataDictionaryFile.Read(sourceFile);
-        dataDictionary = dataDictionary with
+
+        DataDictionary? securityDataDictionary = projectOption.ProtectionFile switch
         {
-            Items = dataDictionary.Items.Where(x => !x.Excluded).ToArray(),
+            null => null,
+            string v => DataDictionaryFile.Read(v),
         };
 
-        IReadOnlyList<TableTypeMetadata>? tableMetadata = projectOption.TableTypeMetadata != null ? TableTypeMetadataFile.Read(projectOption.TableTypeMetadata) : null;
+        IReadOnlyList<TableTypeMetadata>? tableMetadata = projectOption.TableTypeMetadata switch
+        {
+            null => null,
+            string v => TableTypeMetadataFile.Read(v),
+        };
 
-        var model = new PhysicalModelBuilder().Build(dataDictionary.Items, projectOption, tableMetadata);
+        var model = new PhysicalModelBuilder().Build(dataDictionary.Items, projectOption, tableMetadata, securityDataDictionary?.Items);
         model.Write(outputFile);
 
         return Task.CompletedTask;

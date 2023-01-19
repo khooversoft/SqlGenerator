@@ -1,5 +1,6 @@
 ﻿using System.Reflection.PortableExecutable;
 using Toolbox.Extensions;
+using Toolbox.Tools;
 
 namespace Toolbox.Data;
 
@@ -17,6 +18,18 @@ public class StringTable : Sequence<StringRow>
 
     public StringRow Header => FirstRowIsHeader && Count > 0 ? this.First() : throw new ArgumentException("No header row");
     public IReadOnlyList<StringRow> Data => FirstRowIsHeader ? this.Skip(1).ToArray() : this;
+
+    public string? GetValue(string header, StringRow row, bool ignoreCase = false) => GetHeaderIndex(header, true) switch
+    {
+        null => null,
+        int v => row[v],
+    };
+
+    public int? GetHeaderIndex(string header, bool ignoreCase = false) => Header
+        .Select((x, i) => (index: (int?)i, match: PatternMatch.IsMatch(header, x, ignoreCase)))
+        .Where(x => x.match)
+        .Select(x => x.index)
+        .FirstOrDefault();
 
     public static StringTable operator +(StringTable sheetRow, IEnumerable<string> values) => sheetRow.Action(x => x.Add(new StringRow(values)));
     public static StringTable operator +(StringTable sheetRow, IEnumerable<StringRow> values) => sheetRow.Action(x => x.AddRange(values));

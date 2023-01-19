@@ -32,6 +32,7 @@ public class StringExtensionTests
     [InlineData("Table_Amount_Details", "unknown", false)]
     [InlineData("Table_Amount_Details", "x", false)]
     [InlineData("Table_Amount_Details", "Amount", true)]
+    [InlineData("Table_Amount_Details", "amount", false)]
     [InlineData("Table_Amount_Details", "Table", true)]
     [InlineData("Table_Balance_Accessibility", "Accessibility", true)]
     [InlineData("Table_Amount_Details", "T", true)]
@@ -39,5 +40,16 @@ public class StringExtensionTests
     public void FindTest_ShouldPass(string subject, string? find, bool sucess)
     {
         string? findResult = subject.Find(find);
+        ((sucess && findResult != null) || (!sucess && findResult == null)).Should().BeTrue();
+    }
+
+    [Theory]
+    [InlineData("Table_Amount_Details", "Amount", true)]
+    [InlineData("Table_Amount_Details", "amount", true)]
+    [InlineData("Table_Amount_Details", "unknown", false)]
+    public void FindCaseInsensitiveTest_ShouldPass(string subject, string? find, bool sucess)
+    {
+        string? findResult = subject.Find(find, StringComparison.OrdinalIgnoreCase);
+        ((sucess && findResult != null) || (!sucess && findResult == null)).Should().BeTrue();
     }
 }

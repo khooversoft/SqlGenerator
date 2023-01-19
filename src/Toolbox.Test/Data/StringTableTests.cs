@@ -227,6 +227,48 @@ public class StringTableTests
                 .All(x => x.First == x.Second)
                 .Should().BeTrue();
         }
+
+        int? index = table.GetHeaderIndex("Date");
+        index.Should().NotBeNull();
+        index.Should().Be(0);
+
+        index = table.GetHeaderIndex("Name");
+        index.Should().NotBeNull();
+        index.Should().Be(1);
+        
+        index = table.GetHeaderIndex("Value");
+        index.Should().NotBeNull();
+        index.Should().Be(2);
+
+        index = table.GetHeaderIndex("not valid");
+        index.Should().BeNull();
+
+        string? value = table.GetValue("Date", table.Data[0]);
+        value.Should().NotBeEmpty();
+        value.Should().Be("20220810");
+
+        value = table.GetValue("Name", table.Data[0]);
+        value.Should().NotBeEmpty();
+        value.Should().Be("Name1");
+
+        value = table.GetValue("Value", table.Data[0]);
+        value.Should().NotBeEmpty();
+        value.Should().Be("1");
+
+        value = table.GetValue("Date", table.Data[1]);
+        value.Should().NotBeEmpty();
+        value.Should().Be("20220911");
+
+        value = table.GetValue("Name", table.Data[1]);
+        value.Should().NotBeEmpty();
+        value.Should().Be("Name2");
+
+        value = table.GetValue("Value", table.Data[1]);
+        value.Should().NotBeEmpty();
+        value.Should().Be("2");
+
+        value = table.GetValue("xxxx", table.Data[1]);
+        value.Should().BeNullOrEmpty();
     }
 
     [Fact]

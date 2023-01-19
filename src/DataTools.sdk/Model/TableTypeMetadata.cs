@@ -1,11 +1,5 @@
-﻿using CsvHelper;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Toolbox.Extensions;
+﻿using System.Globalization;
+using CsvHelper;
 using Toolbox.Tools;
 
 namespace DataTools.sdk.Model;

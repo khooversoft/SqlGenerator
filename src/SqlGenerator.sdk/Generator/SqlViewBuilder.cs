@@ -167,7 +167,7 @@ public class SqlViewBuilder
 
     private string BuildColumnModel(ColumnModel columnModel, SchemaModel schemaModel)
     {
-        return columnModel.CanShowValue(schemaModel.Security) switch
+        return columnModel.Security.CanShow(schemaModel.Security) switch
         {
             true => $"x.[{columnModel.Name}]" + displayAs(),
 

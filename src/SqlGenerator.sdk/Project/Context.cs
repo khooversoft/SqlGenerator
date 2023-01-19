@@ -14,14 +14,12 @@ public record Context
     public string ModelFolder { get; init; } = null!;
     public ConfigFile SourceFile { get; init; } = null!;
     public ConfigFile ModelFile { get; init; } = null!;
-    public ConfigFile DataDictionaryFile { get; init; } = null!;
 }
 
 
 public static class ContextExtensions
 {
     private const string _modelExtension = ".model.json";
-    private const string _dataDictionaryExtension = ".dataDictionary.csv";
 
     public static Context CreateContext(this SqlProjectOption projectOption, string projectFile, ConfigFile sourceFile)
     {
@@ -56,7 +54,6 @@ public static class ContextExtensions
             ModelFolder = modelFolder,
 
             ModelFile = new ConfigFile(buildTemplate, _modelExtension),
-            DataDictionaryFile = new ConfigFile(modelTemplate, _dataDictionaryExtension),
         };
     }
 }

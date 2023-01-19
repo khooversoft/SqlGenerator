@@ -1,4 +1,6 @@
-﻿using Toolbox.Tools;
+﻿using DataTools.sdk.Application;
+using Toolbox.Data;
+using Toolbox.Extensions;
 
 namespace DataTools.sdk.Model;
 
@@ -10,36 +12,50 @@ public record TableInfo
     public string DataType { get; init; } = null!;
     public bool NotNull { get; init; }
     public bool PrimaryKey { get; init; }
-    public bool Restricted { get; init; }
-    public bool PII { get; init; }
-    public bool Excluded { get; init; }
+    public SecurityList Security { get; init; } = null!;
 }
 
 
 public static class TableInfoExtensions
 {
-    public static TableInfoModel ConvertTo(this TableInfo subject)
+    public static IReadOnlyList<TableInfo> ConvertToTableInfo(this StringTable stringTable)
     {
-        return new TableInfoModel
+        var rows = stringTable.Data
+            .Select(row => new TableInfo
+            {
+                TableName = get(Constants.ColumnIndex[ColumnIndex.TableName], row),
+                ColumnName = get(Constants.ColumnIndex[ColumnIndex.ColumnName], row),
+                DataType = get(Constants.ColumnIndex[ColumnIndex.DataType], row),
+                NotNull = get(Constants.ColumnIndex[ColumnIndex.NullOption], row).ToLower() switch
+                {
+                    "null" => false,
+                    "not null" => true,
+                    string v => throw new ArgumentException($"Unknown data type {v}"),
+                },
+                PrimaryKey = isYes(get(Constants.ColumnIndex[ColumnIndex.PrimaryKey], row)),
+                Security = stringTable.Header
+                    .Except(Constants.ColumnIndex.List().Select(x => x.LabelColumnName), StringComparer.OrdinalIgnoreCase)
+                    .Select(x => (columnName: x, value: stringTable.GetValue(x, row, true)))
+                    .Where(x => isYes(x.value))
+                    .Select(x => x.columnName)
+                    .Func(x => new SecurityList(x)),
+            })
+            .ToArray();
+
+        return rows;
+
+        string get(string columName, StringRow row) => stringTable.GetValue(columName, row, true) switch
         {
-            TableName = subject.TableName,
-            ColumnName = subject.ColumnName,
-            DataType = subject.DataType,
-            NotNull = subject.NotNull ? "NOT NULL" : "NULL",
-            PrimaryKey = subject.PrimaryKey ? "Yes" : null,
-            Restricted = subject.Restricted ? "Yes" : null,
-            PII = subject.PII ? "Yes" : null,
-            Excluded = subject.Excluded ? "Yes" : null,
+            null => throw new ArgumentException($"Cannot find required column {columName}"),
+            string v => v,
+        };
+
+        bool isYes(string? value) => value switch
+        {
+            null => false,
+            string v => v.Equals("yes", StringComparison.OrdinalIgnoreCase),
         };
     }
-
-    public static Security GetSecurity(this TableInfo subject) => subject.NotNull() switch
-    {
-        TableInfo v when v.PII => Security.PII,
-        TableInfo v when v.Restricted => Security.Restricted,
-
-        _ => Security.Unrestricted,
-    };
 
     public static (string tableName, string columnName) GetColumnId(this TableInfo subject) =>
         (subject.TableName.ToLower(), subject.ColumnName.ToLower());
