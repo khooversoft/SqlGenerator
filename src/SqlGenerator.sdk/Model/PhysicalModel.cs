@@ -22,6 +22,7 @@ public sealed record PhysicalModel
     public IReadOnlyList<CommandOption> Commands { get; init; } = Array.Empty<CommandOption>();
     public IReadOnlyList<AddInstruction> AddInstructions { get; init; } = new List<AddInstruction>();
     public IReadOnlyList<XRefTableModel> XRefTables { get; init; } = Array.Empty<XRefTableModel>();
+    public IReadOnlyList<SecurityModel> Security { get; init; } = Array.Empty<SecurityModel>();
 
 
     public bool Equals(PhysicalModel? obj)
@@ -36,7 +37,9 @@ public sealed record PhysicalModel
             AddInstructions.Count == model.AddInstructions.Count &&
             AddInstructions.Zip(model.AddInstructions).All(x => x.First == x.Second) &&
             XRefTables.Count == model.XRefTables.Count &&
-            XRefTables.Zip(model.XRefTables).All(x => x.First == x.Second);
+            XRefTables.Zip(model.XRefTables).All(x => x.First == x.Second) &&
+            Security.Count == model.Security.Count &&
+            Security.Zip(model.Security).All(x => x.First == x.Second);
     }
 
     public override int GetHashCode() => HashCode.Combine(Schemas, Tables);
@@ -53,6 +56,7 @@ public static class PhysicalModelExtensions
         subject.NotNull().Commands.ForEach(x => x.Verify());
         subject.NotNull().AddInstructions.ForEach(x => x.Verify());
         subject.NotNull().XRefTables.ForEach(x => x.Verify());
+        subject.NotNull().Security.ForEach(x => x.Verify());
 
         subject.Tables.ForEach(x => subject.IsSchemaPresent(x.Name.Schema).Assert(x => x == true, $"Schema={x.Name.Schema} not found"));
 

@@ -8,8 +8,8 @@ AS
    SELECT
       x.[MonthEndDate],
       x.[BECUAccountNumber],
-      HASHBYTES('SHA2_256', CAST(x.[AccountNumber] AS NVARCHAR(50))) AS [AccountNumber],
-      [idMap].[OriginalMemberNumber] AS [AccountNumberOriginal],
+      x.[AccountNumber],
+      [idMap].[OriginalMemberNumber] AS [OrginalPartyId],
       coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
       x.[VendorId],
       x.[AssetClass],
@@ -202,7 +202,7 @@ AS
       x.[ActualPrincipalAndInterestPaidAmount],
       x.[CurrentCreditScoreModel]
    FROM [clt_AssetAcq].[CommonMonthly] x
-      LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
+      LEFT JOIN [clt_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A1 on A1.[BecuAttributeName] = 'ProductDescription' AND A1.[VendorId] = x.[VendorId] AND A1.[VendorCode] = x.[ProductDescription]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A2 on A2.[BecuAttributeName] = 'LoanPurposeDesc' AND A2.[VendorId] = x.[VendorId] AND A2.[VendorCode] = x.[LoanPurposeDesc]

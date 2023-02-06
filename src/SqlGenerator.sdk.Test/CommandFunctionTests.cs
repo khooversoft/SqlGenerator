@@ -14,7 +14,7 @@ public class CommandFunctionTests
     [Fact]
     public void GivenNoCommandFunction_WhenSingle_ShouldPass()
     {
-        string getValue(string value) => value + "_newDataValue";
+        string getValue(string[] value) => value[0] + "_newDataValue";
 
         string line = "coalesce([InvestorLoanIdMap_Data].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]";
 
@@ -29,7 +29,7 @@ public class CommandFunctionTests
     [Fact]
     public void GivenCommandFunction_WhenSingle_ShouldPass()
     {
-        string getValue(string value) => value + "_newDataValue";
+        string getValue(string[] value) => value[0] + "_newDataValue";
 
         string line = "coalesce([{alias(InvestorLoanIdMap)}].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]";
 
@@ -44,8 +44,8 @@ public class CommandFunctionTests
     [Fact]
     public void GivenTwoCommandFunctions_WhenProcess_ShouldResolve()
     {
-        string getValue(string value) => value + "_1";
-        string getValue2(string value) => value + "_2";
+        string getValue(string[] value) => value[0] + "_1";
+        string getValue2(string[] value) => value[0] + "_2";
 
         string line = "{func2(InvestorLoanIdMap)} where x == '{func1(Value to equal)}'";
 
@@ -61,7 +61,7 @@ public class CommandFunctionTests
     [Fact]
     public void GivenBadCommandFunction_WhenSingle_ShouldFail()
     {
-        string getValue(string value) => value + "_newDataValue";
+        string getValue(string[] value) => value[0] + "_newDataValue";
 
         // No ending ")"
         string line = "coalesce([{alias(InvestorLoanIdMap}].[OriginalLoanId], x.[BECU_AccountNumber]) AS [Original_BECU_AccountNumber]";
@@ -76,8 +76,8 @@ public class CommandFunctionTests
     [Fact]
     public void GivenCommandFunctionsWithEmptyParameter_WhenProcess_ShouldFail()
     {
-        string getValue(string value) => value + "_1";
-        string getValue2(string value) => value + "_2";
+        string getValue(string[] value) => value[0] + "_1";
+        string getValue2(string[] value) => value[0] + "_2";
 
         string line = "{func2()} where x == '{func1(Value to equal)}'";
 
@@ -92,8 +92,8 @@ public class CommandFunctionTests
     [Fact]
     public void GivenCommandFunctionsAndVariables_WhenProcess_ShouldPass()
     {
-        string getValue(string value) => value + "_v1";
-        string getValue2(string value) => value + "_v2";
+        string getValue(string[] value) => value[0] + "_v1";
+        string getValue2(string[] value) => value[0] + "_v2";
 
         string line = "{func2(func_2_value)} where {alias}x == '{alias(Value to equal)}'";
 

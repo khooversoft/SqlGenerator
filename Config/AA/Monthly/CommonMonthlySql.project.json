@@ -5,9 +5,7 @@
   ],
 
   "sourceFile": "CommonMonthly.dataDictionary-20221130.csv",
-  "optionFile": "Monthly.ImportOption.json",
-  "nameMapFile": null,
-  "tableListFile": null,
+  "protectionFile": "CommonMonthly-PII.dataDictionary.csv",
   "buildFolder": "Sql",
   "uspLoadTableOption": null,
   "rawToCultivated": null,
@@ -15,7 +13,10 @@
   "updateCommands": [
     "primaryKey += PrimaryDataMap.VendorId",
     "primaryKey += PrimaryDataMap.VendorAttributeName",
-    "primaryKey += PrimaryDataMap.VendorCode"
+    "primaryKey += PrimaryDataMap.VendorCode",
+
+    "security += OriginalMemberNumber = PII;Restricted",
+    "security += OriginalLoanId = PII;Restricted"
   ],
 
   "addInstructions": [
@@ -25,13 +26,13 @@
     },
     {
       "pattern": "CommonMonthly.*",
-      "selectLine": "[idMap].[OriginalMemberNumber] AS [AccountNumberOriginal]",
+      "selectLine": "{security(OriginalMemberNumber, [idMap].[OriginalMemberNumber])} AS [OrginalPartyId]",
       "selectLineOrder": "AccountNumber",
-      "joinLine": "LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]"
+      "joinLine": "LEFT JOIN [clt_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]"
     },
     {
       "pattern": "CommonMonthly.*",
-      "selectLine": "coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal]",
+      "selectLine": "{security(OriginalLoanId, 'coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber])')} AS [BECUAccountNumberOriginal]",
       "selectLineOrder": "AccountNumber"
     },
     {

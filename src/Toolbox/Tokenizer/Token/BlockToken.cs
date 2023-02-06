@@ -19,7 +19,7 @@ namespace Toolbox.Tokenizer.Token
 
         public char BlockSignal { get; }
         public string Value { get; }
-        public override string ToString() => Value;
+        public override string ToString() => BlockSignal + Value + BlockSignal;
         public override bool Equals(object? obj) => obj is BlockToken value && value.Value == Value && value.BlockSignal == BlockSignal;
         public override int GetHashCode() => Value.GetHashCode();
         public static bool operator ==(BlockToken left, BlockToken right) => left.Equals(right);

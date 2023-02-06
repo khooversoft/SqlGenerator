@@ -171,7 +171,7 @@ public class SqlViewBuilder
         {
             true => $"x.[{columnModel.Name}]" + displayAs(),
 
-            false => $"HASHBYTES('SHA2_256', {castAs(columnModel.Name, columnModel.DataType)})" + displayAs(columnModel.Name),
+            false => ApplySecurity($"x.[{columnModel.Name}]", columnModel.DataType) + displayAs(columnModel.Name)
         };
 
         string? getRealColumnName() => schemaModel.MaxColumnSize switch
@@ -189,30 +189,14 @@ public class SqlViewBuilder
                 _ => $" AS [{defaultName}]",
             },
         };
-
-        string castAs(string name, string dataType)
-        {
-            return dataType.ToLower().Trim().ToNullIfEmpty() switch
-            {
-                null => throw new ArgumentException("Data type is null"),
-
-                string v when v.StartsWith("char") => normalFmt(name),
-                string v when v.StartsWith("nchar") => normalFmt(name),
-                string v when v.StartsWith("varchar") => normalFmt(name),
-                string v when v.StartsWith("nvarchar") => normalFmt(name),
-
-                _ => $"CAST(x.[{name}] AS NVARCHAR(50))",
-            };
-
-            string normalFmt(string name) => $"x.[{name}]";
-        }
     }
 
     private IReadOnlyList<SqlInstruction> AddInstructionsForSingle(TableModel tableModel, IReadOnlyList<ColumnModel> columns, SchemaModel schemaModel)
     {
         CommandFunction tableCommands = new CommandFunction()
             .Add("tableName", tableModel.Name.Name)
-            .Add("schemaName", schemaModel.Name);
+            .Add("schemaName", schemaModel.Name)
+            .Add("security", wrapSecurity);
 
         var result = _physicalModel.AddInstructions
             .Where(x => x.Model == AddInstructionType.Single)
@@ -228,6 +212,29 @@ public class SqlViewBuilder
         return result;
 
         string tableResolve(string? value) => value.Func(x => tableCommands.Resolve(x.NotEmpty()));
+
+        string wrapSecurity(string[] values)
+        {
+            (string pattern, string sqlCommand) = values
+                .Select(x => x.Trim())
+                .ToArray()
+                .Assert(x => x.Length == 2, x => $"Syntax error in security policy, policy={x}")
+                .Func(x => (x[0], x[1]));
+
+            SecurityModel? policy = _physicalModel
+                .Security
+                .FirstOrDefault(x => PatternMatch.IsMatch(x.Pattern, pattern));
+
+            return policy switch
+            {
+                null => sqlCommand,
+                SecurityModel v => new SecurityList(v.Security).CanShow(schemaModel.Security) switch
+                {
+                    true => sqlCommand,
+                    false => ApplySecurity(sqlCommand, "nvarchar"),
+                },
+            };
+        };
     }
 
     private IReadOnlyList<SqlInstruction> AddInstructionsForTemplate(TableModel tableModel, IReadOnlyList<ColumnModel> columns, SchemaModel schemaModel)
@@ -259,7 +266,7 @@ public class SqlViewBuilder
             .Add("tableName", tableModel.Name.Name)
             .Add("columnName", columnModel.Name)
             .Add("alias", $"A{index}")
-            .Add("mapColumnName", x => MapColumnName(columnModel.Name.Replace(x, string.Empty), columns, schemaModel));
+            .Add("mapColumnName", x => MapColumnName(columnModel.Name.Replace(x[0], string.Empty), columns, schemaModel));
     }
 
     private IReadOnlyList<SqlInstruction> AddInstructionsForXrefTable(TableModel tableModel, IReadOnlyList<ColumnModel> columns, SchemaModel schemaModel)
@@ -335,6 +342,25 @@ public class SqlViewBuilder
             .Where(x => !x.ColumnName.IsEmpty() && x.ColumnName.EqualsIgnoreCase(selectLineOrder))
             .FirstOrDefault()?.Index + 1 ?? defaultIndex;
     }
+
+    private string ApplySecurity(string sqlInstruction, string dataType)
+    {
+        return $"CONVERT([varchar](100), HASHBYTES('SHA2_256', {castAs(sqlInstruction, dataType)}), 1)";
+
+
+        static string castAs(string sqlInstruction, string dataType) => dataType.ToLower().Trim().ToNullIfEmpty() switch
+        {
+            null => throw new ArgumentException("Data type is null"),
+
+            string v when v.StartsWith("char") => sqlInstruction,
+            string v when v.StartsWith("nchar") => sqlInstruction,
+            string v when v.StartsWith("varchar") => sqlInstruction,
+            string v when v.StartsWith("nvarchar") => sqlInstruction,
+
+            _ => $"CAST({sqlInstruction} AS NVARCHAR(50))",
+        };
+    }
+
 
     private enum InstrType
     {

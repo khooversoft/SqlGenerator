@@ -40,6 +40,7 @@ public class PhysicalModelBuilder
             Commands = projectOption.CommandOptions.ToArray(),
             AddInstructions = projectOption.AddInstructions.ToArray(),
             XRefTables = ReadXRefTable(projectOption),
+            Security = ReadSecurity(projectOption)
         }.Verify();
     }
 
@@ -145,5 +146,14 @@ public class PhysicalModelBuilder
     private static IReadOnlyList<XRefTableModel> ReadXRefTable(SqlProjectOption projectOption) => projectOption.CommandOptions
         .Where(x => x.Type == CommandType.XRefTable)
         .SelectMany(x => XRefTableFile.Read(x.Pattern))
+        .ToArray();
+
+    private IReadOnlyList<SecurityModel> ReadSecurity(SqlProjectOption projectOption) => projectOption.CommandOptions
+        .Where(x => x.Type == CommandType.Security)
+        .Select(x => new SecurityModel
+        {
+            Pattern = x.Pattern,
+            Security = x.Command.NotNull(message: "Command is required for 'security += patter = {security}[;{security},...])'"),
+        })
         .ToArray();
 }

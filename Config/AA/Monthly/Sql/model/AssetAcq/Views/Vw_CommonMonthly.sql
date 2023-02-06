@@ -7,10 +7,10 @@ CREATE VIEW [AssetAcq].[Vw_CommonMonthly]
 AS
    SELECT
       x.[MonthEndDate],
-      x.[BECUAccountNumber],
-      HASHBYTES('SHA2_256', CAST(x.[AccountNumber] AS NVARCHAR(50))) AS [AccountNumber],
-      [idMap].[OriginalMemberNumber] AS [AccountNumberOriginal],
-      coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[BECUAccountNumber]), 1) AS [BECUAccountNumber],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[AccountNumber] AS NVARCHAR(50))), 1) AS [AccountNumber],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', [idMap].[OriginalMemberNumber]), 1) AS [OrginalPartyId],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber])), 1) AS [BECUAccountNumberOriginal],
       x.[VendorId],
       x.[AssetClass],
       x.[ProductType],
@@ -31,9 +31,9 @@ AS
       x.[OriginalSeniorBalance],
       x.[CurrentSeniorBalance],
       x.[CreditLimitAmount],
-      HASHBYTES('SHA2_256', CAST(x.[OriginalCreditScore] AS NVARCHAR(50))) AS [OriginalCreditScore],
-      HASHBYTES('SHA2_256', CAST(x.[CurrentCreditScore] AS NVARCHAR(50))) AS [CurrentCreditScore],
-      HASHBYTES('SHA2_256', CAST(x.[CreditScoreDate] AS NVARCHAR(50))) AS [CreditScoreDate],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[OriginalCreditScore] AS NVARCHAR(50))), 1) AS [OriginalCreditScore],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[CurrentCreditScore] AS NVARCHAR(50))), 1) AS [CurrentCreditScore],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[CreditScoreDate] AS NVARCHAR(50))), 1) AS [CreditScoreDate],
       x.[OriginalBackendDebtToIncome],
       x.[OriginalFrontendDebtToIncome],
       x.[OriginalBorrowerStateCode],
@@ -58,10 +58,10 @@ AS
       x.[OccupancyCode],
       A5.[BecuCode] AS [OccupancyCodeBecuCode],
       x.[PropertyTypeDescription],
-      HASHBYTES('SHA2_256', x.[PropertyStateCode]) AS [PropertyStateCode],
-      HASHBYTES('SHA2_256', x.[PropertyCityName]) AS [PropertyCityName],
-      HASHBYTES('SHA2_256', x.[PropertyCountyName]) AS [PropertyCountyName],
-      HASHBYTES('SHA2_256', x.[PropertyMSA]) AS [PropertyMSA],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyStateCode]), 1) AS [PropertyStateCode],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyCityName]), 1) AS [PropertyCityName],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyCountyName]), 1) AS [PropertyCountyName],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyMSA]), 1) AS [PropertyMSA],
       x.[LienPosition],
       x.[OriginalAppraisalType],
       x.[OriginalAppraisalAmount],
@@ -148,7 +148,7 @@ AS
       x.[LineChangedDate],
       x.[LineClosedDate],
       x.[BusinessAccountFlag],
-      x.[CurrentPartyID],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[CurrentPartyID] AS NVARCHAR(50))), 1) AS [CurrentPartyID],
       x.[AmortizationType],
       x.[BackEndLoanToValue],
       x.[BorrowerAge],
@@ -161,7 +161,7 @@ AS
       x.[CollateralTypeDescription],
       A7.[BecuCode] AS [CollateralTypeDescriptionBecuCode],
       x.[CollateralYear],
-      HASHBYTES('SHA2_256', x.[PropertyZipCode]) AS [PropertyZipCode],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyZipCode]), 1) AS [PropertyZipCode],
       x.[ContractResidualValue],
       x.[CreditImpairedFlag],
       x.[CurrentCollateralValue],
@@ -174,7 +174,7 @@ AS
       x.[EstimatedResidualValue],
       x.[UsedAutoFlag],
       x.[FrontEndLoanToValue],
-      x.[InstrumentIdentifier],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[InstrumentIdentifier] AS NVARCHAR(50))), 1) AS [InstrumentIdentifier],
       x.[InterestAccrualBasis],
       x.[LastLimitChangeDate],
       x.[LeaseFactor],
@@ -187,7 +187,7 @@ AS
       x.[RecourseFlag],
       x.[Servicer],
       x.[VehicleManufacturer],
-      HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]) AS [VehicleIdentificationNumber],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]), 1) AS [VehicleIdentificationNumber],
       x.[PersonBirthDate],
       x.[FinalIncomeAmount],
       x.[HeldForSaleFlag],
@@ -202,7 +202,7 @@ AS
       x.[ActualPrincipalAndInterestPaidAmount],
       x.[CurrentCreditScoreModel]
    FROM [clt_AssetAcq].[CommonMonthly] x
-      LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
+      LEFT JOIN [clt_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A1 on A1.[BecuAttributeName] = 'ProductDescription' AND A1.[VendorId] = x.[VendorId] AND A1.[VendorCode] = x.[ProductDescription]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A2 on A2.[BecuAttributeName] = 'LoanPurposeDesc' AND A2.[VendorId] = x.[VendorId] AND A2.[VendorCode] = x.[LoanPurposeDesc]

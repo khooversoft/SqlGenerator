@@ -19,6 +19,7 @@ public enum CommandType
     ExcludeViewNot,
     Copy,
     XRefTable,
+    Security,
 }
 
 public record CommandOption

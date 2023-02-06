@@ -241,31 +241,18 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_AssetAcq' AND TABLE_NAME = 'CommonSettlement')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_AssetAcq' AND TABLE_NAME = 'PrimaryDataMap')
 BEGIN
-   DROP TABLE [clt_AssetAcq].[CommonSettlement]
+   DROP TABLE [clt_AssetAcq].[PrimaryDataMap]
 END
 GO
 
-CREATE TABLE [clt_AssetAcq].[CommonSettlement]
+CREATE TABLE [clt_AssetAcq].[PrimaryDataMap]
 (
-   [BECUAccountNumber]                nvarchar(50)         NOT NULL,
-   [loan_number]                      long                 NULL,
-   [product_type]                     nvarchar(100)        NULL,
-   [service_fee]                      decimal(16,6)        NULL,
-   [balance]                          decimal(16,6)        NULL,
-   [participation_balance_90]         decimal(16,6)        NULL,
-   [date_interest_paid_to]            datetime             NULL,
-   [original_loan_to_value_ratio]     decimal(16,6)        NULL,
-   [net_int]                          decimal(16,6)        NULL,
-   [price]                            decimal(16,6)        NULL,
-   [premium_discount]                 decimal(16,6)        NULL,
-   [funds_due]                        decimal(16,6)        NULL,
-   [VendorId]                         nvarchar(100)        NULL,
-   [DealId]                           int                  NULL,
-   [HeldForSaleFlag]                  nchar(1)             NULL,
-   [ParticpationRatio]                decimal(16,6)        NULL,
-   [LoanSource]                       nvarchar(100)        NULL,
+   [VendorId]                         nvarchar(100)        NOT NULL,
+   [VendorCode]                       nvarchar(200)        NOT NULL,
+   [BecuAttributeName]                nvarchar(100)        NOT NULL,
+   [BecuCode]                         nvarchar(200)        NOT NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
@@ -277,7 +264,7 @@ CREATE TABLE [clt_AssetAcq].[CommonSettlement]
    [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
    [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL
 )
-WITH (DISTRIBUTION = HASH ([BECUAccountNumber]), CLUSTERED COLUMNSTORE INDEX)
+WITH ( CLUSTERED INDEX ([VendorId], [VendorCode]) )
 ;
 GO
 
@@ -323,18 +310,31 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_AssetAcq' AND TABLE_NAME = 'PrimaryDataMap')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'clt_AssetAcq' AND TABLE_NAME = 'CommonSettlement')
 BEGIN
-   DROP TABLE [clt_AssetAcq].[PrimaryDataMap]
+   DROP TABLE [clt_AssetAcq].[CommonSettlement]
 END
 GO
 
-CREATE TABLE [clt_AssetAcq].[PrimaryDataMap]
+CREATE TABLE [clt_AssetAcq].[CommonSettlement]
 (
-   [VendorId]                         nvarchar(100)        NOT NULL,
-   [VendorCode]                       nvarchar(200)        NOT NULL,
-   [BecuAttributeName]                nvarchar(100)        NOT NULL,
-   [BecuCode]                         nvarchar(200)        NOT NULL,
+   [BECUAccountNumber]                nvarchar(50)         NOT NULL,
+   [loan_number]                      long                 NULL,
+   [product_type]                     nvarchar(100)        NULL,
+   [service_fee]                      decimal(16,6)        NULL,
+   [balance]                          decimal(16,6)        NULL,
+   [participation_balance_90]         decimal(16,6)        NULL,
+   [date_interest_paid_to]            datetime             NULL,
+   [original_loan_to_value_ratio]     decimal(16,6)        NULL,
+   [net_int]                          decimal(16,6)        NULL,
+   [price]                            decimal(16,6)        NULL,
+   [premium_discount]                 decimal(16,6)        NULL,
+   [funds_due]                        decimal(16,6)        NULL,
+   [VendorId]                         nvarchar(100)        NULL,
+   [DealId]                           int                  NULL,
+   [HeldForSaleFlag]                  nchar(1)             NULL,
+   [ParticpationRatio]                decimal(16,6)        NULL,
+   [LoanSource]                       nvarchar(100)        NULL,
    [ASAP_RecordEffectiveDateTime]     datetime2(7)         NOT NULL,
    [ASAP_DeleteDateTime]              datetime2(7)         NULL,
    [ASAP_ROW_HASH]                    nvarchar(64)         NULL,
@@ -346,7 +346,7 @@ CREATE TABLE [clt_AssetAcq].[PrimaryDataMap]
    [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
    [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL
 )
-WITH ( CLUSTERED INDEX ([VendorId], [VendorCode]) )
+WITH (DISTRIBUTION = HASH ([BECUAccountNumber]), CLUSTERED COLUMNSTORE INDEX)
 ;
 GO
 
@@ -366,10 +366,10 @@ CREATE VIEW [AssetAcq].[Vw_CommonMonthly]
 AS
    SELECT
       x.[MonthEndDate],
-      x.[BECUAccountNumber],
-      HASHBYTES('SHA2_256', CAST(x.[AccountNumber] AS NVARCHAR(50))) AS [AccountNumber],
-      [idMap].[OriginalMemberNumber] AS [AccountNumberOriginal],
-      coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[BECUAccountNumber]), 1) AS [BECUAccountNumber],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[AccountNumber] AS NVARCHAR(50))), 1) AS [AccountNumber],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', [idMap].[OriginalMemberNumber]), 1) AS [OrginalPartyId],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber])), 1) AS [BECUAccountNumberOriginal],
       x.[VendorId],
       x.[AssetClass],
       x.[ProductType],
@@ -390,9 +390,9 @@ AS
       x.[OriginalSeniorBalance],
       x.[CurrentSeniorBalance],
       x.[CreditLimitAmount],
-      HASHBYTES('SHA2_256', CAST(x.[OriginalCreditScore] AS NVARCHAR(50))) AS [OriginalCreditScore],
-      HASHBYTES('SHA2_256', CAST(x.[CurrentCreditScore] AS NVARCHAR(50))) AS [CurrentCreditScore],
-      HASHBYTES('SHA2_256', CAST(x.[CreditScoreDate] AS NVARCHAR(50))) AS [CreditScoreDate],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[OriginalCreditScore] AS NVARCHAR(50))), 1) AS [OriginalCreditScore],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[CurrentCreditScore] AS NVARCHAR(50))), 1) AS [CurrentCreditScore],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[CreditScoreDate] AS NVARCHAR(50))), 1) AS [CreditScoreDate],
       x.[OriginalBackendDebtToIncome],
       x.[OriginalFrontendDebtToIncome],
       x.[OriginalBorrowerStateCode],
@@ -417,10 +417,10 @@ AS
       x.[OccupancyCode],
       A5.[BecuCode] AS [OccupancyCodeBecuCode],
       x.[PropertyTypeDescription],
-      HASHBYTES('SHA2_256', x.[PropertyStateCode]) AS [PropertyStateCode],
-      HASHBYTES('SHA2_256', x.[PropertyCityName]) AS [PropertyCityName],
-      HASHBYTES('SHA2_256', x.[PropertyCountyName]) AS [PropertyCountyName],
-      HASHBYTES('SHA2_256', x.[PropertyMSA]) AS [PropertyMSA],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyStateCode]), 1) AS [PropertyStateCode],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyCityName]), 1) AS [PropertyCityName],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyCountyName]), 1) AS [PropertyCountyName],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyMSA]), 1) AS [PropertyMSA],
       x.[LienPosition],
       x.[OriginalAppraisalType],
       x.[OriginalAppraisalAmount],
@@ -507,7 +507,7 @@ AS
       x.[LineChangedDate],
       x.[LineClosedDate],
       x.[BusinessAccountFlag],
-      x.[CurrentPartyID],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[CurrentPartyID] AS NVARCHAR(50))), 1) AS [CurrentPartyID],
       x.[AmortizationType],
       x.[BackEndLoanToValue],
       x.[BorrowerAge],
@@ -520,7 +520,7 @@ AS
       x.[CollateralTypeDescription],
       A7.[BecuCode] AS [CollateralTypeDescriptionBecuCode],
       x.[CollateralYear],
-      HASHBYTES('SHA2_256', x.[PropertyZipCode]) AS [PropertyZipCode],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyZipCode]), 1) AS [PropertyZipCode],
       x.[ContractResidualValue],
       x.[CreditImpairedFlag],
       x.[CurrentCollateralValue],
@@ -533,7 +533,7 @@ AS
       x.[EstimatedResidualValue],
       x.[UsedAutoFlag],
       x.[FrontEndLoanToValue],
-      x.[InstrumentIdentifier],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[InstrumentIdentifier] AS NVARCHAR(50))), 1) AS [InstrumentIdentifier],
       x.[InterestAccrualBasis],
       x.[LastLimitChangeDate],
       x.[LeaseFactor],
@@ -546,7 +546,7 @@ AS
       x.[RecourseFlag],
       x.[Servicer],
       x.[VehicleManufacturer],
-      HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]) AS [VehicleIdentificationNumber],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]), 1) AS [VehicleIdentificationNumber],
       x.[PersonBirthDate],
       x.[FinalIncomeAmount],
       x.[HeldForSaleFlag],
@@ -561,7 +561,7 @@ AS
       x.[ActualPrincipalAndInterestPaidAmount],
       x.[CurrentCreditScoreModel]
    FROM [clt_AssetAcq].[CommonMonthly] x
-      LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
+      LEFT JOIN [clt_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A1 on A1.[BecuAttributeName] = 'ProductDescription' AND A1.[VendorId] = x.[VendorId] AND A1.[VendorCode] = x.[ProductDescription]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A2 on A2.[BecuAttributeName] = 'LoanPurposeDesc' AND A2.[VendorId] = x.[VendorId] AND A2.[VendorCode] = x.[LoanPurposeDesc]
@@ -572,6 +572,59 @@ AS
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A7 on A7.[BecuAttributeName] = 'CollateralTypeDescription' AND A7.[VendorId] = x.[VendorId] AND A7.[VendorCode] = x.[CollateralTypeDescription]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A8 on A8.[BecuAttributeName] = 'CurrentCreditGrade' AND A8.[VendorId] = x.[VendorId] AND A8.[VendorCode] = x.[CurrentCreditGrade]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A9 on A9.[BecuAttributeName] = 'OriginalCreditGrade' AND A9.[VendorId] = x.[VendorId] AND A9.[VendorCode] = x.[OriginalCreditGrade]
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq' AND TABLE_NAME = 'Vw_PrimaryDataMap')
+BEGIN
+   DROP VIEW [AssetAcq].[Vw_PrimaryDataMap]
+END
+GO
+
+
+CREATE VIEW [AssetAcq].[Vw_PrimaryDataMap]
+AS
+   SELECT
+      x.[VendorId],
+      x.[VendorCode],
+      x.[BecuAttributeName],
+      x.[BecuCode]
+   FROM [clt_AssetAcq].[PrimaryDataMap] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq' AND TABLE_NAME = 'Vw_LoanModification')
+BEGIN
+   DROP VIEW [AssetAcq].[Vw_LoanModification]
+END
+GO
+
+
+CREATE VIEW [AssetAcq].[Vw_LoanModification]
+AS
+   SELECT
+      x.[BECUAccountNumber],
+      x.[Loan_ID],
+      x.[ModID],
+      x.[ModEffectiveDate],
+      x.[ModStartDate],
+      x.[ModEndDate],
+      x.[ValuePre],
+      x.[ValuePost],
+      x.[FreezeDays]
+   FROM [clt_AssetAcq].[LoanModification] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
@@ -618,59 +671,6 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq' AND TABLE_NAME = 'Vw_LoanModification')
-BEGIN
-   DROP VIEW [AssetAcq].[Vw_LoanModification]
-END
-GO
-
-
-CREATE VIEW [AssetAcq].[Vw_LoanModification]
-AS
-   SELECT
-      x.[BECUAccountNumber],
-      x.[Loan_ID],
-      x.[ModID],
-      x.[ModEffectiveDate],
-      x.[ModStartDate],
-      x.[ModEndDate],
-      x.[ValuePre],
-      x.[ValuePost],
-      x.[FreezeDays]
-   FROM [clt_AssetAcq].[LoanModification] x
-   WHERE
-      x.[ASAP_DeleteDateTime] IS NULL
-;
-GO
-
--- -----------------------------------------------------
--- Auto generated
--- -----------------------------------------------------
-
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq' AND TABLE_NAME = 'Vw_PrimaryDataMap')
-BEGIN
-   DROP VIEW [AssetAcq].[Vw_PrimaryDataMap]
-END
-GO
-
-
-CREATE VIEW [AssetAcq].[Vw_PrimaryDataMap]
-AS
-   SELECT
-      x.[VendorId],
-      x.[VendorCode],
-      x.[BecuAttributeName],
-      x.[BecuCode]
-   FROM [clt_AssetAcq].[PrimaryDataMap] x
-   WHERE
-      x.[ASAP_DeleteDateTime] IS NULL
-;
-GO
-
--- -----------------------------------------------------
--- Auto generated
--- -----------------------------------------------------
-
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_restricted' AND TABLE_NAME = 'Vw_CommonMonthly')
 BEGIN
    DROP VIEW [AssetAcq_restricted].[Vw_CommonMonthly]
@@ -682,9 +682,9 @@ CREATE VIEW [AssetAcq_restricted].[Vw_CommonMonthly]
 AS
    SELECT
       x.[MonthEndDate],
-      x.[BECUAccountNumber],
-      x.[AccountNumber],
-      [idMap].[OriginalMemberNumber] AS [AccountNumberOriginal],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[BECUAccountNumber]), 1) AS [BECUAccountNumber],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[AccountNumber] AS NVARCHAR(50))), 1) AS [AccountNumber],
+      [idMap].[OriginalMemberNumber] AS [OrginalPartyId],
       coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
       x.[VendorId],
       x.[AssetClass],
@@ -706,9 +706,9 @@ AS
       x.[OriginalSeniorBalance],
       x.[CurrentSeniorBalance],
       x.[CreditLimitAmount],
-      HASHBYTES('SHA2_256', CAST(x.[OriginalCreditScore] AS NVARCHAR(50))) AS [OriginalCreditScore],
-      HASHBYTES('SHA2_256', CAST(x.[CurrentCreditScore] AS NVARCHAR(50))) AS [CurrentCreditScore],
-      HASHBYTES('SHA2_256', CAST(x.[CreditScoreDate] AS NVARCHAR(50))) AS [CreditScoreDate],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[OriginalCreditScore] AS NVARCHAR(50))), 1) AS [OriginalCreditScore],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[CurrentCreditScore] AS NVARCHAR(50))), 1) AS [CurrentCreditScore],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[CreditScoreDate] AS NVARCHAR(50))), 1) AS [CreditScoreDate],
       x.[OriginalBackendDebtToIncome],
       x.[OriginalFrontendDebtToIncome],
       x.[OriginalBorrowerStateCode],
@@ -733,10 +733,10 @@ AS
       x.[OccupancyCode],
       A5.[BecuCode] AS [OccupancyCodeBecuCode],
       x.[PropertyTypeDescription],
-      HASHBYTES('SHA2_256', x.[PropertyStateCode]) AS [PropertyStateCode],
-      HASHBYTES('SHA2_256', x.[PropertyCityName]) AS [PropertyCityName],
-      HASHBYTES('SHA2_256', x.[PropertyCountyName]) AS [PropertyCountyName],
-      HASHBYTES('SHA2_256', x.[PropertyMSA]) AS [PropertyMSA],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyStateCode]), 1) AS [PropertyStateCode],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyCityName]), 1) AS [PropertyCityName],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyCountyName]), 1) AS [PropertyCountyName],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyMSA]), 1) AS [PropertyMSA],
       x.[LienPosition],
       x.[OriginalAppraisalType],
       x.[OriginalAppraisalAmount],
@@ -823,7 +823,7 @@ AS
       x.[LineChangedDate],
       x.[LineClosedDate],
       x.[BusinessAccountFlag],
-      x.[CurrentPartyID],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[CurrentPartyID] AS NVARCHAR(50))), 1) AS [CurrentPartyID],
       x.[AmortizationType],
       x.[BackEndLoanToValue],
       x.[BorrowerAge],
@@ -836,7 +836,7 @@ AS
       x.[CollateralTypeDescription],
       A7.[BecuCode] AS [CollateralTypeDescriptionBecuCode],
       x.[CollateralYear],
-      HASHBYTES('SHA2_256', x.[PropertyZipCode]) AS [PropertyZipCode],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyZipCode]), 1) AS [PropertyZipCode],
       x.[ContractResidualValue],
       x.[CreditImpairedFlag],
       x.[CurrentCollateralValue],
@@ -849,7 +849,7 @@ AS
       x.[EstimatedResidualValue],
       x.[UsedAutoFlag],
       x.[FrontEndLoanToValue],
-      x.[InstrumentIdentifier],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', CAST(x.[InstrumentIdentifier] AS NVARCHAR(50))), 1) AS [InstrumentIdentifier],
       x.[InterestAccrualBasis],
       x.[LastLimitChangeDate],
       x.[LeaseFactor],
@@ -862,7 +862,7 @@ AS
       x.[RecourseFlag],
       x.[Servicer],
       x.[VehicleManufacturer],
-      HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]) AS [VehicleIdentificationNumber],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]), 1) AS [VehicleIdentificationNumber],
       x.[PersonBirthDate],
       x.[FinalIncomeAmount],
       x.[HeldForSaleFlag],
@@ -877,7 +877,7 @@ AS
       x.[ActualPrincipalAndInterestPaidAmount],
       x.[CurrentCreditScoreModel]
    FROM [clt_AssetAcq].[CommonMonthly] x
-      LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
+      LEFT JOIN [clt_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A1 on A1.[BecuAttributeName] = 'ProductDescription' AND A1.[VendorId] = x.[VendorId] AND A1.[VendorCode] = x.[ProductDescription]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A2 on A2.[BecuAttributeName] = 'LoanPurposeDesc' AND A2.[VendorId] = x.[VendorId] AND A2.[VendorCode] = x.[LoanPurposeDesc]
@@ -888,6 +888,59 @@ AS
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A7 on A7.[BecuAttributeName] = 'CollateralTypeDescription' AND A7.[VendorId] = x.[VendorId] AND A7.[VendorCode] = x.[CollateralTypeDescription]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A8 on A8.[BecuAttributeName] = 'CurrentCreditGrade' AND A8.[VendorId] = x.[VendorId] AND A8.[VendorCode] = x.[CurrentCreditGrade]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A9 on A9.[BecuAttributeName] = 'OriginalCreditGrade' AND A9.[VendorId] = x.[VendorId] AND A9.[VendorCode] = x.[OriginalCreditGrade]
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_restricted' AND TABLE_NAME = 'Vw_PrimaryDataMap')
+BEGIN
+   DROP VIEW [AssetAcq_restricted].[Vw_PrimaryDataMap]
+END
+GO
+
+
+CREATE VIEW [AssetAcq_restricted].[Vw_PrimaryDataMap]
+AS
+   SELECT
+      x.[VendorId],
+      x.[VendorCode],
+      x.[BecuAttributeName],
+      x.[BecuCode]
+   FROM [clt_AssetAcq].[PrimaryDataMap] x
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL
+;
+GO
+
+-- -----------------------------------------------------
+-- Auto generated
+-- -----------------------------------------------------
+
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_restricted' AND TABLE_NAME = 'Vw_LoanModification')
+BEGIN
+   DROP VIEW [AssetAcq_restricted].[Vw_LoanModification]
+END
+GO
+
+
+CREATE VIEW [AssetAcq_restricted].[Vw_LoanModification]
+AS
+   SELECT
+      x.[BECUAccountNumber],
+      x.[Loan_ID],
+      x.[ModID],
+      x.[ModEffectiveDate],
+      x.[ModStartDate],
+      x.[ModEndDate],
+      x.[ValuePre],
+      x.[ValuePost],
+      x.[FreezeDays]
+   FROM [clt_AssetAcq].[LoanModification] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
@@ -934,59 +987,6 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_restricted' AND TABLE_NAME = 'Vw_LoanModification')
-BEGIN
-   DROP VIEW [AssetAcq_restricted].[Vw_LoanModification]
-END
-GO
-
-
-CREATE VIEW [AssetAcq_restricted].[Vw_LoanModification]
-AS
-   SELECT
-      x.[BECUAccountNumber],
-      x.[Loan_ID],
-      x.[ModID],
-      x.[ModEffectiveDate],
-      x.[ModStartDate],
-      x.[ModEndDate],
-      x.[ValuePre],
-      x.[ValuePost],
-      x.[FreezeDays]
-   FROM [clt_AssetAcq].[LoanModification] x
-   WHERE
-      x.[ASAP_DeleteDateTime] IS NULL
-;
-GO
-
--- -----------------------------------------------------
--- Auto generated
--- -----------------------------------------------------
-
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_restricted' AND TABLE_NAME = 'Vw_PrimaryDataMap')
-BEGIN
-   DROP VIEW [AssetAcq_restricted].[Vw_PrimaryDataMap]
-END
-GO
-
-
-CREATE VIEW [AssetAcq_restricted].[Vw_PrimaryDataMap]
-AS
-   SELECT
-      x.[VendorId],
-      x.[VendorCode],
-      x.[BecuAttributeName],
-      x.[BecuCode]
-   FROM [clt_AssetAcq].[PrimaryDataMap] x
-   WHERE
-      x.[ASAP_DeleteDateTime] IS NULL
-;
-GO
-
--- -----------------------------------------------------
--- Auto generated
--- -----------------------------------------------------
-
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_pii' AND TABLE_NAME = 'Vw_CommonMonthly')
 BEGIN
    DROP VIEW [AssetAcq_pii].[Vw_CommonMonthly]
@@ -999,8 +999,8 @@ AS
    SELECT
       x.[MonthEndDate],
       x.[BECUAccountNumber],
-      HASHBYTES('SHA2_256', CAST(x.[AccountNumber] AS NVARCHAR(50))) AS [AccountNumber],
-      [idMap].[OriginalMemberNumber] AS [AccountNumberOriginal],
+      x.[AccountNumber],
+      [idMap].[OriginalMemberNumber] AS [OrginalPartyId],
       coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
       x.[VendorId],
       x.[AssetClass],
@@ -1193,7 +1193,7 @@ AS
       x.[ActualPrincipalAndInterestPaidAmount],
       x.[CurrentCreditScoreModel]
    FROM [clt_AssetAcq].[CommonMonthly] x
-      LEFT JOIN [ctl_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
+      LEFT JOIN [clt_Investor].[InvestorLoanIdMap] [idMap] ON x.[BECU_AccountNumber] = [idMap].[LoanId]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A1 on A1.[BecuAttributeName] = 'ProductDescription' AND A1.[VendorId] = x.[VendorId] AND A1.[VendorCode] = x.[ProductDescription]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A2 on A2.[BecuAttributeName] = 'LoanPurposeDesc' AND A2.[VendorId] = x.[VendorId] AND A2.[VendorCode] = x.[LoanPurposeDesc]
@@ -1213,34 +1213,21 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_pii' AND TABLE_NAME = 'Vw_CommonSettlement')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_pii' AND TABLE_NAME = 'Vw_PrimaryDataMap')
 BEGIN
-   DROP VIEW [AssetAcq_pii].[Vw_CommonSettlement]
+   DROP VIEW [AssetAcq_pii].[Vw_PrimaryDataMap]
 END
 GO
 
 
-CREATE VIEW [AssetAcq_pii].[Vw_CommonSettlement]
+CREATE VIEW [AssetAcq_pii].[Vw_PrimaryDataMap]
 AS
    SELECT
-      x.[BECUAccountNumber],
-      x.[loan_number],
-      x.[product_type],
-      x.[service_fee],
-      x.[balance],
-      x.[participation_balance_90],
-      x.[date_interest_paid_to],
-      x.[original_loan_to_value_ratio],
-      x.[net_int],
-      x.[price],
-      x.[premium_discount],
-      x.[funds_due],
       x.[VendorId],
-      x.[DealId],
-      x.[HeldForSaleFlag],
-      x.[ParticpationRatio],
-      x.[LoanSource]
-   FROM [clt_AssetAcq].[CommonSettlement] x
+      x.[VendorCode],
+      x.[BecuAttributeName],
+      x.[BecuCode]
+   FROM [clt_AssetAcq].[PrimaryDataMap] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
@@ -1279,21 +1266,34 @@ GO
 -- Auto generated
 -- -----------------------------------------------------
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_pii' AND TABLE_NAME = 'Vw_PrimaryDataMap')
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'AssetAcq_pii' AND TABLE_NAME = 'Vw_CommonSettlement')
 BEGIN
-   DROP VIEW [AssetAcq_pii].[Vw_PrimaryDataMap]
+   DROP VIEW [AssetAcq_pii].[Vw_CommonSettlement]
 END
 GO
 
 
-CREATE VIEW [AssetAcq_pii].[Vw_PrimaryDataMap]
+CREATE VIEW [AssetAcq_pii].[Vw_CommonSettlement]
 AS
    SELECT
+      x.[BECUAccountNumber],
+      x.[loan_number],
+      x.[product_type],
+      x.[service_fee],
+      x.[balance],
+      x.[participation_balance_90],
+      x.[date_interest_paid_to],
+      x.[original_loan_to_value_ratio],
+      x.[net_int],
+      x.[price],
+      x.[premium_discount],
+      x.[funds_due],
       x.[VendorId],
-      x.[VendorCode],
-      x.[BecuAttributeName],
-      x.[BecuCode]
-   FROM [clt_AssetAcq].[PrimaryDataMap] x
+      x.[DealId],
+      x.[HeldForSaleFlag],
+      x.[ParticpationRatio],
+      x.[LoanSource]
+   FROM [clt_AssetAcq].[CommonSettlement] x
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;

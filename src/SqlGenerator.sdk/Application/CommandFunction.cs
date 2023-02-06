@@ -14,10 +14,10 @@ namespace SqlGenerator.sdk.Application;
 
 public class CommandFunction
 {
-    private ConcurrentDictionary<string, Func<string, string>> _functionDict = new(StringComparer.OrdinalIgnoreCase);
+    private ConcurrentDictionary<string, Func<string[], string>> _functionDict = new(StringComparer.OrdinalIgnoreCase);
     private ConcurrentDictionary<string, string> _replaceVariables = new(StringComparer.OrdinalIgnoreCase);
 
-    public CommandFunction Add(string name, Func<string, string> function) => this.Action(_ => _functionDict[name.NotEmpty()] = function.NotNull());
+    public CommandFunction Add(string name, Func<string[], string> function) => this.Action(_ => _functionDict[name.NotEmpty()] = function.NotNull());
 
     public CommandFunction Add(string name, string? variable)
     {
@@ -34,7 +34,7 @@ public class CommandFunction
             null => line,
             IReadOnlyList<(bool IsFunction, string Data)> v when v.Count == 0 => line,
 
-            IReadOnlyList <(bool IsFunction, string Data)> v => Resolve(v).Join(),
+            IReadOnlyList<(bool IsFunction, string Data)> v => Resolve(v).Join(),
         };
     }
 
@@ -51,9 +51,9 @@ public class CommandFunction
                     false => throw new ArgumentException($"Unknown variable {v.Data}"),
                 },
 
-                (string FunctionName, string Value) f => _functionDict.TryGetValue(f.FunctionName, out var func) switch
+                (string FunctionName, string[] Values) f => _functionDict.TryGetValue(f.FunctionName, out var func) switch
                 {
-                    true => func(f.Value),
+                    true => func(f.Values),
                     _ => throw new ArgumentException($"Unknown function {f.FunctionName}"),
                 }
             }
@@ -91,32 +91,33 @@ public class CommandFunction
         return parts;
     }
 
-    private static (string FunctionName, string Value)? ParseFunction(string line)
+    private static (string FunctionName, string[] Values)? ParseFunction(string line)
     {
         // format: {functionName}({value})
-        IReadOnlyList<TokenValue> tokens = new StringTokenizer()
+        Stack<string> tokens = new StringTokenizer()
             .Add("(", ")")
+            .UseSingleQuote()
             .Parse(line)
-            .OfType<TokenValue>()
+            .Select(x => x.ToString().NotEmpty())
+            .Reverse()
+            .ToStack();
+
+        if (!tokens.TryPop(out string? functionName)) return null;
+        if (!tokens.TryPop(out string? rightParam) || rightParam != "(") return null;
+
+        string argsLine = tokens
+            .TakeWhile(x => x != ")")
+            .Join();
+
+        string[] args = new StringTokenizer()
+            .Add(",")
+            .UseSingleQuote()
+            .Parse(argsLine)
+            .OfType<IToken>()
+            .Select(x => x.Value.Trim())
+            .Where(x => !x.IsEmpty() && x != ",")
             .ToArray();
 
-        var pattern = new Func<TokenValue, string?>[]
-        {
-            x => x.Value,
-            x => x.Value == "(" ? "(" : null,
-            x => x.Value,
-            x => x.Value == ")" ? ")" : null,
-        };
-
-        return tokens
-            .Zip(pattern)
-            .Select(x => x.Second(x.First))
-            .TakeWhile(x => x != null)
-            .ToArray() switch
-        {
-            string[] v when v.Length == 4 => new(tokens[0].Value, tokens[2].Value.NotEmpty()),
-
-            _ => null,
-        };
+        return (functionName, args);
     }
 }
