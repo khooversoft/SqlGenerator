@@ -78,7 +78,7 @@ AS
       x.[CurrentLoanToValueAmountSecond],
       x.[AccountStatusCode],
       A6.[BecuCode] AS [AccountStatusCodeBecuCode],
-      x.[DaysDelinquentCount],
+      coalesce(x.[DaysDelinquentCount], 0) AS [DaysDelinquentCount],
       x.[BankruptcyStatusCode],
       x.[BankruptcyTypeCode],
       x.[ForeclosureFlag],
