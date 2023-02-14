@@ -7,19 +7,19 @@ BEGIN
     CREATE TABLE #work
     (
         [Id]					int identity(1,1),
-        [OriginalMemberNumber]  bigint not null,
-        [OriginalLoanId]        varchar(50) not null,
-        [MemberNumber]          bigint not null,
-        [LoanId]                varchar(50) not null,
+        [OriginalMemberNumber]  varchar(100) not null,
+        [OriginalLoanId]        varchar(100) not null,
+        [MemberNumber]          varchar(100) not null,
+        [LoanId]                varchar(100) not null,
         [Parent]				varchar(500)
     );
 
     CREATE TABLE #stack
     (
         [Id]					int,
-        [OriginalMemberNumber]  bigint not null,
+        [OriginalMemberNumber]  varchar(100) not null,
         [OriginalLoanId]        varchar(50) not null,
-        [MemberNumber]          bigint not null,
+        [MemberNumber]          varchar(50) not null,
         [LoanId]                varchar(50) not null,
         [Parent]				varchar(500)
     );

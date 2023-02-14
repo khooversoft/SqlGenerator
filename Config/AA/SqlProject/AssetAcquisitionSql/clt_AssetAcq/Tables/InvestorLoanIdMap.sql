@@ -1,9 +1,9 @@
 CREATE TABLE [clt_AssetAcq].[InvestorLoanIdMap]
 (
-	[OriginalMemberNumber]  bigint not null,
-	[OriginalLoanId]        varchar(50) not null,
-	[MemberNumber]          bigint not null,
-	[LoanId]                varchar(50) not null
+	[OriginalMemberNumber]  [nvarchar](100) not null,
+	[OriginalLoanId]        [nvarchar](100) not null,
+	[MemberNumber]          [nvarchar](100) not null,
+	[LoanId]                [nvarchar](100) not null
 )
 GO
 

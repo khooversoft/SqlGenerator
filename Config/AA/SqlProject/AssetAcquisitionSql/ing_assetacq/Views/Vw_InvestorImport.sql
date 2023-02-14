@@ -3,7 +3,7 @@ AS
   SELECT	x.[OldMemberNumber] AS [OriginalMemberNumber]
           ,SUBSTRING(x.[LoanId], 0, CHARINDEX('-', x.[LoanId])) +
             '-' +
-            cast(x.[OldMemberNumber] as nvarchar(20)) + cast(x.[LoanNumber] as nvarchar(20))
+            x.[OldMemberNumber] + x.[LoanNumber]
             AS [OriginalLoanId]
           ,x.[MemberNumber] as [MemberNumber]
           ,x.[LoanId]

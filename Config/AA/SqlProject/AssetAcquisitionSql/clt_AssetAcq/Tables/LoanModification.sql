@@ -4,9 +4,9 @@
 
 CREATE TABLE [clt_AssetAcq].[LoanModification]
 (
-   [BECUAccountNumber]                nvarchar(50)         NOT NULL,
-   [Loan_ID]                          nvarchar(50)         NOT NULL,
-   [ModID]                            nvarchar(100)        NULL,
+   [BECUAccountNumber]                [nvarchar](100)      NOT NULL,
+   [Loan_ID]                          [nvarchar](100)      NOT NULL,
+   [ModID]                            [nvarchar](100)      NULL,
    [ModEffectiveDate]                 Date                 NULL,
    [ModStartDate]                     Date                 NULL,
    [ModEndDate]                       Date                 NULL,
