@@ -2,6 +2,7 @@ CREATE VIEW [ing_assetacq].[Vw_CommonMonthlyCoalesceValues]
 AS
   SELECT
       x.[BECUAccountNumber],
+      x.[MonthEndDate],
       
       coalesce([idMap].[OriginalMemberNumber], x.[CurrentPartyID]) AS [OriginalPartyId],
       coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],

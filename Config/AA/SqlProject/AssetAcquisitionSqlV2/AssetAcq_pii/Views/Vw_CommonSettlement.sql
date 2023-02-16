@@ -8,6 +8,7 @@ AS
    SELECT
       x.[BECUAccountNumber],
       coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber])), 1) AS [BECUAccountNumberOriginalSafe],
       x.[LoanNumber],
       x.[ProductType],
       x.[ServiceFee],

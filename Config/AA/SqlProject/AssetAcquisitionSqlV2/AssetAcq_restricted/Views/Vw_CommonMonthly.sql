@@ -164,8 +164,8 @@ AS
       x.[VehicleMake],
       x.[VehicleModel],
       x.[CollateralTypeDescription],
-      A7.[BecuCode] AS [CollateralTypeDescriptionBecuCode],
       pre.[CommonCollateralTypeDescription],
+      A7.[BecuCode] AS [CommonCollateralTypeDescriptionBecuCode],
       x.[CollateralYear],
       CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[PropertyZipCode]), 1) AS [PropertyZipCode],
       x.[ContractResidualValue],
@@ -207,7 +207,7 @@ AS
       x.[ActualPrincipalAndInterestPaidAmount],
       x.[CurrentCreditScoreModel]
    FROM [clt_AssetAcq].[CommonMonthly] x
-      INNER JOIN [ing_assetacq].[Vw_CommonMonthlyCoalesceValues] [pre] ON x.[BECUAccountNumber] = [pre].[BECUAccountNumber]
+      INNER JOIN [ing_assetacq].[Vw_CommonMonthlyCoalesceValues] [pre] ON x.[BECUAccountNumber] = [pre].[BECUAccountNumber] AND x.[MonthEndDate] = [pre].[MonthEndDate]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A1 on A1.[BecuAttributeName] = 'ProductDescription' AND A1.[VendorId] = x.[VendorId] AND A1.[VendorCode] = x.[ProductDescription]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A2 on A2.[BecuAttributeName] = 'LoanPurposeDesc' AND A2.[VendorId] = x.[VendorId] AND A2.[VendorCode] = x.[LoanPurposeDesc]
