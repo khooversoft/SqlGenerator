@@ -7,6 +7,8 @@ CREATE VIEW [AssetAcq_restricted].[Vw_CommonSettlement]
 AS
    SELECT
       x.[BECUAccountNumber],
+      coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber])), 1) AS [BECUAccountNumberOriginalSafe],
       x.[LoanNumber],
       x.[ProductType],
       x.[ServiceFee],
@@ -25,6 +27,7 @@ AS
       x.[LoanSource],
       x.[Channel]
    FROM [clt_AssetAcq].[CommonSettlement] x
+      LEFT JOIN [clt_AssetAcq].[InvestorLoanIdMap] [idMap] ON x.[BECUAccountNumber] = [idMap].[LoanId]
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
