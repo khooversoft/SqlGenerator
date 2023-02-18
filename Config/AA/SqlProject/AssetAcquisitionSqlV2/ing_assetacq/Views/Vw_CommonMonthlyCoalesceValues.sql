@@ -18,9 +18,13 @@ AS
         END AS [BECUOriginalPartyID],
 
       coalesce(x.[DaysDelinquentCount], 0) AS [DaysDelinquentCount],
-      coalesce(x.[CollateralTypeDescription], x.[PropertyTypeDescription]) AS [CommonCollateralTypeDescription]
+      coalesce(x.[CollateralTypeDescription], x.[PropertyTypeDescription]) AS [CommonCollateralTypeDescription],
 
+      coalesce(x.[Channel], [settlement].[Channel]) AS [CommonChannel],
+      coalesce(x.[ParticipationRatio], [settlement].[ParticipationRatio]) AS [CommonParticipationRatio],
+      [settlement].[DealId]
 
   FROM [clt_AssetAcq].[CommonMonthly] x
+      INNER JOIN [clt_AssetAcq].[CommonSettlement] [settlement] on x.[BECUAccountNumber] = [settlement].[BECUAccountNumber]
       LEFT JOIN [clt_AssetAcq].[InvestorLoanIdMap] [idMap] ON x.[BECUAccountNumber] = [idMap].[LoanId]
-
+;

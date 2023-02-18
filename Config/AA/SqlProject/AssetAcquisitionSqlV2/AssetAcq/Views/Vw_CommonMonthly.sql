@@ -180,7 +180,6 @@ AS
       x.[InterestAccrualBasis],
       x.[LastLimitChangeDate],
       x.[LeaseFactor],
-      x.[Channel],
       x.[OriginalCollateralValue],
       x.[OriginalCreditGrade],
       A9.[BecuCode] AS [OriginalCreditGradeBecuCode],
@@ -197,12 +196,16 @@ AS
       x.[LeaseFlag],
       x.[OriginalCreditScoreModel],
       x.[ParticipationRatio],
+      pre.[CommonParticipationRatio],
       x.[AmortizationTerm],
       x.[FirstPaymentDate],
       x.[EVFlag],
       x.[AccrualStatusFlag],
       x.[ActualPrincipalAndInterestPaidAmount],
-      x.[CurrentCreditScoreModel]
+      x.[CurrentCreditScoreModel],
+      pre.[CommonChannel],
+      A10.[BecuCode] AS [CommonChannelBecuCode],
+      pre.[DealId]
    FROM [clt_AssetAcq].[CommonMonthly] x
       INNER JOIN [ing_assetacq].[Vw_CommonMonthlyCoalesceValues] [pre] ON x.[BECUAccountNumber] = [pre].[BECUAccountNumber] AND x.[MonthEndDate] = [pre].[MonthEndDate]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]
@@ -215,6 +218,7 @@ AS
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A7 on A7.[BecuAttributeName] = 'CollateralTypeDescription' AND A7.[VendorId] = x.[VendorId] AND A7.[VendorCode] = pre.[CommonCollateralTypeDescription]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A8 on A8.[BecuAttributeName] = 'CurrentCreditGrade' AND A8.[VendorId] = x.[VendorId] AND A8.[VendorCode] = x.[CurrentCreditGrade]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A9 on A9.[BecuAttributeName] = 'OriginalCreditGrade' AND A9.[VendorId] = x.[VendorId] AND A9.[VendorCode] = x.[OriginalCreditGrade]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A10 on A10.[BecuAttributeName] = 'Channel' AND A10.[VendorId] = x.[VendorId] AND A10.[VendorCode] = pre.[CommonChannel]
    WHERE
       x.[ASAP_DeleteDateTime] IS NULL
 ;
