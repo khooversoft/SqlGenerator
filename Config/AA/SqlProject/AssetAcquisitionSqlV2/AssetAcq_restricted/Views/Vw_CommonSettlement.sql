@@ -7,9 +7,9 @@ CREATE VIEW [AssetAcq_restricted].[Vw_CommonSettlement]
 AS
    SELECT
       x.[BECUAccountNumber],
-      coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber])), 1) AS [BECUAccountNumberOriginal],
       CONVERT([varchar](100), HASHBYTES('SHA2_256', coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber])), 1) AS [BECUAccountNumberOriginalSafe],
-      x.[LoanNumber],
+      CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[LoanNumber]), 1) AS [LoanNumber],
       x.[ProductType],
       x.[ServiceFee],
       x.[Balance],
