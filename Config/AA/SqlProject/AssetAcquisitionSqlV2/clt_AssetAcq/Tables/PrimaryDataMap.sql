@@ -19,5 +19,5 @@ CREATE TABLE [clt_AssetAcq].[PrimaryDataMap]
    [ASAP_TRIGGER_ID]                  nvarchar(36)         NULL,
    [ASAP_SRC_FILEPATH]                nvarchar(1000)       NULL
 )
-WITH ( CLUSTERED INDEX ([VendorId], [VendorCode]) )
+WITH ( CLUSTERED INDEX ([VendorId], [VendorCode], [BecuAttributeName]) )
 ;

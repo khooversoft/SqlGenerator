@@ -1,8 +1,3 @@
--- -----------------------------------------------------
--- Auto generated
--- -----------------------------------------------------
-
-
 CREATE VIEW [AssetAcq_pii].[Vw_CommonMonthly]
 AS
    SELECT
@@ -10,25 +5,25 @@ AS
       x.[BECUAccountNumber],
       x.[AccountNumber],
       x.[CurrentPartyID],
-      pre.[OriginalPartyId],
-      pre.[BECUAccountNumberOriginal],
-      CONVERT([varchar](100), HASHBYTES('SHA2_256', pre.[BECUAccountNumberOriginal]), 1) AS [BECUAccountNumberOriginalSafe],
-      pre.[BECUCurrentPartyID],
-      pre.[BECUOriginalPartyID],
-      CONVERT([varchar](100), HASHBYTES('SHA2_256', pre.[BECUCurrentPartyID]), 1) AS [BECUCurrentPartyIDSafe],
-      CONVERT([varchar](100), HASHBYTES('SHA2_256', pre.[BECUOriginalPartyID]), 1) AS [BECUOriginalPartyIDSafe],
+      x.[OriginalPartyId],
+      x.[BECUAccountNumberOriginal],
+      x.[BECUAccountNumberOriginalSafe],
+      x.[BECUCurrentPartyID],
+      x.[BECUOriginalPartyID],
+      x.[BECUCurrentPartyIDSafe],
+      x.[BECUOriginalPartyIDSafe],
       x.[VendorId],
       x.[AssetClass],
       x.[ProductType],
-      A0.[BecuCode] AS [ProductTypeBecuCode],
+      x.[ProductTypeBecuCode],
       x.[ProductDescription],
-      A1.[BecuCode] AS [ProductDescriptionBecuCode],
+      x.[ProductDescriptionBecuCode],
       x.[CreditClass],
       x.[LoanPurposeDesc],
-      A2.[BecuCode] AS [LoanPurposeDescBecuCode],
+      x.[LoanPurposeDescBecuCode],
       x.[ServicingLoanTypeDesc],
       x.[DocumentationType],
-      A3.[BecuCode] AS [DocumentationTypeBecuCode],
+      x.[DocumentationTypeBecuCode],
       x.[ApprovalMethodName],
       x.[OriginalLoanAmount],
       x.[MonthEndBalanceAmount],
@@ -53,7 +48,7 @@ AS
       x.[BalloonFlag],
       x.[BalloonTerm],
       x.[InterestRateType],
-      A4.[BecuCode] AS [InterestRateTypeBecuCode],
+      x.[InterestRateTypeBecuCode],
       x.[OriginalInterestRate],
       x.[AnnualInterestRate],
       x.[PrincipalAndInterestPMTAmount],
@@ -62,7 +57,7 @@ AS
       x.[PrepayPenaltyCode],
       x.[PrepayPenaltyTerm],
       x.[OccupancyCode],
-      A5.[BecuCode] AS [OccupancyCodeBecuCode],
+      x.[OccupancyCodeBecuCode],
       x.[PropertyTypeDescription],
       x.[PropertyStateCode],
       x.[PropertyCityName],
@@ -83,8 +78,8 @@ AS
       x.[CurrentCombinedLoanToValueAmount],
       x.[CurrentLoanToValueAmountSecond],
       x.[AccountStatusCode],
-      A6.[BecuCode] AS [AccountStatusCodeBecuCode],
-      pre.[DaysDelinquentCount],
+      x.[AccountStatusCodeBecuCode],
+      x.[DaysDelinquentCount],
       x.[BankruptcyStatusCode],
       x.[BankruptcyTypeCode],
       x.[ForeclosureFlag],
@@ -164,15 +159,15 @@ AS
       x.[VehicleMake],
       x.[VehicleModel],
       x.[CollateralTypeDescription],
-      pre.[CommonCollateralTypeDescription],
-      A7.[BecuCode] AS [CommonCollateralTypeDescriptionBecuCode],
+      x.[CommonCollateralTypeDescription],
+      x.[CommonCollateralTypeDescriptionBecuCode],
       x.[CollateralYear],
       x.[PropertyZipCode],
       x.[ContractResidualValue],
       x.[CreditImpairedFlag],
       x.[CurrentCollateralValue],
       x.[CurrentCreditGrade],
-      A8.[BecuCode] AS [CurrentCreditGradeBecuCode],
+      x.[CurrentCreditGradeBecuCode],
       x.[CurrentPaymentandInterestAMT],
       x.[ClosedDate],
       x.[DealerName],
@@ -185,7 +180,7 @@ AS
       x.[LeaseFactor],
       x.[OriginalCollateralValue],
       x.[OriginalCreditGrade],
-      A9.[BecuCode] AS [OriginalCreditGradeBecuCode],
+      x.[OriginalCreditGradeBecuCode],
       x.[PaymentFrequency],
       x.[PaymentToIncomeRatio],
       x.[RecourseFlag],
@@ -199,29 +194,15 @@ AS
       x.[LeaseFlag],
       x.[OriginalCreditScoreModel],
       x.[ParticipationRatio],
-      pre.[CommonParticipationRatio],
+      x.[CommonParticipationRatio],
       x.[AmortizationTerm],
       x.[FirstPaymentDate],
       x.[EVFlag],
       x.[AccrualStatusFlag],
       x.[ActualPrincipalAndInterestPaidAmount],
       x.[CurrentCreditScoreModel],
-      pre.[CommonChannel],
-      A10.[BecuCode] AS [CommonChannelBecuCode],
-      pre.[DealId]
-   FROM [clt_AssetAcq].[CommonMonthly] x
-      INNER JOIN [ing_assetacq].[Vw_CommonMonthlyCoalesceValues] [pre] ON x.[BECUAccountNumber] = [pre].[BECUAccountNumber] AND x.[MonthEndDate] = [pre].[MonthEndDate]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A0 on A0.[BecuAttributeName] = 'ProductType' AND A0.[VendorId] = x.[VendorId] AND A0.[VendorCode] = x.[ProductType]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A1 on A1.[BecuAttributeName] = 'ProductDescription' AND A1.[VendorId] = x.[VendorId] AND A1.[VendorCode] = x.[ProductDescription]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A2 on A2.[BecuAttributeName] = 'LoanPurposeDesc' AND A2.[VendorId] = x.[VendorId] AND A2.[VendorCode] = x.[LoanPurposeDesc]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A3 on A3.[BecuAttributeName] = 'DocumentationType' AND A3.[VendorId] = x.[VendorId] AND A3.[VendorCode] = x.[DocumentationType]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A4 on A4.[BecuAttributeName] = 'InterestRateType' AND A4.[VendorId] = x.[VendorId] AND A4.[VendorCode] = x.[InterestRateType]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A5 on A5.[BecuAttributeName] = 'OccupancyCode' AND A5.[VendorId] = x.[VendorId] AND A5.[VendorCode] = x.[OccupancyCode]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A6 on A6.[BecuAttributeName] = 'AccountStatusCode' AND A6.[VendorId] = x.[VendorId] AND A6.[VendorCode] = x.[AccountStatusCode]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A7 on A7.[BecuAttributeName] = 'CollateralTypeDescription' AND A7.[VendorId] = x.[VendorId] AND A7.[VendorCode] = pre.[CommonCollateralTypeDescription]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A8 on A8.[BecuAttributeName] = 'CurrentCreditGrade' AND A8.[VendorId] = x.[VendorId] AND A8.[VendorCode] = x.[CurrentCreditGrade]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A9 on A9.[BecuAttributeName] = 'OriginalCreditGrade' AND A9.[VendorId] = x.[VendorId] AND A9.[VendorCode] = x.[OriginalCreditGrade]
-      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A10 on A10.[BecuAttributeName] = 'Channel' AND A10.[VendorId] = x.[VendorId] AND A10.[VendorCode] = pre.[CommonChannel]
-   WHERE
-      x.[ASAP_DeleteDateTime] IS NULL
+      x.[CommonChannel],
+      x.[CommonChannelBecuCode],
+      x.[DealId]
+   FROM [ing_assetacq].[Vw_CommonMonthlyBase] x
 ;

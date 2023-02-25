@@ -26,8 +26,5 @@ AS
       x.[ParticipationRatio],
       x.[LoanSource],
       x.[Channel]
-   FROM [clt_AssetAcq].[CommonSettlement] x
-      LEFT JOIN [clt_AssetAcq].[InvestorLoanIdMap] [idMap] ON x.[BECUAccountNumber] = [idMap].[LoanId]
-   WHERE
-      x.[ASAP_DeleteDateTime] IS NULL
+   FROM [ing_assetacq].[Vw_SettlementBase] x
 ;

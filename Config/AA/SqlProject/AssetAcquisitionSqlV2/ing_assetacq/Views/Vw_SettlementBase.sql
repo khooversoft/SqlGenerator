@@ -1,9 +1,4 @@
--- -----------------------------------------------------
--- Auto generated
--- -----------------------------------------------------
-
-
-CREATE VIEW [AssetAcq_pii].[Vw_CommonSettlement]
+CREATE VIEW [ing_assetacq].[Vw_SettlementBase]
 AS
    SELECT
       x.[BECUAccountNumber],
@@ -26,5 +21,7 @@ AS
       x.[ParticipationRatio],
       x.[LoanSource],
       x.[Channel]
-   FROM [ing_assetacq].[Vw_SettlementBase] x
-;
+   FROM [clt_AssetAcq].[CommonSettlement] x
+      LEFT JOIN [clt_AssetAcq].[InvestorLoanIdMap] [idMap] ON x.[BECUAccountNumber] = [idMap].[LoanId]
+   WHERE
+      x.[ASAP_DeleteDateTime] IS NULL;
