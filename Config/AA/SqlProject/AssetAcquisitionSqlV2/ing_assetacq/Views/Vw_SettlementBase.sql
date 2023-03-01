@@ -20,7 +20,8 @@ AS
       x.[HeldForSaleFlag],
       x.[ParticipationRatio],
       x.[LoanSource],
-      x.[Channel]
+      x.[Channel],
+      x.[MonthEndBalanceAmountFactor]
    FROM [clt_AssetAcq].[CommonSettlement] x
       LEFT JOIN [clt_AssetAcq].[InvestorLoanIdMap] [idMap] ON x.[BECUAccountNumber] = [idMap].[LoanId]
    WHERE

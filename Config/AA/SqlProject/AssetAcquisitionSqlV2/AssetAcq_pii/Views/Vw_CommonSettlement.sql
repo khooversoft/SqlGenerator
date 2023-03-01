@@ -1,14 +1,9 @@
--- -----------------------------------------------------
--- Auto generated
--- -----------------------------------------------------
-
-
 CREATE VIEW [AssetAcq_pii].[Vw_CommonSettlement]
 AS
    SELECT
       x.[BECUAccountNumber],
-      coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber]) AS [BECUAccountNumberOriginal],
-      CONVERT([varchar](100), HASHBYTES('SHA2_256', coalesce([idMap].[OriginalLoanId], x.[BECUAccountNumber])), 1) AS [BECUAccountNumberOriginalSafe],
+      x.[BECUAccountNumberOriginal],
+      x.[BECUAccountNumberOriginalSafe],
       x.[LoanNumber],
       x.[ProductType],
       x.[ServiceFee],
@@ -25,6 +20,7 @@ AS
       x.[HeldForSaleFlag],
       x.[ParticipationRatio],
       x.[LoanSource],
-      x.[Channel]
+      x.[Channel],
+      x.[MonthEndBalanceAmountFactor]
    FROM [ing_assetacq].[Vw_SettlementBase] x
 ;

@@ -15,7 +15,16 @@ AS
       A7.[BecuCode] AS [CommonCollateralTypeDescriptionBecuCode],
       A8.[BecuCode] AS [CurrentCreditGradeBecuCode],
       A9.[BecuCode] AS [OriginalCreditGradeBecuCode],
-      A10.[BecuCode] AS [CommonChannelBecuCode]
+      A10.[BecuCode] AS [CommonChannelBecuCode],
+
+      A11.[BecuCode] AS [ApprovalMethodNameBecuCode],
+      A12.[BecuCode] AS [BankruptcyTypeCodeBecuCode],
+      A13.[BecuCode] AS [InterestAccrualBasisBecuCode],
+      A14.[BecuCode] AS [ModificationTypeBecuCode],
+      A15.[BecuCode] AS [PropertyTypeDescriptionBecuCode],
+      A16.[BecuCode] AS [RateIndexDescriptionBecuCode],
+      A17.[BecuCode] AS [AssetClassBecuCode],
+      A18.[BecuCode] AS [PaymentFrequencyBecuCode]
     FROM  (
       SELECT  i.*,
         coalesce([idMap].[OriginalMemberNumber], i.[CurrentPartyID]) AS [OriginalPartyId],
@@ -36,7 +45,12 @@ AS
 
         coalesce(i.[Channel], [settlement].[Channel]) AS [CommonChannel],
         coalesce(i.[ParticipationRatio], [settlement].[ParticipationRatio]) AS [CommonParticipationRatio],
-        [settlement].[DealId]
+
+        [settlement].[DealId],
+        [settlement].[MonthEndBalanceAmountFactor],
+
+        i.[MonthEndBalanceAmount] * [settlement].[[MonthEndBalanceAmountFactor]] AS [MonthEndBalanceAmountBECU]
+
       FROM [clt_AssetAcq].[CommonMonthly] i
         LEFT JOIN [clt_AssetAcq].[InvestorLoanIdMap] [idMap] ON i.[BECUAccountNumber] = [idMap].[LoanId]
         INNER JOIN [ing_assetacq].[Vw_SettlementBase] [settlement] ON coalesce([idMap].[OriginalLoanId], i.[BECUAccountNumber]) = [settlement].[BECUAccountNumberOriginal]
@@ -54,4 +68,13 @@ AS
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A8 on A8.[BecuAttributeName] = 'CurrentCreditGrade' AND A8.[VendorId] = x.[VendorId] AND A8.[VendorCode] = x.[CurrentCreditGrade]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A9 on A9.[BecuAttributeName] = 'OriginalCreditGrade' AND A9.[VendorId] = x.[VendorId] AND A9.[VendorCode] = x.[OriginalCreditGrade]
       LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A10 on A10.[BecuAttributeName] = 'Channel' AND A10.[VendorId] = x.[VendorId] AND A10.[VendorCode] = x.[CommonChannel]
+
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A11 on A11.[BecuAttributeName] = 'ApprovalMethodName' AND A11.[VendorId] = x.[VendorId] AND A11.[VendorCode] = x.[ApprovalMethodName]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A12 on A12.[BecuAttributeName] = 'BankruptcyTypeCode' AND A12.[VendorId] = x.[VendorId] AND A12.[VendorCode] = x.[BankruptcyTypeCode]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A13 on A13.[BecuAttributeName] = 'InterestAccrualBasis' AND A13.[VendorId] = x.[VendorId] AND A13.[VendorCode] = x.[InterestAccrualBasis]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A14 on A14.[BecuAttributeName] = 'ModificationType' AND A14.[VendorId] = x.[VendorId] AND A14.[VendorCode] = x.[ModificationType]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A15 on A15.[BecuAttributeName] = 'PropertyType' AND A15.[VendorId] = x.[VendorId] AND A15.[VendorCode] = x.[PropertyTypeDescription]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A16 on A16.[BecuAttributeName] = 'RateIndexDescription' AND A16.[VendorId] = x.[VendorId] AND A16.[VendorCode] = x.[RateIndexDescription]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A17 on A17.[BecuAttributeName] = 'AssetClass' AND A17.[VendorId] = x.[VendorId] AND A17.[VendorCode] = x.[AssetClass]
+      LEFT JOIN [clt_AssetAcq].[PrimaryDataMap] A18 on A18.[BecuAttributeName] = 'PaymentFrequency' AND A18.[VendorId] = x.[VendorId] AND A18.[VendorCode] = x.[PaymentFrequency]
 ;

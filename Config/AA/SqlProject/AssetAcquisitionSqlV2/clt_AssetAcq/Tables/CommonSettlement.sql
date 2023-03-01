@@ -22,6 +22,7 @@ CREATE TABLE [clt_AssetAcq].[CommonSettlement]
 	[ParticipationRatio] [decimal](16, 6) NULL,
 	[LoanSource] [nvarchar](100) NULL,
 	[Channel] [nvarchar](100) NULL,
+	[MonthEndBalanceAmountFactor] [decimal](16, 6) NULL,
 	[ASAP_RecordEffectiveDateTime] [datetime2](7) NOT NULL,
 	[ASAP_DeleteDateTime] [datetime2](7) NULL,
 	[ASAP_ROW_HASH] [nvarchar](64) NULL,

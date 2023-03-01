@@ -1,0 +1,121 @@
+VendorID,Source Version,Vendor Source Element,Vendor Source Value,Target Element,Target Value,Notes
+DCU,1,LOAN_SOURCE,Direct,Channel,Direct,target element does not exist yet
+PEN,1,Settlement.Channel,BANKED - RETAIL,Channel,Direct,target element does not exist yet
+PEN,1,Settlement.Channel,CORRESPONDENT,Channel,Indirect,target element does not exist yet
+DCU,1,ASSET_CLASS,Auto Loan,AssetClass,Auto Loan,target element does not exist yet
+PEN,1,ASSET_CLASS,MORTGAGE LOAN,AssetClass,Mortgage Loan,target element does not exist yet
+DCU,1,CREDIT_UNION_PRODUCT_TYPE,Auto Sale New,ProductType,New Auto,
+DCU,1,CREDIT_UNION_PRODUCT_TYPE,Auto Sale Used,ProductType,Used Auto,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,30 YR FIXED JUMBO,ProductType,Mortgage 30 Year Fixed Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,30 YEAR FXD HBAL HOMRDY,ProductType,Mortgage 30 Year Fixed Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,15/15 ARM CONFORM,ProductType,Mortgage 15 Year ARM Conforming,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,DEVDFLT,ProductType,Mortgage 30 Year Fixed Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,TEXAS 50A6 JUMBO 30 YEAR FIXED,ProductType,Mortage 30 Year Fixed Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,15/15 ARM JUMBO,ProductType,Mortgage 15 Year ARM Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,30 YR FIXED HIGH BAL,ProductType,Mortgage 30 Year Fixed Jumbo,
+DCU,1,CREDIT_UNION_PRODUCT_TYPE,Auto Sale New,ProductDescription,Acquired Auto New,
+DCU,1,CREDIT_UNION_PRODUCT_TYPE,Auto Sale Used,ProductDescription,Acquired Auto Used,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,30 YR FIXED JUMBO,ProductDescription,Acquired Mortgage 30 Year Fixed Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,30 YEAR FXD HBAL HOMRDY,ProductDescription,Acquired Mortgage 30 Year Fixed Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,15/15 ARM CONFORM,ProductDescription,Acquired Mortgage 15 Year ARM Conforming,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,DEVDFLT,ProductDescription,Acquired Mortgage 30 Year Fixed Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,TEXAS 50A6 JUMBO 30 YEAR FIXED,ProductDescription,Acquired Mortgage 30 Year Fixed Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,15/15 ARM JUMBO,ProductDescription,Acquired Mortgage 15 Year ARM Jumbo,
+PEN,1,CREDIT_UNION_PRODUCT_TYPE,30 YR FIXED HIGH BAL,ProductDescription,Acquired Mortgage 30 Year Fixed Jumbo,
+DCU,1,LOAN_DESC,Recreational Merchandise,LoanPurposeDesc,Other,Subject to update pending info from DCU
+DCU,1,LOAN_DESC,Own Outright,LoanPurposeDesc,Purchase,
+DCU,1,LOAN_DESC,DCU Re-Finance,LoanPurposeDesc,Refinance,
+DCU,1,LOAN_DESC,Purchase Vehicle,LoanPurposeDesc,Purchase,
+DCU,1,LOAN_DESC,REFINANCE DCU ,LoanPurposeDesc,Refinance,
+DCU,1,LOAN_DESC,Refinance From Other Financial Institution,LoanPurposeDesc,Refinance,
+PEN,1,LOAN_PURPOSE,DEVDFLT,LoanPurposeDesc,Purchase,Subject to update pending info from PenFed
+PEN,1,LOAN_PURPOSE,RefinanceOrProperty Improvement,LoanPurposeDesc,Refi (Cashout Unknown),Subject to update pending info from PenFed
+PEN,1,LOAN_PURPOSE,RefinanceOrEquity Takeout,LoanPurposeDesc,Refi (Cashout Unknown),Subject to update pending info from PenFed
+PEN,1,LOAN_PURPOSE,Purchase,LoanPurposeDesc,Purchase,
+PEN,1,LOAN_PURPOSE,RefinanceOrCashOut,LoanPurposeDesc,Refi (Cashout Unknown),Subject to update pending info from PenFed
+DCU,1,,,DocumentationType,,"Appears unavailable, may not be required for Auto loans, if so leave null for DCU"
+PEN,1,DOC_TYPE,FULL,DocumentationType,Full Documentation,
+DCU,1,AUTO_MANUAL_APPRVL,Automated,ApprovalMethodName,Automated,target element does not exist yet
+DCU,1,AUTO_MANUAL_APPRVL,Manual,ApprovalMethodName,Manual,target element does not exist yet
+PEN,1,AUTO_MANUAL_APPRVL,MANUAL,ApprovalMethodName,Manual,target element does not exist yet
+DCU,1,INT_RATE_TYPE,Fixed,InterestRateType,Fixed,
+PEN,1,INT_RATE_TYPE,FIXED,InterestRateType,Fixed,
+PEN,1,INT_RATE_TYPE,ARM,InterestRateType,Variable,"Ryan: needs review with credit risk.  Call Report needs adjustable, CPST needs variable"
+DCU,1,CURR_LOAN_STATUS,Active,AccountStatusCode,ACT,"Since the field is ""Code"" , recommend using code values similar to EDW AccountStatusCode"
+DCU,1,CURR_LOAN_STATUS,BK,AccountStatusCode,BK,"Since the field is ""Code"" , recommend using code values similar to EDW AccountStatusCode"
+PEN,1,CURR_LOAN_STATUS,Active,AccountStatusCode,ACT,"Since the field is ""Code"" , recommend using code values similar to EDW AccountStatusCode"
+PEN,1,CURR_LOAN_STATUS,PaidLoan,AccountStatusCode,CLS,"Since the field is ""Code"" , recommend using code values similar to EDW AccountStatusCode"
+DCU,1,BKRPT_CHAPTER,13,BankruptcyTypeCode,13,target element does not exist yet
+DCU,1,BKRPT_CHAPTER,7,BankruptcyTypeCode,7,target element does not exist yet
+DCU,1,COLLATERAL_TYPE,Auto Sale New,CommonCollateralTypeDescription,Automobile - New,
+DCU,1,COLLATERAL_TYPE,Auto Sale Used,CommonCollateralTypeDescription,Automobile - Used,
+PEN,1,PROP_TYPE,Other,CommonCollateralTypeDescription,1-4 Family Residential RE,"Optional: Can keep property type values and not create new PropertyType.  CPST needs details, Call Report needs generic"
+PEN,1,PROP_TYPE,SingleFamilyDetached,CommonCollateralTypeDescription,1-4 Family Residential RE,"Optional: Can keep property type values and not create new PropertyType.  CPST needs details, Call Report needs generic"
+PEN,1,PROP_TYPE,Condominium,CommonCollateralTypeDescription,1-4 Family Residential RE,"Optional: Can keep property type values and not create new PropertyType.  CPST needs details, Call Report needs generic"
+PEN,1,PROP_TYPE,Other,PropertyType,Other,target element does not exist yet
+PEN,1,PROP_TYPE,SingleFamilyDetached,PropertyType,Single Family,target element does not exist yet
+PEN,1,PROP_TYPE,Condominium,PropertyType,Condo,target element does not exist yet
+DCU,1,INTEREST_ACCRUAL_BASIS,Actual / Actual,InterestAccrualBasis,Actual / Actual,"target element does not exist yet, not required for CPST V3"
+PEN,1,,,InterestAccrualBasis,,"target element does not exist yet, not required for CPST V3"
+DCU,1,CURR_CREDIT_GRADE,D,CurrentCreditGrade,D,
+DCU,1,CURR_CREDIT_GRADE,A,CurrentCreditGrade,A,
+DCU,1,CURR_CREDIT_GRADE,B,CurrentCreditGrade,B,
+DCU,1,CURR_CREDIT_GRADE,P,CurrentCreditGrade,A,
+DCU,1,CURR_CREDIT_GRADE,E,CurrentCreditGrade,E,
+DCU,1,CURR_CREDIT_GRADE,C,CurrentCreditGrade,C,
+DCU,1,ORIG_CREDIT_GRADE,A,OriginalCreditGrade,A,
+DCU,1,ORIG_CREDIT_GRADE,P,OriginalCreditGrade,A,
+DCU,1,INT_RATE_INDEX,Null,RateIndexDescription,Null,target element does not exist yet
+PEN,1,INT_RATE_INDEX,Null,RateIndexDescription,Null,target element does not exist yet
+PEN,1,OCC_TYPE,OccupancyUnknown,OccupancyCode,Other,
+PEN,1,OCC_TYPE,NonOwnerOccupied,OccupancyCode,Other,
+PEN,1,OCC_TYPE,OriginalOwnerOccupied,OccupancyCode,Primary,
+PEN,1,MOD_TYPE,LOANSERV WORKOUT,ModificationType,,"Unknown mapping, pending info from PenFed"
+DCU,1,PaymentFrequency,Monthly,PaymentFrequency,Monthly,target element does not exist yet
+GRS,1,AccountStatusCode,ACTIVE,AccountStatusCode,ACT,
+GRS,1,AccountStatusCode,CLOSED,AccountStatusCode,CLS,
+GRS,1,ProductType,New Auto,ProductType,New Auto,
+GRS,1,ProductType,Used Auto,ProductType,Used Auto,
+GRS,1,InterestRateType,Fixed,InterestRateType,Fixed,
+GRS,1,AssetClass,Auto Loan,AssetClass,Auto Loan,
+GRS,1,Channel,OTC,Channel,Direct,
+GRS,1,Channel,Indirect,Channel,Indirect,
+GRS,1,CurrentCreditGrade,E,CurrentCreditGrade,E,
+GRS,1,CurrentCreditGrade,A+,CurrentCreditGrade,A,
+GRS,1,CurrentCreditGrade,A,CurrentCreditGrade,A,
+GRS,1,CurrentCreditGrade,C,CurrentCreditGrade,C,
+GRS,1,CurrentCreditGrade,D,CurrentCreditGrade,D,
+GRS,1,CurrentCreditGrade,B,CurrentCreditGrade,B,
+GRS,1,OriginalCreditGrade,E,OriginalCreditGrade,E,
+GRS,1,OriginalCreditGrade,A+,OriginalCreditGrade,A,
+GRS,1,OriginalCreditGrade,A,OriginalCreditGrade,A,
+GRS,1,OriginalCreditGrade,C,OriginalCreditGrade,C,
+GRS,1,OriginalCreditGrade,D,OriginalCreditGrade,D,
+GRS,1,OriginalCreditGrade,B,OriginalCreditGrade,B,
+GRS,1,LoanPurposeDesc,Purchase Auto,LoanPurposeDesc,Purchase,
+GRS,1,LoanPurposeDesc,Refinance Auto,LoanPurposeDesc,Refinance,
+GRS,1,LoanPurposeDesc,Indirect Auto Purchase,LoanPurposeDesc,Purchase,
+GRS,1,AmortizationType,Fixed,AmortizationType,Fixed,
+GRS,1,CollateralTypeDescription,Used Auto,CollateralTypeDescription,Automobile - Used,
+GRS,1,CollateralTypeDescription,New Auto,CollateralTypeDescription,Automobile - New,
+GRS,1,InterestAccrualBasis,Act/365,InterestAccrualBasis,Actual / 365,
+GRS,1,PaymentFrequency,Monthly,PaymentFrequency,Monthly,
+GRS,1,PaymentFrequency,Bi-weekly,PaymentFrequency,Bi-weekly,
+GRS,1,CurrentCreditScoreModel,FICO Classic 9 300-850,CurrentCreditScoreModel,FICO Classic 9 300-850,
+GRS,1,CurrentCreditScoreModel,FICO Auto Score 9 250-900,CurrentCreditScoreModel,FICO Auto Score 9 250-900,
+GRS,1,CurrentCreditScoreModel,FACTA BEACON 09 Auto 250-900,CurrentCreditScoreModel,FACTA BEACON 09 Auto 250-900,
+GRS,1,CurrentCreditScoreModel,FACTA BEACON 09 Auto -,CurrentCreditScoreModel,,
+GRS,1,CurrentCreditScoreModel,Fico 9 Auto 250-900,CurrentCreditScoreModel,Fico 9 Auto 250-900,
+GRS,1,CurrentCreditScoreModel,0,CurrentCreditScoreModel,,
+GRS,1,CurrentCreditScoreModel,Fico 9 Auto -,CurrentCreditScoreModel,,
+GRS,1,OriginalCreditScoreModel,FACTA BEACON 09 Auto 250-900,OriginalCreditScoreModel,FACTA BEACON 09 Auto 250-900,
+GRS,1,OriginalCreditScoreModel,FACTA BEACON 09 Auto -,OriginalCreditScoreModel,,
+GRS,1,OriginalCreditScoreModel,NULL,OriginalCreditScoreModel,,
+GRS,1,OriginalCreditScoreModel,Fico 9 Auto 250-900,OriginalCreditScoreModel,Fico 9 Auto 250-900,
+GRS,1,OriginalCreditScoreModel,Fico 9 Auto -,OriginalCreditScoreModel,,
+GRS,1,ApprovalMethodName,Automated,ApprovalMethodName,Automated,
+GRS,1,ApprovalMethodName,Manual,ApprovalMethodName,Manual,
+GRS,1,CreditClass,Subprime,CreditClass,Subprime,
+GRS,1,CreditClass,NULL,CreditClass,NULL,
+GRS,1,CreditClass,Near Prime,CreditClass,Near Prime,
+GRS,1,CreditClass,Prime,CreditClass,Prime,
