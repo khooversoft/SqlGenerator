@@ -10,8 +10,10 @@ union all select 'DCU', 'Auto Loan', 'AssetClass', 'Auto Loan', current_timestam
 union all select 'DCU', '13', 'BankruptcyTypeCode', '13', current_timestamp
 union all select 'DCU', '7', 'BankruptcyTypeCode', '7', current_timestamp
 union all select 'DCU', 'Direct', 'Channel', 'Direct', current_timestamp
-union all select 'DCU', 'Auto Sale New', 'CommonCollateralTypeDescription', 'Automobile - New', current_timestamp
-union all select 'DCU', 'Auto Sale Used', 'CommonCollateralTypeDescription', 'Automobile - Used', current_timestamp
+union all select 'DCU', 'Auto Sale New', 'CollateralTypeDescription', 'Automobile - New', current_timestamp
+union all select 'DCU', 'Auto Sale Used', 'CollateralTypeDescription', 'Automobile - Used', current_timestamp
+union all select 'DCU', 'Auto New', 'CollateralTypeDescription', 'Automobile - New', current_timestamp
+union all select 'DCU', 'Auto Used', 'CollateralTypeDescription', 'Automobile - Used', current_timestamp
 union all select 'DCU', 'D', 'CurrentCreditGrade', 'D', current_timestamp
 union all select 'DCU', 'A', 'CurrentCreditGrade', 'A', current_timestamp
 union all select 'DCU', 'B', 'CurrentCreditGrade', 'B', current_timestamp
