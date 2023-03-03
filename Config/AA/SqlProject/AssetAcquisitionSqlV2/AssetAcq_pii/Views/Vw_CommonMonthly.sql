@@ -84,6 +84,7 @@ AS
       x.[AccountStatusCode],
       x.[AccountStatusCodeBecuCode],
       x.[DaysDelinquentCount],
+      x.[DaysDelinquentCountValue],
       x.[BankruptcyStatusCode],
       x.[BankruptcyTypeCode],
       x.[BankruptcyTypeCodeBecuCode],
