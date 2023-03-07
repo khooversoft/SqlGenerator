@@ -199,7 +199,7 @@ AS
       x.[VehicleIdentificationNumber],
       x.[PersonBirthDate],
       x.[FinalIncomeAmount],
-      x.[HeldForSaleFlag],
+      x.[CommonHeldForSaleFlag] AS [HeldForSaleFlag],
       x.[IncomeVerificationFlag],
       x.[LeaseFlag],
       x.[OriginalCreditScoreModel],

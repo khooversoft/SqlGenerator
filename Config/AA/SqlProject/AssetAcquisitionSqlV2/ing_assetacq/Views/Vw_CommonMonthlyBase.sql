@@ -45,6 +45,7 @@ AS
 
         coalesce(i.[Channel], [settlement].[Channel]) AS [CommonChannel],
         coalesce(i.[ParticipationRatio], [settlement].[ParticipationRatio]) AS [CommonParticipationRatio],
+        coalesce(i.[HeldForSaleFlag], [settlement].[HeldForSaleFlag]) AS [CommonHeldForSaleFlag],
 
         [settlement].[DealId],
         [settlement].[MonthEndBalanceAmountFactor],

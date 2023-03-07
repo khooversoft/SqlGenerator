@@ -199,7 +199,7 @@ AS
       CONVERT([varchar](100), HASHBYTES('SHA2_256', x.[VehicleIdentificationNumber]), 1) AS [VehicleIdentificationNumber],
       x.[PersonBirthDate],
       x.[FinalIncomeAmount],
-      x.[HeldForSaleFlag],
+      x.[CommonHeldForSaleFlag] AS [HeldForSaleFlag],
       x.[IncomeVerificationFlag],
       x.[LeaseFlag],
       x.[OriginalCreditScoreModel],
