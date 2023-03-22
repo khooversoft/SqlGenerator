@@ -49,7 +49,10 @@ AS
         [settlement].[DealId],
         [settlement].[MonthEndBalanceAmountFactor],
 
-        i.[MonthEndBalanceAmount] * [settlement].[MonthEndBalanceAmountFactor] AS [MonthEndBalanceAmountBECU]
+        i.[MonthEndBalanceAmount] * [settlement].[MonthEndBalanceAmountFactor] AS [MonthEndBalanceAmountBECU],
+
+        coalesce(i.[ActualPrincipalAndInterestPaidAmount], 0) AS [ActualPrincipalAndInterestPaidAmountValue],
+        coalesce(i.[PrincipalAndInterestPMTAmount], 0) AS [PrincipalAndInterestPMTAmountValue]
 
       FROM [clt_AssetAcq].[CommonMonthly] i
         LEFT JOIN [clt_AssetAcq].[InvestorLoanIdMap] [idMap] ON i.[BECUAccountNumber] = [idMap].[LoanId]
