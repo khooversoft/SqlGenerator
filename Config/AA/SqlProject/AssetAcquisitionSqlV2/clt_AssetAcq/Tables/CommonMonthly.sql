@@ -196,6 +196,8 @@ CREATE TABLE [clt_AssetAcq].[CommonMonthly]
    [ASAP_ACTIVITY_ID]                         nvarchar(36)         NULL,
    [ASAP_TRIGGER_ID]                          nvarchar(36)         NULL,
    [ASAP_SRC_FILEPATH]                        nvarchar(1000)       NULL
-)
-WITH (DISTRIBUTION = HASH ([MonthEndDate]), CLUSTERED COLUMNSTORE INDEX)
-;
+);
+GO
+
+CREATE INDEX [CommonMonthly_ix1] ON [clt_AssetAcq].[CommonMonthly] ([MonthEndDate]);
+GO

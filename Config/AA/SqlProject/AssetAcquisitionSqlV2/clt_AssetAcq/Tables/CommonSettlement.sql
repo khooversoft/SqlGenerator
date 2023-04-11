@@ -33,7 +33,8 @@ CREATE TABLE [clt_AssetAcq].[CommonSettlement]
 	[ASAP_ACTIVITY_ID] [nvarchar](36) NULL,
 	[ASAP_TRIGGER_ID] [nvarchar](36) NULL,
 	[ASAP_SRC_FILEPATH] [nvarchar](1000) NULL
-)
-WITH (DISTRIBUTION = HASH ([BECUAccountNumber]), CLUSTERED COLUMNSTORE INDEX)
+);
 GO
-;
+
+CREATE INDEX [CommonSettlement_ix1] ON [clt_AssetAcq].[CommonSettlement] ([BECUAccountNumber]);
+GO
